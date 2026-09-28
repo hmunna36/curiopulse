@@ -1,0 +1,4 @@
+# build intermediates (frames, stems, models) and fonts fetched by build.sh
+videos/*/.work/
+videos/*/src/fonts/
+__pycache__/
