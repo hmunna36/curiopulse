@@ -15,7 +15,7 @@ import soundfile as sf
 
 FPS = 30
 LEAD = 0.07          # cuts land this much before the phrase they illustrate
-TAIL = 2.2           # visual button after the last word
+TAIL = 2.0           # visual button after the last word
 
 # silence inserted AFTER the word that ends this phrase (seconds)
 BEATS = {}  # held pauses now come from the phrase spec (script.json)

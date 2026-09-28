@@ -27,8 +27,8 @@ REL=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1
 [ -s "$MODELS/kokoro-v1.0.onnx" ] || curl -fsSL -o "$MODELS/kokoro-v1.0.onnx" "$REL/kokoro-v1.0.onnx"
 [ -s "$MODELS/kokoro-timed.onnx" ] || python3 "$SRC/patch_kokoro.py" "$MODELS/kokoro-v1.0.onnx" "$MODELS/kokoro-timed.onnx"
 
-# 3. narration → paced voice + edit timeline
-python3 "$SRC/tts.py" "$MODELS" "$WORK" af_heart 1.25 "$(cat "$SRC/script.txt")"
+# 3. narration (directed phrase-by-phrase read, takes auditioned and cached) → voice + edit timeline
+python3 "$SRC/perform.py" "$MODELS" "$WORK" "$SRC/performance.json"
 python3 "$SRC/make_timeline.py" "$WORK"
 
 # 4. picture: ~1,700 frames of canvas motion graphics

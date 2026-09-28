@@ -999,8 +999,12 @@ SC.restart = (lt, t, shot) => {
   const out = E.inOutCubic(inv(c.breath_fail - 0.15, c.breath_fail + 0.5, t));
   const hold = 1 - E.inOutSine(inv(c.restart - 0.2, c.restart + 0.4, t));
   const cam = { x: 540 + 40 * hold, y: lerp(760, 700, out) - 30 * hold + 10 * Math.sin(t * 0.9), zoom: lerp(lerp(1.2, 1.43, hold), 0.74, out) * (t >= c.restart ? 1 + 0.05 * Math.exp(-(t - c.restart) * 5) : 1), rot: lerp(0.02, 0, out) + 0.07 * hold - 0.02 * Math.sin(t * 0.7) };
-  const o2 = t < c.breath_fail ? 0.7 : lerp(0.7, 0.32, E.outCubic(inv(c.breath_fail, shot.end, t)));
-  heartWorld(cam, t, { lungs: lerp(0.3, 1, out), breath: 0, blue: out > 0.5 ? 1 : 0 });
+  // the gasp: one reflexive twitch of the lungs that goes nowhere, and the O₂ gauge flashes red
+  const gT = c.gasp === undefined ? -99 : t - c.gasp;
+  const twitch = gT > 0 ? Math.sin(Math.PI * clamp(gT / 0.28)) * Math.exp(-gT * 2.5) : 0;
+  const alarm = gT > 0 ? Math.exp(-gT * 3.2) * (0.6 + 0.4 * Math.cos(gT * 18)) : 0;
+  const o2 = (t < c.breath_fail ? 0.7 : lerp(0.7, 0.32, E.outCubic(inv(c.breath_fail, shot.end, t)))) - 0.04 * twitch;
+  heartWorld(cam, t, { lungs: lerp(0.3, 1, out), breath: 0.55 * twitch, blue: out > 0.5 ? 1 : 0 });
   if (t >= c.restart && t < c.restart + 0.25) {
     applyCam(cam);
     sparks(611, 540 - 135, 700 - 83, c.restart, t, 30, { speed: 500, life: 0.4, grav: 0, cols: ['#FFE08A', '#FFFFFF'] });
@@ -1010,8 +1014,11 @@ SC.restart = (lt, t, shot) => {
     const x = 830, y = 420, w = 170, h = 44;
     ctx.font = '900 40px Montserrat'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
     ctx.fillStyle = '#8FB8FF'; ctx.fillText('O₂', x - 18, y + h / 2);
-    rrect(ctx, x, y, w, h, 22); ctx.fillStyle = 'rgba(8,12,34,0.9)'; ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = '#8FB8FF'; ctx.stroke();
-    rrect(ctx, x + 6, y + 6, (w - 12) * o2, h - 12, 16); ctx.fillStyle = o2 < 0.45 ? '#FF5A6E' : '#7FE9FF'; ctx.fill();
+    rrect(ctx, x, y, w, h, 22); ctx.fillStyle = 'rgba(8,12,34,0.9)'; ctx.fill();
+    ctx.lineWidth = 3 + 3 * alarm; ctx.strokeStyle = alarm > 0.05 ? hexMix('#8FB8FF', '#FF5A6E', clamp(alarm * 1.6)) : '#8FB8FF';
+    if (alarm > 0.05) { ctx.shadowColor = '#FF5A6E'; ctx.shadowBlur = 30 * alarm; }
+    ctx.stroke(); ctx.shadowBlur = 0;
+    rrect(ctx, x + 6, y + 6, (w - 12) * o2, h - 12, 16); ctx.fillStyle = o2 < 0.45 || alarm > 0.3 ? '#FF5A6E' : '#7FE9FF'; ctx.fill();
     ctx.restore();
     pill(300, 442, 'LUNGS: STILL', '#8FB8FF', out * 1.1, 34);
   }

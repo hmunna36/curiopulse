@@ -27,6 +27,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 SR = 24000
 ROWS = [None, 18, 30, 45, 70, 110, 160, 230]
+MORE_ROWS = ROWS + [8, 12, 24, 38, 56, 90, 130, 195, 300]   # wider search for lines that are hard to land
 MULTS = [0.96, 1.0, 1.05]
 TARGET = 54.8          # total narration length (s) the edit is cut to
 TONE_PCT = {"low": 25, "mid": 50, "high": 80}   # pitch placement as percentiles of this voice's takes
@@ -94,7 +95,7 @@ def f0_track(x, sr=SR, fmin=110, fmax=480, hop=0.01, win=0.035):
     lags = np.arange(lo, hi + 1)
     out = np.full(len(idx), np.nan)
     for j in range(len(idx)):
-        if rms[j] < 0.012 or ac[j, 0] <= 0:
+        if rms[j] < 0.006 or ac[j, 0] <= 0:
             continue
         r = ac[j, lo:hi + 1] / ac[j, 0] / wac[lo:hi + 1] * wac[0]
         if r.max() < 0.45:
@@ -118,7 +119,7 @@ def f0_track(x, sr=SR, fmin=110, fmax=480, hop=0.01, win=0.035):
     return out
 
 
-def voiced_runs(f, min_len=5):
+def voiced_runs(f, min_len=3):
     """Drop voiced islands shorter than min_len frames (clicks, creak, breath noise)."""
     f = f.copy()
     v = ~np.isnan(f)
@@ -178,7 +179,7 @@ def score(ft, dur, base_dur, seg, tone_hz, prev_med):
         s += max(0.0, ft["slope"] + 2.0) * 1.0 + max(0.0, ft["endp"] + 1.0) * 0.5 + max(0.0, ft["fall"] + 2.5) * 0.4
     s += max(0.0, 6.5 - ft["range"]) * 0.3
     tgt_dur = seg.get("dur", base_dur)
-    s += 6.0 * max(0.0, abs(dur / tgt_dur - 1) - 0.12)
+    s += 6.0 * max(0.0, abs(dur / tgt_dur - 1) - 0.12) + 0.8 * abs(dur / tgt_dur - 1)
     if prev_med is not None and abs(ft["med"] - prev_med) < 4:
         s += 0.4  # avoid a monotone run of phrases at the same pitch
     return float(s)
@@ -199,6 +200,26 @@ def emphasize(audio, words, targets, db=2.2):
                 env[-r:] = np.linspace(env[0], 1, r)
             g[a:b] = np.maximum(g[a:b], env)
     return audio * g
+
+
+def trim_edges(a, words, lead=0.02, tail=0.05, thr_db=-42):
+    """Cut the take's own leading/trailing silence (the phrase gaps come from the direction, not
+    from whatever padding the model left), keeping a short margin and a 10 ms fade."""
+    env = np.sqrt(np.convolve(a.astype(np.float64) ** 2, np.ones(240) / 240, "same"))
+    idx = np.where(env > env.max() * 10 ** (thr_db / 20))[0]
+    if not len(idx):
+        return a, words
+    i0 = max(0, idx[0] - int(lead * SR))
+    i1 = min(len(a), idx[-1] + int(tail * SR))
+    out = a[i0:i1].astype(np.float32).copy()
+    f = int(0.01 * SR)
+    out[:f] *= np.linspace(0, 1, f)
+    out[-f:] *= np.linspace(1, 0, f)
+    sh = i0 / SR
+    end = len(out) / SR
+    w2 = [{"word": w["word"], "start": round(min(end, max(0.0, w["start"] - sh)), 3),
+           "end": round(min(end + 0.04, max(0.0, w["end"] - sh)), 3)} for w in words]
+    return out, w2
 
 
 # ---------------------------------------------------------------- breaths from the narrator's own aspiration
@@ -245,10 +266,15 @@ def make_breath(grains, dur, kind, seed):
     out = out[:n]
     t = np.linspace(0, 1, n)
     if kind == "gasp":
-        # short involuntary intake: throat-constricted (brighter, narrower band), fast swell, caught short
-        sos = signal.butter(2, [500, 6500], btype="bandpass", fs=SR, output="sos")
-        out = signal.sosfilt(sos, out)
-        env = np.minimum(1, t / 0.22) ** 1.6 * np.where(t > 0.86, np.clip((1 - t) / 0.14, 0, 1), 1)
+        # short involuntary intake: the throat snaps open (the vocal-tract colour glides up from a
+        # closed, darker band to an open, brighter one), fast swell, caught short at the glottis
+        sos = signal.butter(2, [450, 7000], btype="bandpass", fs=SR, output="sos")
+        broad = signal.sosfilt(sos, out)
+        closed = signal.sosfilt(signal.butter(2, [700, 1700], btype="bandpass", fs=SR, output="sos"), out)
+        opened = signal.sosfilt(signal.butter(2, [1400, 3400], btype="bandpass", fs=SR, output="sos"), out)
+        k = np.clip(t / 0.7, 0, 1)
+        out = 0.55 * broad + 0.9 * ((1 - k) * closed + k * opened)
+        env = np.minimum(1, t / 0.14) ** 1.3 * (0.8 + 0.2 * t) * np.where(t > 0.88, np.clip((1 - t) / 0.12, 0, 1), 1)
         out = out * env
         catch = int(0.010 * SR)
         click = np.random.default_rng(seed + 1).standard_normal(catch) * np.hanning(catch) * 0.25
@@ -266,16 +292,19 @@ def make_breath(grains, dur, kind, seed):
 def audition(sess, spec):
     """Render (or load) every candidate take and measure it."""
     table = []
-    total = sum(len(s.get("alts", [])) + 1 for s in spec["segments"]) * len(ROWS)
+    total = sum((len(s.get("alts", [])) + 1) * (len(MORE_ROWS) if s.get("rows") == "more" else len(s.get("rows", ROWS)))
+                for s in spec["segments"])
     done = 0
     for si, seg in enumerate(spec["segments"]):
         texts = [seg["t"]] + seg.get("alts", [])
+        if seg.get("rows") == "more":
+            seg["rows"] = MORE_ROWS
         mults = seg.get("mults", MULTS)
         cands, base = [], None
         for text in texts:
-            for row in ROWS:
+            for row in seg.get("rows", ROWS):
                 for m in mults:
-                    a, words = sess.take(text, row, seg["speed"] * m)
+                    a, words = trim_edges(*sess.take(text, row, seg["speed"] * m))
                     cands.append({"text": text, "row": row, "mult": m, "dur": round(len(a) / SR, 3),
                                   "ft": features(a, words), "_a": a, "_w": words})
                     if text == seg["t"] and row is None and m == 1.0:
@@ -296,8 +325,14 @@ def select(table, lam):
     chosen, prev_med = [], None
     for p in table:
         seg = p["seg"]
+        med_dur = {}
+        for c in p["cands"]:
+            med_dur.setdefault(c["text"], []).append(c["dur"])
+        med_dur = {k: float(np.median(v)) for k, v in med_dur.items()}
         for c in p["cands"]:
             c["score"] = score(c["ft"], c["dur"], p["base"], seg, tone_hz, prev_med) + lam * c["dur"]
+            # a take far quicker than this line's typical read sounds rushed/clipped, not natural
+            c["score"] += 10.0 * max(0.0, 0.86 - c["dur"] / med_dur[c["text"]])
             if c["text"] != seg["t"]:
                 c["score"] += seg.get("alt_cost", 0.3)       # the written line is preferred on a tie
         pick = seg.get("pick")
