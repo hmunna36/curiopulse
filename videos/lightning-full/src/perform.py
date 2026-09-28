@@ -118,8 +118,28 @@ def f0_track(x, sr=SR, fmin=110, fmax=480, hop=0.01, win=0.035):
     return out
 
 
-def features(audio):
-    f = f0_track(audio)
+def voiced_runs(f, min_len=5):
+    """Drop voiced islands shorter than min_len frames (clicks, creak, breath noise)."""
+    f = f.copy()
+    v = ~np.isnan(f)
+    i = 0
+    while i < len(f):
+        if v[i]:
+            j = i
+            while j < len(f) and v[j]:
+                j += 1
+            if j - i < min_len:
+                f[i:j] = np.nan
+            i = j
+        else:
+            i += 1
+    return f
+
+
+def features(audio, words=None):
+    f = voiced_runs(f0_track(audio))
+    if words:  # only what is inside the spoken words (timings run ~40 ms late, so this keeps the last syllable)
+        f[int(words[-1]["end"] * 100) + 2:] = np.nan
     v = f[~np.isnan(f)]
     if len(v) < 6:
         return None
@@ -131,9 +151,17 @@ def features(audio):
     tail = st[-nt:]
     q = max(3, len(tail) // 4)
     slope = float(np.median(tail[-q:]) - np.median(tail[:q]))
-    endp = float(np.median(st[-min(5, len(st)):]))           # where the phrase lands, vs its own median
-    rise = float(endp - np.percentile(tail, 10))              # climb out of the tail's low point
-    fall = float(endp - np.percentile(tail, 90))              # drop from the tail's high point
+    endp = float(np.median(st[-min(4, len(st)):]))           # where the phrase lands, vs its own median
+    # the last word's own movement: climb out of its low point / drop from its high point
+    lw = st[-nt:]
+    if words:
+        fl = f.copy()
+        fl[:int(words[-1]["start"] * 100)] = np.nan
+        lv = fl[~np.isnan(fl)]
+        if len(lv) >= 5:
+            lw = 12 * np.log2(lv / med)
+    rise = float(endp - np.min(lw[:-2])) if len(lw) > 3 else 0.0
+    fall = float(endp - np.max(lw[:-2])) if len(lw) > 3 else 0.0
     return {"med": round(med, 1), "range": round(rng, 2), "slope": round(slope, 2), "endp": round(endp, 2),
             "rise": round(rise, 2), "fall": round(fall, 2)}
 
@@ -249,7 +277,7 @@ def audition(sess, spec):
                 for m in mults:
                     a, words = sess.take(text, row, seg["speed"] * m)
                     cands.append({"text": text, "row": row, "mult": m, "dur": round(len(a) / SR, 3),
-                                  "ft": features(a), "_a": a, "_w": words})
+                                  "ft": features(a, words), "_a": a, "_w": words})
                     if text == seg["t"] and row is None and m == 1.0:
                         base = len(a) / SR
                 done += 1
