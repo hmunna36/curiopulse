@@ -1,7 +1,7 @@
-# What Really Happens When Lightning Hits a Human? — full Short (59 s)
+# What Really Happens When Lightning Hits a Human? — full Short (66 s)
 
 **Final file:** [`lightning-full-short.mp4`](lightning-full-short.mp4)
-MP4 · H.264 High · 1080×1920 (9:16) · 30 fps · AAC 48 kHz stereo · 58.9 s · −14 LUFS integrated, ≤ −1 dBTP
+MP4 · H.264 High · 1080×1920 (9:16) · 30 fps · AAC 48 kHz stereo · 65.9 s · −14 LUFS integrated, ≤ −1 dBTP
 
 This is the long version of [`../lightning-strike`](../lightning-strike) (the 10 s reference). It keeps that cut's look and sound:
 - the same hiker rig, palette and lighting;
@@ -14,7 +14,7 @@ AI imagery, logos or watermarks.
 
 ## Narration (181 words, one voice, spoken rather than read)
 
-Directed phrase by phrase in [`src/performance.json`](src/performance.json). The delivery follows an emotional arc: curious, then concerned, tense, shocked, explanatory, surprised, and the payoff. It uses asides and questions, micro-pauses, soft breaths before new thoughts, and a short involuntary gasp after "Breathing, though…?".
+Directed phrase by phrase in [`src/performance.json`](src/performance.json), at a natural but brisk ~190 words per minute. The delivery follows an emotional arc: curious, then concerned, tense, shocked, explanatory, surprised, and the payoff. It uses asides and questions, micro-pauses, soft breaths before new thoughts, and a short involuntary gasp after "Breathing, though…?".
 
 > Getting struck by lightning sounds instantly fatal, right? Well… not always.
 > As the storm rolls in, charge zigzags down… His body…? It throws a spark up to meet it… and— they connect!
@@ -46,16 +46,16 @@ If you hear thunder, get indoors.
 | Time | Section | Picture |
 |---|---|---|
 | 0–3.2 | Hook | A leader descends at frame 0 and the strike lands on "struck". The frame freezes red on "instantly fatal" and an ECG flatlines |
-| 3.2–4.9 | Hook | VHS rewind to before the strike on "Well… not always" |
-| 4.9–10.7 | The strike | The storm front rolls in over the hiker. A violet stepped leader drops out of the cloud; his hair lifts and an upward streamer rises from his head; they connect with a return-stroke flash |
-| 10.7–13.4 | The strike | Plasma-channel macro: 30,000 A counter, then the Sun at 5,500 °C against lightning at 27,700 °C (5×) |
-| 13.4–22.3 | Electricity | X-ray scan and FLASHOVER current streaming over the skin. Arcs hop between rain beads that flash to steam; steam blasts a sneaker into the air; a Lichtenberg figure grows |
-| 22.3–28.1 | Nervous system | Nerve map with current racing out from the spine, then inside one neuron: tiny hopping signals, then the surge with an OVERLOAD oscilloscope and glitch |
-| 28.1–32.7 | Nervous system | His legs give out and turn cold blue while a clock spins through HOURS. X-ray of the head: the breathing center flickers off and the breathing trace flattens |
-| 32.7–40.2 | The heart | Anatomical heart with a live conduction wave and ECG ("built-in pacemaker"). A bolt hits like a defibrillator; the heart greys out and the ECG flatlines (0 BPM, music drops out) |
-| 40.2–49.9 | Survival | The SA node sparks and the beat returns. Pull out to motionless lungs and falling O₂; on the gasp the lungs twitch once and the O₂ gauge flashes red. Overhead CPR at 100–120/min with blood pushed to brain and limbs; "0 V · NO CHARGE", a hand on his shoulder, and his eyes open |
-| 49.9–57.0 | Final fact | He sits up singed while 9 of 10 icons light. A park-ranger silhouette takes 7 strikes (1942–1977) and gets a SURVIVED ALL 7 STRIKES stamp |
-| 57.0–58.9 | Button | Back to the hiker, who looks up nervously; the sky flickers and a final strike whites out the frame |
+| 3.2–5.0 | Hook | VHS rewind to before the strike on "Well… not always" |
+| 5.0–11.8 | The strike | The storm front rolls in over the hiker. A violet stepped leader drops out of the cloud; his hair lifts and an upward streamer rises from his head; they connect with a return-stroke flash |
+| 11.8–15.1 | The strike | Plasma-channel macro: 30,000 A counter, then the Sun at 5,500 °C against lightning at 27,700 °C (5×) |
+| 15.1–25.1 | Electricity | X-ray scan and FLASHOVER current streaming over the skin. Arcs hop between rain beads that flash to steam; steam blasts a sneaker into the air; a Lichtenberg figure grows |
+| 25.1–32.3 | Nervous system | Nerve map with current racing out from the spine, then inside one neuron: tiny hopping signals, then the surge with an OVERLOAD oscilloscope and glitch |
+| 32.3–37.3 | Nervous system | His legs give out and turn cold blue while a clock spins through HOURS. X-ray of the head: the breathing center flickers off and the breathing trace flattens |
+| 37.3–45.6 | The heart | Anatomical heart with a live conduction wave and ECG ("built-in pacemaker"). A bolt hits like a defibrillator; the heart greys out and the ECG flatlines (0 BPM, music drops out) |
+| 45.6–56.6 | Survival | The SA node sparks and the beat returns. Pull out to motionless lungs and falling O₂; on the gasp the lungs twitch once and the O₂ gauge flashes red. Overhead CPR at 100–120/min with blood pushed to brain and limbs; "0 V · NO CHARGE", a hand on his shoulder, and his eyes open |
+| 56.6–64.0 | Final fact | He sits up singed while 9 of 10 icons light. A park-ranger silhouette takes 7 strikes (1942–1977) and gets a SURVIVED ALL 7 STRIKES stamp |
+| 64.0–65.9 | Button | Back to the hiker, who looks up nervously; the sky flickers and a final strike whites out the frame |
 
 ## Science notes
 
@@ -74,7 +74,7 @@ Sources: US National Weather Service and CDC lightning safety pages, lightning-i
 ## Rebuild
 
 ```bash
-./src/build.sh     # fonts + TTS model (first run), narration, timeline, ~1,770-frame render, audio, encode
+./src/build.sh     # fonts + TTS model (first run), narration, timeline, ~2,000-frame render, audio, encode
 ```
 
 | File | Role |
