@@ -189,7 +189,7 @@ bed.add(fade(np.stack([crackle(n, dens, 181 + s, 1500, 10000, 0.0012) for s in (
 sfx.add(blip(1046, 1568, 0.12, 190, 0.04), g0 + 0.75, db(-18))
 
 # ---------------------------------------------------------------- 12-15. into the nervous system
-sfx.add(pan_st(whoosh(0.5, 3000, 200, 200, 0.7), 0), SHOT["nerves"] - 0.3, db(-10))
+sfx.add(pan_st(whoosh(0.8, 2400, 160, 200, 0.75, 0.9), np.linspace(-0.4, 0.4, int(0.8 * SR))), SHOT["nerves"] - 0.55, db(-11))
 sfx.add(np.stack([crack(0.3, 201, 0.03, 1500), crack(0.3, 202, 0.03, 1500)]), SHOT["nerves"] + 0.05, db(-12))
 for k in range(9):
     z = sweep(300, 3200, 0.22, 0.7) * attack_decay(int(0.22 * SR), 0.005, 0.08)
@@ -224,7 +224,7 @@ k = 0
 while beat0 + k * period < C["defib"] - 0.1:
     tb = beat0 + k * period
     if tb >= SHOT["heart"] - 0.05:
-        sfx.add(heartbeat_pair(300 + k), tb + 0.2, db(-6))
+        sfx.add(heartbeat_pair(300 + k), tb + 0.2, db(-10))
         sfx.add(tone(1000, 0.07), tb + 0.3 * period, db(-24))
     k += 1
 d = C["defib"]
@@ -239,11 +239,14 @@ r0 = C["restart"]
 k = 0
 while r0 + k * 0.82 < SHOT["cpr"]:
     tb = r0 + k * 0.82
-    sfx.add(heartbeat_pair(320 + k), tb + 0.2, db(-6 - (3 if k == 0 else 0)))
+    sfx.add(heartbeat_pair(320 + k), tb + 0.2, db(-11 - (2 if k == 0 else 0)))
     sfx.add(tone(1000, 0.07), tb + 0.3 * 0.82, db(-24))
     k += 1
 sfx.add(np.stack([crack(0.15, 330, 0.02, 3000), crack(0.15, 331, 0.02, 3000)]), r0, db(-16))
-sfx.add(pan_st(whoosh(0.5, 2500, 300, 332, 0.6), 0), C["breath_fail"] - 0.1, db(-16))
+sfx.add(pan_st(whoosh(0.5, 2500, 300, 332, 0.6), 0), C["breath_fail"] - 0.35, db(-18))
+# "It might not." — a soft low hit under the realisation
+sfx.add(thump(0.8, 70, 30, 0.35), C["not_hit"], db(-10))
+bed.add(pan_st(fade(note(mtof(26), 1.2, 0.02, 0.6, 250, voices=2, seed=333), 0.005, 0.3), 0), C["not_hit"], db(-18))
 
 # ---------------------------------------------------------------- 18-19. CPR + safe to touch
 tc = C["cpr"] - 0.5
@@ -399,6 +402,13 @@ for k in range(7):
     i = a + k * sl
     mus.x[:, i:i + sl] = seg * (0.9 - 0.1 * k)
 mus.x[:, a + 7 * sl:int((C["surge"] + 0.45) * SR)] *= 0.15
+# the breathing moment: score and room tone fall away so the gasp reads
+g0, g1 = int((C["breath_fail"] - 0.1) * SR), int((C["not_hit"] + 0.35) * SR)
+dip = np.ones(N)
+dip[g0:g1] = 0.12
+dip = np.convolve(dip, np.ones(int(0.08 * SR)) / int(0.08 * SR), "same")
+mus.x *= dip
+amb.x *= 0.35 + 0.65 * dip
 # silence the score while the heart is stopped, and after the final strike
 for (x0, x1) in ((C["defib"] + 0.9, C["restart"] + 0.05), (C["final_strike"], DUR)):
     i0, i1 = int(x0 * SR), int(x1 * SR)

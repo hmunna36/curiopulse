@@ -1,6 +1,6 @@
 """Narration: local Kokoro-82M TTS with word-level timings.
 
-Usage: python3 tts.py <model_dir> <out_dir> <voice> <speed> [text]  (default text: script.txt)
+Usage: python3 tts.py <model_dir> <out_dir> <voice> <speed> [text | spec.json]\n(spec.json: phrase-by-phrase delivery; <speed> then acts as a global multiplier)
 Writes <out_dir>/narration.wav (24 kHz mono) and <out_dir>/words.json.
 The model needs a "duration" output (see patch in build notes) so every
 phoneme gets an exact start/end time; words are rebuilt from those.
@@ -62,19 +62,40 @@ def word_timings(k, text, spoken):
     return [{"word": w, "start": round(span[i][0], 3), "end": round(span[i][1], 3)} for i, w in enumerate(words)]
 
 
+def render_segments(k, spec, voice, speed_scale=1.0):
+    """Phrase-by-phrase delivery: own speed + punctuation per phrase, held silence after it."""
+    parts, words, t = [], [], 0.0
+    sr = 24000
+    for seg in spec["segments"]:
+        audio, sr, spoken = k.create_timed(seg["t"], voice=voice, speed=seg["speed"] * speed_scale, lang="en-us",
+                                           sentence_pause=0.12, clause_pause=0.05)
+        audio = audio * 10 ** (seg.get("gain", 0.0) / 20)
+        for w in word_timings(k, seg["t"], spoken):
+            words.append({"word": w["word"], "start": round(w["start"] + t, 3), "end": round(w["end"] + t, 3)})
+        gap = np.zeros(int(max(0.06, seg.get("pause", 0.0)) * sr), dtype=np.float32)
+        parts += [audio.astype(np.float32), gap]
+        t += (len(audio) + len(gap)) / sr
+    return np.concatenate(parts), sr, words
+
+
 def main():
     model_dir, out_dir, voice, speed = sys.argv[1], sys.argv[2], sys.argv[3], float(sys.argv[4])
     text = sys.argv[5] if len(sys.argv) > 5 else SCRIPT
     os.makedirs(out_dir, exist_ok=True)
     k = Kokoro(os.path.join(model_dir, "kokoro-timed.onnx"), os.path.join(model_dir, "voices-v1.0.bin"))
-    audio, sr, spoken = k.create_timed(text, voice=voice, speed=speed, lang="en-us",
-                                       sentence_pause=0.12, clause_pause=0.05)
+    if text.endswith(".json"):
+        spec = json.load(open(text))
+        audio, sr, out = render_segments(k, spec, voice, speed)
+        text = " ".join(seg["t"] for seg in spec["segments"])
+    else:
+        audio, sr, spoken = k.create_timed(text, voice=voice, speed=speed, lang="en-us",
+                                           sentence_pause=0.12, clause_pause=0.05)
+        out = word_timings(k, text, spoken)
     sf.write(os.path.join(out_dir, "narration.wav"), audio, sr)
-    out = word_timings(k, text, spoken)
     json.dump({"voice": voice, "speed": speed, "sr": sr, "duration": len(audio) / sr,
                "text": text, "words": out},
               open(os.path.join(out_dir, "words.json"), "w"), indent=1)
-    print(f"{voice} speed={speed} dur={len(audio)/sr:.2f}s words={len(out)}")
+    print(f"{voice} dur={len(audio)/sr:.2f}s words={len(out)}")
 
 
 if __name__ == "__main__":

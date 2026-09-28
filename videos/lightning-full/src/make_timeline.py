@@ -15,55 +15,55 @@ import soundfile as sf
 
 FPS = 30
 LEAD = 0.07          # cuts land this much before the phrase they illustrate
-TAIL = 2.35          # visual button after the last word
+TAIL = 2.2           # visual button after the last word
 
 # silence inserted AFTER the word that ends this phrase (seconds)
-BEATS = {"what happens": 0.25, "they connect": 0.5, "it stops": 0.65, "ten survive": 0.2}
+BEATS = {}  # held pauses now come from the phrase spec (script.json)
 
 # (shot id, phrase whose first word opens the shot)
 SHOTS = [
-    ("tease", None), ("rewind", "but that's not"),
-    ("approach", "As the storm"), ("leader", "charge zigzags"), ("streamer", "His body throws"),
+    ("tease", None), ("rewind", "Well not always"),
+    ("approach", "As the storm"), ("leader", "charge zigzags"), ("streamer", "His body"),
     ("connect", "and they connect"), ("stat", "Thirty thousand"),
-    ("flashover", "But most of"), ("wetskin", "It flashes over"), ("shoes", "turning rain"),
-    ("fern", "and leaving"),
+    ("flashover", "But here's the thing"), ("wetskin", "It flashes over"), ("shoes", "turning rain"),
+    ("fern", "leaving fern-shaped"),
     ("nerves", "The current that does"), ("neuron", "They run on"), ("limp", "His legs can"),
-    ("brain", "and the brain's"),
-    ("heart", "His heart runs"), ("restart", "Here's the twist"),
-    ("cpr", "so fast CPR"), ("touch", "And victims carry"),
-    ("survive", "That's why about"), ("ranger", "One park ranger"), ("final", None),
+    ("brain", "His brain's breathing"),
+    ("heart", "Now his heart"), ("restart", "But here's the twist"),
+    ("cpr", "So fast CPR"), ("touch", "And victims carry"),
+    ("survive", "That's why about"), ("ranger", "And one park ranger"), ("final", None),
 ]
 
-# caption chunks: exact word runs; "/" splits lines; {a|b} replaces the spoken words a..b
+# caption chunks: exact word runs; "/" splits lines; DISPLAY swaps the spoken words for figures
 Y, O, C, R, P, G, W, B, GO = "#FFD447", "#FF9A3C", "#7FE9FF", "#FF5A6E", "#FF86A6", "#4DFFB4", "#FFFFFF", "#8FB8FF", "#FFC857"
 CHUNKS = [
-    "Getting struck", "by lightning", "sounds instantly / fatal",
-    "but that's not / always what happens",
-    "As the storm / rolls in", "charge zigzags / down from the cloud",
-    "His body throws / a spark up", "to meet it", "and they / connect",
-    "Thirty thousand amps", "hotter than / the Sun's surface",
-    "But most of / that current", "never gets / inside",
-    "It flashes over / his wet skin", "turning rain / to steam", "so fast it can / blow off his shoes",
-    "and leaving / fern-shaped marks", "behind",
-    "The current that / does get in", "races along / his nerves",
+    "Getting struck", "by lightning", "sounds instantly / fatal right",
+    "Well not / always",
+    "As the storm / rolls in", "charge zigzags / down", "His body",
+    "It throws a spark / up to meet it", "and they / connect",
+    "Thirty thousand amps", "Hotter than / the Sun's surface",
+    "But here's / the thing", "most of it never / even gets inside",
+    "It flashes over / his wet skin", "turning rain / to steam", "so fast it can / blow his shoes off",
+    "leaving / fern-shaped marks", "behind",
+    "The current that / does get in", "It races along / his nerves",
     "They run on tiny / electrical signals", "and this surge / drowns them out",
-    "His legs can / go limp", "for hours", "and the brain's / breathing center", "can shut down",
-    "His heart runs / on electricity too", "Lightning hits it / like a giant", "defibrillator",
+    "His legs can / go limp", "for hours", "His brain's / breathing center", "It can / shut down",
+    "Now his heart runs / on electricity too", "Lightning hits it / like a giant", "defibrillator",
     "and for a moment", "it stops",
-    "Here's the twist", "the heart often / restarts on its own",
-    "Breathing / may not", "so fast CPR / saves lives",
+    "But here's / the twist", "The heart often / restarts on its own",
+    "Breathing though", "It might / not", "So fast CPR / saves lives",
     "And victims carry / no charge", "They're safe / to touch",
     "That's why about", "nine in ten / survive",
-    "One park ranger / was struck", "seven times", "and survived / every single one",
+    "And one / park ranger", "Struck / seven times", "and he survived / every single one",
 ]
 DISPLAY = {"thirty thousand amps": ["30,000", "AMPS"], "nine in ten": ["9", "IN", "10"], "seven times": ["7", "TIMES"]}
 COLOR = {
-    "lightning": Y, "fatal": R, "not": R, "storm": B, "charge": C, "spark": C, "connect": Y,
-    "30,000": Y, "amps": Y, "hotter": O, "sun's": O, "surface": O, "most": Y, "inside": C,
-    "skin": C, "steam": W, "shoes": R, "fern-shaped": P, "nerves": GO, "electrical": C, "signals": C,
-    "surge": R, "limp": B, "hours": B, "breathing": C, "center": C, "shut": R, "heart": R,
+    "lightning": Y, "fatal": R, "not": R, "storm": B, "charge": C, "body": C, "spark": C, "connect": Y,
+    "30,000": Y, "amps": Y, "hotter": O, "sun's": O, "surface": O, "thing": Y, "never": R, "inside": C,
+    "skin": C, "steam": W, "shoes": R, "fern-shaped": P, "does": C, "nerves": GO, "electrical": C, "signals": C,
+    "surge": R, "limp": B, "hours": B, "breathing": C, "center": C, "shut": R, "heart": R, "though": C,
     "electricity": C, "defibrillator": Y, "stops": R, "twist": Y, "restarts": G, "own": G,
-    "cpr": G, "lives": G, "no": G, "safe": G, "touch": G, "9": Y, "10": Y, "survive": G,
+    "cpr": G, "lives": G, "no": G, "safe": G, "touch": G, "9": Y, "10": Y, "survive": G, "ranger": GO,
     "7": Y, "times": Y, "survived": G, "every": G, "single": G, "one": G,
 }
 
@@ -163,7 +163,7 @@ def main():
     S = {s["id"]: s["start"] for s in shots}
     cues = {
         "tease_strike": fr(W_("struck")), "freeze": fr(W_("sounds")), "flatline1": W_("fatal") + 0.2,
-        "rewind": S["rewind"], "rewind_end": fr(E_("what happens", 1) - 0.1),
+        "rewind": S["rewind"], "rewind_end": fr(E_("not always", 1) - 0.1),
         "leader": W_("charge"), "streamer": W_("spark"), "connect": fr(E_("they connect", 1) + 0.03),
         "count": W_("Thirty"), "count_end": W_("amps"), "hotter": W_("hotter"),
         "scan": S["flashover"] + 0.03, "inside": W_("inside"),
@@ -171,13 +171,14 @@ def main():
         "races": W_("races"), "tiny": W_("tiny"), "surge": W_("surge"), "limp": W_("limp"), "hours": W_("hours"),
         "brainstem": W_("breathing"), "shutdown": W_("shut"),
         "beat_ok": S["heart"], "defib": W_("hits", 0), "stop": W_("stops"),
-        "restart": W_("restarts"), "breath_fail": W_("Breathing may"), "cpr": W_("CPR"),
+        "restart": W_("restarts"), "breath_fail": W_("Breathing though"), "gasp": next((e["t"] for e in meta.get("events", []) if e["type"] == "gasp"), E_("Breathing though", 1) + 0.12), "might_not": W_("It might not"), "not_hit": W_("It might not", 2), "cpr": W_("CPR"),
         "no_charge": W_("no charge"), "touch": W_("touch"),
         "icons": W_("nine"), "survive": W_("survive"),
-        "ranger_strikes": [round(W_("was struck", 1) - 0.2 + k * (W_("survived") - W_("was struck", 1)) / 7.0, 3) for k in range(7)],
+        "ranger_strikes": [round(W_("ranger struck", 1) - 0.2 + k * (W_("survived") - W_("ranger struck", 1)) / 7.0, 3) for k in range(7)],
         "stamp": W_("survived"), "final_strike": round(duration - 0.55, 3),
     }
-    tl = {"fps": FPS, "duration": duration, "shots": shots, "captions": caps, "cues": cues, "words": words}
+    tl = {"fps": FPS, "duration": duration, "shots": shots, "captions": caps, "cues": cues, "words": words,
+          "events": meta.get("events", [])}
     json.dump(tl, open(f"{work}/timeline.json", "w"), indent=1)
     for s in shots:
         print(f'{s["id"]:10s} {s["start"]:6.2f} -> {s["end"]:6.2f}  ({s["end"] - s["start"]:.2f}s)')

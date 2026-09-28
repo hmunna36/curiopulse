@@ -1,0 +1,29 @@
+{
+  "voice": "af_heart",
+  "note": "Phrase-by-phrase delivery: speed per phrase (1.3 = brisk exposition, 1.05-1.15 = dramatic weight), pause = held silence after the phrase (s), gain = emphasis (dB).",
+  "segments": [
+    {"t": "Getting struck by lightning sounds instantly fatal...", "speed": 1.2, "pause": 0.35},
+    {"t": "but that's not always what happens.", "speed": 1.25, "pause": 0.25},
+    {"t": "As the storm rolls in, charge zigzags down from the cloud.", "speed": 1.3, "pause": 0.08},
+    {"t": "His body throws a spark up to meet it...", "speed": 1.25, "pause": 0.2},
+    {"t": "and they connect!", "speed": 1.15, "pause": 0.55, "gain": 1.5},
+    {"t": "Thirty thousand amps.", "speed": 1.2, "pause": 0.08, "gain": 1.0},
+    {"t": "Hotter than the Sun's surface.", "speed": 1.25, "pause": 0.2},
+    {"t": "But most of that current never gets inside.", "speed": 1.3, "pause": 0.08},
+    {"t": "It flashes over his wet skin, turning rain to steam so fast it can blow off his shoes, and leaving fern-shaped marks behind.", "speed": 1.32, "pause": 0.2},
+    {"t": "The current that does get in races along his nerves.", "speed": 1.3, "pause": 0.08},
+    {"t": "They run on tiny electrical signals, and this surge drowns them out!", "speed": 1.28, "pause": 0.25, "gain": 1.0},
+    {"t": "His legs can go limp for hours, and the brain's breathing center can shut down.", "speed": 1.3, "pause": 0.3},
+    {"t": "His heart runs on electricity too.", "speed": 1.3, "pause": 0.08},
+    {"t": "Lightning hits it like a giant defibrillator, and for a moment...", "speed": 1.25, "pause": 0.35},
+    {"t": "it stops.", "speed": 1.05, "pause": 0.8, "gain": 1.0},
+    {"t": "Here's the twist: the heart often restarts on its own.", "speed": 1.28, "pause": 0.3},
+    {"t": "But breathing?", "speed": 1.05, "pause": 0.75, "gain": 1.0},
+    {"t": "It might not!", "speed": 1.1, "pause": 0.3, "gain": 2.0},
+    {"t": "So fast CPR saves lives.", "speed": 1.25, "pause": 0.15},
+    {"t": "And victims carry no charge. They're safe to touch.", "speed": 1.3, "pause": 0.25},
+    {"t": "That's why about nine in ten survive.", "speed": 1.25, "pause": 0.3},
+    {"t": "One park ranger was struck seven times...", "speed": 1.2, "pause": 0.35},
+    {"t": "and survived every single one.", "speed": 1.15, "pause": 0.0, "gain": 1.0}
+  ]
+}
