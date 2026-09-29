@@ -2,6 +2,7 @@
 name: cp
 description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 55–70 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled for the next free day: YouTube at 11:30 IST (Data API) and Instagram at 18:30 IST (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
 argument-hint: <topic question> | next
+model: claude-opus-5-5
 effort: max
 ---
 
