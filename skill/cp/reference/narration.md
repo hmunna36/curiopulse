@@ -5,14 +5,13 @@
 - ElevenLabs `eleven_v3`, voice **Jessica** `cgSgspJ2msm6clMCkdW9`, stability **0.0** ("creative"), mp3 44.1 kHz.
   `voice.py` hard-codes these. Never change the voice or stability for a CurioPulse Short: it is the channel's
   narrator.
-- Keys live in `~/.config/va/elevenlabs.env` (shared with the va skill; never print them). voice.py reads the first
-  `ELEVENLABS_API_KEY=` line through `ELEVENLABS_ENV_FILE` (build.sh and cp-env.sh set it).
-  - That line is the third account (resets ~29 Oct).
+- Keys live in `~/.config/va/elevenlabs.env` (shared with the va skill; never print them). voice.py reads every
+  `ELEVENLABS_API_KEY*` line through `ELEVENLABS_ENV_FILE` (build.sh and cp-env.sh set it). A take goes to the first
+  account; when that account is out of characters or its key is refused, it tries the next one.
+  - The first line is the third account (resets ~29 Oct).
   - `_2` is the original account (resets ~29th of each month, 23:19 UTC).
   - `_3` is the second account.
-  - If the first key is exhausted, run the voice step with `ELEVENLABS_API_KEY` exported from another line, read in
-    a subshell so it is never printed:
-    `ELEVENLABS_API_KEY=$(sed -n 's/^ELEVENLABS_API_KEY_2=//p' ~/.config/va/elevenlabs.env) …`.
+  - An exported `ELEVENLABS_API_KEY` overrides the file and pins one account.
 - Budget:
   - `node ~/.claude/skills/cp/bin/quota.mjs` prints the characters left on every account.
   - A Short costs ≈ 1,000–1,300 characters (hypnic-jerk 1,283, finger-wrinkles 988). Retakes of single blocks

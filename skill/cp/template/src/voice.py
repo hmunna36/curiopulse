@@ -58,35 +58,48 @@ def key_of(b):
     return hashlib.sha1(f"{VOICE_ID}|{MODEL}|{STABILITY}|{b['text']}".encode()).hexdigest()[:12]
 
 
-def api_key():
-    k = os.environ.get("ELEVENLABS_API_KEY")
-    if not k and os.environ.get("ELEVENLABS_ENV_FILE"):
+def api_keys():
+    """ELEVENLABS_API_KEY if set; else every ELEVENLABS_API_KEY* line of ELEVENLABS_ENV_FILE, in file order
+    (the va and cp skills share ~/.config/va/elevenlabs.env). Keys are never printed."""
+    if os.environ.get("ELEVENLABS_API_KEY"):
+        return [os.environ["ELEVENLABS_API_KEY"]]
+    keys = []
+    if os.environ.get("ELEVENLABS_ENV_FILE"):
         for ln in open(os.path.expanduser(os.environ["ELEVENLABS_ENV_FILE"])):
-            if ln.strip().startswith("ELEVENLABS_API_KEY="):
-                k = ln.split("=", 1)[1].strip().strip('"').strip("'")
-    if not k:
+            m = re.match(r"\s*ELEVENLABS_API_KEY\w*\s*=\s*[\"']?([^\"'\s]+)", ln)
+            if m and m.group(1) not in keys:
+                keys.append(m.group(1))
+    if not keys:
         sys.exit("voice.py: set ELEVENLABS_API_KEY (or ELEVENLABS_ENV_FILE) to synthesize")
-    return k
+    return keys
 
 
 def synth(text, seed):
+    """one take; tries each account in turn when one is out of characters (or its key is rejected)"""
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}/with-timestamps?output_format=mp3_44100_128"
     body = {"text": text, "model_id": MODEL, "voice_settings": {"stability": STABILITY}}
     if seed is not None:
         body["seed"] = seed
-    req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST",
-                                 headers={"xi-api-key": api_key(), "Content-Type": "application/json"})
     try:
         import certifi
         ctx = ssl.create_default_context(cafile=certifi.where())
     except ImportError:
         ctx = ssl.create_default_context()
-    try:
-        with urllib.request.urlopen(req, timeout=240, context=ctx) as r:
-            res = json.load(r)
-    except urllib.error.HTTPError as e:
-        sys.exit(f"voice.py: ElevenLabs {e.code}: {e.read().decode()[:300]}")
-    return base64.b64decode(res["audio_base64"]), res["alignment"]
+    errors = []
+    for i, key in enumerate(api_keys(), 1):
+        req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST",
+                                     headers={"xi-api-key": key, "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=240, context=ctx) as r:
+                res = json.load(r)
+            return base64.b64decode(res["audio_base64"]), res["alignment"]
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode()[:300]
+            errors.append(f"account {i}: {e.code} {msg}")
+            if e.code in (401, 402, 403, 429) or "quota" in msg.lower():
+                continue  # out of characters / key rejected: try the next account
+            break
+    sys.exit("voice.py: ElevenLabs refused the take on every account:\n  " + "\n  ".join(errors))
 
 
 def decode(mp3):

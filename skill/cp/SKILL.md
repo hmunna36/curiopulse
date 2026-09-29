@@ -148,7 +148,12 @@ Read each reference file when you reach its phase. They are short; don't skip th
 19. **Remember:** add the Short to `reference/videos.md` (and a lesson if there was one), a memory note, and a line
     in `MEMORY.md`. Then `run-lock.sh release`.
 
-## `/cp next` (queue mode, also for a scheduled routine)
+## `/cp next` (queue mode; the daily routine)
+
+The scheduled task `curiopulse-daily-short` runs `/cp next` every day at 12:00 IST (created 2026-09-29 at the user's
+request). It runs at noon because the va skill's routine runs at 00:00 and the two builds share one lock. At
+midnight one of them would skip every night. At noon the user's Chrome is also usually open for the Business Suite
+step. To change what gets made, edit `topics.md`, not the routine.
 
 1. Take the first `[~]` line of `~/.claude/skills/cp/topics.md` and resume it, or else the first `[ ]` line. Mark it
    in progress: `- [~] Why do onions make you cry? — onion-tears — started 2026-10-01`. If the queue is empty, report
