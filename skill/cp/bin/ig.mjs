@@ -1,12 +1,21 @@
 #!/usr/bin/env node
-// Instagram Reels publisher for CurioPulse (@curio_pulse_tv), through Meta's "Instagram API with Instagram Login"
-// (graph.instagram.com; no Facebook Page needed). No dependencies; Node 22+.
+// Instagram Reels for CurioPulse (@curio_pulse_tv). No dependencies; Node 22+. Two routes:
+//
+// A. Meta Business Suite in Chrome (the route in use since 2026-09-29).
+//    The user's Facebook account is blocked, so no Meta developer app and no API token can exist.
+//    `prepare` builds the Instagram-spec copy and splits it into parts under 10 MB (Claude in Chrome's upload limit).
+//    The /cp run then schedules the Reel in Business Suite itself, at 18:30 IST: see the skill's
+//    reference/publish.md. After that, `busy <date>` records the day.
+// B. The API ("Instagram API with Instagram Login", graph.instagram.com; no Facebook Page needed), used as soon as
+//    `token` has stored a token (it also installs the launchd job). Everything below `queue` belongs to this route.
 //
 // The API cannot schedule. So `queue` books a Reel into ~/.config/cp/ig-queue.json and keeps a spool copy of the
 // MP4, and a launchd job (install-job) runs `run-due` every day at 18:10 IST (and at login).
 // run-due takes every Reel due within 25 minutes (or overdue): it creates the container and uploads, waits until
 // Instagram has processed it, sleeps until the exact release time (18:30 IST), publishes, and records the permalink.
 //
+//   node ig.mjs prepare <publish.json> [--out DIR]   route A: IG copy + ≤9 MB parts + SHA-256 + caption/time sheet
+//   node ig.mjs route                     prints "api" (a token exists) or "business-suite"
 //   node ig.mjs token [--clipboard]       store the long-lived token from the Meta App Dashboard (hidden input / clipboard)
 //   node ig.mjs whoami                    read-only: which account the token belongs to, days left on the token
 //   node ig.mjs refresh                   extend the token another 60 days (run-due does this weekly by itself)
@@ -144,6 +153,7 @@ async function setToken(useClipboard) {
   writeJSON(TOKEN_FILE, {access_token: tok, user_id: String(who.user_id ?? who.id), username: who.username, account_type: who.account_type, obtained: new Date(now).toISOString(), refreshed: new Date(now).toISOString(), expires_at: new Date(now + 60 * 86400000).toISOString()}, 0o600);
   log(`saved the token for @${who.username} (${who.account_type ?? '?'}, user_id ${who.user_id ?? who.id}) to ${TOKEN_FILE}`);
   if (useClipboard) spawnSync('pbcopy', {input: ''}); // don't leave the token on the clipboard
+  if (!fs.existsSync(PLIST)) installJob(); // a token switches Instagram to the API route (B)
 }
 async function whoami() {
   const t = tokenData();
@@ -452,6 +462,52 @@ function jobStatus() {
   console.log(`publishing job: installed (${state ?? '?'}, last exit ${last ?? 'n/a'}); 18:10 daily + at login; tz ${Intl.DateTimeFormat().resolvedOptions().timeZone}`);
 }
 
+// ---- route A: Business Suite ----------------------------------------------------------------------------------
+async function prepare(specPath, outDir) {
+  const specFile = path.resolve(specPath);
+  const base = path.dirname(specFile);
+  const spec = JSON.parse(fs.readFileSync(specFile, 'utf8'));
+  const ig = spec.instagram ?? {};
+  const slug = spec.slug ?? path.basename(base);
+  const file = path.resolve(base, spec.file ?? `${slug}-short.mp4`);
+  if (!fs.existsSync(file)) die(`file not found: ${file}`);
+  if (!(ig.caption ?? '').trim()) die('instagram.caption is empty in publish.json');
+  const out = path.resolve(outDir ?? path.join(SPOOL, slug));
+  fs.mkdirSync(out, {recursive: true});
+  for (const f of fs.readdirSync(out)) if (f.startsWith(`${slug}-reel.mp4`)) fs.unlinkSync(path.join(out, f));
+  // the Reel spec copy: video stream copied, AAC 128 k / 48 kHz, no edit list, moov first
+  const reel = path.join(out, `${slug}-reel.mp4`);
+  const r = spawnSync(FFMPEG, ['-v', 'error', '-y', '-i', file, '-map', '0:v:0', '-map', '0:a:0', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000', '-ac', '2', '-use_editlist', '0', '-movflags', '+faststart', reel], {encoding: 'utf8'});
+  if (r.status !== 0) die(`re-mux failed: ${(r.stderr || '').trim().slice(0, 300)}`);
+  const buf = fs.readFileSync(reel);
+  const sha = (await import('node:crypto')).createHash('sha256').update(buf).digest('hex');
+  const PART = 9_000_000; // Claude in Chrome's file_upload takes < 10 MB per call
+  const parts = [];
+  for (let i = 0, k = 1; i < buf.length; i += PART, k++) {
+    const p = path.join(out, `${slug}-reel.mp4.part${String(k).padStart(2, '0')}`);
+    fs.writeFileSync(p, buf.subarray(i, i + PART));
+    parts.push(p);
+  }
+  let when = ig.publishAt && ig.publishAt !== 'auto' ? ig.publishAt : null;
+  if (!when) when = `${nextFreeIgDay(loadQueue())}T${SLOT}:00+05:30`;
+  const t = Date.parse(when);
+  const sheet = {
+    slug,
+    reel,
+    size: buf.length,
+    sha256: sha,
+    parts,
+    date: istDate(t),
+    time: SLOT,
+    publishAtIST: istTime(t),
+    caption: ig.caption,
+    cover: spec.cover ? path.resolve(base, spec.cover) : null,
+    coverTime: ig.coverTime ?? null,
+  };
+  fs.writeFileSync(path.join(out, `${slug}-reel.json`), JSON.stringify(sheet, null, 2) + '\n');
+  console.log(JSON.stringify(sheet, null, 2));
+}
+
 // ---- views ------------------------------------------------------------------------------------------------------
 function upcoming() {
   const q = loadQueue();
@@ -504,7 +560,9 @@ async function testContainer(file) {
 
 const [cmd, ...args] = process.argv.slice(2);
 try {
-  if (cmd === 'token') await setToken(args.includes('--clipboard'));
+  if (cmd === 'prepare') await prepare(args.find((a) => !a.startsWith('--')) ?? die('usage: ig.mjs prepare <publish.json> [--out DIR]'), args.includes('--out') ? args[args.indexOf('--out') + 1] : undefined);
+  else if (cmd === 'route') console.log(fs.existsSync(TOKEN_FILE) ? 'api' : 'business-suite');
+  else if (cmd === 'token') await setToken(args.includes('--clipboard'));
   else if (cmd === 'whoami') await whoami();
   else if (cmd === 'refresh') console.log((await refresh(true)) ? 'refreshed' : 'not refreshed');
   else if (cmd === 'queue') await queue(args.find((a) => !a.startsWith('--')) ?? die('usage: ig.mjs queue <publish.json> [--at ISO]'), args.includes('--at') ? args[args.indexOf('--at') + 1] : undefined);
@@ -521,7 +579,7 @@ try {
   else if (cmd === 'install-job') installJob();
   else if (cmd === 'uninstall-job') uninstallJob();
   else if (cmd === 'job-status') jobStatus();
-  else console.log('usage: ig.mjs token [--clipboard] | whoami | refresh | queue <publish.json> [--at ISO] | upcoming | run-due [--dry-run] | publish-now <slug> | cancel <slug> | busy <date>... | test-container <mp4> | install-job | uninstall-job | job-status');
+  else console.log('usage: ig.mjs prepare <publish.json> [--out DIR] | route | token [--clipboard] | whoami | refresh | queue <publish.json> [--at ISO] | upcoming | run-due [--dry-run] | publish-now <slug> | cancel <slug> | busy <date>... | test-container <mp4> | install-job | uninstall-job | job-status');
 } catch (e) {
   die(e.message);
 }

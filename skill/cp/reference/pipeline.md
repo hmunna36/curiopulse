@@ -7,8 +7,8 @@
 | Repo (public) | https://github.com/hmunna36/curiopulse: `videos/<slug>/`, `master-context-prompt.md`, `README.md`, `skill/cp/` (backup of this skill) |
 | Local checkout | `~/Desktop/curiopulse`: **blobless + sparse** (top-level files + the video in progress; `git sparse-checkout add videos/<slug>` brings one back) |
 | Toolchain | `~/.cache/cp/`: `venv/` (Python 3.14: numpy scipy soundfile pyloudnorm pillow certifi), `node/node_modules/playwright-core`, `bin/ffmpeg` + `bin/ffprobe` (wrappers around `~/.cache/va`'s Remotion compositor ffmpeg 7.1; don't delete `~/.cache/va/node_modules`), `fonts/`, `models/ggml-base.en.bin` (whisper) |
-| Keys | `~/.config/va/elevenlabs.env` (ElevenLabs, shared with va) · `~/.config/va/youtube-client.json` (OAuth client) · `~/.config/cp/youtube-token.json` · `~/.config/cp/instagram.json` (all chmod 600; never print or commit them) |
-| Instagram queue | `~/.config/cp/ig-queue.json`, spool `~/.cache/cp/ig-spool/`, job `~/Library/LaunchAgents/com.curiopulse.ig-publish.plist`, log `~/Library/Logs/curiopulse-ig.log` |
+| Keys | `~/.config/va/elevenlabs.env` (ElevenLabs, shared with va) · `~/.config/va/youtube-client.json` (OAuth client) · `~/.config/cp/youtube-token.json` · `~/.config/cp/instagram.json` (route B only; none exists) (all chmod 600; never print or commit them) |
+| Instagram | Route A (in use): `ig.mjs prepare` → parts in the session scratchpad → Business Suite in Chrome; days taken in `~/.config/cp/ig-queue.json` ("busy"). Route B (API, only with a token): queue + spool `~/.cache/cp/ig-spool/` + launchd job `com.curiopulse.ig-publish` + log `~/Library/Logs/curiopulse-ig.log` |
 | Build intermediates | `videos/<slug>/.work/` (gitignored): narration, words, timeline, stems, mix, stills, qa |
 
 `. ~/.claude/skills/cp/bin/cp-env.sh` sets PATH, NODE_PATH, PYTHON and ELEVENLABS_ENV_FILE for manual commands;

@@ -1,6 +1,6 @@
 ---
 name: cp
-description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 55–70 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled through the APIs: YouTube at 11:30 IST and Instagram at 18:30 IST on the next free day. Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
+description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 55–70 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled for the next free day: YouTube at 11:30 IST (Data API) and Instagram at 18:30 IST (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
 argument-hint: <topic question> | next
 effort: max
 ---
@@ -31,7 +31,7 @@ In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercas
 | `src/` | everything that rebuilds it (`build.sh`), including the cached voice takes |
 
 Plus: committed and pushed to the repo, a row in the root README, **YouTube scheduled for 11:30 IST** (thumbnail +
-captions) and the **Instagram Reel queued for 18:30 IST** on the same free day.
+captions) and the **Instagram Reel scheduled for 18:30 IST** on the same free day (Business Suite).
 
 ## Non-negotiables (details in `reference/brief.md`; the brief itself is `reference/master-context-prompt.md`)
 
@@ -62,8 +62,10 @@ Read each reference file when you reach its phase. They are short; don't skip th
      `publish-short.sh <slug> --free` if needed.
    - Voice: `node ~/.claude/skills/cp/bin/quota.mjs` (exit 2 = less than ≈1,600 characters left).
    - Calendar: `node ~/.claude/skills/cp/bin/yt.mjs upcoming` and `node ~/.claude/skills/cp/bin/ig.mjs upcoming`.
-     This also records yesterday's Instagram permalinks: put them into those videos' README/publish.json at the
-     next commit.
+   - Instagram route: `node ~/.claude/skills/cp/bin/ig.mjs route`.
+     - `business-suite` is the normal case: the user's Facebook account is blocked, so no API token can exist.
+       This route needs Claude in Chrome connected at ship time.
+     - `api` means a token exists.
    - Skim `reference/videos.md` for what's been done and learned.
 2. **Research + story** (`reference/story.md`):
    - sources and a claims table;
@@ -123,9 +125,18 @@ Read each reference file when you reach its phase. They are short; don't skip th
 15. **YouTube:** `node ~/.claude/skills/cp/bin/yt.mjs upload videos/<slug>/publish.json --schedule=auto`. It picks the
     next day free on both platforms and sets 11:30 IST, the thumbnail and the captions. Confirm with
     `yt.mjs status <id>`.
-16. **Instagram:** `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json`. The same day at 18:30 IST;
-    the launchd job publishes it. Check `ig.mjs job-status` and the token (`ig.mjs whoami`). If the job isn't
-    installed or there's no token, say so in the report: the Reel would not go out.
+16. **Instagram**, the same day at 18:30 IST (`reference/publish.md`):
+    - **Route A (Business Suite, the normal case):**
+      1. `node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <scratchpad>/ig-<slug>`
+         builds the Reel-spec copy and splits it into parts of ≤ 9 MB.
+      2. In Claude in Chrome: open Business Suite, upload the parts into a collector input, reassemble, and check
+         the SHA-256.
+      3. Create Reel → Add video (with the click hook) → caption → Schedule, on the day at 18:30.
+      4. Verify it in Content → Scheduled, then `ig.mjs busy <date>`.
+      - If Chrome isn't connected, or Business Suite wants a password, don't guess. Report "Instagram still to
+        schedule" and leave the prepared sheet, so the user or the next run can finish it.
+    - **Route B (API):** `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json`; the launchd job
+      publishes it. Check `ig.mjs job-status` and `ig.mjs whoami`.
 17. **Record:**
     - put the YouTube link, both release times and the queue status into the README and the root table;
     - commit and push again with publish-short.sh;
@@ -147,7 +158,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - disk ≥ 8 GB free after freeing old Shorts;
    - `quota.mjs` exits 0;
    - `yt.mjs whoami` says CurioPulse;
-   - `ig.mjs whoami` works.
+   - Instagram: `ig.mjs route` says `business-suite` and Claude in Chrome is connected (or it says `api` and `ig.mjs whoami` works). If neither holds, build and schedule YouTube anyway, and report Instagram as pending.
 3. Run A → B → C exactly as for `/cp <topic>`.
 4. Close out: mark the line `[x]` with its links and release day, move it under Done, then release the lock.
 5. Nobody is watching a scheduled run: never ask. When blocked, leave the line `[~]`, release the lock, and report
@@ -157,8 +168,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
 
 - **Move a release:**
   - YouTube: `yt.mjs reschedule <id> 2026-10-05T11:30:00+05:30`.
-  - Instagram: `ig.mjs cancel <slug>`, then `ig.mjs queue <publish.json> --at 2026-10-05T18:30:00+05:30`.
-- **Publish a Reel right now:** `ig.mjs publish-now <slug>`.
+  - Instagram: in Business Suite, Content → Scheduled → ⋯ → Reschedule (route B: `ig.mjs cancel <slug>` + `ig.mjs queue … --at …`).
+- **Publish a Reel right now:** Business Suite → Share now (route B: `ig.mjs publish-now <slug>`).
 - **Revisit an old Short:** `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>`, then `src/build.sh`
   (the toolchain in `~/.cache/cp` is picked up automatically).
 - **Repo size:** publish-short.sh prints it. Past ~3.5 GB, propose moving old MP4s to GitHub Releases.
@@ -180,7 +191,7 @@ State exactly what's done and what the user must do (free disk, add a key, re-au
 - cached voice takes in `src/voice/`;
 - `.work/` (timeline, mix, stills, qa rounds);
 - `publish.json` (youtube.id, instagram.queued);
-- the Instagram queue.
+- the Instagram sheet from `ig.mjs prepare` (route A) or the queue (route B).
 
 ## Files
 
@@ -201,6 +212,6 @@ State exactly what's done and what the user must do (free disk, add a key, re-au
 - `topics.md`: the topic queue for `/cp next`
 - `bin/new-short.sh`, `bin/publish-short.sh`, `bin/backup-skill.sh`, `bin/run-lock.sh`, `bin/cp-env.sh`
 - `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · upload · reschedule · status)
-- `bin/ig.mjs`: Instagram API (token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel · busy ·
+- `bin/ig.mjs`: Instagram. Route A: prepare · busy · route. Route B, the API: token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel ·
   test-container · install-job)
 - `bin/quota.mjs`: ElevenLabs characters left per account (exit 2 = not enough for a Short)
