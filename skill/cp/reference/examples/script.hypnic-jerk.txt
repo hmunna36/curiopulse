@@ -1,0 +1,39 @@
+# Narration for "Why does your body jerk when you're falling asleep?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative").
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block: the comedic
+# timing lives here, not in the take. [tags] are v3 performance directions; they are not
+# spoken and never captioned. tighten=0 keeps the take's own pauses untouched; tempo speeds a
+# take up without changing pitch (the explanation runs a touch faster than the jokes and reveals).
+
+## hook gap=0.10 tempo=1.00
+[whispers] You're drifting off to sleep...
+
+## jump gap=0.06 tempo=1.03
+[gasps] and your whole body JUMPS!
+
+## rude gap=0.80 tighten=0 tempo=1.00
+[sarcastic] Wow. Thanks, body.
+
+## name gap=0.35 tempo=1.00
+[curious] That's a hypnic jerk. And up to seventy percent of people get them.
+
+## how gap=0.35 tempo=1.06
+So what's going on? Well, falling asleep is actually a handover. Your "stay awake" system passes control to your "sleep" system. Brain waves slow down... muscles go loose...
+
+## glitch gap=0.30 tempo=1.06
+But the handover can glitch. [excited] Scientists think a burst of signals fires from your brainstem, down your spine... and BAM! Your muscles fire all at once.
+
+## falling gap=0.35 tempo=1.05
+And the falling feeling? One idea: your brain feels you go limp... and panics. [panicked] Wait— are we FALLING?! So it slams the panic button... for a fall that isn't even happening.
+
+## trees gap=0.40 tempo=1.05
+[curious] Some scientists even think it's an old reflex from our tree-sleeping ancestors. [chuckles] Unproven... but cool.
+
+## triggers gap=0.35 tempo=1.03
+Stress, caffeine, and short sleep make them more likely. But they're harmless.
+
+## hiccups gap=0.35 tempo=1.00
+[mischievously] Oh— fun fact? It's the same kind of twitch as... hiccups.
+
+## night gap=0.55 tighten=0 tempo=1.00
+[yawns] Anyway... goodnight. [whispers] Probably.

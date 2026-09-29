@@ -1,0 +1,42 @@
+# Narration for "Why do your fingers wrinkle in water?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative") — the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block: the comedic
+# timing lives here, not in the take. [tags] are v3 performance directions; they are not
+# spoken and never captioned. tighten=0 keeps the take's own pauses untouched; tempo speeds a
+# take up without changing pitch (the explanation runs a touch faster than the jokes and reveals).
+
+## hook gap=0.10 tempo=1.00
+[curious] Stay in the bath long enough... and your fingers turn into...
+
+## raisins gap=0.55 tighten=0 tempo=1.00
+[deadpan] raisins.
+
+## myth gap=0.45 tempo=1.04
+[mischievously] Most people think your skin just soaks up water. Like a sponge.
+
+## nope gap=0.35 tighten=0 tempo=1.00
+[chuckles] Nope.
+
+## purpose gap=0.30 tempo=1.00
+[whispers] Your body does it... on purpose.
+
+## how gap=0.40 tempo=1.06
+Water seeps into your sweat pores, your nerves notice... and they tell the blood vessels in your fingertips to squeeze.
+
+## buckle gap=0.30 tempo=1.04
+Less blood flow, less volume... so the skin on top buckles. Grape... raisin.
+
+## proof gap=0.40 tempo=1.05
+How do we know? People with damaged finger nerves... don't wrinkle. [excited] Doctors even use it as a nerve test!
+
+## grip gap=0.40 tempo=1.05
+[curious] So why bother? One idea: grip. Wrinkles might work like tire treads, pushing water out of the way.
+
+## meh gap=0.35 tempo=1.00
+Some studies say it helps... another says, meh. [sighs] Science.
+
+## pattern gap=0.45 tempo=1.00
+[whispers] And the weirdest part? Scientists found your wrinkles come back in the exact same pattern... every time.
+
+## final gap=0.50 tempo=1.00
+So next time you turn into a raisin... [chuckles] that's just your body putting on snow tires.

@@ -1,0 +1,24 @@
+{
+  "slug": "__SLUG__",
+  "file": "__SLUG__-short.mp4",
+  "title": "",
+  "description": "",
+  "tags": [],
+  "cover": "cover.jpg",
+  "captions": "__SLUG__.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "",
+    "coverTime": null,
+    "shareToFeed": true
+  }
+}
