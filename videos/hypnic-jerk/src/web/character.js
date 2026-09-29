@@ -30,7 +30,7 @@ const POSES = {
   // lying on the back (overhead view): arms resting along the body, legs straight
   sleep: { hipY: -222, lean: 0, armL: { a: 0.3, b: 0.1 }, armR: { a: 0.26, b: 0.16 }, legL: { a: 0.05, b: 0 }, legR: { a: 0.08, b: -0.02 }, hand: 'open', feetFront: 1 },
   // the hypnic jerk: arms fling out, legs kick, fingers spread
-  jolt: { hipY: -222, lean: 0, armL: { a: 1.25, b: 0.55 }, armR: { a: 1.4, b: 0.35 }, legL: { a: 0.3, b: -0.35 }, legR: { a: 0.22, b: 0.28 }, hand: 'spread', feetFront: 1 },
+  jolt: { hipY: -222, lean: 0, armL: { a: 2.05, b: 0.55 }, armR: { a: 1.2, b: -0.4 }, legL: { a: 0.3, b: -0.35 }, legR: { a: 0.22, b: 0.28 }, hand: 'spread', feetFront: 1 },
   // sitting up in bed, scratching the head
   scratch: { hipY: -34, lean: 0.04, armL: { a: 0.45, b: -0.1 }, armR: { a: 2.7, b: 1.18 }, legL: { a: 2.25, b: -1.95 }, legR: { a: 2.25, b: -1.95 }, hand: 'open', feetFront: 1 },
   // free fall: limbs thrown up and out
@@ -236,17 +236,24 @@ function drawFace(c, f, pal) {
   ellipse(c, -38, 24, 11, 7, 'rgba(255,110,110,0.28)');
   ellipse(c, 38, 24, 11, 7, 'rgba(255,110,110,0.28)');
   // eyes
+  const lid = pal.skin[0] === '#' && pal.skinSh[0] === '#' ? mixHex(pal.skin, pal.skinSh, 0.3) : pal.skinSh;
   for (const s of [-1, 1]) {
     const ex = s * 24, ey = -2, ry = 16 * f.eyeOpen;
-    ellipse(c, ex, ey, 14 * Math.min(1.15, 0.9 + f.eyeOpen * 0.1), ry, '#FFFFFF');
-    const lx = f.cross > 0.5 ? -s * 5 : f.lookX * 5, ly = f.lookY * Math.min(7, ry * 0.45);
-    circle(c, ex + lx, ey + ly, 7.5 * f.pupil, pal.pupil);
-    circle(c, ex + lx - 2.2, ey + ly - 2.8, 2.6, '#FFFFFF');
-    if (f.blink > 0.01) { // upper lid
-      c.save(); c.beginPath(); c.ellipse(ex, ey, 15, ry + 1, 0, 0, Math.PI * 2); c.clip();
-      c.fillStyle = pal.skinSh; c.fillRect(ex - 16, ey - ry - 2, 32, (2 * ry + 2) * f.blink + 1);
-      line(c, ex - 14, ey - ry + (2 * ry) * f.blink, ex + 14, ey - ry + (2 * ry) * f.blink, 3, '#8A4A36');
-      c.restore();
+    if (f.blink >= 0.93) { // closed: a soft lash curve, no eye white
+      c.beginPath(); c.moveTo(ex - 14, ey - 1); c.quadraticCurveTo(ex, ey + 10, ex + 14, ey - 1);
+      c.lineWidth = 4.5; c.strokeStyle = '#5A2E22'; c.lineCap = 'round'; c.stroke();
+      line(c, ex + s * 13, ey - 1, ex + s * 18, ey - 5, 3, '#5A2E22');
+    } else {
+      ellipse(c, ex, ey, 14 * Math.min(1.15, 0.9 + f.eyeOpen * 0.1), ry, '#FFFFFF');
+      const lx = f.cross > 0.5 ? -s * 5 : f.lookX * 5, ly = f.lookY * Math.min(7, ry * 0.45);
+      circle(c, ex + lx, ey + ly, 7.5 * f.pupil, pal.pupil);
+      circle(c, ex + lx - 2.2, ey + ly - 2.8, 2.6, '#FFFFFF');
+      if (f.blink > 0.01) { // upper lid, skin-toned, with a lash line on its edge
+        c.save(); c.beginPath(); c.ellipse(ex, ey, 15, ry + 1, 0, 0, Math.PI * 2); c.clip();
+        c.fillStyle = lid; c.fillRect(ex - 16, ey - ry - 2, 32, (2 * ry + 2) * f.blink + 1);
+        line(c, ex - 15, ey - ry + (2 * ry) * f.blink, ex + 15, ey - ry + (2 * ry) * f.blink, 3.5, '#6A3526');
+        c.restore();
+      }
     }
     // brow
     const by = -30 - f.browY * 8;

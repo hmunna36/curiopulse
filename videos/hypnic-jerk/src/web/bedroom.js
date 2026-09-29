@@ -135,10 +135,13 @@ function moonlightTop(a = 1) {
   const g = ctx.createLinearGradient(0, 120, 400, 1300);
   g.addColorStop(0, `rgba(150,175,255,${0.20 * a})`); g.addColorStop(1, `rgba(150,175,255,${0.04 * a})`);
   ctx.fillStyle = g; ctx.fill();
+  // window-frame shadows, soft-edged (a hard bar reads as an object in close-ups)
   ctx.globalCompositeOperation = 'multiply';
-  ctx.strokeStyle = `rgba(20,20,40,${0.35 * a})`; ctx.lineWidth = 26;
+  ctx.filter = 'blur(9px)';
+  ctx.strokeStyle = `rgba(20,20,40,${0.2 * a})`; ctx.lineWidth = 34;
   ctx.beginPath(); ctx.moveTo(210, 120); ctx.lineTo(700, 1300); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(-60, 650); ctx.lineTo(860, 650); ctx.stroke();
+  ctx.filter = 'none';
   ctx.restore();
 }
 

@@ -2,7 +2,7 @@
 'use strict';
 
 const TLd = window.TL;
-let VIGNETTE = null;
+let VIGNETTE = null, GRAIN = null;
 
 function shotAt(t) {
   for (const s of TLd.shots) if (t >= s.start - 1e-6 && t < s.end - 1e-6) return s;
@@ -65,13 +65,13 @@ function zoomBlur(amount, cx = W / 2, cy = H / 2, n = 10) {
 
 // ---------- captions ----------
 const CAP_Y = 1330, CAP_SIZE = 96, CAP_LINE = 112, CAP_MAXW = 800;
-function drawCaptions(t) {
+function drawCaptions(t, capY) {
   const cap = TLd.captions.find((c) => t >= c.start && t < c.end - 0.002);
   if (!cap) return;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.textBaseline = 'middle';
   const lines = cap.lines;
-  const y0 = CAP_Y - ((lines.length - 1) * CAP_LINE) / 2;
+  const y0 = (capY || CAP_Y) - ((lines.length - 1) * CAP_LINE) / 2;
   const end = cap.end;
   lines.forEach((ln, li) => {
     // measure at full size; shrink the line if it is too wide
@@ -163,6 +163,14 @@ function renderFrame(f) {
   const shot = shotAt(t);
   const post = SC[shot.id](t - shot.start, t, shot) || {};
   composeGlow(post.glow === undefined ? 0.85 : post.glow);
+  // digital camera push (graphic shots): post.push = {k, cx, cy}, k = scale factor
+  if (post.push && Math.abs(post.push.k - 1) > 1e-4) {
+    const { k, cx = W / 2, cy = H / 2 } = post.push;
+    tmpx.setTransform(1, 0, 0, 1, 0, 0);
+    tmpx.globalCompositeOperation = 'copy'; tmpx.drawImage(mainC, 0, 0); tmpx.globalCompositeOperation = 'source-over';
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(tmpC, cx - cx * k, cy - cy * k, W * k, H * k);
+  }
   if (post.blur) dirBlur(post.blur[0], post.blur[1]);
   if (post.zblur) zoomBlur(post.zblur, post.zcx, post.zcy);
   if (post.desat || post.tint) grade(post.desat || 0, post.tint, post.tintA || 0);
@@ -171,11 +179,18 @@ function renderFrame(f) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.drawImage(VIGNETTE, 0, 0);
   if (post.overlay) post.overlay();
+  // film grain (the encoder has no noise filter here): one of four noise plates, jittered per frame
+  if (post.grain !== 0) {
+    const g = GRAIN[f % GRAIN.length];
+    ctx.globalCompositeOperation = 'overlay'; ctx.globalAlpha = 0.07;
+    ctx.drawImage(g, -((f * 37) % 64), -((f * 53) % 64), W + 64, H + 64);
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+  }
   if (post.flash > 0) {
     ctx.fillStyle = `rgba(235,242,255,${clamp(post.flash)})`;
     ctx.fillRect(0, 0, W, H);
   }
-  if (!post.noCaptions) drawCaptions(t);
+  if (!post.noCaptions) drawCaptions(t, post.capY);
   if (post.flashTop > 0) { // flash that also washes over the captions
     ctx.fillStyle = `rgba(240,246,255,${clamp(post.flashTop)})`;
     ctx.fillRect(0, 0, W, H);
@@ -191,6 +206,12 @@ async function init() {
   initScenes();
   initScenes2();
   VIGNETTE = makeVignette();
+  GRAIN = [0, 1, 2, 3].map((k) => {
+    const c = mkCanvas(W / 2 + 32, H / 2 + 32), x = c.getContext('2d'), id = x.createImageData(c.width, c.height), r = mulberry32(90 + k);
+    for (let i = 0; i < id.data.length; i += 4) { const v = 128 + (r() + r() + r() - 1.5) * 90; id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255; }
+    x.putImageData(id, 0, 0);
+    return c;
+  });
   window.renderFrame = renderFrame;
   window.READY = true;
 }
