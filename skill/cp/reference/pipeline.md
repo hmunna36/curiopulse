@@ -39,9 +39,10 @@ rebuild and to prove the folder rebuilds.
 
 ## This Mac
 
-- **8 GB M1:** one heavy job at a time. `run-lock.sh` refuses to start while a /va run holds its lock or a Remotion
-  render runs, and the va skill's lock checks this one.
-  - Don't render while another session renders (`pgrep -fl "render.js|remotion"`).
+- **8 GB M1:** a /cp run and a /va run may build in parallel. The user does this, and both nightly routines start
+  at 00:00.
+  - `run-lock.sh` only stops a second /cp run on the same repo.
+  - Expect slower renders while both run, and never start a third heavy job.
   - Touch the lock during long runs (`run-lock.sh touch`) so it stays live.
 - **Disk:** keep ≥ 5 GB free on `/System/Volumes/Data` (`df -h /System/Volumes/Data`). A Short needs ≈ 400 MB
   while it builds (.work stems and mixes plus the MP4). `publish-short.sh <slug> --free` gives it back after the

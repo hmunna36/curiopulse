@@ -55,13 +55,17 @@ Read each reference file when you reach its phase. They are short; don't skip th
 ### A. Create
 
 1. **Preflight** (`reference/pipeline.md`):
-   - Take the lock: `~/.claude/skills/cp/bin/run-lock.sh acquire <slug>`. Exit 3 = a /va or /cp run is working;
-     say which and stop, since this 8 GB M1 can't build two at once. Run `run-lock.sh release` whenever the run
-     ends, stops or fails.
+   - Take the lock: `~/.claude/skills/cp/bin/run-lock.sh acquire <slug>`.
+     - Exit 3 means another /cp run is working on this repo: say which and stop.
+     - A /va run at the same time is normal; the pipelines run in parallel.
+     - Run `run-lock.sh release` whenever the run ends, stops or fails.
    - Disk: `df -h /System/Volumes/Data` needs ≥ 5 GB free. Free earlier Shorts with
      `publish-short.sh <slug> --free` if needed.
    - Voice: `node ~/.claude/skills/cp/bin/quota.mjs` (exit 2 = less than ≈1,600 characters left).
    - Calendar: `node ~/.claude/skills/cp/bin/yt.mjs upcoming` and `node ~/.claude/skills/cp/bin/ig.mjs upcoming`.
+   - **Catch up Instagram:** an earlier Short whose Reel is still pending (its publish.json has no
+     `instagram.scheduledVia` and its day is still ahead) gets scheduled first, if Chrome is connected. A missed
+     night never leaves a Reel behind.
    - Instagram route: `node ~/.claude/skills/cp/bin/ig.mjs route`.
      - `business-suite` is the normal case: the user's Facebook account is blocked, so no API token can exist.
        This route needs Claude in Chrome connected at ship time.
@@ -150,10 +154,12 @@ Read each reference file when you reach its phase. They are short; don't skip th
 
 ## `/cp next` (queue mode; the daily routine)
 
-The scheduled task `curiopulse-daily-short` runs `/cp next` every day at 12:00 IST (created 2026-09-29 at the user's
-request). It runs at noon because the va skill's routine runs at 00:00 and the two builds share one lock. At
-midnight one of them would skip every night. At noon the user's Chrome is also usually open for the Business Suite
-step. To change what gets made, edit `topics.md`, not the routine.
+The scheduled task `curiopulse-daily-short` runs `/cp next` every night at 00:00 IST (created 2026-09-29 at the
+user's request).
+- It runs **in parallel with the va skill's midnight routine**, on purpose. The user runs both pipelines side by
+  side, and they share no files: different repos, work folders and locks.
+- Each build is somewhat slower while both run. That's fine; don't start a third heavy job.
+- To change what gets made, edit `topics.md`, not the routine.
 
 1. Take the first `[~]` line of `~/.claude/skills/cp/topics.md` and resume it, or else the first `[ ]` line. Mark it
    in progress: `- [~] Why do onions make you cry? — onion-tears — started 2026-10-01`. If the queue is empty, report
