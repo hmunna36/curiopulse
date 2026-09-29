@@ -6,6 +6,7 @@
 | `lightning-full`: "What Really Happens When Lightning Hits a Human? ⚡" | 66 s | https://youtube.com/shorts/_4eJeFfXYCI · 29 Sep 2026 23:30 IST | posted 29 Sep 2026 (web upload) |
 | `hypnic-jerk`: "Why Does Your Body JERK When You're Falling Asleep? 😳" | 72 s | https://youtube.com/shorts/osyp3o0A4ZY · 30 Sep 2026 23:30 IST | Business Suite, 29 Sep 2026 20:00 IST |
 | `finger-wrinkles`: "Why Do Your Fingers WRINKLE in Water? 🛁" | 64 s | https://youtube.com/shorts/KPn5s79_a6E · 1 Oct 2026 23:30 IST | Business Suite, 30 Sep 2026 20:00 IST |
+| `brain-freeze`: "Why Does Ice Cream Give You BRAIN FREEZE? 🧊" | 75 s | https://youtube.com/shorts/Oy7QT27NT-Y · 2 Oct 2026 11:30 IST | Business Suite, 2 Oct 2026 18:30 IST |
 
 From the first /cp Short on, releases are 11:30 IST on YouTube (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -48,3 +49,19 @@ here for every new Short, with its links.
 - The engine became reusable:
   - `timeline_lib` / `sfxkit` / `mixlib` reproduce finger-wrinkles' timeline and mix bit for bit;
   - `fx.js` holds the shared scene helpers.
+
+**brain-freeze** (30 Sep 2026, the first /cp Short, the nightly routine):
+- New worlds: `diner.js` (neon diner, milkshake + bendy straw, `frostHead` icing his forehead, `heroAtCounter`) and
+  `head.js` (side-view head cutaway with palate, vessels, artery, trigeminal nerve and tongue, driven by `sectionCam`).
+  New sfxkit atoms: `ice_crack`, `slurp`.
+- The dedicated cover (`SC.cover` rendered from a one-shot timeline copy) reads far better than any timeline frame.
+- A hook whose strange moment lands late (6 s) needs foreshadowing from the first seconds: frost creeping in from the
+  screen edges and onto his forehead while he still slurps.
+- Every masked word in round 1 was a punchline SFX placed ON its word (title ice crack, gulper crack, squeeze
+  creak/glide, shutter on "study", ticks on "thirty"). Put them in the pause after the word, from the start.
+- qa.py fixes: contact-sheet labels ran ~0.6 s late (ffmpeg output `-r 2`), and whisper dropped the words that
+  straddled its 30 s windows ("In one study" at 29.4 s). qa.py now samples every 15th frame and transcribes in
+  <= 28 s pieces cut in the narration's pauses.
+- Voice: 1,337 characters (3 blocks retaken or rewritten to get from 76.7 s to 73 s of narration).
+- An audio-only fix doesn't need a re-render: remux the new mix.wav onto the rendered MP4 (`-c:v copy`).
+

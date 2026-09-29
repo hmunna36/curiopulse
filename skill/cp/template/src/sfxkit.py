@@ -509,3 +509,30 @@ def silence(bus, spans):
     for a, b in spans:
         i0, i1 = span(a, b)
         bus.x[:, max(0, i0):max(0, i1)] *= 0
+
+
+# ================================================================= ice + drinks (brain-freeze)
+def ice_crack(dur=0.9, seed=0):
+    """freezing over: a sharp crack, glassy high shimmer and a crackling frost tail (mono)"""
+    n = int(dur * SR)
+    y = np.zeros(n)
+    c = crack(min(dur, 0.3), seed, 0.035, 1500)
+    y[:len(c)] += c * 0.8
+    y += 0.5 * crackle(n, 1400 * expdecay(n, dur * 0.35), seed + 3, 2500, 10000)
+    r = np.random.default_rng(seed)
+    for k in range(5):
+        b = bell(r.uniform(2600, 5200), dur - 0.02, 0.18) * 0.12
+        i0 = int(r.uniform(0.0, 0.12) * SR)
+        y[i0:i0 + len(b)] += b[: n - i0]
+    return fade(y / (np.max(np.abs(y)) + 1e-9), 0.0005, 0.05)
+
+
+def slurp(dur=0.8, seed=0, rate=14.0):
+    """a straw slurp: a wobbling band of noise with bubbly gargle and a rising pitch (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    fc = np.linspace(500, 1300, n) * (1 + 0.25 * np.sin(2 * np.pi * rate * t))
+    y = svf_bp(pink(n, seed), fc, 0.9)
+    trem = 0.55 + 0.45 * np.abs(np.sin(2 * np.pi * rate * 0.5 * t + np.sin(2 * np.pi * 3 * t)))
+    y = y / (np.max(np.abs(y)) + 1e-9) * trem * np.minimum(1, t / 0.04)
+    return fade(y, 0.005, 0.08)

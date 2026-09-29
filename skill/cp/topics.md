@@ -9,7 +9,6 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Queue
 
-- [ ] Why does ice cream give you brain freeze? — he wolfs a milkshake; the palate's blood vessels panic, and the trigeminal nerve blames his forehead (referred pain); fix: tongue on the roof of the mouth
 - [ ] Why do onions make you cry? — he chops like a TV chef; enzymes turn a sulfur compound into a tear gas that drifts up to his eyes; chill the onion, sharp knife
 - [ ] Why is yawning contagious? — one yawn ripples across a bus; nobody fully knows (brain cooling vs social mirroring, hedged); you probably yawned watching this
 - [ ] Why does your stomach growl? — a silent exam hall; the migrating motor complex sweeps the empty gut (borborygmi); it happens when you're full too, just muffled
@@ -32,6 +31,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Done
 
+- [x] Why Does Ice Cream Give You BRAIN FREEZE? — brain-freeze — https://youtube.com/shorts/Oy7QT27NT-Y · YouTube 2 Oct 2026 11:30 IST · Instagram 2 Oct 2026 18:30 IST (Business Suite)
 - [x] What Really Happens When Lightning Hits a Human? — lightning-full — https://youtube.com/shorts/_4eJeFfXYCI · 29 Sep 2026 (made before /cp)
 - [x] Why Does Your Body Jerk When You're Falling Asleep? — hypnic-jerk — https://youtube.com/shorts/osyp3o0A4ZY · 30 Sep 2026 (made before /cp)
 - [x] Why Do Your Fingers Wrinkle in Water? — finger-wrinkles — https://youtube.com/shorts/KPn5s79_a6E · 1 Oct 2026 (made before /cp)

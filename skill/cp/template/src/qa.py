@@ -98,8 +98,10 @@ check(longest_s <= 1.5, "no frozen stretch over 1.5 s", f"longest {longest_s:.2f
 sh_dir = os.path.join(QA, "_sheet")
 shutil.rmtree(sh_dir, ignore_errors=True)
 os.makedirs(sh_dir)
-run("ffmpeg", "-v", "error", "-i", MP4, "-vf", "scale=216:384", "-r", "2", "-f", "image2", os.path.join(sh_dir, "s_%04d.png"))
-thumbs = [(k * 0.5, Image.open(os.path.join(sh_dir, n)).convert("RGB")) for k, n in enumerate(sorted(os.listdir(sh_dir)))]
+# every decoded frame, then every 15th (output "-r 2" picks frames ~0.6 s late, so the labels drifted)
+run("ffmpeg", "-v", "error", "-i", MP4, "-vf", "scale=216:384", "-f", "image2", os.path.join(sh_dir, "s_%05d.png"))
+frames = sorted(os.listdir(sh_dir))
+thumbs = [(k / 30, Image.open(os.path.join(sh_dir, frames[k])).convert("RGB")) for k in range(0, len(frames), 15)]
 shutil.rmtree(sh_dir)
 cols, per = 10, 50
 sheets = []
@@ -149,10 +151,25 @@ ref = norm(" ".join(w["word"] for w in words)).split()
 whisper = shutil.which("whisper-cli")
 if TRANSCRIBE and whisper and os.path.exists(MODEL):
     w16 = os.path.join(QA, "_16k.wav")
-    run("ffmpeg", "-v", "error", "-y", "-i", MP4, "-vn", "-ar", "16000", "-ac", "1", "-c:a", "pcm_s16le", w16)
-    run(whisper, "-m", MODEL, "-f", w16, "-l", "en", "-nt", "-otxt", "-of", os.path.join(QA, "transcript"))
-    os.remove(w16)
-    hyp = norm(open(os.path.join(QA, "transcript.txt")).read()).split()
+    # whisper drops the words that straddle its fixed 30 s windows ("In one study" at 29.4 s in brain-freeze),
+    # so transcribe in pieces of <= 28 s cut in the pauses between words, and join the text
+    gaps = [(words[k]["end"] + words[k + 1]["start"]) / 2 for k in range(len(words) - 1)
+            if words[k + 1]["start"] - words[k]["end"] >= 0.2]
+    cuts, start = [0.0], 0.0
+    while dur - start > 28:
+        ok_ = [g for g in gaps if start + 5 < g <= start + 28]
+        start = ok_[-1] if ok_ else start + 28
+        cuts.append(start)
+    cuts.append(dur + 1)
+    text = []
+    for k in range(len(cuts) - 1):
+        run("ffmpeg", "-v", "error", "-y", "-ss", f"{cuts[k]:.3f}", "-t", f"{cuts[k + 1] - cuts[k]:.3f}", "-i", MP4,
+            "-vn", "-ar", "16000", "-ac", "1", "-c:a", "pcm_s16le", w16)
+        run(whisper, "-m", MODEL, "-f", w16, "-l", "en", "-nt", "-otxt", "-of", os.path.join(QA, "_piece"))
+        text.append(open(os.path.join(QA, "_piece.txt")).read().strip())
+    os.remove(w16); os.remove(os.path.join(QA, "_piece.txt"))
+    open(os.path.join(QA, "transcript.txt"), "w").write("\n".join(text) + "\n")
+    hyp = norm(" ".join(text)).split()
     # word error rate (Levenshtein over words)
     D = np.zeros((len(ref) + 1, len(hyp) + 1), int)
     D[:, 0], D[0, :] = range(len(ref) + 1), range(len(hyp) + 1)
