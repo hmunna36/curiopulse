@@ -1,0 +1,43 @@
+# Narration for "Why does ice cream give you brain freeze?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative") — the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block (the comedy lives here).
+# [tags] are v3 performance directions; not spoken, never captioned.
+
+## hook gap=0.10 tempo=1.05
+[excited] You take ONE giant slurp of milkshake... and then your forehead...
+
+## freeze gap=0.08 tighten=0 tempo=1.00
+[gasps] FREEZES!
+
+## wrong gap=0.70 tighten=0 tempo=1.00
+[deadpan] Your forehead. The milkshake went in your MOUTH.
+
+## name gap=0.40 tempo=1.05
+That's brain freeze. Doctors call it... sphenopalatine ganglioneuralgia.
+
+## fine gap=0.45 tighten=0 tempo=1.00
+[sighs] Let's just stick with brain freeze.
+
+## how gap=0.35 tempo=1.07
+So what's going on? The cold hits the roof of your mouth, and the blood vessels up there panic. They squeeze tight... then fling wide open.
+
+## rush gap=0.30 tempo=1.05
+In one study, blood came rushing into an artery at the front of the brain... and the pain lasted just as long as the rush.
+
+## why gap=0.35 tempo=1.06
+[curious] Scientists think your body is flooding in warm blood to protect your brain. It just... overdoes it.
+
+## twist gap=0.35 tempo=1.05
+[whispers] The twist? The pain travels up a big nerve in your face... and your brain blames the wrong spot. Your forehead.
+
+## kid gap=0.35 tempo=1.05
+[excited] Does gulping make it worse? A thirteen-year-old tested it! Ice cream in five seconds... or in thirty.
+
+## result gap=0.25 tempo=1.04
+The gulpers got twice the headaches. And it got published... in a real medical journal.
+
+## fix gap=0.35 tempo=1.05
+The fix? Press your tongue to the roof of your mouth, and warm it back up.
+
+## final gap=0.45 tighten=0 tempo=1.00
+Or, you know... [chuckles] just slow down.

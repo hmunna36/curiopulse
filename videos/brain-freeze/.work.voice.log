@@ -1,0 +1,29 @@
+  synthesized hook (76 chars)
+  synthesized freeze (16 chars)
+  synthesized wrong (58 chars)
+  synthesized name (72 chars)
+  synthesized fine (43 chars)
+  synthesized how (139 chars)
+  synthesized rush (122 chars)
+  synthesized why (109 chars)
+  synthesized twist (129 chars)
+  synthesized kid (137 chars)
+  synthesized result (87 chars)
+  synthesized fix (74 chars)
+  synthesized final (42 chars)
+ElevenLabs characters spent this run: 1104
+block      start    end  wpm  rms   f0  cut
+hook        0.10   5.51  122 -20.3  180 0.61
+freeze      5.63   7.10   41 -16.7  193 0.00
+wrong       7.85  11.47  133 -20.7  164 0.00
+name       11.87  18.18   76 -18.9  196 0.78
+fine       18.78  21.17  151 -21.9  162 0.00
+how        21.57  29.95  186 -20.8  172 1.24
+rush       30.30  37.60  205 -20.1  181 0.54
+why        38.01  44.28  163 -21.6  180 0.90
+twist      44.68  53.64  147 -21.4  172 1.74
+kid        54.09  62.05  173 -18.0  247 0.84
+result     62.35  68.17  155 -19.3  194 1.25
+fix        68.61  72.85  227 -20.0  188 0.31
+final      73.35  76.71  107 -22.5  175 0.00
+narration 76.71s, 184 words, events: excited@0.10, gasps@5.63, deadpan@7.85, sighs@18.78, curious@38.01, whispers@44.68, excited@54.09, chuckles@75.03
