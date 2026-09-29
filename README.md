@@ -1,10 +1,36 @@
-# factschannel
+# CurioPulse
 
-Short-form science explainers, built entirely in code: procedural motion graphics, local neural TTS, and synthesized sound.
+Cinematic animated science Shorts: strange questions, cinematic answers. Every video is built in code.
+The animation is procedural 2.5D canvas, rendered frame by frame in headless Chrome. The sound design and
+score are synthesized in Python. From the hypnic-jerk Short on, the narration is a performed ElevenLabs
+`eleven_v3` read, and its takes are committed next to the script.
 
-| Video | Length | Folder |
-|---|---|---|
-| What Happens When Lightning Hits a Human? | 10 s | [`videos/lightning-strike`](videos/lightning-strike) |
-| What Really Happens When Lightning Hits a Human? | 66 s | [`videos/lightning-full`](videos/lightning-full) |
+YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · Instagram [@curio_pulse_tv](https://www.instagram.com/curio_pulse_tv/)
 
-Each folder has the finished MP4, a README with the script, publishing metadata and sources, and a `src/build.sh` that rebuilds the video from scratch.
+| Video | Length | Folder | YouTube |
+|---|---|---|---|
+| What Happens When Lightning Hits a Human? | 10 s | [`videos/lightning-strike`](videos/lightning-strike) | — |
+| What Really Happens When Lightning Hits a Human? | 66 s | [`videos/lightning-full`](videos/lightning-full) | [29 Sep 2026](https://youtube.com/shorts/_4eJeFfXYCI) |
+| Why Does Your Body Jerk When You're Falling Asleep? | 72 s | [`videos/hypnic-jerk`](videos/hypnic-jerk) | [30 Sep 2026](https://youtube.com/shorts/osyp3o0A4ZY) |
+| Why Do Your Fingers Wrinkle in Water? | 64 s | [`videos/finger-wrinkles`](videos/finger-wrinkles) | [1 Oct 2026](https://youtube.com/shorts/KPn5s79_a6E) |
+
+Each folder has:
+- the finished MP4;
+- `cover.jpg` (from the hypnic-jerk Short on);
+- a README with the script, publishing metadata and science sources;
+- `src/build.sh`, which rebuilds the video from scratch.
+
+- Every Short follows the creative brief in [`master-context-prompt.md`](master-context-prompt.md).
+- The `/cp` Claude Code skill makes, checks and schedules new Shorts. It is backed up in [`skill/cp`](skill/cp).
+- This repository continues [hmunna36/factschannel](https://github.com/hmunna36/factschannel), with its history.
+
+## Working copy
+
+The local checkout is kept light. This command fetches only the top-level files:
+
+```sh
+git clone --filter=blob:none --sparse git@github.com:hmunna36/curiopulse.git
+```
+
+- To bring in a video: `git sparse-checkout add videos/<slug>`. Git downloads its MP4 at that point.
+- To drop it again: `git sparse-checkout set` with the remaining folders.
