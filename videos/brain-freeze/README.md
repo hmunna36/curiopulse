@@ -29,8 +29,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | https://www.instagram.com/curio_pulse_tv/ | … 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/Oy7QT27NT-Y | 2 Oct 2026 11:30 IST (scheduled, thumbnail + captions set) |
+| Instagram Reels | https://www.instagram.com/curio_pulse_tv/ | 2 Oct 2026 18:30 IST (scheduled in Business Suite; default cover, the picker didn't load) |
 
 **Title:** Why Does Ice Cream Give You BRAIN FREEZE? 🧊
 

@@ -23,18 +23,25 @@
   "cover": "cover.jpg",
   "captions": "brain-freeze.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-02T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "Oy7QT27NT-Y",
+    "url": "https://youtube.com/shorts/Oy7QT27NT-Y",
+    "uploaded": "2026-09-29T19:46:30.919Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-02T18:30:00+05:30",
     "caption": "One slurp and your FOREHEAD freezes? 🧊🥤\nThe cold hit your mouth... so why does your head hurt? Your brain blames the wrong spot.\n\n#science #humanbody #biology #funfacts #brainfreeze #reels",
     "coverTime": 6.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-02T18:30:00+05:30"
   }
 }
