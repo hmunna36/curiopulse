@@ -45,8 +45,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_DATE 11:30 IST |
-| Instagram Reels | IG_STATUS | IG_DATE 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/yaD9MFbpv_I | 3 Oct 2026 11:30 IST (scheduled; thumbnail + captions set) |
+| Instagram Reels | pending: to schedule in Business Suite (Chrome was not connected on 1 Oct) | 3 Oct 2026 18:30 IST (planned) |
 
 **Title:** Why Do Onions Make You CRY? 🧅
 

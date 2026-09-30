@@ -14,7 +14,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Does Your Body Jerk When You're Falling Asleep? | 72 s | [`videos/hypnic-jerk`](videos/hypnic-jerk) | [30 Sep 2026](https://youtube.com/shorts/osyp3o0A4ZY) |
 | Why Do Your Fingers Wrinkle in Water? | 64 s | [`videos/finger-wrinkles`](videos/finger-wrinkles) | [1 Oct 2026](https://youtube.com/shorts/KPn5s79_a6E) |
 | Why Does Ice Cream Give You Brain Freeze? | 75 s | [`videos/brain-freeze`](videos/brain-freeze) | [2 Oct 2026](https://youtube.com/shorts/Oy7QT27NT-Y) |
-| Why Do Onions Make You Cry? | 74 s | [`videos/onion-tears`](videos/onion-tears) | (scheduling) |
+| Why Do Onions Make You Cry? | 74 s | [`videos/onion-tears`](videos/onion-tears) | [3 Oct 2026](https://youtube.com/shorts/yaD9MFbpv_I) |
 
 Each folder has:
 - the finished MP4;
