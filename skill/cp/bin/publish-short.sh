@@ -1,13 +1,13 @@
 #!/bin/sh
 # Commit a finished Short to github.com/hmunna36/curiopulse, push it, and prove the push is complete.
 # usage: publish-short.sh <slug> <commit-message-file>   (commits videos/<slug> and the root README)
-#        publish-short.sh <slug> --free                  (after the uploads: drops the folder from this Mac;
-#                                                          everything stays on GitHub)
+#        publish-short.sh <slug> --free                  (same as cleanup.sh, after checking a queued Reel's
+#                                                          spool copy: back to the light checkout)
 set -e
+BIN="$(cd "$(dirname "$0")" && pwd)"
 SLUG="$1"
 REPO="${CP_REPO:-$HOME/Desktop/curiopulse}"
 DEST="$REPO/videos/$SLUG"
-[ -d "$DEST" ] || { echo "no video at $DEST"; exit 1; }
 cd "$REPO"
 if [ "$2" = "--free" ]; then
   git fetch -q origin
@@ -20,15 +20,10 @@ const p = (q.posts || []).find((x) => x.slug === s && !["published", "cancelled"
 process.exit(p && !require("fs").existsSync(p.spool) ? 0 : 1)' "$HOME/.config/cp/ig-queue.json" "$SLUG"; then
     echo "not freeing: its Instagram Reel is queued but the spool copy is missing (run ig.mjs queue again first)"; exit 1
   fi
-  STAMP=$(date +%Y%m%d-%H%M%S)
-  for d in .work src/fonts src/__pycache__; do
-    [ -e "$DEST/$d" ] && mv "$DEST/$d" "$HOME/.Trash/curiopulse-$SLUG-$(echo $d | tr / -)-$STAMP"
-  done
-  git sparse-checkout set $(git sparse-checkout list | grep -vx "videos/$SLUG")
-  [ -d "$DEST" ] && rmdir "$DEST" 2>/dev/null || true
-  echo "videos/$SLUG removed from this Mac (on GitHub; bring it back with: git -C $REPO sparse-checkout add videos/$SLUG)"
-  exit 0
+  # the rest of the old per-Short free is now the whole-checkout cleanup (it refuses while anything is unpushed)
+  exec "$BIN/cleanup.sh"
 fi
+[ -d "$DEST" ] || { echo "no video at $DEST"; exit 1; }
 MSG="$2"
 [ -f "$MSG" ] || { echo "usage: publish-short.sh <slug> <commit-message-file>"; exit 2; }
 # never commit keys or oversized files

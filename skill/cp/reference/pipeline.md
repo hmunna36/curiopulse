@@ -45,8 +45,8 @@ rebuild and to prove the folder rebuilds.
   - Expect slower renders while both run, and never start a third heavy job.
   - Touch the lock during long runs (`run-lock.sh touch`) so it stays live.
 - **Disk:** keep ≥ 5 GB free on `/System/Volumes/Data` (`df -h /System/Volumes/Data`). A Short needs ≈ 400 MB
-  while it builds (.work stems and mixes plus the MP4). `publish-short.sh <slug> --free` gives it back after the
-  uploads.
+  while it builds (.work stems and mixes plus the MP4). `bin/cleanup.sh` gives it back at the end of every run,
+  once everything is on GitHub.
 - **ffmpeg** (Remotion's build) can't do everything:
   - it has libx264, aac, pcm_s16le/s24le, png, image2, atempo, scale, split, and output `-r`;
   - it has no rawvideo muxer, no f32 PCM, and no fps/tile/noise/ebur128/freezedetect filters;

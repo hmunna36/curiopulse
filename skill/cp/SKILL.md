@@ -2,7 +2,6 @@
 name: cp
 description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 55–70 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled for the next free day: YouTube at 11:30 IST (Data API) and Instagram at 18:30 IST (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
 argument-hint: <topic question> | next
-model: claude-opus-5-5
 effort: max
 ---
 
@@ -60,13 +59,15 @@ Read each reference file when you reach its phase. They are short; don't skip th
      - Exit 3 means another /cp run is working on this repo: say which and stop.
      - A /va run at the same time is normal; the pipelines run in parallel.
      - Run `run-lock.sh release` whenever the run ends, stops or fails.
-   - Disk: `df -h /System/Volumes/Data` needs ≥ 5 GB free. Free earlier Shorts with
-     `publish-short.sh <slug> --free` if needed.
+   - Disk: `df -h /System/Volumes/Data` needs ≥ 5 GB free. `bin/cleanup.sh` frees whatever an earlier run left on
+     this Mac.
    - Voice: `node ~/.claude/skills/cp/bin/quota.mjs` (exit 2 = less than ≈1,600 characters left).
    - Calendar: `node ~/.claude/skills/cp/bin/yt.mjs upcoming` and `node ~/.claude/skills/cp/bin/ig.mjs upcoming`.
    - **Catch up Instagram:** an earlier Short whose Reel is still pending (its publish.json has no
      `instagram.scheduledVia` and its day is still ahead) gets scheduled first, if Chrome is connected. A missed
-     night never leaves a Reel behind.
+     night never leaves a Reel behind. Its folder lives on GitHub only: bring it back with
+     `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>` before `ig.mjs prepare`. The cleanup at the end
+     of the run removes it again.
    - Instagram route: `node ~/.claude/skills/cp/bin/ig.mjs route`.
      - `business-suite` is the normal case: the user's Facebook account is blocked, so no API token can exist.
        This route needs Claude in Chrome connected at ship time.
@@ -144,14 +145,25 @@ Read each reference file when you reach its phase. They are short; don't skip th
       publishes it. Check `ig.mjs job-status` and `ig.mjs whoami`.
 17. **Record:**
     - put the YouTube link, both release times and the queue status into the README and the root table;
-    - commit and push again with publish-short.sh;
-    - free the disk: `publish-short.sh <slug> --free` (the IG spool copy stays until it's published).
+    - commit and push again with publish-short.sh. Nothing may stay uncommitted, or the cleanup refuses.
 18. **Deliver** (keep it short):
     - `SendUserFile` the MP4 and `cover.jpg` (`display: "render"`);
     - a message with the title, length, loudness, the YouTube link and release time, the Instagram release time,
       the story in one line, the QA rounds and what changed, the ElevenLabs characters left, and anything pending.
 19. **Remember:** add the Short to `reference/videos.md` (and a lesson if there was one), a memory note, and a line
-    in `MEMORY.md`. Then `run-lock.sh release`.
+    in `MEMORY.md`. In `/cp next`, mark the topic `[x]` too. Then back up the skill, which carries videos.md and
+    topics.md: `bin/backup-skill.sh <msg-file>`.
+20. **Clean up** (the user's standing rule since 30 Sep 2026: everything lives in git, and only light things stay on
+    the Mac). After the files are sent, run `~/.claude/skills/cp/bin/cleanup.sh`.
+    - It changes nothing unless everything is committed and on GitHub: no uncommitted or untracked files, no unpushed
+      commits, no stashes, no key files.
+    - Then it deletes `.work/`, the fetched fonts and the other ignored scratch, checks out only `skill/` and the
+      top-level files (the Short's folder goes; it's on GitHub), and re-clones `.git` light when it holds pushed
+      media. The Instagram copies live outside the repo, in the scratchpad and `~/.cache/cp/ig-spool`, so it
+      doesn't touch them.
+    - Report its before → after line. If it refuses, fix the cause (usually an unpushed change: run
+      publish-short.sh again) and rerun it. Never delete files by hand.
+    - Then `run-lock.sh release`.
 
 ## `/cp next` (queue mode; the daily routine)
 
@@ -167,12 +179,16 @@ user's request).
    that and stop.
 2. Gates before building anything; if one fails, report the fix and stop, and a new topic goes back to `[ ]`:
    - `run-lock.sh acquire`;
-   - disk ≥ 8 GB free after freeing old Shorts;
+   - for a new topic, `bin/cleanup.sh` first. It frees what an earlier run left, and does nothing when the checkout
+     is already light. If it refuses because of unsaved work that isn't the `[~]` topic's, report the files and stop;
+     never delete them;
+   - disk ≥ 8 GB free;
    - `quota.mjs` exits 0;
    - `yt.mjs whoami` says CurioPulse;
    - Instagram: `ig.mjs route` says `business-suite` and Claude in Chrome is connected (or it says `api` and `ig.mjs whoami` works). If neither holds, build and schedule YouTube anyway, and report Instagram as pending.
-3. Run A → B → C exactly as for `/cp <topic>`.
-4. Close out: mark the line `[x]` with its links and release day, move it under Done, then release the lock.
+3. Run A → B → C exactly as for `/cp <topic>`, including the cleanup (step 20).
+4. Close out: in step 19, mark the line `[x]` with its links and release day and move it under Done (the skill backup
+   carries it). The lock is released after the cleanup.
 5. Nobody is watching a scheduled run: never ask. When blocked, leave the line `[~]`, release the lock, and report
    exactly what's done and what's blocking. The next run resumes it.
 
@@ -183,7 +199,8 @@ user's request).
   - Instagram: in Business Suite, Content → Scheduled → ⋯ → Reschedule (route B: `ig.mjs cancel <slug>` + `ig.mjs queue … --at …`).
 - **Publish a Reel right now:** Business Suite → Share now (route B: `ig.mjs publish-now <slug>`).
 - **Revisit an old Short:** `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>`, then `src/build.sh`
-  (the toolchain in `~/.cache/cp` is picked up automatically).
+  (the toolchain in `~/.cache/cp` is picked up automatically). When you're done, push any change, then run
+  `bin/cleanup.sh`.
 - **Repo size:** publish-short.sh prints it. Past ~3.5 GB, propose moving old MP4s to GitHub Releases.
 
 ## Keep the skill improving
@@ -205,6 +222,8 @@ State exactly what's done and what the user must do (free disk, add a key, re-au
 - `publish.json` (youtube.id, instagram.queued);
 - the Instagram sheet from `ig.mjs prepare` (route A) or the queue (route B).
 
+cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on the Mac until it's pushed.
+
 ## Files
 
 - `reference/master-context-prompt.md`: the user's channel brief, verbatim (also at the repo root)
@@ -223,6 +242,7 @@ State exactly what's done and what the user must do (free disk, add a key, re-au
 - `template/`: the video folder every Short starts from (engine + skeletons + README + publish.json)
 - `topics.md`: the topic queue for `/cp next`
 - `bin/new-short.sh`, `bin/publish-short.sh`, `bin/backup-skill.sh`, `bin/run-lock.sh`, `bin/cp-env.sh`
+- `bin/cleanup.sh`: back to the light checkout (`skill/` + top-level files) once everything is on GitHub
 - `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · upload · reschedule · status)
 - `bin/ig.mjs`: Instagram. Route A: prepare · busy · route. Route B, the API: token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel ·
   test-container · install-job)

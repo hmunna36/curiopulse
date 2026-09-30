@@ -63,8 +63,9 @@ The user's schedule (2026-09-29): **one Short a day, the same Short on both plat
    - `business-suite` (the normal case) → route A below.
    - `api` → run `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json` (route B).
 4. **Commit the ids.** Commit the updated publish.json and README ("Publishing" table) with publish-short.sh again.
-5. **Free the disk:** `publish-short.sh <slug> --free` once YouTube has the upload and Instagram has the Reel
-   scheduled.
+5. **Clean up:** after the files are sent, `bin/cleanup.sh` puts the Mac back to the light checkout. It refuses
+   while anything is uncommitted or unpushed. A Reel still pending on Instagram doesn't need the folder: the next
+   run's catch-up brings it back with `git sparse-checkout add videos/<slug>`.
 
 ## Route A: schedule the Reel in Meta Business Suite (Claude in Chrome)
 
