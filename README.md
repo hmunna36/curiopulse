@@ -23,6 +23,7 @@ Each folder has:
 
 - Every Short follows the creative brief in [`master-context-prompt.md`](master-context-prompt.md).
 - The `/cp` Claude Code skill makes, checks and schedules new Shorts. It is backed up in [`skill/cp`](skill/cp).
+- The channel's logo and banners are in [`channel/`](channel).
 - This repository continues [hmunna36/factschannel](https://github.com/hmunna36/factschannel), with its history.
 
 ## Working copy
