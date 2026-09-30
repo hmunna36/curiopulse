@@ -259,7 +259,8 @@ def glitch_burst(dur, seed):
 
 
 def riser(dur, seed=0, f0=200, f1=1600):
-    n = int(dur * SR)
+    n = int(round(dur * SR))
+    dur = n / SR
     y = filt(white(n, seed), "highpass", 1500) * np.linspace(0, 1, n) ** 3 + 0.3 * glide(f0, f1, dur, 1.5) * np.linspace(0, 1, n) ** 2
     return fade(y, 0.01, 0.005)
 
@@ -536,3 +537,31 @@ def slurp(dur=0.8, seed=0, rate=14.0):
     trem = 0.55 + 0.45 * np.abs(np.sin(2 * np.pi * rate * 0.5 * t + np.sin(2 * np.pi * 3 * t)))
     y = y / (np.max(np.abs(y)) + 1e-9) * trem * np.minimum(1, t / 0.04)
     return fade(y, 0.005, 0.08)
+
+
+# ================================================================= kitchen + chemistry (onion-tears)
+def chop(seed=0, wood=1.0):
+    """a knife hitting a wooden cutting board: a woody knock plus a short blade click"""
+    n = int(0.16 * SR)
+    knock = thump(0.16, 520, 180, 0.03) * 0.8 * wood
+    body = filt(white(n, seed), "bandpass", [600, 1400]) * attack_decay(n, 0.0008, 0.018) * 0.7
+    click = filt(white(n, seed + 3), "highpass", 3500) * attack_decay(n, 0.0004, 0.006) * 0.5
+    y = knock + body + click
+    return fade(y / (np.max(np.abs(y)) + 1e-9), 0.0003, 0.02)
+
+
+def chomp(seed=0):
+    """a cartoon munch: two quick wet clicks with a low body (the enzymes eating molecules)"""
+    y = np.zeros(int(0.22 * SR))
+    for k, t0 in enumerate((0.0, 0.09)):
+        s = thump(0.1, 380 - 60 * k, 160, 0.02) * 0.7 + filt(white(int(0.1 * SR), seed + k), "bandpass", [1200, 4000]) * attack_decay(int(0.1 * SR), 0.001, 0.01) * 0.6
+        i = int(t0 * SR)
+        y[i:i + len(s)] += s[:len(y) - i]
+    return fade(y / (np.max(np.abs(y)) + 1e-9), 0.0005, 0.02)
+
+
+def gas_hiss(dur=1.2, seed=0):
+    """a soft rising fizz for gas or spray escaping"""
+    n = int(dur * SR)
+    y = filt(white(n, seed), "bandpass", [2500, 7000]) * np.linspace(0.2, 1, n) ** 1.5 + 0.4 * crackle(n, 400, seed + 1, 3000, 9000)
+    return fade(y / (np.max(np.abs(y)) + 1e-9) * np.linspace(1, 0.7, n), 0.05, 0.15)

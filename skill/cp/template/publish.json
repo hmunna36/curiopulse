@@ -3,6 +3,7 @@
   "file": "__SLUG__-short.mp4",
   "title": "",
   "description": "",
+  "pinnedComment": "Tomorrow: <teaser from topics.md> Subscribe so you do not miss it! (suggestion for the user to pin; never posted by the pipeline)",
   "tags": [],
   "cover": "cover.jpg",
   "captions": "__SLUG__.srt",
@@ -17,7 +18,7 @@
   },
   "instagram": {
     "publishAt": "auto",
-    "caption": "",
+    "caption": "<hook line> ... Follow @curio_pulse_tv for tomorrow: <teaser> #science #humanbody #funfacts #reels",
     "coverTime": null,
     "shareToFeed": true
   }

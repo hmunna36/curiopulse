@@ -6,10 +6,13 @@
 # never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
 # take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
 # Rules (reference/narration.md): talk to ONE friend, short sentences, questions, asides, a pause before
-# every reveal, one idea per block, hedge what science hasn't settled ("One idea...", "Scientists think...").
+# every reveal, the last block `sub` is the subscribe line (<= 90 characters, teases tomorrow, reference/narration.md), one idea per block, hedge what science hasn't settled ("One idea...", "Scientists think...").
 
 ## hook gap=0.10 tempo=1.00
 [curious] REPLACE: the question, as an experience the viewer has had...
 
 ## reveal gap=0.45 tighten=0 tempo=1.00
-[deadpan] REPLACE: the punchline.
+[deadpan] REPLACE: the punchline / button line.
+
+## sub gap=0.40 tighten=0 tempo=1.00
+[chuckles] REPLACE (<= 90 characters, funny, in voice): tease tomorrow's topic from topics.md, then ask to subscribe. Say the word "subscribe".

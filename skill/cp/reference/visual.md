@@ -74,7 +74,11 @@
 ## Captions (main.js)
 
 - Montserrat 900, 96 px, white with a dark stroke and drop shadow.
-- Centred at y = 1330: below the action, above the Shorts UI. Maximum width 800 px (they shrink to fit).
+- Centred on x = 540, y = 1330: below the action, inside the key-content zone (see the safe area below). Maximum
+  width 640 px (since 30 Sep 2026; it was 800 and ran under the like/comment column), so a line spans at most
+  x 220–860; a longer line shrinks to fit. Keep lines short so they stay big: up to about 10 characters stay at
+  96 px (RAISINS is 420 px wide), "SO NEXT TIME YOU" (16) comes out at about 60 px and "PEOPLE WITH DAMAGED" (19) at
+  about 50 px: still readable on a phone, but split runs like that with "/" when the words allow.
 - Word-by-word pop (`outBack`, a slight tilt), 1–2 lines of up to 4 words, and the chunk ends at a cut.
 - Colour only the idea words (`COLOR` in make_timeline.py), using the palette `timeline_lib.PALETTE`:
   - Y yellow `#FFD447` (the key word / the reveal)
@@ -86,13 +90,44 @@
   - B blue `#8FB8FF`, S ice `#BFF0FF`, P pink `#FF86A6`
 - `post.noCaptions` for a title card that is itself the caption; `post.capY` to move them.
 
+## The subscribe cue (subscribe.js, every Short)
+
+- `web/subscribe.js` is an engine file, loaded by scene.html, drawn by main.js above the captions. It needs no shot
+  code: it reads two cues that make_timeline.py sets from the spoken `sub` block.
+  - `cues.sub_in`: the red SUBSCRIBE pill and the bell pop in (outBack, small tilt, bloom glow under it).
+  - `cues.sub_tap`: a cursor swoops in, presses (pill dips, ripple), the pill flips to a grey SUBSCRIBED with a
+    green check, the bell turns yellow, rings and sparkles, confetti bursts.
+  - Total ≈ 2.6 s to the end. With no `sub_in` it falls back to the last 2.6 s.
+- Safe area: pill + bell centred on x = 540 (pill x ≈ 221–701, bell x ≈ 727–859), y = 1420 (y ≈ 1354–1486): inside the
+  key-content zone (x 100–870 below y 1000), clear of the button column (x ≥ 880 from y ≈ 1050) and of the bottom rows
+  (Related chip from y ≈ 1680; the zone ends at 1640). Only the cursor's first 0.15 s (it swoops in from the upper
+  right) and the ring marks after the tap cross x 870; both are decoration. While the cue runs the captions lift to
+  y = 1150 so the two never collide. A shot can opt out with `noSubscribe: true` (never do that on the last shot).
+- Keep the last shot's hero and jokes above y ≈ 1100 so the pill does not cover them; the hero's feet may sit behind
+  the captions but never the pill.
+- Sound: audio.py adds a soft pop, a click and a bell ding under the line (cue-locked, −16…−22 dB).
+- Review with stills: render frames at `sub_in`, `sub_in + 0.3`, `sub_tap − 0.3`, `sub_tap`, `sub_tap + 0.3`, `sub_tap + 1.0`
+  and the last frame; Read the sheet.
+
 ## The Shorts safe area (1080×1920)
 
-- The YouTube and Instagram UI covers roughly the bottom 380 px (title, channel, music) and the right 140 px from
-  y ≈ 900 down (buttons).
-- Keep faces, key action and on-screen words between y ≈ 180 and 1500, and x ≈ 60–940 for anything important in
-  the lower half.
-- Captions at 1330 are inside it.
+Measured on 30 Sep 2026 from the user's iPhone screenshot of a live Short in the YouTube app's Shorts feed (94.5 % of
+the lightning Short's views came from that feed). Frame coordinates:
+- **Side crop:** the player fills the screen height, so about 52 px is lost off each side (taller phones crop more).
+- **Top band y 0–375 is covered:** status bar (0–110), the "Shorts" header row (160–256), the Subscriptions/Live/Lens
+  chip row (276–371).
+- **Right column:** like/dislike/comment/save/share/remix with their labels, then the avatar/sound disc: x ≥ 880,
+  y ≈ 1050–1890.
+- **Bottom:** Related-video chip (≈ 1680–1740), channel row with avatar, @handle and Subscribe (≈ 1750–1835), title
+  (≈ 1845–1890), progress bar at the edge.
+- **Key-content zone: x 100–980 for y 400–1000, and x 100–870 for y 1000–1640.** Text, numbers, the hook, captions,
+  labels, graphics that carry the idea, faces, key action and the subscribe cue stay inside it. Backgrounds and texture
+  may bleed full-frame. Instagram's Reels UI also sits on the right and at the bottom; use the same zone for both.
+- Captions (x 220–860 at y 1330, or 1150 under the cue) and the subscribe cue are inside it by construction; what each
+  shot draws (titles, stings, labels, the hero's face) is checked with the mask: `qa.md`, "The safe-area mask".
+- The old rule here ("bottom 380 px, right 140 px from y 900, x 60–940, y 180–1500") was too small at the top and
+  the sides: title words at y 200–370 sit under the chip row, and anything past x 870 below y 1050 sits under the
+  buttons.
 
 ## The cover (cover.jpg)
 

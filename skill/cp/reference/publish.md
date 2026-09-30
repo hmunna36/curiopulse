@@ -29,7 +29,13 @@ The user's schedule (2026-09-29): **one Short a day, the same Short on both plat
     with a narrator matches none;
   - notify subscribers;
   - no playlist.
-- **Instagram caption:** the hook line with an emoji, 1–2 short lines, then 4–6 hashtags
+- **Pinned comment (suggestion only, never posted by the pipeline):** store it in `publish.json` as `pinnedComment`
+  and in the README's metadata, for the user to pin. First line = the subscribe ask with tomorrow's teaser, e.g.
+  `Tomorrow: why onions make you cry 🧅 Subscribe so you don't miss it!` Then one line answering the question
+  ("What did YOU think it was?" invites replies). Do not post it or use the API to do so.
+- **Description:** end the first paragraph line with the ask too: `Subscribe for a new strange question every day.`
+- **Instagram caption:** the hook line with an emoji, 1–2 short lines, a **follow line** (Instagram says Follow, not
+  Subscribe: `Follow @curio_pulse_tv for tomorrow's: <teaser> 🔔`), then 4–6 hashtags
   (`#science #humanbody #biology #funfacts #reels`). At most 2,200 characters and 30 hashtags.
   - `instagram.coverTime` (seconds) is the cover frame to aim for.
   - No AI label, the same as the Reels already posted. It is the user's call if they want Meta's AI label for the

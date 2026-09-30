@@ -37,6 +37,15 @@ $PYTHON qa.py ../.work ../<slug>-short.mp4
 `src/build.sh` runs the whole chain from cached takes (voice → timeline → audio → render → srt). Use it for the final
 rebuild and to prove the folder rebuilds.
 
+## The subscribe hooks in the order of work
+
+- Before `voice.py --synth`: find tomorrow's topic (the `[ ]` entry after this Short's in `topics.md`), write the
+  `## sub` block (≤ 90 characters), and check the whole script's characters against `quota.mjs` (narration.md).
+- `make_timeline.py` sets `cues["sub_in"]` / `cues["sub_tap"]` from the word "subscribe" (already in the template).
+- Stills of the last 3 s before the full render (qa.md); nothing else to run: `subscribe.js` is part of the engine.
+- Skill-only change: new Shorts copy the template from `~/.claude/skills/cp/template/`, so no push to the repo is
+  needed for the nightly routine. `bin/backup-skill.sh` mirrors it to `skill/cp/` on GitHub.
+
 ## This Mac
 
 - **8 GB M1:** a /cp run and a /va run may build in parallel. The user does this, and both nightly routines start

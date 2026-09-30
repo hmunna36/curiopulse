@@ -64,7 +64,11 @@ function zoomBlur(amount, cx = W / 2, cy = H / 2, n = 10) {
 }
 
 // ---------- captions ----------
-const CAP_Y = 1330, CAP_SIZE = 96, CAP_LINE = 112, CAP_MAXW = 800;
+// Geometry = the Shorts safe area measured on the user's iPhone (30 Sep 2026, reference/visual.md): below y 1000 the
+// key-content zone is x 100-870 (the like/comment/share column starts at x ≈ 880; phones crop ≈ 52 px off each side).
+// Lines are centred on CAP_X and shrink to fit CAP_MAXW, so every line stays within x 220-860 (+10 px of outline) at
+// any capY. Don't widen CAP_MAXW or move CAP_X right; check stills with ~/.claude/skills/cp/bin/safe-area.py.
+const CAP_Y = 1330, CAP_X = 540, CAP_SIZE = 96, CAP_LINE = 112, CAP_MAXW = 640;
 function drawCaptions(t, capY) {
   const cap = TLd.captions.find((c) => t >= c.start && t < c.end - 0.002);
   if (!cap) return;
@@ -85,7 +89,7 @@ function drawCaptions(t, capY) {
       widths = ln.map((w) => ctx.measureText(w.t).width);
       total = widths.reduce((a, b) => a + b, 0) + size * 0.28 * (ln.length - 1);
     }
-    let x = W / 2 - total / 2;
+    let x = CAP_X - total / 2;
     const y = y0 + li * CAP_LINE;
     ln.forEach((w, wi) => {
       const age = t - w.at;
@@ -190,7 +194,9 @@ function renderFrame(f) {
     ctx.fillStyle = `rgba(235,242,255,${clamp(post.flash)})`;
     ctx.fillRect(0, 0, W, H);
   }
-  if (!post.noCaptions) drawCaptions(t, post.capY);
+  const subOn = !post.noSubscribe && typeof subActive === 'function' && subActive(t);
+  if (!post.noCaptions) drawCaptions(t, subOn ? Math.min(post.capY || CAP_Y, SUB_CAPY) : post.capY);
+  if (subOn) drawSubscribe(t);   // the subscribe cue (subscribe.js) sits above captions, inside the safe area
   if (post.flashTop > 0) { // flash that also washes over the captions
     ctx.fillStyle = `rgba(240,246,255,${clamp(post.flashTop)})`;
     ctx.fillRect(0, 0, W, H);
@@ -200,7 +206,7 @@ function renderFrame(f) {
 async function init() {
   await Promise.all([
     document.fonts.load('900 96px Montserrat'), document.fonts.load('800 40px Montserrat'),
-    document.fonts.load('700 30px Montserrat'), document.fonts.load('400 200px Anton'),
+    document.fonts.load('700 30px Montserrat'), document.fonts.load('900 58px Montserrat'), document.fonts.load('400 200px Anton'),
   ]);
   initEnv();
   initScenes();

@@ -27,7 +27,7 @@ In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercas
 | `cover.jpg` | 1080×1920 JPEG < 2 MB: the YouTube thumbnail and the Instagram cover |
 | `<slug>.srt` | English captions from the word timings |
 | `README.md` | script, publishing table + metadata, shot table, sound design, science notes with sources, ship review, rebuild |
-| `publish.json` | title, description, tags, IG caption, schedule; the tools write back ids and links |
+| `publish.json` | title, description, tags, IG caption (with the follow line), `pinnedComment` suggestion, schedule; the tools write back ids and links |
 | `src/` | everything that rebuilds it (`build.sh`), including the cached voice takes |
 
 Plus: committed and pushed to the repo, a row in the root README, **YouTube scheduled for 11:30 IST** (thumbnail +
@@ -43,7 +43,12 @@ captions) and the **Instagram Reel scheduled for 18:30 IST** on the same free da
 - **Show, don't tell:** every statement has its visual; the camera travels to what's named; never static for more
   than 1–3 s; never slides.
 - **Funny and curious:** at least 3 laugh beats; the story escalates to the weirdest true fact; the button line
-  reframes or undercuts. No "like and subscribe".
+  reframes or undercuts.
+- **Subscribe hooks, audible AND visual, on every Short** (user's decision, 30 Sep 2026; it replaces the old "no like and
+  subscribe" rule, because subscriber conversion is the channel's bottleneck): the last spoken block `sub` is a short
+  in-voice line (≤ 90 characters) that teases tomorrow's topic and asks for the subscribe, never a generic "like and
+  subscribe"; and the animated Subscribe pill + bell + cursor click (`web/subscribe.js`) plays over the last ~2.6 s,
+  timed to that line. Details: `reference/brief.md`, `narration.md`, `visual.md`, `qa.md`.
 - **The hiker** is the hero: the same rig, only the outfit changes.
 - **Scientifically responsible:** claims are sourced; uncertain ones are hedged ("Scientists think…", "One idea…").
 - **Ship only above the bar** (`reference/qa.md`): `qa.py` clean and every ship-bar item scoring 8 or more.
@@ -78,6 +83,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - the curiosity angle, the hook sentence, the beats (hook, reaction, name, mechanism, twist/proof, debate,
      bonus, button), the jokes;
    - the world(s), and what to borrow from past videos;
+   - the subscribe line: tomorrow's teaser from the next `[ ]` entry of `topics.md` (the one after this Short's);
    - the cover moment.
 3. **Scaffold:** `~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"` creates
    `~/Desktop/curiopulse/videos/<slug>` from `template/`. Put the plan and the claims table into its README
@@ -97,6 +103,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
 7. **Sound** (`reference/sound.md`): `src/audio.py` gets beds, hits on every beat, the score by section, the comedy
    stops, then `master()`. Run `qc_audio.py` and fix the masked words now.
 8. **Pre-render sweep** (`reference/qa.md`): stills every 1 s across the whole timeline. Fix everything visible now.
+   Put the safe-area mask on the hook, title/label, caption and subscribe stills (`bin/safe-area.py overlay`, qa.md):
+   nothing important under a covered zone.
 9. **Render** in the background with a log and an EXIT marker (≈8 min), then `make_srt.py`.
 
 ### B. The quality loop (repeat until satisfied)
@@ -104,7 +112,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
 10. **QA the MP4:**
     - `$PYTHON qa.py ../.work ../<slug>-short.mp4` must have no FAIL;
     - read every contact sheet and crop the risky moments;
-    - score the ship bar (10 items), with evidence;
+    - score the ship bar (12 items, incl. the safe area (7b) and the subscribe hook), with evidence;
     - log the round in `.work/qa/ship-review.md`.
 11. **Not satisfied? Fix the weak parts:**
     - name the cause of each item under 8;
@@ -230,7 +238,7 @@ cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on
 - `reference/brief.md`: the brief distilled, plus the user's later decisions (they win)
 - `reference/story.md`: research, angle, hook, the beat shape of the shipped Shorts, topic picking, the one-page plan
 - `reference/narration.md`: Jessica, script.txt, voice.py, quota, the listening pass
-- `reference/visual.md`: the look, the hero rig, camera grammar, graphics, captions, safe area, the cover
+- `reference/visual.md`: the look, the subscribe cue, the hero rig, camera grammar, graphics, captions, safe area, the cover
 - `reference/engine.md`: files, data flow, writing shots, borrowing world files from past videos, rendering
 - `reference/sound.md`: buses, the sfxkit vocabulary, mix rules, commands
 - `reference/qa.md`: checks while building, the qa.py gate, the ship bar, the loop

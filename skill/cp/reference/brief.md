@@ -33,8 +33,16 @@ EXPERIENCE the explanation, not be told it.
 - **One recurring hero:** the "hiker" rig in `web/character.js`. Always the same character (same face, hair,
   proportions), dressed for the scene with `PAL` variants: coat, pajamas `PJ`, bare-shouldered in the bath. Never a
   new person per scene.
-- **Endings:** a memorable last line plus a visual button, with no call to action. The last beat may loop back to
-  the first frame (finger-wrinkles dives back into the water).
+- **Endings:** a memorable last line plus a visual button. The last beat may loop back to the first frame
+  (finger-wrinkles dives back into the water).
+- **Subscribe hooks (2026-09-30, the user's explicit request; overrides the earlier "no call to action" and "no like and
+  subscribe" rules).** The channel has almost no organic subscribers (lightning: 1,221 views, almost no subs), so every
+  Short ends with two hooks:
+  - **Audible:** a final `sub` block after (or woven into) the button line, ≤ 90 characters, in Jessica's voice and
+    funny, that teases tomorrow's topic and asks the viewer to subscribe. Not a generic "like and subscribe".
+  - **Visual:** the animated Subscribe pill + bell with a cursor click, `web/subscribe.js`, over the last ~2.6 s,
+    inside the safe area, timed to the spoken line.
+  - The button line still lands first: the joke is never sacrificed for the ask.
 - **No on-screen credits** (no "voice: ElevenLabs", no channel logo intro).
 
 ## The rules from the brief, in short

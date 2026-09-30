@@ -7,6 +7,7 @@
 | `hypnic-jerk`: "Why Does Your Body JERK When You're Falling Asleep? 😳" | 72 s | https://youtube.com/shorts/osyp3o0A4ZY · 30 Sep 2026 23:30 IST | Business Suite, 29 Sep 2026 20:00 IST |
 | `finger-wrinkles`: "Why Do Your Fingers WRINKLE in Water? 🛁" | 64 s | https://youtube.com/shorts/KPn5s79_a6E · 1 Oct 2026 23:30 IST | Business Suite, 30 Sep 2026 20:00 IST |
 | `brain-freeze`: "Why Does Ice Cream Give You BRAIN FREEZE? 🧊" | 75 s | https://youtube.com/shorts/Oy7QT27NT-Y · 2 Oct 2026 11:30 IST | Business Suite, 2 Oct 2026 18:30 IST |
+| `onion-tears`: "Why Do Onions Make You CRY? 🧅" | 74 s | https://youtube.com/shorts/yaD9MFbpv_I · 3 Oct 2026 11:30 IST | PENDING (Chrome not connected 1 Oct); due 3 Oct 18:30 IST |
 
 From the first /cp Short on, releases are 11:30 IST on YouTube (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -65,3 +66,25 @@ here for every new Short, with its links.
 - Voice: 1,337 characters (3 blocks retaken or rewritten to get from 76.7 s to 73 s of narration).
 - An audio-only fix doesn't need a re-render: remux the new mix.wav onto the rendered MP4 (`-c:v copy`).
 
+
+**onion-tears** (1 Oct 2026, nightly /cp next; the first Short with the subscribe hook):
+- New worlds: `kitchen.js` (night kitchen, counter, board, onion with a face (smug/wink/evil/proud) and a crown, knives
+  (chef/blunt with gleam), the hero chopping with `heroChopping`, tear streaks and tear-fountain arcs, gas wisps, the
+  chef's hat and `PAL_CHEF`), `inside.js` (brick wall of cells, a cell cut open with a vacuole, molecules and pac-man
+  enzymes), `eye.js` (macro eye with corneal nerves, tear gland, flood; brain icon with siren) and `lab.js` (a
+  high-speed-camera rig with a guillotine, a ruler and droplet physics).
+- New sfxkit atoms: `chop`, `chomp`, `gas_hiss`. Also fixed an engine bug: `riser()` could be one sample short
+  (`glide` rounds), which crashed the broadcast.
+- `charLayer`'s `post` callback runs in camera space, not rig space: to draw on the head (a hat), apply
+  `translate(st.x, st.y); scale(st.s)` first. The chef hat was invisible for a whole render because of this.
+- Research changed the script: the popular "chill the onion" tip is contested (the Cornell 2025 droplet team even
+  suggests the fridge may not help), and the "40× more droplets" press figure isn't in the paper. Neither was used.
+- The first voice pass ran 82.8 s. Free timing edits reached 78.9 s; cutting a whole block (the Ig Nobel line) got to
+  72.4 s without a retake. Plan about 145 words, not 160, for a subscribe-line Short.
+- qa.py's voice check fails on single quiet words ("Two" at 0.8 dB): a cut whoosh and a groove's first bar on a
+  shot's first word. Start grooves after the first words of a shot, and keep gags (a washing machine) from running
+  into the next line.
+- A 10 s static end under the subscribe cue cost retention: push in slowly and keep something alive (the crowned
+  onion's wiggle) while staying above y 1100.
+- Claude in Chrome was connected at preflight but gone by ship time, about an hour later. Check it again right
+  before step 16; the Reel is caught up next run.

@@ -15,12 +15,13 @@ T = Timeline(sys.argv[1], tail=1.5)  # seconds after the last word: the button b
 SHOTS = [
     ("hook", None),
     ("explain", "REPLACE with the phrase that opens this shot"),
-    ("button", "REPLACE"),
+    ("button", "REPLACE"),  # holds through the subscribe line; subscribe.js draws the pill on top of it
 ]
 special = {}  # e.g. {"stare": T.E("JUMPS") + 0.06, "nope": T.ev("chuckles")["t"] - 0.05}
 
 # caption chunks: EXACT consecutive word runs covering the whole narration, 1–5 words, "/" splits two lines.
 # One idea per chunk; break before the punchline so it lands alone ("raisins", "Nope", "Science").
+# A line is capped at 640 px (x 220-860, the Shorts safe area): ~10 characters stay at full size, 16 drop to ~60 px.
 CHUNKS = [
     "REPLACE with the narration / in chunks",
 ]
@@ -37,4 +38,9 @@ W, E, ev, find = T.W, T.E, T.ev, T.find
 cues = {
     # "gasp": ev("gasps")["t"], "jumps": W("JUMPS"), "jumps_end": E("JUMPS"), "bam": W("BAM"),
 }
+# ---- the subscribe cue (web/subscribe.js): the last ~2.6 s. Needs a `## sub` block in script.txt with the word "subscribe".
+_sub_w = T.W("subscribe")                       # if the line says "subscribes"/"subscribing", use that word
+_sub_in = min(_sub_w - 0.30, T.duration - 2.6)  # pill pops ~0.3 s before the word, and at least 2.6 s remain
+cues["sub_in"] = max(0.0, _sub_in)
+cues["sub_tap"] = min(T.E("subscribe") + 0.25, T.duration - 0.8)  # the cursor click, just after the word
 T.write(shots, caps, cues)
