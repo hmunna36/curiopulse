@@ -32,8 +32,8 @@ pitch glide 276 → 152 Hz over 1.6 s, and whisper still hears "you").
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 11:30 IST |
-| Instagram Reels | (after scheduling) | 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/kJsQ55sjjIU | 4 Oct 2026, 11:30 IST (scheduled via the API, with thumbnail and captions) |
+| Instagram Reels | @curio_pulse_tv (link once live) | 4 Oct 2026, 18:30 IST (scheduled in Business Suite; verified in Content → Scheduled) |
 
 **Title:** Why Is Yawning CONTAGIOUS? 🥱
 

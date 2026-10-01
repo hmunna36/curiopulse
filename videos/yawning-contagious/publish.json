@@ -24,18 +24,27 @@
   "cover": "cover.jpg",
   "captions": "yawning-contagious.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-04T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "kJsQ55sjjIU",
+    "url": "https://youtube.com/shorts/kJsQ55sjjIU",
+    "uploaded": "2026-10-01T19:44:54.110Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-04T18:30:00+05:30",
     "caption": "Did you just yawn? 🥱 That's not boredom, that's science.\nAbout half of adults catch a yawn just from seeing one, and nobody's totally sure why.\nFollow @curio_pulse_tv for tomorrow's: why your stomach growls 🔔\n#science #humanbody #psychology #funfacts #reels",
     "coverTime": 5.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-04 18:30 IST",
+    "scheduledAt": "2026-10-02T01:45+05:30",
+    "note": "scheduled in Meta Business Suite (Content > Scheduled verified); thumbnail picker never loaded, so the cover can be changed in the Instagram app after it goes live"
   }
 }
