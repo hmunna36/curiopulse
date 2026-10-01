@@ -50,13 +50,15 @@
   - Write numbers as words ("seventy percent"), with DISPLAY in make_timeline showing "70%".
   - Keep acronyms and hard words rare. If whisper mis-hears a line in QA, rephrase it: "isn't instant" became
     "is actually a handover".
-- **Pace:** the shipped Shorts run 143–152 words in 64–72 s, so ≈ 2.2–2.4 words/s including the gaps. 140–165
-  words fits 60–72 s.
+- **Pace:** the shipped Shorts ran 143–152 words in 64–72 s, so ≈ 2.2–2.4 words/s including the gaps. For the 40–50 s
+  target (user, 1 Oct 2026) write **95–115 words** in all, the `sub` line included: about 550–680 characters. Count
+  them before synthesizing; if the draft is longer, cut whole sentences (a bonus fact, a second example), never the
+  comedic gaps.
 
 ## The subscribe line (last block, `sub`)
 
 Every script ends with a `## sub` block (user's decision, 30 Sep 2026):
-- **≤ 90 characters** including spaces, after the button line (or woven into it). It teases tomorrow's Short, from the
+- **≤ 70 characters** including spaces, after the button line (or woven into it). It teases tomorrow's Short, from the
   NEXT `[ ]` entry of `topics.md` (the one after this Short's; when none, tease "another strange question"), and asks
   for the subscribe/follow with the verb "subscribe" said clearly (the pill appears on that word).
 - In voice, funny, tied to the Short's own joke. Not "like and subscribe". Examples:
@@ -64,9 +66,9 @@ Every script ends with a `## sub` block (user's decision, 30 Sep 2026):
   - after brain freeze: `[deadpan] Tomorrow: why onions make you cry. Subscribe, or cry about it later.`
   - after finger wrinkles: `[whispers] Tomorrow, goosebumps. Subscribe. Or don't. Your arm hairs are already voting.`
 - Block settings: `gap=0.40 tighten=0 tempo=1.00`; one tag at most (`[chuckles]`, `[deadpan]`, `[whispers]`).
-- **Budget:** ~90 characters is ~9% of a Short's ~1,000 characters. ElevenLabs is tight (≈1.1k characters left on
+- **Budget:** ~70 characters is ~11% of a Short's ~650 characters. ElevenLabs is tight (≈1.1k characters left on
   30 Sep 2026): count the whole script plus the `sub` block against `quota.mjs` BEFORE synthesizing. If the total does
-  not fit, trim the explanation, never the `sub` line. If a retake is needed, retake only `sub`, at ≤ 90 characters.
+  not fit, trim the explanation, never the `sub` line. If a retake is needed, retake only `sub`, at ≤ 70 characters.
 - The block is captioned like any other, and the pill pops in ~0.3 s before the word "subscribe"
   (`cues["sub_in"]` in make_timeline.py). Keep the music low there (audio.py ducks it).
 

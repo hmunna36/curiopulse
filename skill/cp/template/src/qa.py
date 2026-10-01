@@ -6,7 +6,7 @@ for the transcript check, and the stems from audio.py.
 
 Checks (FAIL blocks the upload; WARN is for the review):
 - Streams: H.264 High, 1080x1920, 30 fps, yuv420p, AAC 48 kHz stereo, faststart.
-- Length and file size: 45-75 s (warn up to 90); the MP4 under 95 MB (GitHub's per-file limit is 100 MB).
+- Length and file size: 35-50 s (warn up to 55, fail above; user, 1 Oct 2026); the MP4 under 95 MB (GitHub's per-file limit is 100 MB).
 - Delivered audio: integrated -14 +/- 0.5 LUFS; true peak <= -1.0 dBTP after AAC.
 - Picture:
   - the first frame is not black;
@@ -61,7 +61,7 @@ with open(MP4, "rb") as fh:
     head = fh.read(1 << 16)
 check(head.find(b"moov") != -1 and head.find(b"moov") < head.find(b"mdat") if b"mdat" in head else b"moov" in head,
       "faststart (moov before mdat)", "ok" if b"moov" in head else "moov atom not at the front")
-check(45 <= dur <= 75, "length 45-75 s", f"{dur:.2f} s", warn=dur <= 90)
+check(35 <= dur <= 50, "length 35-50 s", f"{dur:.2f} s", warn=dur <= 55)
 check(size < 95e6, "file under 95 MB", f"{size / 1e6:.1f} MB")
 
 # ---------------------------------------------------------------- delivered loudness / true peak

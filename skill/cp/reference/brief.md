@@ -18,12 +18,16 @@ EXPERIENCE the explanation, not be told it.
   - Every sound is synthesized in Python.
   - The only recorded element is the narration: ElevenLabs.
   - No stock footage, no generated images or video, no Higgsfield credits.
-- **Length follows the story.** For hypnic-jerk the user said: "duration relaxed, everything matters is the
-  production quality, subtle pacing and clarity with comedic pauses and extremely expressive". The shipped Shorts
-  run 64–72 s.
-  - Aim for 55–70 s.
-  - Never pad.
-  - Never go past 75 s without a reason the story makes obvious. The QA gate warns at 75 s and fails at 90 s.
+- **Length: 40–50 s, never over 55 s.** The user, 1 Oct 2026: "can we reduce the short length? it's going to 73
+  seconds".
+  - The Shorts up to onion tears ran 64–75 s, after the user's hypnic-jerk note ("duration relaxed, everything matters
+    is the production quality, subtle pacing and clarity with comedic pauses and extremely expressive"). That note
+    still holds for quality, pacing and expressiveness, but no longer for length: the same craft now fits 40–50 s.
+  - Why: the lightning Short's viewers watched 38 s on average (58.5 % of 66 s). A 40–50 s Short keeps them to the end
+    and the loop, and it costs about a third fewer voice characters.
+  - Get there by cutting, not by rushing: one mechanism, one twist, the weirdest true fact, the button. Drop the
+    bonus facts (they can be another day's topic). Keep the comedic gaps, but tighter.
+  - Never pad. The QA gate warns above 50 s and fails above 55 s.
 - **The narrator is performed, not read.** Jessica (ElevenLabs `eleven_v3`, voice `cgSgspJ2msm6clMCkdW9`), stability
   0 ("creative"), with v3 delivery tags. The first lightning cut used Kokoro, and the user said it "sounded like
   someone was READING A BOOK". That must never happen again. See `narration.md`.
@@ -38,7 +42,7 @@ EXPERIENCE the explanation, not be told it.
 - **Subscribe hooks (2026-09-30, the user's explicit request; overrides the earlier "no call to action" and "no like and
   subscribe" rules).** The channel has almost no organic subscribers (lightning: 1,221 views, almost no subs), so every
   Short ends with two hooks:
-  - **Audible:** a final `sub` block after (or woven into) the button line, ≤ 90 characters, in Jessica's voice and
+  - **Audible:** a final `sub` block after (or woven into) the button line, ≤ 70 characters, in Jessica's voice and
     funny, that teases tomorrow's topic and asks the viewer to subscribe. Not a generic "like and subscribe".
   - **Visual:** the animated Subscribe pill + bell with a cursor click, `web/subscribe.js`, over the last ~2.6 s,
     inside the safe area, timed to the spoken line.
@@ -55,12 +59,12 @@ EXPERIENCE the explanation, not be told it.
 
   | Time | Beat |
   |---|---|
-  | 0–3 s | hook |
-  | 3–10 s | setup |
-  | 10–30 s | explanation / escalation |
-  | 30–45 s | deeper reveal |
-  | 45–55 s | payoff |
-  | last seconds | final beat |
+  | 0–2 s | hook |
+  | 2–8 s | setup |
+  | 8–22 s | explanation / escalation |
+  | 22–32 s | deeper reveal (the weirdest true fact) |
+  | 32–40 s | payoff / button |
+  | last ~5 s | subscribe tease and the loop |
 
 - **Never static.** Something meaningful changes every 1–3 s (camera, character, particles, light, process, text).
   But no random motion: every movement supports the story.

@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-const NEED = Number(process.argv[2] ?? 1600);
+const NEED = Number(process.argv[2] ?? 1000); // a 40-50 s Short is ~550-680 characters, plus a retake
 const file = path.join(os.homedir(), '.config/va/elevenlabs.env');
 if (!fs.existsSync(file)) {
   console.log(`no key file at ${file}`);

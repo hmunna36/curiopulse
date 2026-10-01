@@ -48,7 +48,7 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 | Check | Bar |
 |---|---|
 | Streams | H.264 High 1080×1920 30 fps yuv420p, AAC 48 kHz stereo, moov first |
-| Length / size | 45–75 s (warn to 90) · under 95 MB |
+| Length / size | 35–50 s (warns to 55, fails above 55) · under 95 MB |
 | Loudness | −14 ± 0.5 LUFS integrated, true peak ≤ −1.0 dBTP (decoded from the AAC) |
 | Picture | the first frame isn't black · it moves in the first 0.5 s · no frozen stretch over 1.5 s |
 | Voice | content words: mean speech-band SNR ≥ 12 dB, ≤ 10 % under 6 dB, none under 3 dB (it lists the weak words) |
@@ -72,13 +72,13 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 3 | **Story** | experience → mechanism → twist/proof → bonus → button; every beat earns its seconds; the button reframes or undercuts |
 | 4 | **Show, don't tell** | every major statement has its visual; the camera travels to what's named; nothing is a slide |
 | 5 | **Narration** | sounds told, not read (brief: "NOT reading a book"); energy changes per beat; jokes land in the gaps; no mis-said words |
-| 6 | **Comedy** | at least 3 laugh beats (reaction, callback, anticlimax); timing comes from the gaps and cuts, not wacky voices |
+| 6 | **Comedy** | 2–3 laugh beats (reaction, callback, anticlimax); timing comes from the gaps and cuts, not wacky voices |
 | 7 | **Look** | cinematic light and depth; the hero on model and acting; bloom/grain clean; nothing cropped by the safe area |
 | 7b | **Safe area** | stills checked with the safe-area mask: nothing important under a covered zone (hook words, titles, labels, captions, the face, the key action, the pill); list the `.safe.png` frames in ship-review.md |
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |
 | 10 | **Packaging** | title ≤ 60 characters with a curiosity gap; the cover reads at thumbnail size; description, hashtags and IG caption written |
-| 11 | **Subscribe hook** | the `sub` line exists (≤ 90 characters), is in voice and funny, names tomorrow's topic and says "subscribe"; qa.py's speech SNR/whisper shows the word "subscribe" clear over the score (no weak-word entry, whisper hears it); the pill + bell + cursor click are on screen for ≥ 2.5 s, timed to the word, inside the key-content zone (mask on `sub_tap + 0.3`), not covering the hero or captions (crop the last 3 s of frames) |
+| 11 | **Subscribe hook** | the `sub` line exists (≤ 70 characters), is in voice and funny, names tomorrow's topic and says "subscribe"; qa.py's speech SNR/whisper shows the word "subscribe" clear over the score (no weak-word entry, whisper hears it); the pill + bell + cursor click are on screen for ≥ 2.5 s, timed to the word, inside the key-content zone (mask on `sub_tap + 0.3`), not covering the hero or captions (crop the last 3 s of frames) |
 
 - **Satisfied** means: qa.py has no FAIL, every ship-bar item scores 8 or more, and nothing in the review would make
   the user wince.

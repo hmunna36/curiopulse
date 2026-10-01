@@ -1,6 +1,6 @@
 ---
 name: cp
-description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 55–70 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled for the next free day: YouTube at 11:30 IST (Data API) and Instagram at 18:30 IST (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
+description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 40–50 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled for the next free day: YouTube at 11:30 IST (Data API) and Instagram at 18:30 IST (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
 argument-hint: <topic question> | next
 effort: max
 ---
@@ -23,7 +23,7 @@ In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercas
 
 | File | Spec |
 |---|---|
-| `<slug>-short.mp4` | 1080×1920, 30 fps, H.264 High CRF 17 yuv420p bt709, AAC 256 k 48 kHz, 55–70 s (45–75 allowed), −14 LUFS, ≤ −1 dBTP, < 95 MB |
+| `<slug>-short.mp4` | 1080×1920, 30 fps, H.264 High CRF 17 yuv420p bt709, AAC 256 k 48 kHz, 40–50 s (35–55 allowed), −14 LUFS, ≤ −1 dBTP, < 95 MB |
 | `cover.jpg` | 1080×1920 JPEG < 2 MB: the YouTube thumbnail and the Instagram cover |
 | `<slug>.srt` | English captions from the word timings |
 | `README.md` | script, publishing table + metadata, shot table, sound design, science notes with sources, ship review, rebuild |
@@ -42,11 +42,13 @@ captions) and the **Instagram Reel scheduled for 18:30 IST** on the same free da
 - **Hook on frame 1:** action, a strange experience in the second person; no intro, logo or "Did you know".
 - **Show, don't tell:** every statement has its visual; the camera travels to what's named; never static for more
   than 1–3 s; never slides.
-- **Funny and curious:** at least 3 laugh beats; the story escalates to the weirdest true fact; the button line
+- **Short and tight: 40–50 s, never over 55 s** (user, 1 Oct 2026; reference/brief.md). About 95–115 spoken words. Cut,
+  don't rush: one mechanism, one twist, the weirdest fact, the button.
+- **Funny and curious:** 2–3 laugh beats; the story escalates to the weirdest true fact; the button line
   reframes or undercuts.
 - **Subscribe hooks, audible AND visual, on every Short** (user's decision, 30 Sep 2026; it replaces the old "no like and
   subscribe" rule, because subscriber conversion is the channel's bottleneck): the last spoken block `sub` is a short
-  in-voice line (≤ 90 characters) that teases tomorrow's topic and asks for the subscribe, never a generic "like and
+  in-voice line (≤ 70 characters) that teases tomorrow's topic and asks for the subscribe, never a generic "like and
   subscribe"; and the animated Subscribe pill + bell + cursor click (`web/subscribe.js`) plays over the last ~2.6 s,
   timed to that line. Details: `reference/brief.md`, `narration.md`, `visual.md`, `qa.md`.
 - **The hiker** is the hero: the same rig, only the outfit changes.
@@ -66,7 +68,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
      - Run `run-lock.sh release` whenever the run ends, stops or fails.
    - Disk: `df -h /System/Volumes/Data` needs ≥ 5 GB free. `bin/cleanup.sh` frees whatever an earlier run left on
      this Mac.
-   - Voice: `node ~/.claude/skills/cp/bin/quota.mjs` (exit 2 = less than ≈1,600 characters left).
+   - Voice: `node ~/.claude/skills/cp/bin/quota.mjs` (exit 2 = less than ≈1,000 characters left).
    - Calendar: `node ~/.claude/skills/cp/bin/yt.mjs upcoming` and `node ~/.claude/skills/cp/bin/ig.mjs upcoming`.
    - **Catch up Instagram:** an earlier Short whose Reel is still pending (its publish.json has no
      `instagram.scheduledVia` and its day is still ahead) gets scheduled first, if Chrome is connected. A missed

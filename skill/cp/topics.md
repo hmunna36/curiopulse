@@ -29,7 +29,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 - [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
 
 ## Done
-- [x] Why do onions make you cry? — onion-tears — YouTube https://youtube.com/shorts/yaD9MFbpv_I 3 Oct 2026 11:30 IST; Instagram pending (3 Oct 18:30 planned)
+- [x] Why do onions make you cry? — onion-tears — YouTube https://youtube.com/shorts/yaD9MFbpv_I 3 Oct 2026 11:30 IST; Instagram 3 Oct 2026 18:30 IST (Business Suite)
 
 - [x] Why Does Ice Cream Give You BRAIN FREEZE? — brain-freeze — https://youtube.com/shorts/Oy7QT27NT-Y · YouTube 2 Oct 2026 11:30 IST · Instagram 2 Oct 2026 18:30 IST (Business Suite)
 - [x] What Really Happens When Lightning Hits a Human? — lightning-full — https://youtube.com/shorts/_4eJeFfXYCI · 29 Sep 2026 (made before /cp)
