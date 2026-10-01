@@ -15,6 +15,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do Your Fingers Wrinkle in Water? | 64 s | [`videos/finger-wrinkles`](videos/finger-wrinkles) | [1 Oct 2026](https://youtube.com/shorts/KPn5s79_a6E) |
 | Why Does Ice Cream Give You Brain Freeze? | 75 s | [`videos/brain-freeze`](videos/brain-freeze) | [2 Oct 2026](https://youtube.com/shorts/Oy7QT27NT-Y) |
 | Why Do Onions Make You Cry? | 74 s | [`videos/onion-tears`](videos/onion-tears) | [3 Oct 2026](https://youtube.com/shorts/yaD9MFbpv_I) |
+| Why Is Yawning Contagious? | 50 s | [`videos/yawning-contagious`](videos/yawning-contagious) | (scheduled after upload) |
 
 Each folder has:
 - the finished MP4;

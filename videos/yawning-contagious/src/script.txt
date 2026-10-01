@@ -1,0 +1,45 @@
+# Narration for "Why Is Yawning CONTAGIOUS?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md): talk to ONE friend, short sentences, questions, asides, a pause before
+# every reveal, the last block `sub` is the subscribe line (<= 70 characters, teases tomorrow, reference/narration.md); the whole script is 95-115 words for a 40-50 s Short, one idea per block, hedge what science hasn't settled ("One idea...", "Scientists think...").
+
+## hook gap=0.05 tempo=1.05
+[curious] One person on the bus yawns... then the next... then the next...
+
+## you gap=0.08 tighten=0.25 tempo=1.00
+and then... [yawning] yoooou.
+
+## react gap=0.40 tighten=0 tempo=1.00
+[deadpan] Thanks, stranger.
+
+## name gap=0.18 tempo=1.06
+That's contagious yawning. About half of adults catch it.
+
+## why gap=0.25 tighten=0.25 tempo=1.00
+[sighs] Why? Honestly... nobody's sure.
+
+## cool gap=0.30 tempo=1.07
+One idea: yawns cool your brain. A big gulp of air... a rush of fresh blood.
+
+## pack gap=0.20 tempo=1.06
+[excited] People with a cold pack on their forehead caught WAY fewer yawns.
+
+## social gap=0.25 tempo=1.06
+[curious] Another idea: it's social. We copy the faces around us...
+
+## dogs gap=0.15 tighten=0 tempo=1.00
+[chuckles] some dogs even catch OURS.
+
+## weird gap=0.50 tighten=0.40 tempo=1.02
+[whispers] And the weirdest part? Just READING about yawns... can start one.
+
+## button gap=0.30 tighten=0.45 tempo=1.02
+So if you yawned during this... it's not boredom. [chuckles] It's science.
+
+## sub gap=0.28 tighten=0.30 tempo=1.02
+[mischievously] Tomorrow: why your stomach growls. Subscribe... if you're still awake.
