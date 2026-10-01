@@ -37,6 +37,16 @@ SIL_DB = -46.0                      # frame level treated as silence (dBFS)
 EDGE = 0.035                        # silence kept at each end of a take (s)
 
 
+def tight_of(v):
+    """tighten=0: keep the take's pauses; tighten=1 (default): pauses over TIGHT_MAX become TIGHT_KEEP;
+    tighten=<seconds> (e.g. 0.55): pauses longer than that are cut down to that length (a comic beat kept, shorter)."""
+    if v == "0":
+        return None
+    if v == "1":
+        return (TIGHT_MAX, TIGHT_KEEP)
+    return (float(v), float(v))
+
+
 def parse(path):
     blocks, cur = [], None
     for line in open(path):
@@ -44,7 +54,7 @@ def parse(path):
         if line.startswith("## "):
             bid, *opts = line[3:].split()
             o = dict(x.split("=") for x in opts)
-            cur = {"id": bid, "gap": float(o.get("gap", 0.4)), "tighten": o.get("tighten", "1") != "0",
+            cur = {"id": bid, "gap": float(o.get("gap", 0.4)), "tighten": tight_of(o.get("tighten", "1")),
                    "tempo": float(o.get("tempo", 1.0)), "trim_db": float(o.get("trim", SIL_DB)), "text": ""}
             blocks.append(cur)
         elif line.startswith("#") or not line.strip():
@@ -74,6 +84,38 @@ def api_keys():
     return keys
 
 
+_PAID = None
+
+
+def paid_keys():
+    """api_keys() without free-plan accounts. Paid plans only (user, 1 Oct 2026): free plans are non-commercial, and ElevenLabs allows one free account per person.
+    Checked once per run through /v1/user/subscription; keys are never printed."""
+    global _PAID
+    if _PAID is None:
+        try:
+            import certifi
+            ctx = ssl.create_default_context(cafile=certifi.where())
+        except ImportError:
+            ctx = ssl.create_default_context()
+        _PAID = []
+        for i, key in enumerate(api_keys(), 1):
+            req = urllib.request.Request("https://api.elevenlabs.io/v1/user/subscription", headers={"xi-api-key": key})
+            try:
+                with urllib.request.urlopen(req, timeout=30, context=ctx) as r:
+                    tier = str(json.load(r).get("tier", "")).lower()
+            except Exception as e:
+                print(f"voice.py: account {i}: plan check failed ({str(e)[:80]}), skipped")
+                continue
+            if tier == "free":
+                print(f"voice.py: account {i}: free plan (no commercial licence), skipped")
+                continue
+            _PAID.append(key)
+        if not _PAID:
+            sys.exit("voice.py: no paid ElevenLabs account in the key file. Free plans can't voice monetized videos, "
+                     "so nothing was synthesized (a blocker: report it).")
+    return _PAID
+
+
 def synth(text, seed):
     """one take; tries each account in turn when one is out of characters (or its key is rejected)"""
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}/with-timestamps?output_format=mp3_44100_128"
@@ -86,7 +128,7 @@ def synth(text, seed):
     except ImportError:
         ctx = ssl.create_default_context()
     errors = []
-    for i, key in enumerate(api_keys(), 1):
+    for i, key in enumerate(paid_keys(), 1):
         req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST",
                                      headers={"xi-api-key": key, "Content-Type": "application/json"})
         try:
@@ -249,9 +291,10 @@ def main():
                 while j < len(quiet) and quiet[j]:
                     j += 1
                 L = (j - i) * hop / SR
-                if L > TIGHT_MAX and i > 0 and j < len(quiet):
-                    c0 = i * hop / SR + TIGHT_KEEP / 2
-                    cuts.append((c0, c0 + L - TIGHT_KEEP))
+                tmax, tkeep = b["tighten"]
+                if L > tmax and i > 0 and j < len(quiet):
+                    c0 = i * hop / SR + tkeep / 2
+                    cuts.append((c0, c0 + L - tkeep))
                 i = j
         if cuts:
             keep, pos = [], 0
@@ -272,13 +315,16 @@ def main():
         x = stretch(x, b["tempo"])
 
         def moved(tt):
+            # cut boundaries are in the trimmed take's own time: compare against the unshifted time, and
+            # subtract every cut that lies before it (a time inside a cut lands on the cut point)
             tt -= a / SR
+            out = tt
             for c0, c1 in cuts:
                 if tt >= c1:
-                    tt -= c1 - c0
+                    out -= c1 - c0
                 elif tt > c0:
-                    tt = c0
-            return max(0.0, tt) / b["tempo"]
+                    out -= tt - c0
+            return max(0.0, out) / b["tempo"]
 
         t += b["gap"]
         for w in ws:

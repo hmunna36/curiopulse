@@ -81,6 +81,9 @@ git -C ~/Desktop/curiopulse show HEAD:videos/hypnic-jerk/src/web/bedroom.js > sr
 | `videos/finger-wrinkles/src/web/hand.js` | open hand whose pads wrinkle, macro fingertip, grape → raisin, sponge |
 | `videos/finger-wrinkles/src/web/inside.js` | skin cutaway: layers, sweat pores and ducts, nerve, vessels, anchoring strands (`sectionCam`) |
 | `videos/finger-wrinkles/src/web/props.js` | stopwatch, tires on a wet road, study cards, clipboard, scan readout |
+| `videos/yawning-contagious/src/web/bus.js` | night city bus interior (windows with a scrolling skyline, light sweeps, poles, swaying straps), passengers with their own rig (`drawPassenger`: gran, suit, teen, nurse; yawn/stretch/sleep/smile/"o"), the hero seated on a bench (`heroOnBench`, `heroSeatPose` with stretch/shrug/point), the yawn wisp, the bus from outside |
+| `videos/yawning-contagious/src/web/yawnhead.js` | side-view head cutaway with a hinged jaw (opens for a yawn), cool air streaming in, carotid blood rush, brain warm → cool, a thermometer (`thermoY`) |
+| `videos/yawning-contagious/src/web/props.js` | cold pack on the forehead, lab monitor playing a clip, a two-bar study chart, a sitting dog that yawns (`drawDog`), a book with lit words (`yawnBook`), a magnifying glass over his eye (`magnifier`) |
 | `videos/lightning-full/src/web/*` | storm, hill, strike, x-ray body, heart, nerves (much of it now in env.js and kit.js) |
 
 Rules for borrowing:

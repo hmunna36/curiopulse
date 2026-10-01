@@ -22,7 +22,7 @@
 ## script.txt
 
 ```
-## <id> gap=<seconds> [tighten=0] [tempo=1.0x]
+## <id> gap=<seconds> [tighten=0|<seconds>] [tempo=1.0x]
 [tag] The line, written the way a person says it... with pauses as "..." and emphasis in CAPS.
 ```
 
@@ -34,9 +34,15 @@
   - 0.55–0.80 for a deadpan beat ("Wow. Thanks, body." had 0.80).
   The picture can play a silent reaction in the gap (the stare, the raisin landing).
 - **`tighten=0`** keeps the take's own pauses (jokes, whispers, reveals). Otherwise pauses longer than 0.42 s are
-  cut to 0.30 s.
+  cut to 0.30 s. **`tighten=0.45`** (any number, since 2 Oct 2026) keeps pauses but caps them at that length: the
+  comic beat stays, shorter. It is free (no API call), so it is the first tool when a Short runs long.
 - **`tempo`:** 1.03–1.06 for explanation blocks, 1.00 for jokes, whispers and reveals. Never above 1.08: Jessica
   starts to sound rushed.
+- **A performed yawn (yawning-contagious, 2 Oct 2026):** `and then... [yawning] yoooou.` made Jessica yawn the word
+  itself (a 1.6 s pitch glide 276 → 152 Hz) and whisper still heard "you"; `[yawns] YOU.` gave only a short breath.
+  To audition variants without touching the block's cache, call `voice.synth(text, seed)` from a small script
+  (each try costs only its characters), measure them (length, voiced fraction, pitch glide, whisper), and install
+  the winner as `voice/<id>.mp3` + `.json` with `key_of(block)`.
 - **Tags that work on v3** (not spoken, not captioned, and each becomes an `events` entry with a time):
   `[whispers] [gasps] [sarcastic] [curious] [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs]
   [yawns]`.
@@ -112,3 +118,10 @@ Retake a block when:
 - the take runs over 1.5× the block's expected length.
 
 The first two retakes of a block are normal. After the third, rewrite the line.
+
+## ElevenLabs licence: paid accounts only (user's decision, 1 Oct 2026)
+
+ElevenLabs' free plan "does not include a commercial license and cannot be used for any commercial purpose", and ElevenLabs allows "one free account per user and IP". The user is buying one paid account (1 Oct 2026) for everything from now on, and decided to leave every video made before then as it is (no re-voicing).
+- `voice.mjs` / `voice.py` and `bin/quota.mjs` read each key's plan from `/v1/user/subscription` and **skip free-plan accounts**. Only paid accounts voice anything, and they never fall back to a free key when the paid one runs low.
+- If no paid account has enough characters, the quota gate exits 2 and the voice tool refuses before sending anything. That is a **blocker**: stop cleanly and report it. Never work around it with another account, a different TTS or a weaker voice.
+- Never use ElevenLabs output as input to another model (use policy §9(k)–(l)), so never clone Jessica or Bill elsewhere.

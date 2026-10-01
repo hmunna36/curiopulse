@@ -31,7 +31,9 @@
 - **Poses** (`POSES`): `stand flinch zap sit sleep jolt scratch fall sitThumb`.
   - Blend them with `lerpPose(a, b, k)`.
   - Add life with `twitch(pose, t, amt)`, `walkPose(t)`, and a breathing bob.
-- **Faces** (`FACES`): `worried shock dazed grin nervous calm sleepy drowsy startled confused annoyed out`.
+- **Faces** (`FACES`): `worried shock dazed grin nervous calm sleepy drowsy startled confused annoyed out yawn`.
+  - `yawn` (2 Oct 2026) drops the jaw (the head stretches down), squeezes the eyes, raises the brows; it also takes
+    `jaw`, `squeeze` and `tear` (0..1) on any face. `lerpFace` blends faces with different keys.
   - Blend them with `lerpFace`.
   - `blink ≥ 0.93` draws closed lashes.
 - **Palettes:**
@@ -41,6 +43,11 @@
     `bath.js`.
   - Make a new outfit the same way: `Object.assign({}, PAL, {...})`. Only the clothes change; face, hair and
     proportions never do.
+- **Gestures toward the camera don't read in 2D.** A finger pointing at the viewer looked like a ball, then like
+  pointing at his own chin (yawning-contagious, 2 Oct 2026). Use a prop that reads in profile instead: he inspected the
+  viewer through a magnifying glass (one giant suspicious eye) and it read at once. Never add a free-floating sleeve:
+  move his own arm (`heroSeatPose(stretch, shrug, point)`) and draw the prop at the rig's wrist (`r.wrR`).
+- A stretch passes through a T-pose if the forearm angle only interpolates; bend the elbows out halfway.
 - Acting sells the joke. Examples:
   - a deadpan stare after the chaos;
   - a glance down at his own body ("Thanks, body.");

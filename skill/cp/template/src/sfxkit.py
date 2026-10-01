@@ -565,3 +565,54 @@ def gas_hiss(dur=1.2, seed=0):
     n = int(dur * SR)
     y = filt(white(n, seed), "bandpass", [2500, 7000]) * np.linspace(0.2, 1, n) ** 1.5 + 0.4 * crackle(n, 400, seed + 1, 3000, 9000)
     return fade(y / (np.max(np.abs(y)) + 1e-9) * np.linspace(1, 0.7, n), 0.05, 0.15)
+
+
+# ================================================================= yawns, buses, bellies (yawning-contagious)
+def yawn_voice(dur=1.2, f0=260.0, f1=120.0, seed=0, breathy=0.55, formants=((820, 380), (1250, 820))):
+    """a cartoon yawn: a breathy vowel whose pitch sags and whose formants slide from 'aah' to 'ooh' (mono).
+    f0 -> f1 is the pitch glide (a dog: 700 -> 380; a big man: 170 -> 85)."""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = f0 * (f1 / f0) ** (u ** 0.8) * (1 + 0.035 * np.sin(2 * np.pi * 5.5 * ar(n)))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k for k in range(1, 28))
+    (a1, b1), (a2, b2) = formants
+    y = svf_bp(src, a1 + (b1 - a1) * u, 0.22) + 0.55 * svf_bp(src, a2 + (b2 - a2) * u, 0.28)
+    y /= np.abs(y).max() + 1e-9
+    nz = filt(white(n, seed), "bandpass", [300, 3200])
+    nz = svf_bp(nz, a1 + (b1 - a1) * u + 300, 0.5)
+    nz /= np.abs(nz).max() + 1e-9
+    env = np.sin(np.pi * u) ** 0.6 * np.minimum(1, u / 0.18)
+    return fade(((1 - breathy) * y + breathy * nz) * env, 0.02, 0.12)
+
+
+def stomach_growl(dur=1.0, seed=0):
+    """a low hungry rumble: a sagging 70 -> 45 Hz buzz, wobbling, with gurgles on top (mono)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = 72 * (45 / 72) ** u * (1 + 0.08 * np.sin(2 * np.pi * 7 * ar(n)))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = np.tanh(2.2 * sum(np.sin(k * ph) / k for k in range(1, 12)))
+    y = filt(y, "lowpass", 420) * (0.6 + 0.4 * np.abs(np.sin(2 * np.pi * 3.3 * ar(n))))
+    y = y / (np.abs(y).max() + 1e-9) + 0.25 * filt(gurgle(dur, seed, 10), "lowpass", 700)
+    return fade(y * np.sin(np.pi * u) ** 0.5, 0.03, 0.1)
+
+
+def bus_hum(n, seed=0):
+    """a city bus at speed: a low diesel hum that breathes, road roar and a few rattles (stereo, n samples)"""
+    t = ar(n)
+    f = 46 + 3 * np.sin(2 * np.pi * 0.13 * t)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    hum = sum(np.sin(k * ph + k) / k ** 1.3 for k in range(1, 9)) * (0.8 + 0.2 * np.sin(2 * np.pi * 0.31 * t))
+    road = np.stack([filt(pink(n, seed + s), "bandpass", [80, 420]) for s in (1, 2)])   # kept under the speech band
+    road /= np.abs(road).max() + 1e-9
+    out = pan_st(filt(hum, "lowpass", 260), 0) * 0.55 + road * 0.35
+    r = np.random.default_rng(seed)
+    tk = 0.4
+    while tk < n / SR - 0.1:   # loose window rattles
+        m = int(0.05 * SR)
+        rat = filt(white(m, int(tk * 100)), "bandpass", [1800, 5200]) * expdecay(m, 0.008) * 0.12
+        i = int(tk * SR)
+        out[:, i:i + m] += pan_st(rat, r.uniform(-0.8, 0.8))[:, : n - i]
+        tk += r.uniform(0.9, 2.4)
+    return out

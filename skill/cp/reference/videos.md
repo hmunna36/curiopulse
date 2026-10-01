@@ -8,6 +8,7 @@
 | `finger-wrinkles`: "Why Do Your Fingers WRINKLE in Water? 🛁" | 64 s | https://youtube.com/shorts/KPn5s79_a6E · 1 Oct 2026 23:30 IST | Business Suite, 30 Sep 2026 20:00 IST |
 | `brain-freeze`: "Why Does Ice Cream Give You BRAIN FREEZE? 🧊" | 75 s | https://youtube.com/shorts/Oy7QT27NT-Y · 2 Oct 2026 11:30 IST | Business Suite, 2 Oct 2026 18:30 IST |
 | `onion-tears`: "Why Do Onions Make You CRY? 🧅" | 74 s | https://youtube.com/shorts/yaD9MFbpv_I · 3 Oct 2026 11:30 IST | Business Suite, 3 Oct 2026 18:30 IST (scheduled 1 Oct 07:45 after Chrome reconnected) |
+| `yawning-contagious`: "Why Is Yawning CONTAGIOUS? 🥱" | 50 s | https://youtube.com/shorts/kJsQ55sjjIU · 4 Oct 2026 11:30 IST | Business Suite, 4 Oct 2026 18:30 IST |
 
 From the first /cp Short on, releases are 11:30 IST on YouTube (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -88,3 +89,26 @@ here for every new Short, with its links.
   onion's wiggle) while staying above y 1100.
 - Claude in Chrome was connected at preflight but gone by ship time, about an hour later. Check it again right
   before step 16; the Reel is caught up next run.
+
+**yawning-contagious** (2 Oct 2026, nightly /cp next; the first Short under the 40–50 s rule, 105 words → 49.9 s):
+- New worlds: `bus.js` (night bus interior, passengers with their own simple rig so nobody looks like the hero,
+  `heroOnBench`, the yawn wisp, the bus from outside), `yawnhead.js` (brain-freeze's head cutaway with a hinged jaw),
+  `props.js` (cold pack, lab monitor, two-bar study chart, a dog that yawns, a book with lit words, a magnifying glass).
+  The rig gained `FACES.yawn` (+ `jaw`, `squeeze`, `tear` on any face). New sfxkit atoms: `yawn_voice`,
+  `stomach_growl`, `bus_hum`.
+- Length: the first voice pass ran 54.7 s. The new `tighten=<s>` option (caps a block's pauses instead of cutting them
+  to 0.30 s) plus small tempo/gap trims reached 49 s with no retake. Plan ~100 words for a 45–50 s Short.
+- voice.py bug, fixed in the template: words after a take's SECOND pause cut were timed late (cut points were compared
+  in already-shifted time); captions ran up to 0.4 s late on lines with two long pauses.
+- Jessica can yawn a word: `and then... [yawning] yoooou.` (5 variants auditioned offline with `voice.synth`, chosen by
+  pitch glide + whisper; `[yawns] YOU.` gave only a breath). 135 extra characters well spent.
+- A caption colour typo (`"brain": P`, the palette dict) rendered the word black for a whole render; make_timeline
+  now asserts every COLOR value is a hex string.
+- 2D pointing at the camera failed twice (a ball; then pointing at his own chin). A magnifying glass with one giant
+  suspicious eye read instantly. A free-floating sleeve = a third arm: move his own arm and draw props at `r.wrR`.
+- First mix: 49 words under 10 dB (road bed 120–900 Hz, rattles, SFX tails ringing into the next line, the subscribe
+  click landing on "if"). Beds under ~420 Hz + hits in the gaps → content words 17.4 dB clear.
+- Three QA rounds; a static 6 s end shot got a slow push-in. Rebuild proven: identical mix and qa numbers.
+- Business Suite's schedule date field is now a text box (D/M/YYYY): select all, type 4/10/2026, then click the day in
+  the calendar that pops up. The thumbnail picker still never loads.
+

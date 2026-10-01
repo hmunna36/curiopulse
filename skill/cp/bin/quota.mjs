@@ -23,6 +23,11 @@ for (const [i, key] of keys.entries()) {
       continue;
     }
     const s = await r.json();
+    // Paid plans only (user, 1 Oct 2026): free plans are non-commercial, and ElevenLabs allows one free account per person.
+    if (String(s.tier ?? '').toLowerCase() === 'free') {
+      console.log(`account ${i + 1}: free plan (no commercial licence), not used`);
+      continue;
+    }
     const left = Math.max(0, s.character_limit - s.character_count);
     const reset = s.next_character_count_reset_unix ? new Date(s.next_character_count_reset_unix * 1000).toISOString().slice(0, 10) : '?';
     total += left;

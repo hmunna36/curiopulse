@@ -57,6 +57,9 @@ const FACES = {
   confused: { eyeOpen: 1.1, pupil: 0.85, lookX: -0.8, lookY: -0.3, browY: 0.7, browTilt: 0.9, mouth: 'wavy', mouthOpen: 0.3, blink: 0, cross: 0 },
   annoyed: { eyeOpen: 1, pupil: 0.95, lookX: 0.5, lookY: -0.8, browY: -0.2, browTilt: -0.7, mouth: 'flat', mouthOpen: 0, blink: 0.4, cross: 0 },
   out: { eyeOpen: 1, pupil: 1, lookX: 0, lookY: 0, browY: -0.2, browTilt: 0.2, mouth: 'flat', mouthOpen: 0.2, blink: 1, cross: 0 },
+  // a full yawn: jaw dropped (the head stretches down), eyes squeezed shut, brows up. Blend toward it with lerpFace;
+  // jaw/squeeze/tear are 0 on every other face (lerpFace treats a missing number as 0 via faceNum)
+  yawn: { eyeOpen: 1, pupil: 1, lookX: 0, lookY: 0, browY: 1.2, browTilt: 0.7, mouth: 'yawn', mouthOpen: 1, blink: 1, cross: 0, jaw: 1, squeeze: 1, tear: 0 },
 };
 // procedural walk toward camera: knees alternate, arms counter-swing, body bobs
 function walkPose(t, speed = 7) {
@@ -71,7 +74,13 @@ function walkPose(t, speed = 7) {
 }
 function lerpFace(p, q, k) {
   const o = {};
-  for (const key in p) o[key] = typeof p[key] === 'number' ? lerp(p[key], q[key], k) : (k < 0.5 ? p[key] : q[key]);
+  for (const key of new Set([...Object.keys(p), ...Object.keys(q)])) {
+    const a = p[key], b = q[key];
+    if (typeof a === 'number' || typeof b === 'number') o[key] = lerp(a || 0, b || 0, k);
+    else o[key] = k < 0.5 ? a : b;
+  }
+  // a yawn mouth opens from a closed one: keep the 'yawn' mouth once the jaw is moving
+  if ((p.mouth === 'yawn' || q.mouth === 'yawn') && (o.jaw || 0) > 0.12) o.mouth = 'yawn';
   return o;
 }
 
@@ -197,11 +206,12 @@ function drawHead(c, r, face, st, pal, t) {
     ellipse(c, s * 62, 2, 13, 18, pal.skinSh);
     ellipse(c, s * 62, 2, 7, 11, pal.xray ? pal.skin : '#B8704F');
   }
-  // head
-  c.beginPath(); c.ellipse(0, 0, 64, 70, 0, 0, Math.PI * 2);
+  // head (a yawn drops the jaw: the lower half stretches down)
+  const jd = 34 * (face.jaw || 0);
+  c.beginPath(); c.ellipse(0, 0, 64, 70, 0, Math.PI, Math.PI * 2); c.ellipse(0, 0, 64 - jd * 0.18, 70 + jd, 0, 0, Math.PI);
   if (pal.xray) fillOut(c, pal.skin, pal);
   else {
-    const g = c.createRadialGradient(-24, -26, 8, 0, 0, 78);
+    const g = c.createRadialGradient(-24, -26, 8, 0, jd * 0.4, 78 + jd * 0.6);
     g.addColorStop(0, pal.skinHi); g.addColorStop(0.45, pal.skin); g.addColorStop(1, pal.skinSh);
     c.fillStyle = g; c.fill();
   }
@@ -259,6 +269,17 @@ function drawFace(c, f, pal) {
     const by = -30 - f.browY * 8;
     line(c, s * 11, by - f.browTilt * 7, s * 37, by + f.browTilt * 3, 7.5, pal.hair);
   }
+  // a squeezed-shut yawn: creases at the outer eye corners, and a tear
+  const sq = f.squeeze || 0;
+  if (sq > 0.05) for (const s of [-1, 1]) for (let i = -1; i <= 1; i++)
+    line(c, s * 42, -2 + i * 7, s * (50 + 3 * Math.abs(i)), -4 + i * 11, 2.5, `rgba(120,60,40,${0.5 * sq})`);
+  const tr = f.tear || 0;
+  if (tr > 0.02) { // a tear rolling down from the left eye's outer corner
+    const ty = 6 + 30 * tr;
+    c.beginPath(); c.moveTo(-40, ty - 12); c.quadraticCurveTo(-33, ty, -40, ty + 7); c.quadraticCurveTo(-47, ty, -40, ty - 12);
+    c.fillStyle = `rgba(170,225,255,${0.95 * clamp(tr * 4)})`; c.fill();
+    circle(c, -42, ty, 2, `rgba(255,255,255,${clamp(tr * 4)})`);
+  }
   // nose
   ellipse(c, 0, 16, 8, 6, 'rgba(190,110,80,0.55)');
   ellipse(c, -2, 14, 3, 2, 'rgba(255,230,210,0.8)');
@@ -286,6 +307,17 @@ function drawFace(c, f, pal) {
   } else if (f.mouth === 'flat') {
     c.beginPath(); c.moveTo(-14, 0); c.quadraticCurveTo(0, 4 + mo * 4, 14, 0);
     c.lineWidth = 5; c.strokeStyle = pal.mouth; c.lineCap = 'round'; c.stroke();
+  } else if (f.mouth === 'yawn') { // tall open oval, upper teeth, uvula, tongue; slides down with the jaw
+    const jd2 = 34 * (f.jaw || 0), rx = 15 + 9 * mo, ry = 6 + 28 * mo;
+    c.translate(0, -2 + jd2 * 0.66);
+    ellipse(c, 0, 0, rx + 3, ry + 3, 'rgba(150,70,60,0.45)');
+    ellipse(c, 0, 0, rx, ry, pal.mouth);
+    c.save(); c.beginPath(); c.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2); c.clip();
+    c.fillStyle = pal.teeth; c.fillRect(-rx, -ry, 2 * rx, 6 * mo + 1);
+    ellipse(c, 0, -ry + 12 * mo, 4 * mo, 7 * mo, '#C4405A');                 // uvula
+    ellipse(c, 0, ry - 2, rx * 0.8, 9 + 8 * mo, pal.tongue);                 // tongue
+    line(c, 0, ry - 10 - 6 * mo, 0, ry, 2, 'rgba(150,40,60,0.5)');
+    c.restore();
   } else if (f.mouth === 'grimace') {
     rrect(c, -26, -9, 52, 20, 8); c.fillStyle = pal.teeth; c.fill();
     c.lineWidth = 3.5; c.strokeStyle = pal.mouth; c.stroke();
