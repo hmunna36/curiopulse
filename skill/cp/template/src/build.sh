@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Rebuild videos/__SLUG__/__SLUG__-short.mp4 from scratch.
-# Toolchain: python3 (numpy scipy soundfile pyloudnorm pillow certifi), node + playwright-core
+# Toolchain: python3 (numpy scipy soundfile pyloudnorm pillow certifi; pedalboard optional), node + playwright-core
 # driving an installed Chrome (or CHROME_PATH), ffmpeg with libx264/aac on PATH. On the /cp Mac all of it
 # lives in ~/.cache/cp (picked up automatically below).
 # The narration takes are committed in src/voice/, so no API call is needed unless a line of
@@ -41,7 +41,10 @@ fi
 # 3. edit timeline: shots anchored to phrases, caption chunks, cues
 (cd "$SRC" && "$PY" make_timeline.py "$WORK")
 
-# 4. sound design, score, mix (-14 LUFS, <= -1 dBTP)
+# 3b. baked 2D physics (only when src/physics.js exists): matter-js at 240 Hz -> $WORK/physics.json
+if [ -f "$SRC/physics.js" ]; then node "$SRC/bake_physics.js" "$WORK"; fi
+
+# 4. sound design, score, mix (-14 LUFS, <= -1 dBTP; pedalboard's studio chain when it is installed)
 (cd "$SRC" && "$PY" audio.py "$WORK")
 
 # 5. picture: every canvas frame streamed straight into the encoder, muxed with the mix

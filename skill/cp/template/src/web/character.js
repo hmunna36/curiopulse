@@ -410,6 +410,113 @@ function drawCharacter(c, st, t, pal = PAL) {
 // map a local rig point to world coords
 function toWorld(st, p) { return [st.x + p[0] * st.s, st.y + p[1] * st.s]; }
 
+// ---------- IK + springs: hands that reach, feet that stay planted, follow-through ----------
+// Frame-pure (every value is a function of t), so any frame renders on its own. Rig-local coords: feet on y = 0,
+// up = -y, x right (ikLocal converts a world point). Bone lengths are rig()'s: upper arm 100, forearm 90, thigh 104,
+// shin 98. Nothing here changes drawCharacter: these return ordinary poses and head offsets.
+function angNear(x, ref) { return x + 2 * Math.PI * Math.round((ref - x) / (2 * Math.PI)); }
+// the shoulder (arms) or hip joint (legs) of a limb, rig-local, for this pose
+function limbRoot(pose, limb) {
+  const s = limb.endsWith('L') ? -1 : 1;
+  if (limb.startsWith('leg')) return [36 * s, pose.hipY + 4];
+  const cs = Math.cos(pose.lean), sn = Math.sin(pose.lean), x = 74 * s, y = -148;
+  return [x * cs - y * sn, pose.hipY + x * sn + y * cs];
+}
+// Analytic two-bone IK: bend limb ('armL' | 'armR' | 'legL' | 'legR') so its end (wrist or ankle) lands on target
+// [x, y] (rig-local; out of reach = stretched straight toward it). bend +1 folds the joint like the rest poses
+// (elbows in, hands out; for legs knees in), -1 the other way (legs default to -1: knees out, like the walk).
+// Returns a new pose; the other limbs are untouched. Angles stay next to the input pose's, so lerpPose never spins.
+function ikLimb(pose, limb, target, bend) {
+  const s = limb.endsWith('L') ? -1 : 1, isLeg = limb.startsWith('leg');
+  const l1 = isLeg ? 104 : 100, l2 = isLeg ? 98 : 90;
+  if (bend === undefined) bend = isLeg ? -1 : 1;
+  const root = limbRoot(pose, limb), lean = isLeg ? 0 : pose.lean * s;
+  const dx = target[0] - root[0], dy = target[1] - root[1];
+  const d = clamp(Math.hypot(dx, dy), Math.abs(l1 - l2) + 1e-3, l1 + l2 - 1e-3);
+  const th0 = Math.atan2(s * dx, dy);
+  const B = Math.acos(clamp((l1 * l1 + d * d - l2 * l2) / (2 * l1 * d), -1, 1));
+  const th1 = th0 - bend * B;
+  const ex = root[0] + s * Math.sin(th1) * l1, ey = root[1] + Math.cos(th1) * l1;
+  const th2 = Math.atan2(s * (target[0] - ex), target[1] - ey);
+  const out = Object.assign({}, pose), prev = pose[limb] || { a: 0, b: 0 };
+  out[limb] = { a: angNear(th1 - lean, prev.a), b: angNear(th2 - th1, prev.b) };
+  return out;
+}
+function ikReach(pose, side, target, bend = 1) { return ikLimb(pose, 'arm' + side, target, bend); }   // side 'L' | 'R'
+function ikPlant(pose, side, target, bend = -1) { return ikLimb(pose, 'leg' + side, target, bend); }
+function ikLocal(st, wx, wy) { return [(wx - st.x) / st.s, (wy - st.y) / st.s]; }   // world point -> rig-local
+// Walk toward the camera with planted feet: the standing foot stays exactly on the floor while the hips bob (lowest
+// when both feet are down), the other foot lifts; the weight sways over the standing foot; arms counter-swing and the
+// forearms trail them (follow-through). A drop-in for walkPose(t). o: {speed = 7, lift = 26, bob = 7, stance = 50, sway = 0.03}
+function walkPlanted(t, o = {}) {
+  const ph = t * (o.speed || 7), lift = o.lift === undefined ? 26 : o.lift, bob = o.bob === undefined ? 7 : o.bob;
+  const sw = Math.sin(ph);
+  let p = JSON.parse(JSON.stringify(POSES.stand));
+  p.hipY = -222 + bob * (0.5 + 0.5 * Math.cos(2 * ph));
+  p.lean = (o.sway === undefined ? 0.03 : o.sway) * sw;
+  p.armL = { a: 0.2 + 0.13 * sw, b: 0.24 + 0.16 * Math.sin(ph - 0.7) };
+  p.armR = { a: 0.2 - 0.13 * sw, b: 0.24 - 0.16 * Math.sin(ph - 0.7) };
+  for (const [s, k] of [[-1, 'L'], [1, 'R']]) {
+    const up = Math.pow(Math.max(0, -s * sw), 1.4);              // L swings while sin > 0, R while sin < 0
+    p = ikPlant(p, k, [s * ((o.stance || 50) + 6 * up), -16.5 - lift * up], -1);
+  }
+  return p;
+}
+// 0 -> 1 response of a damped spring released at dt = 0 (dt <= 0 gives 0), like Remotion's spring(): pops that
+// overshoot and settle, wobbles that ring. f = frequency in Hz, z = damping ratio (0.2 bouncy ... 1 no overshoot).
+function springStep(dt, f = 2.2, z = 0.4) {
+  if (dt <= 0) return 0;
+  const w = 2 * Math.PI * f;
+  if (z >= 1) return 1 - Math.exp(-w * dt) * (1 + w * dt);
+  const q = Math.sqrt(1 - z * z), wd = w * q;
+  return 1 - Math.exp(-z * w * dt) * (Math.cos(wd * dt) + (z / q) * Math.sin(wd * dt));
+}
+// A value that chases fn(time) through a damped spring: lag, follow-through and overshoot for anything driven by time
+// (a head after a jolt, a dangling prop, a label on a moving camera). fn returns a number or an array of numbers.
+// Simulated at 240 Hz from o.t0 (e.g. the shot start; the spring starts at rest on fn there) or `window` seconds back,
+// so it is frame-pure. o: {f = 3 (Hz; a number or one per array element), z = 0.35, t0, window = 2}
+function springFollow(fn, t, o = {}) {
+  const z = o.z === undefined ? 0.35 : o.z, dt = 1 / 240;
+  const from = Math.min(t, Math.max(o.t0 === undefined ? -Infinity : o.t0, t - (o.window || 2)));
+  const first = fn(from), arr = Array.isArray(first);
+  const y = arr ? first.slice() : [first], v = y.map(() => 0);
+  const ws = y.map((_, i) => 2 * Math.PI * (Array.isArray(o.f) ? o.f[i] : (o.f || 3)));
+  const n = Math.max(0, Math.round((t - from) / dt)), h = n ? (t - from) / n : 0;
+  for (let s = 1; s <= n; s++) {
+    let g = fn(from + s * h);
+    if (!arr) g = [g];
+    for (let i = 0; i < y.length; i++) {
+      const w = ws[i];
+      v[i] += (w * w * (g[i] - y[i]) - 2 * z * w * v[i]) * h;
+      y[i] += v[i] * h;
+    }
+  }
+  return arr ? y : y[0];
+}
+// A pose whose joints each lag behind poseFn(time) on springs: forearms, shins and the lean lag a little more than the
+// upper limbs, so every pose change overshoots and settles with overlapping action. Wrap any keyframed pose:
+//   const pose = springPose((tt) => lerpPose(POSES.stand, POSES.flinch, ramp(tt, c.boom, c.boom + 0.15)), t, { t0: shot.start });
+// o: {f = 3.2, z = 0.38, t0, window}. The hand shape and feetFront come from poseFn(t).
+function springPose(poseFn, t, o = {}) {
+  const K = ['armL', 'armR', 'legL', 'legR'];
+  const flat = (tt) => { const p = poseFn(tt); return [p.hipY, p.lean, ...K.flatMap((k) => [p[k].a, p[k].b])]; };
+  const f = o.f || 3.2;
+  const fs = [f * 1.2, f * 0.8, ...K.flatMap(() => [f, f * 0.8])];
+  const v = springFollow(flat, t, { f: fs, z: o.z === undefined ? 0.38 : o.z, t0: o.t0, window: o.window });
+  const out = Object.assign({}, poseFn(t), { hipY: v[0], lean: v[1] });
+  K.forEach((k, i) => { out[k] = { a: v[2 + 2 * i], b: v[3 + 2 * i] }; });
+  return out;
+}
+// The head's follow-through: {headDX, headDY, headRot} for st, from how the neck moves in poseFn(time). The head
+// trails a jolt, a bob or a lean, then catches up and overshoots. amt scales it (1 = natural, 2 = cartoon).
+// o: {f = 2.6, z = 0.3, t0, window, amt = 1}
+function springHead(poseFn, t, o = {}) {
+  const neck = (tt) => { const p = poseFn(tt); return [176 * Math.sin(p.lean), p.hipY - 176 * Math.cos(p.lean), p.lean]; };
+  const now = neck(t), lag = springFollow(neck, t, { f: o.f || 2.6, z: o.z === undefined ? 0.3 : o.z, t0: o.t0, window: o.window });
+  const k = o.amt === undefined ? 1 : o.amt;
+  return { headDX: (lag[0] - now[0]) * k, headDY: (lag[1] - now[1]) * k, headRot: (lag[2] - now[2]) * 1.5 * k };
+}
+
 // ---------- x-ray skeleton + heart ----------
 function drawBones(c, st, r, t, heartScale, alpha) {
   const col = `rgba(225,240,255,${0.92 * alpha})`, col2 = `rgba(160,200,255,${0.7 * alpha})`;

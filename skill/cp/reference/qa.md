@@ -89,3 +89,6 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
   copy the final scores and the list of changes into the README's "Ship review".
 - **Hard blockers** (voice quota, disk, a platform outage) mean no upload of a weaker version. Report exactly what
   is done and what is blocking.
+
+`qa.py` (since 2 Oct 2026) also writes `qa/safe_sheet.png` (hook, every shot, the subscribe cue, the end, with the
+safe-area mask) and names the time and channel of the true peak. Read safe_sheet.png every run.

@@ -107,3 +107,20 @@ node render.js ../.work/timeline.json ../<slug>-short.mp4 --audio ../.work/mix.w
 - Encoder settings: CRF 17, preset slow, High 4.2, closed GOP 30, bt709 tv range, AAC 256 k. A 64 s film-grain
   Short is ≈ 80 MB. **If a Short would pass 95 MB**, add `-maxrate 9M -bufsize 18M` in render.js. GitHub refuses
   files over 100 MB.
+
+## The toolkit (added 2 Oct 2026)
+
+`src/web/toolkit.js` loads after fx.js; `scene.html` also loads the vendored libraries in `src/web/vendor/<lib>/`
+(each with its LICENSE): simplex-noise 4.0.3, culori 4.0.2, flubber 0.4.2, Zdog 1.1.3, roughjs 4.6.6 (all MIT).
+matter-js 0.20.0 (MIT) runs in Node only, for the physics bake.
+- Noise: `sn2 sn3 snFbm snDrift snBlob snWisps`. Colour (OKLCH): `okMix okShade okRamp okPal okColor okHex`.
+- Shapes and morphs (flubber): `shapeCircle/Tear/Heart/Star/Rect/Blob shapePath`, `morphPath morphFill morphSplit`.
+- Zdog props drawn as vectors under the camera: `zdProp zdBall zdTube zdDraw zdHeart zdEye zdCell zdMolecule zdPlanet zdBlob`.
+- Hand-drawn ink (seeded, draw-on `k`, `boil`): `roughDraw roughCircle roughUnderline roughArrow roughBox`.
+- Baked physics: write `src/physics.js` and build.sh runs `src/bake_physics.js` (240 Hz, deterministic) into
+  `.work/physics.json`; render.js injects it as `window.PHYS`; read it with `physAt physBody physHits physDebug`.
+  Baked, not live, because `renderFrame(f)` must be a pure seek (stills and ranges jump straight to a frame).
+- character.js: two-bone IK (`ikLimb ikReach ikPlant ikLocal limbRoot angNear`), `walkPlanted` (feet that stay
+  planted), frame-pure springs (`springStep springFollow springPose springHead`), plus the yawn face.
+- Reserved global prefixes: `sn ok shape morph zd rough phys`, and the globals rough, culori, flubber, Zdog, SimplexNoise.
+- Not integrated: Paper Shaders (ESM-only, renders on requestAnimationFrame; needs a synchronous WebGL mount first).

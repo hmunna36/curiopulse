@@ -13,12 +13,21 @@
 </head>
 <body>
 <canvas id="c" width="1080" height="1920"></canvas>
-<!-- engine: canvases/easing/camera, sky+weather, the hiker rig, the lightning-era kit (SC registry), shared fx -->
+<!-- vendored libraries (MIT; web/vendor/<lib>/LICENSE), used through toolkit.js: noise, OKLCH colour, morphs,
+     pseudo-3D props, hand-drawn ink. (matter-js is only used by bake_physics.js, in Node.) -->
+<script src="vendor/simplex-noise/simplex-noise.js"></script>
+<script src="vendor/culori/culori.min.js"></script>
+<script src="vendor/flubber/flubber.min.js"></script>
+<script src="vendor/zdog/zdog.dist.min.js"></script>
+<script src="vendor/roughjs/rough.js"></script>
+<!-- engine: canvases/easing/camera, sky+weather, the hiker rig (+ IK and springs), the lightning-era kit (SC registry),
+     shared fx, the toolkit (sn* ok* shape* morph* zd* rough* phys*) -->
 <script src="lib.js"></script>
 <script src="env.js"></script>
 <script src="character.js"></script>
 <script src="kit.js"></script>
 <script src="fx.js"></script>
+<script src="toolkit.js"></script>
 <!-- this video's worlds and props (one file per world, e.g. bedroom.js, bath.js), then its shots -->
 <script src="scenes.js"></script>
 <script src="subscribe.js"></script>

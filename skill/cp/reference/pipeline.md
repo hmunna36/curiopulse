@@ -72,3 +72,7 @@ rebuild and to prove the folder rebuilds.
   blobs from visualalgo once.
 - **Long commands:** run renders, voice batches and qa in the background with a log and an EXIT marker, and check
   on them; the tool's 10-minute limit kills foreground jobs.
+
+Toolchain note (2 Oct 2026): `~/.cache/cp/venv` has pedalboard 0.9.25 (GPL-3.0, used as a tool only, never
+vendored into the repo) for mixlib's studio chain. The shared CC0 sounds live in the repo's `assets/sfx/` (pushed
+5f3e314); cleanup.sh narrows them out again after a run.

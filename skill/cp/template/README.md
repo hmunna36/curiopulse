@@ -60,6 +60,9 @@ QA rounds, the scores against the ship bar, and what changed each round (from `.
 ## Rebuild
 
 `src/build.sh` rebuilds the MP4 from scratch in about 10 minutes. It needs python3 (numpy, scipy, soundfile,
-pyloudnorm, pillow, certifi), node with playwright-core and an installed Chrome, and ffmpeg with libx264/aac.
+pyloudnorm, pillow, certifi; pedalboard for the studio mix chain, else the classic chain runs), node with
+playwright-core and an installed Chrome, and ffmpeg with libx264/aac. The JavaScript libraries the scenes use are
+vendored in `src/web/vendor/` (MIT, licences inside). Recorded one-shots come from the repo's shared CC0 folder
+`assets/sfx/` (`git sparse-checkout add assets/sfx`; credits in `assets/sfx/CREDITS.md`).
 The narration takes are committed in `src/voice/`, so no API call is needed unless a line of `src/script.txt`
 changes. For a changed line, run `src/build.sh --synth` with `ELEVENLABS_API_KEY` set.

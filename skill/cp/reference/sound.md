@@ -59,3 +59,18 @@ New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's
 cd videos/<slug>/src && $PYTHON audio.py ../.work     # ≈1–2 min; prints LUFS and true peak
 $PYTHON qc_audio.py ../.work                          # per-shot stem levels + words under 10 dB (all words)
 ```
+
+## Recorded CC0 one-shots and the studio chain (added 2 Oct 2026)
+
+- `cc0(name, seed, pitch, gain, stereo, room)` plays Kenney's CC0 sounds from the repo's shared `assets/sfx/kenney/`
+  (impact, interface, ui, rpg; CREDITS.md lists the packs). A family name (`rpg/chop`, `impact/footstep_wood`,
+  `interface/drop`, `ui/click` …) picks a variant by seed; `cc0_list()` shows them. It sparse-checks `assets/sfx`
+  out on first use and decodes in memory; if the folder can't be had it warns and plays a synthesized stand-in.
+  `CP_SFX=<dir>` overrides the folder. CC0 only: never Sonniss, NC packs or the Freesound API.
+- Physics impacts: `for t, v, a, b in phys_hits(WORK, "<body group>", min_speed=80)` with `hit_gain(v, …)`.
+- Recorded sounds follow the same rule as synthesized ones: the punchline SFX lands after the word, and nothing
+  loud sits on a spoken word. In the toolkit test, chops at −12 dB on "chop, chop, chop" and footsteps/the
+  subscribe bell at −22 dB masked words (SNR 3–4 dB); −21, −40 and −32 dB fixed it.
+- mixlib's studio chain (pedalboard 0.9.25 in ~/.cache/cp/venv; default when importable, `CP_STUDIO=0` turns it
+  off): voice compressor 3:1 with a ≤3 dB transient shave, master glue 1.6:1, true-peak brickwall limiter.
+  On onion tears it raised content-word SNR 15.4 → 17.8 dB and true peak after AAC −1.19 → −1.79 dBTP at −14 LUFS.

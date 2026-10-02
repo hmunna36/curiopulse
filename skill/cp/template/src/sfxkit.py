@@ -616,3 +616,162 @@ def bus_hum(n, seed=0):
         out[:, i:i + m] += pan_st(rat, r.uniform(-0.8, 0.8))[:, : n - i]
         tk += r.uniform(0.9, 2.4)
     return out
+
+
+# ================================================================= recorded CC0 one-shots (Kenney's audio packs)
+# The curiopulse repo keeps ONE shared, CC0-only sound folder: assets/sfx/kenney/{impact,interface,ui,rpg}/*.ogg
+# (assets/sfx/CREDITS.md lists the packs). Videos don't copy it: cc0() finds it in the repo checkout, sparse-checks it
+# out on first use (git sparse-checkout add assets/sfx), and decodes into memory (nothing is written into the repo,
+# so cleanup.sh stays happy). If the folder can't be had (offline, not pushed yet), cc0() warns once and returns a
+# synthesized stand-in, so audio.py never breaks. Families (reference/sound.md): impact/impactWood_heavy,
+# impact/impactSoft_medium, impact/impactGlass_light, impact/impactPunch_medium, impact/footstep_wood,
+# interface/drop, interface/pluck, interface/select, interface/maximize, ui/click, ui/switch, rpg/chop,
+# rpg/knifeSlice, rpg/cloth, rpg/creak, rpg/bookFlip, rpg/footstep ...
+import glob as _glob
+import os as _os
+import re as _re
+import subprocess as _sp
+import sys as _sys
+from fractions import Fraction as _Fraction
+
+try:
+    import pedalboard as _pb          # optional (GPL-3.0 tool, used to process audio; never shipped with a video)
+except ImportError:
+    _pb = None
+
+_SFX_DIR = None
+_CC0_CACHE = {}
+_CC0_WARNED = set()
+
+
+def _cc0_warn(msg):
+    if msg not in _CC0_WARNED:
+        _CC0_WARNED.add(msg)
+        print(f"sfxkit: {msg}", file=_sys.stderr)
+
+
+def sfx_dir():
+    """the repo's shared assets/sfx folder (checked out on demand), or None"""
+    global _SFX_DIR
+    if _SFX_DIR is not None:
+        return _SFX_DIR or None
+    here = _os.path.dirname(_os.path.abspath(__file__))
+    in_repo = _os.path.normpath(_os.path.join(here, "..", "..", ".."))            # videos/<slug>/src -> the repo
+    repo_env = _os.environ.get("CP_REPO", _os.path.expanduser("~/Desktop/curiopulse"))
+    cands = [_os.environ.get("CP_SFX"), _os.path.join(in_repo, "assets", "sfx"), _os.path.join(repo_env, "assets", "sfx")]
+    found = next((c for c in cands if c and _os.path.isdir(_os.path.join(c, "kenney"))), None)
+    if not found:
+        for repo in (in_repo, repo_env):
+            if _os.path.isdir(_os.path.join(repo, ".git")):
+                r = _sp.run(["git", "-C", repo, "sparse-checkout", "add", "assets/sfx"], capture_output=True, text=True)
+                if r.returncode == 0 and _os.path.isdir(_os.path.join(repo, "assets", "sfx", "kenney")):
+                    found = _os.path.join(repo, "assets", "sfx")
+                    break
+    _SFX_DIR = found or ""
+    if not found:
+        _cc0_warn("assets/sfx isn't available (not on GitHub yet, or offline): cc0() plays synthesized stand-ins")
+    return found
+
+
+def cc0_list(pattern="*"):
+    """names of the recorded sounds matching a glob, e.g. cc0_list('impact/impactWood*')"""
+    d = sfx_dir()
+    if not d:
+        return []
+    root = _os.path.join(d, "kenney")
+    return sorted(_os.path.relpath(p, root)[:-4] for p in _glob.glob(_os.path.join(root, pattern + ".ogg")))
+
+
+def _cc0_standin(name, seed):
+    n = name.lower()
+    if "footstep" in n:
+        return thump(0.14, 170, 60, 0.03) * 0.8 + 0.2 * filt(white(int(0.14 * SR), seed), "bandpass", [700, 3000]) * attack_decay(int(0.14 * SR), 0.001, 0.02)
+    if "knife" in n:
+        return crack(0.16, seed, 0.03, 3000)
+    if "chop" in n:
+        return chop(seed)
+    if any(k in n for k in ("glass", "bell", "bong", "pluck", "confirmation")):
+        return bell(1300 + 200 * (seed % 5), 0.6, 0.2)
+    if any(k in n for k in ("impact", "drop", "book", "door", "punch", "plank", "wood", "plate", "metal", "tin", "mining", "soft")):
+        return thump(0.3, 240, 70, 0.07) + 0.25 * np.concatenate([crack(0.06, seed, 0.01, 1500), np.zeros(int(0.24 * SR))])
+    if any(k in n for k in ("click", "switch", "select", "tick", "toggle", "rollover", "scroll", "latch", "mouse")):
+        return snap(seed)
+    if any(k in n for k in ("maximize", "minimize", "open", "close", "back")):
+        return whoosh(0.25, 600, 3000, seed)
+    if any(k in n for k in ("cloth", "leather", "belt", "scratch", "coins")):
+        return rustle(0.4, seed)
+    if "creak" in n:
+        return creak(0.5, seed)
+    if "error" in n or "glitch" in n:
+        return glitch_burst(0.25, seed)
+    return blip(800, 1600, 0.08, seed)
+
+
+def cc0(name, seed=0, pitch=1.0, gain=1.0, stereo=False, room=0.0):
+    """A recorded CC0 one-shot at 48 kHz, peak-normalised to `gain`.
+    name: one file ('impact/impactWood_heavy_002') or a family ('impact/impactWood_heavy': the variant is picked by seed,
+    so repeated hits differ). pitch: playback rate (1.06 = a little higher and shorter; vary it per hit). stereo: keep
+    the file's stereo image as (2, n) (else mono, which Bus.add pans). room: 0..1, a small pedalboard room around the
+    dry, close-miked recording (needs pedalboard; ignored without it). Place it like any atom:
+        sfx.add(cc0('rpg/chop', seed=k, pitch=0.97 + 0.02 * k), c['chop'] + 0.05, db(-14), pan=0.2)"""
+    key = (name, seed, round(pitch, 4), stereo, round(room, 3))
+    if key not in _CC0_CACHE:
+        d = sfx_dir()
+        path = None
+        if d:
+            root = _os.path.join(d, "kenney")
+            exact = _os.path.join(root, name + ".ogg")
+            if _os.path.isfile(exact):
+                path = exact
+            else:
+                fam = [p for p in _glob.glob(_os.path.join(root, name + "*.ogg"))
+                       if _re.fullmatch(_re.escape(_os.path.basename(name)) + r"_?\d+", _os.path.basename(p)[:-4])]
+                if fam:
+                    path = sorted(fam)[np.random.default_rng(seed).integers(len(fam))]
+                else:
+                    _cc0_warn(f"no recorded sound '{name}' in {root}: using a synthesized stand-in")
+        if path:
+            import soundfile as _sf
+            x, sr = _sf.read(path, always_2d=True)
+            x = x.T.astype(np.float64)                                   # (ch, n)
+            if x.shape[0] == 1:
+                x = np.vstack([x, x])
+            ratio = _Fraction(SR / (sr * pitch)).limit_denominator(2000)  # resample to 48 kHz and change the rate
+            if ratio != 1:
+                from scipy import signal as _signal
+                x = _signal.resample_poly(x, ratio.numerator, ratio.denominator, axis=1)
+            if room > 0 and _pb is not None:
+                rv = _pb.Pedalboard([_pb.Reverb(room_size=0.22, damping=0.6, wet_level=0.45 * room, dry_level=1.0, width=0.8)])
+                tail = np.zeros((2, int(0.35 * SR)))
+                x = rv(np.hstack([x, tail]).astype(np.float32), SR).astype(np.float64)
+            y = x if stereo else x.mean(axis=0)
+        else:
+            y = _cc0_standin(name, seed)
+            if stereo:
+                y = np.vstack([y, y])
+        y = fade(y / (np.max(np.abs(y)) + 1e-9), 0.0005, 0.01)
+        _CC0_CACHE[key] = y
+    return _CC0_CACHE[key] * gain
+
+
+def phys_hits(work, name=None, min_speed=60.0):
+    """impacts from the baked physics (bake_physics.js -> <work>/physics.json), loudest first per moment:
+    [(t, speed px/s, body a, body b)] sorted by time. Sound every bounce:
+        for t, v, a, b in phys_hits(WORK, 'drop'):
+            sfx.add(cc0('impact/impactWood_light', seed=int(t * 100), pitch=0.95 + v / 8000), t, hit_gain(v))"""
+    import json as _json
+    p = _os.path.join(work, "physics.json")
+    if not _os.path.exists(p):
+        return []
+    data = _json.load(open(p))
+    out = []
+    for nm, sim in data.items():
+        if name and nm != name:
+            continue
+        out += [(h["t"], h["speed"], h["a"], h["b"]) for h in sim["hits"] if h["speed"] >= min_speed]
+    return sorted(out)
+
+
+def hit_gain(speed, loud=1500.0, top_db=-10.0, range_db=18.0):
+    """gain for an impact at `speed` px/s: top_db at `loud` px/s or faster, range_db quieter for a 10x slower hit"""
+    return db(top_db - range_db * min(1.0, max(0.0, np.log10(loud / max(speed, 1e-3)))))

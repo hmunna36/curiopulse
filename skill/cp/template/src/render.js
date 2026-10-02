@@ -47,6 +47,9 @@ function parseFrames(spec, total) {
   page.on('console', (m) => console.log('[page]', m.text()));
   page.on('pageerror', (e) => { console.error('[pageerror]', e.message); process.exitCode = 1; });
   await page.addInitScript({ content: 'window.TL = ' + JSON.stringify(tl) + ';' });
+  // baked physics (bake_physics.js writes physics.json next to timeline.json): web/toolkit.js reads window.PHYS
+  const physPath = path.join(path.dirname(path.resolve(tlPath)), 'physics.json');
+  if (fs.existsSync(physPath)) await page.addInitScript({ content: 'window.PHYS = ' + fs.readFileSync(physPath, 'utf8') + ';' });
   await page.goto('file://' + path.resolve(__dirname, 'web/scene.html'));
   await page.waitForFunction(() => window.READY === true, null, { timeout: 60000 });
   const t0 = Date.now();

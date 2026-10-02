@@ -15,7 +15,11 @@ Checks (FAIL blocks the upload; WARN is for the review):
 - Voice: speech-band SNR >= 10 dB on all but 3 words (from the stems).
 - Intelligibility: whisper's transcript of the final mix vs the script, word error rate <= 8 %.
 - Captions: every word is captioned, chunks are 1-5 words, and none stays on screen under 0.25 s.
-It also writes contact sheets every 0.5 s (qa/sheet_*.png) for the visual review; Read them.
+It also writes contact sheets every 0.5 s (qa/sheet_*.png) for the visual review, and qa/safe_sheet.png: the hook,
+every shot, the subscribe cue and the last frame with the Shorts safe-area mask on them (bin/safe-area.py; red =
+covered by the YouTube UI or cropped, green = the key-content zone). Read them all.
+The true peak is ITU-R BS.1770's: the largest sample after 4x oversampling (scipy), measured next to pyloudnorm's
+integrated loudness on the AAC decoded from the MP4; the report names the moment of the peak.
 """
 import json
 import os
@@ -69,9 +73,11 @@ wav = os.path.join(QA, "_mix.wav")
 run("ffmpeg", "-v", "error", "-y", "-i", MP4, "-vn", "-c:a", "pcm_s24le", wav)
 x, sr = sf.read(wav)
 loud = pyln.Meter(sr).integrated_loudness(x)
-tp = 20 * np.log10(np.abs(signal.resample_poly(x, 4, 1, axis=0)).max())
+up = np.abs(signal.resample_poly(x, 4, 1, axis=0))                     # BS.1770 true peak: 4x oversampled
+tpi, tpc = np.unravel_index(np.argmax(up), up.shape)
+tp = 20 * np.log10(up[tpi, tpc] + 1e-12)
 check(abs(loud + 14) <= 0.5, "loudness -14 LUFS", f"{loud:.2f} LUFS")
-check(tp <= -1.0, "true peak <= -1 dBTP (after AAC)", f"{tp:.2f} dBTP")
+check(tp <= -1.0, "true peak <= -1 dBTP (after AAC)", f"{tp:.2f} dBTP at {tpi / (4 * sr):.2f} s ({'LR'[tpc] if up.shape[1] == 2 else tpc})")
 
 # ---------------------------------------------------------------- picture: first frame, early motion, frozen stretches
 fr_dir = os.path.join(QA, "_frames")
@@ -117,6 +123,44 @@ for si in range(0, len(thumbs), per):
     path = os.path.join(QA, f"sheet_{si // per + 1}.png")
     sheet.save(path)
     sheets.append(path)
+
+# ---------------------------------------------------------------- safe-area sheet (informational; ship-bar item 7b)
+safe_note = ""
+try:
+    tl_ = json.load(open(os.path.join(WORK, "timeline.json")))
+    cues_ = tl_.get("cues", {})
+    times = [0.1, 1.0, 2.0] + [s_["start"] + min(0.6, (s_["end"] - s_["start"]) / 2) for s_ in tl_["shots"][1:]]
+    for k_ in ("sub_in", "sub_tap"):
+        if isinstance(cues_.get(k_), (int, float)):
+            times.append(cues_[k_] + 0.3)
+    times = sorted({round(min(max(0.0, t_), dur - 0.05), 2) for t_ in times + [dur - 0.05]})[:24]
+    tool = next((p_ for p_ in (os.environ.get("CP_SAFE_AREA", ""), os.path.expanduser("~/.claude/skills/cp/bin/safe-area.py"),
+                               os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "skill", "cp", "bin", "safe-area.py"))
+                 if p_ and os.path.isfile(p_)), None)
+    if tool:
+        sa_dir = os.path.join(QA, "_safe")
+        shutil.rmtree(sa_dir, ignore_errors=True)
+        os.makedirs(sa_dir)
+        for t_ in times:
+            run("ffmpeg", "-v", "error", "-y", "-ss", f"{t_:.3f}", "-i", MP4, "-frames:v", "1", "-vf", "scale=540:960",
+                os.path.join(sa_dir, f"t_{t_:06.2f}.png"))
+        stills = sorted(os.path.join(sa_dir, f) for f in os.listdir(sa_dir))
+        run(sys.executable, tool, "overlay", *stills, "--out", sa_dir)
+        tiles = [(os.path.basename(p_)[2:8], Image.open(p_[:-4] + ".safe.png").convert("RGB").resize((270, 480))) for p_ in stills]
+        cols_ = 6
+        sheet = Image.new("RGB", (cols_ * 270, ((len(tiles) + cols_ - 1) // cols_) * 500), (25, 25, 25))
+        d_ = ImageDraw.Draw(sheet)
+        for i_, (lab, im) in enumerate(tiles):
+            xx, yy = (i_ % cols_) * 270, (i_ // cols_) * 500
+            sheet.paste(im, (xx, yy + 20))
+            d_.text((xx + 4, yy + 4), f"{float(lab):.2f}s", fill=(255, 255, 0))
+        sheet.save(os.path.join(QA, "safe_sheet.png"))
+        shutil.rmtree(sa_dir)
+        safe_note = f"Safe-area sheet: safe_sheet.png ({len(tiles)} frames: hook, every shot, the subscribe cue, the end)"
+    else:
+        safe_note = "Safe-area sheet: skipped (bin/safe-area.py not found)"
+except Exception as e:  # never let the review sheet break the gate
+    safe_note = f"Safe-area sheet: skipped ({e})"
 
 # ---------------------------------------------------------------- voice: per-word speech-band SNR (content words)
 STOP = set("a an the and or but so of to in on at by for with from as is are was were be been it its it's this that "
@@ -209,7 +253,7 @@ fails = [r for r in rows if r[0] == "FAIL"]
 lines = [f"# QA: {os.path.basename(MP4)}", "", f"{len(rows) - len(fails)}/{len(rows)} checks pass"
          + (f", **{len(fails)} FAIL**" if fails else ""), "", "| | Check | Result |", "|---|---|---|"]
 lines += [f"| {s} | {n} | {d} |" for s, n, d in rows]
-lines += ["", "Contact sheets: " + ", ".join(os.path.basename(p) for p in sheets)]
+lines += ["", "Contact sheets: " + ", ".join(os.path.basename(p) for p in sheets)] + ([safe_note] if safe_note else [])
 open(os.path.join(QA, "report.md"), "w").write("\n".join(lines) + "\n")
 print("\n".join(lines))
 sys.exit(1 if fails else 0)
