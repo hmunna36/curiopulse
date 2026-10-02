@@ -775,3 +775,149 @@ def phys_hits(work, name=None, min_speed=60.0):
 def hit_gain(speed, loud=1500.0, top_db=-10.0, range_db=18.0):
     """gain for an impact at `speed` px/s: top_db at `loud` px/s or faster, range_db quieter for a 10x slower hit"""
     return db(top_db - range_db * min(1.0, max(0.0, np.log10(loud / max(speed, 1e-3)))))
+
+
+# ================================================================= exam halls, guts, 1912 labs (stomach-growl)
+def scribble(dur=1.0, seed=0, rate=7.0):
+    """pencil on paper: bursts of grainy friction (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    am = np.clip(np.sin(2 * np.pi * rate * t + 1.3 * np.sin(2 * np.pi * 1.7 * t)), 0, None) ** 1.5
+    y = filt(white(n, seed), "bandpass", [2500, 8000]) * am
+    y = y / (np.abs(y).max() + 1e-9) + 0.4 * crackle(n, 300, seed + 1, 3000, 9000) * am
+    return fade(y, 0.01, 0.05)
+
+
+def gulp(seed=0):
+    """a cartoon swallow: a wet click, then a pitch drop (mono)"""
+    n = int(0.34 * SR)
+    y = np.zeros(n)
+    m = int(0.02 * SR)
+    y[:m] += filt(white(m, seed), "bandpass", [800, 3000]) * expdecay(m, 0.004)
+    b = bloop(420, 140, 0.26)
+    i = int(0.05 * SR)
+    y[i:i + len(b)] += b[: n - i]
+    return fade(y, 0.001, 0.03)
+
+
+def balloon_inflate(dur=0.4, seed=0):
+    """a rubber balloon stretching as it fills: a rising squeaky glide with a breath of air (mono)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = 300 * 3.2 ** (u ** 1.3) * (1 + 0.03 * np.sin(2 * np.pi * 23 * ar(n)))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = svf_bp(0.3 * np.sign(np.sin(ph)) + np.sin(ph), np.full(n, 1400.0), 0.5)
+    air = filt(white(n, seed), "bandpass", [1500, 6000])
+    y = y / (np.abs(y).max() + 1e-9) + 0.25 * air / (np.abs(air).max() + 1e-9)
+    return fade(y * np.sin(np.pi * u) ** 0.3, 0.01, 0.05)
+
+
+def bagpipe_sound(dur=0.8, seed=0, chanter=(880.0,), drone_f=110.0):
+    """a bagpipe: buzzy drones (A2 + A3) under a reedy chanter; every chanter note opens with a quick grace note (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+
+    def reed(f):
+        ph = 2 * np.pi * np.cumsum(f) / SR
+        return sum(np.sin(k * ph) / k ** 0.7 for k in range(1, 18))
+
+    dr = reed(np.full(n, drone_f) * (1 + 0.002 * np.sin(2 * np.pi * 4.5 * t))) + 0.6 * reed(np.full(n, 2 * drone_f))
+    dr = filt(dr, "lowpass", 2200)
+    f = np.zeros(n)
+    seg = n // max(1, len(chanter))
+    for i, fc in enumerate(chanter):
+        a, b = i * seg, (n if i == len(chanter) - 1 else (i + 1) * seg)
+        f[a:b] = fc
+        f[a:min(b, a + int(0.035 * SR))] = fc * 1.12
+    ch = reed(f * (1 + 0.004 * np.sin(2 * np.pi * 6 * t)))
+    ch = filt(ch, "bandpass", [700, 4200]) + 0.3 * filt(ch, "highpass", 600)
+    y = 0.55 * dr / (np.abs(dr).max() + 1e-9) + 0.6 * ch / (np.abs(ch).max() + 1e-9)
+    return fade(np.tanh(1.4 * y) * np.minimum(1, t / 0.03), 0.01, 0.06)
+
+
+def vacuum_whine(dur=0.6, seed=0):
+    """a vacuum cleaner spinning up: motor buzz + rushing air + a rising whine (mono)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = 140 + 60 * np.minimum(1, u / 0.3)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    motor = sum(np.sin(k * ph) / k for k in range(1, 10))
+    air = filt(white(n, seed), "bandpass", [700, 3200])
+    whine = np.sin(2 * np.pi * np.cumsum(900 + 500 * np.minimum(1, u / 0.3)) / SR)
+    y = 0.5 * motor / (np.abs(motor).max() + 1e-9) + 0.6 * air / (np.abs(air).max() + 1e-9) + 0.15 * whine
+    return fade(y * np.minimum(1, u / 0.08), 0.01, 0.08)
+
+
+def piano(freq, dur=0.6, seed=0, bright=1.0):
+    """an old upright piano (honky-tonk): decaying partials on two strings a few cents apart (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    y = np.zeros(n)
+    for det in (1.0, 1.0045):
+        for k in range(1, 9):
+            fk = freq * k * det * (1 + 0.0004 * k * k)
+            if fk > 9000:
+                break
+            y += np.sin(2 * np.pi * fk * t) * np.exp(-t * (1.5 + 1.2 * k) / max(0.3, bright)) / k ** 1.1
+    y *= np.minimum(1, t / 0.002)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.001, 0.05)
+
+
+RAG = {"C": (48, [64, 67, 72]), "A7": (45, [61, 64, 67]), "D7": (50, [66, 69, 72]), "G7": (43, [65, 67, 71]), "F": (41, [65, 69, 72])}
+
+
+def rag(mus, t0, t1, bpm=126, gain=0.0, seed=0, chords=("C", "A7", "D7", "G7"), melody=True):
+    """a silent-film stride piano: bass on 1 and 3, a chord on 2 and 4, a swung melody on top (music bus)"""
+    beat = 60.0 / bpm
+    mel = [76, 79, 81, 79, 76, 72, 74, 76]
+    bars = int(np.ceil((t1 - t0) / (4 * beat)))
+    for bar in range(bars):
+        b0 = t0 + bar * 4 * beat
+        root, ch = RAG[chords[bar % len(chords)]]
+        for bt in range(4):
+            tb = b0 + bt * beat
+            if tb >= t1:
+                break
+            if bt % 2 == 0:
+                mus.add(piano(mtof(root - 12 + (7 if bt == 2 else 0)), 0.5, seed + bt), tb, db(-14 + gain))
+            else:
+                for m in ch:
+                    mus.add(piano(mtof(m - 12), 0.35, seed + m), tb, db(-20 + gain))
+        if melody:
+            sh = (root - 48) % 12
+            sh = sh - 12 if sh >= 6 else sh
+            for i, m in enumerate(mel):
+                tm = b0 + i * beat * 0.5 + (0.08 * beat if i % 2 else 0)
+                if tm >= t1:
+                    break
+                mus.add(piano(mtof(m + sh), 0.3, seed + i, 1.3), tm, db(-19 + gain), pan=0.2)
+
+
+def key_click(seed=0):
+    """a telegraph key: a metal click down, a softer one up (mono)"""
+    n = int(0.12 * SR)
+    y = np.zeros(n)
+    for dt, g in ((0.0, 1.0), (0.07, 0.5)):
+        m, i = int(0.012 * SR), int(dt * SR)
+        y[i:i + m] += (filt(white(m, seed + int(dt * 100)), "bandpass", [1500, 6000]) * expdecay(m, 0.002)
+                       + 0.4 * np.sin(2 * np.pi * 2400 * ar(m)) * expdecay(m, 0.003)) * g
+    return y
+
+
+def projector(n, seed=0, fps=18):
+    """an old film projector: a soft shutter clatter + a little motor hum (mono bed, n samples)"""
+    t = ar(n)
+    y = np.zeros(n)
+    m = int(0.008 * SR)
+    for k, i in enumerate(range(0, n - m, int(SR / fps))):
+        y[i:i + m] += filt(white(m, seed + k), "bandpass", [600, 2500]) * expdecay(m, 0.002) * (0.6 + 0.4 * (k % 2))
+    y = filt(y, "lowpass", 1600)
+    return y / (np.abs(y).max() + 1e-9) + 0.12 * np.sin(2 * np.pi * 50 * t) + 0.06 * np.sin(2 * np.pi * 100 * t)
+
+
+def shush(dur=0.6, seed=0):
+    """a long "SHHHH" (mono)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    y = filt(white(n, seed), "bandpass", [1800, 7000])
+    return fade(y * np.sin(np.pi * u) ** 0.5 * np.minimum(1, u / 0.1), 0.02, 0.1)

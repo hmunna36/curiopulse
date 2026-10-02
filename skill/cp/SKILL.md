@@ -1,7 +1,7 @@
 ---
 name: cp
-description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 40–50 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled for the next free day: YouTube at 11:30 IST (Data API) and Instagram at 18:30 IST (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
-argument-hint: <topic question> | next
+description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 40–50 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled for the next free day: YouTube in the next free slot, 11:30 AM or 11:30 PM IST (Data API) and Instagram at 18:30 IST (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
+argument-hint: <topic question> | next | next youtube-only
 effort: max
 ---
 
@@ -10,7 +10,7 @@ effort: max
 The user gives a topic (`/cp why do onions make you cry`). Every run follows the user's loop (2026-09-29):
 
     create the Short → QA → not satisfied? fix the weak parts → QA again → … until satisfied
-    → push to GitHub → upload + schedule: YouTube 11:30 IST, Instagram 18:30 IST (next free day, same day on both)
+    → push to GitHub → upload + schedule: YouTube in the next free slot (11:30 or 23:30 IST, two a day), Instagram 18:30 IST on its own next free day
 
 It must come out "just like the other 3 videos": same world, same hero, same narrator, same caption and bloom look,
 same synthesized sound, same humour. Work autonomously from start to finish: no questions, no drafts, no
@@ -30,7 +30,7 @@ In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercas
 | `publish.json` | title, description, tags, IG caption (with the follow line), `pinnedComment` suggestion, schedule; the tools write back ids and links |
 | `src/` | everything that rebuilds it (`build.sh`), including the cached voice takes |
 
-Plus: committed and pushed to the repo, a row in the root README, **YouTube scheduled for 11:30 IST** (thumbnail +
+Plus: committed and pushed to the repo, a row in the root README, **YouTube scheduled for the next free slot: 11:30 AM or 11:30 PM IST (two slots a day; user, 2 Oct 2026)** (thumbnail +
 captions) and the **Instagram Reel scheduled for 18:30 IST** on the same free day (Business Suite).
 
 ## Non-negotiables (details in `reference/brief.md`; the brief itself is `reference/master-context-prompt.md`)
@@ -139,7 +139,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
 14. **GitHub:** write a commit message file ("Add the <topic> Short (NN s)" + a one-line summary + your attribution
     trailer), then run `~/.claude/skills/cp/bin/publish-short.sh <slug> <msg-file>`.
 15. **YouTube:** `node ~/.claude/skills/cp/bin/yt.mjs upload videos/<slug>/publish.json --schedule=auto`. It picks the
-    next day free on both platforms and sets 11:30 IST, the thumbnail and the captions. Confirm with
+    next day free on both platforms and sets the next free slot (11:30 or 23:30 IST), the thumbnail and the captions. Confirm with
     `yt.mjs status <id>`.
 16. **Instagram**, the same day at 18:30 IST (`reference/publish.md`):
     - **Route A (Business Suite, the normal case):**
@@ -205,7 +205,7 @@ user's request).
 ## Also on request
 
 - **Move a release:**
-  - YouTube: `yt.mjs reschedule <id> 2026-10-05T11:30:00+05:30`.
+  - YouTube: `yt.mjs reschedule <id> 2026-10-05T23:30:00+05:30`.
   - Instagram: in Business Suite, Content → Scheduled → ⋯ → Reschedule (route B: `ig.mjs cancel <slug>` + `ig.mjs queue … --at …`).
 - **Publish a Reel right now:** Business Suite → Share now (route B: `ig.mjs publish-now <slug>`).
 - **Revisit an old Short:** `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>`, then `src/build.sh`
@@ -257,3 +257,17 @@ cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on
 - `bin/ig.mjs`: Instagram. Route A: prepare · busy · route. Route B, the API: token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel ·
   test-container · install-job)
 - `bin/quota.mjs`: ElevenLabs characters left per account (exit 2 = not enough for a Short)
+
+## Two Shorts a day (the user's decision via Claude, 2 Oct 2026: a 14-day test, review 17 Oct)
+
+- Two routines: `curiopulse-daily-short` (00:00 IST, `/cp next`: YouTube + Instagram) and `curiopulse-second-short`
+  (06:00 IST, `/cp next youtube-only`). In **youtube-only** mode, run the same pipeline and the same ship bar, but set
+  `"instagram": {"skip": true}` in publish.json and skip every Instagram step (no ig-queue entry, no Business Suite):
+  Instagram stays at one Reel a day.
+- YouTube takes the next free slot (11:30 AM or 11:30 PM IST), so the two runs fill both slots of a day.
+- **The tease says "Next up: …", never "tomorrow"**: the next Short is about 12 hours away.
+- **Queue refill:** if fewer than 7 `[ ]` topics remain in topics.md, research and append 10 new "why does…" questions
+  first (strange, second-person, body/nature/physics, a sourced mechanism and a weird true fact; no repeats of done
+  topics), then take the next one.
+- **Review on 17 Oct:** compare views per Short and subscribers (AM vs PM, run 1 vs run 2). If the average views per
+  Short over the last 7 days drop below ~800, or quality slips, go back to one Short a day and say so.

@@ -1,7 +1,7 @@
-# Publishing: GitHub, YouTube 11:30 IST, Instagram 18:30 IST
+# Publishing: GitHub, YouTube 11:30 AM + 11:30 PM IST (next free slot), Instagram 18:30 IST
 
 The user's schedule (2026-09-29): **one Short a day, the same Short on both platforms on the same day: YouTube at
-11:30 IST, Instagram at 18:30 IST.**
+the next free of two daily slots, 11:30 AM and 11:30 PM IST (user, 2 Oct 2026: the 11:30 AM releases brought subscribers), Instagram at 18:30 IST on its own next free day.**
 - `yt.mjs upload … --schedule=auto` picks the first IST day that is free on both platforms and writes it into
   `publish.json` for both.
 - YouTube goes through the Data API.
@@ -59,7 +59,7 @@ The user's schedule (2026-09-29): **one Short a day, the same Short on both plat
    node ~/.claude/skills/cp/bin/yt.mjs upload videos/<slug>/publish.json --schedule=auto
    ```
 
-   - It uploads the video as private with `publishAt` = the free day at 11:30 IST, sets the thumbnail (cover.jpg),
+   - It uploads the video as private with `publishAt` = the next free slot (11:30 or 23:30 IST), sets the thumbnail (cover.jpg),
      and uploads the SRT captions.
    - It writes the id, URL and the Instagram day back into publish.json. A re-run resumes: it never uploads twice.
    - Confirm with `yt.mjs status <id>`.
@@ -198,7 +198,7 @@ tokens; `video_url` falls back to the public GitHub URL).
 ```sh
 node ~/.claude/skills/cp/bin/yt.mjs upcoming     # YouTube scheduled + Instagram days + the next free day
 node ~/.claude/skills/cp/bin/ig.mjs upcoming     # Instagram days taken, queue (route B), job and token status
-node ~/.claude/skills/cp/bin/yt.mjs reschedule <id> 2026-10-05T11:30:00+05:30
+node ~/.claude/skills/cp/bin/yt.mjs reschedule <id> 2026-10-05T23:30:00+05:30
 node ~/.claude/skills/cp/bin/ig.mjs busy 2026-10-07  # a day booked in Business Suite, so auto skips it
 ```
 

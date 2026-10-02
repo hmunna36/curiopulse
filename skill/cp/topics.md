@@ -9,7 +9,6 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Queue
 
-- [ ] Why does your stomach growl? — a silent exam hall; the migrating motor complex sweeps the empty gut (borborygmi); it happens when you're full too, just muffled
 - [ ] Why do we get goosebumps? — a scary movie; tiny arrector pili muscles raise hairs, a leftover from furrier ancestors (puffed-up cat); why music gives them too
 - [ ] Why do your ears pop on a plane? — take-off; the air pressure changes, the eardrum bulges, and swallowing opens the eustachian tube; why babies cry
 - [ ] Why do some people sneeze at the sun? — he walks out of a cinema into daylight: ACHOO; the photic sneeze reflex (crossed wires, hedged), 1 in 4 people
@@ -28,6 +27,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 - [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
 
 ## Done
+- [x] Why Does Your Stomach GROWL? — stomach-growl — YouTube https://youtube.com/shorts/KMS1wThr4jk 3 Oct 2026 23:30 IST; Instagram 5 Oct 2026 18:30 IST (Business Suite)
 - [x] Why Is Yawning CONTAGIOUS? — yawning-contagious — YouTube https://youtube.com/shorts/kJsQ55sjjIU 4 Oct 2026 11:30 IST; Instagram 4 Oct 2026 18:30 IST (Business Suite)
 - [x] Why do onions make you cry? — onion-tears — YouTube https://youtube.com/shorts/yaD9MFbpv_I 3 Oct 2026 11:30 IST; Instagram 3 Oct 2026 18:30 IST (Business Suite)
 

@@ -9,8 +9,9 @@
 | `brain-freeze`: "Why Does Ice Cream Give You BRAIN FREEZE? 🧊" | 75 s | https://youtube.com/shorts/Oy7QT27NT-Y · 2 Oct 2026 11:30 IST | Business Suite, 2 Oct 2026 18:30 IST |
 | `onion-tears`: "Why Do Onions Make You CRY? 🧅" | 74 s | https://youtube.com/shorts/yaD9MFbpv_I · 3 Oct 2026 11:30 IST | Business Suite, 3 Oct 2026 18:30 IST (scheduled 1 Oct 07:45 after Chrome reconnected) |
 | `yawning-contagious`: "Why Is Yawning CONTAGIOUS? 🥱" | 50 s | https://youtube.com/shorts/kJsQ55sjjIU · 4 Oct 2026 11:30 IST | Business Suite, 4 Oct 2026 18:30 IST |
+| `stomach-growl`: "Why Does Your Stomach GROWL? 🤫" | 50 s | https://youtube.com/shorts/KMS1wThr4jk · 3 Oct 2026 23:30 IST | Business Suite, 5 Oct 2026 18:30 IST |
 
-From the first /cp Short on, releases are 11:30 IST on YouTube (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
+From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
@@ -111,4 +112,31 @@ here for every new Short, with its links.
 - Three QA rounds; a static 6 s end shot got a slow push-in. Rebuild proven: identical mix and qa numbers.
 - Business Suite's schedule date field is now a text box (D/M/YYYY): select all, type 4/10/2026, then click the day in
   the calendar that pops up. The thumbnail picker still never loads.
+
+**stomach-growl** (3 Oct 2026, nightly /cp next; 94 words → 49.9 s):
+- New worlds: `exam.js` (exam hall from the front: arched daylight windows with shafts and motes, wall clock with a
+  ticking second hand, SILENCE sign, desks in depth, classmates `drawStudent` (bus passengers without legs, writing,
+  turning to stare, glaring, shushing), the hero at a desk `heroAtDesk`/`heroDeskPose` (write, thumbs-up, whisper,
+  shrug) in a maroon cardigan `EXAMPAL`, `growlRings`, `growlWord`), `gut.js` (x-ray torso with a plump stomach,
+  duodenum and coils, a squeeze band with chevrons travelling the gut path `gutAt`; the tube in section with a moving
+  pinch `tubeSection`/`tubeJuice`, bubbles, crumbs, worried bacteria; the tartan `bagpipe` stomach; a `vacuum`),
+  `lab1912.js` (1912 lab, kymograph drum + tambour, x-ray window with a balloon, bow tie, `sepia()` + `oldFilm()`).
+- New sfxkit atoms (template too): `scribble gulp balloon_inflate bagpipe_sound vacuum_whine piano rag key_click
+  projector shush`. `svf_bp` needs an ARRAY of centre frequencies; a scalar crashes (`np.full(n, f)`).
+- The 1912 shots rendered nearly black: `oldFilm`'s gate mask did `rect(); rrect(); fill('evenodd')`, but `rrect()`
+  starts a new path, so it filled the whole frame at 85 %. Build a hole with sub-paths by hand. For sepia, a
+  `color`-blend fill keeps the exposure; main.js's `grade()` tint is a multiply and darkens.
+- A helper that returns early when `k <= 0` must still return what callers use (`bagpipe` returned undefined on the
+  shot's first frame, lt = 0): the full render crashed at frame 690 after 3 minutes. Render each shot's first frame
+  as a still before the full render.
+- Hook: the big event (the growl) lands at 3.2 s, so frame 4 gets a small one (a gurgle ring, he freezes wide-eyed,
+  a gurgle under 280 Hz below the whisper) and the opening frame keeps his face inside the key zone.
+- Voice: the first pass ran 56.2 s; a whispered "dead-silent" dragged to 1.4 s. Three hook/loud variants auditioned
+  offline (`voice.synth`, ~400 characters), three lines trimmed, gaps/tempos tightened → 49.1 s. qa.py's STOP list
+  doesn't include "through": a quiet "through" under the groove scored −2.6 dB until the music dropped out for
+  "squeezed through a tube" (the joke beat anyway).
+- Business Suite: typing the caption opens a hashtag typeahead after "#reels"; a trailing space closes it. The
+  thumbnail picker still never loads. The tool's output filter hides a SHA-256 hex string: compare it inside the
+  page and return MATCH/MISMATCH.
+- Two QA rounds (hook 7 → 8, squeeze visual 7 → 8). Rebuild proven: identical mix.wav and qa numbers.
 

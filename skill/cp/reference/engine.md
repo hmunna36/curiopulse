@@ -84,6 +84,9 @@ git -C ~/Desktop/curiopulse show HEAD:videos/hypnic-jerk/src/web/bedroom.js > sr
 | `videos/yawning-contagious/src/web/bus.js` | night city bus interior (windows with a scrolling skyline, light sweeps, poles, swaying straps), passengers with their own rig (`drawPassenger`: gran, suit, teen, nurse; yawn/stretch/sleep/smile/"o"), the hero seated on a bench (`heroOnBench`, `heroSeatPose` with stretch/shrug/point), the yawn wisp, the bus from outside |
 | `videos/yawning-contagious/src/web/yawnhead.js` | side-view head cutaway with a hinged jaw (opens for a yawn), cool air streaming in, carotid blood rush, brain warm → cool, a thermometer (`thermoY`) |
 | `videos/yawning-contagious/src/web/props.js` | cold pack on the forehead, lab monitor playing a clip, a two-bar study chart, a sitting dog that yawns (`drawDog`), a book with lit words (`yawnBook`), a magnifying glass over his eye (`magnifier`) |
+| `videos/stomach-growl/src/web/exam.js` | exam hall from the front (daylight windows + shafts, wall clock, SILENCE sign, desks in rows), classmates without legs (`drawStudent`: write, stare, glare, shush), the hero at a desk (`heroAtDesk`, `heroDeskPose`: write, thumbs-up, whisper, shrug), `growlRings`, wobbly `growlWord` |
+| `videos/stomach-growl/src/web/gut.js` | x-ray torso with stomach, duodenum, coils and colon; a squeeze band travelling the gut path (`gutAt`); the tube in section with a moving pinch (`tubeSection`, `tubeJuice`), bubbles, crumbs, bacteria with faces; the tartan `bagpipe` stomach; a `vacuum` |
+| `videos/stomach-growl/src/web/lab1912.js` | 1912 lab (panelled wall, chalkboard, flasks), kymograph drum + tambour, round x-ray window with a balloon in the stomach, `bowTie`, `sepia()` (colour blend) + `oldFilm()` (scratches, dust, flicker, gate) |
 | `videos/lightning-full/src/web/*` | storm, hill, strike, x-ray body, heart, nerves (much of it now in env.js and kit.js) |
 
 Rules for borrowing:

@@ -64,7 +64,7 @@
 ## The subscribe line (last block, `sub`)
 
 Every script ends with a `## sub` block (user's decision, 30 Sep 2026):
-- **≤ 70 characters** including spaces, after the button line (or woven into it). It teases tomorrow's Short, from the
+- **≤ 70 characters** including spaces, after the button line (or woven into it). It teases the NEXT Short (say "Next up: …", never "tomorrow"; two Shorts a day since 2 Oct 2026), from the
   NEXT `[ ]` entry of `topics.md` (the one after this Short's; when none, tease "another strange question"), and asks
   for the subscribe/follow with the verb "subscribe" said clearly (the pill appears on that word).
 - In voice, funny, tied to the Short's own joke. Not "like and subscribe". Examples:
