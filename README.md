@@ -16,6 +16,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Does Ice Cream Give You Brain Freeze? | 75 s | [`videos/brain-freeze`](videos/brain-freeze) | [2 Oct 2026](https://youtube.com/shorts/Oy7QT27NT-Y) |
 | Why Do Onions Make You Cry? | 74 s | [`videos/onion-tears`](videos/onion-tears) | [3 Oct 2026](https://youtube.com/shorts/yaD9MFbpv_I) |
 | Why Is Yawning Contagious? | 50 s | [`videos/yawning-contagious`](videos/yawning-contagious) | [4 Oct 2026](https://youtube.com/shorts/kJsQ55sjjIU) |
+| Why Does Your Stomach Growl? | 50 s | [`videos/stomach-growl`](videos/stomach-growl) | (scheduling) |
 
 Each folder has:
 - the finished MP4;
