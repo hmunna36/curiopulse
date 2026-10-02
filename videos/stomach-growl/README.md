@@ -28,8 +28,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … IST |
-| Instagram Reels | Business Suite | … 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/KMS1wThr4jk | 3 Oct 2026 23:30 IST (scheduled; thumbnail + captions set) |
+| Instagram Reels | @curio_pulse_tv (Meta Business Suite) | 5 Oct 2026 18:30 IST (scheduled; cover picker didn't load, so Instagram picks the frame) |
 
 **Title:** Why Does Your Stomach GROWL? 🤫
 
@@ -131,7 +131,7 @@ longest still 0.33 s.
 
 **What changed:**
 - Voice: the first pass ran 56.2 s; two blocks re-auditioned offline (a shorter whispered hook, a cleaner "Empty…"
-  take), three lines trimmed and the gaps/tempos tightened → 49.1 s of narration (1,019 + 2 × ~60 characters).
+  take), three lines trimmed and the gaps/tempos tightened → 49.1 s of narration (about 1,420 characters with the retakes and auditions).
 - Picture, before the first render: the stomach redrawn fuller, the bagpipe rebuilt around it, the 1912 lab
   brightened (an old-film gate mask was darkening the whole frame) with a colour-blend sepia, the match chart and
   the vacuum callout enlarged, labels pulled inside the safe area.

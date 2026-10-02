@@ -24,18 +24,25 @@
   "cover": "cover.jpg",
   "captions": "stomach-growl.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-03T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "KMS1wThr4jk",
+    "url": "https://youtube.com/shorts/KMS1wThr4jk",
+    "uploaded": "2026-10-02T19:34:39.661Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-05T18:30:00+05:30",
     "caption": "Why does your stomach GROWL at the quietest moment? 🤫\nIt's your gut cleaning house: a wave of muscle squeezes through, and with nothing inside it's just gas and juice. Bagpipes. 🎶\nFollow @curio_pulse_tv for the next one: why we get goosebumps 🔔\n#science #humanbody #biology #funfacts #reels",
     "coverTime": 3.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-05 18:30 IST"
   }
 }
