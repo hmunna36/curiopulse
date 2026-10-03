@@ -1,0 +1,42 @@
+# Narration for "Why Do We Get GOOSEBUMPS? 😱"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md): talk to ONE friend, short sentences, questions, asides, a pause before
+# every reveal, the last block `sub` is the subscribe line (<= 70 characters, teases the next Short, reference/narration.md); the whole script is 95-115 words for a 40-50 s Short, one idea per block, hedge what science hasn't settled ("One idea...", "Scientists think...").
+
+## hook gap=0.35 tighten=0.28 tempo=1.05
+[whispers] Scary movie... creepy music... and your arm does... this.
+
+## react gap=0.68 tighten=0.34 tempo=1.00
+[deadpan] Congrats. You're a plucked goose.
+
+## name gap=0.22 tighten=0.30 tempo=1.00
+Hence... goosebumps.
+
+## mech gap=0.26 tempo=1.07
+Each arm hair has its own tiny muscle. Scared, or cold? Your nerves yank them ALL at once.
+
+## bump gap=0.22 tighten=0.28 tempo=1.06
+The hair stands up... and the skin bunches into a bump.
+
+## fur gap=0.26 tempo=1.07
+For furry animals, it's genius. Fluffed fur traps warm air... and makes a scared cat look HUGE.
+
+## joke gap=0.50 tighten=0.40 tempo=1.00
+[deadpan] You lost the fur... but kept the button.
+
+## music gap=0.26 tempo=1.07
+Even music can press it. Scientists think big emotions trip the same old alarm.
+
+## command gap=0.26 tighten=0.35 tempo=1.05
+[excited] And some people can do it... on command.
+
+## showoffs gap=0.45 tighten=0 tempo=1.00
+[deadpan] Show-offs.
+
+## sub gap=0.30 tighten=0.28 tempo=1.05
+[mischievously] Next up: why your ears pop on planes. Subscribe... on command.
