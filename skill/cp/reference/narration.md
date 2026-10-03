@@ -110,6 +110,11 @@ ffmpeg -v error -y -i ../.work/narration.wav -ar 16000 -ac 1 -c:a pcm_s16le /tmp
 whisper-cli -m ~/.cache/cp/models/ggml-base.en.bin -f /tmp/n16.wav -nt
 ```
 
+Check the first word of every tagged take against the waveform (4 Oct 2026): v3 can give the tag's time to the word,
+so its caption and cut land late. `T.first_loud(T.block(id)["start"])` (timeline_lib) is the take's real onset; move the
+word's start there in make_timeline.py when the alignment is more than ~0.1 s later (not after `[chuckles]`/`[sighs]`,
+which make a real sound first). voice.py already stops a word from ending after its own take.
+
 Retake a block when:
 - whisper mishears it;
 - the energy is flat where the story peaks;

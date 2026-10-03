@@ -327,11 +327,13 @@ def main():
             return max(0.0, out) / b["tempo"]
 
         t += b["gap"]
-        for w in ws:
-            words.append({"word": w["word"], "start": round(t + moved(w["start"]), 3), "end": round(t + moved(w["end"]), 3), "block": b["id"]})
-        for ev in evs:
-            events.append({"type": ev["type"], "t": round(t + moved(ev["t"]), 3), "end": round(t + moved(ev["end"]), 3), "block": b["id"]})
         dur = len(x) / SR
+        for w in ws:
+            # v3 sometimes hands a take's trailing silence to its last word: a word never ends after its own take
+            w_end = min(moved(w["end"]), dur)
+            words.append({"word": w["word"], "start": round(t + min(moved(w["start"]), max(0.0, w_end - 0.08)), 3), "end": round(t + w_end, 3), "block": b["id"]})
+        for ev in evs:
+            events.append({"type": ev["type"], "t": round(t + min(moved(ev["t"]), dur), 3), "end": round(t + min(moved(ev["end"]), dur), 3), "block": b["id"]})
         rms = 20 * np.log10(np.sqrt((x[np.abs(x) > 1e-4] ** 2).mean()) + 1e-12)
         info.append({"id": b["id"], "start": round(t, 3), "end": round(t + dur, 3), "gap": b["gap"],
                      "wpm": round(len(ws) / dur * 60), "rms_db": round(float(rms), 1), "f0": round(f0_median(x)),

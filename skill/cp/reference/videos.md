@@ -11,6 +11,7 @@
 | `yawning-contagious`: "Why Is Yawning CONTAGIOUS? 🥱" | 50 s | https://youtube.com/shorts/kJsQ55sjjIU · 3 Oct 2026 11:30 IST (the user moved it up from 4 Oct) | Business Suite, 4 Oct 2026 18:30 IST |
 | `stomach-growl`: "Why Does Your Stomach GROWL? 🤫" | 50 s | https://youtube.com/shorts/KMS1wThr4jk · 3 Oct 2026 23:30 IST | Business Suite, 5 Oct 2026 18:30 IST |
 | `goosebumps`: "Why Do We Get GOOSEBUMPS? 😱" | 49 s | https://youtube.com/shorts/OqIGuc9sYZE · 4 Oct 2026 11:30 IST | — (the day's YouTube-only second Short) |
+| `ears-pop`: "Why Do Your Ears POP on a Plane? ✈️" | 47 s | https://youtube.com/shorts/2R-7TRKVPso · 4 Oct 2026 23:30 IST | Business Suite, 6 Oct 2026 18:30 IST (with cover.jpg as its cover) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -173,4 +174,45 @@ here for every new Short, with its links.
   again, re-check `yt.mjs upcoming`, the repo and the render gate, then carry on from `.work/`.
 - Two QA rounds (sound 6 → 8.5, hook 7 → 8, look 7 → 8.5, safe area 7 → 9), then `build.sh` from the cached takes as
   the final render: `mix.wav` and `timeline.json` byte-identical, the same qa.py numbers (13/13).
+
+**ears-pop** (4 Oct 2026, nightly /cp next; 108 words → 47.3 s):
+- New worlds: `cabin.js` (a plane cabin at dusk: sunset windows whose horizon stays level while the cabin pitches with
+  `rot`, runway streaks, a cloud deck, a `sun` glare; overhead bins and seatbelt signs; the hero in 12A via `cabinScene`
+  / `cabPose` (grip the armrests, hands over ears, one ear, the big yawn, fists to the eyes); a travel pillow; a tray with
+  `chipBag` (puff) and `waterBottle` (crush); passengers `drawPax`; the baby `drawBaby` (cry, wobble, smug, medal);
+  `tearJets`, `screamArcs`, `earThrob`) and `ear.js` (the ear in section: canal, an eardrum that bows out or in, the air
+  pocket with its three bones, cochlea, the eustachian tube to the back of the nose, the muscle that opens it, air as
+  particles whose number is the pressure, `earFlow`, `padlock`, `headMap`). Helpers in its scenes.js: `secCam`,
+  `pressureHud`, `popWord`, `popStar`, `speechR`, `loudWord`, `tickPill`.
+- New sfxkit atoms (template too): `cork_pop burp cabin_bed chime baby_cry sneeze`.
+- Voice: one pass, 643 characters, WER 0.9 % (whisper wrote "12" for "twelve"). Two alignment bugs, both from v3 tags:
+  the take's trailing silence was given to its last word ("worse." ended 0.7 s after its take, into the next line), so
+  voice.py now never lets a word end after its take (template too); and "[deadpan] Landing" started 0.27 s late in the
+  alignment, so make_timeline moved it to the take's first loud frame (`first_loud(block start)`). Check the first word
+  of every tagged take against the waveform (first loud frame vs the word's start).
+- **Captions at y = 1470** (`capY` in every shot's return): the tray, the baby and the tube all sat in the band where
+  captions normally go (1330). Still inside the key zone (it ends at 1640). The subscribe cue lifts them to 1150 as usual.
+- **Measure the gags in the mix, not only the words.** Round 1 passed qa.py 13/13 with the voice 25 dB clear, but the
+  burp sat at −30 dB, the padlock −31, the wail −26, the subscribe click −35 (RMS of mix.wav in each gag's window; the
+  voice is about −16). After the fix they sit at −19…−27. A sound that carries a joke wants about −19…−24 dB in its gap.
+- The music bus again: plucks at −22 dB were louder than the groove's kick (−30 at gain −14), so turning two drones down
+  made the groove 4 dB louder. Set every music element relative to the groove first, then move `levels={"music": …}`.
+- A long noisy sound (the wail) can run under a line if it is written as an envelope: loud only in the gaps between
+  her words (cue to cue), 32 dB down under them, on the `bed` bus.
+- Hands that go to the head (ears, eyes) must follow it: `cabPose` reaches for `rig(base).head + headDX/DY`, or the hand
+  lands on his eye when the body leans.
+- A frame-1 hook whose event lands at 3.3 s: open close enough to read his face (1.34×), and start the phenomenon small
+  at once (his ears glow and ring from frame 2).
+- The cover: comic bursts hide a face at thumbnail size; put them beside the head, not on it.
+- Two QA rounds (sound 7 → 8.5, hook 7.5 → 8), then `build.sh` as the final render: `timeline.json`, `mix.wav` and the SRT
+  byte-identical, the same qa.py numbers (the MP4's bytes differ between renders; its frames and numbers don't).
+- **Business Suite at night:** the extension's Chrome window was minimized, so the page was `hidden`: the upload sat at
+  0 %, screenshots and any `await` in the JavaScript tool timed out, while plain synchronous JavaScript still answered.
+  Check `document.visibilityState` (and `window.screenY` / `outerWidth`: a minimized window reports the screen's height
+  and about 471×226) right after opening Business Suite. What brought it back: `open -a "Google Chrome"`,
+  `resize_window`, then `tabs_create_mcp` and an attempt to close the composer tab (it timed out, but the window came
+  forward and the upload ran to 100 % at once). The video's "Add video" was clicked from JavaScript (find the button by
+  its text and `.click()`), because ref clicks timed out.
+- **The Reel's cover works now:** in the composer, Thumbnail → Upload image. Copy cover.jpg into the scratchpad, upload it
+  into a collector input, arm the same click hook with it, click the "Upload image" tab and then the "Upload Image" link.
 

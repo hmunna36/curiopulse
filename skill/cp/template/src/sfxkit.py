@@ -1032,3 +1032,89 @@ def alarm_bell(dur=0.5, seed=0, rate=28.0, f=2100.0):
         y[i:i + m] += b[: n - i]
         k += 1
     return fade(y / (np.abs(y).max() + 1e-9), 0.003, 0.08)
+
+
+# ================================================================= cabin / ears / baby (ears-pop, 4 Oct 2026)
+def cork_pop(seed=0, f=620.0):
+    """an ear (or a cork) popping: a hollow 'pok' whose pitch drops, with a tiny puff of air (mono, 0.16 s)"""
+    n = int(0.16 * SR)
+    t = ar(n)
+    fr = f * (0.42 + 0.58 * np.exp(-t / 0.012))
+    y = np.sin(2 * np.pi * np.cumsum(fr) / SR) * np.exp(-t / 0.028)
+    y += 0.5 * np.sin(2 * np.pi * np.cumsum(fr * 2.4) / SR) * np.exp(-t / 0.012)
+    m = int(0.03 * SR)
+    y[:m] += 0.35 * filt(white(m, seed), "bandpass", [1200, 5000]) * expdecay(m, 0.006)
+    return fade(y, 0.0006, 0.02)
+
+
+def burp(dur=0.24, seed=0, f0=92.0):
+    """a small cartoon burp: a rough low buzz whose 'mouth' opens and closes (mono)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    t = ar(n)
+    f = f0 * (1 + 0.25 * np.sin(np.pi * u) - 0.2 * u) * (1 + 0.05 * np.sin(2 * np.pi * 31 * t))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = np.tanh(2.5 * sum(np.sin(k * ph + 0.3 * k) / k for k in range(1, 30)))
+    src *= 0.65 + 0.35 * np.sign(np.sin(2 * np.pi * 27 * t + 1))                      # the flutter
+    y = svf_bp(src, 420 + 420 * np.sin(np.pi * u) ** 0.8, 0.3) + 0.5 * svf_bp(src, 1050 + 300 * np.sin(np.pi * u), 0.35)
+    y /= np.abs(y).max() + 1e-9
+    return fade(y * np.sin(np.pi * u) ** 0.4, 0.008, 0.04)
+
+
+def cabin_bed(n, seed=0):
+    """a jet cabin from inside (stereo bed): the engines' low roar and the air system, all under ~420 Hz"""
+    t = ar(n)
+    out = []
+    for ch in (0, 1):
+        roar = filt(brown(n, seed + ch), "lowpass", 180)
+        air = filt(pink(n, seed + 10 + ch), "bandpass", [140, 420]) * (0.8 + 0.2 * np.sin(2 * np.pi * 0.23 * t + ch))
+        hum = 0.05 * np.sin(2 * np.pi * 86 * t + ch) + 0.03 * np.sin(2 * np.pi * 172.6 * t + 2 * ch)
+        out.append(roar / (np.abs(roar).max() + 1e-9) + 0.45 * air / (np.abs(air).max() + 1e-9) + hum)
+    y = np.stack(out)
+    return y / (np.abs(y).max() + 1e-9)
+
+
+def chime(freq=880.0, dur=0.9):
+    """the cabin's 'bing': a soft tone with two quick partials that rings out (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    y = (np.sin(2 * np.pi * freq * t) + 0.35 * np.sin(2 * np.pi * 2 * freq * t) * np.exp(-t / 0.12)
+         + 0.12 * np.sin(2 * np.pi * 3.01 * freq * t) * np.exp(-t / 0.06)) * np.exp(-t / 0.32)
+    return fade(y, 0.004, 0.05)
+
+
+def baby_cry(dur=0.8, seed=0, f0=440.0, rough=0.5):
+    """a baby's 'waah': the pitch jumps up, wavers and sags; nasal formants and a rasp (mono).
+    A grown man's comic sob: f0=230."""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    t = ar(n)
+    f = f0 * (1 + 0.28 * np.sin(np.pi * np.clip(u * 1.25, 0, 1)) ** 0.7 - 0.12 * u) * (1 + 0.03 * np.sin(2 * np.pi * 7.5 * t + seed))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k for k in range(1, 24))
+    src = np.tanh(1.6 * src * (1 + rough * (0.5 + 0.5 * np.sin(2 * np.pi * 62 * t))))  # the rasp
+    y = (svf_bp(src, 1050.0 + 250 * np.sin(np.pi * u), 0.25) + 0.7 * svf_bp(src, np.full(n, 2700.0), 0.3)
+         + 0.25 * svf_bp(src, np.full(n, 3600.0), 0.3))
+    y /= np.abs(y).max() + 1e-9
+    env = np.minimum(1, u / 0.06) * np.sin(np.pi * np.clip(u, 0, 1)) ** 0.35
+    return fade(y * env, 0.01, 0.08)
+
+
+def sneeze(seed=0, f0=300.0):
+    """ah-CHOO: a quick gasp in, a burst of spray, a falling 'oo' (mono, ~0.56 s)"""
+    out = np.zeros(int(0.56 * SR))
+    n1 = int(0.12 * SR)
+    gasp = filt(white(n1, seed), "bandpass", [500, 2600]) * np.linspace(0, 1, n1) ** 1.5
+    out[:n1] += 0.5 * gasp / (np.abs(gasp).max() + 1e-9)
+    n2, i2 = int(0.2 * SR), int(0.13 * SR)
+    burst = filt(white(n2, seed + 1), "bandpass", [1600, 7000]) * attack_decay(n2, 0.004, 0.05)
+    out[i2:i2 + n2] += burst / (np.abs(burst).max() + 1e-9)
+    n3, i3 = int(0.3 * SR), int(0.17 * SR)
+    u3 = np.linspace(0, 1, n3)
+    f = f0 * 1.25 * 0.55 ** u3
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k for k in range(1, 20))
+    oo = svf_bp(src, np.full(n3, 420.0), 0.3) + 0.5 * svf_bp(src, np.full(n3, 900.0), 0.3)
+    oo = oo / (np.abs(oo).max() + 1e-9) * attack_decay(n3, 0.02, 0.11)
+    out[i3:i3 + n3] += 0.8 * oo[: len(out) - i3]
+    return fade(out, 0.004, 0.04)

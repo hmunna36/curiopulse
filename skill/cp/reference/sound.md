@@ -27,6 +27,7 @@ sfx.add(signal, t, gain, pan)      # mono is panned; (2, n) stereo is added as-i
 | Foley / comedy | `creak springs scratch (record scratch) cricket(s) clock_ticks breath heartbeat jolt_hit pops siren klaxon squeak owl frogs rustle glitch_burst riser slide_whistle drumroll splash bloop drip gurgle squelch buzzer wahwah bonk engine jingle pen_tick shutter crumple ticking` |
 | Exam / gut / 1912 (stomach-growl) | `scribble(dur)` (pencil), `gulp()`, `balloon_inflate(dur)`, `bagpipe_sound(dur, seed, chanter, drone_f)`, `vacuum_whine(dur)`, `piano(freq, dur)` (honky-tonk upright), `rag(mus, t0, t1, bpm, gain)` (silent-film stride piano), `key_click()` (telegraph key), `projector(n)` (bed), `shush(dur)` |
 | Animals / hairs / horror (goosebumps) | `honk(dur, f0, f1)` (goose), `meow(dur, f0, f1, f2)`, `cat_hiss(dur)`, `purr(dur)` (under 170 Hz), `growl(dur, seed, f0)` (a dog, under 300 Hz), `whimper()`, `hair_zip(dur, up, seed, n_ticks)` (hairs standing or lying back: a run of tiny ticks), `shiver(dur)` (brrr), `horror_stab(dur)` (a jump-scare sting), `alarm_bell(dur)` |
+| Cabin / ears / baby (ears-pop) | `cork_pop(seed, f)` (an ear, or a cork, popping), `burp(dur)`, `cabin_bed(n)` (stereo jet-cabin bed, all under ~420 Hz), `chime(freq)` (the cabin's bing), `baby_cry(dur, seed, f0)` (f0=230: a grown man's sob), `sneeze()` (ah-CHOO, 0.56 s) |
 | Score | `groove(mus, t0, t1, bpm, chords, gain, seed, kick_on, snaps, arp, bass, padv, half, cutoff, sixteen)`, `drone(mus, t0, t1, midi_notes, cutoff, gain)`, `crash(mus, t)`, `bwomp(mus, t)` (comedic low blat) |
 
 New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's copy), not only into one audio.py.
@@ -47,6 +48,9 @@ New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's
   10 dB in yawning-contagious's first mix; the same beds low-passed to ~420 Hz (and rattles halved) fixed most of it.
   Long SFX tails (a 1.2 s wah-wah, a cymbal, a music-box note) ring into the NEXT line: keep punchline tails shorter
   than the gap, or end them before the next word.
+- **A gag's sound has to be heard.** qa.py only checks that the words are clear. After the mix, measure each joke sound
+  in `mix.wav` (RMS over its own window): it should sit about −19…−24 dB in its gap, with the voice at about −16.
+  In ears-pop's first mix the burp was at −30 and the padlock at −31: clean, and inaudible on a phone.
 - **Keep the voice ≥ 12 dB** above everything in the speech band (qa.py measures content words):
   - turn down the cue that masks a word;
   - move a hit off the word;

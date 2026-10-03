@@ -79,6 +79,20 @@ class Timeline:
     def block(self, bid):
         return next(b for b in self.blocks if b["id"] == bid)
 
+    def first_loud(self, t0, thr=-37.0, hop=0.01, span=1.5):
+        """first moment at or after t0 where the narration is louder than thr dBFS: a take's real onset.
+        v3 sometimes gives a tag's time to the take's first word (ears-pop: "[deadpan] Landing" started 0.27 s
+        late in the alignment). Compare first_loud(self.block(id)["start"]) with that word's start; if the word
+        is late, move it: i = T.find("Landing is"); T.ws[i] = T.words[i]["start"] = T.first_loud(...).
+        (A [chuckles] or [sighs] tag makes a real sound before the first word: leave those alone.)"""
+        t = t0
+        while t < t0 + span:
+            seg = self.audio[int(t * self.sr):int((t + hop) * self.sr)]
+            if len(seg) and 10 * np.log10((seg ** 2).mean() + 1e-12) > thr:
+                return round(t, 3)
+            t += hop
+        return t0
+
     @property
     def duration(self):
         return fr(self.we[-1] + self.tail)

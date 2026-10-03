@@ -149,7 +149,7 @@ HTMLInputElement.prototype.click = function () {
 1. Click **Create Reel** on the home page, then **Add video**. The file attaches; wait for the upload bar to finish.
 2. Paste the caption (the sheet's `caption`) into the text field. Check it landed with JS by reading the visible
    field's text.
-3. **Thumbnail:** try it once. Business Suite's picker never loaded in the past; if it hangs, skip it and note that
+3. **Thumbnail:** Upload image (see the gotchas; it worked on 4 Oct 2026). If the picker hangs, skip it and note that
    the cover can be changed in the Instagram app after the Reel goes live (scheduled Reels can't change cover).
 4. **Edit** step: add nothing (no music, no crop).
 5. **Share** step: choose **Schedule**.
@@ -166,6 +166,14 @@ proves nothing.
 - Close the tabs you opened.
 
 **Gotchas:**
+- **A hidden window stalls everything (4 Oct 2026).** If the extension's Chrome window is minimized, the page is
+  `hidden`: the upload stays at 0 %, screenshots time out, and any `await` in the JavaScript tool never returns (plain
+  synchronous JavaScript still does). Right after opening Business Suite, check
+  `[document.visibilityState, window.screenY, window.outerWidth]`. If it says hidden, bring the window back before
+  uploading the parts: `open -a "Google Chrome"` (Bash), `resize_window`, then `tabs_create_mcp`; re-check. Never use
+  AppleScript for this (it raises a permission prompt nobody can answer).
+- **The cover can be set now:** Thumbnail → Upload image. Put cover.jpg in the scratchpad, upload it into a collector
+  input, arm the click hook with it (`window.__pendingFile`), click the "Upload image" tab, then the "Upload Image" link.
 - **Menus animate in.** A coordinate click during the fade lands on the row behind. Use `find` and click by ref.
 - **Refs go stale after a dialog closes.** Re-`find` after every new dialog, or click visible coordinates, and
   verify with JS.
