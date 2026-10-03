@@ -53,6 +53,12 @@ rebuild and to prove the folder rebuilds.
   - `run-lock.sh` only stops a second /cp run on the same repo.
   - Expect slower renders while both run, and never start a third heavy job.
   - Touch the lock during long runs (`run-lock.sh touch`) so it stays live.
+- **The render gate** (3 Oct 2026; the routines' rule, shared with /va, /aw and /hf): never render in parallel with
+  another pipeline. Before ANY job that opens the headless browser (stills, a sweep, the cover, the full render) run
+  `~/.claude/skills/va/bin/wait-renders.sh [minutes]`; it returns when no other render or headless browser is running
+  (exit 3 = still busy at the deadline: wait again, don't start). Chain it: `wait-renders.sh 60 && node render.js …`.
+  A full Visual Algo render can hold the gate for 20–40 minutes: write the README, publish.json and the skill notes
+  meanwhile. Don't re-run `audio.py` while your own full render is muxing `mix.wav`.
 - **Disk:** keep ≥ 5 GB free on `/System/Volumes/Data` (`df -h /System/Volumes/Data`). A Short needs ≈ 400 MB
   while it builds (.work stems and mixes plus the MP4). `bin/cleanup.sh` gives it back at the end of every run,
   once everything is on GitHub.

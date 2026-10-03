@@ -921,3 +921,114 @@ def shush(dur=0.6, seed=0):
     u = np.linspace(0, 1, n)
     y = filt(white(n, seed), "bandpass", [1800, 7000])
     return fade(y * np.sin(np.pi * u) ** 0.5 * np.minimum(1, u / 0.1), 0.02, 0.1)
+
+
+# ================================================================= goosebumps: goose, cat, dog, hairs, a jump scare
+def honk(dur=0.24, f0=470.0, f1=350.0, seed=0):
+    """a goose honk: a buzzy reed through two nasal formants, the pitch dropping (mono)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = f0 * (f1 / f0) ** (u ** 0.6) * (1 + 0.035 * np.sin(2 * np.pi * 31 * ar(n)))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k ** 0.7 for k in range(1, 18))
+    y = svf_bp(src, np.full(n, 1150.0), 0.25) + 0.7 * svf_bp(src, np.full(n, 2500.0), 0.3) + 0.15 * src
+    y = np.tanh(1.6 * y / (np.abs(y).max() + 1e-9))
+    return fade(y * attack_decay(n, 0.012, dur * 0.8), 0.004, 0.04)
+
+
+def meow(dur=0.4, f0=620.0, f1=880.0, f2=520.0, seed=0):
+    """a cat's 'mrrow': the pitch goes up and comes down, the mouth opens and closes (mono)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = np.where(u < 0.35, f0 + (f1 - f0) * (u / 0.35), f1 + (f2 - f1) * ((u - 0.35) / 0.65)) * (1 + 0.02 * np.sin(2 * np.pi * 7 * ar(n)))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k for k in range(1, 16))
+    y = svf_bp(src, 900 + 900 * np.sin(np.pi * u), 0.25) + 0.5 * svf_bp(src, 2400 + 600 * np.sin(np.pi * u), 0.3)
+    y /= np.abs(y).max() + 1e-9
+    return fade(y * np.sin(np.pi * u) ** 0.7, 0.02, 0.08)
+
+
+def cat_hiss(dur=0.5, seed=0):
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    y = filt(white(n, seed), "bandpass", [2600, 9000]) * (0.75 + 0.25 * np.sin(2 * np.pi * 38 * ar(n)))
+    return fade(y / (np.abs(y).max() + 1e-9) * np.minimum(1, u / 0.06) * (1 - u) ** 0.6, 0.004, 0.08)
+
+
+def purr(dur, seed=0, rate=25.0):
+    """a purr: low noise chopped ~25 times a second (60-330 Hz: under the speech band, but a phone speaker still plays it)"""
+    n = int(dur * SR)
+    y = filt(brown(n, seed), "bandpass", [60, 330]) * (0.5 + 0.5 * np.sin(2 * np.pi * rate * ar(n))) ** 2
+    return fade(y / (np.abs(y).max() + 1e-9), 0.15, 0.2)
+
+
+def growl(dur, seed=0, f0=62.0):
+    """a dog's low growl (under the speech band)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = f0 * (1 + 0.12 * np.sin(2 * np.pi * 3.1 * ar(n)) + 0.1 * u)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = np.tanh(2.5 * sum(np.sin(k * ph) / k for k in range(1, 14))) * (0.55 + 0.45 * np.sin(2 * np.pi * 27 * ar(n)) ** 2)
+    y = filt(y, "lowpass", 420)
+    return fade(y / (np.abs(y).max() + 1e-9) * np.sin(np.pi * u) ** 0.4, 0.05, 0.12)
+
+
+def whimper(seed=0):
+    """a dog's whimper: two little falling whines"""
+    out = np.zeros(int(0.42 * SR))
+    for dt, a, b in ((0, 1250, 820), (0.2, 1100, 700)):
+        w = glide(a, b, 0.17, 0.7)
+        w = w * np.sin(np.pi * np.linspace(0, 1, len(w))) ** 0.7
+        i = int(dt * SR)
+        out[i:i + len(w)] += w
+    return fade(out, 0.002, 0.03)
+
+
+def hair_zip(dur=0.45, up=True, seed=0, n_ticks=22):
+    """hairs standing up (or lying back down): a quick run of tiny ticks sliding up (down) in pitch"""
+    n = int(dur * SR) + int(0.05 * SR)
+    y = np.zeros(n)
+    r = np.random.default_rng(seed)
+    m = int(0.022 * SR)
+    for i in range(n_ticks):
+        u = i / max(1, n_ticks - 1)
+        f = 2200 * (2.4 ** (u if up else 1 - u))
+        tk = np.sin(2 * np.pi * f * ar(m)) * expdecay(m, 0.005) + 0.4 * filt(white(m, seed + i), "highpass", 5000) * expdecay(m, 0.002)
+        j = int((u * dur + r.uniform(0, 0.008)) * SR)
+        y[j:j + m] += tk[: n - j] * r.uniform(0.6, 1)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.001, 0.02)
+
+
+def shiver(dur=0.5, seed=0):
+    """brrr: a tremolo of soft air, like a shudder"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    y = filt(white(n, seed), "bandpass", [500, 2600]) * (0.5 + 0.5 * np.sin(2 * np.pi * 17 * ar(n))) ** 2 * np.sin(np.pi * u) ** 0.8
+    return fade(y / (np.abs(y).max() + 1e-9), 0.01, 0.05)
+
+
+def horror_stab(dur=0.55, seed=0):
+    """a jump-scare sting: a dissonant string cluster over a sub hit, with a shriek on top (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    y = sum(saw(mtof(m), n, 0.3, seed + i) for i, m in enumerate((50, 56, 61, 62, 69, 74, 75)))
+    y = filt(y, "lowpass", 3800) * attack_decay(n, 0.004, dur * 0.32)
+    shr = glide(1500, 2300, n / SR, 0.4)[:n] * (1 + 0.3 * np.sin(2 * np.pi * 23 * t)) * attack_decay(n, 0.01, dur * 0.25)
+    th = thump(min(dur, 0.5), 110, 38, 0.16)
+    out = y / (np.abs(y).max() + 1e-9) + 0.35 * shr
+    out[: min(n, len(th))] += 0.9 * th[: min(n, len(th))]
+    return fade(out / (np.abs(out).max() + 1e-9), 0.001, 0.06)
+
+
+def alarm_bell(dur=0.5, seed=0, rate=28.0, f=2100.0):
+    """an old alarm bell: a hammer rattling on a bell, `rate` hits a second"""
+    n = int(dur * SR)
+    y = np.zeros(n)
+    m = int(0.08 * SR)
+    k = 0
+    while k / rate < dur - 0.05:
+        b = sum(np.sin(2 * np.pi * f * q * ar(m)) * a for q, a in ((1, 1), (2.4, 0.5), (3.9, 0.3))) * expdecay(m, 0.025)
+        i = int(k / rate * SR)
+        y[i:i + m] += b[: n - i]
+        k += 1
+    return fade(y / (np.abs(y).max() + 1e-9), 0.003, 0.08)

@@ -395,9 +395,17 @@ function drawCharacter(c, st, t, pal = PAL) {
   // arms (in front of torso)
   for (const [s, k] of [[-1, 'L'], [1, 'R']]) {
     capsuleShaded(c, r['sh' + k], r['el' + k], 42, pal.coat, pal.coatSh, pal.xray ? null : pal.coatHi, pal);
-    capsuleShaded(c, r['el' + k], r['wr' + k], 38, pal.coat, pal.coatSh, pal.xray ? null : pal.coatHi, pal);
     const wr = r['wr' + k], d = r['armDir' + k];
-    line(c, wr[0] - d[0] * 6, wr[1] - d[1] * 6, wr[0] + d[0] * 2, wr[1] + d[1] * 2, 42, pal.coatSh);
+    if (pal.shortSleeve && !pal.xray) {   // rolled-up sleeves: a cuff at the elbow, the forearm bare (pal.shortSleeve)
+      const sh = r['sh' + k], el = r['el' + k], L = Math.hypot(el[0] - sh[0], el[1] - sh[1]) || 1;
+      const ux = (el[0] - sh[0]) / L, uy = (el[1] - sh[1]) / L;
+      capsuleShaded(c, el, wr, 36, pal.skin, pal.skinSh, pal.skinHi, pal);
+      line(c, el[0] - ux * 16, el[1] - uy * 16, el[0] - ux * 2, el[1] - uy * 2, 46, pal.coatSh);
+      line(c, el[0] - ux * 15, el[1] - uy * 15, el[0] - ux * 6, el[1] - uy * 6, 40, pal.coatHi);
+    } else {
+      capsuleShaded(c, r['el' + k], r['wr' + k], 38, pal.coat, pal.coatSh, pal.xray ? null : pal.coatHi, pal);
+      line(c, wr[0] - d[0] * 6, wr[1] - d[1] * 6, wr[0] + d[0] * 2, wr[1] + d[1] * 2, 42, pal.coatSh);
+    }
     let hk = pose.hand;
     if (hk === 'thumbR') hk = k === 'R' ? 'thumb' : 'open';
     drawHand(c, wr, d, hk, pal, s, t);

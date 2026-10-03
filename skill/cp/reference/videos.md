@@ -8,8 +8,9 @@
 | `finger-wrinkles`: "Why Do Your Fingers WRINKLE in Water? 🛁" | 64 s | https://youtube.com/shorts/KPn5s79_a6E · 1 Oct 2026 23:30 IST | Business Suite, 30 Sep 2026 20:00 IST |
 | `brain-freeze`: "Why Does Ice Cream Give You BRAIN FREEZE? 🧊" | 75 s | https://youtube.com/shorts/Oy7QT27NT-Y · 2 Oct 2026 11:30 IST | Business Suite, 2 Oct 2026 18:30 IST |
 | `onion-tears`: "Why Do Onions Make You CRY? 🧅" | 74 s | https://youtube.com/shorts/yaD9MFbpv_I · 3 Oct 2026 11:30 IST | Business Suite, 3 Oct 2026 18:30 IST (scheduled 1 Oct 07:45 after Chrome reconnected) |
-| `yawning-contagious`: "Why Is Yawning CONTAGIOUS? 🥱" | 50 s | https://youtube.com/shorts/kJsQ55sjjIU · 4 Oct 2026 11:30 IST | Business Suite, 4 Oct 2026 18:30 IST |
+| `yawning-contagious`: "Why Is Yawning CONTAGIOUS? 🥱" | 50 s | https://youtube.com/shorts/kJsQ55sjjIU · 3 Oct 2026 11:30 IST (the user moved it up from 4 Oct) | Business Suite, 4 Oct 2026 18:30 IST |
 | `stomach-growl`: "Why Does Your Stomach GROWL? 🤫" | 50 s | https://youtube.com/shorts/KMS1wThr4jk · 3 Oct 2026 23:30 IST | Business Suite, 5 Oct 2026 18:30 IST |
+| `goosebumps`: "Why Do We Get GOOSEBUMPS? 😱" | 49 s | https://youtube.com/shorts/OqIGuc9sYZE · 4 Oct 2026 11:30 IST | — (the day's YouTube-only second Short) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -139,4 +140,37 @@ here for every new Short, with its links.
   thumbnail picker still never loads. The tool's output filter hides a SHA-256 hex string: compare it inside the
   page and return MATCH/MISMATCH.
 - Two QA rounds (hook 7 → 8, squeeze visual 7 → 8). Rebuild proven: identical mix.wav and qa numbers.
+
+**goosebumps** (3 Oct 2026, the first `/cp next youtube-only` second Short, the 06:00 routine; 104 words → 48.8 s):
+- New worlds: `room.js` (living room at night, a couch in front of a TV that is the camera: `tvFlick`/`tvLight`; the
+  hero seated with `couchScene`/`couchPose`, home outfit `HOMEPAL` with bare forearms, popcorn bucket and flying
+  popcorn, `armBristles`, `headphones`, `musicNote`, the red button callout `fluffButton` with an alarm beacon), `arm.js`
+  (macro forearm `macroArm` with per-hair `rise(u, j)`, `skinBump`, the plucked goose `drawGoose`, `lightSwitch`),
+  `skin.js` (the skin in section: follicles each with an arrector pili muscle, a nerve with a branch to every muscle and
+  a travelling signal, the surface bunching), `cat.js` (snowy yard, a ginger cat with `puff` 0..2 via `furRing`, a dog
+  silhouette that snarls then gets scared). The rig gained `shortSleeve` in a palette (template too). New sfxkit atoms
+  (template too): `honk meow cat_hiss purr growl whimper hair_zip shiver horror_stab alarm_bell`.
+- Voice: one pass, 648 characters, 0 % WER on the first takes. 49.2 s of narration came down to 47.8 s with free edits
+  only (tempo 1.05–1.07 on the explanations, gaps −0.05, `tighten` 0.28–0.40).
+- **`master()` peak-normalises the music bus**: lowering the loudest element (the hook's drone) lifted every other
+  section by 3–5 dB and broke the balance twice. Read `qc_audio.py`'s per-shot table after every score change
+  (aim for music −31 … −35 dB per shot against a voice at −23) and move `levels={"music": …}`, not single gains.
+- A word the take itself swallowed ("can", −38 dB, in "Even music can press it") failed the gate at 2.1 dB under the
+  song in his headphones. Diegetic music starts small (an envelope, −9 → −5 dB) and opens on the beat after the line.
+- A hook whose reveal lands late (the hairs rise at 4.5 s): frame 1 is the jump scare (TV flash, scream face, popcorn,
+  hair on end, a horror stab) and the foreshadow is the same phenomenon, small: his arm hairs stand in the wide shot.
+  No zoom blur and only a faint flash on frame 1: the first render's first frame was hazy.
+- Additive glow on bright skin goes white. The "wave" glow sat on the hairs exactly as they rose and hid the reveal:
+  keep glows on skin at ≤ 0.12 and put them just ahead of the action.
+- Macro skin: a jittered grid of follicles reads as goose skin (random scatter read as a rash); uniform-width hairs
+  read as nails (tapered polygons with a pore dot fixed it); the lit dome of a bump at alpha 0.6, its shadow at 0.24.
+- Skin section: at 300 px spacing each muscle crossed the next follicle; 380 px cleared it. Check the diagonal reach of
+  anything that leans.
+- The render gate held this run twice (two Visual Algo renders): `wait-renders.sh 60 && …` chained in a background job
+  works; write the README and notes meanwhile. Don't re-run audio.py while your own render is muxing mix.wav.
+- The harness blocks `rm` with a glob after a `cd`: write stills into fresh folders instead of clearing old ones.
+- The session was interrupted for 3 h after render 2. The lock went stale but nobody had taken it: `run-lock.sh acquire`
+  again, re-check `yt.mjs upcoming`, the repo and the render gate, then carry on from `.work/`.
+- Two QA rounds (sound 6 → 8.5, hook 7 → 8, look 7 → 8.5, safe area 7 → 9), then `build.sh` from the cached takes as
+  the final render: `mix.wav` and `timeline.json` byte-identical, the same qa.py numbers (13/13).
 

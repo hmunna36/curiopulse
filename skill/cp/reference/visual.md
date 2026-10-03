@@ -43,6 +43,8 @@
     `bath.js`.
   - Make a new outfit the same way: `Object.assign({}, PAL, {...})`. Only the clothes change; face, hair and
     proportions never do.
+  - `shortSleeve: true` in a palette (3 Oct 2026, goosebumps' `HOMEPAL`) pushes the sleeves up: a cuff at the elbow and
+    bare forearms in the skin colours. Use it whenever the story needs his skin (arm hair, a watch, a mosquito bite).
 - **Gestures toward the camera don't read in 2D.** A finger pointing at the viewer looked like a ball, then like
   pointing at his own chin (yawning-contagious, 2 Oct 2026). Use a prop that reads in profile instead: he inspected the
   viewer through a magnifying glass (one giant suspicious eye) and it read at once. Never add a free-floating sleeve:
