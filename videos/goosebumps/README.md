@@ -28,7 +28,7 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … IST |
+| YouTube Shorts | https://youtube.com/shorts/OqIGuc9sYZE | 4 Oct 2026, 11:30 IST (scheduled; thumbnail and captions set) |
 | Instagram Reels | — | not posted: this is the day's YouTube-only second Short (Instagram stays at one Reel a day) |
 
 **Title:** Why Do We Get GOOSEBUMPS? 😱
