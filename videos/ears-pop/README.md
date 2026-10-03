@@ -28,8 +28,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … IST |
-| Instagram Reels | https://www.instagram.com/reel/… | … 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/2R-7TRKVPso | 4 Oct 2026, 23:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | (link once it is live) | 6 Oct 2026, 18:30 IST (scheduled in Meta Business Suite, with `cover.jpg` as its cover) |
 
 **Title:** Why Do Your Ears POP on a Plane? ✈️
 

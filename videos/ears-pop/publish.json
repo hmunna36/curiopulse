@@ -24,18 +24,27 @@
   "cover": "cover.jpg",
   "captions": "ears-pop.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-04T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "2R-7TRKVPso",
+    "url": "https://youtube.com/shorts/2R-7TRKVPso",
+    "uploaded": "2026-10-03T20:05:51.031Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-06T18:30:00+05:30",
     "caption": "Your plane takes off... and your ears go POP ✈️\nRelax: your ear just burped. A tiny tube to the back of your nose let the extra air out. Landing is worse (ask the baby in row 12).\nFollow @curio_pulse_tv for the next one: why sunlight makes some of us sneeze 🔔\n#science #humanbody #ears #travel #funfacts #reels",
-    "coverTime": 3.0,
-    "shareToFeed": true
+    "coverTime": 3,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-06 18:30 IST",
+    "coverSet": true,
+    "note": "Scheduled in Meta Business Suite through Chrome on 4 Oct 2026; verified in Content > Scheduled. The custom cover (cover.jpg) was uploaded in the composer's Thumbnail > Upload image."
   }
 }
