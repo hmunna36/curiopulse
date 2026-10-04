@@ -9,8 +9,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Queue
 
-- [ ] Why do some people sneeze at the sun? — he walks out of a cinema into daylight: ACHOO; the photic sneeze reflex (crossed wires, hedged), 1 in 4 people; callback: ears-pop ended with the sun through the plane window making him sneeze ("bless you")
-- [ ] What are "pins and needles"? — he sits on his leg too long; pressure starves the nerve, then it reboots noisily; why it's harmless
+- [ ] What are "pins and needles"? — he sits on his leg too long; pressure starves the nerve, then it reboots noisily; why it's harmless; callback: sun-sneeze teased it as "why your foot falls asleep" (his foot fizzed with sparkles outside the cinema)
 - [ ] Why does your voice sound weird on recordings? — he hears his voicemail and cringes; bone conduction adds bass inside your head; the recording is how everyone hears you
 - [ ] Why do we get hiccups? — mid-date; the diaphragm spasms and the vocal cords snap shut (HIC); a leftover from tadpole breathing (hedged); calls back to hypnic-jerk
 - [ ] What is déjà vu? — he walks into a room he's never seen and KNOWS it; a memory-check misfire in the temporal lobe (hedged)
@@ -25,6 +24,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 - [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
 
 ## Done
+- [x] Why Does the Sun Make You SNEEZE? — sun-sneeze — YouTube https://youtube.com/shorts/2x0QZwQfxY0 5 Oct 2026 11:30 IST; no Instagram (YouTube-only second Short)
 - [x] Why Do Your Ears POP on a Plane? — ears-pop — YouTube https://youtube.com/shorts/2R-7TRKVPso 4 Oct 2026 23:30 IST; Instagram 6 Oct 2026 18:30 IST (Business Suite)
 - [x] Why Do We Get GOOSEBUMPS? — goosebumps — YouTube https://youtube.com/shorts/OqIGuc9sYZE 4 Oct 2026 11:30 IST; no Instagram (YouTube-only second Short)
 - [x] Why Does Your Stomach GROWL? — stomach-growl — YouTube https://youtube.com/shorts/KMS1wThr4jk 3 Oct 2026 23:30 IST; Instagram 5 Oct 2026 18:30 IST (Business Suite)

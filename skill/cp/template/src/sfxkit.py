@@ -1118,3 +1118,17 @@ def sneeze(seed=0, f0=300.0):
     oo = oo / (np.abs(oo).max() + 1e-9) * attack_decay(n3, 0.02, 0.11)
     out[i3:i3 + n3] += 0.8 * oo[: len(out) - i3]
     return fade(out, 0.004, 0.04)
+
+
+# ================================================================= daylight (sun-sneeze)
+def tweet(seed=0, f=3400.0):
+    """a sparrow: two or three quick upward chirps (mono, ~0.25 s). For the silences of a daytime scene: put it in a
+    pause, never on a word (it sits right in the speech band)."""
+    r = np.random.default_rng(seed)
+    k = int(r.integers(2, 4))
+    y = np.zeros(int((0.09 * k + 0.05) * SR))
+    for i in range(k):
+        b = blip(f * r.uniform(0.9, 1.1), f * r.uniform(1.25, 1.5), 0.06, seed + i, 0.03)
+        j = int(i * 0.09 * SR)
+        y[j:j + len(b)] += b[: len(y) - j]
+    return y

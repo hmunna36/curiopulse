@@ -12,6 +12,7 @@
 | `stomach-growl`: "Why Does Your Stomach GROWL? 🤫" | 50 s | https://youtube.com/shorts/KMS1wThr4jk · 3 Oct 2026 23:30 IST | Business Suite, 5 Oct 2026 18:30 IST |
 | `goosebumps`: "Why Do We Get GOOSEBUMPS? 😱" | 49 s | https://youtube.com/shorts/OqIGuc9sYZE · 4 Oct 2026 11:30 IST | — (the day's YouTube-only second Short) |
 | `ears-pop`: "Why Do Your Ears POP on a Plane? ✈️" | 47 s | https://youtube.com/shorts/2R-7TRKVPso · 4 Oct 2026 23:30 IST | Business Suite, 6 Oct 2026 18:30 IST (with cover.jpg as its cover) |
+| `sun-sneeze`: "Why Does the Sun Make You SNEEZE? 🤧" | 46 s | https://youtube.com/shorts/2x0QZwQfxY0 · 5 Oct 2026 11:30 IST | — (the day's YouTube-only second Short) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -215,4 +216,48 @@ here for every new Short, with its links.
   its text and `.click()`), because ref clicks timed out.
 - **The Reel's cover works now:** in the composer, Thumbnail → Upload image. Copy cover.jpg into the scratchpad, upload it
   into a collector input, arm the same click hook with it, click the "Upload image" tab and then the "Upload Image" link.
+
+**sun-sneeze** (4 Oct 2026, the `/cp next youtube-only` second Short; 98 words → 45.7 s):
+- New worlds: `street.js` (the street outside a cinema in late-afternoon sun: `streetBack` (far buildings, the plum wall in
+  shade, posters, a dark foyer, the marquee with a neon CINEMA sign and chasing bulbs, a door leaf that swings out with
+  `door` 0..1.12), `sunDraw` (the sun in screen space, glare `k`), `streetVeil` (the warm veil right of the marquee's
+  shadow), `sunAt(x)`; the hero lit for daylight `sunChar` (a cool shade wash, a warm key from the right, `dark` for the
+  foyer, a pavement shadow); the sneeze as acting: `sneezeAct(t, times)` → `sneezeFace` / `sneezePose` / `sneezeHead`,
+  `sprayBurst`; popcorn `popBucket`, `kernel`, `popcornBurst` (kernels arc, land and stay); `shades` / `shadesShape`; the
+  other cinema-goers `drawPed` (three builds; walk, turn, shield, wide eyes); the cold `germ`; `sparkle`) and
+  `sneezehead.js` (his head in section, in profile: `headCut` with the eyeball, the eye's nerve and the nose's nerve
+  (trigeminal, with its branch to the nasal lining) as Catmull-Rom cords that draw on and carry signals (`shNerve`,
+  `shPulse`), a ring where they run close, a beam of light through the pupil, sparks across the gap, a shield at the
+  nose, the brainstem, and the brain with a face, an arm and a big red SNEEZE button). In scenes.js: `achooWord`,
+  `secLabel`, `guessStamp`, the framed family photo (`PAL_GRAN`, `PAL_KID`: the hero rig in other colours reads as his
+  family), the doctor's chart whose letters type on and then fold into an acrostic.
+- New sfxkit atom (template too): `tweet(seed, f)` (a sparrow, for daylight silences). `sneeze(seed, f0)` at 232 Hz is
+  a gran, at 410 Hz a kid.
+- **Daylight without losing the look:** the building is in shade (plum, dark), one hard warm wedge of sun is the glowing
+  thing, and the hero is lit from that side (`sunChar`). Keep the sun's bloom low (gctx 0.42): the first stills were a
+  white blob across a third of the frame.
+- **Glow on a face hides it (again).** Every sneeze frame was a white flare: a nose sparkle whose envelope never ended
+  (`tk` had a start and no end), a 0.35 flash on the character layer and a spray puff that started at his mouth. Give
+  every effect an end, keep character flashes ≤ 0.15, start a spray below the chin.
+- **`toScreen()` points need `screenSpace()` before you draw them.** After `applyCam`, `line()` and `softDot(gctx, …)` at a
+  screen point landed 390 px away (on the marquee); helpers that set their own transform (`sparkle`, `bigWord`) hid the
+  bug for a whole render.
+- **A hook's "starts small at once" still needs its cause on screen.** The sneeze lands at 3.1 s; the nose prickle could
+  not honestly start before the sunlight reached him, so he strides out faster (in the sun by 0.9 s) and the sparkle and
+  twitch grow from 0.97 s. Round 1 scored the hook 7.5 with nothing strange before 1.75 s.
+- **A stare needs his face big.** With the chart above him he was 190 px wide: the deadpan didn't land until
+  `post.push` went 1.2× toward his face on the stare (the chart's rows stay in the zone, its header goes under the top
+  band).
+- Voice: 687 characters spent in all (the script in one pass, a new last line, seven audition takes). Whisper base.en cannot spell
+  "achoo" ("a chew", "a true") or "Gesundheit" ("Gazoon tight"): the takes were right, so measure the word instead
+  (length, level, pitch: the chosen "Ah-choo" is 1.1 s long). "Gesundheit" was dropped anyway for a callback everyone
+  gets: "Bless you... again."
+- **A first word can sit BEFORE its own sound.** "What helps?" (no tag): v3 gave "What" an 0.08 s slot where the take is
+  still silent, and qa.py failed it at −4 dB against the room tone. Compare `first_loud(word start)` for any first word
+  qa.py flags; move the word's window in make_timeline.py AFTER the shots, captions and cues are computed, so the picture
+  and the mix don't move (timeline shots/captions/cues stayed identical).
+- A sneeze is a punchline SFX: all eight sit in pauses (two after "and—", after "light.", three after "FIRE!", after
+  "Subscribe!", inside "Bless you... again."). When a take leaves no pause ("It runs in families. And its…"), move the
+  gag to the gap before the line (the cut on "FIRE!" lands on the family sneezing; the line then explains it).
+- Two QA rounds (sound 6 → 8.5, hook 7.5 → 8, comedy 7.5 → 8), then `build.sh` as the final render.
 
