@@ -50,7 +50,7 @@ chrome_ok() { [ -n "${1:-}" ] && [ -x "$1" ] && "$1" --version >/dev/null 2>&1; 
 CH="$(cat "$CPL_HOME/chrome-path" 2>/dev/null || true)"
 if ! chrome_ok "$CH"; then
   CH=""
-  for c in "${CHROME_PATH:-}" "$(command -v google-chrome || true)" "$(command -v google-chrome-stable || true)" "$(command -v chromium || true)" "$(command -v chromium-browser || true)"; do
+  for c in "${CHROME_PATH:-}" "${PLAYWRIGHT_BROWSERS_PATH:-/opt/pw-browsers}/chromium" /opt/pw-browsers/chromium-*/chrome-linux/chrome "$(command -v google-chrome || true)" "$(command -v google-chrome-stable || true)" "$(command -v chromium || true)" "$(command -v chromium-browser || true)"; do
     if chrome_ok "$c"; then CH="$c"; break; fi
   done
 fi
@@ -78,7 +78,8 @@ PYEOF
 ok=1
 line() { printf '  %-14s %s\n' "$1" "$2"; }
 command -v ffmpeg >/dev/null && line ffmpeg "$(ffmpeg -hide_banner -version | head -1 | cut -c1-60)" || { line ffmpeg MISSING; ok=0; }
-ffmpeg -hide_banner -encoders 2>/dev/null | grep -q libx264 || { line libx264 MISSING; ok=0; }
+# (no grep -q on a pipe: with pipefail, ffmpeg's SIGPIPE turned a present libx264 into MISSING)
+ffmpeg -hide_banner -encoders 2>/dev/null | grep libx264 >/dev/null || { line libx264 MISSING; ok=0; }
 command -v ffprobe >/dev/null || { line ffprobe MISSING; ok=0; }
 "$PY" -c "import numpy, scipy, soundfile, pyloudnorm, PIL, certifi" 2>/dev/null && line python "$("$PY" -V 2>&1) + packages" || { line python "MISSING packages"; ok=0; }
 "$PY" -c "import pedalboard" 2>/dev/null && line pedalboard ok || line pedalboard "missing (optional)"

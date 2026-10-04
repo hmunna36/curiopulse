@@ -13,6 +13,8 @@ wrong, fix this file in the same run).
   playwright-core and its Chromium. `. bin/env.sh` then sets PATH, NODE_PATH, PYTHON, CHROME_PATH and RENDER_JOBS.
   (If the user ever puts `bash .claude/skills/cp-long/bin/cloud-setup.sh` in the environment's setup script, the
   install is cached and this step takes seconds. It is optional.)
+- The cloud image ships Playwright's Chromium at `/opt/pw-browsers/chromium` (and `cdn.playwright.dev` is blocked
+  by the default network policy): cloud-setup.sh uses that one first. Seen 4 Oct 2026.
 - As root, Chrome needs `--no-sandbox`; render.js and make_cover.js add it themselves.
 
 ## Keys (environment variables of the cloud environment; set by the user, never by you)
