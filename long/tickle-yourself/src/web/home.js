@@ -73,8 +73,8 @@ function drawRoomStatic(c, day) {
   // skirting + floor
   c.fillStyle = day ? '#3A3E6A' : '#141A3C'; c.fillRect(-400, HOME.floorY - 26, W + 800, 26);
   const fg = c.createLinearGradient(0, HOME.floorY, 0, H + 200);
-  fg.addColorStop(0, day ? '#5A3E3A' : '#2A1A22'); fg.addColorStop(1, day ? '#2E1E22' : '#0D080E');
-  c.fillStyle = fg; c.fillRect(-400, HOME.floorY, W + 800, H - HOME.floorY + 200);
+  fg.addColorStop(0, day ? '#5A3E3A' : '#2A1A22'); fg.addColorStop(0.5, day ? '#3A2628' : '#140C14'); fg.addColorStop(1, day ? '#2A1A1E' : '#0D080E');
+  c.fillStyle = fg; c.fillRect(-400, HOME.floorY, W + 800, H - HOME.floorY + 600);
   for (let i = 0; i < 6; i++) { const y = HOME.floorY + 14 + i * i * 9 + i * 18; line(c, -400, y, W + 400, y, 2, 'rgba(0,0,0,0.28)'); }
   // the rug under the couch
   ellipse(c, HOME.couchX, HOME.floorY + 78, 640, 74, day ? '#6A3E7E' : '#3B2452');
@@ -109,7 +109,7 @@ function calendar(c, x, y, s, day, circleK, label = 'SUN', mark = 'PIP') {
 
 function initHome() {
   for (const day of [false, true]) {
-    const cv = mkCanvas(W * 2 + 800, H * 2 + 400), c = cv.getContext('2d');
+    const cv = mkCanvas(W * 2 + 800, H * 2 + 1040), c = cv.getContext('2d');
     c.setTransform(2, 0, 0, 2, 400, 200);
     drawRoomStatic(c, day);
     if (day) HOME_DAY = cv; else HOME_NIGHT = cv;
@@ -122,8 +122,8 @@ function initHome() {
 function homeBack(cam, t, o = {}) {
   applyCam(cam);
   const day = clamp(o.day || 0);
-  if (day < 1) ctx.drawImage(HOME_NIGHT, -200, -100, W + 400, H + 200);
-  if (day > 0) { ctx.globalAlpha = day; ctx.drawImage(HOME_DAY, -200, -100, W + 400, H + 200); ctx.globalAlpha = 1; }
+  if (day < 1) ctx.drawImage(HOME_NIGHT, -200, -100, W + 400, H + 520);
+  if (day > 0) { ctx.globalAlpha = day; ctx.drawImage(HOME_DAY, -200, -100, W + 400, H + 520); ctx.globalAlpha = 1; }
   // rain on the window at night
   if (day < 0.9) {
     ctx.save(); ctx.beginPath(); ctx.rect(92, 190, 260, 400); ctx.clip();

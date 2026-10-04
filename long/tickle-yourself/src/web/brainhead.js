@@ -83,10 +83,10 @@ function bhPulse(D, u, col, a = 1, r = 10) {
 function bhForecast(t, k, o = {}) {
   if (k <= 0) return;
   const c = ctx, s = E.outBack(clamp(k), 1.6);
-  const bx = -520, by = -330;
+  const bx = -560, by = -300;
   // the trail of small bubbles from the cerebellum
-  for (const [px, py, r] of [[-220, -60, 14], [-290, -120, 22], [-370, -190, 30]]) { circle(c, px, py, r * s, '#F4F6FF'); }
-  c.save(); c.translate(bx, by); c.scale(s, s);
+  for (const [px, py, r] of [[-215, -50, 16], [-270, -90, 26], [-330, -140, 36]]) { circle(c, px, py, r * s, '#F4F6FF'); }
+  c.save(); c.translate(bx, by); c.scale(s * 1.45, s * 1.45);
   ellipse(c, 0, 0, 200, 150, '#F4F6FF');
   for (let i = 0; i < 9; i++) { const a = (i / 9) * 6.28; circle(c, Math.cos(a) * 178, Math.sin(a) * 124, 52, '#F4F6FF'); }
   // the expected touch: a chin (profile) with the feather on it
@@ -181,12 +181,12 @@ function brainHead(cam, t, o = {}) {
 }
 
 // a label in screen space with a leader to a section point
-function bhLabel(cam, txt, p, dx, dy, col, k, size = 54) {
+function bhLabel(cam, txt, p, dx, dy, col, k, size = 56) {
   if (k <= 0) return;
   const [x, y] = bhScreen(cam, p), lx = x + dx, ly = y + dy;
   screenSpace();
   const a = clamp(k * 3);
   line(ctx, x, y, lx, ly, 5, rgba('#0B0B1A', 0.8 * a)); line(ctx, x, y, lx, ly, 3, rgba(col, a));
   circle(ctx, x, y, 8, rgba(col, a)); softDot(gctx, x, y, 26, col, 0.6 * a);
-  pill(lx, ly, txt, col, E.outBack(clamp(k), 1.8), size * 0.62);
+  pill(lx, ly, txt, col, E.outBack(clamp(k), 1.8), size);
 }

@@ -8,3 +8,4 @@ The finished MP4s are not kept in git (they are on YouTube; `src/build.sh` in ea
 
 | Video | Length | Folder | YouTube |
 |---|---|---|---|
+| Why Can't You TICKLE Yourself? | 2:45 | [`tickle-yourself`](tickle-yourself) | [11 Oct 2026, 17:30 IST](https://youtu.be/RXYD9zslO1g) |

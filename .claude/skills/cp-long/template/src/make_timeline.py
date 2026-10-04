@@ -31,6 +31,13 @@ COLOR = {}
 DISPLAY = {}  # spoken words shown as figures: {"seventy percent": ["70%"]}
 assert all(isinstance(v, str) and v.startswith("#") for v in COLOR.values()), "COLOR values must be hex strings (P[\"P\"], not P)"
 
+# v3's alignment can hand a pause to the word after it (tickle-yourself: "Day... two" put the second "Day" 0.9 s
+# before its sound). Move every word's start to its first loud frame when that is clearly later.
+for i in range(len(T.words)):
+    fl = T.first_loud(T.ws[i], span=max(0.02, T.we[i] - T.ws[i] + 0.1))
+    if fl - T.ws[i] > 0.08:
+        T.ws[i] = T.words[i]["start"] = round(min(fl, T.we[i] - 0.04), 3)
+
 shots = T.shots(SHOTS, special)
 caps = T.captions(CHUNKS, COLOR, shots, DISPLAY)
 

@@ -1,0 +1,376 @@
+1
+00:00:00,265 --> 00:00:01,050
+Go on.
+
+2
+00:00:01,050 --> 00:00:02,910
+Try to tickle yourself...
+
+3
+00:00:02,910 --> 00:00:04,045
+Right now.
+
+4
+00:00:04,420 --> 00:00:05,400
+Nothing, right?
+
+5
+00:00:05,435 --> 00:00:07,636
+But when someone ELSE does it...
+
+6
+00:00:07,636 --> 00:00:09,870
+you completely fall apart.
+
+7
+00:00:09,870 --> 00:00:10,767
+Why?
+
+8
+00:00:10,820 --> 00:00:12,040
+Because your brain...
+
+9
+00:00:12,040 --> 00:00:14,600
+is secretly predicting the future.
+
+10
+00:00:14,870 --> 00:00:16,160
+Meet Pip.
+
+11
+00:00:16,160 --> 00:00:17,670
+Six years old...
+
+12
+00:00:17,670 --> 00:00:19,322
+and undefeated.
+
+13
+00:00:19,542 --> 00:00:20,500
+So this week,
+
+14
+00:00:20,500 --> 00:00:21,908
+he has a plan.
+
+15
+00:00:21,990 --> 00:00:23,160
+Tickle himself
+
+16
+00:00:23,160 --> 00:00:25,240
+every single day...
+
+17
+00:00:25,240 --> 00:00:26,667
+until he's immune.
+
+18
+00:00:26,708 --> 00:00:27,848
+Day one.
+
+19
+00:00:28,508 --> 00:00:29,720
+Day two.
+
+20
+00:00:30,428 --> 00:00:31,667
+Day six.
+
+21
+00:00:33,870 --> 00:00:34,540
+Here's the problem.
+
+22
+00:00:34,540 --> 00:00:35,757
+Every time you move,
+
+23
+00:00:35,757 --> 00:00:38,634
+your brain sends an order to your muscles...
+
+24
+00:00:38,634 --> 00:00:39,967
+and a copy of that order
+
+25
+00:00:39,967 --> 00:00:41,327
+back here,
+
+26
+00:00:41,327 --> 00:00:42,467
+to the cerebellum.
+
+27
+00:00:42,497 --> 00:00:43,370
+Its job?
+
+28
+00:00:43,370 --> 00:00:46,230
+Predict exactly what you're about to feel.
+
+29
+00:00:46,230 --> 00:00:48,670
+When the touch arrives right on schedule,
+
+30
+00:00:48,670 --> 00:00:50,370
+your brain turns it down.
+
+31
+00:00:50,370 --> 00:00:51,662
+Spoiler alert...
+
+32
+00:00:51,662 --> 00:00:53,100
+it already knew.
+
+33
+00:00:53,129 --> 00:00:55,384
+A tickle needs a surprise.
+
+34
+00:00:55,470 --> 00:00:56,750
+And you...
+
+35
+00:00:56,750 --> 00:00:58,664
+can't surprise yourself.
+
+36
+00:00:59,189 --> 00:01:01,033
+So what if you could?
+
+37
+00:01:01,079 --> 00:01:02,070
+In London,
+
+38
+00:01:02,070 --> 00:01:04,703
+scientists built a tickle robot.
+
+39
+00:01:04,703 --> 00:01:05,466
+You move a handle
+
+40
+00:01:05,466 --> 00:01:06,730
+with one hand...
+
+41
+00:01:06,730 --> 00:01:08,081
+and a robot strokes
+
+42
+00:01:08,081 --> 00:01:09,050
+your other palm
+
+43
+00:01:09,050 --> 00:01:10,867
+with soft foam.
+
+44
+00:01:10,900 --> 00:01:11,753
+Move it yourself,
+
+45
+00:01:11,753 --> 00:01:13,905
+and it's barely ticklish.
+
+46
+00:01:13,905 --> 00:01:14,612
+But add a delay
+
+47
+00:01:14,612 --> 00:01:15,481
+of just a fifth
+
+48
+00:01:15,481 --> 00:01:16,529
+of a second...
+
+49
+00:01:16,529 --> 00:01:18,680
+and the tickle comes back.
+
+50
+00:01:18,740 --> 00:01:20,150
+Fool the prediction...
+
+51
+00:01:20,150 --> 00:01:22,333
+and you CAN tickle yourself!
+
+52
+00:01:26,004 --> 00:01:26,990
+Congratulations.
+
+53
+00:01:27,205 --> 00:01:29,970
+He wanted to become untickleable...
+
+54
+00:01:30,165 --> 00:01:31,613
+and he built a machine
+
+55
+00:01:31,613 --> 00:01:33,505
+that tickles him.
+
+56
+00:01:33,625 --> 00:01:35,000
+But the weirdest part
+
+57
+00:01:35,000 --> 00:01:37,135
+isn't about tickling at all.
+
+58
+00:01:37,135 --> 00:01:38,457
+The same prediction
+
+59
+00:01:38,457 --> 00:01:41,040
+turns down your own pushes.
+
+60
+00:01:41,040 --> 00:01:42,440
+In one experiment,
+
+61
+00:01:42,440 --> 00:01:43,480
+two people took turns
+
+62
+00:01:43,480 --> 00:01:45,310
+pressing on each other's finger,
+
+63
+00:01:45,310 --> 00:01:47,933
+trying to press back exactly as hard.
+
+64
+00:01:47,980 --> 00:01:49,650
+Every single turn...
+
+65
+00:01:49,650 --> 00:01:50,495
+the force went up
+
+66
+00:01:50,495 --> 00:01:52,900
+by nearly forty percent.
+
+67
+00:01:52,953 --> 00:01:54,993
+Which might explain every
+
+68
+00:01:54,993 --> 00:01:56,470
+"he pushed me first"
+
+69
+00:01:56,470 --> 00:01:58,013
+fight in history.
+
+70
+00:01:58,150 --> 00:01:59,070
+And rats?
+
+71
+00:01:59,070 --> 00:02:01,301
+Tickle a rat, and it chirps...
+
+72
+00:02:01,301 --> 00:02:03,840
+a sound scientists compare to laughing,
+
+73
+00:02:03,840 --> 00:02:05,389
+too high for us to hear.
+
+74
+00:02:05,389 --> 00:02:06,555
+They even chase the hand
+
+75
+00:02:06,555 --> 00:02:07,500
+for more.
+
+76
+00:02:07,540 --> 00:02:08,572
+Some scientists think
+
+77
+00:02:08,572 --> 00:02:10,560
+that's what tickling is for.
+
+78
+00:02:10,560 --> 00:02:11,511
+Play...
+
+79
+00:02:11,511 --> 00:02:14,333
+a way for two brains to bond.
+
+80
+00:02:14,390 --> 00:02:15,522
+So your brain blocking
+
+81
+00:02:15,522 --> 00:02:16,790
+your own tickle
+
+82
+00:02:16,790 --> 00:02:18,170
+isn't a bug.
+
+83
+00:02:18,290 --> 00:02:19,298
+A tickle is how
+
+84
+00:02:19,298 --> 00:02:20,990
+your body knows...
+
+85
+00:02:20,990 --> 00:02:22,150
+someone else
+
+86
+00:02:22,150 --> 00:02:23,467
+is there.
+
+87
+00:02:26,160 --> 00:02:27,870
+So he quit training.
+
+88
+00:02:28,110 --> 00:02:30,010
+Some things only work...
+
+89
+00:02:30,010 --> 00:02:32,020
+when someone else does them.
+
+90
+00:02:34,970 --> 00:02:36,150
+Next week:
+
+91
+00:02:36,150 --> 00:02:37,395
+what happens when you
+
+92
+00:02:37,395 --> 00:02:38,940
+hold your breath.
+
+93
+00:02:39,030 --> 00:02:40,287
+Subscribe...
+
+94
+00:02:40,290 --> 00:02:43,700
+and remember to breathe out.
+
