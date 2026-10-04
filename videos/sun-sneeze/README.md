@@ -33,7 +33,7 @@ after "FIRE!", one after "Subscribe!" and one inside "Bless you... again."
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … |
+| YouTube Shorts | https://youtube.com/shorts/2x0QZwQfxY0 | 5 Oct 2026, 11:30 IST (scheduled; thumbnail and captions set) |
 | Instagram Reels | — | not posted: this is the day's YouTube-only second Short (Instagram stays at one Reel a day) |
 
 **Title:** Why Does the Sun Make You SNEEZE? 🤧

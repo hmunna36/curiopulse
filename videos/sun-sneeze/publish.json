@@ -24,13 +24,18 @@
   "cover": "cover.jpg",
   "captions": "sun-sneeze.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-05T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "2x0QZwQfxY0",
+    "url": "https://youtube.com/shorts/2x0QZwQfxY0",
+    "uploaded": "2026-10-04T07:15:38.264Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
     "skip": true,
