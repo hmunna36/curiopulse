@@ -24,18 +24,27 @@
   "cover": "cover.jpg",
   "captions": "pins-needles.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-05T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "VeLcryrlPBk",
+    "url": "https://youtube.com/shorts/VeLcryrlPBk",
+    "uploaded": "2026-10-04T22:51:10.274Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-06T06:30:00+05:30",
     "caption": "You stand up... and your leg is GONE 🦶⚡\nIt's not your circulation: you squashed a nerve. When it wakes up, its fibres fire by themselves and your brain hears static. That's pins and needles.\nFollow @curio_pulse_tv for the next one: why your recorded voice sounds weird 🔔\n#science #humanbody #nerves #funfacts #reels",
     "coverTime": 9.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-06 06:30 IST",
+    "coverSet": false,
+    "note": "Scheduled in Meta Business Suite through Chrome on 5 Oct 2026; verified in Content > Scheduled. The thumbnail picker never loaded (hidden Chrome window), so the cover is an auto frame: change it in the Instagram app after it goes live."
   }
 }

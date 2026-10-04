@@ -27,8 +27,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | |
-| Instagram Reels | (filled in after scheduling) | |
+| YouTube Shorts | https://youtube.com/shorts/VeLcryrlPBk | 5 Oct 2026, 23:30 IST |
+| Instagram Reels | scheduled in Meta Business Suite (link once it is live) | 6 Oct 2026, 06:30 IST |
 
 **Title:** Why Does Your Foot Fall ASLEEP? 🦶
 
