@@ -1,0 +1,20 @@
+{
+  "slug": "__SLUG__",
+  "kind": "long",
+  "file": "__SLUG__.mp4",
+  "title": "",
+  "description": "",
+  "pinnedComment": "Next week: <teaser from topics.md> Subscribe so you do not miss it! (suggestion for the user to pin; never posted by the pipeline)",
+  "tags": [],
+  "cover": "cover.jpg",
+  "captions": "__SLUG__.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true
+  }
+}

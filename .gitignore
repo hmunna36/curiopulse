@@ -4,3 +4,7 @@ videos/*/src/fonts/
 __pycache__/
 .venv/
 .DS_Store
+# long-form videos: build intermediates, fetched fonts, and the rendered MP4 (it lives on YouTube)
+long/*/.work/
+long/*/src/fonts/
+long/*/*.mp4

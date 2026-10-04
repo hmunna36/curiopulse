@@ -1,0 +1,28 @@
+# Narration for "__TITLE__" (long-form: 2:15-2:55, never over 3:00)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (skill/cp/reference/narration.md + this skill's reference/long-form.md): talk to ONE friend, short sentences,
+# questions, asides, a pause before every reveal, one idea per block (a block is 1-3 sentences, 14-20 blocks in all),
+# hedge what science hasn't settled ("One idea...", "Scientists think..."). The whole script is 290-360 words
+# (about 1,900-2,500 characters): leave room for at least three wordless beats (a gap of 2-4 s where the picture and
+# the score carry the story). The last block `sub` is the subscribe line (<= 110 characters): it teases next
+# week's question from topics.md and says the word "subscribe".
+
+## hook gap=0.10 tempo=1.00
+[curious] REPLACE: the question, as an experience the viewer has had... and the promise of where this goes.
+
+## act1a gap=0.35 tempo=1.04
+REPLACE: what is actually happening (first step of the mechanism).
+
+## twist gap=0.45 tighten=0 tempo=1.00
+[mischievously] REPLACE: "But that's not the weird part."
+
+## button gap=0.45 tighten=0 tempo=1.00
+[deadpan] REPLACE: the button line that calls back to the hook.
+
+## sub gap=0.40 tighten=0 tempo=1.00
+[chuckles] REPLACE (<= 110 characters, funny, in voice): tease next week's question from topics.md, then ask to subscribe. Say the word "subscribe".
