@@ -20,6 +20,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do We Get Goosebumps? | 49 s | [`videos/goosebumps`](videos/goosebumps) | [4 Oct 2026](https://youtube.com/shorts/OqIGuc9sYZE) |
 | Why Do Your Ears Pop on a Plane? | 47 s | [`videos/ears-pop`](videos/ears-pop) | [4 Oct 2026](https://youtube.com/shorts/2R-7TRKVPso) |
 | Why Does the Sun Make You Sneeze? | 46 s | [`videos/sun-sneeze`](videos/sun-sneeze) | [5 Oct 2026](https://youtube.com/shorts/2x0QZwQfxY0) |
+| Why Does Your Foot Fall Asleep? | 50 s | [`videos/pins-needles`](videos/pins-needles) | 5 Oct 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;

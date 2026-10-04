@@ -1,0 +1,40 @@
+# Narration for "Why Does Your Foot Fall ASLEEP?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md): talk to ONE friend, short sentences, questions, asides, a pause before
+# every reveal, the last block `sub` is the subscribe line (<= 70 characters, teases the next Short); the whole
+# script is 95-115 words for a 40-50 s Short, one idea per block, hedge what science hasn't settled.
+
+## hook gap=0.00 tighten=0.20 tempo=1.04
+Twenty minutes cross-legged. You stand up, and—
+
+## still gap=1.05 tighten=0.42 tempo=1.00
+[deadpan] Your leg... is still meditating.
+
+## name gap=0.35 tighten=0.35 tempo=1.00
+Then comes the fizz. [panicked] Pins and NEEDLES!
+
+## squash gap=0.35 tighten=0.30 tempo=1.07
+You didn't cut off your circulation. You squashed a NERVE... and the tiny vessels that feed it.
+
+## quiet gap=0.18 tighten=0.30 tempo=1.07
+Starved, it goes quiet. Your brain can't feel the foot... or find it.
+
+## reboot gap=0.28 tighten=0.40 tempo=1.03
+Then you move. Blood rushes back, and the nerve reboots... [deadpan] badly.
+
+## rec gap=0.22 tighten=0.30 tempo=1.07
+Scientists have recorded its fibres firing by themselves, hundreds of times a second.
+
+## static gap=0.25 tighten=0.55 tempo=1.03
+Nothing is touching your skin. It's static... and your brain guesses: [curious] needles?
+
+## button gap=0.40 tighten=0.35 tempo=1.03
+It's harmless. Wiggle your toes... [mischievously] and try to look enlightened.
+
+## sub gap=0.32 tighten=0.45 tempo=1.03
+Next up: why your recorded voice sounds weird. Subscribe... [whispers] quietly.
