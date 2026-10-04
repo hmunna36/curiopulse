@@ -1,0 +1,81 @@
+# Narration for "Why Can't You TICKLE Yourself?" (long-form: 2:15-2:55, never over 3:00)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses (jokes and reveals). tempo: explanations 1.03-1.06, jokes 1.00.
+# The film: he wants to become untickleable before his niece Pip's Sunday visit; his own brain is the obstacle;
+# the turn: a tickle is how your body knows someone else is there; he ends up laughing with her instead of
+# fighting it. Wordless beats: the stare at the feather (before `brain`), the machine (before `congrats`),
+# the door opening on Sunday (before `quit`), and the final image (after `end`).
+
+## hook gap=0.10 tighten=0 tempo=1.00
+[curious] Go on. Try to tickle yourself... Right now.
+
+## nothing gap=0.70 tighten=0 tempo=1.00
+[deadpan] Nothing, right?
+
+## else gap=0.50 tempo=1.02
+But when someone ELSE does it... you completely fall apart. Why? Because your brain... is secretly predicting the future.
+
+## pip gap=0.60 tighten=0 tempo=1.00
+[mischievously] Meet Pip. Six years old... and undefeated.
+
+## plan gap=0.80 tempo=1.03
+So this week, he has a plan. Tickle himself every single day... until he's immune.
+
+## days gap=0.40 tighten=0 tempo=1.00
+[deadpan] Day one. Day two. Day six.
+
+## brain gap=2.60 tempo=1.04
+[curious] Here's the problem. Every time you move, your brain sends an order to your muscles... and a copy of that order back here, to the cerebellum.
+
+## predict gap=0.30 tempo=1.04
+Its job? Predict exactly what you're about to feel. When the touch arrives right on schedule, your brain turns it down. Spoiler alert... it already knew.
+
+## surprise gap=0.55 tighten=0 tempo=1.00
+A tickle needs a surprise. And you... can't surprise yourself.
+
+## rehook1 gap=0.80 tighten=0 tempo=1.00
+[curious] So what if you could?
+
+## lab gap=0.45 tempo=1.04
+In London, scientists built a tickle robot. You move a handle with one hand... and a robot strokes your other palm with soft foam.
+
+## sync gap=0.30 tempo=1.04
+Move it yourself, and it's barely ticklish. But add a delay of just a fifth of a second... and the tickle comes back.
+
+## fool gap=0.40 tighten=0 tempo=1.00
+[excited] Fool the prediction... and you CAN tickle yourself!
+
+## congrats gap=3.00 tighten=0 tempo=1.00
+[deadpan] Congratulations. He wanted to become untickleable... and he built a machine that tickles him.
+
+## rehook2 gap=0.70 tempo=1.00
+[mischievously] But the weirdest part isn't about tickling at all.
+
+## press gap=0.35 tempo=1.04
+The same prediction turns down your own pushes. In one experiment, two people took turns pressing on each other's finger, trying to press back exactly as hard.
+
+## escalate gap=0.30 tempo=1.03
+Every single turn... the force went up by nearly forty percent.
+
+## fight gap=0.45 tighten=0 tempo=1.00
+[deadpan] Which might explain every "he pushed me first" fight in history.
+
+## rats gap=0.70 tempo=1.03
+And rats? Tickle a rat, and it chirps... a sound scientists compare to laughing, too high for us to hear. They even chase the hand for more.
+
+## play gap=0.40 tighten=0.60 tempo=1.03
+Some scientists think that's what tickling is for. Play... a way for two brains to bond.
+
+## turn gap=0.50 tighten=0 tempo=1.00
+So your brain blocking your own tickle isn't a bug. [whispers] A tickle is how your body knows... someone else is there.
+
+## quit gap=3.20 tighten=0 tempo=1.00
+So he quit training.
+
+## end gap=0.80 tighten=0 tempo=1.00
+Some things only work... when someone else does them.
+
+## sub gap=2.80 tighten=0.55 tempo=1.00
+[chuckles] Next week: what happens when you hold your breath. Subscribe... and remember to breathe out.

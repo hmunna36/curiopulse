@@ -13,7 +13,7 @@ the claims in real sources before writing: the angles below are leads, not facts
 
 ## Queue
 
-- [ ] Why can't you tickle yourself? — he tries, deadpan, with a feather; act 1: your brain predicts your own touch and turns it down; act 2: the proof with a robot arm and a tiny delay; act 3: who CAN tickle themselves, and why laughing at tickles may be a panic signal (hedged)
+- [~] Why can't you tickle yourself? — tickle-yourself — started 2026-10-04
 - [ ] What happens when you hold your breath? — a pool dare; act 1: it's the CO2 alarm, not the missing oxygen; act 2: the diving reflex that slows your heart when your face hits cold water; act 3: how free divers go past 10 minutes, and why you should never test it alone
 - [ ] Why does time slow down when you're scared? — he slips on a banana peel in slow motion; act 1: the amygdala writes denser memories; act 2: the free-fall experiment with the wrist display; act 3: it's memory, not perception — and why holidays feel long and routine years vanish
 - [ ] Why do songs get stuck in your head? — a jingle follows him everywhere; act 1: the phonological loop replaying; act 2: what earworm songs share (tempo, simple contour, one odd leap); act 3: the cures that were tested (chewing gum, finishing the song) and why your brain does it at all (hedged)
