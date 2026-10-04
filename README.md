@@ -19,6 +19,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Does Your Stomach Growl? | 50 s | [`videos/stomach-growl`](videos/stomach-growl) | [3 Oct 2026](https://youtube.com/shorts/KMS1wThr4jk) |
 | Why Do We Get Goosebumps? | 49 s | [`videos/goosebumps`](videos/goosebumps) | [4 Oct 2026](https://youtube.com/shorts/OqIGuc9sYZE) |
 | Why Do Your Ears Pop on a Plane? | 47 s | [`videos/ears-pop`](videos/ears-pop) | [4 Oct 2026](https://youtube.com/shorts/2R-7TRKVPso) |
+| Why Does the Sun Make You Sneeze? | 46 s | [`videos/sun-sneeze`](videos/sun-sneeze) | scheduled |
 
 Each folder has:
 - the finished MP4;
