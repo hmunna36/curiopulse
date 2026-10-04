@@ -4,27 +4,28 @@
 // A. Meta Business Suite in Chrome (the route in use since 2026-09-29).
 //    The user's Facebook account is blocked, so no Meta developer app and no API token can exist.
 //    `prepare` builds the Instagram-spec copy and splits it into parts under 10 MB (Claude in Chrome's upload limit).
-//    The /cp run then schedules the Reel in Business Suite itself, at 18:30 IST: see the skill's
-//    reference/publish.md. After that, `busy <date>` records the day.
+//    The /cp run then schedules the Reel in Business Suite itself, in its slot (06:30 or 18:30 IST; the sheet gives
+//    the date and time): see the skill's reference/publish.md. After that, `busy <date>T<HH:MM>` records the slot.
 // B. The API ("Instagram API with Instagram Login", graph.instagram.com; no Facebook Page needed), used as soon as
 //    `token` has stored a token (it also installs the launchd job). Everything below `queue` belongs to this route.
 //
 // The API cannot schedule. So `queue` books a Reel into ~/.config/cp/ig-queue.json and keeps a spool copy of the
-// MP4, and a launchd job (install-job) runs `run-due` every day at 18:10 IST (and at login).
+// MP4, and a launchd job (install-job) runs `run-due` 20 minutes before each slot, at 06:10 and 18:10 IST (and at login).
 // run-due takes every Reel due within 25 minutes (or overdue): it creates the container and uploads, waits until
-// Instagram has processed it, sleeps until the exact release time (18:30 IST), publishes, and records the permalink.
+// Instagram has processed it, sleeps until the exact release time (06:30 or 18:30 IST), publishes, and records the permalink.
 //
 //   node ig.mjs prepare <publish.json> [--out DIR]   route A: IG copy + ≤9 MB parts + SHA-256 + caption/time sheet
 //   node ig.mjs route                     prints "api" (a token exists) or "business-suite"
 //   node ig.mjs token [--clipboard]       store the long-lived token from the Meta App Dashboard (hidden input / clipboard)
 //   node ig.mjs whoami                    read-only: which account the token belongs to, days left on the token
 //   node ig.mjs refresh                   extend the token another 60 days (run-due does this weekly by itself)
-//   node ig.mjs queue <publish.json>      book the Reel (instagram.publishAt from publish.json; "auto" = next free day)
-//   node ig.mjs upcoming                  the queue, busy days and the last results
+//   node ig.mjs queue <publish.json>      book the Reel (instagram.publishAt from publish.json; "auto" = next free slot)
+//   node ig.mjs upcoming                  the queue, the slots taken and the last results
 //   node ig.mjs run-due [--dry-run]       what the launchd job runs
 //   node ig.mjs publish-now <slug>        publish a queued Reel right away
 //   node ig.mjs cancel <slug>             take a Reel out of the queue (nothing is deleted on Instagram)
-//   node ig.mjs busy <YYYY-MM-DD>...      mark days as taken outside the API (e.g. a Reel scheduled in Business Suite)
+//   node ig.mjs busy <YYYY-MM-DDTHH:MM>... mark slots (IST) as taken outside the API (a Reel scheduled in Business Suite);
+//                                         a bare date counts as that day's 18:30
 //   node ig.mjs test-container <file.mp4> create + upload + process a container WITHOUT publishing (proves the route)
 //   node ig.mjs install-job | uninstall-job | job-status
 //
@@ -52,13 +53,19 @@ const FFMPEG = path.join(HOME, '.cache/cp/bin/ffmpeg');
 const REPO_RAW = 'https://raw.githubusercontent.com/hmunna36/curiopulse/main';
 const V = 'v25.0';
 const G = `https://graph.instagram.com/${V}`;
-const SLOT = '18:30'; // IST, set by the user 2026-09-29
+const SLOTS = ['06:30', '18:30']; // IST, 12 hours apart: two Reels a day (user, 4 Oct 2026; one a day at 18:30 since 2026-09-29)
+const LEGACY_SLOT = '18:30'; // what a bare date in "busy" stands for (every Reel booked before 4 Oct 2026)
 const LEAD_MIN = 25; // start preparing a Reel this many minutes before its release
+const JOB_TIMES = SLOTS.map((hm) => {
+  const m = Number(hm.slice(0, 2)) * 60 + Number(hm.slice(3)) - 20; // the launchd job starts 20 minutes before each slot
+  return {h: Math.floor(m / 60), m: m % 60, label: `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`};
+});
 const IST_MS = 5.5 * 3600 * 1000;
 const LABEL = 'com.curiopulse.ig-publish';
 const PLIST = path.join(HOME, 'Library/LaunchAgents', `${LABEL}.plist`);
 const istDate = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 10);
 const istTime = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 16).replace('T', ' ') + ' IST';
+const istHM = (ms) => new Date(ms + IST_MS).toISOString().slice(11, 16); // HH:MM in IST
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function log(msg) {
@@ -192,17 +199,28 @@ async function refresh(force = false) {
 }
 
 // ---- queue ------------------------------------------------------------------------------------------------------
-function busyDays(q) {
-  return new Set([...(q.busy ?? []), ...q.posts.filter((p) => p.status !== 'cancelled').map((p) => istDate(Date.parse(p.publishAt)))]);
+// Release times already taken, in ms. "busy" holds the Reels scheduled outside the API (Business Suite), as
+// 'YYYY-MM-DDTHH:MM' in IST; a bare date is from the one-slot days and stands for 18:30.
+function takenTimes(q) {
+  return [
+    ...(q.busy ?? []).map((b) => Date.parse(`${b.length === 10 ? `${b}T${LEGACY_SLOT}` : b.slice(0, 16)}:00+05:30`)),
+    ...(q.posts ?? []).filter((p) => p.status !== 'cancelled').map((p) => Date.parse(p.publishAt)),
+  ].filter((t) => !Number.isNaN(t));
 }
-function nextFreeIgDay(q) {
-  const busy = busyDays(q);
+const slotTaken = (taken, t) => taken.some((w) => Math.abs(w - t) < 3 * 3600 * 1000);
+// The next free slot (06:30 or 18:30 IST) at least an hour away and not before `notBefore` (ms), as an ISO time.
+function nextFreeIgSlot(q, notBefore = 0) {
+  const taken = takenTimes(q);
   for (let d = 0; d < 90; d++) {
     const date = istDate(Date.now() + d * 86400000);
-    if (Date.parse(`${date}T${SLOT}:00+05:30`) < Date.now() + 60 * 60 * 1000) continue;
-    if (!busy.has(date)) return date;
+    for (const hm of SLOTS) {
+      const iso = `${date}T${hm}:00+05:30`;
+      const t = Date.parse(iso);
+      if (t < Date.now() + 60 * 60 * 1000 || t < notBefore) continue;
+      if (!slotTaken(taken, t)) return iso;
+    }
   }
-  throw new Error('no free Instagram day in the next 90 days');
+  throw new Error('no free Instagram slot in the next 90 days');
 }
 function spoolCopy(src, slug) {
   fs.mkdirSync(SPOOL, {recursive: true});
@@ -234,12 +252,12 @@ async function queue(specPath, at) {
   const existing = q.posts.find((p) => p.slug === slug && p.status !== 'cancelled');
   if (existing?.status === 'published') die(`${slug} is already published: ${existing.permalink}`);
   let when = at ?? (ig.publishAt && ig.publishAt !== 'auto' ? ig.publishAt : null);
-  if (!when) when = `${nextFreeIgDay({...q, posts: q.posts.filter((p) => p.slug !== slug)})}T${SLOT}:00+05:30`;
+  if (!when) when = nextFreeIgSlot({...q, posts: q.posts.filter((p) => p.slug !== slug)}, Date.parse(spec.youtube?.publishAt ?? '') || 0);
   const t = Date.parse(when);
   if (Number.isNaN(t)) die(`not a date: ${when}`);
   if (t < Date.now() + 5 * 60 * 1000) die(`the release time must be at least 5 minutes away: ${when}`);
-  const clash = q.posts.find((p) => p.slug !== slug && p.status !== 'cancelled' && istDate(Date.parse(p.publishAt)) === istDate(t));
-  if (clash || (q.busy ?? []).includes(istDate(t))) log(`note: ${istDate(t)} already has a Reel (${clash?.slug ?? 'booked outside the API'}); queuing anyway`);
+  const clash = q.posts.find((p) => p.slug !== slug && p.status !== 'cancelled' && Math.abs(Date.parse(p.publishAt) - t) < 3 * 3600 * 1000);
+  if (clash || slotTaken(takenTimes({busy: q.busy, posts: []}), t)) log(`note: ${istTime(t)} already has a Reel (${clash?.slug ?? 'booked outside the API'}); queuing anyway`);
   const rel = path.relative(path.resolve(base, '../..'), file).split(path.sep).join('/'); // videos/<slug>/<file>
   const cover = spec.cover ? path.relative(path.resolve(base, '../..'), path.resolve(base, spec.cover)).split(path.sep).join('/') : null;
   const post = {
@@ -433,7 +451,7 @@ function installJob() {
   <key>Label</key><string>${LABEL}</string>
   <key>ProgramArguments</key>
   <array><string>${node}</string><string>${path.resolve(process.argv[1])}</string><string>run-due</string></array>
-  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>18</integer><key>Minute</key><integer>10</integer></dict>
+  <key>StartCalendarInterval</key><array>${JOB_TIMES.map((x) => `<dict><key>Hour</key><integer>${x.h}</integer><key>Minute</key><integer>${x.m}</integer></dict>`).join('')}</array>
   <key>RunAtLoad</key><true/>
   <key>StandardOutPath</key><string>${path.join(HOME, 'Library/Logs/curiopulse-ig.out.log')}</string>
   <key>StandardErrorPath</key><string>${path.join(HOME, 'Library/Logs/curiopulse-ig.out.log')}</string>
@@ -447,7 +465,7 @@ function installJob() {
   spawnSync('launchctl', ['bootout', `gui/${uid}/${LABEL}`], {stdio: 'ignore'});
   const r = spawnSync('launchctl', ['bootstrap', `gui/${uid}`, PLIST], {encoding: 'utf8'});
   if (r.status !== 0) die(`launchctl bootstrap failed: ${r.stderr.trim()}`);
-  log(`installed ${PLIST}: run-due every day at 18:10 (Mac local time = IST) and at login`);
+  log(`installed ${PLIST}: run-due every day at ${JOB_TIMES.map((x) => x.label).join(' and ')} (Mac local time = IST) and at login`);
 }
 function uninstallJob() {
   spawnSync('launchctl', ['bootout', `gui/${process.getuid()}/${LABEL}`], {stdio: 'ignore'});
@@ -459,7 +477,8 @@ function jobStatus() {
   if (r.status !== 0) return console.log('publishing job: NOT installed (run `ig.mjs install-job`)');
   const state = r.stdout.match(/state = (\S+)/)?.[1];
   const last = r.stdout.match(/last exit code = (.+)/)?.[1];
-  console.log(`publishing job: installed (${state ?? '?'}, last exit ${last ?? 'n/a'}); 18:10 daily + at login; tz ${Intl.DateTimeFormat().resolvedOptions().timeZone}`);
+  const both = JOB_TIMES.every((x) => r.stdout.includes(`"Hour" => ${x.h}`));
+  console.log(`publishing job: installed (${state ?? '?'}, last exit ${last ?? 'n/a'}); ${JOB_TIMES.map((x) => x.label).join(' and ')} daily + at login; tz ${Intl.DateTimeFormat().resolvedOptions().timeZone}${both ? '' : ' (an older job with one time may be loaded: run `ig.mjs install-job` again)'}`);
 }
 
 // ---- route A: Business Suite ----------------------------------------------------------------------------------
@@ -489,17 +508,25 @@ async function prepare(specPath, outDir) {
     parts.push(p);
   }
   let when = ig.publishAt && ig.publishAt !== 'auto' ? ig.publishAt : null;
-  if (!when) when = `${nextFreeIgDay(loadQueue())}T${SLOT}:00+05:30`;
+  let note = null;
+  if (when && !(Date.parse(when) > Date.now() + 20 * 60 * 1000)) {
+    // a catch-up after a missed slot: never leave the Reel behind, give it the next free slot
+    note = `instagram.publishAt (${when}) has passed or is under 20 minutes away, so this sheet uses the next free slot; write the new time into publish.json`;
+    when = null;
+  }
+  if (!when) when = nextFreeIgSlot(loadQueue(), Date.parse(spec.youtube?.publishAt ?? '') || 0); // never before the Short's YouTube release
   const t = Date.parse(when);
   const sheet = {
+    ...(note ? {note} : {}),
     slug,
     reel,
     size: buf.length,
     sha256: sha,
     parts,
     date: istDate(t),
-    time: SLOT,
+    time: istHM(t), // 06:30 or 18:30 IST: type these hours and minutes in Business Suite
     publishAtIST: istTime(t),
+    afterScheduling: `node ${process.argv[1]} busy ${istDate(t)}T${istHM(t)}`,
     caption: ig.caption,
     cover: spec.cover ? path.resolve(base, spec.cover) : null,
     coverTime: ig.coverTime ?? null,
@@ -514,21 +541,33 @@ function upcoming() {
   const posts = [...q.posts].sort((a, b) => Date.parse(a.publishAt) - Date.parse(b.publishAt));
   if (!posts.length) console.log('queue: empty');
   for (const p of posts) console.log(`${istTime(Date.parse(p.publishAt))}  ${p.status.padEnd(9)}  ${p.slug}${p.permalink ? `  ${p.permalink}` : ''}${p.error ? `  (${p.error.slice(0, 90)})` : ''}`);
-  const busy = (q.busy ?? []).filter((d) => d >= istDate(Date.now()));
+  const busy = (q.busy ?? [])
+    .filter((b) => b.slice(0, 10) >= istDate(Date.now()))
+    .map((b) => (b.length === 10 ? `${b} ${LEGACY_SLOT}` : b.slice(0, 16).replace('T', ' ')))
+    .sort();
   if (busy.length) console.log(`booked outside the API: ${busy.join(', ')}`);
-  console.log(`next free Instagram day: ${nextFreeIgDay(q)} ${SLOT} IST`);
+  console.log(`next free Instagram slot: ${istTime(Date.parse(nextFreeIgSlot(q)))} (slots ${SLOTS.join(' and ')} IST; yt.mjs also keeps a Reel from going before its Short's YouTube release)`);
   jobStatus();
   if (fs.existsSync(TOKEN_FILE)) {
     const t = readJSON(TOKEN_FILE);
     console.log(`token: @${t.username}, ~${Math.floor((Date.parse(t.expires_at) - Date.now()) / 86400000)} days left`);
   } else console.log('token: none yet (run `ig.mjs token`)');
 }
-function markBusy(days) {
+function markBusy(slots) {
   const q = loadQueue();
-  for (const d of days) if (/^\d{4}-\d{2}-\d{2}$/.test(d) && !(q.busy ??= []).includes(d)) q.busy.push(d);
+  q.busy ??= [];
+  for (const raw of slots) {
+    const s = raw.replace(' ', 'T').slice(0, 16);
+    if (!/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2})?$/.test(s)) {
+      console.log(`skipped "${raw}": use YYYY-MM-DDTHH:MM in IST, e.g. 2026-10-07T06:30`);
+      continue;
+    }
+    if (s.length === 10) console.log(`note: ${s} has no time, so it counts as that day's ${LEGACY_SLOT} slot; use ${s}T06:30 for the morning slot`);
+    if (!q.busy.includes(s)) q.busy.push(s);
+  }
   q.busy.sort();
   saveQueue(q);
-  console.log(`busy days: ${q.busy.join(', ')}`);
+  console.log(`busy slots: ${q.busy.join(', ')}`);
 }
 function cancel(slug) {
   const q = loadQueue();
@@ -579,7 +618,7 @@ try {
   else if (cmd === 'install-job') installJob();
   else if (cmd === 'uninstall-job') uninstallJob();
   else if (cmd === 'job-status') jobStatus();
-  else console.log('usage: ig.mjs prepare <publish.json> [--out DIR] | route | token [--clipboard] | whoami | refresh | queue <publish.json> [--at ISO] | upcoming | run-due [--dry-run] | publish-now <slug> | cancel <slug> | busy <date>... | test-container <mp4> | install-job | uninstall-job | job-status');
+  else console.log('usage: ig.mjs prepare <publish.json> [--out DIR] | route | token [--clipboard] | whoami | refresh | queue <publish.json> [--at ISO] | upcoming | run-due [--dry-run] | publish-now <slug> | cancel <slug> | busy <YYYY-MM-DDTHH:MM>... | test-container <mp4> | install-job | uninstall-job | job-status');
 } catch (e) {
   die(e.message);
 }

@@ -1132,3 +1132,41 @@ def tweet(seed=0, f=3400.0):
         j = int(i * 0.09 * SR)
         y[j:j + len(b)] += b[: len(y) - j]
     return y
+
+
+# ================================================================= pins-needles: the studio's gong and bowl, a TV's static
+def gong(dur=3.0, seed=0, f0=98.0):
+    """a bronze gong struck hard: a low thud, inharmonic partials that bloom a moment after the hit and beat slowly,
+    and a wash of shimmer on top (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    rng = np.random.default_rng(seed)
+    y = np.zeros(n)
+    for i, ratio in enumerate((1.0, 1.52, 2.0, 2.47, 2.98, 3.61, 4.2, 5.33, 6.1, 7.4, 8.9)):
+        f = f0 * ratio * (1 + 0.004 * rng.standard_normal())
+        tau = 1.8 / (1 + 0.35 * i)
+        bloom = 1 - np.exp(-t / (0.02 + 0.03 * i))            # the higher partials come in a moment later
+        beat = 1 + 0.25 * np.sin(2 * np.pi * (0.7 + 0.5 * rng.random()) * t + rng.random() * 6)
+        y += (1.0 / (1 + 0.45 * i)) * np.sin(2 * np.pi * f * t + rng.random() * 6) * np.exp(-t / tau) * bloom * beat
+    sh = filt(white(n, seed + 1), "bandpass", [1800, 7000]) * (1 - np.exp(-t / 0.12)) * np.exp(-t / 0.5)
+    y = y / (np.abs(y).max() + 1e-9) + 0.22 * sh / (np.abs(sh).max() + 1e-9)
+    m = min(n, int(0.2 * SR))
+    y[:m] += 0.9 * np.sin(2 * np.pi * np.cumsum(np.linspace(130, 60, m)) / SR) * expdecay(m, 0.05)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.001, 0.08)
+
+
+def singing_bowl(freq=392.0, dur=2.5):
+    """a singing bowl: a pure tone with a close twin (they beat slowly) and one bright partial (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    y = (np.sin(2 * np.pi * freq * t) + 0.8 * np.sin(2 * np.pi * freq * 1.006 * t)
+         + 0.3 * np.sin(2 * np.pi * freq * 2.71 * t) * np.exp(-t / 0.5)) * np.exp(-t / (dur * 0.45))
+    return fade(y * np.minimum(1, t / 0.01) / 2.1, 0.002, 0.2)
+
+
+def tv_static(dur=1.0, seed=0):
+    """an untuned TV: white noise above the speech band, with a slow flutter (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    y = filt(white(n, seed), "highpass", 2800) * (0.8 + 0.2 * np.sin(2 * np.pi * 11 * t) * np.sin(2 * np.pi * 0.7 * t))
+    return fade(y / (np.abs(y).max() + 1e-9), 0.01, 0.03)

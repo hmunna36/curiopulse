@@ -13,6 +13,7 @@
 | `goosebumps`: "Why Do We Get GOOSEBUMPS? 😱" | 49 s | https://youtube.com/shorts/OqIGuc9sYZE · 4 Oct 2026 11:30 IST | — (the day's YouTube-only second Short) |
 | `ears-pop`: "Why Do Your Ears POP on a Plane? ✈️" | 47 s | https://youtube.com/shorts/2R-7TRKVPso · 4 Oct 2026 23:30 IST | Business Suite, 6 Oct 2026 18:30 IST (with cover.jpg as its cover) |
 | `sun-sneeze`: "Why Does the Sun Make You SNEEZE? 🤧" | 46 s | https://youtube.com/shorts/2x0QZwQfxY0 · 5 Oct 2026 11:30 IST | — (the day's YouTube-only second Short) |
+| `pins-needles`: "Why Does Your Foot Fall ASLEEP? 🦶" | 50 s | https://youtube.com/shorts/VeLcryrlPBk · 5 Oct 2026 23:30 IST | Business Suite, 6 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -261,3 +262,41 @@ here for every new Short, with its links.
   gag to the gap before the line (the cut on "FIRE!" lands on the family sneezing; the line then explains it).
 - Two QA rounds (sound 6 → 8.5, hook 7.5 → 8, comedy 7.5 → 8), then `build.sh` as the final render.
 
+
+**pins-needles** (5 Oct 2026, nightly /cp next; 105 words → 49.9 s):
+- New worlds: `studio.js` (a meditation studio at dusk: round window with moon and bamboo, lanterns, mats, a bronze gong
+  `drawGong` / `gongRings`; classmates in the lotus pose `drawYogi` (eyes closed / one eye / wide / glare, `shh`); the hero
+  barefoot in a linen shirt `YOGA`, with a `drawShoe` override that draws bare feet with toes (`BAREFX.wig` wiggles them);
+  `heroLayer` (charLayer with a whole-body rotation about a pivot, for falls) and `heroPt`; the lotus seat `crossLegs` +
+  `POSE_LOTUS`; the leg's troubles: `legTint` (a blue tint inside the character layer), `legWash` (TV static), `kneeFace`
+  (a tiny face on his knee: sleep / serene / shock), `drawPin` (pins and needles that jab in, or fade as dashed ghosts),
+  `fizzStars`; the big side-view `bigFoot`), `nerve.js` (the folded leg as an x-ray in profile `legGeo(open)` / `xrayLeg`,
+  an artery, the nerve with its tiny vessels `legNerve` (pinch, dead, flick, drain, refill), `legPulses`, `legSqueeze`,
+  `legSparks`; the nerve's fibres firing by themselves `fibreBundle`, a needle `electrode`, a `scopePanel`) and `brainy.js`
+  (the brain at its desk `brainGuy` with moods and arms, an old TV `tvSet` with four programmes: feed, NO SIGNAL, the map
+  with a question mark, static).
+- New sfxkit atoms (template too): `gong(dur, seed, f0)`, `singing_bowl(freq, dur)`, `tv_static(dur, seed)`. `qc_gags.py`
+  (in the video's src) prints the RMS of every gag in its own window: copy it and edit its cue list.
+- **An overlay drawn after the character ghosts whatever crosses it** (his hands went pale with the numb-leg wash, and the
+  held leg stopped reading as a leg). Tint inside the character layer instead: `source-atop` in heroLayer's `post`.
+- **Hook: when the strange thing is small in the wide shot, open ON it.** Round 1's frame 1 was a man getting up with a blue
+  smudge on one leg (hook 7.5). Frame 1 is now a close-up of the sleeping knee (a face, Z z z) and the camera pulls out to
+  the room in 0.95 s; qa.py's first-half-second motion went 8.2 → 43.7. Compute the pose before the camera to do this.
+- A frontal rig can't cross its legs (the shins are too short): draw the lotus by hand from `post` with `noLegs`, then the
+  forearms and hands again on top. A leg that must read as a leg lies out to the SIDE of the torso, never in front of it.
+- **The music bus is normalised to its loudest element**: one choir pad at −17 pushed every groove down to −37 dB. Put a
+  one-off pad at the grooves' own level (about −29) and move `levels={"music": …}`.
+- A ding rings on into the next line: a 0.3 s bell plus the room put "You" at −5 dB. Under 0.2 s, or on the bed bus on the
+  word it marks. The score stops dead for the reveal line ("You squashed a NERVE...") and returns for the next clause.
+- v3 again gave four tagged words late or short ("[panicked] Pins", "[deadpan] badly", "[curious] needles?", "[whispers]
+  quietly": the whisper got 0.09 s): `move_onset()` in its make_timeline.py moves them to the first loud frame, and the
+  whispered last word runs to the end of its take. A whisper needs silence round it: no bed, no bell tail, the SHH before it.
+- Voice: 898 characters (one pass ran 54.2 s; free edits reached 50.7 s; two lines trimmed and re-voiced → 48.6 s).
+- **The render gate can be held for long stretches** (a Quiet Wins film render): queue the stills behind `wait-renders.sh`
+  in a background job and write audio.py, the README and publish.json meanwhile.
+- Business Suite with a hidden window (again): `open -a`, `resize_window` and a new tab did NOT bring it back this time,
+  but the whole flow still worked without it: the upload ran to 100 %, ref clicks on page buttons did nothing, so buttons
+  were clicked from JavaScript (find by text, `.click()`); coordinate clicks and typing worked on the Share step; hash the
+  file with `.then()` into a window variable (no `await`). Only the thumbnail picker never loaded, so the Reel has an auto
+  cover.
+- Two QA rounds (hook 7.5 → 8, look 7.5 → 8.5). The run was interrupted for 2.5 h between them and resumed from `.work/`.

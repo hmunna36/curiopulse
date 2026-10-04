@@ -1,6 +1,6 @@
 ---
 name: cp
-description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 40–50 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled for the next free day: YouTube in the next free slot, 11:30 AM or 11:30 PM IST (Data API) and Instagram at 18:30 IST (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
+description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 40–50 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled in the next free slots: YouTube at 11:30 AM or 11:30 PM IST (Data API) and Instagram at 06:30 or 18:30 IST, never before the YouTube release (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
 argument-hint: <topic question> | next | next youtube-only
 effort: max
 ---
@@ -10,7 +10,7 @@ effort: max
 The user gives a topic (`/cp why do onions make you cry`). Every run follows the user's loop (2026-09-29):
 
     create the Short → QA → not satisfied? fix the weak parts → QA again → … until satisfied
-    → push to GitHub → upload + schedule: YouTube in the next free slot (11:30 or 23:30 IST, two a day), Instagram 18:30 IST on its own next free day
+    → push to GitHub → upload + schedule: YouTube in the next free slot (11:30 or 23:30 IST, two a day), Instagram in its own next free slot (06:30 or 18:30 IST, two a day)
 
 It must come out "just like the other 3 videos": same world, same hero, same narrator, same caption and bloom look,
 same synthesized sound, same humour. Work autonomously from start to finish: no questions, no drafts, no
@@ -31,7 +31,8 @@ In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercas
 | `src/` | everything that rebuilds it (`build.sh`), including the cached voice takes |
 
 Plus: committed and pushed to the repo, a row in the root README, **YouTube scheduled for the next free slot: 11:30 AM or 11:30 PM IST (two slots a day; user, 2 Oct 2026)** (thumbnail +
-captions) and the **Instagram Reel scheduled for 18:30 IST** on the same free day (Business Suite).
+captions) and the **Instagram Reel scheduled for its next free slot: 06:30 or 18:30 IST (two slots a day, 12 hours
+apart; user, 4 Oct 2026)**, never before the Short's YouTube release (Business Suite).
 
 ## Non-negotiables (details in `reference/brief.md`; the brief itself is `reference/master-context-prompt.md`)
 
@@ -71,8 +72,10 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - Voice: `node ~/.claude/skills/cp/bin/quota.mjs` (exit 2 = less than ≈1,000 characters left).
    - Calendar: `node ~/.claude/skills/cp/bin/yt.mjs upcoming` and `node ~/.claude/skills/cp/bin/ig.mjs upcoming`.
    - **Catch up Instagram:** an earlier Short whose Reel is still pending (its publish.json has no
-     `instagram.scheduledVia` and its day is still ahead) gets scheduled first, if Chrome is connected. A missed
-     night never leaves a Reel behind. Its folder lives on GitHub only: bring it back with
+     `instagram.scheduledVia`, no `"skip": true`, and its slot is still ahead) gets scheduled first, if Chrome is
+     connected. A missed night never leaves a Reel behind. (If the slot slips past while you work, `ig.mjs prepare`
+     moves the Reel to the next free slot and says so in the sheet's `note`: write that time into publish.json.) Its
+     folder lives on GitHub only: bring it back with
      `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>` before `ig.mjs prepare`. The cleanup at the end
      of the run removes it again.
    - Instagram route: `node ~/.claude/skills/cp/bin/ig.mjs route`.
@@ -138,17 +141,21 @@ Read each reference file when you reach its phase. They are short; don't skip th
     - run `node ~/.claude/skills/cp/bin/yt.mjs upload videos/<slug>/publish.json --dry-run`.
 14. **GitHub:** write a commit message file ("Add the <topic> Short (NN s)" + a one-line summary + your attribution
     trailer), then run `~/.claude/skills/cp/bin/publish-short.sh <slug> <msg-file>`.
-15. **YouTube:** `node ~/.claude/skills/cp/bin/yt.mjs upload videos/<slug>/publish.json --schedule=auto`. It picks the
-    next day free on both platforms and sets the next free slot (11:30 or 23:30 IST), the thumbnail and the captions. Confirm with
+15. **YouTube:** `node ~/.claude/skills/cp/bin/yt.mjs upload videos/<slug>/publish.json --schedule=auto`. It takes the
+    next free YouTube slot (11:30 or 23:30 IST), sets the thumbnail and the captions, and writes the Reel's slot (the
+    next free one at 06:30 or 18:30 IST that is not before the YouTube release) into `instagram.publishAt`. Confirm with
     `yt.mjs status <id>`.
-16. **Instagram**, the same day at 18:30 IST (`reference/publish.md`):
+16. **Instagram**, in the slot from `instagram.publishAt`: 06:30 or 18:30 IST (`reference/publish.md`). Every Short
+    gets a Reel, from both daily routines (user, 4 Oct 2026), unless publish.json says `"skip": true`:
     - **Route A (Business Suite, the normal case):**
       1. `node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <scratchpad>/ig-<slug>`
          builds the Reel-spec copy and splits it into parts of ≤ 9 MB.
       2. In Claude in Chrome: open Business Suite, upload the parts into a collector input, reassemble, and check
          the SHA-256.
-      3. Create Reel → Add video (with the click hook) → caption → Schedule, on the day at 18:30.
-      4. Verify it in Content → Scheduled, then `ig.mjs busy <date>`.
+      3. Create Reel → Add video (with the click hook) → caption → Schedule, on the sheet's `date` at the sheet's
+         `time` (06:30 or 18:30; never assume 18:30).
+      4. Verify it in Content → Scheduled, then record the slot with the sheet's `afterScheduling` command
+         (`ig.mjs busy <date>T<HH:MM>`).
       - If Chrome isn't connected, or Business Suite wants a password, don't guess. Report "Instagram still to
         schedule" and leave the prepared sheet, so the user or the next run can finish it.
     - **Route B (API):** `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json`; the launchd job
@@ -260,11 +267,17 @@ cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on
 
 ## Two Shorts a day (the user's decision via Claude, 2 Oct 2026: a 14-day test, review 17 Oct)
 
-- Two routines: `curiopulse-daily-short` (00:00 IST, `/cp next`: YouTube + Instagram) and `curiopulse-second-short`
-  (06:00 IST, `/cp next youtube-only`). In **youtube-only** mode, run the same pipeline and the same ship bar, but set
-  `"instagram": {"skip": true}` in publish.json and skip every Instagram step (no ig-queue entry, no Business Suite):
-  Instagram stays at one Reel a day.
+- Two routines: `curiopulse-daily-short` (00:00 IST) and `curiopulse-second-short` (06:00 IST). **Both run `/cp next`
+  and both schedule a Reel** (user, 4 Oct 2026: "update curioPulse - second daily short to schedule a reel to
+  instagram too. 12 hours apart from 1st reel"). From 2 to 4 Oct the second run was YouTube-only, so goosebumps and
+  sun-sneeze have no Reel.
 - YouTube takes the next free slot (11:30 AM or 11:30 PM IST), so the two runs fill both slots of a day.
+- **Instagram takes the next free slot too: 06:30 or 18:30 IST, 12 hours apart**, and never before the Short's own
+  YouTube release (`yt.mjs` picks it; the times taken are in `~/.config/cp/ig-queue.json`). In the steady state a
+  Short that goes out on YouTube at 23:30 has its Reel the next evening, and an 11:30 Short the next morning.
+- **youtube-only** mode still exists for a one-off (`/cp <topic> youtube-only`, or when the user asks): the same
+  pipeline and ship bar, but set `"instagram": {"skip": true}` in publish.json and skip every Instagram step (no
+  ig-queue entry, no Business Suite). No routine uses it now.
 - **The tease says "Next up: …", never "tomorrow"**: the next Short is about 12 hours away.
 - **Queue refill:** if fewer than 7 `[ ]` topics remain in topics.md, research and append 10 new "why does…" questions
   first (strange, second-person, body/nature/physics, a sourced mechanism and a weird true fact; no repeats of done

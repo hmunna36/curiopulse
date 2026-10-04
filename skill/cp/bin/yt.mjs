@@ -5,16 +5,17 @@
 //   node yt.mjs auth                      one-time: open Google's consent page, pick the CurioPulse channel
 //   node yt.mjs whoami                    read-only check: which channel the token belongs to
 //   node yt.mjs upload <publish.json> [--dry-run] [--schedule=auto]
-//   node yt.mjs upcoming                  every video already scheduled on the channel + the next free day
+//   node yt.mjs upcoming                  every video already scheduled on the channel + the next free slots
 //   node yt.mjs next-free                 just the next free release day (YYYY-MM-DD, IST)
 //   node yt.mjs reschedule <videoId> <ISO time, e.g. 2026-10-02T23:30:00+05:30>
 //   node yt.mjs status <videoId>...       processing / privacy / scheduled time
 //
-// Release slots (the user, 2 Oct 2026): YouTube 11:30 AM AND 11:30 PM IST, each run taking the next free slot; Instagram 18:30 IST, one Reel a day.
-// --schedule=auto (or "publishAt": "auto") takes the earliest IST date that is free on BOTH platforms:
-// no CurioPulse video scheduled or published on YouTube that day, no Reel queued (ig.mjs) or already booked
-// ("busy" days in ~/.config/cp/ig-queue.json) on Instagram, and 23:30 at least 2 hours away. It writes the
-// date into both youtube.publishAt and instagram.publishAt, so `ig.mjs queue` uses the same day.
+// Release slots: YouTube 11:30 AM AND 11:30 PM IST (the user, 2 Oct 2026); Instagram 06:30 AND 18:30 IST, 12 hours
+// apart (the user, 4 Oct 2026: both daily Shorts get a Reel). Each run takes the next free slot on each platform.
+// --schedule=auto (or "publishAt": "auto") takes the next free YouTube slot (no CurioPulse video public or scheduled
+// within 3 hours of it, at least 2 hours away), then the next free Instagram slot that is not before that YouTube
+// release (the times taken are in ~/.config/cp/ig-queue.json: "busy" plus the queue). It writes both times into
+// youtube.publishAt and instagram.publishAt, so `ig.mjs prepare` and `ig.mjs queue` use the same slot.
 //
 // Credentials (never printed, never committed):
 //   ~/.config/va/youtube-client.json   the OAuth "Desktop app" client of Google Cloud project "My First Project"
@@ -45,7 +46,7 @@ const SCOPE = 'https://www.googleapis.com/auth/youtube.force-ssl'; // upload, th
 const API = 'https://www.googleapis.com/youtube/v3';
 const UPLOAD = 'https://www.googleapis.com/upload/youtube/v3';
 const CHUNK = 8 * 1024 * 1024; // a multiple of 256 KiB, as resumable uploads require
-export const SLOTS = {youtube: ['11:30', '23:30'], instagram: '18:30'}; // IST: two YouTube slots a day (user, 2 Oct 2026)
+export const SLOTS = {youtube: ['11:30', '23:30'], instagram: ['06:30', '18:30']}; // IST: two slots a day on each platform (YouTube: user, 2 Oct 2026; Instagram: user, 4 Oct 2026)
 const IST_MS = 5.5 * 3600 * 1000;
 const istDate = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 10); // YYYY-MM-DD in IST
 const istTime = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 16).replace('T', ' ') + ' IST';
@@ -179,10 +180,15 @@ async function channelVideos() {
   }
   return out;
 }
-function igBusyDays() {
-  if (!fs.existsSync(IG_QUEUE)) return new Set();
+// Instagram release times already taken, in ms. "busy" holds the Reels scheduled in Business Suite, as
+// 'YYYY-MM-DDTHH:MM' (IST); a bare date is from the one-slot days (before 4 Oct 2026) and stands for 18:30.
+function igTaken() {
+  if (!fs.existsSync(IG_QUEUE)) return [];
   const q = JSON.parse(fs.readFileSync(IG_QUEUE, 'utf8'));
-  return new Set([...(q.busy ?? []), ...(q.posts ?? []).filter((p) => p.status !== 'cancelled').map((p) => istDate(Date.parse(p.publishAt)))]);
+  return [
+    ...(q.busy ?? []).map((b) => Date.parse(`${b.length === 10 ? `${b}T18:30` : b.slice(0, 16)}:00+05:30`)),
+    ...(q.posts ?? []).filter((p) => p.status !== 'cancelled').map((p) => Date.parse(p.publishAt)),
+  ].filter((t) => !Number.isNaN(t));
 }
 // YouTube has TWO slots a day, 11:30 and 23:30 IST (the user, 2 Oct 2026, after the 11:30 AM releases brought
 // subscribers). Each run takes the next free slot: a slot is free when no video of the channel is public or
@@ -200,15 +206,21 @@ async function nextFreeYouTubeSlot() {
   }
   throw new Error('no free YouTube slot in the next 60 days');
 }
-// Instagram keeps one Reel a day at 18:30 IST, on its own next free day (~/.config/cp/ig-queue.json).
-function nextFreeIgDay() {
-  const ig = igBusyDays();
+// Instagram has TWO slots a day as well, 06:30 and 18:30 IST, 12 hours apart (the user, 4 Oct 2026: the second
+// daily Short gets a Reel too). A Reel takes the next free slot: nothing taken within 3 hours of it, at least 2 hours
+// away, and not before `notBefore` (the Short's own YouTube release), so a Reel never comes out ahead of its Short.
+function nextFreeIgSlot(notBefore = 0) {
+  const taken = igTaken();
   for (let d = 0; d < 90; d++) {
     const date = istDate(Date.now() + d * 86400000);
-    if (Date.parse(`${date}T${SLOTS.instagram}:00+05:30`) < Date.now() + 2 * 3600 * 1000) continue;
-    if (!ig.has(date)) return date;
+    for (const hm of SLOTS.instagram) {
+      const iso = `${date}T${hm}:00+05:30`;
+      const t = Date.parse(iso);
+      if (t < Date.now() + 2 * 3600 * 1000 || t < notBefore) continue;
+      if (!taken.some((w) => Math.abs(w - t) < 3 * 3600 * 1000)) return iso;
+    }
   }
-  throw new Error('no free Instagram day in the next 90 days');
+  throw new Error('no free Instagram slot in the next 90 days');
 }
 export async function nextFreeDay() {
   return istDate(Date.parse(await nextFreeYouTubeSlot())); // kept for older callers: the day of the next YouTube slot
@@ -217,9 +229,10 @@ async function listUpcoming() {
   const vids = (await channelVideos()).filter((v) => v.scheduled).sort((a, b) => Date.parse(a.when) - Date.parse(b.when));
   if (!vids.length) console.log('YouTube: nothing scheduled');
   for (const v of vids) console.log(`${istTime(Date.parse(v.when))}  ${v.id}  ${v.title}`);
-  const ig = [...igBusyDays()].sort().filter((d) => d >= istDate(Date.now()));
-  if (ig.length) console.log(`Instagram days taken: ${ig.join(', ')}`);
-  console.log(`next free YouTube slot: ${istTime(Date.parse(await nextFreeYouTubeSlot()))} (slots ${SLOTS.youtube.join(' and ')} IST) · next free Instagram day: ${nextFreeIgDay()} ${SLOTS.instagram} IST`);
+  const ig = igTaken().filter((t) => t >= Date.now()).sort((a, b) => a - b);
+  if (ig.length) console.log(`Instagram slots taken: ${ig.map((t) => istTime(t).replace(' IST', '')).join(', ')}`);
+  const yt = await nextFreeYouTubeSlot();
+  console.log(`next free YouTube slot: ${istTime(Date.parse(yt))} (slots ${SLOTS.youtube.join(' and ')} IST) · next free Instagram slot after it: ${istTime(Date.parse(nextFreeIgSlot(Date.parse(yt))))} (slots ${SLOTS.instagram.join(' and ')} IST)`);
 }
 async function reschedule(id, when) {
   const t = Date.parse(when);
@@ -314,7 +327,7 @@ async function upload(specPath, dryRun, autoSchedule = false) {
     const slot = await nextFreeYouTubeSlot();
     y.privacy = 'private';
     y.publishAt = slot;
-    if (!ig.skip && !ig.id && (!ig.publishAt || ig.publishAt === 'auto' || autoSchedule)) ig.publishAt = `${nextFreeIgDay()}T${SLOTS.instagram}:00+05:30`;
+    if (!ig.skip && !ig.id && (!ig.publishAt || ig.publishAt === 'auto' || autoSchedule)) ig.publishAt = nextFreeIgSlot(Date.parse(slot));
     if (!dryRun) save();
     console.log(`schedule: YouTube ${istTime(Date.parse(slot))}, Instagram ${ig.publishAt ? istTime(Date.parse(ig.publishAt)) : 'unchanged'}`);
   }

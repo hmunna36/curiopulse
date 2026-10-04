@@ -17,7 +17,7 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 | Platform | Link | Release |
 |---|---|---|
 | YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | https://www.instagram.com/reel/… | … 18:30 IST |
+| Instagram Reels | https://www.instagram.com/reel/… | … 06:30 or 18:30 IST |
 
 **Title:** …
 
