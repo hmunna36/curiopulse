@@ -1170,3 +1170,78 @@ def tv_static(dur=1.0, seed=0):
     t = ar(n)
     y = filt(white(n, seed), "highpass", 2800) * (0.8 + 0.2 * np.sin(2 * np.pi * 11 * t) * np.sin(2 * np.pi * 0.7 * t))
     return fade(y / (np.abs(y).max() + 1e-9), 0.01, 0.03)
+
+
+# ================================================================= voices that say nothing (voice-recording)
+def gibber(dur, seed=0, f0=210.0, thin=True, t0=0.0, rate=19.8, sing=None):
+    """a voice that isn't saying anything: syllables of vowel-ish formants on a wandering pitch (mono).
+    thin=True: the voice out of a phone speaker (no body, nasal, a little clipped); thin=False: a full chest voice.
+    The syllables follow |sin(rate * (t0 + t))| (6.3 a second at 19.8), so the picture can bounce on the same clock.
+    sing: MIDI notes to hold instead of the speech contour (one note per two syllables): karaoke."""
+    from scipy.ndimage import uniform_filter1d
+    n = int(dur * SR)
+    t = ar(n)
+    r = np.random.default_rng(seed)
+    syl = np.floor((t0 + t) * rate / np.pi).astype(int)
+    ids = syl - syl[0]
+    ns = int(ids[-1]) + 1
+    V = np.array([(800, 1250), (520, 1850), (320, 2250), (500, 950), (360, 820), (650, 1500)], float)
+    pick = r.integers(0, len(V), ns)
+    if sing is None:
+        fs = f0 * (1 + 0.2 * (r.random(ns) - 0.4))
+        fs[-1] *= 1.2                                                # it ends on a little question
+    else:
+        fs = np.array([mtof(sing[(k // 2) % len(sing)]) for k in range(ns)])
+    sm = max(3, int(0.035 * SR))
+    f = uniform_filter1d(fs[ids], size=sm, mode="nearest") * (1 + 0.012 * np.sin(2 * np.pi * 5.3 * t))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k for k in range(1, 28))
+    F1 = uniform_filter1d(V[pick][ids, 0], size=sm, mode="nearest") * (1.2 if thin else 0.94)
+    F2 = uniform_filter1d(V[pick][ids, 1], size=sm, mode="nearest") * (1.12 if thin else 0.92)
+    y = svf_bp(src, F1, 0.22) + 0.6 * svf_bp(src, F2, 0.25)
+    if thin:
+        y += 0.3 * svf_bp(src, np.full(n, 2900.0), 0.3)
+    turn = np.abs(np.sin((t0 + t) * rate))
+    env = turn ** 0.7
+    nz = filt(white(n, seed + 1), "bandpass", [2200, 6000]) * (turn < 0.2) * 0.22 * (r.random(ns)[ids] > 0.45)
+    y = y / (np.abs(y).max() + 1e-9) * env + nz
+    if thin:
+        y = filt(np.tanh(1.8 * filt(y, "highpass", 620, 2)), "lowpass", 3600, 2)
+    else:
+        y = filt(y + 0.9 * filt(y, "lowpass", 300), "lowpass", 2600)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.01, 0.03)
+
+
+def hum_voice(dur, f0=150.0, seed=0, inside=0.0, t0=0.0, throb=3.3):
+    """a closed-mouth hum (mono). inside: 0 = heard across the room (thin, nasal), 1 = heard with your ears plugged
+    (the skull's version: boomy, low-mid heavy, throbbing; it carries on a phone speaker because it keeps 200-600 Hz).
+    An array crossfades between the two."""
+    n = int(round(dur * SR))
+    t = ar(n)
+    f = f0 * (1 + 0.01 * np.sin(2 * np.pi * 5.1 * t) + 0.004 * filt(white(n, seed), "lowpass", 3))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k ** 1.15 for k in range(1, 24))
+    out = filt(src, "bandpass", [300, 1300])
+    out = out / (np.abs(out).max() + 1e-9) * 0.5
+    ins = filt(src, "lowpass", 620, 2) + 1.4 * filt(src, "bandpass", [120, 320])
+    ins = np.tanh(1.7 * ins / (np.abs(ins).max() + 1e-9)) * (0.74 + 0.26 * np.sin(2 * np.pi * throb * (t0 + t)))
+    k = np.broadcast_to(np.asarray(inside, float), (n,))
+    return fade((1 - k) * out + k * ins, 0.05, 0.06)
+
+
+def hiccup(seed=0, f0=430.0, big=1.0):
+    """hic! a squeak that jumps up and is cut off by the throat (mono, ~0.2 s; big > 1 adds a chest thump)"""
+    n = int(0.2 * SR)
+    t = ar(n)
+    u = np.clip(t / 0.085, 0, 1)
+    f = f0 * (0.62 + 1.05 * u ** 0.55)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k for k in range(1, 16))
+    y = svf_bp(src, 900 + 900 * u, 0.3) + 0.5 * svf_bp(src, 1900 + 600 * u, 0.3)
+    y = y / (np.abs(y).max() + 1e-9) * np.minimum(1, t / 0.012) * (t < 0.092) * (0.5 + 0.5 * u)
+    y[int(0.092 * SR):int(0.1 * SR)] += 0.6 * filt(white(int(0.1 * SR) - int(0.092 * SR), seed), "highpass", 2500)   # the glottis shuts
+    air = filt(white(n, seed + 1), "bandpass", [700, 2600]) * np.exp(-((t - 0.02) / 0.02) ** 2) * 0.25               # the gasp in
+    y = fade(y + air, 0.002, 0.02)
+    if big > 1.0:
+        y[: int(0.16 * SR)] += 0.5 * (big - 1.0) * thump(0.16, 190, 70, 0.045)
+    return y / (np.abs(y).max() + 1e-9)

@@ -28,6 +28,10 @@ runs unchanged):
   uses pedalboard's Reverb to place a dry recorded one-shot in a small room.
 - true_peak_db() is the 4x-oversampled (BS.1770) true-peak meter used here and by qa.py.
 
+voice_fx=fn (5 Oct 2026): fn(levelled mono voice) -> processed voice, for the rare Short where the narrator's own
+sound is the demonstration (voice-recording's "inside the head" EQ on one line). Crossfade in and out, and keep
+the processed stretch's peak at or under the rest of the voice, or the whole voice bus is normalised down.
+
 Tuning per video: pass levels={"music": -12, ...} or duck={"music": 0.75, ...}. Never lower the voice
 to fix a mix; turn the offending cue down (qc_audio.py names the masked words).
 """
@@ -103,7 +107,7 @@ def level_voice(vo, studio=False):
     return vo * gr
 
 
-def master(work, sfx, bed, mus, amb, levels=None, duck=None, lufs=-14.0, ceiling=-1.9, studio=None):
+def master(work, sfx, bed, mus, amb, levels=None, duck=None, lufs=-14.0, ceiling=-1.9, studio=None, voice_fx=None):
     studio = studio_on(studio)
     lv = dict(LEVELS, **(levels or {}))
     dk = dict(DUCK, **(duck or {}))
@@ -113,6 +117,8 @@ def master(work, sfx, bed, mus, amb, levels=None, duck=None, lufs=-14.0, ceiling
     if vo.ndim > 1:
         vo = vo.mean(axis=1)
     vo = level_voice(vo, studio)
+    if voice_fx is not None:      # the narrator demonstrates a sound (voice-recording: her "inside the head" voice):
+        vo = voice_fx(vo)         # fn(levelled mono voice at SR) -> same length; keep its peaks at or under the rest
     voice = np.zeros(n)
     voice[: min(n, len(vo))] = vo[:n]
     voice /= np.max(np.abs(voice)) + 1e-9

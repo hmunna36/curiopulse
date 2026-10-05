@@ -14,6 +14,7 @@
 | `ears-pop`: "Why Do Your Ears POP on a Plane? ✈️" | 47 s | https://youtube.com/shorts/2R-7TRKVPso · 4 Oct 2026 23:30 IST | Business Suite, 6 Oct 2026 18:30 IST (with cover.jpg as its cover) |
 | `sun-sneeze`: "Why Does the Sun Make You SNEEZE? 🤧" | 46 s | https://youtube.com/shorts/2x0QZwQfxY0 · 5 Oct 2026 11:30 IST | — (the day's YouTube-only second Short) |
 | `pins-needles`: "Why Does Your Foot Fall ASLEEP? 🦶" | 50 s | https://youtube.com/shorts/VeLcryrlPBk · 5 Oct 2026 23:30 IST | Business Suite, 6 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
+| `voice-recording`: "Why Does Your Voice Sound WEIRD on Recordings? 🎙️" | 50 s | https://youtube.com/shorts/eJ8T5p0OEwk · 6 Oct 2026 11:30 IST | Business Suite, 7 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -300,3 +301,44 @@ here for every new Short, with its links.
   file with `.then()` into a window variable (no `await`). Only the thumbnail picker never loaded, so the Reel has an auto
   cover.
 - Two QA rounds (hook 7.5 → 8, look 7.5 → 8.5). The run was interrupted for 2.5 h between them and resumed from `.work/`.
+
+
+**voice-recording** (5 Oct 2026, the 06:00 second Short, the first one with a Reel; 111 words → 49.7 s):
+- New worlds: `phone.js` (the phone from his own eyes: a voice message from YOU with his avatar, PLAY, a live waveform, his
+  thumb; and from the front, in his hand; `squeakRings`, `scribbleBubble`), `voicehead.js` (his head from the front,
+  see-through: skull, his eyes in the sockets, hair and eyebrows, voice box, ear canals and inner-ear snails, the AIR and
+  SKULL routes, trapped rings, a microphone, a scope) and `stage.js` (a movie trailer, karaoke night, the listening test's
+  voice cards). `room.js` came from goosebumps. New sfxkit atoms (template too): `gibber`, `hum_voice`, `hiccup`; mixlib
+  gained `voice_fx` (template too).
+- **A Short about a sound lets the sound explain.** The phone's voice is thin gibberish on the picture's syllable clock; his
+  hum goes from thin to a boom on "That boom?"; and from "deeper" to "trailer." the narrator's own take runs through
+  `deep_voice` (more 140–460 Hz, less above 2.3 kHz), with the score thinned to one low note so the change is hers. Whisper
+  still heard every word (0 % WER). Boost low-mids, not sub-bass: phones play nothing under ~200 Hz.
+- **A flagged word is not always a masked word.** qa.py failed "through" at −11.5 dB twice. The stems showed the voice itself
+  at −47 dB in that window: v3's alignment had ended the word after its breathy "thr" and given the voiced half to "the".
+  Print the stems around a flagged word (voice, sfx, music, amb in 50 ms steps) BEFORE touching the mix. The fix is in
+  make_timeline.py, after the shots, captions and cues are computed (the word runs on to the dip in the waveform), so the
+  rendered MP4 stayed valid: shots, captions and cues identical.
+- **`find("Your skull")` finds the FIRST match** ("...through your SKULL", 15 s earlier): a label came up at the start of
+  its shot. The same with `W("OWN")` and "your own". Anchor repeated words to their own phrase (`find("That boom Your
+  skull") + 2`, `W("their OWN", 1)`) and print the cue next to the word.
+- First stills of the see-through head: too small, and all glow (a hot tint on the skull + soft dots + bright beads = a
+  yellow blob; the inner ears' glow sat on his eyes). Cap a tint at ~0.4, keep glows ≤ 0.5 and ≤ 15 units wide, keep the
+  parts apart (inner ear below and outside the eye socket), and keep his hair, eyebrows and eyes so the x-ray is still him.
+- A route reads as flow with marching dashes (`setLineDash` + `lineDashOffset`) and an arrowhead where it has got to;
+  little arcs across the path read as barbed wire.
+- The rig draws the head over the arms: a hand that covers his mouth is drawn again on top, in `post`. Rings round a prop
+  go behind him (couchScene's `under`), or they cross his face.
+- **Frame 1 from his own eyes** (his thumb already on PLAY) is action on the first frame and a clean loop: the last 0.34 s
+  cuts back to that view as the phone drops into his hand and the thumb comes in.
+- A wide layout with small cards read as a slide: the study shot moves from wide (three cards, him) to close (the card
+  that matters, 1.7× bigger, and his face) as the line gets to its point.
+- Voice: 1,102 characters. The first pass ran 55.1 s for 114 words; free edits reached 51.1 s; three lines trimmed and
+  re-voiced, and one reworded when a slow take's alignment gave one word 1.5 s → 48.3 s.
+- Two QA rounds (look 7.5 → 8.5, safe area 7.5 → 9, sound 6 → 8.5). Round 2 was rendered by `build.sh` itself.
+- Business Suite (hidden window again): the first click on Create Reel took about 5 s to act; wait and look again before
+  clicking twice. Ref clicks worked for Add video and Next; the date is a click on the day in the calendar that opens under
+  the date field; the time is the two spinbuttons on a 24-hour clock (no AM/PM field: 06 30). Meta ran a copyright check on
+  the upload ("safe to publish"). The thumbnail picker stayed a skeleton, so the Reel has an auto cover. Don't return
+  `location.href` from the JavaScript tool: its output is blocked when it carries a query string.
+
