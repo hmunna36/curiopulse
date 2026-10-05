@@ -24,18 +24,27 @@
   "cover": "cover.jpg",
   "captions": "voice-recording.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-06T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "eJ8T5p0OEwk",
+    "url": "https://youtube.com/shorts/eJ8T5p0OEwk",
+    "uploaded": "2026-10-05T01:39:24.720Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-07T06:30:00+05:30",
     "caption": "You hit play on your own voice... and WHO is THAT?! 🎙️😳\nYou hear yourself twice: through the air AND through your skull, which adds the deep part. A microphone only gets the air. Plug your ears and hum: that boom is your skull.\nFollow @curio_pulse_tv for the next one: why we get hiccups 🔔\n#science #humanbody #voice #psychology #funfacts #reels",
     "coverTime": 4.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-07 06:30 IST",
+    "coverSet": false,
+    "note": "Scheduled in Meta Business Suite through Chrome on 5 Oct 2026; verified in Content > Scheduled after a reload (7 October 06:30, Public). Meta's check found no copyright issues. The thumbnail picker never loaded (the Chrome window was hidden), so the cover is an auto frame: change it to cover.jpg in the Instagram app after it goes live."
   }
 }

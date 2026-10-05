@@ -29,8 +29,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | (after upload) |
-| Instagram Reels | (after scheduling) | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/eJ8T5p0OEwk | 6 Oct 2026, 11:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | @curio_pulse_tv | 7 Oct 2026, 06:30 IST (scheduled in Meta Business Suite; auto cover, see below) |
 
 **Title:** Why Does Your Voice Sound WEIRD on Recordings? 🎙️
 
@@ -58,6 +58,8 @@ Plug your ears and hum. Did you hear the boom? 🎙️
 **Subscribe line (spoken, 62 characters):** Next up: why we hiccup. Subscribe... before the next one hits.
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`): his horrified face, the phone at arm's length,
 "IS THAT MY VOICE?!".
+It is the YouTube thumbnail. Business Suite's thumbnail picker did not load when the Reel was scheduled, so the Reel has an
+automatic cover; it can be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 
