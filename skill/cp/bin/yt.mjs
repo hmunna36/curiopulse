@@ -535,7 +535,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     else if (cmd === 'stats') await stats(Math.max(1, Math.min(200, Number(args.find((a) => /^\d+$/.test(a)) ?? 10))), args.includes('--json'));
     else if (cmd === 'analytics') {
       const ci = args.indexOf('--curve');
-      const n = Number(args.find((a, i) => /^\d+$/.test(a) && i !== ci + 1) ?? 10);
+      const n = Number(args.find((a, i) => /^\d+$/.test(a) && (ci < 0 || i !== ci + 1)) ?? 10);
       await analytics(Math.max(1, Math.min(200, n)), args.includes('--json'), ci >= 0 ? args[ci + 1] : null);
     }
     else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json]');
