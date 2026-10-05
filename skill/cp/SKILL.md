@@ -260,7 +260,8 @@ cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on
 - `topics.md`: the topic queue for `/cp next`
 - `bin/new-short.sh`, `bin/publish-short.sh`, `bin/backup-skill.sh`, `bin/run-lock.sh`, `bin/cp-env.sh`
 - `bin/cleanup.sh`: back to the light checkout (`skill/` + top-level files) once everything is on GitHub
-- `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · upload · reschedule · status)
+- `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · upload · reschedule · status · stats) and
+  YouTube Analytics (`analytics [n] [--curve <videoId>]`: stayed to watch, average % viewed, subscribers per 1,000 views)
 - `bin/ig.mjs`: Instagram. Route A: prepare · busy · route. Route B, the API: token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel ·
   test-container · install-job)
 - `bin/quota.mjs`: ElevenLabs characters left per account (exit 2 = not enough for a Short)

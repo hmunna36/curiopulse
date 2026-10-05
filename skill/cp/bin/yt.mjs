@@ -9,6 +9,12 @@
 //   node yt.mjs next-free                 just the next free release day (YYYY-MM-DD, IST)
 //   node yt.mjs reschedule <videoId> <ISO time, e.g. 2026-10-02T23:30:00+05:30>
 //   node yt.mjs status <videoId>...       processing / privacy / scheduled time
+//   node yt.mjs stats [n] [--json]        public counts (views, likes, comments) of the last n uploads
+//   node yt.mjs analytics [n] [--curve <videoId>] [--json]
+//                                         YouTube Analytics per video: stayed to watch, average % viewed, net
+//                                         subscribers and subscribers per 1,000 views; --curve adds one video's
+//                                         retention curve. Needs the yt-analytics.readonly scope (the token from
+//                                         before 5 Oct 2026 lacks it: run `auth` once more and allow it).
 //
 // Release slots: YouTube 11:30 AM AND 11:30 PM IST (the user, 2 Oct 2026); Instagram 06:30 AND 18:30 IST, 12 hours
 // apart (the user, 4 Oct 2026: both daily Shorts get a Reel). Each run takes the next free slot on each platform.
@@ -42,9 +48,10 @@ const CLIENT_FILE = [path.join(CONF, 'youtube-client.json'), path.join(os.homedi
 const TOKEN_FILE = path.join(CONF, 'youtube-token.json');
 const IG_QUEUE = path.join(CONF, 'ig-queue.json');
 const CHANNEL = 'CurioPulse';
-const SCOPE = 'https://www.googleapis.com/auth/youtube.force-ssl'; // upload, thumbnails, captions
+const SCOPE = 'https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/yt-analytics.readonly'; // upload, thumbnails, captions + read-only analytics
 const API = 'https://www.googleapis.com/youtube/v3';
 const UPLOAD = 'https://www.googleapis.com/upload/youtube/v3';
+const YTA = 'https://youtubeanalytics.googleapis.com/v2/reports';
 const CHUNK = 8 * 1024 * 1024; // a multiple of 256 KiB, as resumable uploads require
 export const SLOTS = {youtube: ['11:30', '23:30'], instagram: ['06:30', '18:30']}; // IST: two slots a day on each platform (YouTube: user, 2 Oct 2026; Instagram: user, 4 Oct 2026)
 const IST_MS = 5.5 * 3600 * 1000;
@@ -388,6 +395,126 @@ async function upload(specPath, dryRun, autoSchedule = false) {
   }
 }
 
+// ---- stats (read-only, Data API) ---------------------------------------------------------------------------------
+const secondsOf = (iso) => {
+  const m = /P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(iso ?? '') ?? [];
+  return (Number(m[1] ?? 0) * 24 + Number(m[2] ?? 0)) * 3600 + Number(m[3] ?? 0) * 60 + Number(m[4] ?? 0);
+};
+async function stats(n, asJson) {
+  const ch = await myChannel();
+  const uploads = ch?.contentDetails?.relatedPlaylists?.uploads;
+  if (!uploads) die('this channel has no uploads playlist');
+  const ids = [];
+  let page = '';
+  do {
+    const r = await (await api('GET', `${API}/playlistItems?part=contentDetails&playlistId=${uploads}&maxResults=50${page ? `&pageToken=${page}` : ''}`)).json();
+    for (const it of r.items ?? []) ids.push(it.contentDetails.videoId);
+    page = r.nextPageToken;
+  } while (page && ids.length < n);
+  const rows = [];
+  const want = ids.slice(0, n);
+  for (let i = 0; i < want.length; i += 50) {
+    const r = await (await api('GET', `${API}/videos?part=snippet,statistics,status,contentDetails&id=${want.slice(i, i + 50).join(',')}`)).json();
+    for (const v of r.items ?? []) {
+      const when = v.status.publishAt ?? v.snippet.publishedAt;
+      const s = v.statistics ?? {};
+      rows.push({
+        id: v.id,
+        title: v.snippet.title,
+        privacy: v.status.privacyStatus,
+        publishAt: when,
+        publishIST: istTime(Date.parse(when)),
+        hoursLive: v.status.privacyStatus === 'public' ? Math.max(0, Math.round((Date.now() - Date.parse(when)) / 3600000)) : 0,
+        seconds: secondsOf(v.contentDetails?.duration),
+        views: Number(s.viewCount ?? 0),
+        likes: s.likeCount === undefined ? null : Number(s.likeCount),
+        comments: s.commentCount === undefined ? null : Number(s.commentCount),
+      });
+    }
+  }
+  rows.sort((a, b) => Date.parse(b.publishAt) - Date.parse(a.publishAt));
+  if (asJson) return console.log(JSON.stringify({channel: ch.snippet.title, subscribers: Number(ch.statistics?.subscriberCount ?? 0), at: new Date().toISOString(), videos: rows}, null, 1));
+  console.log(`channel: ${ch.snippet.title}, ${ch.statistics?.subscriberCount ?? '?'} subscribers, ${ch.statistics?.videoCount ?? '?'} videos, ${ch.statistics?.viewCount ?? '?'} views (as of ${istTime(Date.now())})`);
+  console.log('published (IST)       live h   len   views  likes  comm  id           title');
+  for (const r of rows) {
+    const live = r.privacy === 'public' ? String(r.hoursLive).padStart(6) : r.privacy.slice(0, 6).padStart(6);
+    console.log(`${r.publishIST.padEnd(21)} ${live} ${String(r.seconds).padStart(5)}s ${String(r.views).padStart(7)} ${String(r.likes ?? '-').padStart(6)} ${String(r.comments ?? '-').padStart(5)}  ${r.id}  ${r.title.slice(0, 60)}`);
+  }
+}
+
+// ---- analytics (read-only, YouTube Analytics API) ----------------------------------------------------------------
+async function uploadIds(n) {
+  const ch = await myChannel();
+  const uploads = ch?.contentDetails?.relatedPlaylists?.uploads;
+  if (!uploads) die('this channel has no uploads playlist');
+  const ids = [];
+  let page = '';
+  do {
+    const r = await (await api('GET', `${API}/playlistItems?part=contentDetails&playlistId=${uploads}&maxResults=50${page ? `&pageToken=${page}` : ''}`)).json();
+    for (const it of r.items ?? []) ids.push(it.contentDetails.videoId);
+    page = r.nextPageToken;
+  } while (page && ids.length < n);
+  return {ch, ids: ids.slice(0, n)};
+}
+async function report(params) {
+  const q = new URLSearchParams({ids: 'channel==MINE', startDate: '2020-01-01', endDate: istDate(Date.now()), ...params});
+  const r = await (await api('GET', `${YTA}?${q}`)).json();
+  const cols = (r.columnHeaders ?? []).map((c) => c.name);
+  return (r.rows ?? []).map((row) => Object.fromEntries(row.map((v, i) => [cols[i], v])));
+}
+async function analytics(n, asJson, curveId) {
+  const {ch, ids} = await uploadIds(n);
+  if (!ids.length) die('no uploads yet');
+  const base = 'views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained,subscribersLost,likes,shares';
+  const byVideo = (metrics) => report({dimensions: 'video', filters: `video==${ids.join(',')}`, metrics, sort: '-views', maxResults: String(ids.length)});
+  let rows;
+  try {
+    rows = await byVideo(`${base},engagedViews`);
+  } catch (e) {
+    if (/insufficient|scope|forbidden/i.test(e.message)) die(`${e.message}\n  the token lacks yt-analytics.readonly: run \`node ~/.claude/skills/cp/bin/yt.mjs auth\` again and allow it`);
+    if (!/engagedViews|Unknown identifier/i.test(e.message)) throw e;
+    rows = await byVideo(base); // older API without engaged views: fall back
+  }
+  const info = {};
+  for (let i = 0; i < ids.length; i += 50) {
+    const r = await (await api('GET', `${API}/videos?part=snippet,status&id=${ids.slice(i, i + 50).join(',')}`)).json();
+    for (const v of r.items ?? []) info[v.id] = {title: v.snippet.title, when: v.status.publishAt ?? v.snippet.publishedAt};
+  }
+  const out = ids.map((id) => {
+    const r = rows.find((x) => x.video === id) ?? {};
+    const views = Number(r.views ?? 0);
+    const net = Number(r.subscribersGained ?? 0) - Number(r.subscribersLost ?? 0);
+    return {
+      id, title: info[id]?.title ?? '?', publishIST: info[id] ? istTime(Date.parse(info[id].when)) : '?', views,
+      engagedViews: r.engagedViews === undefined ? null : Number(r.engagedViews),
+      stayedPct: r.engagedViews === undefined || !views ? null : Math.round((1000 * Number(r.engagedViews)) / views) / 10,
+      avgViewPct: r.averageViewPercentage === undefined ? null : Math.round(Number(r.averageViewPercentage) * 10) / 10,
+      avgViewSec: r.averageViewDuration === undefined ? null : Number(r.averageViewDuration),
+      watchMin: Number(r.estimatedMinutesWatched ?? 0), subsNet: net, subsPer1k: views ? Math.round((10000 * net) / views) / 10 : null,
+      likes: Number(r.likes ?? 0), shares: Number(r.shares ?? 0),
+    };
+  });
+  let curve = null;
+  if (curveId) {
+    const pts = await report({dimensions: 'elapsedVideoTimeRatio', filters: `video==${curveId}`, metrics: 'audienceWatchRatio,relativeRetentionPerformance', sort: 'elapsedVideoTimeRatio'});
+    curve = pts.map((p) => ({at: Number(p.elapsedVideoTimeRatio), watch: Number(p.audienceWatchRatio), relative: Number(p.relativeRetentionPerformance)}));
+  }
+  if (asJson) return console.log(JSON.stringify({channel: ch.snippet.title, at: new Date().toISOString(), videos: out, curve}, null, 1));
+  console.log(`channel: ${ch.snippet.title} · YouTube Analytics, all time to ${istDate(Date.now())} (lags Studio by 1-2 days)`);
+  console.log('published (IST)        views stayed%  avg%  avg s  watch min  subs  /1k  likes shares  id           title');
+  const f = (v, w, d = '-') => String(v ?? d).padStart(w);
+  for (const r of out) console.log(`${r.publishIST.padEnd(21)} ${f(r.views, 6)} ${f(r.stayedPct, 7)} ${f(r.avgViewPct, 5)} ${f(r.avgViewSec, 6)} ${f(Math.round(r.watchMin), 10)} ${f(r.subsNet, 5)} ${f(r.subsPer1k, 4)} ${f(r.likes, 6)} ${f(r.shares, 6)}  ${r.id}  ${r.title.slice(0, 50)}`);
+  if (curve) {
+    if (!curve.length) return console.log(`retention ${curveId}: no data yet (YouTube needs a day or two and enough views)`);
+    const at = (x) => curve.reduce((b, p) => (Math.abs(p.at - x) < Math.abs(b.at - x) ? p : b));
+    console.log(`retention ${curveId} (audience watch ratio; above 1.0 = rewatches):`);
+    console.log('  ' + [0.01, 0.1, 0.25, 0.5, 0.75, 0.9, 1].map((x) => `${Math.round(x * 100)}%: ${at(x).watch.toFixed(2)}`).join('  '));
+    let drop = {d: 0};
+    for (let i = 1; i < curve.length; i++) if (curve[i - 1].watch - curve[i].watch > drop.d) drop = {d: curve[i - 1].watch - curve[i].watch, at: curve[i].at};
+    if (drop.at !== undefined) console.log(`  steepest drop: -${drop.d.toFixed(2)} at ${Math.round(drop.at * 100)}% of the video`);
+  }
+}
+
 async function status(ids) {
   const r = await (await api('GET', `${API}/videos?part=status,processingDetails,snippet&id=${ids.join(',')}`)).json();
   for (const v of r.items ?? [])
@@ -405,7 +532,13 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     else if (cmd === 'next-free') console.log(await nextFreeDay());
     else if (cmd === 'reschedule') await reschedule(args[0], args[1]);
     else if (cmd === 'status') await status(args);
-    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>...');
+    else if (cmd === 'stats') await stats(Math.max(1, Math.min(200, Number(args.find((a) => /^\d+$/.test(a)) ?? 10))), args.includes('--json'));
+    else if (cmd === 'analytics') {
+      const ci = args.indexOf('--curve');
+      const n = Number(args.find((a, i) => /^\d+$/.test(a) && i !== ci + 1) ?? 10);
+      await analytics(Math.max(1, Math.min(200, n)), args.includes('--json'), ci >= 0 ? args[ci + 1] : null);
+    }
+    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json]');
   } catch (e) {
     die(e.message);
   }

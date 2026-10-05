@@ -233,6 +233,8 @@ YouTube has hypnic-jerk on 30 Sep and finger-wrinkles on 1 Oct at 23:30 IST. So 
   - The OAuth client is the va skill's (Google Cloud "My First Project"; its consent screen says "ladles").
   - The CurioPulse token is in `~/.config/cp/youtube-token.json`, and `yt.mjs whoami` says CurioPulse.
   - To re-authorize: `yt.mjs auth`, choose the CurioPulse channel, then Advanced → "Go to ladles" → Allow.
+  - The token carries two scopes since 5 Oct 2026: `youtube.force-ssl` (uploads) and `yt-analytics.readonly`
+    (`yt.mjs analytics`). On the consent page both boxes must be ticked.
 - **Instagram:** nothing to set up for route A beyond the Business Suite login the user already has in Chrome.
 
 ## Troubleshooting
