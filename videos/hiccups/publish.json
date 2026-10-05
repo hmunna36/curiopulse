@@ -1,0 +1,50 @@
+{
+  "slug": "hiccups",
+  "file": "hiccups-short.mp4",
+  "title": "Why Do We Get HICCUPS? 🫢",
+  "description": "You chug a soda on a first date... and HIC. Smooth.\n\nA hiccup is your breathing muscle, the diaphragm, jerking all of a sudden. Air rushes in, and a split second later your vocal cords snap shut on it: that is the \"hic\". A stomach swollen with fizz, a big meal or swallowed air is the usual trigger, because it sits right under that muscle. Subscribe for a new strange question every day.\n\nWhy do we have the reflex at all? Nobody knows for sure. One idea, still unproven: it is left over from our amphibian ancestors. Tadpoles pump water over their gills with the door to their lungs shut, a move that looks a lot like a hiccup. Bonus fact: you were already hiccuping before you were born.\n\nNext up: what is déjà vu?\n\n#Shorts #Science #Hiccups #HumanBody #FunFacts",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "test": "length-2026-10",
+    "slot": "2026-10-06T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: what is déjà vu? 🌀 Subscribe so you don't miss it!\nWhat's YOUR hiccup cure? 🥤",
+  "tags": [
+    "why do we hiccup",
+    "hiccups",
+    "what causes hiccups",
+    "hiccup",
+    "how to stop hiccups",
+    "diaphragm",
+    "vocal cords",
+    "tadpoles",
+    "evolution",
+    "human body",
+    "science",
+    "biology",
+    "fun facts",
+    "explained",
+    "animation",
+    "shorts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "hiccups.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You chug a soda on a first date... and HIC! 🫢🥤\nYour breathing muscle jerks, air rushes in, and your vocal cords slam shut on it: that's the hic. One idea (unproven): we got the move from tadpoles. 🐸\nFollow @curio_pulse_tv for the next one: what is déjà vu? 🔔\n#science #humanbody #hiccups #biology #funfacts #reels",
+    "coverTime": 3.1,
+    "shareToFeed": true
+  }
+}
