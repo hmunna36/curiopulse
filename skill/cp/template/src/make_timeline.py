@@ -8,14 +8,18 @@ import sys
 
 from timeline_lib import PALETTE as P, Timeline
 
-T = Timeline(sys.argv[1], tail=1.5)  # seconds after the last word: the button beat (a held look, a last gag, the loop)
+T = Timeline(sys.argv[1], tail=1.5)  # seconds after the last word: the button beat (a held look, a last gag) and the cut
+#                                      back to frame 1 for the loop. Use 1.0 in the 30-35 s arm of the length test.
 
 # (shot id, phrase whose first word opens the shot). The first shot starts at 0. None = timed in `special`
 # (reaction beats: on a gasp, after a punchline word, in a silent gap). Every id needs an SC.<id> in web/.
 SHOTS = [
-    ("hook", None),
+    ("hook", None),       # the hero doing something physical on frame 1; the strange thing lands by 3 s
+    ("answer", "REPLACE with the first words of the `answer` block"),   # starts by 5.0 s (qa.py checks it)
     ("explain", "REPLACE with the phrase that opens this shot"),
-    ("button", "REPLACE"),  # holds through the subscribe line; subscribe.js draws the pill on top of it
+    ("payoff", "REPLACE"),  # the subscribe aside follows it: subscribe.js draws the pill over whatever shot is on then,
+                            # so keep that shot's hero and key action above y ≈ 1050 for those 3 s
+    ("button", "REPLACE"),  # ends on the picture of frame 1 (the loop); no ask and no tease here
 ]
 special = {}  # e.g. {"stare": T.E("JUMPS") + 0.06, "nope": T.ev("chuckles")["t"] - 0.05}
 
@@ -39,11 +43,17 @@ W, E, ev, find = T.W, T.E, T.ev, T.find
 cues = {
     # "gasp": ev("gasps")["t"], "jumps": W("JUMPS"), "jumps_end": E("JUMPS"), "bam": W("BAM"),
 }
-# ---- the subscribe cue (web/subscribe.js): the last ~2.6 s. Needs a `## sub` block in script.txt with the word "subscribe".
-_sub_w = T.W("subscribe")                       # if the line says "subscribes"/"subscribing", use that word
-_sub_in = min(_sub_w - 0.30, T.duration - 2.6)  # pill pops ~0.3 s before the word, and at least 2.6 s remain
-cues["sub_in"] = max(0.0, _sub_in)
-cues["sub_tap"] = min(T.E("subscribe") + 0.25, T.duration - 0.8)  # the cursor click, just after the word
-# if the sub line goes on after "subscribe" ("Subscribe... if you're still awake"), click in that gap instead:
-# cues["sub_tap"] = T.E("subscribe") + 0.10   (the click and bell then never sit on the next words)
+# ---- the subscribe cue (web/subscribe.js): MID-VIDEO, on the spoken `## sub` aside that follows the payoff
+# (reference/narration.md). The word "subscribe" must land at 50-70 % of the runtime; qa.py checks it. The pill pops
+# ~0.3 s before the word, the cursor clicks in the pause just after it, and the pill pops out 1.3 s after the click:
+# about 2.6 s on screen. Captions that share the screen with it sit at y 1150 (main.js); the narration carries on.
+_sub_i = T.find("subscribe")                  # if the line says "subscribes"/"subscribing", use that word
+cues["sub_in"] = max(0.0, T.ws[_sub_i] - 0.30)
+cues["sub_tap"] = T.we[_sub_i] + 0.10         # in the "..." after the word, so the click never sits on a word
+cues["sub_out"] = cues["sub_tap"] + 1.30
 T.write(shots, caps, cues)
+# the three numbers to read before any picture is built (qa.py checks them on the MP4; fixing them now is free)
+_ans = [w for w in T.words if w.get("block") == "answer"]
+print(f'length: {T.duration:.2f} s (the arm in publish.json: standard passes at 43-50 s, short at 30-35 s)')
+print(f'answer line: starts at {_ans[0]["start"]:.2f} s (must be 5.0 s or earlier)' if _ans else 'NO `## answer` BLOCK in script.txt (qa.py fails without it)')
+print(f'subscribe aside: the word at {T.ws[_sub_i]:.2f} s = {100 * T.ws[_sub_i] / T.duration:.0f} % of the runtime (must be 50-70 %)')

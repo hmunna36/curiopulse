@@ -15,7 +15,7 @@
 | `web/kit.js` | the lightning-era kit: `SC = {}`, `charLayer`, `pill`, `thermo`, the x-ray world (`initScenes`) | engine |
 | `web/fx.js` | shared scene helpers (see visual.md) | engine |
 | `web/scenes.js` (+ more) | this video's worlds, props and `SC.<shot>` functions, and `initScenes2()` | yes |
-| `web/subscribe.js` | the subscribe cue (pill, bell, cursor click), driven by `cues.sub_in` / `cues.sub_tap` | engine |
+| `web/subscribe.js` | the subscribe cue (pill, bell, cursor click, pop-out), mid-video, driven by `cues.sub_in` / `cues.sub_tap` / `cues.sub_out`; `subLift` tells main.js which caption chunks sit at y 1150 | engine |
 | `web/main.js` | the compositor: runs the active shot, bloom, push, blur, grade, VHS, grain, flash, captions | engine |
 | `render.js` | headless Chrome → PNG frames piped into ffmpeg (or to a folder for stills) | engine |
 | `make_srt.py`, `qa.py`, `qc_*.py`, `contact_sheet.py` | captions file, the QA gate, review tools | engine |

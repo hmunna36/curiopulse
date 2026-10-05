@@ -1,28 +1,41 @@
-// Subscribe cue: a red SUBSCRIBE pill + bell that pops in, gets a cursor click and flips to SUBSCRIBED,
-// over the last ~2.6 s of every Short, timed to the spoken subscribe line. Engine file (reference/visual.md).
+// Subscribe cue: a red SUBSCRIBE pill + bell that pops in, gets a cursor click, flips to SUBSCRIBED and pops out
+// again, about 2.6 s in all. Engine file (reference/visual.md). Since 5 Oct 2026 it plays in the MIDDLE of the Short,
+// on the spoken `sub` aside right after the payoff (the word "subscribe" at 50-70 % of the runtime): only 4-15 % of
+// viewers reached the last seconds, where it used to sit.
 // Timeline cues (make_timeline.py sets them; never type a time here):
 //   sub_in  = when the pill pops in (≈0.3 s before the spoken word "subscribe")
-//   sub_tap = when the cursor clicks (≈0.2 s after the word ends); defaults to sub_in + 1.25
-// If a timeline has no sub_in the cue falls back to the last 2.6 s, so it can never be forgotten silently.
+//   sub_tap = when the cursor clicks (just after the word); defaults to sub_in + 1.25
+//   sub_out = when the pill starts to pop out; defaults to sub_tap + 1.3
+// If a timeline has no sub_in the cue falls back to the last 2.6 s, so it can never be forgotten silently
+// (qa.py fails a Short whose cue is missing or far from the middle).
 // Placement: inside the Shorts key-content zone measured 30 Sep 2026 (x 100-870 for y 1000-1640; the like/comment
 // column starts at x ≈ 880 from y ≈ 1050, the Related chip and channel row at y ≈ 1680): pill + bell centred on
-// x = 540 (pill x ≈ 221-701, bell x ≈ 727-859), y = 1420 (y ≈ 1354-1486). Captions lift to y = SUB_CAPY meanwhile.
+// x = 540 (pill x ≈ 221-701, bell x ≈ 727-859), y = 1420 (y ≈ 1354-1486). Every caption chunk that shares the screen
+// with the cue sits at y = SUB_CAPY for its whole life (main.js asks subLift), so nothing collides and nothing jumps.
 // Only decoration crosses x 870: the cursor's first 0.15 s as it swoops in, and the ring marks after the tap.
 'use strict';
 
 const SUB_Y = 1420, SUB_CAPY = 1150, SUB_PILL_W = 480, SUB_PILL_H = 132, SUB_BELL_R = 66, SUB_GAP = 26;
+const SUB_EXIT = 0.24;   // seconds the pill and the bell take to pop out after sub_out
 
 function subTimes() {
   const c = TLd.cues || {};
   const dur = TLd.duration;
   const tin = c.sub_in !== undefined ? c.sub_in : dur - 2.6;
-  const tap = c.sub_tap !== undefined ? c.sub_tap : tin + 1.25;
-  return { tin, tap: Math.min(tap, dur - 0.75) };
+  const tap = Math.min(c.sub_tap !== undefined ? c.sub_tap : tin + 1.25, dur - 0.75);
+  const tout = c.sub_out !== undefined ? c.sub_out : tap + 1.3;
+  return { tin, tap, tout };
 }
-// > 0 while the cue owns the lower third: main.js lifts the captions so nothing collides
+// true while the cue is on screen (from just before the pop-in to the end of the pop-out)
 function subActive(t) {
-  const { tin } = subTimes();
-  return t >= tin - 0.05;
+  const { tin, tout } = subTimes();
+  return t >= tin - 0.05 && t <= tout + SUB_EXIT;
+}
+// true for a caption chunk on screen from c0 to c1 that meets the cue at any moment: main.js draws that whole chunk
+// at SUB_CAPY, so a caption never sits under the pill and never jumps while it is being read
+function subLift(c0, c1) {
+  const { tin, tout } = subTimes();
+  return c1 > tin - 0.05 && c0 < tout + SUB_EXIT;
 }
 
 function bellPath(c) {
@@ -54,9 +67,10 @@ function drawCursor(c, x, y, s, col = '#FFFFFF') {   // arrow pointer; (x, y) is
 }
 
 function drawSubscribe(t) {
-  const { tin, tap } = subTimes();
+  const { tin, tap, tout } = subTimes();
   const age = t - tin;
-  if (age < 0) return;
+  if (age < 0 || t > tout + SUB_EXIT) return;
+  const live = 1 - (t > tout ? E.inCubic(inv(tout, tout + SUB_EXIT, t)) : 0);   // 1 → 0 as the cue pops out
   const c = ctx;
   c.setTransform(1, 0, 0, 1, 0, 0);
   const totalW = SUB_PILL_W + SUB_GAP + SUB_BELL_R * 2;
@@ -74,14 +88,14 @@ function drawSubscribe(t) {
   // ---- glow under the pill (bloom look), brighter on pop and on the click
   const flash = sinceTap >= 0 ? Math.exp(-sinceTap / 0.22) : 0;
   c.globalCompositeOperation = 'lighter';
-  softDot(c, pillCx, SUB_Y, 340, done ? '#4DFFB4' : '#FF3B55', (0.20 + 0.25 * flash) * popP);
-  if (done) softDot(c, bellCx, SUB_Y, 170, '#FFD447', 0.35 * E.outCubic(inv(0.05, 0.4, sinceTap)));
+  softDot(c, pillCx, SUB_Y, 340, done ? '#4DFFB4' : '#FF3B55', clamp((0.20 + 0.25 * flash) * popP * live));
+  if (done) softDot(c, bellCx, SUB_Y, 170, '#FFD447', 0.35 * E.outCubic(inv(0.05, 0.4, sinceTap)) * live);
   c.globalCompositeOperation = 'source-over';
 
   // ---- the pill
   c.save();
   c.translate(pillCx, SUB_Y);
-  const ps = Math.max(0.001, popP) * press * hold;
+  const ps = Math.max(0.001, popP * live) * press * hold;
   c.rotate((1 - Math.min(1, popP)) * -0.09);
   c.scale(ps, ps);
   c.shadowColor = 'rgba(0,0,10,0.55)'; c.shadowBlur = 28; c.shadowOffsetY = 12;
@@ -113,7 +127,7 @@ function drawSubscribe(t) {
   // ---- the bell: dark disc, white bell; after the click it goes yellow and rings
   c.save();
   c.translate(bellCx, SUB_Y);
-  const bs = Math.max(0.001, popB) * (sinceTap >= 0 ? 1 + 0.10 * Math.exp(-sinceTap / 0.15) : 1);
+  const bs = Math.max(0.001, popB * live) * (sinceTap >= 0 ? 1 + 0.10 * Math.exp(-sinceTap / 0.15) : 1);
   c.scale(bs, bs);
   c.shadowColor = 'rgba(0,0,10,0.55)'; c.shadowBlur = 24; c.shadowOffsetY = 10;
   c.fillStyle = done ? '#2C2A3E' : '#262A3C';

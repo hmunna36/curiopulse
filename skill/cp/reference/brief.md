@@ -27,7 +27,14 @@ EXPERIENCE the explanation, not be told it.
     and the loop, and it costs about a third fewer voice characters.
   - Get there by cutting, not by rushing: one mechanism, one twist, the weirdest true fact, the button. Drop the
     bonus facts (they can be another day's topic). Keep the comedic gaps, but tighter.
-  - Never pad. The QA gate warns above 50 s and fails above 55 s.
+  - Never pad. Every Short since has run 46–50 s; that is the "standard" length below, and the QA gate passes
+    43–50 s and fails above 55 s.
+  - **The length test (user, 5 Oct 2026: "yes"; `analytics.md`).** Viewers gave every Short about 30 s whatever its
+    length (23–39 s, mostly 27–31), so from the Short released on 6 Oct 23:30 the one that takes a **23:30 YouTube
+    slot is 30–35 s** (66–76 words) and the one that takes an **11:30 slot stays 45–50 s** (95–110 words).
+    `yt.mjs next-slot` tells a run which it is building, and qa.py holds it to that band (30–35 s passes, over 37 s
+    fails). Everything else is identical in both, so length is the only difference. The user reads the comparison
+    from `numbers.md` (first reading on or after 14 Oct) and decides; until then the test continues.
 - **The narrator is performed, not read.** Jessica (ElevenLabs `eleven_v3`, voice `cgSgspJ2msm6clMCkdW9`), stability
   0 ("creative"), with v3 delivery tags. The first lightning cut used Kokoro, and the user said it "sounded like
   someone was READING A BOOK". That must never happen again. See `narration.md`.
@@ -37,16 +44,23 @@ EXPERIENCE the explanation, not be told it.
 - **One recurring hero:** the "hiker" rig in `web/character.js`. Always the same character (same face, hair,
   proportions), dressed for the scene with `PAL` variants: coat, pajamas `PJ`, bare-shouldered in the bath. Never a
   new person per scene.
-- **Endings:** a memorable last line plus a visual button. The last beat may loop back to the first frame
-  (finger-wrinkles dives back into the water).
+- **Endings:** a memorable last line plus a visual button, and the last shot ends on the picture of frame 1 so the
+  Short loops (finger-wrinkles dives back into the water; voice-recording cuts back to his thumb on PLAY). Since
+  5 Oct 2026 nothing else sits at the end: no ask, no "Next up", no outro.
 - **Subscribe hooks (2026-09-30, the user's explicit request; overrides the earlier "no call to action" and "no like and
   subscribe" rules).** The channel has almost no organic subscribers (lightning: 1,221 views, almost no subs), so every
-  Short ends with two hooks:
-  - **Audible:** a final `sub` block after (or woven into) the button line, ≤ 70 characters, in Jessica's voice and
-    funny, that teases tomorrow's topic and asks the viewer to subscribe. Not a generic "like and subscribe".
-  - **Visual:** the animated Subscribe pill + bell with a cursor click, `web/subscribe.js`, over the last ~2.6 s,
-    inside the safe area, timed to the spoken line.
-  - The button line still lands first: the joke is never sacrificed for the ask.
+  Short carries two hooks. **Since 5 Oct 2026 (user: "yes") they sit in the middle, right after the payoff**: in the
+  first week only 4–15 % of viewers were still watching in the last seconds, where the hooks used to be, yet the
+  Shorts that carried them still converted about twice as well as those without (`analytics.md`).
+  - **Audible:** the `sub` block, an aside of ≤ 45 characters in Jessica's voice, funny, with the word "subscribe" at
+    50–70 % of the runtime. It promises what is still coming in this Short ("Subscribe... it gets weirder."). Not a
+    generic "like and subscribe", not a tease of another video, nothing that sounds like the end.
+  - **Visual:** the animated Subscribe pill + bell with a cursor click, `web/subscribe.js`: it pops in on that word,
+    gets clicked, and pops out again about 2.6 s later, inside the safe area, while the narration carries on.
+  - The story is never stopped for the ask: the aside rides the pause between the payoff and the weirdest fact.
+  - The next topic is teased in text only: the pinned comment, the description and the Reel caption.
+- **The opening (5 Oct 2026, user: "yes"; `story.md` §2):** "You…" + a physical action; the answer, as a plain
+  surprising claim or metaphor, starts by second 5; the scientific name is never a spoken beat.
 - **No on-screen credits** (no "voice: ElevenLabs", no channel logo intro).
 
 ## The rules from the brief, in short
@@ -55,16 +69,16 @@ EXPERIENCE the explanation, not be told it.
   - The viewer instantly sees that something strange is happening.
   - Never "Hey guys", "Welcome back", "Today we…", "Did you know…", a logo or a slow establishing shot.
   - Motion is on frame 1.
-- **Structure** (flexible; the story sets the timing):
+- **Structure** (the later decisions above set it; the full table for both lengths is in `story.md` §3):
 
-  | Time | Beat |
-  |---|---|
-  | 0–2 s | hook |
-  | 2–8 s | setup |
-  | 8–22 s | explanation / escalation |
-  | 22–32 s | deeper reveal (the weirdest true fact) |
-  | 32–40 s | payoff / button |
-  | last ~5 s | subscribe tease and the loop |
+  | 45–50 s | 30–35 s | Beat |
+  |---|---|---|
+  | 0–3 s | 0–3 s | hook: "You…" + a physical action, the strange thing |
+  | by 5 s | by 5 s | the answer starts |
+  | to ≈ 25 s | to ≈ 17 s | the mechanism, shown |
+  | ≈ 25–32 s | ≈ 17–22 s | payoff, then the subscribe aside (the word at 50–70 %) |
+  | to ≈ 42 s | to ≈ 29 s | the weirdest true fact |
+  | to the end | to the end | button, and the cut back to frame 1 |
 
 - **Never static.** Something meaningful changes every 1–3 s (camera, character, particles, light, process, text).
   But no random motion: every movement supports the story.

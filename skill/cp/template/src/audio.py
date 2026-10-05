@@ -40,13 +40,14 @@ for i, s in enumerate(TL["shots"][1:]):
     sfx.add(pan_st(whoosh(0.28, 400 + 150 * (i % 4), 2400, 500 + i), 0), s["start"] - 0.2, db(-18))
 
 # ================================================================= subscribe cue (pill pop, cursor click, bell ding)
-# quiet on purpose: it sits under the spoken subscribe line and must not mask the word.
+# very quiet on purpose: the cue is mid-video now, so the narration carries on right after the word "subscribe".
+# The click sits in the pause after the word (cues["sub_tap"]); nothing here may mask a word (qa.py lists weak words).
 if "sub_in" in c:
-    sfx.add(pan_st(blip(700, 1500, 0.09, 71, 0.03), 0), c["sub_in"], db(-20))
-    sfx.add(pan_st(blip(900, 2000, 0.08, 72, 0.03), 0), c["sub_in"] + 0.12, db(-22))
+    sfx.add(pan_st(blip(700, 1500, 0.09, 71, 0.03), 0), c["sub_in"], db(-22))
+    sfx.add(pan_st(blip(900, 2000, 0.08, 72, 0.03), 0), c["sub_in"] + 0.12, db(-24))
     if "sub_tap" in c:
-        sfx.add(pan_st(snap(3), 0), c["sub_tap"], db(-16))
-        sfx.add(pan_st(bell(1760, 1.2, 0.5), 0), c["sub_tap"] + 0.08, db(-22))
+        sfx.add(pan_st(snap(3), 0), c["sub_tap"], db(-18))
+        sfx.add(pan_st(bell(1760, 0.8, 0.5), 0), c["sub_tap"] + 0.08, db(-30))
 
 # ================================================================= score (drops out for every punchline)
 BPM = 112

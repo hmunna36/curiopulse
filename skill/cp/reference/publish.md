@@ -32,12 +32,15 @@ a Reel too), and never before the Short's YouTube release.**
   - notify subscribers;
   - no playlist.
 - **Pinned comment (suggestion only, never posted by the pipeline):** store it in `publish.json` as `pinnedComment`
-  and in the README's metadata, for the user to pin. First line = the subscribe ask with tomorrow's teaser, e.g.
-  `Tomorrow: why onions make you cry 🧅 Subscribe so you don't miss it!` Then one line answering the question
-  ("What did YOU think it was?" invites replies). Do not post it or use the API to do so.
+  and in the README's metadata, for the user to pin. First line = the subscribe ask with the next Short's teaser, e.g.
+  `Next up: why onions make you cry 🧅 Subscribe so you don't miss it!` ("Next up", never "tomorrow": the next Short
+  is about 12 hours away.) Then one line answering the question ("What did YOU think it was?" invites replies). Do
+  not post it or use the API to do so.
+- Since 5 Oct 2026 the pinned comment, the description and the Reel caption are the ONLY places the next topic is
+  teased: the spoken subscribe aside sits mid-video and promises the rest of the same Short (`narration.md`).
 - **Description:** end the first paragraph line with the ask too: `Subscribe for a new strange question every day.`
 - **Instagram caption:** the hook line with an emoji, 1–2 short lines, a **follow line** (Instagram says Follow, not
-  Subscribe: `Follow @curio_pulse_tv for tomorrow's: <teaser> 🔔`), then 4–6 hashtags
+  Subscribe: `Follow @curio_pulse_tv for the next one: <teaser> 🔔`), then 4–6 hashtags
   (`#science #humanbody #biology #funfacts #reels`). At most 2,200 characters and 30 hashtags.
   - `instagram.coverTime` (seconds) is the cover frame to aim for.
   - No AI label, the same as the Reels already posted. It is the user's call if they want Meta's AI label for the

@@ -342,3 +342,22 @@ here for every new Short, with its links.
   the upload ("safe to publish"). The thumbnail picker stayed a skeleton, so the Reel has an auto cover. Don't return
   `location.href` from the JavaScript tool: its output is blocked when it carries a query string.
 
+**The first week's numbers (5 Oct 2026; no new video, the rules changed; `analytics.md` has the evidence):**
+- 10 Shorts, 13,964 views, +39 subscribers, every Short between 1.1K and 2.1K views. Viewers gave each one about 30 s
+  whatever its length, a third to a half left between seconds 7 and 18 (before the explanation), and only 4–15 % were
+  still there for the subscribe line at the end.
+- So, with the user's "yes": the hook is "You…" + a physical action; the `answer` block starts by 5 s (ears-pop's
+  "Your ear just burped." is the model: 65.5 % viewed, the best); no spoken naming beat (brain freeze lost 42 points
+  of its viewers around "sphenopalatine ganglioneuralgia"); the `sub` aside and the pill moved to the middle (the
+  word at 50–70 %), ≤ 45 characters, promising the rest of the same Short; the Short ends on the button and loops.
+- The length test `length-2026-10` started with the Short for 6 Oct 23:30: 23:30 slots are 30–35 s, 11:30 slots stay
+  45–50 s. `yt.mjs next-slot` assigns the arm, `yt.mjs numbers` logs every run and compares the arms.
+- Engine: `subscribe.js` got `sub_out` (the pill pops out 1.3 s after the click) and `subLift` (a caption chunk that
+  meets the cue sits at y 1150 for its whole life, so nothing jumps). Tested on ears-pop's timeline with the cue moved
+  to 63 %: pill in, click, SUBSCRIBED, out, captions clear. The lifted captions covered the baby in that shot: a shot
+  that will be under the pill has to be composed for it (key action above y ≈ 1050).
+- `git archive` on the blobless checkout pulled 177 MB (every blob in the tree, not just the path asked for) before it
+  was stopped. To look at one old video's files, make a throwaway clone in the scratchpad
+  (`git clone --filter=blob:none --sparse --depth 1 …`, then `git sparse-checkout set videos/<slug>/src`; cone mode
+  also brings the files next to `src/`, the MP4 included, about 80 MB), never `git archive` in `~/Desktop/curiopulse`.
+  Delete the throwaway clone when done.

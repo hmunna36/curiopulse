@@ -2,7 +2,10 @@
 
 ## While building (cheap and early)
 
-- **After voice.py:** do the listening pass (narration.md). Fix the words and delivery before any picture exists.
+- **After voice.py and make_timeline.py:** do the listening pass (narration.md), and read the three numbers
+  make_timeline.py prints: the duration (inside the length arm's band), where the `answer` line starts (5.0 s or
+  earlier) and where the word "subscribe" lands (50–70 % of the runtime). Fix the words, the delivery and those three
+  before any picture exists; it is free now and a re-render later.
 - **After each shot:**
   - render 4–8 stills across it (`render.js … stills "f1,f2,…"`), tile them with `contact_sheet.py`, and Read the
     sheet;
@@ -12,8 +15,11 @@
   - then render the shot's frame range to a short MP4 without audio (`render.js tl.json /tmp/shot.mp4 "A-B"`)
     when the motion matters.
 - **After audio.py:** `qc_audio.py`. Masked words get fixed now, not after the render.
-- **Subscribe cue:** stills at the last 3 s (0.3 s steps) must show the pill popping, the click, SUBSCRIBED, and the
-  captions lifted clear of it. Fix collisions with the hero before the full render.
+- **Subscribe cue (mid-video):** stills from `sub_in − 0.5` to `sub_out + 0.5` (0.3 s steps) must show the pill
+  popping in, the click, SUBSCRIBED, the pill gone again, and the captions (at y 1150 meanwhile) and the hero clear of
+  it throughout. Fix collisions in that shot before the full render.
+- **The loop:** a still of the last frame next to frame 0: the same picture, or close enough that the restart reads
+  as one move.
 - **Before the full render**, sweep the whole timeline: stills every 1 s on one or two sheets. Look for:
   - dead stretches;
   - text collisions;
@@ -35,7 +41,8 @@ python3 ~/.claude/skills/cp/bin/safe-area.py check 221 1354 859 1486            
 ```
 
 - Frames to check (frame = seconds × 30): the hook (0.1, 1, 2 s), every title card, sting and on-screen label, one 2-line caption per shot,
-  any `capY` override (split screens), the subscribe cue (`sub_in + 0.3`, `sub_tap + 0.3`) and the cover frame.
+  any `capY` override (split screens), the subscribe cue (`sub_in + 0.3`, `sub_tap + 0.3`, and a lifted caption next
+  to the pill) and the cover frame.
 - Pass: no word, number, face, key action or the pill touches red or crosses the green line. Backgrounds may.
 - Fix in the shot (move or shrink the element, shift the camera target), never by moving the captions or the cue.
 
@@ -48,7 +55,9 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 | Check | Bar |
 |---|---|
 | Streams | H.264 High 1080×1920 30 fps yuv420p, AAC 48 kHz stereo, moov first |
-| Length / size | 35–50 s (warns to 55, fails above 55) · under 95 MB |
+| Length / size | the band of the Short's length arm (`"length"` in publish.json, from `yt.mjs next-slot`): STANDARD passes at 43–50 s and fails above 55 s; SHORT passes at 30–35 s and fails above 37 s; anything else warns · under 95 MB |
+| Opening | the first word is "You"/"Your" (warning only) · the `answer` block starts by 5.0 s (warns to 6.0 s; fails later, or when there is no `answer` block) |
+| Subscribe aside | the word "subscribe" of the `sub` block at 50–70 % of the runtime (warns at 40–80 %; fails outside, or when it is missing) · the aside is ≤ 45 characters (warns to 60) |
 | Loudness | −14 ± 0.5 LUFS integrated, true peak ≤ −1.0 dBTP (decoded from the AAC) |
 | Picture | the first frame isn't black · it moves in the first 0.5 s · no frozen stretch over 1.5 s |
 | Voice | content words: mean speech-band SNR ≥ 12 dB, ≤ 10 % under 6 dB, none under 3 dB (it lists the weak words) |
@@ -58,7 +67,11 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 A FAIL blocks the upload.
 - The weak-word list and the whisper differences are leads for the review, even when the check passes. A punchline
   word under 6 dB is a real problem.
-- Calibration: the shipped finger-wrinkles Short scores 13/13, with content SNR 14.1 dB, WER 2.8 %, and 64 s.
+- Calibration: the shipped finger-wrinkles Short scored 13/13 on the checks of its day, with content SNR 14.1 dB, WER
+  2.8 %, and 64 s. Run on ears-pop (4 Oct 2026, the old shape), today's gate fails exactly the three new checks: no
+  `answer` block, "subscribe" at 94 % of the runtime, a 70-character line. Its "Your ear just burped." starts at 4.37 s.
+- A length WARN is not a pass: bring the Short into its band with `gap`, `tighten` and `tempo` (free), or cut a
+  sentence, before shipping. Ship on a length warning only when the fix would hurt the comedy, and say so.
 
 ## The ship bar (the review; qa.py can't judge these)
 
@@ -67,18 +80,18 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 
 | # | Item | Passes when (8+) |
 |---|---|---|
-| 1 | **Hook** | frame 1 is action; the question lands in ≤ 3 s; picture and sound hit together; you'd stop scrolling |
-| 2 | **Retention** | a new visual question or reveal every 3–5 s; no stretch where only the captions move; escalation to the weirdest fact |
-| 3 | **Story** | experience → mechanism → twist/proof → bonus → button; every beat earns its seconds; the button reframes or undercuts |
+| 1 | **Hook and answer** | frame 1 is the hero DOING something, and the first words are "You…" plus that action; the strange thing lands in ≤ 3 s; picture and sound hit together; the answer line starts by 5 s and is a plain, surprising claim or metaphor that leaves a "wait, how?"; you'd stop scrolling |
+| 2 | **Retention** | nothing between the hook and the answer; no spoken naming beat, no bridge-only line; a new visual question or reveal every 3–5 s; no stretch where only the captions move; escalation to the weirdest fact |
+| 3 | **Story** | experience → answer → mechanism → payoff → the weirdest fact → button; every beat earns its seconds; the button reframes or undercuts, and the last shot returns to the picture of frame 1 (the loop); no ask, tease or outro at the end |
 | 4 | **Show, don't tell** | every major statement has its visual; the camera travels to what's named; nothing is a slide |
 | 5 | **Narration** | sounds told, not read (brief: "NOT reading a book"); energy changes per beat; jokes land in the gaps; no mis-said words |
-| 6 | **Comedy** | 2–3 laugh beats (reaction, callback, anticlimax); timing comes from the gaps and cuts, not wacky voices |
+| 6 | **Comedy** | 2–3 laugh beats (2 in a 30–35 s Short: the answer line and the button); timing comes from the gaps and cuts, not wacky voices |
 | 7 | **Look** | cinematic light and depth; the hero on model and acting; bloom/grain clean; nothing cropped by the safe area |
 | 7b | **Safe area** | stills checked with the safe-area mask: nothing important under a covered zone (hook words, titles, labels, captions, the face, the key action, the pill); list the `.safe.png` frames in ship-review.md |
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |
 | 10 | **Packaging** | title ≤ 60 characters with a curiosity gap; the cover reads at thumbnail size; description, hashtags and IG caption written |
-| 11 | **Subscribe hook** | the `sub` line exists (≤ 70 characters), is in voice and funny, names tomorrow's topic and says "subscribe"; qa.py's speech SNR/whisper shows the word "subscribe" clear over the score (no weak-word entry, whisper hears it); the pill + bell + cursor click are on screen for ≥ 2.5 s, timed to the word, inside the key-content zone (mask on `sub_tap + 0.3`), not covering the hero or captions (crop the last 3 s of frames) |
+| 11 | **Subscribe hook** | the `sub` aside exists (≤ 45 characters), is in voice and funny, sits right after the payoff with the word "subscribe" at 50–70 % of the runtime, and promises what is still coming in THIS Short (never another video, never an outro); the story does not stop for it; qa.py's speech SNR/whisper shows "subscribe" and the words after it clear (no weak-word entry, whisper hears them); the pill + bell + cursor click are on screen for ≥ 2.5 s, timed to the word, inside the key-content zone (mask on `sub_tap + 0.3`), they leave cleanly, and they never cover the hero, the key action or the captions (crop the frames from `sub_in` to `sub_out + 0.5`) |
 
 - **Satisfied** means: qa.py has no FAIL, every ship-bar item scores 8 or more, and nothing in the review would make
   the user wince.

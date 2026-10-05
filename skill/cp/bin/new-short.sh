@@ -43,6 +43,19 @@ for (const f of walk(dir).filter((f) => /\.(md|json|py|sh|txt|js|html)$/.test(f)
   if (t !== s) fs.writeFileSync(f, t);
 }' "$DEST" "$SLUG" "$TITLE"
 mv "$DEST/src/build.sh" "$DEST/src/build.sh.tmp" && mv "$DEST/src/build.sh.tmp" "$DEST/src/build.sh" && chmod +x "$DEST/src/build.sh"
+
+# 2b. the length arm for the YouTube slot this Short will take (the length test; reference/analytics.md): qa.py reads it
+if LEN=$(node "$SKILL/bin/yt.mjs" next-slot --json 2>/dev/null) && [ -n "$LEN" ]; then
+  node -e '
+const fs = require("fs");
+const [f, j] = process.argv.slice(1);
+const spec = JSON.parse(fs.readFileSync(f, "utf8"));
+spec.length = JSON.parse(j).length;
+fs.writeFileSync(f, JSON.stringify(spec, null, 2) + "\n");
+console.log(`length arm: ${spec.length.arm.toUpperCase()} (${spec.length.min}-${spec.length.max} s) for the YouTube slot ${spec.length.slot}, written to publish.json`);' "$DEST/publish.json" "$LEN"
+else
+  echo 'note: could not read the next YouTube slot, so publish.json still says length arm "standard": run yt.mjs next-slot and put its "length" object there before writing the script'
+fi
 mkdir -p "$DEST/.work" "$DEST/src/fonts"
 cp "$CACHE/fonts/"*.ttf "$DEST/src/fonts/" 2>/dev/null || echo "note: no cached fonts; build.sh downloads them"
 

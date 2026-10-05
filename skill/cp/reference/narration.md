@@ -56,27 +56,54 @@
   - Write numbers as words ("seventy percent"), with DISPLAY in make_timeline showing "70%".
   - Keep acronyms and hard words rare. If whisper mis-hears a line in QA, rephrase it: "isn't instant" became
     "is actually a handover".
-- **Pace:** the shipped Shorts ran 143–152 words in 64–72 s, so ≈ 2.2–2.4 words/s including the gaps. For the 40–50 s
-  target (user, 1 Oct 2026) write **95–115 words** in all, the `sub` line included: about 550–680 characters. Count
-  them before synthesizing; if the draft is longer, cut whole sentences (a bonus fact, a second example), never the
-  comedic gaps.
+- **Pace:** the 46–50 s Shorts ran 94–111 words, so ≈ 2.15 words/s including the gaps. Write to the length arm that
+  `yt.mjs next-slot` gave this Short (the length test, `analytics.md`), the `sub` aside included:
+  - **STANDARD, 45–50 s: 95–110 words**, about 560–680 characters;
+  - **SHORT, 30–35 s: 66–76 words**, about 400–470 characters.
+  Count them before synthesizing; if the draft is longer, cut whole sentences (a second example, a bonus fact, the
+  hedged debate), never the comedic gaps, the answer line or the aside. After `voice.py`, `make_timeline.py` prints
+  the duration: outside the arm's band (qa.py passes 43–50 s or 30–35 s), fix it with `gap`, `tighten` and `tempo`
+  (free) before touching the text.
 
-## The subscribe line (last block, `sub`)
+## The first two blocks: `hook` and `answer` (5 Oct 2026; `story.md` §2)
 
-Every script ends with a `## sub` block (user's decision, 30 Sep 2026):
-- **≤ 70 characters** including spaces, after the button line (or woven into it). It teases the NEXT Short (say "Next up: …", never "tomorrow"; two Shorts a day since 2 Oct 2026), from the
-  NEXT `[ ]` entry of `topics.md` (the one after this Short's; when none, tease "another strange question"), and asks
-  for the subscribe/follow with the verb "subscribe" said clearly (the pill appears on that word).
-- In voice, funny, tied to the Short's own joke. Not "like and subscribe". Examples:
-  - after onions: `[chuckles] Tomorrow: why yawning is contagious. Subscribe... you're yawning already.`
-  - after brain freeze: `[deadpan] Tomorrow: why onions make you cry. Subscribe, or cry about it later.`
-  - after finger wrinkles: `[whispers] Tomorrow, goosebumps. Subscribe. Or don't. Your arm hairs are already voting.`
-- Block settings: `gap=0.40 tighten=0 tempo=1.00`; one tag at most (`[chuckles]`, `[deadpan]`, `[whispers]`).
-- **Budget:** ~70 characters is ~11% of a Short's ~650 characters. ElevenLabs is tight (≈1.1k characters left on
-  30 Sep 2026): count the whole script plus the `sub` block against `quota.mjs` BEFORE synthesizing. If the total does
-  not fit, trim the explanation, never the `sub` line. If a retake is needed, retake only `sub`, at ≤ 70 characters.
-- The block is captioned like any other, and the pill pops in ~0.3 s before the word "subscribe"
-  (`cues["sub_in"]` in make_timeline.py). Keep the music low there (audio.py ducks it).
+- `## hook`: the first word is "You" or "Your", with something physical being done in the first few words; the
+  strange thing lands by 3 s. Split it in two takes when the jolt needs its own timing (hypnic-jerk's "hook" + "jump").
+- `## answer` (this id is required; qa.py looks for it): the answer as a plain, surprising claim or a metaphor. Its
+  first word must be spoken by **5.0 s** (qa.py warns to 6.0 s and fails later), so keep the hook under ≈ 4 s and the
+  gap before `answer` at 0.45–0.60: the deadpan beat is still there, it just isn't long. `make_timeline.py` prints
+  where it starts.
+- Nothing sits between the hook's take(s) and `answer`, and no block anywhere only names the thing or only asks "So
+  what's going on?".
+
+## The subscribe aside (the `sub` block, mid-video)
+
+Every script has a `## sub` block (user's decision, 30 Sep 2026). Since 5 Oct 2026 it is an aside in the MIDDLE of the
+Short, not the last line: only 4–15 % of viewers reached the last seconds (`analytics.md`).
+
+- **Where:** right after the payoff (the moment the mechanism clicks), before the weirdest fact, so that the word
+  "subscribe" lands at **50–70 % of the runtime**. `make_timeline.py` prints the percentage; qa.py warns outside
+  50–70 % and fails outside 40–80 %. If it lands early or late, move a sentence across it rather than stretching gaps.
+- **What:** ≤ **45 characters** including spaces (tags don't count). The verb "subscribe" said clearly (the pill
+  appears on that word), then two to four words that promise what is still coming IN THIS Short, tied to its own joke:
+  - ears pop: `[mischievously] Subscribe... it gets louder.` (the screaming baby is next)
+  - onion tears: `[deadpan] Subscribe... the onion isn't done.`
+  - brain freeze: `[whispers] Subscribe... there's a cure.`
+  - when nothing better fits: `Subscribe... it gets weirder.`
+- **Never:** a tease of another video ("Next up…", "Tomorrow…"), "like and subscribe", "thanks for watching", "see
+  you…", or anything else that sounds like the end. An outro is the viewer's cue to swipe. The next topic is teased in
+  text only: the pinned comment, the description and the Reel caption (`publish.md`).
+- **Block settings:** `gap=0.35 tighten=0 tempo=1.00`; one tag at most (`[mischievously]`, `[deadpan]`, `[whispers]`,
+  `[chuckles]`). Write "..." after "Subscribe": the cursor's click lands in that pause (`cues["sub_tap"]`).
+- **What follows:** the weirdest-fact block, with a gap of 0.30–0.45. The pill is still on screen under its first
+  words; that is intended, and the captions sit at y 1150 meanwhile (`visual.md`).
+- **The last block is the button.** Nothing comes after it but the tail (1.0–1.5 s) and the cut back to frame 1.
+- **Budget:** if the script is over its word budget, trim the explanation, never the aside or the answer line. A
+  retake of `sub` costs only its ≤ 45 characters.
+- The block is captioned like any other, and the pill pops in ~0.3 s before the word "subscribe" (`cues["sub_in"]` in
+  make_timeline.py). The cue's sounds are very quiet (audio.py), because the narration carries on right after.
+- History: until 5 Oct 2026 `sub` was the last block, ≤ 70 characters, and teased the next Short ("Next up: … Subscribe…").
+  The Shorts up to voice-recording are built that way; don't copy their endings.
 
 ## voice.py
 

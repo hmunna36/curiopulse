@@ -1,6 +1,6 @@
 ---
 name: cp
-description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 40–50 s 1080×1920 cinematic animated explainer built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled in the next free slots: YouTube at 11:30 AM or 11:30 PM IST (Data API) and Instagram at 06:30 or 18:30 IST, never before the YouTube release (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
+description: Produce a complete CurioPulse YouTube Short / Instagram Reel for a "why does…" science question: a 45–50 s 1080×1920 cinematic animated explainer (30–35 s when it takes a 23:30 slot, the short arm of the length test) built entirely in code (procedural canvas scenes with the recurring hiker character, Jessica's performed ElevenLabs v3 narration with comedic timing, a synthesized score and sound design, word-pop captions), made just like the channel's lightning, hypnic-jerk and finger-wrinkles Shorts. It is QA'd and rebuilt in a loop until it clears the ship bar, pushed to github.com/hmunna36/curiopulse, then scheduled in the next free slots: YouTube at 11:30 AM or 11:30 PM IST (Data API) and Instagram at 06:30 or 18:30 IST, never before the YouTube release (Meta Business Suite in the user's Chrome; the API takes over if a token ever exists). Use when the user runs /cp <topic> or asks for a new CurioPulse Short; `/cp next` takes the next topic from topics.md.
 argument-hint: <topic question> | next | next youtube-only
 effort: max
 ---
@@ -23,11 +23,11 @@ In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercas
 
 | File | Spec |
 |---|---|
-| `<slug>-short.mp4` | 1080×1920, 30 fps, H.264 High CRF 17 yuv420p bt709, AAC 256 k 48 kHz, 40–50 s (35–55 allowed), −14 LUFS, ≤ −1 dBTP, < 95 MB |
+| `<slug>-short.mp4` | 1080×1920, 30 fps, H.264 High CRF 17 yuv420p bt709, AAC 256 k 48 kHz, 45–50 s (standard arm) or 30–35 s (short arm; `yt.mjs next-slot` says which), −14 LUFS, ≤ −1 dBTP, < 95 MB |
 | `cover.jpg` | 1080×1920 JPEG < 2 MB: the YouTube thumbnail and the Instagram cover |
 | `<slug>.srt` | English captions from the word timings |
 | `README.md` | script, publishing table + metadata, shot table, sound design, science notes with sources, ship review, rebuild |
-| `publish.json` | title, description, tags, IG caption (with the follow line), `pinnedComment` suggestion, schedule; the tools write back ids and links |
+| `publish.json` | title, description, tags, IG caption (with the follow line), `pinnedComment` suggestion, the `length` arm, schedule; the tools write back ids and links |
 | `src/` | everything that rebuilds it (`build.sh`), including the cached voice takes |
 
 Plus: committed and pushed to the repo, a row in the root README, **YouTube scheduled for the next free slot: 11:30 AM or 11:30 PM IST (two slots a day; user, 2 Oct 2026)** (thumbnail +
@@ -40,18 +40,32 @@ apart; user, 4 Oct 2026)**, never before the Short's YouTube release (Business S
   footage or generated images; the user was explicit. The narration is the only recorded element.
 - **Human, performed narration:** Jessica (`cgSgspJ2msm6clMCkdW9`), `eleven_v3`, stability 0, v3 tags, comedy in the
   gaps. It must never sound like "someone READING A BOOK".
-- **Hook on frame 1:** action, a strange experience in the second person; no intro, logo or "Did you know".
+- **Hook on frame 1:** action, a strange experience in the second person; no intro, logo or "Did you know". The first
+  words are "You…" plus something physical you are doing, and the strange thing lands by 3 s.
+- **The answer by second 5** (5 Oct 2026, from the channel's retention curves; `reference/story.md`,
+  `reference/analytics.md`): the line after the hook, the `answer` block, gives the answer as a plain, surprising
+  claim or a metaphor ("Relax. Your ear just burped.") and STARTS by 5.0 s. The rest of the Short proves it. Never
+  spend a spoken beat on the scientific name ("Doctors call it…", "It's called…") or on a bridge ("Here's the thing.",
+  "So what's going on?") before it; a name worth having is an on-screen label.
 - **Show, don't tell:** every statement has its visual; the camera travels to what's named; never static for more
   than 1–3 s; never slides.
-- **Short and tight: 40–50 s, never over 55 s** (user, 1 Oct 2026; reference/brief.md). About 95–115 spoken words. Cut,
-  don't rush: one mechanism, one twist, the weirdest fact, the button.
-- **Funny and curious:** 2–3 laugh beats; the story escalates to the weirdest true fact; the button line
-  reframes or undercuts.
-- **Subscribe hooks, audible AND visual, on every Short** (user's decision, 30 Sep 2026; it replaces the old "no like and
-  subscribe" rule, because subscriber conversion is the channel's bottleneck): the last spoken block `sub` is a short
-  in-voice line (≤ 70 characters) that teases tomorrow's topic and asks for the subscribe, never a generic "like and
-  subscribe"; and the animated Subscribe pill + bell + cursor click (`web/subscribe.js`) plays over the last ~2.6 s,
-  timed to that line. Details: `reference/brief.md`, `narration.md`, `visual.md`, `qa.md`.
+- **Short and tight: 45–50 s, never over 55 s** (user, 1 Oct 2026; reference/brief.md), about 95–110 spoken words.
+  **In the length test (user, 5 Oct 2026) the Short that takes a 23:30 YouTube slot is 30–35 s, about 66–76 words**;
+  `yt.mjs next-slot` says which arm a run is building (`reference/analytics.md`). Cut, don't rush: one mechanism, one
+  payoff, the weirdest fact, the button.
+- **Funny and curious:** 2–3 laugh beats (2 in a 30–35 s Short); the story escalates to the weirdest true fact; the
+  button line reframes or undercuts.
+- **Subscribe hooks, audible AND visual, on every Short** (user's decision, 30 Sep 2026, because subscriber conversion
+  is the channel's bottleneck). **Since 5 Oct 2026 they sit in the MIDDLE of the Short**, because only 4–15 % of
+  viewers reached the last seconds, where they used to be:
+  - the spoken `sub` block is an aside of ≤ 45 characters, in voice, right after the payoff, with the word
+    "subscribe" at 50–70 % of the runtime. It promises what is still coming in THIS Short ("Subscribe... it gets
+    weirder."); it never teases another video and never sounds like an outro;
+  - the animated Subscribe pill + bell + cursor click (`web/subscribe.js`) pops in on that word, gets clicked, and
+    pops out again, about 2.6 s in all, while the narration carries on;
+  - the Short ends on the button line and loops back to frame 1: no ask, no "Next up", no outro at the end. The next
+    topic is teased in text only (pinned comment, description, Reel caption).
+  Details: `reference/brief.md`, `narration.md`, `visual.md`, `qa.md`.
 - **The hiker** is the hero: the same rig, only the outfit changes.
 - **Scientifically responsible:** claims are sourced; uncertain ones are hedged ("Scientists think…", "One idea…").
 - **Ship only above the bar** (`reference/qa.md`): `qa.py` clean and every ship-bar item scoring 8 or more.
@@ -71,6 +85,12 @@ Read each reference file when you reach its phase. They are short; don't skip th
      this Mac.
    - Voice: `node ~/.claude/skills/cp/bin/quota.mjs` (exit 2 = less than ≈1,000 characters left).
    - Calendar: `node ~/.claude/skills/cp/bin/yt.mjs upcoming` and `node ~/.claude/skills/cp/bin/ig.mjs upcoming`.
+   - **Numbers** (`reference/analytics.md`): `node ~/.claude/skills/cp/bin/yt.mjs numbers` logs the channel's numbers
+     and rewrites `numbers.md` in this skill. Read the length-test table and the newest rows. If Analytics fails, the
+     report says so: carry on, and put the reason in the final report (it needs the user).
+   - **Length arm:** `node ~/.claude/skills/cp/bin/yt.mjs next-slot` prints the YouTube slot this Short will take and
+     the length it must be built to: SHORT (30–35 s, 66–76 words) for a 23:30 slot, STANDARD (45–50 s, 95–110 words)
+     for an 11:30 slot. The word budget, `publish.json`'s `length` and qa.py's length band all follow it.
    - **Catch up Instagram:** an earlier Short whose Reel is still pending (its publish.json has no
      `instagram.scheduledVia`, no `"skip": true`, and its slot is still ahead) gets scheduled first, if Chrome is
      connected. A missed night never leaves a Reel behind. (If the slot slips past while you work, `ig.mjs prepare`
@@ -85,16 +105,18 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - Skim `reference/videos.md` for what's been done and learned.
 2. **Research + story** (`reference/story.md`):
    - sources and a claims table;
-   - the curiosity angle, the hook sentence, the beats (hook, reaction, name, mechanism, twist/proof, debate,
-     bonus, button), the jokes;
+   - the curiosity angle, the hook sentence ("You…" + a physical action), the answer line (started by 5 s), the
+     beats (hook, answer, mechanism, payoff + the subscribe aside, the weirdest fact, button and loop), the jokes;
    - the world(s), and what to borrow from past videos;
-   - the subscribe line: tomorrow's teaser from the next `[ ]` entry of `topics.md` (the one after this Short's);
+   - the subscribe aside (≤ 45 characters, right after the payoff), and for the text teasers only (pinned comment,
+     description, Reel caption) the next `[ ]` entry of `topics.md` (the one after this Short's);
    - the cover moment.
 3. **Scaffold:** `~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"` creates
    `~/Desktop/curiopulse/videos/<slug>` from `template/`. Put the plan and the claims table into its README
-   first.
+   first. The script writes the length arm into its `publish.json` (`"length"`, from `yt.mjs next-slot`) and prints
+   it: check it is the arm the preflight gave. If it says it could not, put the object there by hand.
 4. **Narration** (`reference/narration.md`):
-   - write `src/script.txt`;
+   - write `src/script.txt` (the block ids `answer` and `sub` are required; count the words against the arm's budget);
    - run `$PYTHON voice.py ../.work --synth`;
    - do the listening pass plus whisper;
    - retake or rewrite blocks until the performance is right. Timing edits (gap, tempo, tighten) are free.
@@ -165,11 +187,12 @@ Read each reference file when you reach its phase. They are short; don't skip th
     - commit and push again with publish-short.sh. Nothing may stay uncommitted, or the cleanup refuses.
 18. **Deliver** (keep it short):
     - `SendUserFile` the MP4 and `cover.jpg` (`display: "render"`);
-    - a message with the title, length, loudness, the YouTube link and release time, the Instagram release time,
-      the story in one line, the QA rounds and what changed, the ElevenLabs characters left, and anything pending.
+    - a message with the title, length and length arm, loudness, the YouTube link and release time, the Instagram
+      release time, the story in one line, where the answer and the subscribe aside landed (seconds, %), the QA rounds
+      and what changed, the ElevenLabs characters left, and anything pending.
 19. **Remember:** add the Short to `reference/videos.md` (and a lesson if there was one), a memory note, and a line
-    in `MEMORY.md`. In `/cp next`, mark the topic `[x]` too. Then back up the skill, which carries videos.md and
-    topics.md: `bin/backup-skill.sh <msg-file>`.
+    in `MEMORY.md`. In `/cp next`, mark the topic `[x]` too. Then back up the skill, which carries videos.md,
+    topics.md and the numbers log (`numbers.md`, `numbers.jsonl`): `bin/backup-skill.sh <msg-file>`.
 20. **Clean up** (the user's standing rule since 30 Sep 2026: everything lives in git, and only light things stay on
     the Mac). After the files are sent, run `~/.claude/skills/cp/bin/cleanup.sh`.
     - It changes nothing unless everything is committed and on GitHub: no uncommitted or untracked files, no unpushed
@@ -202,6 +225,7 @@ user's request).
    - disk ≥ 8 GB free;
    - `quota.mjs` exits 0;
    - `yt.mjs whoami` says CurioPulse;
+   - `yt.mjs numbers`, then `yt.mjs next-slot` (the length arm; never build without knowing it);
    - Instagram: `ig.mjs route` says `business-suite` and Claude in Chrome is connected (or it says `api` and `ig.mjs whoami` works). If neither holds, build and schedule YouTube anyway, and report Instagram as pending.
 3. Run A → B → C exactly as for `/cp <topic>`, including the cleanup (step 20).
 4. Close out: in step 19, mark the line `[x]` with its links and release day and move it under Done (the skill backup
@@ -245,7 +269,9 @@ cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on
 
 - `reference/master-context-prompt.md`: the user's channel brief, verbatim (also at the repo root)
 - `reference/brief.md`: the brief distilled, plus the user's later decisions (they win)
-- `reference/story.md`: research, angle, hook, the beat shape of the shipped Shorts, topic picking, the one-page plan
+- `reference/story.md`: research, angle, hook, the answer by 5 s, the beat shape for both lengths, topic picking, the one-page plan
+- `reference/analytics.md`: the numbers log, what the numbers said on 5 Oct 2026, the length test and how to read it
+- `numbers.md`, `numbers.jsonl`: written by `yt.mjs numbers` on every run (the report and its history); never edit by hand
 - `reference/narration.md`: Jessica, script.txt, voice.py, quota, the listening pass
 - `reference/visual.md`: the look, the subscribe cue, the hero rig, camera grammar, graphics, captions, safe area, the cover
 - `reference/engine.md`: files, data flow, writing shots, borrowing world files from past videos, rendering
@@ -260,8 +286,10 @@ cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on
 - `topics.md`: the topic queue for `/cp next`
 - `bin/new-short.sh`, `bin/publish-short.sh`, `bin/backup-skill.sh`, `bin/run-lock.sh`, `bin/cp-env.sh`
 - `bin/cleanup.sh`: back to the light checkout (`skill/` + top-level files) once everything is on GitHub
-- `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · upload · reschedule · status · stats) and
-  YouTube Analytics (`analytics [n] [--curve <videoId>]`: stayed to watch, average % viewed, subscribers per 1,000 views)
+- `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · next-slot · upload · reschedule · status · stats)
+  and YouTube Analytics (`numbers`: the log every run starts with; `analytics [n] [--curve <videoId>]`: stayed to
+  watch, average % viewed, subscribers per 1,000 views, one video's retention curve). The length test's arms and
+  slots are the constants `LENGTH_ARMS` and `LENGTH_TEST` at its top.
 - `bin/ig.mjs`: Instagram. Route A: prepare · busy · route. Route B, the API: token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel ·
   test-container · install-job)
 - `bin/quota.mjs`: ElevenLabs characters left per account (exit 2 = not enough for a Short)
@@ -279,9 +307,24 @@ cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on
 - **youtube-only** mode still exists for a one-off (`/cp <topic> youtube-only`, or when the user asks): the same
   pipeline and ship bar, but set `"instagram": {"skip": true}` in publish.json and skip every Instagram step (no
   ig-queue entry, no Business Suite). No routine uses it now.
-- **The tease says "Next up: …", never "tomorrow"**: the next Short is about 12 hours away.
+- **A teaser says "Next up: …", never "tomorrow"**: the next Short is about 12 hours away. Since 5 Oct 2026 the
+  teaser lives in text only (pinned comment, description, Reel caption); the spoken subscribe aside does not tease.
 - **Queue refill:** if fewer than 7 `[ ]` topics remain in topics.md, research and append 10 new "why does…" questions
   first (strange, second-person, body/nature/physics, a sourced mechanism and a weird true fact; no repeats of done
   topics), then take the next one.
 - **Review on 17 Oct:** compare views per Short and subscribers (AM vs PM, run 1 vs run 2). If the average views per
-  Short over the last 7 days drop below ~800, or quality slips, go back to one Short a day and say so.
+  Short over the last 7 days drop below ~800, or quality slips, go back to one Short a day and say so. From 6 Oct the
+  two slots also differ in length (the length test below), so read AM vs PM with `numbers.md`'s "before" rows.
+
+## The 5 Oct 2026 changes and the length test (user: "yes" to all of it, from the channel's first-week numbers)
+
+What the numbers showed, the rules that came out of them and how to read the test: `reference/analytics.md`. In short:
+- **Opening:** "You…" + a physical action; the answer starts by 5 s; no spoken jargon beat (`reference/story.md`).
+- **Subscribe hooks:** mid-video, right after the payoff; the Short ends on the button and the loop
+  (`reference/narration.md`, `reference/visual.md`).
+- **Length test `length-2026-10`:** a Short for a 23:30 slot is 30–35 s, a Short for an 11:30 slot stays 45–50 s.
+  Both arms follow every other rule, so length is the only thing that differs. `yt.mjs next-slot` assigns the arm,
+  qa.py enforces its band, `yt.mjs numbers` compares the arms. First reading on or after 14 Oct 2026; the run that
+  makes it writes it into `reference/analytics.md` ("Readings") and leads its final report with it. The user decides
+  what happens to the arms; a run never ends or swaps the test by itself.
+- qa.py checks all of it on the delivered MP4: the length band of the arm, the answer by 5 s, the aside at 50–70 %.

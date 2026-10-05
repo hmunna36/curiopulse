@@ -18,7 +18,8 @@
 
 ```sh
 ~/.claude/skills/cp/bin/run-lock.sh acquire <slug>
-~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"
+node ~/.claude/skills/cp/bin/yt.mjs numbers && node ~/.claude/skills/cp/bin/yt.mjs next-slot   # the log, then the length arm
+~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"      # also writes the length arm into publish.json
 cd ~/Desktop/curiopulse/videos/<slug>/src && . ~/.claude/skills/cp/bin/cp-env.sh
 # write script.txt → voice
 $PYTHON voice.py ../.work --synth
@@ -37,14 +38,24 @@ $PYTHON qa.py ../.work ../<slug>-short.mp4
 `src/build.sh` runs the whole chain from cached takes (voice → timeline → audio → render → srt). Use it for the final
 rebuild and to prove the folder rebuilds.
 
-## The subscribe hooks in the order of work
+## The numbers, the length arm, the answer and the subscribe aside in the order of work
 
-- Before `voice.py --synth`: find tomorrow's topic (the `[ ]` entry after this Short's in `topics.md`), write the
-  `## sub` block (≤ 90 characters), and check the whole script's characters against `quota.mjs` (narration.md).
-- `make_timeline.py` sets `cues["sub_in"]` / `cues["sub_tap"]` from the word "subscribe" (already in the template).
-- Stills of the last 3 s before the full render (qa.md); nothing else to run: `subscribe.js` is part of the engine.
+- Preflight: `yt.mjs numbers` (the log; read the length-test table), then `yt.mjs next-slot` (the slot and the length
+  arm: SHORT 30–35 s for a 23:30 slot, STANDARD 45–50 s for an 11:30 slot). `analytics.md` explains both.
+- `new-short.sh` writes the arm into `publish.json` (`"length"`) and prints it; qa.py reads it from there. If the
+  script says it could not reach YouTube, put the object `next-slot` prints there by hand.
+- Before `voice.py --synth`: the script has an `## answer` block (it must start by 5.0 s) and a `## sub` block (≤ 45
+  characters, right after the payoff); count the whole script's words against the arm's budget and its characters
+  against `quota.mjs` (narration.md).
+- `make_timeline.py` sets `cues["sub_in"]` / `cues["sub_tap"]` / `cues["sub_out"]` from the word "subscribe" (already
+  in the template) and prints where the answer starts and where "subscribe" lands (it must be 50–70 % of the runtime).
+  Fix a miss now, with gaps or by moving a sentence across the aside, not after the render.
+- Stills around the cue before the full render (qa.md, visual.md); nothing else to run: `subscribe.js` is part of the
+  engine.
 - Skill-only change: new Shorts copy the template from `~/.claude/skills/cp/template/`, so no push to the repo is
   needed for the nightly routine. `bin/backup-skill.sh` mirrors it to `skill/cp/` on GitHub.
+- A Short started before 5 Oct 2026 and resumed later keeps its own (older) engine and qa.py copies in its `src/`:
+  finish it by the rules it was started under.
 
 ## This Mac
 

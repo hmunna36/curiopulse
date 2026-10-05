@@ -194,9 +194,13 @@ function renderFrame(f) {
     ctx.fillStyle = `rgba(235,242,255,${clamp(post.flash)})`;
     ctx.fillRect(0, 0, W, H);
   }
-  const subOn = !post.noSubscribe && typeof subActive === 'function' && subActive(t);
-  if (!post.noCaptions) drawCaptions(t, subOn ? Math.min(post.capY || CAP_Y, SUB_CAPY) : post.capY);
-  if (subOn) drawSubscribe(t);   // the subscribe cue (subscribe.js) sits above captions, inside the safe area
+  const subOK = !post.noSubscribe && typeof subActive === 'function';
+  // a caption chunk that shares the screen with the subscribe cue at any moment is drawn at SUB_CAPY for its whole
+  // life: it never sits under the pill, and it never jumps while it is being read (the cue is mid-video since 5 Oct 2026)
+  const capNow = subOK && !post.noCaptions ? TLd.captions.find((c) => t >= c.start && t < c.end - 0.002) : null;
+  const lift = Boolean(capNow) && subLift(capNow.start, capNow.end);
+  if (!post.noCaptions) drawCaptions(t, lift ? Math.min(post.capY || CAP_Y, SUB_CAPY) : post.capY);
+  if (subOK && subActive(t)) drawSubscribe(t);   // the subscribe cue (subscribe.js) sits above captions, inside the safe area
   if (post.flashTop > 0) { // flash that also washes over the captions
     ctx.fillStyle = `rgba(240,246,255,${clamp(post.flashTop)})`;
     ctx.fillRect(0, 0, W, H);

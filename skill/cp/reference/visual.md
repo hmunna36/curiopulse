@@ -99,24 +99,35 @@
   - B blue `#8FB8FF`, S ice `#BFF0FF`, P pink `#FF86A6`
 - `post.noCaptions` for a title card that is itself the caption; `post.capY` to move them.
 
-## The subscribe cue (subscribe.js, every Short)
+## The subscribe cue (subscribe.js, every Short; mid-video since 5 Oct 2026)
 
 - `web/subscribe.js` is an engine file, loaded by scene.html, drawn by main.js above the captions. It needs no shot
-  code: it reads two cues that make_timeline.py sets from the spoken `sub` block.
-  - `cues.sub_in`: the red SUBSCRIBE pill and the bell pop in (outBack, small tilt, bloom glow under it).
-  - `cues.sub_tap`: a cursor swoops in, presses (pill dips, ripple), the pill flips to a grey SUBSCRIBED with a
-    green check, the bell turns yellow, rings and sparkles, confetti bursts.
-  - Total ≈ 2.6 s to the end. With no `sub_in` it falls back to the last 2.6 s.
+  code: it reads three cues that make_timeline.py sets from the spoken `sub` aside (`narration.md`), which sits right
+  after the payoff, with the word "subscribe" at 50–70 % of the runtime.
+  - `cues.sub_in` (≈ 0.3 s before the word): the red SUBSCRIBE pill and the bell pop in (outBack, small tilt, bloom
+    glow under it).
+  - `cues.sub_tap` (in the pause just after the word): a cursor swoops in, presses (pill dips, ripple), the pill flips
+    to a grey SUBSCRIBED with a green check, the bell turns yellow, rings and sparkles, confetti bursts.
+  - `cues.sub_out` (1.3 s after the tap): the pill and the bell pop out in 0.24 s. About 2.6 s on screen in all.
+  - With no `sub_in` it falls back to the last 2.6 s, so it can't be forgotten silently; qa.py fails that Short anyway.
+- **It plays over whatever shot is on at that moment, while the narration carries on.** Plan that shot for it
+  (`story.md` §5): for about 3 s the pill owns y 1354–1486 and the captions sit at y 1150, so the hero's face and the
+  key action stay above y ≈ 1050, and nothing important sits in the lower third. A busy sting (BUCKLE!, a title card)
+  never shares those seconds with the pill. Don't use `noSubscribe: true` on that shot.
+- **Captions:** every caption chunk that shares the screen with the cue at any moment is drawn at y = 1150 for its
+  whole life (`subLift` in subscribe.js, asked by main.js), so a caption never sits under the pill and never jumps
+  while it is being read. The chunk before the pop-in and the one after the pop-out can therefore sit high too.
 - Safe area: pill + bell centred on x = 540 (pill x ≈ 221–701, bell x ≈ 727–859), y = 1420 (y ≈ 1354–1486): inside the
   key-content zone (x 100–870 below y 1000), clear of the button column (x ≥ 880 from y ≈ 1050) and of the bottom rows
   (Related chip from y ≈ 1680; the zone ends at 1640). Only the cursor's first 0.15 s (it swoops in from the upper
-  right) and the ring marks after the tap cross x 870; both are decoration. While the cue runs the captions lift to
-  y = 1150 so the two never collide. A shot can opt out with `noSubscribe: true` (never do that on the last shot).
-- Keep the last shot's hero and jokes above y ≈ 1100 so the pill does not cover them; the hero's feet may sit behind
-  the captions but never the pill.
-- Sound: audio.py adds a soft pop, a click and a bell ding under the line (cue-locked, −16…−22 dB).
-- Review with stills: render frames at `sub_in`, `sub_in + 0.3`, `sub_tap − 0.3`, `sub_tap`, `sub_tap + 0.3`, `sub_tap + 1.0`
-  and the last frame; Read the sheet.
+  right) and the ring marks after the tap cross x 870; both are decoration.
+- Sound: audio.py adds a soft pop, a click and a bell ding under the line, cue-locked and very quiet (−18…−30 dB): the
+  next words follow at once, and nothing may mask them (qa.py lists weak words).
+- Review with stills: render frames at `sub_in − 0.5`, `sub_in + 0.3`, `sub_tap − 0.3`, `sub_tap + 0.3`,
+  `sub_tap + 1.0`, `sub_out + 0.1` and `sub_out + 0.5`; Read the sheet. It must show the pill popping in, the click,
+  SUBSCRIBED, the pill gone, and the hero and captions clear of it throughout.
+- **The last shot** has no pill any more. It ends on the picture of frame 1 (the loop): bring the camera, the hero's
+  pose and the props back to where the hook starts, in the last 0.3–0.5 s.
 
 ## The Shorts safe area (1080×1920)
 

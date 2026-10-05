@@ -15,6 +15,11 @@
 //                                         subscribers and subscribers per 1,000 views; --curve adds one video's
 //                                         retention curve. Needs the yt-analytics.readonly scope (the token from
 //                                         before 5 Oct 2026 lacks it: run `auth` once more and allow it).
+//   node yt.mjs next-slot [--json]        the next free YouTube slot and the length arm a Short for it must be built
+//                                         to (the length test: 23:30 slots are 30-35 s, 11:30 slots are 45-50 s)
+//   node yt.mjs numbers                   the log every run starts with: rewrites <skill>/numbers.md (the length
+//                                         test's arms side by side, then every upload) and appends a line to
+//                                         <skill>/numbers.jsonl. Read-only on YouTube (reference/analytics.md).
 //
 // Release slots: YouTube 11:30 AM AND 11:30 PM IST (the user, 2 Oct 2026); Instagram 06:30 AND 18:30 IST, 12 hours
 // apart (the user, 4 Oct 2026: both daily Shorts get a Reel). Each run takes the next free slot on each platform.
@@ -42,6 +47,7 @@ import fs from 'node:fs';
 import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 
 const CONF = path.join(os.homedir(), '.config/cp');
 const CLIENT_FILE = [path.join(CONF, 'youtube-client.json'), path.join(os.homedir(), '.config/va/youtube-client.json')].find((f) => fs.existsSync(f)) ?? path.join(CONF, 'youtube-client.json');
@@ -56,6 +62,18 @@ const CHUNK = 8 * 1024 * 1024; // a multiple of 256 KiB, as resumable uploads re
 export const SLOTS = {youtube: ['11:30', '23:30'], instagram: ['06:30', '18:30']}; // IST: two slots a day on each platform (YouTube: user, 2 Oct 2026; Instagram: user, 4 Oct 2026)
 const IST_MS = 5.5 * 3600 * 1000;
 const istDate = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 10); // YYYY-MM-DD in IST
+const istHM = (ms) => new Date(ms + IST_MS).toISOString().slice(11, 16); // HH:MM in IST
+// The length test (user, 5 Oct 2026): a Short that takes a 23:30 IST YouTube slot is built to the SHORT arm (30-35 s),
+// one that takes an 11:30 slot to the STANDARD arm (45-50 s, the house length). `next-slot` tells a run which arm it is
+// building, qa.py reads the arm from publish.json ("length"), and `numbers` puts the arms side by side.
+// To end the test, set LENGTH_TEST to null: every slot is standard again. To swap the arms, swap the two slot values.
+export const LENGTH_ARMS = {
+  short: {min: 30, max: 35, words: '66-76', chars: '400-470'},
+  standard: {min: 45, max: 50, words: '95-110', chars: '560-680'},
+};
+export const LENGTH_TEST = {name: 'length-2026-10', start: '2026-10-06T23:30:00+05:30', slots: {'23:30': 'short', '11:30': 'standard'}};
+const armOfSlot = (ms) => (LENGTH_TEST && ms >= Date.parse(LENGTH_TEST.start) ? LENGTH_TEST.slots[istHM(ms)] : null) ?? 'standard';
+const SKILL_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const istTime = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 16).replace('T', ' ') + ' IST';
 
 const die = (msg) => {
@@ -241,6 +259,16 @@ async function listUpcoming() {
   const yt = await nextFreeYouTubeSlot();
   console.log(`next free YouTube slot: ${istTime(Date.parse(yt))} (slots ${SLOTS.youtube.join(' and ')} IST) · next free Instagram slot after it: ${istTime(Date.parse(nextFreeIgSlot(Date.parse(yt))))} (slots ${SLOTS.instagram.join(' and ')} IST)`);
 }
+async function nextSlot(asJson) {
+  const iso = await nextFreeYouTubeSlot();
+  const arm = armOfSlot(Date.parse(iso));
+  const a = LENGTH_ARMS[arm];
+  const length = {arm, min: a.min, max: a.max, ...(LENGTH_TEST ? {test: LENGTH_TEST.name} : {}), slot: iso};
+  if (asJson) return console.log(JSON.stringify({slot: iso, length}));
+  console.log(`next free YouTube slot: ${istTime(Date.parse(iso))}`);
+  console.log(`length arm: ${arm.toUpperCase()} = ${a.min}-${a.max} s, ${a.words} words in all (about ${a.chars} characters)${LENGTH_TEST ? ` · length test "${LENGTH_TEST.name}": 23:30 slots are short, 11:30 slots are standard` : ''}`);
+  console.log(`put into publish.json → "length": ${JSON.stringify(length)}`);
+}
 async function reschedule(id, when) {
   const t = Date.parse(when);
   if (!id || Number.isNaN(t)) die('usage: yt.mjs reschedule <videoId> <ISO time, e.g. 2026-10-02T23:30:00+05:30>');
@@ -337,6 +365,8 @@ async function upload(specPath, dryRun, autoSchedule = false) {
     if (!ig.skip && !ig.id && (!ig.publishAt || ig.publishAt === 'auto' || autoSchedule)) ig.publishAt = nextFreeIgSlot(Date.parse(slot));
     if (!dryRun) save();
     console.log(`schedule: YouTube ${istTime(Date.parse(slot))}, Instagram ${ig.publishAt ? istTime(Date.parse(ig.publishAt)) : 'unchanged'}`);
+    const built = spec.length?.arm;
+    if (LENGTH_ARMS[built] && built !== armOfSlot(Date.parse(slot))) console.log(`note: built to the ${built} length arm, but ${istTime(Date.parse(slot))} is a ${armOfSlot(Date.parse(slot))} slot (the numbers report lists the length and the slot of every Short)`);
   }
   const file = path.resolve(base, spec.file);
   if (dryRun) {
@@ -515,6 +545,96 @@ async function analytics(n, asJson, curveId) {
   }
 }
 
+// ---- numbers: the log every run starts with (reference/analytics.md) ---------------------------------------------
+// Rewrites <skill>/numbers.md and appends one line to <skill>/numbers.jsonl (the history: views at 24 h, 72 h … can be
+// read back from it). Public counters come from the Data API (live); stayed / viewed / subscribers come from the
+// Analytics API, which runs about two days behind.
+async function numbers(outDir = SKILL_DIR) {
+  const {ch, ids} = await uploadIds(60);
+  if (!ids.length) die('no uploads yet');
+  const now = Date.now();
+  const vids = [];
+  for (let i = 0; i < ids.length; i += 50) {
+    const r = await (await api('GET', `${API}/videos?part=snippet,statistics,status,contentDetails&id=${ids.slice(i, i + 50).join(',')}`)).json();
+    for (const v of r.items ?? []) {
+      const st = v.statistics ?? {};
+      vids.push({id: v.id, title: v.snippet.title, privacy: v.status.privacyStatus, when: Date.parse(v.status.publishAt ?? v.snippet.publishedAt), seconds: secondsOf(v.contentDetails?.duration), views: Number(st.viewCount ?? 0), likes: Number(st.likeCount ?? 0), comments: Number(st.commentCount ?? 0)});
+    }
+  }
+  vids.sort((a, b) => b.when - a.when);
+  let an = [];
+  let note = '';
+  const base = 'views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained,subscribersLost,likes,shares';
+  const byVideo = (metrics) => report({dimensions: 'video', filters: `video==${ids.join(',')}`, metrics, sort: '-views', maxResults: String(ids.length)});
+  try {
+    try {
+      an = await byVideo(`${base},engagedViews`);
+    } catch (e) {
+      if (!/engagedViews|Unknown identifier/i.test(e.message)) throw e;
+      an = await byVideo(base);
+    }
+  } catch (e) {
+    note = /insufficient|scope|forbidden/i.test(e.message) ? 'the token lacks yt-analytics.readonly: the user must run `yt.mjs auth` again and allow both permissions' : e.message;
+  }
+  const testStart = LENGTH_TEST ? Date.parse(LENGTH_TEST.start) : Infinity;
+  for (const v of vids) {
+    v.live = v.privacy === 'public' && v.when <= now;
+    v.hours = v.live ? (now - v.when) / 3600000 : 0;
+    v.slot = istHM(v.when);
+    v.group = v.seconds > 90 ? 'long-form' // the weekly film; a CurioPulse Short has never run past 75 s
+      : v.when >= testStart ? (v.seconds && v.seconds <= 37 ? 'TEST · short arm (30-35 s)' : v.seconds >= 43 ? 'TEST · standard arm (45-50 s)' : 'TEST · between the arms')
+      : v.seconds > 55 ? 'before · 64-75 s' : `before · 46-50 s · ${v.slot} slot`;
+    const r = an.find((x) => x.video === v.id);
+    if (r && Number(r.views) > 0) {
+      v.a = {views: Number(r.views), engaged: r.engagedViews === undefined ? null : Number(r.engagedViews), avgPct: Number(r.averageViewPercentage), avgSec: Number(r.averageViewDuration),
+        subs: Number(r.subscribersGained ?? 0) - Number(r.subscribersLost ?? 0), likes: Number(r.likes ?? 0), shares: Number(r.shares ?? 0)};
+    }
+  }
+  // history: one line per run
+  const logFile = path.join(outDir, 'numbers.jsonl');
+  let prev = null;
+  if (fs.existsSync(logFile)) {
+    const lines = fs.readFileSync(logFile, 'utf8').trim().split('\n').filter(Boolean);
+    try { prev = JSON.parse(lines[lines.length - 1]); } catch {}
+  }
+  const subsNow = Number(ch.statistics?.subscriberCount ?? 0);
+  const snap = {at: new Date(now).toISOString(), subscribers: subsNow, videos: Object.fromEntries(vids.map((v) => [v.id, {views: v.views, likes: v.likes, comments: v.comments, ...(v.a ? {a: v.a} : {})}]))};
+  fs.appendFileSync(logFile, JSON.stringify(snap) + '\n');
+  // the report
+  const mean = (xs) => (xs.length ? xs.reduce((p, q) => p + q, 0) / xs.length : null);
+  const f = (x, d = 0, unit = '') => (x === null || x === undefined || Number.isNaN(x) ? '–' : `${x.toFixed(d)}${unit}`);
+  const order = ['TEST · short arm (30-35 s)', 'TEST · standard arm (45-50 s)', 'TEST · between the arms', 'before · 46-50 s · 23:30 slot', 'before · 46-50 s · 11:30 slot', 'before · 64-75 s'];
+  const groups = [...order.filter((g) => g.startsWith('TEST') && !g.includes('between') || vids.some((v) => v.group === g)), ...new Set(vids.map((v) => v.group).filter((g) => g !== 'long-form' && !order.includes(g)))];
+  const md = [];
+  md.push('# CurioPulse numbers', '');
+  md.push(`Written by \`yt.mjs numbers\` on ${istTime(now)}. Do not edit: every /cp run rewrites it. How to read it: \`reference/analytics.md\`.`, '');
+  md.push(`**Channel:** ${subsNow} subscribers${prev ? ` (${subsNow - prev.subscribers >= 0 ? '+' : ''}${subsNow - prev.subscribers} since the log of ${istTime(Date.parse(prev.at))})` : ''} · ${vids.filter((v) => v.live).length} public videos, ${vids.filter((v) => !v.live).length} scheduled.`);
+  md.push(`Views and likes are the public counters, live. Stayed, viewed and subscribers come from YouTube Analytics, which runs about two days behind: a dash means YouTube has not processed that day yet.${note ? ` **Analytics failed: ${note}.**` : ''}`, '');
+  md.push(`## The length test${LENGTH_TEST ? ` (${LENGTH_TEST.name}, from ${istTime(testStart)})` : ' (ended)'}`, '');
+  md.push('A Short in a 23:30 slot is built to 30-35 s, one in an 11:30 slot to 45-50 s. The verdict is **views per Short** and **subscribers per 1,000 views**; a shorter video scores a higher average % viewed by construction, so that column is not the verdict. The "before" rows are the same slots before the test.', '');
+  md.push('| Group | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views |', '|---|---|---|---|---|---|---|');
+  for (const g of groups) {
+    const all = vids.filter((v) => v.group === g && v.live);
+    const settled = all.filter((v) => v.hours >= 48);
+    const withA = all.filter((v) => v.a && v.a.views >= 200);
+    const aViews = withA.reduce((p, v) => p + v.a.views, 0);
+    const eng = withA.every((v) => v.a.engaged !== null) && aViews ? (100 * withA.reduce((p, v) => p + v.a.engaged, 0)) / aViews : null;
+    md.push(`| ${g} | ${all.length} | ${settled.length ? `${f(mean(settled.map((v) => v.views)))} (${settled.length})` : '–'} | ${withA.length ? f(eng, 1, ' %') : '–'} | ${f(mean(withA.map((v) => v.a.avgPct)), 1, ' %')} | ${f(mean(withA.map((v) => v.a.avgSec)), 0, ' s')} | ${aViews ? `${f((1000 * withA.reduce((p, v) => p + v.a.subs, 0)) / aViews, 1)} (${withA.length})` : '–'} |`);
+  }
+  md.push('', 'In brackets: how many Shorts the figure rests on. Analytics figures count a Short once YouTube has processed 200 of its views.', '');
+  md.push('## Every upload (newest first)', '');
+  md.push('"Counted" is how many of the views Analytics has processed so far; the columns after it rest on those views only, and stay blank under 200.', '');
+  md.push('| Released (IST) | Length | Group | Views | Likes | Counted | Stayed | Avg % viewed | Avg s | Subs | Per 1,000 | Title |', '|---|---|---|---|---|---|---|---|---|---|---|---|');
+  for (const v of vids) {
+    const a = v.a && v.a.views >= 200 ? v.a : null;
+    md.push(`| ${istTime(v.when).replace(' IST', '')}${v.live ? '' : ' (scheduled)'} | ${v.seconds ? `${v.seconds} s` : '–'} | ${v.group} | ${v.views} | ${v.likes} | ${v.a ? v.a.views : '–'} | ${a && a.engaged !== null ? f((100 * a.engaged) / a.views, 1, ' %') : '–'} | ${a ? f(a.avgPct, 1, ' %') : '–'} | ${a ? f(a.avgSec, 0) : '–'} | ${a ? a.subs : '–'} | ${a ? f((1000 * a.subs) / a.views, 1) : '–'} | [${v.title.replace(/\|/g, '/')}](https://youtu.be/${v.id}) |`);
+  }
+  md.push('');
+  fs.writeFileSync(path.join(outDir, 'numbers.md'), md.join('\n'));
+  console.log(md.join('\n'));
+  console.log(`written: ${path.join(outDir, 'numbers.md')} · logged: ${logFile}`);
+}
+
 async function status(ids) {
   const r = await (await api('GET', `${API}/videos?part=status,processingDetails,snippet&id=${ids.join(',')}`)).json();
   for (const v of r.items ?? [])
@@ -530,6 +650,8 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     else if (cmd === 'upload') await upload(args.find((a) => !a.startsWith('--')) ?? die('usage: yt.mjs upload <publish.json> [--dry-run] [--schedule=auto]'), args.includes('--dry-run'), args.includes('--schedule=auto'));
     else if (cmd === 'upcoming') await listUpcoming();
     else if (cmd === 'next-free') console.log(await nextFreeDay());
+    else if (cmd === 'next-slot') await nextSlot(args.includes('--json'));
+    else if (cmd === 'numbers') await numbers();
     else if (cmd === 'reschedule') await reschedule(args[0], args[1]);
     else if (cmd === 'status') await status(args);
     else if (cmd === 'stats') await stats(Math.max(1, Math.min(200, Number(args.find((a) => /^\d+$/.test(a)) ?? 10))), args.includes('--json'));
@@ -538,7 +660,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
       const n = Number(args.find((a, i) => /^\d+$/.test(a) && (ci < 0 || i !== ci + 1)) ?? 10);
       await analytics(Math.max(1, Math.min(200, n)), args.includes('--json'), ci >= 0 ? args[ci + 1] : null);
     }
-    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json]');
+    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | numbers');
   } catch (e) {
     die(e.message);
   }

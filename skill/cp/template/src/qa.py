@@ -6,7 +6,13 @@ for the transcript check, and the stems from audio.py.
 
 Checks (FAIL blocks the upload; WARN is for the review):
 - Streams: H.264 High, 1080x1920, 30 fps, yuv420p, AAC 48 kHz stereo, faststart.
-- Length and file size: 35-50 s (warn up to 55, fail above; user, 1 Oct 2026); the MP4 under 95 MB (GitHub's per-file limit is 100 MB).
+- Length and file size: the band of the Short's length arm, read from ../publish.json "length" (`yt.mjs next-slot`
+  says which; the length test of 5 Oct 2026). standard: 43-50 s passes, over 55 s fails, anything else warns.
+  short: 30-35 s passes, over 37 s fails, anything else warns. The MP4 under 95 MB (GitHub's per-file limit is 100 MB).
+- Opening (5 Oct 2026, from the channel's retention curves): the `answer` block starts by 5.0 s (warns to 6.0, fails
+  later or when there is no such block); the first word is "You"/"Your" (a warning only).
+- Subscribe aside: the word "subscribe" of the `sub` block lands at 50-70 % of the runtime (warns at 40-80 %, fails
+  outside or when it is missing) and the aside is 45 characters or less (warns to 60).
 - Delivered audio: integrated -14 +/- 0.5 LUFS; true peak <= -1.0 dBTP after AAC.
 - Picture:
   - the first frame is not black;
@@ -65,7 +71,15 @@ with open(MP4, "rb") as fh:
     head = fh.read(1 << 16)
 check(head.find(b"moov") != -1 and head.find(b"moov") < head.find(b"mdat") if b"mdat" in head else b"moov" in head,
       "faststart (moov before mdat)", "ok" if b"moov" in head else "moov atom not at the front")
-check(35 <= dur <= 50, "length 35-50 s", f"{dur:.2f} s", warn=dur <= 55)
+# the length this Short was built for: "length": {"arm": "short" | "standard"} in publish.json, next to the MP4
+ARMS = {"standard": (43.0, 50.0, 55.0), "short": (30.0, 35.0, 37.0)}   # passes from, passes to, fails above
+try:
+    arm = (json.load(open(os.path.join(os.path.dirname(os.path.abspath(MP4)), "publish.json"))).get("length") or {}).get("arm")
+except Exception:
+    arm = None
+arm = arm if arm in ARMS else "standard"
+lo, hi, top = ARMS[arm]
+check(lo <= dur <= hi, f"length {lo:.0f}-{hi:.0f} s ({arm} arm)", f"{dur:.2f} s", warn=dur <= top)
 check(size < 95e6, "file under 95 MB", f"{size / 1e6:.1f} MB")
 
 # ---------------------------------------------------------------- delivered loudness / true peak
@@ -130,7 +144,7 @@ try:
     tl_ = json.load(open(os.path.join(WORK, "timeline.json")))
     cues_ = tl_.get("cues", {})
     times = [0.1, 1.0, 2.0] + [s_["start"] + min(0.6, (s_["end"] - s_["start"]) / 2) for s_ in tl_["shots"][1:]]
-    for k_ in ("sub_in", "sub_tap"):
+    for k_ in ("sub_in", "sub_tap", "sub_out"):   # the pill popping in, SUBSCRIBED, and the frame after it has gone
         if isinstance(cues_.get(k_), (int, float)):
             times.append(cues_[k_] + 0.3)
     times = sorted({round(min(max(0.0, t_), dur - 0.05), 2) for t_ in times + [dur - 0.05]})[:24]
@@ -236,6 +250,30 @@ if TRANSCRIBE and whisper and os.path.exists(MODEL):
           f"WER {100 * wer:.1f} % over {len(ref)} words" + (f"; differences: {', '.join(reversed(diffs[-12:]))}" if diffs else ""))
 else:
     check(False, "transcript", "skipped (whisper-cli or the model is missing, or --no-transcribe)", warn=True)
+
+# ---------------------------------------------------------------- the opening and the subscribe aside (story.md, narration.md)
+said = lambda ws: " ".join(w["word"] for w in ws)  # noqa: E731
+first = re.sub(r"[^a-z']", "", words[0]["word"].lower())
+check(first in ("you", "your", "you're", "you've", "you'll"), 'opens with "You..." + a physical action',
+      f'first words: "{said(words[:7])}"', warn=True)
+ans = [w for w in words if w.get("block") == "answer"]
+if ans:
+    check(ans[0]["start"] <= 5.0, "the answer starts by 5 s", f'"{said(ans)[:70]}" starts at {ans[0]["start"]:.2f} s',
+          warn=ans[0]["start"] <= 6.0)
+else:
+    check(False, "the answer starts by 5 s", "script.txt has no `## answer` block (the answer line, started by 5.0 s)")
+subw = [w for w in words if w.get("block") == "sub"]
+sub_t = next((w["start"] for w in subw if "subscrib" in w["word"].lower()), None)
+if sub_t is not None and isinstance(tl.get("cues", {}).get("sub_in"), (int, float)):
+    k = sub_t / dur
+    check(0.50 <= k <= 0.70, 'subscribe aside in the middle (the word at 50-70 % of the runtime)',
+          f'"subscribe" at {sub_t:.2f} s = {100 * k:.0f} % of {dur:.2f} s; the pill pops in at {tl["cues"]["sub_in"]:.2f} s',
+          warn=0.40 <= k <= 0.80)
+    check(len(said(subw)) <= 45, "subscribe aside is 45 characters or less", f'{len(said(subw))}: "{said(subw)}"',
+          warn=len(said(subw)) <= 60)
+else:
+    check(False, "subscribe aside in the middle (the word at 50-70 % of the runtime)",
+          'no `## sub` block that says "subscribe", or no sub_in cue in the timeline')
 
 # ---------------------------------------------------------------- captions
 caps = tl["captions"]
