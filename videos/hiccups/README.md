@@ -26,8 +26,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (set after upload) | 6 Oct 2026, 23:30 IST |
-| Instagram Reels | @curio_pulse_tv | 7 Oct 2026, 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/onEZr_W7qLM | 6 Oct 2026, 23:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | @curio_pulse_tv | 7 Oct 2026, 18:30 IST (scheduled in Meta Business Suite; auto cover, see below) |
 
 **Title:** Why Do We Get HICCUPS? 🫢
 
@@ -58,6 +58,8 @@ What's YOUR hiccup cure? 🥤
 17.35 s = 51 %; the pill is up from 17.05 s to 19.99 s)
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`): the hiccup at the table, soda flying, "WHY DO WE"
 over a big "HIC?!" burst.
+It is the YouTube thumbnail. Business Suite's thumbnail picker did not load when the Reel was scheduled, so the Reel has an
+automatic cover; it can be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 
