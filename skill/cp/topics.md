@@ -9,7 +9,6 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Queue
 
-- [ ] Why do we get hiccups? — mid-date; the diaphragm spasms and the vocal cords snap shut (HIC); a leftover from tadpole breathing (hedged); calls back to hypnic-jerk
 - [ ] What is déjà vu? — he walks into a room he's never seen and KNOWS it; a memory-check misfire in the temporal lobe (hedged)
 - [ ] Why does spicy food burn? — a chilli challenge; capsaicin tricks the heat sensor TRPV1 into screaming "fire"; why water doesn't help and milk does
 - [ ] Why do we get a stitch when running? — a charity run; nobody's sure (diaphragm vs the lining of the belly, hedged)
@@ -22,6 +21,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 - [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
 
 ## Done
+- [x] Why Do We Get HICCUPS? — hiccups — YouTube https://youtube.com/shorts/onEZr_W7qLM 6 Oct 2026 23:30 IST (short arm, 33.9 s); Instagram 7 Oct 2026 18:30 IST (Business Suite)
 - [x] Why Does Your Voice Sound WEIRD on Recordings? — voice-recording — YouTube https://youtube.com/shorts/eJ8T5p0OEwk 6 Oct 2026 11:30 IST; Instagram 7 Oct 2026 06:30 IST (Business Suite)
 - [x] Why Does Your Foot Fall ASLEEP? — pins-needles — YouTube https://youtube.com/shorts/VeLcryrlPBk 5 Oct 2026 23:30 IST; Instagram 6 Oct 2026 06:30 IST (Business Suite)
 - [x] Why Does the Sun Make You SNEEZE? — sun-sneeze — YouTube https://youtube.com/shorts/2x0QZwQfxY0 5 Oct 2026 11:30 IST; no Instagram (YouTube-only second Short)

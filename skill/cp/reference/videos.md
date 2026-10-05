@@ -15,6 +15,7 @@
 | `sun-sneeze`: "Why Does the Sun Make You SNEEZE? 🤧" | 46 s | https://youtube.com/shorts/2x0QZwQfxY0 · 5 Oct 2026 11:30 IST | — (the day's YouTube-only second Short) |
 | `pins-needles`: "Why Does Your Foot Fall ASLEEP? 🦶" | 50 s | https://youtube.com/shorts/VeLcryrlPBk · 5 Oct 2026 23:30 IST | Business Suite, 6 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 | `voice-recording`: "Why Does Your Voice Sound WEIRD on Recordings? 🎙️" | 50 s | https://youtube.com/shorts/eJ8T5p0OEwk · 6 Oct 2026 11:30 IST | Business Suite, 7 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
+| `hiccups`: "Why Do We Get HICCUPS? 🫢" | 34 s (the first short-arm Short of the length test) | https://youtube.com/shorts/onEZr_W7qLM · 6 Oct 2026 23:30 IST | Business Suite, 7 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -361,3 +362,56 @@ here for every new Short, with its links.
   (`git clone --filter=blob:none --sparse --depth 1 …`, then `git sparse-checkout set videos/<slug>/src`; cone mode
   also brings the files next to `src/`, the MP4 included, about 80 MB), never `git archive` in `~/Desktop/curiopulse`.
   Delete the throwaway clone when done.
+
+**hiccups** (6 Oct 2026, nightly /cp next; the first Short of the 30–35 s arm; 70 words → 33.9 s):
+- New worlds: `dinner.js` (a candlelit restaurant for two: plum wall, arched night window with a skyline, drapes, pendant lamp
+  with a cone of light, fairy lights, a wine-red tablecloth; `dnCandle` (lit / blown / smoke), `dnVase` (a rose), `dnWine`;
+  the soda glass `sodaGlass` whose liquid stays level at any tilt (the glass polygon clipped against gravity, `dnClip`),
+  bubbles, a tadpole that looks out of it; `dnSplash`; the date in the foreground with her back to us `dnDate` (a bun, a
+  hair pin, an earring; she reacts with her head and shoulders); the hero at the table `dnHero` (white shirt + bow tie
+  `DATEPAL`, `dnBowTie`; `chug` 0..1 blends from holding the glass to drinking from it; a hand over his mouth; `dnReach` =
+  two-bone IK with the elbow hanging down); `dnTadHero` (he is a tadpole with his own hair and bow tie); `hicBurst` (a comic
+  burst with a word in it); `dnScene` draws it all in order), `chest.js` (his body in section from the front: mouth,
+  throat, the voice box with the vocal cords as a pair of little doors `bxDoorPair`, windpipe, lungs, the diaphragm as a
+  dome with a face (`bxDiaY(x, {drop, poke})`), the stomach filling with soda; air as particles that pile up on shut
+  doors; puffs of breath with faces `bxPuff`; a CLOSED sign; `chestXray(v, t, o)`, `bxLabel`) and `pond.js` (a pond
+  underwater `pdBack`, a tadpole in profile `pdTadpole` with feathery gills `pdGills`, the tadpole in section `pdTadCut`
+  with a pumping mouth floor, the gill channel and the same doors on the tube to its lung; `pdPortrait` = the hero's face
+  in a round frame). In scenes.js: `glugWords`, `poofCloud`, `hicJ` (a hiccup's jolt), `ideaStamp` (an UNPROVEN stamp
+  that lands big and keeps its corner).
+- New sfxkit atom (template too): `ribbit(seed, f0)`. In its audio.py: `glug()` (a swallow pitched under the speech band),
+  `low_thud()` (a door or a muscle heard through the body), `hic()` (a hiccup plus what it does to the table).
+- **The short arm's word budget is tight.** 72 words came in at 37.1 s on the first pass (Jessica reads the short blocks
+  at about 1.9 words a second), and three new takes of the slow line were no faster (9.15–9.28 s against 9.2 s): cut words,
+  don't re-roll. 70 words with the pauses capped (`tighten=0.18…0.46`) gave 32.5 s of narration and a 33.9 s Short. Count
+  0.7–0.9 s for every gag that needs a pause of its own (this one has five hiccups). Plan 66–70 words for 30–35 s.
+- **The aside lands near the low edge in a short Short:** "subscribe" fell at 51 % with 43 of 70 words before it. Keep at
+  least 60 % of the words before the aside, or the first retime pushes it under 50 %.
+- **A gag that falls ON a word gets two sounds.** The picture stays on the word (the doors slam on "slammed" and "SHUT", the
+  muscle jerks on "JERKS") with a low thud on the bed bus (under 200 Hz: `low_thud`), and the audible joke moves into the
+  next pause with its own cue (`E(word) + 0.04`): the CLOSED sign's ding after "door...", the breath's bonk after "breath.".
+- **Frame 1's sound sat on the first word.** "You" scored 1.1 dB against the first swallow (a 420 → 140 Hz glide). Pitch
+  what plays under the first words below 300 Hz or above 5 kHz (`glug`), and put it on the bed bus. v3 also ended "You"
+  at 0.21 s while she says it until 0.28 s: the word's window was lengthened in make_timeline.py after the cues were made.
+- **qc_gags.py windows that contain narration measure the narrator, not the gag** (the "air rush under words" read −16.4 dB
+  at any gain). Only measure gags that have a pause to themselves.
+- **Make the frame-1 action readable with the sound off.** Round 1's hook scored 7.5: a man drinking, pleasantly, for 2.9 s.
+  "GLUG" popping up beside the glass on every swallow (two columns, turn about, the clock of the head bob and of the sound)
+  took it to 8. The same clock (`TLd.duration / round(3.6 * duration)`) makes the last frames meet the first.
+- **The loop: a prop that changes state has to be back.** The candle he blows out at 3 s is out of frame in the last shot,
+  but its glow is not: frame 1 had a warm edge the last frame lacked. It is alight again once it is off screen.
+- A frontal rig drinks from the side: the rim's centre on his mouth, the glass tilted −1.98…−2.3 rad (the base up and out),
+  the fist at three quarters of its length, the forearm outside the face; the liquid pools at the rim by itself.
+- A date without a second face rig: her back in the foreground, bottom right, where the app's buttons sit anyway.
+- The same prop in two bodies makes "the same door" a picture: `bxDoorPair` in his throat and in the tadpole, then his own
+  in a round frame next to the tadpole's (YOURS / ITS).
+- Voice: about 1,300 characters sent in all (462 for the script, the rest on nine audition takes of three lines; one was
+  installed); the account's balance went down by 575 (112,998 → 112,423 left).
+- A 34 s Short renders in under four minutes (1,016 frames, 228 s): two QA rounds and `build.sh` as the final render
+  cost 12 minutes of rendering. Rebuild proven: `timeline.json`, `mix.wav` and the SRT byte-identical, the same qa.py numbers.
+- Two QA rounds (hook 7.5 → 8, look 8 → 8.5).
+- Business Suite (the window hidden again): `open -a` and `resize_window` did not bring it back; everything worked anyway
+  with ref clicks (Create Reel, Add video, Next, Next, Schedule), a click on the day in the calendar and the two
+  spinbuttons (18, 30; a 24-hour clock, no AM/PM). After the caption a hashtag list stayed open even with a trailing space:
+  a click on the "Thumbnail" heading inside the composer closed it. The new Reel was missing from Content → Scheduled for the
+  first seconds; it was there after a reload. The thumbnail picker stayed a skeleton, so the Reel has an auto cover.

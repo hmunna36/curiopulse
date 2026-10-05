@@ -60,6 +60,8 @@
   `yt.mjs next-slot` gave this Short (the length test, `analytics.md`), the `sub` aside included:
   - **STANDARD, 45–50 s: 95–110 words**, about 560–680 characters;
   - **SHORT, 30–35 s: 66–76 words**, about 400–470 characters.
+    (hiccups, 6 Oct 2026: 72 words came in at 37.1 s and 70 words at 33.9 s after capping the pauses. Every gag that needs a
+    pause of its own costs 0.7–0.9 s: with three or more of those, write 66–70 words.)
   Count them before synthesizing; if the draft is longer, cut whole sentences (a second example, a bonus fact, the
   hedged debate), never the comedic gaps, the answer line or the aside. After `voice.py`, `make_timeline.py` prints
   the duration: outside the arm's band (qa.py passes 43–50 s or 30–35 s), fix it with `gap`, `tighten` and `tempo`

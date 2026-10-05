@@ -1245,3 +1245,16 @@ def hiccup(seed=0, f0=430.0, big=1.0):
     if big > 1.0:
         y[: int(0.16 * SR)] += 0.5 * (big - 1.0) * thump(0.16, 190, 70, 0.045)
     return y / (np.abs(y).max() + 1e-9)
+
+
+def ribbit(seed=0, f0=340.0):
+    """a frog's "rib-bit": two pulsed chirps, the second one higher (mono, 0.36 s). f0 = 520: a small frog"""
+    out = np.zeros(int(0.36 * SR))
+    for t0, d, f in ((0.0, 0.12, f0), (0.16, 0.19, f0 * 1.32)):
+        n = int(d * SR)
+        t = ar(n)
+        y = np.sin(2 * np.pi * np.cumsum(f * (1 + 0.25 * t / d)) / SR) * (0.55 + 0.45 * np.sign(np.sin(2 * np.pi * 34 * t + seed)))
+        y = filt(y, "bandpass", [250, 2400]) * np.sin(np.pi * np.linspace(0, 1, n)) ** 0.7
+        i = int(t0 * SR)
+        out[i:i + n] += y
+    return fade(out / (np.abs(out).max() + 1e-9), 0.004, 0.03)
