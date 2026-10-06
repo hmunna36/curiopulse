@@ -33,18 +33,27 @@
   "cover": "cover.jpg",
   "captions": "deja-vu.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-07T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "Zjz5FIZo0q8",
+    "url": "https://youtube.com/shorts/Zjz5FIZo0q8",
+    "uploaded": "2026-10-06T13:33:43.932Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-08T06:30:00+05:30",
     "caption": "You open a strange door... and you've BEEN here before 🚪👀\nIt's not a memory, and it's not the future. Scientists think your brain's \"seen it!\" signal misfires, your memory finds no record, and the front of your brain catches the clash. That clash is déjà vu.\nFollow @curio_pulse_tv for the next one: why spicy food burns 🌶️🔔\n#science #brain #dejavu #psychology #funfacts #reels",
     "coverTime": 3.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-08 06:30 IST",
+    "coverSet": false,
+    "note": "Scheduled in Meta Business Suite through Chrome on 6 Oct 2026; verified in Content > Scheduled after a reload (8 October 06:30). The Chrome window was hidden, so the thumbnail picker was skipped and the cover is an auto frame: change it to cover.jpg in the Instagram app after it goes live."
   }
 }

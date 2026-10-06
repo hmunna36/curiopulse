@@ -32,8 +32,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | @curio_pulse_tv | … |
+| YouTube Shorts | https://youtube.com/shorts/Zjz5FIZo0q8 | 7 Oct 2026, 11:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | @curio_pulse_tv | 8 Oct 2026, 06:30 IST (scheduled in Meta Business Suite; auto cover, see below) |
 
 **Title:** Why Do We Get DÉJÀ VU? 🌀
 
@@ -66,6 +66,8 @@ it! / When did YOU last get déjà vu? 👀
 28.25 s = 61 %; the pill is up from 27.95 s to 30.87 s)
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`): his shocked face in the café with see-through
 copies of himself on both sides, "WHY DO WE GET" over a big "DÉJÀ VU?".
+It is the YouTube thumbnail. The Reel was scheduled with Chrome's window hidden, so its thumbnail picker was skipped and the
+Reel has an automatic cover; it can be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 

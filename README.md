@@ -23,7 +23,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Does Your Foot Fall Asleep? | 50 s | [`videos/pins-needles`](videos/pins-needles) | [5 Oct 2026](https://youtube.com/shorts/VeLcryrlPBk) |
 | Why Does Your Voice Sound Weird on Recordings? | 50 s | [`videos/voice-recording`](videos/voice-recording) | [6 Oct 2026](https://youtube.com/shorts/eJ8T5p0OEwk) |
 | Why Do We Get Hiccups? | 34 s | [`videos/hiccups`](videos/hiccups) | [6 Oct 2026](https://youtube.com/shorts/onEZr_W7qLM) |
-| Why Do We Get Déjà Vu? | 47 s | [`videos/deja-vu`](videos/deja-vu) | 7 Oct 2026 (to be scheduled) |
+| Why Do We Get Déjà Vu? | 47 s | [`videos/deja-vu`](videos/deja-vu) | [7 Oct 2026](https://youtube.com/shorts/Zjz5FIZo0q8) |
 
 Each folder has:
 - the finished MP4;
