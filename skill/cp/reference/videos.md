@@ -16,6 +16,7 @@
 | `pins-needles`: "Why Does Your Foot Fall ASLEEP? 🦶" | 50 s | https://youtube.com/shorts/VeLcryrlPBk · 5 Oct 2026 23:30 IST | Business Suite, 6 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 | `voice-recording`: "Why Does Your Voice Sound WEIRD on Recordings? 🎙️" | 50 s | https://youtube.com/shorts/eJ8T5p0OEwk · 6 Oct 2026 11:30 IST | Business Suite, 7 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 | `hiccups`: "Why Do We Get HICCUPS? 🫢" | 34 s (the first short-arm Short of the length test) | https://youtube.com/shorts/onEZr_W7qLM · 6 Oct 2026 23:30 IST | Business Suite, 7 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
+| `deja-vu`: "Why Do We Get DÉJÀ VU? 🌀" | 47 s (standard arm; the first 45–50 s Short made to the 5 Oct rules) | https://youtube.com/shorts/Zjz5FIZo0q8 · 7 Oct 2026 11:30 IST | Business Suite, 8 Oct 2026 06:30 IST (auto cover: the window was hidden) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -415,3 +416,48 @@ here for every new Short, with its links.
   spinbuttons (18, 30; a 24-hour clock, no AM/PM). After the caption a hashtag list stayed open even with a trailing space:
   a click on the "Thumbnail" heading inside the composer closed it. The new Reel was missing from Content → Scheduled for the
   first seconds; it was there after a reload. The thumbnail picker stayed a skeleton, so the Reel has an auto cover.
+- **Check the Short's own thumbnail in Studio after the upload** (user, 6 Oct 2026: "thumbnail is grey"). The API's
+  `thumbnails.set` succeeded and `videos.list` returned the cover, but Studio's Shorts list and the video's Thumbnail slot
+  use a separate vertical image (`.../vi/<id>/mq2.jpg`, `sd2.jpg`), and for hiccups that was YouTube's grey "..."
+  placeholder five hours after the upload (the other Shorts had an automatic frame there). Fix: Studio → the video →
+  Details → Thumbnail → upload `cover.jpg` into the file input (`ytcp-thumbnail-uploader input#file-loader`, with
+  `file_upload`), Save, and confirm "Changes saved". A 120×90 image at `mq2.jpg` is the placeholder.
+
+**deja-vu** (6 Oct 2026, the 06:00 second Short; 103 words → 46.7 s):
+- New worlds: `cafe.js` (a café seen from inside toward its door, and grandma's kitchen: ONE set of slots (door, window,
+  round table, hanging lamp, counter, two things on the wall, a sign) with two skins `st` 0/1; every part takes `(c, g)`
+  contexts and draws under the camera only, so a room can go into a layer or inside a clip: `cfBack`, `cfLeaf` (a door
+  leaf that swings toward the camera), `cfRoom`, `cfKitchenOver` (the second room in its own layer, laid over with alpha:
+  a real dissolve), `cfWire` (the slots' outlines, drawn on one after another), `cfCat` (a black cat walking in profile)),
+  `mind.js` (three workers `mindGuy` (eager / memo / boss; moods; `noArms` + `armsOnly` so a prop sits between body and
+  hands), his head in profile with the brain `mindHead` and the "you are here" chip `mindChip`, `mindBell`, `mindBurst`,
+  `mindSlip`, `mindStampTool`, `mindFolder`, `mindDrawers`), `lab.js` (`labRoom`, `labScreen` (a corridor that forks),
+  `labHeadset`, `labCoin`; the fortune teller: `fortuneBack`, `fortuneTable`, `fortuneBall(t, inside, k, cam)`,
+  `ballMist`, `turban`). In its scenes: `cafeScene`, `hookState(tt)`, `doorView(cam, tt)`, `cafePhoto` (a room drawn
+  small inside a tilted frame), `dejaTitle`, `catPass`.
+- **A loop through a portal.** The last shot shows frame 1 inside a crystal ball and dives into it. A picture scaled by
+  `m` about a screen point B is just another camera: `{x, y, zoom: zoom * m, sx: (1 - m) * (B.x - 540), sy: (1 - m) * (B.y - 960)}`,
+  drawn inside a clip on BOTH ctx and gctx. With the ball's radius R·K and m = R·K / RF (RF = the distance from B to the
+  far corner), the dive ends on the frame-1 camera exactly; the last 0.4 s run the hook's own state at negative time
+  (`hookState(t - DUR)`: his palm comes up to the glass). First vs last frame of the MP4: 0.6/255. This only works if
+  the scene has NO screen-space parts: build worlds camera-only from the start.
+- **A feeling has to be on screen early too.** Round 1's hook scored 7.5: a man walked into a café for 2.5 s. A
+  see-through copy of him (`XPAL` + `aura`) now does everything 0.8 s ahead (`hookState(t + ahead)`): it walks in, stops
+  a step to his right, and jumps first; he then jumps the same way. Give the copy its own place: on his path it just
+  looked like a halo.
+- **Tones in the speech band only in pauses.** The two "eerie" notes (880 / 932 Hz) under the words put 19 words under
+  10 dB. As a motif of three pauses (after "before.", "clash?", "before?") they cost nothing and are heard.
+- **The duck lets go in a pause, and the next soft word drowns** ("and" at −8 dB after "door..."): end a groove before a
+  quiet pick-up word. Here the strut stops when he stops walking, and the strange thing arrives in a hush, which is better.
+- v3: a take's "..." can be 0.85–1.25 s long (the first hook ran 5.2 s for 11 words): cap it with `tighten`, and audition
+  wordings with a small script (`voice.synth`) before rewriting. "Subscribe..." drawn out: the alignment knew only its
+  last syllable, so `sub_tap` waits for `max(end, start + 0.8)`. Four tagged first words were late again (`move_onset`).
+- Lower-third props must sit at x ≤ 870 (the buttons column): two slips and a coin had to move; shift the camera's x
+  rather than shrinking things.
+- Business Suite with a hidden window (6 Oct evening): ref clicks and typing did nothing. What worked: buttons by text +
+  `.click()`; the caption as a synthetic `paste` event (`new ClipboardEvent('paste', {clipboardData})` on the focused
+  field); the day by its `aria-label` ("Thursday, 8 October 2026"); the time by calling the spinbutton's own React
+  `onKeyDown` (`el[__reactProps…].onKeyDown({key: 'ArrowDown', keyCode: 40, …})`), ONE call per step (the props go stale
+  inside a call), then read `aria-valuenow` back. Never return a handler's source (the output filter blocks it).
+- Two QA rounds (hook 7.5 → 8.5, look 8 → 8.5), then `build.sh` as the final render: timeline, mix and SRT byte-identical.
+  The session was paused about 11 h between the final QA and the upload; the slots were still free.
