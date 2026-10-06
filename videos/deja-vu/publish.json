@@ -1,0 +1,50 @@
+{
+  "slug": "deja-vu",
+  "file": "deja-vu-short.mp4",
+  "title": "Why Do We Get DÉJÀ VU? 🌀",
+  "description": "You open a strange door... and you've BEEN here before.\n\nDéjà vu is not a memory, and it is not a glimpse of the future. The leading idea: a quick \"that's familiar!\" signal in your brain goes off by mistake (one trigger shown in the lab: a new room laid out just like one you have forgotten), your memory finds no record of the place, and the front of your brain spots that the two can't both be true. That clash is the eerie feeling: your brain catching its own mistake. Subscribe for a new strange question every day.\n\nIt can even feel like you know what happens next. When researchers tested that in virtual reality, people felt sure... and did no better than chance. About two in three people get déjà vu now and then, most often between about 15 and 25. (If it happens very often, or with blackouts or strange smells, tell a doctor.)\n\nNext up: why does spicy food burn?\n\n#Shorts #Science #DejaVu #Brain #FunFacts",
+  "length": {
+    "arm": "standard",
+    "min": 45,
+    "max": 50,
+    "test": "length-2026-10",
+    "slot": "2026-10-07T11:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why does spicy food burn? 🌶️ Subscribe so you don't miss it!\nWhen did YOU last get déjà vu? 👀",
+  "tags": [
+    "what is deja vu",
+    "deja vu",
+    "déjà vu",
+    "why do we get deja vu",
+    "deja vu explained",
+    "deja vu science",
+    "brain",
+    "memory",
+    "psychology",
+    "neuroscience",
+    "human body",
+    "science",
+    "fun facts",
+    "explained",
+    "animation",
+    "shorts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "deja-vu.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You open a strange door... and you've BEEN here before 🚪👀\nIt's not a memory, and it's not the future. Scientists think your brain's \"seen it!\" signal misfires, your memory finds no record, and the front of your brain catches the clash. That clash is déjà vu.\nFollow @curio_pulse_tv for the next one: why spicy food burns 🌶️🔔\n#science #brain #dejavu #psychology #funfacts #reels",
+    "coverTime": 3.4,
+    "shareToFeed": true
+  }
+}
