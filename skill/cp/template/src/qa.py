@@ -205,7 +205,13 @@ else:
 
 # ---------------------------------------------------------------- intelligibility: whisper transcript vs script
 norm = lambda s: re.sub(r"[^a-z0-9' ]", " ", s.lower().replace("%", " percent"))  # noqa: E731
-ref = norm(" ".join(w["word"] for w in words)).split()
+# one word, two spellings: whisper writes the American one whatever the script uses (spicy-food, 7 Oct 2026: four
+# "chilli" in 70 words would have cost 5.7 % WER for a word it heard every time). Both sides are mapped to one spelling.
+SPELL = {"chili": "chilli", "chilis": "chillies", "chilies": "chillies", "chiles": "chillies", "color": "colour",
+         "colors": "colours", "flavor": "flavour", "odor": "odour", "gray": "grey", "fiber": "fibre", "fibers": "fibres",
+         "liter": "litre", "meter": "metre", "meters": "metres", "tumor": "tumour", "mold": "mould"}
+_spell = lambda ws: [SPELL.get(w, w) for w in ws]  # noqa: E731
+ref = _spell(norm(" ".join(w["word"] for w in words)).split())
 whisper = shutil.which("whisper-cli")
 if TRANSCRIBE and whisper and os.path.exists(MODEL):
     w16 = os.path.join(QA, "_16k.wav")
@@ -227,7 +233,7 @@ if TRANSCRIBE and whisper and os.path.exists(MODEL):
         text.append(open(os.path.join(QA, "_piece.txt")).read().strip())
     os.remove(w16); os.remove(os.path.join(QA, "_piece.txt"))
     open(os.path.join(QA, "transcript.txt"), "w").write("\n".join(text) + "\n")
-    hyp = norm(" ".join(text)).split()
+    hyp = _spell(norm(" ".join(text)).split())
     # word error rate (Levenshtein over words)
     D = np.zeros((len(ref) + 1, len(hyp) + 1), int)
     D[:, 0], D[0, :] = range(len(ref) + 1), range(len(hyp) + 1)

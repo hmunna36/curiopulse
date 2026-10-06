@@ -167,7 +167,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
 15. **YouTube:** `node ~/.claude/skills/cp/bin/yt.mjs upload videos/<slug>/publish.json --schedule=auto`. It takes the
     next free YouTube slot (11:30 or 23:30 IST), sets the thumbnail and the captions, and writes the Reel's slot (the
     next free one at 06:30 or 18:30 IST that is not before the YouTube release) into `instagram.publishAt`. Confirm with
-    `yt.mjs status <id>`.
+    `yt.mjs status <id>`, then check the Short's own thumbnail in Studio and upload cover.jpg there if the slot shows
+    anything else (`reference/publish.md`, step 2).
 16. **Instagram**, in the slot from `instagram.publishAt`: 06:30 or 18:30 IST (`reference/publish.md`). Every Short
     gets a Reel, from both daily routines (user, 4 Oct 2026), unless publish.json says `"skip": true`:
     - **Route A (Business Suite, the normal case):**

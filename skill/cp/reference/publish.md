@@ -68,6 +68,13 @@ a Reel too), and never before the Short's YouTube release.**
      and uploads the SRT captions.
    - It writes the id, URL and the Instagram slot back into publish.json. A re-run resumes: it never uploads twice.
    - Confirm with `yt.mjs status <id>`.
+   - **Then look at the Short's own thumbnail in Studio** (hiccups 6 Oct 2026: grey; spicy-food 7 Oct: an automatic
+     frame). The API's `thumbnails.set` does not fill the vertical slot Studio's Shorts list shows, and the public
+     `i.ytimg.com/vi/<id>/mq2.jpg` serves a placeholder for every private video, so it cannot tell. In Claude in
+     Chrome open `https://studio.youtube.com/video/<id>/edit` (the direct URL opens the right channel; never use the
+     channel switcher), copy cover.jpg into the scratchpad, `find` the Thumbnail section's file input, `file_upload`
+     it, wait for "Uploading..." to end, click `ytcp-button#save` from JavaScript and wait for "Changes saved". If
+     Chrome is not connected or Studio opens another channel, leave it and report it as pending.
    - Shorts have no end screens or cards. The "Related video" link is optional (Studio, if the user asks).
 3. **Instagram** (the slot in `instagram.publishAt`: 06:30 or 18:30 IST):
    - Check the route with `node ~/.claude/skills/cp/bin/ig.mjs route`.

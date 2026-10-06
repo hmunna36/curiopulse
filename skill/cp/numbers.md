@@ -1,8 +1,8 @@
 # CurioPulse numbers
 
-Written by `yt.mjs numbers` on 2026-10-06 06:05 IST. Do not edit: every /cp run rewrites it. How to read it: `reference/analytics.md`.
+Written by `yt.mjs numbers` on 2026-10-07 00:03 IST. Do not edit: every /cp run rewrites it. How to read it: `reference/analytics.md`.
 
-**Channel:** 49 subscribers (+6 since the log of 2026-10-06 00:03 IST) · 12 public videos, 2 scheduled.
+**Channel:** 59 subscribers (+10 since the log of 2026-10-06 06:05 IST) · 14 public videos, 1 scheduled.
 Views and likes are the public counters, live. Stayed, viewed and subscribers come from YouTube Analytics, which runs about two days behind: a dash means YouTube has not processed that day yet.
 
 ## The length test (length-2026-10, from 2026-10-06 23:30 IST)
@@ -11,11 +11,11 @@ A Short in a 23:30 slot is built to 30-35 s, one in an 11:30 slot to 45-50 s. Th
 
 | Group | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views |
 |---|---|---|---|---|---|---|
-| TEST · short arm (30-35 s) | 0 | – | – | – | – | – |
+| TEST · short arm (30-35 s) | 1 | – | – | – | – | – |
 | TEST · standard arm (45-50 s) | 0 | – | – | – | – | – |
-| before · 46-50 s · 23:30 slot | 3 | 1410 (1) | 44.0 % | 56.0 % | 28 s | 0.0 (1) |
-| before · 46-50 s · 11:30 slot | 3 | 2168 (1) | 56.1 % | 56.0 % | 28 s | 3.3 (2) |
-| before · 64-75 s | 5 | 1331 (5) | 57.9 % | 47.2 % | 33 s | 2.2 (5) |
+| before · 46-50 s · 23:30 slot | 3 | 1649 (2) | 44.0 % | 56.0 % | 28 s | 0.0 (1) |
+| before · 46-50 s · 11:30 slot | 4 | 2100 (2) | 56.1 % | 56.0 % | 28 s | 3.3 (2) |
+| before · 64-75 s | 5 | 1347 (5) | 57.9 % | 47.2 % | 33 s | 2.2 (5) |
 
 In brackets: how many Shorts the figure rests on. Analytics figures count a Short once YouTube has processed 200 of its views.
 
@@ -25,17 +25,18 @@ In brackets: how many Shorts the figure rests on. Analytics figures count a Shor
 
 | Released (IST) | Length | Group | Views | Likes | Counted | Stayed | Avg % viewed | Avg s | Subs | Per 1,000 | Title |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-06 23:30 (scheduled) | 34 s | TEST · short arm (30-35 s) | 0 | 0 | – | – | – | – | – | – | [Why Do We Get HICCUPS? 🫢](https://youtu.be/onEZr_W7qLM) |
-| 2026-10-06 11:30 (scheduled) | 50 s | before · 46-50 s · 11:30 slot | 0 | 0 | – | – | – | – | – | – | [Why Does Your Voice Sound WEIRD on Recordings? 🎙️](https://youtu.be/eJ8T5p0OEwk) |
-| 2026-10-05 23:30 | 50 s | before · 46-50 s · 23:30 slot | 1234 | 34 | – | – | – | – | – | – | [Why Does Your Foot Fall ASLEEP? 🦶](https://youtu.be/VeLcryrlPBk) |
-| 2026-10-05 11:30 | 46 s | before · 46-50 s · 11:30 slot | 1473 | 39 | – | – | – | – | – | – | [Why Does the Sun Make You SNEEZE? 🤧](https://youtu.be/2x0QZwQfxY0) |
-| 2026-10-04 23:30 | 48 s | before · 46-50 s · 23:30 slot | 1751 | 31 | 2 | – | – | – | – | – | [Why Do Your Ears POP on a Plane? ✈️](https://youtu.be/2R-7TRKVPso) |
-| 2026-10-04 18:30 | 165 s | long-form | 23 | 2 | – | – | – | – | – | – | [Why Can't You TICKLE Yourself?](https://youtu.be/RXYD9zslO1g) |
-| 2026-10-04 11:30 | 49 s | before · 46-50 s · 11:30 slot | 1961 | 36 | 714 | 44.1 % | 57.7 % | 28 | 1 | 1.4 | [Why Do We Get GOOSEBUMPS? 😱](https://youtu.be/OqIGuc9sYZE) |
-| 2026-10-03 23:30 | 50 s | before · 46-50 s · 23:30 slot | 1410 | 33 | 1207 | 44.0 % | 56.0 % | 28 | 0 | 0.0 | [Why Does Your Stomach GROWL? 🤫](https://youtu.be/KMS1wThr4jk) |
-| 2026-10-03 11:30 | 50 s | before · 46-50 s · 11:30 slot | 2168 | 33 | 2011 | 60.3 % | 54.2 % | 27 | 8 | 4.0 | [Why Is Yawning CONTAGIOUS? 🥱](https://youtu.be/kJsQ55sjjIU) |
-| 2026-10-02 23:30 | 74 s | before · 64-75 s | 1281 | 24 | 1244 | 67.2 % | 34.5 % | 25 | 4 | 3.2 | [Why Do Onions Make You CRY? 🧅](https://youtu.be/yaD9MFbpv_I) |
-| 2026-10-02 11:30 | 75 s | before · 64-75 s | 1283 | 25 | 1242 | 61.2 % | 42.3 % | 31 | 4 | 3.2 | [Why Does Ice Cream Give You BRAIN FREEZE? 🧊](https://youtu.be/Oy7QT27NT-Y) |
-| 2026-10-01 23:30 | 65 s | before · 64-75 s | 1585 | 25 | 1551 | 61.4 % | 47.9 % | 31 | 4 | 2.6 | [Why Do Your Fingers WRINKLE in Water? 🛁](https://youtu.be/KPn5s79_a6E) |
-| 2026-09-30 23:30 | 73 s | before · 64-75 s | 1142 | 33 | 1113 | 46.5 % | 53.3 % | 38 | 1 | 0.9 | [Why Does Your Body JERK When You're Falling Asleep? 😳](https://youtu.be/osyp3o0A4ZY) |
-| 2026-09-29 23:30 | 66 s | before · 64-75 s | 1363 | 31 | 1338 | 51.5 % | 58.1 % | 38 | 1 | 0.7 | [What Really Happens When Lightning Hits a Human? ⚡](https://youtu.be/_4eJeFfXYCI) |
+| 2026-10-07 11:30 (scheduled) | 47 s | TEST · standard arm (45-50 s) | 2 | 0 | – | – | – | – | – | – | [Why Do We Get DÉJÀ VU? 🌀](https://youtu.be/Zjz5FIZo0q8) |
+| 2026-10-06 23:30 | 34 s | TEST · short arm (30-35 s) | 51 | 2 | – | – | – | – | – | – | [Why Do We Get HICCUPS? 🫢](https://youtu.be/onEZr_W7qLM) |
+| 2026-10-06 11:30 | 50 s | before · 46-50 s · 11:30 slot | 1585 | 44 | – | – | – | – | – | – | [Why Does Your Voice Sound WEIRD on Recordings? 🎙️](https://youtu.be/eJ8T5p0OEwk) |
+| 2026-10-05 23:30 | 50 s | before · 46-50 s · 23:30 slot | 1572 | 41 | – | – | – | – | – | – | [Why Does Your Foot Fall ASLEEP? 🦶](https://youtu.be/VeLcryrlPBk) |
+| 2026-10-05 11:30 | 46 s | before · 46-50 s · 11:30 slot | 1547 | 39 | – | – | – | – | – | – | [Why Does the Sun Make You SNEEZE? 🤧](https://youtu.be/2x0QZwQfxY0) |
+| 2026-10-04 23:30 | 48 s | before · 46-50 s · 23:30 slot | 1861 | 32 | 2 | – | – | – | – | – | [Why Do Your Ears POP on a Plane? ✈️](https://youtu.be/2R-7TRKVPso) |
+| 2026-10-04 18:30 | 165 s | long-form | 28 | 3 | – | – | – | – | – | – | [Why Can't You TICKLE Yourself?](https://youtu.be/RXYD9zslO1g) |
+| 2026-10-04 11:30 | 49 s | before · 46-50 s · 11:30 slot | 2006 | 40 | 714 | 44.1 % | 57.7 % | 28 | 1 | 1.4 | [Why Do We Get GOOSEBUMPS? 😱](https://youtu.be/OqIGuc9sYZE) |
+| 2026-10-03 23:30 | 50 s | before · 46-50 s · 23:30 slot | 1436 | 34 | 1207 | 44.0 % | 56.0 % | 28 | 0 | 0.0 | [Why Does Your Stomach GROWL? 🤫](https://youtu.be/KMS1wThr4jk) |
+| 2026-10-03 11:30 | 50 s | before · 46-50 s · 11:30 slot | 2193 | 34 | 2011 | 60.3 % | 54.2 % | 27 | 8 | 4.0 | [Why Is Yawning CONTAGIOUS? 🥱](https://youtu.be/kJsQ55sjjIU) |
+| 2026-10-02 23:30 | 74 s | before · 64-75 s | 1300 | 25 | 1244 | 67.2 % | 34.5 % | 25 | 4 | 3.2 | [Why Do Onions Make You CRY? 🧅](https://youtu.be/yaD9MFbpv_I) |
+| 2026-10-02 11:30 | 75 s | before · 64-75 s | 1300 | 25 | 1240 | 61.3 % | 42.3 % | 31 | 4 | 3.2 | [Why Does Ice Cream Give You BRAIN FREEZE? 🧊](https://youtu.be/Oy7QT27NT-Y) |
+| 2026-10-01 23:30 | 65 s | before · 64-75 s | 1599 | 26 | 1551 | 61.4 % | 47.9 % | 31 | 4 | 2.6 | [Why Do Your Fingers WRINKLE in Water? 🛁](https://youtu.be/KPn5s79_a6E) |
+| 2026-09-30 23:30 | 73 s | before · 64-75 s | 1153 | 33 | 1113 | 46.5 % | 53.3 % | 38 | 1 | 0.9 | [Why Does Your Body JERK When You're Falling Asleep? 😳](https://youtu.be/osyp3o0A4ZY) |
+| 2026-09-29 23:30 | 66 s | before · 64-75 s | 1381 | 31 | 1338 | 51.5 % | 58.1 % | 38 | 1 | 0.7 | [What Really Happens When Lightning Hits a Human? ⚡](https://youtu.be/_4eJeFfXYCI) |

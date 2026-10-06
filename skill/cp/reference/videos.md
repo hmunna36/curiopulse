@@ -17,6 +17,7 @@
 | `voice-recording`: "Why Does Your Voice Sound WEIRD on Recordings? 🎙️" | 50 s | https://youtube.com/shorts/eJ8T5p0OEwk · 6 Oct 2026 11:30 IST | Business Suite, 7 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 | `hiccups`: "Why Do We Get HICCUPS? 🫢" | 34 s (the first short-arm Short of the length test) | https://youtube.com/shorts/onEZr_W7qLM · 6 Oct 2026 23:30 IST | Business Suite, 7 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 | `deja-vu`: "Why Do We Get DÉJÀ VU? 🌀" | 47 s (standard arm; the first 45–50 s Short made to the 5 Oct rules) | https://youtube.com/shorts/Zjz5FIZo0q8 · 7 Oct 2026 11:30 IST | Business Suite, 8 Oct 2026 06:30 IST (auto cover: the window was hidden) |
+| `spicy-food`: "Why Does Spicy Food BURN? 🌶️" | 33 s (short arm) | https://youtube.com/shorts/R5rsvm9IN8M · 7 Oct 2026 23:30 IST | Business Suite, 8 Oct 2026 18:30 IST (auto cover: the window was hidden) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -461,3 +462,56 @@ here for every new Short, with its links.
   inside a call), then read `aria-valuenow` back. Never return a handler's source (the output filter blocks it).
 - Two QA rounds (hook 7.5 → 8.5, look 8 → 8.5), then `build.sh` as the final render: timeline, mix and SRT byte-identical.
   The session was paused about 11 h between the final QA and the upload; the slots were still free.
+
+**spicy-food** (7 Oct 2026, nightly /cp next; the short arm; 70 words → 33.07 s):
+- New worlds: `stall.js` (a chilli stall at a night market: the market out of focus, a striped awning, bunting, a CHILLI
+  CHALLENGE banner, strings of dried chillies, lanterns; the hero behind a counter in a teal shirt `CHPAL` with a chilli
+  in his fist or between his teeth, his own biting mouth, the red that climbs his face (`flush`: the same man drawn again
+  in `CHRED`, clipped to his head, so his eyes and hair keep their colours), a mouth thermometer, a sprinkler on his
+  hair; `chilliPod` (whole / bitten), `chilliGuy` (the chilli as a small villain), `fireJet`, `earSteam`, `smokeCurl`,
+  `sprinklerSpray`, `reticle`, `stHeap` with an EXTRA placard), `mouth.js` ("a heat sensor is a fire alarm": `heatAlarm`
+  with a cold-to-hot gauge, a pull handle, a lamp, a bell and a keyway; the mouth from inside `caveBack`; the tongue in
+  section `tongueScene` with three alarms on nerves and beads of signal `moPulses`; `capKey`, a molecule drawn as a key;
+  `soupSpoon`, `heatRays`), `garden.js` (a dusk garden, a chilli plant that opens its eyes, a bird that eats, a mouse,
+  `noFlame`). `brainy.js` came from pins-needles (plus `fireMonitor`, `sprLever`, `brainMug` in its scenes_in.js).
+- New sfxkit atoms (template too): `fire_whoosh` (for pauses), `fire_rumble` (under words: only under 260 Hz and above
+  5 kHz), `sprinkler_tss`, `snicker`, `beep`. `qc_gags.py` is in its src: copy it and edit the list.
+- **A hook under 4 s is written in one breath.** Four takes of an 11-word hook with a "..." ("You bite ONE tiny
+  chilli... and your mouth is on FIRE!") ran 5.0–6.2 s: v3 at stability 0 lingers on every capital and every dot.
+  "[panicked] You bite one chilli and your whole mouth is on FIRE!" (12 words, no pause, no capitals but the last) came
+  in at 4.0 s, 3.9 s at tempo 1.06: the answer at 4.55 s and the Short at 33.07 s with nothing else touched. Audition
+  wordings offline (`voice.synth`, ~60 characters a try) before building on a slow hook.
+- **Read the study before the queue's angle.** The queue said "water doesn't help and milk does"; in the 2019 test
+  (Nolden, Lenart & Hayes) water did cut the burn, only less than milk, and why milk works is open. The line went to
+  the description as what the study found, and the Short kept one mechanism.
+- **Put the click before the line that names it.** Round 2 had the key turn on "like a key" and the audible CLICK after
+  "key.": NO HEAT, the point of the shot, came up 0.3 s before the camera left. With the click in the pause after
+  "them..." the line "like a key" is said over the result, and the label is up for a second. A label needs about a
+  second; count it from the cue to the cut.
+- **A cone, not a plume.** The jet of flame was as wide at his mouth as at its middle and swallowed his face; with a
+  profile that starts at a tenth of its width (`min(1, 0.1 + 1.45 u)`) his eyes stay in the picture. The first flames
+  flick out of the corners of his mouth, sideways: straight up, they hid his eyes (glow on a face hides it, once more).
+- **Water is ribbons, sparks are dots.** Sixty glowing drops round his head read as fireworks; six dashed ribbons with
+  marching dashes (`setLineDash` + `lineDashOffset`), a bright core and a few drops at their ends read as a sprinkler.
+- **The loop with a prop that arrives at the end:** the heap of chillies that lands in the last shot sits wholly outside
+  the frame-1 close-up (the close-up sees x 344–716, the heap starts at x 739), and its sign is a placard on a stick,
+  not a pennant that would reach back into the frame. His state round the bite is one function of `tt` = seconds since
+  the bite (`biteState`); the last shot calls it with `t − DUR`, so the last frames are the frames before frame 1.
+- **qa.py: one word, two spellings.** Whisper wrote "chili" for all four "chilli": 5.7 % WER for a word it heard every
+  time. qa.py now maps both sides to one spelling (`SPELL`; template too). Never re-voice for a spelling.
+- First mix: 9 words under 10 dB, every one a tiny word whose alignment window held no voice ("You" 0.15–0.23 s while
+  she says it until 0.36; two "the"); the content words were at 8.6 dB or better. Print the stems before touching the mix.
+- **The Short's thumbnail in Studio, again:** the API's `thumbnails.set` succeeded, and Studio's own slot showed an
+  automatic frame (the brain's desk), not grey this time. `i.ytimg.com/vi/<id>/mq2.jpg` cannot tell while the video is
+  private (it serves a 120×90 placeholder for every private video, déjà vu's included): look in Studio. The direct
+  video URL (`studio.youtube.com/video/<id>/edit`) opened the right channel without the switcher; `find` gives the
+  file input, `file_upload` cover.jpg from the scratchpad, wait for "Uploading..." to end, click `ytcp-button#save`
+  from JavaScript, and wait for "Changes saved". Screenshots worked there even with the window hidden.
+- Business Suite (the window hidden again): `find` could not see the collector input by id; the only file input in the
+  tree was it (check with `document.querySelectorAll('input[type=file]')`). Create Reel needed the JavaScript click (the
+  ref click did nothing); the caption went in as a synthetic `paste`; the day by its `aria-label`; the time by the
+  spinbuttons' own `onKeyDown`, one step a call (a helper on `window`, one `javascript_tool` action per step, several
+  in a batch), reading `aria-valuenow` back: 1 → 0 → 23 … 18, 45 → 30. The thumbnail picker stayed a skeleton.
+- Three QA rounds (hook 7.5 → 8.5, look 7.5 → 8.5, packaging 7.5 → 8.5, show 8 → 8.5), 3.5 minutes a render, then
+  `build.sh` as the final render: `timeline.json`, `mix.wav` and the SRT byte-identical, the same qa.py numbers (17/17).
+

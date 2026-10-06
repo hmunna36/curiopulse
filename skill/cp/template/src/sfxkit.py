@@ -1258,3 +1258,59 @@ def ribbit(seed=0, f0=340.0):
         i = int(t0 * SR)
         out[i:i + n] += y
     return fade(out / (np.abs(out).max() + 1e-9), 0.004, 0.03)
+
+# ================================================================= spicy-food (7 Oct 2026): fire, a sprinkler, a small villain, a beep
+def fire_whoosh(dur=0.6, seed=0, body=1.0):
+    """a burst of flame: a breathy roar that swells fast and tails off, crackle on top. Full band (it masks speech):
+    for pauses. Under a line use fire_rumble()."""
+    n = int(dur * SR)
+    t = ar(n) / dur
+    env = np.minimum(1, t / 0.08) ** 1.5 * np.exp(-np.maximum(0, t - 0.25) * 3.2)
+    roar = filt(brown(n, seed), "lowpass", 900) * (0.75 + 0.25 * np.sin(2 * np.pi * 9.0 * ar(n) + seed))
+    air = filt(pink(n, seed + 2), "bandpass", [700, 3800])
+    y = (body * roar / (np.abs(roar).max() + 1e-9) + 0.45 * air / (np.abs(air).max() + 1e-9)) * env
+    y = y + 0.25 * crackle(n, 260, seed + 3, 2500, 9000, 0.001) * env
+    return fade(y / (np.abs(y).max() + 1e-9), 0.004, 0.06)
+
+
+def fire_rumble(dur=1.0, seed=0, top=260.0):
+    """the same fire heard under a line: only its low rumble (under `top` Hz) and its crackle (above 5 kHz), so it can
+    run under words"""
+    n = int(dur * SR)
+    low = filt(brown(n, seed), "lowpass", top) * (0.72 + 0.28 * np.sin(2 * np.pi * 6.5 * ar(n) + seed))
+    y = low / (np.abs(low).max() + 1e-9) + 0.2 * crackle(n, 300, seed + 2, 5200, 11000, 0.0008)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.02, 0.08)
+
+
+def sprinkler_tss(dur=1.0, seed=0, rate=9.0, top=False):
+    """a lawn sprinkler: tss-tss-tss-tss. All above 5 kHz, so it can run under words; top=True adds a 2-5 kHz band
+    (louder on a phone) for a pause."""
+    n = int(dur * SR)
+    ph = (ar(n) * rate) % 1.0
+    env = np.exp(-ph / 0.28) * np.minimum(1, ph / 0.02)
+    y = filt(white(n, seed), "highpass", 5200) * env
+    if top:
+        y = y / (np.abs(y).max() + 1e-9) + 0.8 * filt(white(n, seed + 1), "bandpass", [2200, 5000]) * env
+    return fade(y / (np.abs(y).max() + 1e-9), 0.003, 0.03)
+
+
+def snicker(seed=0, f0=250.0, n_ha=3):
+    """a small villain's chuckle: heh-heh-heh, buzzy, going down (mono, 0.13 s a "heh"). For a pause."""
+    out = np.zeros(int((0.13 * n_ha + 0.08) * SR))
+    m = int(0.1 * SR)
+    for k in range(n_ha):
+        f = f0 * (1 - 0.07 * k) * (1 - 0.12 * ar(m) / 0.1)
+        ph = 2 * np.pi * np.cumsum(f) / SR
+        s = sum(np.sin(j * ph) / j for j in range(1, 14))
+        s = filt(s, "bandpass", [500, 1900]) * attack_decay(m, 0.006, 0.035)
+        s = s / (np.abs(s).max() + 1e-9) + 0.15 * filt(white(m, seed + k), "bandpass", [1500, 4000]) * attack_decay(m, 0.002, 0.02)
+        i = int(k * 0.13 * SR)
+        out[i:i + m] += s
+    return fade(out / (np.abs(out).max() + 1e-9), 0.002, 0.03)
+
+
+def beep(freq=2600.0, dur=0.08):
+    """a digital beep (a thermometer, a targeting lock)"""
+    n = int(dur * SR)
+    y = np.sin(2 * np.pi * freq * ar(n)) + 0.3 * np.sin(2 * np.pi * 2 * freq * ar(n))
+    return fade(y / 1.3, 0.003, 0.012)

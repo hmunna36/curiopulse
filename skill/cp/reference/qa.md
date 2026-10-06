@@ -65,6 +65,9 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 | Captions | every word captioned, ≤ 2 lines of ≤ 4 words, none under 0.25 s on screen (warning) |
 
 A FAIL blocks the upload.
+- The transcript check maps one word's two spellings to one (`SPELL` in qa.py: chili/chilli, color/colour …): whisper
+  writes the American one whatever the script says. Add a pair there when a correctly spoken word costs WER; never
+  re-voice for a spelling.
 - The weak-word list and the whisper differences are leads for the review, even when the check passes. A punchline
   word under 6 dB is a real problem.
 - Calibration: the shipped finger-wrinkles Short scored 13/13 on the checks of its day, with content SNR 14.1 dB, WER

@@ -71,6 +71,9 @@
 
 - `## hook`: the first word is "You" or "Your", with something physical being done in the first few words; the
   strange thing lands by 3 s. Split it in two takes when the jolt needs its own timing (hypnic-jerk's "hook" + "jump").
+  - **Write a hook that must end by 4 s in one breath** (spicy-food, 7 Oct 2026): no "..." and no capitals but the
+    last word. Four takes of an 11-word hook with a pause ran 5.0–6.2 s; `[panicked]` + the same thought in 12 words
+    with no pause came in at 4.0 s. Audition two or three wordings with `voice.synth` before building on a slow one.
 - `## answer` (this id is required; qa.py looks for it): the answer as a plain, surprising claim or a metaphor. Its
   first word must be spoken by **5.0 s** (qa.py warns to 6.0 s and fails later), so keep the hook under ≈ 4 s and the
   gap before `answer` at 0.45–0.60: the deadpan beat is still there, it just isn't long. `make_timeline.py` prints
