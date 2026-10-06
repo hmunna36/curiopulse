@@ -27,8 +27,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 23:30 IST |
-| Instagram Reels | @curio_pulse_tv | … 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/R5rsvm9IN8M | 7 Oct 2026, 23:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | @curio_pulse_tv | 8 Oct 2026, 18:30 IST (scheduled in Meta Business Suite; auto cover, see below) |
 
 **Title:** Why Does Spicy Food BURN? 🌶️
 
@@ -61,7 +61,10 @@ don't miss it! / Milk or water: what's YOUR rescue drink? 🥛
 **Subscribe aside (spoken, 33 characters, at 50–70 % of the runtime):** "Subscribe... the chilli meant it." (the word at
 21.37 s = 65 %; the pill is up from 21.07 s to 23.97 s)
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): him breathing a jet
-of flame across the stall, "WHY DOES / SPICY / BURN?".
+of flame across the stall, "WHY DOES / SPICY FOOD / BURN?".
+It is the YouTube thumbnail: set through the API, and uploaded again in Studio (Details → Thumbnail), because Studio's
+own slot for the Short held an automatic frame. Business Suite's thumbnail picker did not load when the Reel was
+scheduled, so the Reel has an automatic cover; it can be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 

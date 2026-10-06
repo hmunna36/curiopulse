@@ -34,18 +34,28 @@
   "cover": "cover.jpg",
   "captions": "spicy-food.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-07T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "R5rsvm9IN8M",
+    "url": "https://youtube.com/shorts/R5rsvm9IN8M",
+    "uploaded": "2026-10-06T19:50:15.510Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (Details > Thumbnail) on 7 Oct 2026: the slot had held an automatic frame; 'Changes saved'"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-08T18:30:00+05:30",
     "caption": "You bite ONE chilli... and your whole mouth is on FIRE 🌶️🔥\nNothing is burning: the chilli's molecule fits your tongue's heat sensor like a key, so your brain hears FIRE and turns on the sweat. Birds can't feel it at all. 🐦\nFollow @curio_pulse_tv for the next one: why you get a stitch when you run 🔔\n#science #humanbody #spicyfood #chilli #funfacts #reels",
     "coverTime": 3.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-08 18:30 IST",
+    "coverSet": false,
+    "note": "Scheduled in Meta Business Suite through Chrome on 7 Oct 2026; verified in Content > Scheduled after a reload (8 October 18:30, Public). Meta's check found no copyright issues. The thumbnail picker never loaded (the Chrome window was hidden), so the cover is an auto frame: change it to cover.jpg in the Instagram app after it goes live."
   }
 }
