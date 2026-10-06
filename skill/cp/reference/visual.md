@@ -129,6 +129,16 @@
 - **The last shot** has no pill any more. It ends on the picture of frame 1 (the loop): bring the camera, the hero's
   pose and the props back to where the hook starts, in the last 0.3–0.5 s.
 
+## The watermark (main.js, every Short; user, 6 Oct 2026)
+
+- The engine draws the channel name "CurioPulse" on every frame (`drawWatermark` in main.js), so a re-upload still
+  carries it. It needs no shot code and is never switched off.
+- Small and translucent (Montserrat 800, 34 px, 42 % white with a dark edge) at y = 430: left (x 118) for 8 s, then
+  right (x 962), swapping with a short fade, so one fixed crop or blur box cannot remove it. Both spots are inside the
+  key-content zone.
+- Keep a shot's own titles and labels off those two corners (x 110–330 and x 750–970 at y 405–455). The cover frame
+  carries it too; that is fine.
+
 ## The Shorts safe area (1080×1920)
 
 Measured on 30 Sep 2026 from the user's iPhone screenshot of a live Short in the YouTube app's Shorts feed (94.5 % of

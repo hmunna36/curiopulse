@@ -66,6 +66,7 @@ apart; user, 4 Oct 2026)**, never before the Short's YouTube release (Business S
   - the Short ends on the button line and loops back to frame 1: no ask, no "Next up", no outro at the end. The next
     topic is teased in text only (pinned comment, description, Reel caption).
   Details: `reference/brief.md`, `narration.md`, `visual.md`, `qa.md`.
+- **Watermarked:** the engine puts the channel name on every frame of every Short (user, 6 Oct 2026; `reference/visual.md`). Never remove it; check it is there on the QA sheets.
 - **The hiker** is the hero: the same rig, only the outfit changes.
 - **Scientifically responsible:** claims are sourced; uncertain ones are hedged ("Scientists think…", "One idea…").
 - **Ship only above the bar** (`reference/qa.md`): `qa.py` clean and every ship-bar item scoring 8 or more.

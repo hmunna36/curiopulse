@@ -201,10 +201,32 @@ function renderFrame(f) {
   const lift = Boolean(capNow) && subLift(capNow.start, capNow.end);
   if (!post.noCaptions) drawCaptions(t, lift ? Math.min(post.capY || CAP_Y, SUB_CAPY) : post.capY);
   if (subOK && subActive(t)) drawSubscribe(t);   // the subscribe cue (subscribe.js) sits above captions, inside the safe area
+  drawWatermark(t);   // the channel name, on every frame of every Short (user, 6 Oct 2026)
   if (post.flashTop > 0) { // flash that also washes over the captions
     ctx.fillStyle = `rgba(240,246,255,${clamp(post.flashTop)})`;
     ctx.fillRect(0, 0, W, H);
   }
+}
+
+// ---------- watermark ----------
+// The channel name on every frame, so a re-upload still carries it (user, 6 Oct 2026: "watermark the content ... to
+// prevent stealing"). Small and translucent, inside the Shorts key-content zone (x 100-980 for y 400-1000), above the
+// action. It swaps sides every WM_PERIOD seconds with a short fade, so one fixed crop or blur box cannot remove it.
+// The name works on YouTube and Instagram alike (the handles differ). Never switch it off for a shot.
+const WM_TEXT = 'CurioPulse', WM_PERIOD = 8, WM_Y = 430, WM_ALPHA = 0.42;
+function drawWatermark(t) {
+  const k = Math.floor(t / WM_PERIOD), u = t - k * WM_PERIOD;
+  const fade = clamp(Math.min(u / 0.4, (WM_PERIOD - u) / 0.4));
+  const left = k % 2 === 0;
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.font = '800 34px Montserrat'; ctx.textBaseline = 'middle'; ctx.textAlign = left ? 'left' : 'right';
+  ctx.globalAlpha = WM_ALPHA * fade;
+  ctx.lineJoin = 'round'; ctx.lineWidth = 5; ctx.strokeStyle = 'rgba(0,0,10,0.6)';
+  ctx.strokeText(WM_TEXT, left ? 118 : 962, WM_Y);
+  ctx.fillStyle = '#FFFFFF'; ctx.fillText(WM_TEXT, left ? 118 : 962, WM_Y);
+  ctx.restore();
 }
 
 async function init() {
