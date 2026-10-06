@@ -1,0 +1,51 @@
+{
+  "slug": "spicy-food",
+  "file": "spicy-food-short.mp4",
+  "title": "Why Does Spicy Food BURN? 🌶️",
+  "description": "You bite one chilli... and your whole mouth is on fire. Except nothing is burning.\n\nYour mouth has heat sensors (a protein called TRPV1) that normally go off at about 43°C and hotter, the kind of heat that scalds. Capsaicin, the molecule that makes chillies hot, fits into that same sensor like a key and switches it on with no heat at all. Your brain gets a real \"FIRE!\" signal, so it does what it does for real heat: you flush and you sweat. Subscribe for a new strange question every day.\n\nBirds don't feel it: their version of the sensor ignores capsaicin. The leading idea is that the burn keeps seed-crunching mammals away, while birds swallow the seeds whole and spread them. Bonus: in a 2019 taste test, milk cooled the burn better than water, and skim milk worked as well as whole.\n\nNext up: why do we get a stitch when running?\n\n#Shorts #Science #SpicyFood #HumanBody #FunFacts",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "test": "length-2026-10",
+    "slot": "2026-10-07T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why do we get a stitch when running? 🏃 Subscribe so you don't miss it!\nMilk or water: what's YOUR rescue drink? 🥛",
+  "tags": [
+    "why does spicy food burn",
+    "spicy food",
+    "capsaicin",
+    "chilli",
+    "chili pepper",
+    "why is chili hot",
+    "trpv1",
+    "heat receptor",
+    "why do we sweat eating spicy food",
+    "birds and chili",
+    "human body",
+    "science",
+    "biology",
+    "fun facts",
+    "explained",
+    "animation",
+    "shorts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "spicy-food.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You bite ONE chilli... and your whole mouth is on FIRE 🌶️🔥\nNothing is burning: the chilli's molecule fits your tongue's heat sensor like a key, so your brain hears FIRE and turns on the sweat. Birds can't feel it at all. 🐦\nFollow @curio_pulse_tv for the next one: why you get a stitch when you run 🔔\n#science #humanbody #spicyfood #chilli #funfacts #reels",
+    "coverTime": 3.6,
+    "shareToFeed": true
+  }
+}
