@@ -41,7 +41,9 @@ apart; user, 4 Oct 2026)**, never before the Short's YouTube release (Business S
 - **Human, performed narration:** Jessica (`cgSgspJ2msm6clMCkdW9`), `eleven_v3`, stability 0, v3 tags, comedy in the
   gaps. It must never sound like "someone READING A BOOK".
 - **Hook on frame 1:** action, a strange experience in the second person; no intro, logo or "Did you know". The first
-  words are "You…" plus something physical you are doing, and the strange thing lands by 3 s.
+  words are "You…" plus something physical you are doing, and the strange thing lands by 3 s. **The first picture is
+  a tight shot of him already eating, drinking, cutting or touching the thing** (7 Oct 2026: those openings kept
+  64 % of viewers, wide or still ones 46–50 %; `reference/story.md` §2, `reference/openings.jpg`).
 - **The answer by second 5** (5 Oct 2026, from the channel's retention curves; `reference/story.md`,
   `reference/analytics.md`): the line after the hook, the `answer` block, gives the answer as a plain, surprising
   claim or a metaphor ("Relax. Your ear just burped.") and STARTS by 5.0 s. The rest of the Short proves it. Never
@@ -271,7 +273,8 @@ cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on
 
 - `reference/master-context-prompt.md`: the user's channel brief, verbatim (also at the repo root)
 - `reference/brief.md`: the brief distilled, plus the user's later decisions (they win)
-- `reference/story.md`: research, angle, hook, the answer by 5 s, the beat shape for both lengths, topic picking, the one-page plan
+- `reference/story.md`: research, angle, hook, the first picture, the answer by 5 s, the beat shape for both lengths, topic picking, the one-page plan
+- `reference/openings.jpg`: the openings that kept the most viewers (top row) and the fewest (bottom row); compare every new frame 0 with it
 - `reference/analytics.md`: the numbers log, what the numbers said on 5 Oct 2026, the length test and how to read it
 - `numbers.md`, `numbers.jsonl`: written by `yt.mjs numbers` on every run (the report and its history); never edit by hand
 - `reference/narration.md`: Jessica, script.txt, voice.py, quota, the listening pass

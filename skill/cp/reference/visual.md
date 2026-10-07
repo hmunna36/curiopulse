@@ -61,7 +61,11 @@
 
 ## Camera grammar
 
-- **Frame 1 moves.** The hook starts mid-action (a plunge, a jolt, a strike) with a whip, shake or push.
+- **Frame 1 moves, and it is tight.** The hook starts mid-action (a plunge, a slurp, a chop) with a whip, shake or
+  push, on a close shot: his head is about 350 px tall or more in the 1080×1920 frame, or his hand is that big,
+  with the thing he is eating, drinking, cutting or touching (`story.md` §2, "The first picture";
+  `reference/openings.jpg`). Measure it on the frame-0 still. Hold that for the first 1.5 s and pull back to the room
+  only after it. Never open on a wide room, a still pose or a phone screen.
 - **Travel to what's named.** Use `camKeys(t, [[t, x, y, zoom]…])` (or `sectionCam` for a cutaway) so the camera
   arrives at each thing as the narration names it: pores, then nerve, then vessel, then skin.
 - **Dives and match cuts between scales:** window, head, brain; hand, fingertip, cutaway. Use a zoom blur on the

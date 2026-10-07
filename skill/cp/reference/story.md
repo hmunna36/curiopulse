@@ -32,6 +32,26 @@ two timings; the ship bar checks the rest.
     44–47 %. (Nine videos: a working rule, re-read as the numbers grow.)
   - The line is under 3 seconds, starts mid-action and ends on a jolt, a reveal or a question. Frame 1 shows the
     action itself, close; picture and sound hit on the same frame.
+- **The first picture: a tight shot of him already eating, drinking, cutting or touching the thing** (7 Oct 2026,
+  from the opening frames of 13 Shorts set against how many viewers stayed; `reference/openings.jpg` shows them).
+  - The four openings that kept the most viewers (64 % each: brain freeze, onions, hiccups, fingers) all start, on
+    frame 0, with him close (his head 350–450 px tall in the 1080×1920 frame; in fingers it is his hand, larger
+    still) and a real thing at his mouth or in his hand: a straw in a milkshake, a knife in an onion, a glass at his
+    lips, a hand going into water. The action is already happening.
+  - The five that opened on a medium shot (his head about 240 px tall, nothing in his mouth or hands being used)
+    kept 53–58 % (yoga studio, cinema door, bus, plane seat, café door). The four that kept the fewest (46–50 %)
+    opened wide (an exam hall), still (a sleepy face), full-body on a couch (popcorn flying, but small), or on a
+    phone screen (a thumb on PLAY: tight and moving, but a screen, and it kept only 50 %).
+  - Closeness alone is not it: hypnic jerk opened on his face at 760 px, lying still, and kept 46 %. What the top
+    four share is the doing: mouth or hands on a real thing, mid-action.
+  - So: frame 0 to about second 1.5 is that tight shot. No establishing shot, no calm pose, no phone or computer
+    screen as the first picture. The room, the other people and the wide view come after second 2, once the strange
+    thing has happened.
+  - Pick the topic's opening for this. Every topic has one: knuckles (two hands, bending, close), mosquitoes (the bite
+    landing on his forearm), fireflies (his hands closing a jar on a glow), dreams (his hand slapping a ringing alarm clock).
+  - Brightness, colour and how much the picture changes in the first half second showed no link with who stayed
+    (measured on the same 13 openings), so don't chase those; it is what he is doing, and how close we are.
+  - Thirteen Shorts, grouped after the fact: a strong lead, re-read as `numbers.md` grows.
 - **The answer (the `answer` block; it STARTS by 5.0 s).** Straight after the hook, say what is going on, as a plain,
   surprising claim or a metaphor a ten-year-old would get: "Relax. Your ear just burped."
   - It is usually the first joke as well: the old "reaction" beat and the answer are now one line.

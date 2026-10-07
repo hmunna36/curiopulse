@@ -6,6 +6,9 @@
   make_timeline.py prints: the duration (inside the length arm's band), where the `answer` line starts (5.0 s or
   earlier) and where the word "subscribe" lands (50–70 % of the runtime). Fix the words, the delivery and those three
   before any picture exists; it is free now and a re-render later.
+- **The first picture, before any other shot is built:** render frames 0, 15 and 30 of the hook and Read them next to
+  `reference/openings.jpg`. Frame 0 must belong in its top row: a tight shot of him already eating, drinking, cutting
+  or touching the thing. If it looks like the bottom row (wide, still, a screen), restage the hook now.
 - **After each shot:**
   - render 4–8 stills across it (`render.js … stills "f1,f2,…"`), tile them with `contact_sheet.py`, and Read the
     sheet;
@@ -83,7 +86,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 
 | # | Item | Passes when (8+) |
 |---|---|---|
-| 1 | **Hook and answer** | frame 1 is the hero DOING something, and the first words are "You…" plus that action; the strange thing lands in ≤ 3 s; picture and sound hit together; the answer line starts by 5 s and is a plain, surprising claim or metaphor that leaves a "wait, how?"; you'd stop scrolling |
+| 1 | **Hook and answer** | frame 0 is a tight shot (his head about 350 px tall or more, or his hand that big) of him already eating, drinking, cutting or touching the thing, and it would sit in the top row of `reference/openings.jpg`; the first words are "You…" plus that action; the strange thing lands in ≤ 3 s; picture and sound hit together; the answer line starts by 5 s and is a plain, surprising claim or metaphor that leaves a "wait, how?"; you'd stop scrolling |
 | 2 | **Retention** | nothing between the hook and the answer; no spoken naming beat, no bridge-only line; a new visual question or reveal every 3–5 s; no stretch where only the captions move; escalation to the weirdest fact |
 | 3 | **Story** | experience → answer → mechanism → payoff → the weirdest fact → button; every beat earns its seconds; the button reframes or undercuts, and the last shot returns to the picture of frame 1 (the loop); no ask, tease or outro at the end |
 | 4 | **Show, don't tell** | every major statement has its visual; the camera travels to what's named; nothing is a slide |

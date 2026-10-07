@@ -120,3 +120,20 @@ against the script:
 - **5 Oct 2026 (baseline, before any Short made to the new rules).** 43 subscribers; 13,964 views and 67.1 watch hours
   in the first week; 54.7 % stayed to watch, 51.1 % average viewed, 0:30 average; 2.8 subscribers per 1,000 views.
   The table and the nine points above are this reading.
+- **7 Oct 2026 (Studio, the first Short made to the 5 Oct rules).** 66 subscribers; 21,390 views, 55.8 % stayed,
+  54.0 % average viewed over all time.
+  - Hiccups (34 s, new rules, 6 Oct 23:30): 1,430 views counted, **63.8 % stayed, 72.7 % average viewed** (24 s), 1
+    subscriber, 24 likes. The best average viewed on the channel (ears pop had 66.9 %) and level with the best
+    stayed. Its views did not move: about 1,300 of them came between hour 2 and hour 5.5 after release, then a
+    trickle. Déjà vu (47 s, new rules) had one hour of data: too early.
+  - Every Short still lands at 1.2K–2.2K views whatever its retention (onions: 64 % stayed, 1,317 views; goosebumps:
+    48 % stayed, 2,065). That is one test batch from the Shorts feed and no second one: a plateau, not a penalty.
+    Better retention is necessary for a second batch; at 64 % / 73 % it has not been sufficient yet.
+  - The opening frames of 13 Shorts were re-drawn from their sources and set against stayed-to-watch
+    (`reference/openings.jpg`): tight shots of him eating, drinking, cutting or touching something kept 64 %; medium
+    shots 53–58 %; wide, still or phone-screen openings 46–50 %. Brightness, saturation and early motion: no link
+    (correlations between −0.11 and +0.13). The rule is in `story.md` §2 ("The first picture"), from the Short for
+    8 Oct 23:30 on. It applies to both lengths, so the length test is not disturbed.
+  - Still open: hiccups' retention curve (due 8 Oct evening) will show whether the mid-video subscribe aside costs
+    viewers; its subscribers per 1,000 views so far is low (0.7) on one Short.
+
