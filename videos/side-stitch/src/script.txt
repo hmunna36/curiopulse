@@ -1,0 +1,46 @@
+# Narration for "Why Do You Get a STITCH When You Run?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it.
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - `sub` (this id is required): the subscribe aside, <= 45 characters, right after the payoff, so that the word
+#   "subscribe" lands at 50-70 % of the runtime; it promises what is still coming IN THIS Short, never another video.
+# - the last block is the button; the Short ends on it and loops. No ask, no "Next up", no outro at the end.
+# - words in all, `sub` included: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+#   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
+
+## hook gap=0.10 tempo=1.00
+[panicked] You're running a race and something stabs you under the RIBS!
+
+## answer gap=0.45 tighten=0.30 tempo=1.02
+[deadpan] Relax. It's not a cramp. Best guess? Your insides are chafing.
+
+## lining gap=0.30 tempo=1.06
+Your belly has a slippery lining: one layer on the wall, one around your organs.
+
+## bounce gap=0.28 tempo=1.06
+Run, and your organs bounce. Add a full stomach... and the layers rub.
+
+## payoff gap=0.28 tempo=1.05
+The outer layer feels sharp pain. That's why it jabs ONE spot... and stops when you stop.
+
+## sub gap=0.32 tighten=0.38 tempo=1.00
+[mischievously] Subscribe... a camel is involved.
+
+## weird gap=0.32 tempo=1.05
+It's not from breathing hard, either. People get stitches riding horses... and camels. Sitting down.
+
+## bard gap=0.30 tempo=1.05
+[curious] Shakespeare wrote about this pain... and science STILL isn't sure.
+
+## button gap=0.42 tighten=0.36 tempo=1.02
+[deadpan] So slow down, lean forward... and never trust a camel.
