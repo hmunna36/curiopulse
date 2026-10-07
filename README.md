@@ -26,6 +26,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do We Get Déjà Vu? | 47 s | [`videos/deja-vu`](videos/deja-vu) | [7 Oct 2026](https://youtube.com/shorts/Zjz5FIZo0q8) |
 | Why Does Spicy Food Burn? | 33 s | [`videos/spicy-food`](videos/spicy-food) | [7 Oct 2026](https://youtube.com/shorts/R5rsvm9IN8M) |
 | Why Do You Get a Stitch When You Run? | 49 s | [`videos/side-stitch`](videos/side-stitch) | [8 Oct 2026](https://youtube.com/shorts/hUgCuDho7H4) |
+| What Happens When You Crack Your Knuckles? | 33 s | [`videos/knuckle-cracking`](videos/knuckle-cracking) | 8 Oct 2026 (to be scheduled) |
 
 Each folder has:
 - the finished MP4;
