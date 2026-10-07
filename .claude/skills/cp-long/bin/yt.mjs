@@ -8,6 +8,11 @@
 //   node yt.mjs next-free                 the next free long-form slot (ISO time, IST)
 //   node yt.mjs reschedule <videoId> <ISO time, e.g. 2026-10-11T17:30:00+05:30>
 //   node yt.mjs status <videoId>...       processing / privacy / scheduled time
+//   node yt.mjs demand "<question>"...    read-only: the videos of 4-20 min that YouTube ranks first for the question,
+//                                         with views, length, year, channel and thumbnail address, then the median.
+//                                         A film is made only for a question whose median is 1,000,000 or more
+//                                         (reference/long-form.md). About 100 quota units per question, of the
+//                                         10,000 a day that every upload of the account shares: 4 at most per run.
 //   node yt.mjs auth                      (the Mac only) one-time consent; writes ~/.config/cp/youtube-token.json
 //
 // Release slot: ONE long-form video a week, Sunday 17:30 IST (my choice, 4 Oct 2026; change LONG_SLOT below or set
@@ -356,6 +361,31 @@ async function status(ids) {
   if (!(r.items ?? []).length) console.log('no such video on this channel');
 }
 
+// ---- demand: is this question already watched by the million? (reference/long-form.md, "Which questions get made")
+async function demand(questions) {
+  if (!questions.length) die('usage: yt.mjs demand "<question>" ["<another>" ...]   (about 100 quota units each)');
+  if (questions.length > 4) die('at most 4 questions in one call: each costs about 100 of the 10,000 units a day the uploads share');
+  const secs = (iso) => {
+    const m = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(iso ?? '') ?? [];
+    return Number(m[1] ?? 0) * 3600 + Number(m[2] ?? 0) * 60 + Number(m[3] ?? 0);
+  };
+  for (const q of questions) {
+    const s = await (await api('GET', `${API}/search?part=snippet&type=video&videoDuration=medium&maxResults=8&relevanceLanguage=en&q=${encodeURIComponent(q)}`)).json();
+    const ids = (s.items ?? []).map((i) => i.id.videoId).filter(Boolean);
+    if (!ids.length) { console.log(`\n"${q}": no results`); continue; }
+    const v = (await (await api('GET', `${API}/videos?part=snippet,statistics,contentDetails&id=${ids.join(',')}`)).json()).items ?? [];
+    const rows = v.map((x) => ({views: Number(x.statistics?.viewCount ?? 0), title: x.snippet.title, ch: x.snippet.channelTitle, d: secs(x.contentDetails?.duration), y: x.snippet.publishedAt.slice(0, 4), id: x.id}));
+    console.log(`\n"${q}"  (videos of 4-20 min that YouTube ranks first)`);
+    for (const r of rows) console.log(`  ${String(r.views).padStart(10)}  ${Math.floor(r.d / 60)}:${String(r.d % 60).padStart(2, '0')}  ${r.y}  ${r.ch.slice(0, 22).padEnd(22)}  ${r.title.slice(0, 70)}  https://i.ytimg.com/vi/${r.id}/mqdefault.jpg`);
+    const sorted = rows.map((r) => r.views).sort((a, b) => a - b);
+    const median = sorted.length % 2 ? sorted[(sorted.length - 1) / 2] : Math.round((sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2);
+    const millions = sorted.filter((x) => x >= 1e6).length;
+    const ok = median >= 1e6 || millions >= 3;
+    console.log(`  median ${median.toLocaleString('en-US')} views; ${millions} of ${rows.length} at a million or more; top ${sorted[sorted.length - 1].toLocaleString('en-US')}`);
+    console.log(`  → ${ok ? 'QUALIFIES for a film' : 'does NOT qualify (median under 1,000,000 and fewer than three at a million): rephrase once, else drop it'}`);
+  }
+}
+
 if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('/yt.mjs')) {
   const [cmd, ...args] = process.argv.slice(2);
   try {
@@ -366,7 +396,8 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     else if (cmd === 'next-free') console.log(await nextFreeYouTubeSlot());
     else if (cmd === 'reschedule') await reschedule(args[0], args[1]);
     else if (cmd === 'status') await status(args);
-    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>...');
+    else if (cmd === 'demand') await demand(args);
+    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | demand "<question>"...');
   } catch (e) {
     die(e.message);
   }

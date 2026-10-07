@@ -1,4 +1,4 @@
-"""Edit timeline for "__TITLE__" (long-form, 1920x1080, 3 minutes at most).
+"""Edit timeline for "__TITLE__" (long-form, 1920x1080, 4:00-5:00, never over 5:15).
 
 Usage: python3 make_timeline.py <work_dir>
 Reads <work>/narration.wav + words.json (voice.py); writes <work>/voice.wav + timeline.json.

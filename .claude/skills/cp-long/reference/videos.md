@@ -6,6 +6,15 @@ This file and `topics.md` are the only memory a cloud run has: write down anythi
 
 ## Lessons that apply to every run
 
+- **The question decides whether anyone sees the film (7 Oct 2026).** tickle-yourself went public on 4 Oct 18:30 IST
+  (the user released it early) and after three days had 588 thumbnail impressions, a 1.5 % click-through, 44 views
+  from about six viewers; the searches that found it were "tickling" and "tickle man". Every other video with that
+  title sits at 5–240 views. Questions like "what happens if you don't sleep" carry medians of 1–7 million. So: the
+  demand check before anything else, the title in the words people type, a clock in the film, 4:00–5:00, and every
+  scene tested for whether a viewer could leave (`long-form.md`). The user that day: "the longer film should be highly
+  engaging in every scene. the user should be addicted."
+- **A longer film is a longer run.** 2:45 took 1 h 49 min end to end and 13.5 min per full render. Plan about twice
+  that for 4:30: push a checkpoint after the narration, after each act's pictures and before every full render.
 - **Timing of a run (4 CPUs):** preflight 3 min; research (one subagent) 4 min; voice 2,061 + 247 characters, ~3 min;
   the picture is most of the work. One full render of 2:45 (4,942 frames, 3 browsers at ~470 ms/frame each) takes
   13.5 min; audio.py takes ~2 min alone. Never run two audio.py at once (the second doubles both to 10 min).
@@ -24,7 +33,7 @@ This file and `topics.md` are the only memory a cloud run has: write down anythi
 
 ## Videos
 
-- **tickle-yourself**: "Why Can't You TICKLE Yourself?" · 2:45 · https://youtu.be/RXYD9zslO1g · released Sunday 11 Oct 2026 17:30 IST (made 4 Oct 2026)
+- **tickle-yourself**: "Why Can't You TICKLE Yourself?" · 2:45 · https://youtu.be/RXYD9zslO1g · public since 4 Oct 2026 18:30 IST (made 4 Oct 2026; planned for 11 Oct, released early by the user)
   - Story: he trains to be untickleable before his niece Pip's Sunday visit; his cerebellum cancels his own touch;
     the tickle robot and his own delay machine backfire; pushes escalate 38 % a turn; rats chirp; the photos show
     tickling across generations; he quits training and loses, laughing, as the feather lands on his chest.

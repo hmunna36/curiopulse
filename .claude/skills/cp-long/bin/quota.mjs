@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 // ElevenLabs characters left (nothing is printed but the numbers). Exit 0 = at least <needed> characters are
 // available on a PAID plan, 2 = not enough or no key.
-// usage: node quota.mjs [needed=4000]   (a long-form script is ~2,200-2,700 characters, plus retakes)
+// usage: node quota.mjs [needed=7000]   (a 4:00-5:00 script is ~3,100-4,000 characters, plus retakes)
 // Keys: the environment variable ELEVENLABS_API_KEY (cloud routine), else every ELEVENLABS_API_KEY* line of
 // $ELEVENLABS_ENV_FILE or ~/.config/va/elevenlabs.env (the Mac).
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-const NEED = Number(process.argv[2] ?? 4000);
+const NEED = Number(process.argv[2] ?? 7000);
 let keys = [];
 if (process.env.ELEVENLABS_API_KEY) keys = [process.env.ELEVENLABS_API_KEY.trim()];
 else {

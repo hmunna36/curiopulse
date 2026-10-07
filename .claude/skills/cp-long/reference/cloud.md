@@ -50,8 +50,8 @@ with those hosts): report it and stop.
   timeout: `until grep -q '^EXIT' ../.work/render.log; do sleep 20; done; tail -5 ../.work/render.log`.
 - The machine pauses when the session sits idle. Keep working (README, publish.json, the next check) while a render
   runs; do not end the turn with a job still running.
-- **Render time:** preflight's render test prints seconds for 60 frames with one browser. A 2:45 video is about
-  4,950 frames; `render_par.js` runs `RENDER_JOBS` browsers side by side (CPUs − 1) and prints progress per piece.
+- **Render time:** preflight's render test prints seconds for 60 frames with one browser. A 4:30 video is about
+  8,100 frames (the 2:45 film was 4,942 and took 13.5 min with 3 browsers, so plan about 22 min a full render); `render_par.js` runs `RENDER_JOBS` browsers side by side (CPUs − 1) and prints progress per piece.
   Expect 30–90 minutes. If a piece fails, the others are kept only until the join: re-run the same command.
   To re-render one fixed shot quickly for review: `node render.js ../.work/timeline.json /tmp/shot.mp4 "A-B"`
   (frames = seconds × 30).

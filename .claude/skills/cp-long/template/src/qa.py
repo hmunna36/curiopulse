@@ -6,8 +6,10 @@ Needs ffmpeg/ffprobe on PATH and the stems from audio.py. The transcript check u
 
 Checks (FAIL blocks the upload; WARN is for the review):
 - Streams: H.264 High, 1920x1080, 30 fps, yuv420p, AAC 48 kHz stereo, faststart.
-- Length: 3:00 AT MOST (the user, 4 Oct 2026: "it should be 3 min max"); over 180.0 s FAILS. The target is
-  2:15-2:55; under 2:00 warns, under 1:15 fails (that is a Short, not a long-form video).
+- Length: 4:00-5:00 (the user, 7 Oct 2026: "yes, let's lift the limit"); over 5:15 (315 s) FAILS; 3:30-4:00 and
+  5:00-5:15 warn; under 3:30 warns too (the clock is missing steps), under 2:00 fails.
+- Pace (the every-scene rule): every shot over 8 s is listed (a warning: it needs a cut, a camera arrival or a new
+  element inside it); a mean shot length over 6 s warns.
 - Delivered audio: integrated -14 +/- 0.5 LUFS; true peak <= -1.0 dBTP after AAC.
 - Picture:
   - the first frame is not black;
@@ -64,7 +66,7 @@ with open(MP4, "rb") as fh:
     head = fh.read(1 << 16)
 check(head.find(b"moov") != -1 and head.find(b"moov") < head.find(b"mdat") if b"mdat" in head else b"moov" in head,
       "faststart (moov before mdat)", "ok" if b"moov" in head else "moov atom not at the front")
-check(120 <= dur <= 180.0, "length 2:00-3:00 (3:00 is the hard limit)", f"{dur:.2f} s ({int(dur // 60)}:{dur % 60:04.1f})", warn=75 <= dur < 120)
+check(240 <= dur <= 300, "length 4:00-5:00 (5:15 is the hard limit)", f"{dur:.2f} s ({int(dur // 60)}:{dur % 60:04.1f})", warn=120 <= dur <= 315)
 check(size < 400e6, "file under 400 MB", f"{size / 1e6:.1f} MB", warn=True)
 
 # ---------------------------------------------------------------- delivered loudness / true peak
@@ -210,6 +212,17 @@ if TRANSCRIBE and (whisper or fw):
           f"WER {100 * wer:.1f} % over {len(ref)} words" + (f"; differences: {', '.join(reversed(diffs[-12:]))}" if diffs else ""))
 else:
     check(False, "transcript", "skipped (no whisper-cli + model and no faster-whisper, or --no-transcribe)", warn=True)
+
+# ---------------------------------------------------------------- pace: shot lengths (the every-scene rule)
+shots_ = tl.get("shots", [])
+if shots_:
+    lens = [(s_["end"] - s_["start"], s_["id"], s_["start"]) for s_ in shots_]
+    long_shots = sorted((x for x in lens if x[0] > 8.0), reverse=True)
+    mean_len = sum(x[0] for x in lens) / len(lens)
+    check(not long_shots and mean_len <= 6.0, "pace: no shot over 8 s, mean shot 6 s or less",
+          f"{len(lens)} shots, mean {mean_len:.1f} s"
+          + (f"; over 8 s: {', '.join(f'{i}@{int(t // 60)}:{t % 60:04.1f} ({d:.1f} s)' for d, i, t in long_shots[:12])}" if long_shots else ""),
+          warn=True)
 
 # ---------------------------------------------------------------- captions
 caps = tl["captions"]

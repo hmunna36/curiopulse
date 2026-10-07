@@ -38,7 +38,7 @@ for u in https://api.elevenlabs.io/v1/models https://www.googleapis.com/discover
   case "$code" in 000|403|407) echo "  $u: BLOCKED ($code)"; case "$u" in *elevenlabs*|*googleapis*) rc=2;; esac;; *) echo "  $u: reachable ($code)";; esac
 done
 echo "== ElevenLabs"
-node "$HERE/quota.mjs" 4000 | sed 's/^/  /'; [ "${PIPESTATUS[0]}" = 0 ] || rc=2
+node "$HERE/quota.mjs" 7000 | sed 's/^/  /'; [ "${PIPESTATUS[0]}" = 0 ] || rc=2
 echo "== YouTube"
 node "$HERE/yt.mjs" whoami 2>&1 | sed 's/^/  /'; [ "${PIPESTATUS[0]}" = 0 ] || rc=2
 [ $rc = 2 ] || node "$HERE/yt.mjs" upcoming 2>&1 | sed 's/^/  /'

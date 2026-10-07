@@ -6,6 +6,21 @@ Captions for YouTube: [`__SLUG__.srt`](__SLUG__.srt). Thumbnail: [`cover.jpg`](c
 
 <!-- One line: the worlds and the hero (the hiker rig, what he's doing), same narrator/caption/bloom look as the Shorts. -->
 
+## The question (demand check)
+
+`node .claude/skills/cp-long/bin/yt.mjs demand "<question>"` on <date>: median … views, … of 8 at a million or more.
+The titles that rank: … Our title: … The clock: <its unit, its jumps, the last number>.
+
+## The film in five lines
+
+The want: … · The obstacle: … · The turn: … · The feeling at the end: … · The final image: …
+
+## The scene table (complete before the script; reference/long-form.md, "The every-scene rule")
+
+| # | Time | Clock | Scene | Waiting for (the question carried in) | Turn (what changes) | Leaves open | Stakes 1–5 | If they left here they would miss |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 0:00 | … | … | … | … | … | … | … |
+
 ## Narration (N words, performed)
 
 Directed in [`src/script.txt`](src/script.txt), one take per block. The joke timing sits in the gaps between blocks.
