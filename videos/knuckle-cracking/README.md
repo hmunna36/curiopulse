@@ -27,8 +27,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (to be filled in after the upload) | 8 Oct 2026, 23:30 IST |
-| Instagram Reels | @curio_pulse_tv | 9 Oct 2026, 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/WAcdN_jjI-8 | 8 Oct 2026, 23:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | @curio_pulse_tv | 9 Oct 2026, 18:30 IST (scheduled in Meta Business Suite; automatic cover, see below) |
 
 **Title:** What Happens When You CRACK Your Knuckles? 💥
 
@@ -63,6 +63,9 @@ you don't miss it! / Did YOUR mom say it gives you arthritis? 👇
 word at 21.29 s = 64 %; the pill is up from 20.99 s to 23.76 s)
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): his face, hair on end,
 over his sparking knuckles, "WHAT'S THAT / CRACK?!".
+It is the YouTube thumbnail: set through the API, and uploaded again in Studio (Details → Thumbnail), because Studio's
+own slot for the Short showed the grey placeholder. Business Suite's thumbnail picker did not load when the Reel was
+scheduled, so the Reel has an automatic cover; it can be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 

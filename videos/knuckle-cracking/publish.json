@@ -35,18 +35,28 @@
   "cover": "cover.jpg",
   "captions": "knuckle-cracking.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-08T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "WAcdN_jjI-8",
+    "url": "https://youtube.com/shorts/WAcdN_jjI-8",
+    "uploaded": "2026-10-07T19:44:51.838Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (Details > Thumbnail) on 8 Oct 2026: the slot was the grey placeholder; saved (the Save button went back to disabled and the sidebar shows the cover)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-09T18:30:00+05:30",
     "caption": "You lock your fingers, push... and CRACK 💥\nNo bones were harmed: the fluid in your joint lets go of a gas bubble, like opening a soda. One doctor cracked one hand only, for 50 years: no arthritis in either. 🦴\nFollow @curio_pulse_tv for the next one: why mosquitoes bite some people more 🔔\n#science #humanbody #knuckles #funfacts #reels ",
     "coverTime": 2.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-09 18:30 IST",
+    "coverSet": false,
+    "note": "Scheduled in Meta Business Suite through Chrome on 8 Oct 2026; the fields read 9 October 2026, 18:30 (24-hour clock) before Schedule; verified in Content > Scheduled after a reload (9 October 18:30, Public, processing). Meta's check found no copyright issues. The thumbnail picker never loaded (the Chrome window was hidden), so the cover is an automatic frame: change it to cover.jpg in the Instagram app after it goes live."
   }
 }
