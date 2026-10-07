@@ -1314,3 +1314,26 @@ def beep(freq=2600.0, dur=0.08):
     n = int(dur * SR)
     y = np.sin(2 * np.pi * freq * ar(n)) + 0.3 * np.sin(2 * np.pi * 2 * freq * ar(n))
     return fade(y / 1.3, 0.003, 0.012)
+
+
+# ================================================================= knuckles (knuckle-cracking)
+def knuckle_crack(seed=0, n=4, spread=0.08, f=1250.0, body=1.0, edges=False):
+    """a knuckle (or a row of them) cracking: n dry pops in quick succession, each a click, a hollow 'pok' and a small
+    thud (mono; about spread + 0.09 s). n=1 is one joint, n=5 with spread 0.09 a whole hand. edges=True keeps only what
+    is under 250 Hz and above 5.2 kHz, so it can sit ON a spoken word (reference/sound.md)."""
+    r = np.random.default_rng(seed)
+    m = int(0.09 * SR)
+    t = ar(m)
+    y = np.zeros(int(spread * SR) + m + 8)
+    for i in range(n):
+        at = 0.0 if i == 0 else r.uniform(0.012, spread) if n > 2 else spread * i / max(1, n - 1)
+        fi = f * r.uniform(0.75, 1.3)
+        click = filt(white(m, seed * 31 + i), "highpass", 1800) * expdecay(m, 0.0035)
+        pok = np.sin(2 * np.pi * np.cumsum(fi * (0.7 + 0.3 * np.exp(-t / 0.006))) / SR) * expdecay(m, 0.009)
+        thud = np.sin(2 * np.pi * np.cumsum(60 + 110 * np.exp(-t / 0.02)) / SR) * expdecay(m, 0.03) * body
+        one = (0.9 * click + 0.8 * pok + 0.9 * thud) * (1.0 if i == 0 else r.uniform(0.45, 0.85))
+        j = int(at * SR)
+        y[j:j + m] += one
+    if edges:
+        y = filt(y, "lowpass", 250) + filt(y, "highpass", 5200)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.0004, 0.01)

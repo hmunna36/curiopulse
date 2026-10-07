@@ -19,6 +19,7 @@
 | `deja-vu`: "Why Do We Get DÉJÀ VU? 🌀" | 47 s (standard arm; the first 45–50 s Short made to the 5 Oct rules) | https://youtube.com/shorts/Zjz5FIZo0q8 · 7 Oct 2026 11:30 IST | Business Suite, 8 Oct 2026 06:30 IST (auto cover: the window was hidden) |
 | `spicy-food`: "Why Does Spicy Food BURN? 🌶️" | 33 s (short arm) | https://youtube.com/shorts/R5rsvm9IN8M · 7 Oct 2026 23:30 IST | Business Suite, 8 Oct 2026 18:30 IST (auto cover: the window was hidden) |
 | `side-stitch`: "Why Do You Get a STITCH When You Run? 🏃" | 49 s (standard arm) | https://youtube.com/shorts/hUgCuDho7H4 · 8 Oct 2026 11:30 IST | Business Suite, 9 Oct 2026 06:30 IST (auto cover: not tried) |
+| `knuckle-cracking`: "What Happens When You CRACK Your Knuckles? 💥" | 33 s (short arm) | https://youtube.com/shorts/WAcdN_jjI-8 · 8 Oct 2026 23:30 IST | Business Suite, 9 Oct 2026 18:30 IST (auto cover: the window was hidden) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -540,3 +541,61 @@ here for every new Short, with its links.
   the day by its `aria-label`. Studio's thumbnail slot was grey again; cover.jpg went in through the file input.
 - Two QA rounds (sound 7 → 8.5, safe area 7.5 → 8.5), 17/17 both times; 5 minutes a render. `build.sh` was not re-run
   as the final render this time. Voice: 672 characters, one pass, no retake.
+
+**knuckle-cracking** (8 Oct 2026, nightly /cp next; the short arm; 68 words → 33.40 s):
+- New worlds: `den.js` (his room at night seen from his monitor: wall, LED strip, poster, shelf with a clock, a door
+  that opens on a lit hallway, a gaming chair, the desk with a rainbow keyboard, a mug and a mouse; the hero in pyjamas
+  `DENPAL` with headphones round his neck `denHero` (hands locked `denClasp`, on the desk, a shrug, one hand up for an
+  x-ray; lit by the monitor from below and by the door from the right); Mom `denMom` (bun, glasses with no eyes, apron,
+  a wooden spoon; shout / arms crossed / slump); `denShout` (a jagged shout bubble with a tail), `denTick` (a spark and
+  a small word on a knuckle), `denCrackWord`, `denHue(t, n)` (ambient colour that goes round n times in the Short)),
+  `joint.js` (`xrHand` (the bones of a hand as an x-ray, either hand, with the knuckles' positions returned), `sodaCan`
+  (tab, fizz), `jointSection` (two bone ends with cartilage, the sealed bag, honey-coloured fluid with gloss, dissolved
+  gas as dots that can run to the middle, the bubble, vessels with moving blood; `open`, `rot`), `bigArrow`,
+  `pressureGauge`, the scan `mriJoint` + `mriMonitor` (a SOUND strip with a playhead and a spike), and a hand scanner
+  `mriRoomBack` / `mriFront` / `mriHero` (his arm in its side, a window on his hand, a winch; gown `HOSPAL`)),
+  `clinic.js` (a doctor's office; `docHero`: the hero as a doctor, white coat, stethoscope, gold glasses, `age` 0..1
+  turns his hair white and grows a moustache; `yearPanel`, `flyPages`, the `lightbox` with two x-ray films, `bigTick`,
+  `magnifier`, `hexMix`). In its scenes: `scanPanel` (an x-ray over his hand), `okPill`, `mythStamp`, `burstWord`,
+  `popRing`, `inLabel`, `watchers`, and `lockState(tt)` (his state round frame 1, valid at negative time for the loop).
+- New sfxkit atom (template too): `knuckle_crack(seed, n, spread, f, body, edges)` (n dry pops; `edges=True` keeps only
+  what is under 250 Hz and above 5.2 kHz, for a crack that falls on a word). `qc_gags.py` is in its src.
+- **Locked fingers seen from the front lie sideways.** His forearms come in from the sides, so the two hands point at
+  each other and their fingers stack from top to bottom, turn about. Drawn upright they read as eight fingers held up.
+- **Turn a section the way the picture before it stood, and size it for 9:16.** The joint drawn sideways left two
+  thirds of the frame empty and broke the match with the x-ray finger (pointing up). Upright (`rot: -π/2`) and scaled so
+  the bag fills the space between the label (y 524) and the captions (y 1274), it carries the shot.
+- **A big bright area in the glow layer goes white, and a fluid the colour of bone hides the bone.** The fluid's glow at
+  0.36 and pale yellow next to ivory made one blob; glow at 0.1, honey fluid, a darker outline on the bones fixed it.
+  The x-ray bones' glow went 0.3 → 0.11 for the same reason.
+- **The glow layer does not know what is in front.** The door's light bloomed over the desk and through Mom. Draw the
+  thing in front again into `gctx` with `globalCompositeOperation = 'destination-out'` (the desk as a rect, Mom with her
+  own draw function): an ellipse as an occluder left a ghost in her shape.
+- **A proof on a monitor is one picture.** 5.3 s on the scan failed "something new every 3–5 s" before any render: the
+  experiment itself (his arm in the scanner, the cable, the winch: 2.1 s) now comes first, and the monitor gets the
+  payoff and the aside.
+- **A label that has 0.35 s is not a label.** "sealed" and "slippery fluid" are 0.6 s apart: SEALED was dropped (the
+  bag's wall draws on with a spark instead). The x-ray's verdict lands on the last word of its line, not in the pause
+  after it, so it has 0.8 s before the cut; its ding is in the pause.
+- **The first half second: let the camera arrive.** Round 1 scored the hook 8 with 8.5 on qa.py's motion check. The
+  camera now comes in from 1.96× to 2.2× in 0.36 s, his fingers squeeze as they lock and the first tick fires at 0.16 s:
+  23.2. The squeeze starts in the last frames of the Short, so the join still matches.
+- **Measure the loop in blocks.** Frame 0 against the last frame on a 12 × 16 grid of mean differences showed what a
+  single number hid: the face (a pulse that started at 0 instead of running through it), the room's colours (their
+  speed did not divide the runtime: use `denHue`), and the watermark's fade-in (the engine's; leave it).
+- **A burst word that pops while the camera is still close lands on his face.** CRACK! waits 0.1 s for the camera.
+- **The one loud sound that may sit on its word is a short one.** The big crack is a 90 ms burst on "CRACK!" (on the
+  frame); the word still scored 11 dB or better. Everything else that is loud sits in a pause.
+- The music bus again: the stride piano at gain −3 pushed every groove to −39 dB; at −12 they sit at −33 … −37.
+- Voice: three takes of a hook with two commas ran 3.5–3.6 s; `tighten=0.16` (free) put the CRACK at 2.58 s. A second
+  take of the doctor's line without the "..." was 1.2 s shorter once its pauses were capped. 756 characters sent.
+- Studio: the Short's thumbnail slot was the grey placeholder again; cover.jpg went in through the file input and Save
+  (clicked from JavaScript) went back to disabled. Don't return an image's `src` from the JavaScript tool: its output is
+  blocked when it carries a query string.
+- Business Suite (the window hidden again; `open -a` did not bring it back): buttons by text + `.click()` (Create reel,
+  Add video, Next, Next, the Schedule option); the caption as a synthetic `paste`; the day by its EXACT `aria-label`
+  ("Friday, 9 October 2026": a search for "9 October 2026" also finds the 19th and the 29th); 18 and 30 typed into the
+  two spinbuttons by ref, then Tab; the Schedule button at the bottom is the one with no `aria-pressed`. The Reel was
+  in Content → Scheduled after a reload, still processing. The thumbnail picker stayed a skeleton.
+- Two QA rounds (hook 8 → 8.5, look 8 → 8.5, sound 8 → 8.5), 17/17 each time, then `build.sh` as the final render:
+  `timeline.json` byte-identical. The whole run took 1 h 40 min.

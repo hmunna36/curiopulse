@@ -9,7 +9,6 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Queue
 
-- [ ] What happens when you crack your knuckles? — a gas bubble forms in the joint fluid (filmed in an MRI in 2015); no arthritis (the doctor who cracked one hand for 60 years)
 - [ ] Why do mosquitoes bite some people more? — a camping trip where only he gets eaten; CO2, heat and skin chemistry (carboxylic acids); what doesn't matter
 - [ ] Why does time fly as you get older? — his birthday arrives faster every year; fewer new memories and the proportional theory (hedged)
 - [ ] How do fireflies glow? — a summer night; luciferin + luciferase + oxygen, almost no heat (cold light); they flash in code
@@ -18,6 +17,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 - [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
 
 ## Done
+- [x] What Happens When You CRACK Your Knuckles? — knuckle-cracking — YouTube https://youtube.com/shorts/WAcdN_jjI-8 8 Oct 2026 23:30 IST (short arm, 33.4 s); Instagram 9 Oct 2026 18:30 IST (Business Suite)
 - [x] Why Do You Get a STITCH When You Run? — side-stitch — YouTube https://youtube.com/shorts/hUgCuDho7H4 8 Oct 2026 11:30 IST (standard arm, 49.0 s); Instagram 9 Oct 2026 06:30 IST (Business Suite)
 - [x] Why Does Spicy Food BURN? — spicy-food — YouTube https://youtube.com/shorts/R5rsvm9IN8M 7 Oct 2026 23:30 IST (short arm, 33.1 s); Instagram 8 Oct 2026 18:30 IST (Business Suite)
 - [x] Why Do We Get DÉJÀ VU? — deja-vu — YouTube https://youtube.com/shorts/Zjz5FIZo0q8 7 Oct 2026 11:30 IST (standard arm, 46.7 s); Instagram 8 Oct 2026 06:30 IST (Business Suite)
