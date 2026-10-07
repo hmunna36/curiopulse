@@ -32,18 +32,27 @@
   "cover": "cover.jpg",
   "captions": "side-stitch.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-08T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "hUgCuDho7H4",
+    "url": "https://youtube.com/shorts/hUgCuDho7H4",
+    "uploaded": "2026-10-07T01:22:37.789Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (Details > Thumbnail) on 7 Oct 2026: the slot was grey; 'Changes saved'"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-09T06:30:00+05:30",
     "caption": "You're running a race... and something STABS you under the ribs 🏃😖\nIt's not a cramp. Best guess: your belly's two-layer lining rubs as your organs bounce, and the outer layer feels sharp pain. People even get stitches riding camels. 🐪\nFollow @curio_pulse_tv for the next one: what happens when you crack your knuckles 🔔\n#science #humanbody #running #fitness #funfacts #reels ",
-    "coverTime": 2.0,
-    "shareToFeed": true
+    "coverTime": 2,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-09 06:30 IST",
+    "coverNote": "auto cover (custom thumbnail not set in Business Suite)"
   }
 }

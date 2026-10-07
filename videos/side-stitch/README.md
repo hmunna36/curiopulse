@@ -26,8 +26,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 8 Oct 2026 11:30 IST |
-| Instagram Reels | (Business Suite) | 9 Oct 2026 06:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/hUgCuDho7H4 | 8 Oct 2026 11:30 IST (scheduled) |
+| Instagram Reels | scheduled in Meta Business Suite (auto cover) | 9 Oct 2026 06:30 IST |
 
 **Title:** Why Do You Get a STITCH When You Run? 🏃
 
