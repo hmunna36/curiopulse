@@ -18,6 +18,7 @@
 | `hiccups`: "Why Do We Get HICCUPS? 🫢" | 34 s (the first short-arm Short of the length test) | https://youtube.com/shorts/onEZr_W7qLM · 6 Oct 2026 23:30 IST | Business Suite, 7 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 | `deja-vu`: "Why Do We Get DÉJÀ VU? 🌀" | 47 s (standard arm; the first 45–50 s Short made to the 5 Oct rules) | https://youtube.com/shorts/Zjz5FIZo0q8 · 7 Oct 2026 11:30 IST | Business Suite, 8 Oct 2026 06:30 IST (auto cover: the window was hidden) |
 | `spicy-food`: "Why Does Spicy Food BURN? 🌶️" | 33 s (short arm) | https://youtube.com/shorts/R5rsvm9IN8M · 7 Oct 2026 23:30 IST | Business Suite, 8 Oct 2026 18:30 IST (auto cover: the window was hidden) |
+| `side-stitch`: "Why Do You Get a STITCH When You Run? 🏃" | 49 s (standard arm) | https://youtube.com/shorts/hUgCuDho7H4 · 8 Oct 2026 11:30 IST | Business Suite, 9 Oct 2026 06:30 IST (auto cover: not tried) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -515,3 +516,27 @@ here for every new Short, with its links.
 - Three QA rounds (hook 7.5 → 8.5, look 7.5 → 8.5, packaging 7.5 → 8.5, show 8 → 8.5), 3.5 minutes a render, then
   `build.sh` as the final render: `timeline.json`, `mix.wav` and the SRT byte-identical, the same qa.py numbers (17/17).
 
+**side-stitch** (7 Oct 2026, the 06:00 second Short; standard arm; 107 words → 49.0 s):
+- New worlds: `race.js` (a night fun run seen from the front: `raceBack` with a road that streams by `dist`, a crowd with
+  phones, an arch whose word and scale are options; `RUNPAL` + `runnerPost(n)` (a bib and n stitches down his side);
+  `runPose(tt, k)`, `clutchPose` (both hands on the sore spot), `sorePt`; `bigNeedle` (a giant needle and thread aimed at
+  a point), `painRings`, `owBurst`; the whole hook as `hookState(tt)` / `hookCam` / `hookDraw`, valid at negative time for
+  the loop), `belly.js` (`bellyXray`: his belly from the front with ribs, lungs, the breathing muscle as a dome with a
+  face, the cavity's outer layer and the organ bundle's inner layer as two loops (`blLoop`) with fluid between, a liver
+  and a stomach with faces, `press` / `swell` / `rub` / `nerves` / `fire`; `blLabel`, `blFood`), `beasts.js` (`drawBeast`:
+  a camel and a horse in profile that walk, chew, blink, flip, wear a bib and a medal; `riderState` + `riderLeg` put the
+  frontal hero on one; `desertBack`). In its scenes.js: `bardScene` + `bardPage` (Shakespeare at his desk, a page that
+  writes itself on), `tickPillG`.
+- **A pun the picture can carry is a frame-1 hook.** "Stitch": a giant needle is already poking his side on frame 1 and
+  leaves a stitch per poke; the hook scored 8 in round 1 without a rework.
+- **v3 draws a first word out and the alignment keeps only its last syllable** ("Reee-lax" was 0.9 s long and started
+  0.6 s before its stamp; so did "Subscriiibe"): the answer line read as 5.03 s when it was 4.44 s. Check with whisper on
+  the stretch before the stamp (`seg` 4.38–4.98 heard "Relax."), then `move_onset()` BEFORE the shots are computed.
+- **Measure the gags against the voice, both ways.** Round 1's joke sounds sat at −12…−16 dB in their gaps, as loud as
+  the narrator (−17): 4–6 dB down each put them at about −19…−22.
+- A full page navigation (Home → the Reel composer after "Create Reel") drops everything stored on `window`: build the
+  collector input and upload the parts ON the composer page, then arm the click hook and click Add video.
+- Business Suite this run (window hidden): coordinate clicks and typing into the spinbuttons by ref worked (06, 30, Tab);
+  the day by its `aria-label`. Studio's thumbnail slot was grey again; cover.jpg went in through the file input.
+- Two QA rounds (sound 7 → 8.5, safe area 7.5 → 8.5), 17/17 both times; 5 minutes a render. `build.sh` was not re-run
+  as the final render this time. Voice: 672 characters, one pass, no retake.
