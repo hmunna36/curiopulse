@@ -11,6 +11,8 @@
   - its source.
   Anything below "established" is said as a hedge ("Scientists think…", "One idea…", "Some studies say… another says
   meh").
+- For every number that will be on screen, write down what was compared with what (time-flies, 9 Oct 2026: the fall
+  study's 36 % was their own fall against a fall they watched, not against the real one; round 1 drew the wrong bar).
 - Find the three things a curious friend would say "wait, what?" to:
   - the counter-intuitive mechanism (your body does it ON PURPOSE);
   - the proof (people with damaged finger nerves don't wrinkle);

@@ -21,6 +21,7 @@
 | `side-stitch`: "Why Do You Get a STITCH When You Run? 🏃" | 49 s (standard arm) | https://youtube.com/shorts/hUgCuDho7H4 · 8 Oct 2026 11:30 IST | Business Suite, 9 Oct 2026 06:30 IST (auto cover: not tried) |
 | `knuckle-cracking`: "What Happens When You CRACK Your Knuckles? 💥" | 33 s (short arm) | https://youtube.com/shorts/WAcdN_jjI-8 · 8 Oct 2026 23:30 IST | Business Suite, 9 Oct 2026 18:30 IST (auto cover: the window was hidden) |
 | `mosquito-bites`: "Why Do Mosquitoes Bite YOU More? 🦟" | 48 s (standard arm) | https://youtube.com/shorts/iGJlhUoxFhw · 9 Oct 2026 11:30 IST | Business Suite, 10 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
+| `time-flies`: "Why Does Time FLY as You Get Older? ⏳" | 34 s (short arm; the first Short in the cinematic look) | https://youtube.com/shorts/VLiKEQwxHqk · 9 Oct 2026 23:30 IST | Business Suite, 10 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -652,3 +653,68 @@ here for every new Short, with its links.
   the poll switch: check it is still off); the hash compared in the page through `.then()`. The Reel was in Content →
   Scheduled after a reload ("Processing..."). The thumbnail picker stayed a skeleton: auto cover.
 
+**time-flies** (9 Oct 2026, nightly /cp next; the short arm; 71 words → 34.03 s; the first Short made in the cinematic look):
+- New worlds: `party.js` (his birthday, close: a dark room out of focus painted once, a table, `tfCake` (a cake with two
+  number candles: 29, 30, 31; `kindMap` swaps them), `tfFlame`, `tfSmoke`, `tfHat`, `tfCheeks` (puffed cheeks, head
+  space), `tfHorn` (a party blower that rolls out and falls), `tfConfetti`; the teal party shirt `PARTYPAL`; the whole
+  hook as `partyState(tt)` / `partyCam(tt)` / `partyDraw(tt, t, {cam, kindMap, confetti, under})`, valid at negative
+  time for the loop), `mind.js` (the brain `tfBrain(c, x, y, s, t, o)`: moods, arms to targets, `mask` (a sleep mask),
+  `helmet`, `cam` (an instant camera at its eye); the TIME tape measure `tfCase` (a cobweb with `web`); a tape along any
+  path `tfTape(c, Q, s0, s1, {w, shift, tab})` with photos riding on it `tfTapePhotos(c, Q, L, kinds, {s, off})`; paths
+  `tfLine` and `tfEight` (out of the slot, a quarter turn, once round a figure of eight whose lap is a whole number of
+  photo steps, so a second lap lands on the first); `tfPhoto`, `tfIcon` (cake bike frog kite cone wasp fish tent star
+  ball desk fall), `tfCamera`, `tfFlash`; the brain's round window for the corner of other scenes `tfHud`; `mindRoom`),
+  `days.js` (a summer day from the front: `summerBack` (a path that streams toward us), `kidBike`, `kidRide`,
+  `kidHelmet`, `KIDPAL`; an office seen from his monitor: `officeBack` (a window where a day goes by per calendar
+  page), `officeDay`, `officeCalendar`, `officeDesk`, `officeSandwich` (a bite as an even-odd clip), `OFFPAL`),
+  `fair.js` (a night fair and its drop tower: `fairBack` (the fair rises into view as the camera falls), `fairMast`
+  (bulbs become streaks at speed), `fairTop` (deck, crane, lever), `fairNet`, `fairScientist` (`LABPAL`, glasses, a
+  clipboard), `fairHelmet`, `fairHarness`, `fairWatch`; the drop as `fallState(t)` / `fallHero(t)`).
+- New sfxkit atoms (template too): `party_horn(dur, seed, f0)`, `page_rip(dur, seed)`, `ratchet(dur, rate0, rate1, seed,
+  edges)` (a tape measure or a winch; `edges=True` runs under words), `boing(dur, f0)` (a net taking a weight).
+  `qc_gags.py` is in its src; `.work/audition/aud.py`, `prosody.py` and `inband.py` are the audition tools (not kept).
+- **The cinematic look, first night:** 197–217 ms a frame (1,021 frames in 3.6 min), no fall-back, 36.6 MB. Flat
+  fills, `actor(() => tfBrain(...))`, `paint(...)` round every face, label, icon and stripe: no shadow ring and no
+  outline turned up. What is drawn inside a `clip()` (the brain's round window) stays unlit, which suits an inset.
+- **Dress him for what happens in front of him.** Candle flames on the yellow coat were yellow on yellow: a teal shirt
+  (`pj: true` gives a placket and a collar) and they read at once. The flames' own glow (a 70-unit dot at 0.5) hid the
+  numbers on the cake: 34 units at 0.22.
+- **Blend where a hand is, not its joint angles.** `lerpPose` from arms down to arms up passes through a T-pose on the
+  way up and again on the way down; `ikReach` to `lerp(rest, high, k)` keeps the elbows bent the whole way.
+- **A burst from the middle of the thing hides the thing.** Confetti from the cake's top covered "31" on the very frames
+  it landed: bursts from both sides of it, drawn before it.
+- **A deadpan line can sink in the speech band while its level looks fine.** "…in new memories." read −18…−23 dB
+  full band and −33…−35 dB between 300 Hz and 4 kHz (her voice drops into her chest for the last words): qc_audio.py
+  listed the three words only after the score came up. Print the take's contour in that band (`inband.py`, 0.1 s
+  frames), pick the take by it (four seeds: the best was 5 dB better, none was level), and stop the score for the
+  phrase. A phone speaker has nothing under 300 Hz.
+- **Read what the study compared before drawing two bars.** The 36 % in Stetson, Fiesta & Eagleman (2007) is their own
+  fall (2.96 s, from memory) against a fall they watched (2.17 s): not against the real 2.49 s. Round 1's bars said THE
+  REAL FALL, 2.5 s; round 2's say WATCHING A FALL 2.2 s / THEIR OWN FALL 3.0 s. The spoken line ("a third longer") was
+  right either way; the picture was what made a claim.
+- **Below y 1000 the key zone ends at x 870.** A tape at y 1130 that ran to x 976 and a "+36%" centred on x 836 were
+  under the buttons column on the first mask sheet. Wide things belong above y 1000.
+- **A tune is a gag, not score.** The music box on the music bus was 10 dB louder than any groove, so the bus's
+  normalising pushed every groove down to −39…−46 dB, and its notes under "happy birthday" put both words under 4 dB.
+  On the sfx bus, two notes in the pause after "Or..." and four after "birthday.", nothing moved and nothing is masked.
+- **A clock in the picture runs on cues.** Calendar pages on a fixed 0.5 s clock never met the pauses where their sound
+  could be heard, and the window behind flashed twice a second. Four named cues (`flips`), two of them in pauses, drive
+  the pages, the window's day and the sound.
+- **The loop: keep the head still across the join, let the small thing snap.** The last frames breathed in with his
+  head back; frame 0 had it forward: 30 px in one frame. The lean now starts from where the breath left it and comes
+  forward in 0.16 s; the flames go flat on frame 0 (his breath arrives): 3.0/255 between the last frame and the first.
+- **A hook in one breath, again:** five takes; the two with a capital on the last word ran 3.8 s, the one without
+  ("…it's already your birthday again!", seed 7) 2.9 s with a full "You" on its first frame. The answer starts at 3.57 s.
+- Voice: about 1,480 characters sent in all (426 for the script, the rest on sixteen audition takes of five lines; five
+  were installed); the account's balance went down by 632 (102,657 → 102,025 left).
+- Two QA rounds (science 6.5 → 8.5, show 7.5 → 8.5, look 8 → 8.5), 18/18 each time, 3.6 minutes a render, then
+  `build.sh` as the final render: `timeline.json`, `mix.wav` and the SRT byte-identical, the same qa.py numbers.
+- `cover.sh` hung once (a headless Chrome that never drew, 7 minutes, straight after `build.sh` in the same background
+  chain): kill it and run it again by itself; it took 2 s. Don't chain `qa.py` behind it without a time limit.
+- `yt.mjs` answered 401 on the first call of a batch four times this night (`numbers`, `whoami`, `upcoming`, the dry
+  run) and worked on the next call each time; the upload itself went through. Retry once before calling the sign-in broken.
+- Studio's thumbnail slot showed cover.jpg straight from the API (no second upload). Business Suite (window hidden):
+  buttons by text + `.click()`, the caption as a synthetic `paste`, a coordinate click on the date field and the day by
+  its exact `aria-label`, 18 and 30 typed into the spinbuttons by ref, then Tab (the poll switch stayed off); the first
+  `file_upload` reported "never delivered" although the part had arrived: look in `window.__chunks` before sending a
+  part twice. The Reel was in Content → Scheduled after a reload. The thumbnail picker stayed a skeleton: auto cover.

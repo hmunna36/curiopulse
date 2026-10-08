@@ -1372,3 +1372,54 @@ def slap_hit(seed=0, edges=False):
     if edges:
         y = filt(y, "lowpass", 250) + filt(y, "highpass", 5200, 4)
     return fade(y / (np.abs(y).max() + 1e-9), 0.0004, 0.02)
+
+
+# ================================================================= time-flies: a party horn, a torn page, a tape measure, a net
+def party_horn(dur=0.42, seed=0, f0=440.0):
+    """a paper party blower: a nasal reed that swoops up and sags, with the paper's rattle (mono). It sits in the
+    speech band: put it in a pause."""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = f0 * (1 + 0.42 * np.sin(np.pi * np.minimum(1, u * 1.25)) ** 0.8 - 0.25 * u ** 3) * (1 + 0.03 * np.sin(2 * np.pi * 27 * ar(n)))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph) / k ** 0.6 for k in range(1, 20))
+    y = svf_bp(src, np.full(n, 1300.0), 0.3) + 0.6 * svf_bp(src, np.full(n, 2900.0), 0.3) + 0.12 * src
+    y = np.tanh(1.8 * y / (np.abs(y).max() + 1e-9))
+    y = y + 0.12 * filt(white(n, seed), "bandpass", [2500, 7000]) * np.sin(np.pi * u)
+    return fade(y * attack_decay(n, 0.02, dur * 0.9), 0.004, 0.05)
+
+
+def page_rip(dur=0.16, seed=0):
+    """a page torn off a pad: a short rasp that rises (mono)"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    y = svf_bp(white(n, seed), 1800 + 3800 * u, 0.5) * (0.4 + 0.6 * (np.sin(2 * np.pi * 70 * ar(n) * (1 + u)) > 0))
+    return fade(y / (np.abs(y).max() + 1e-9) * np.sin(np.pi * u) ** 0.5, 0.002, 0.02)
+
+
+def ratchet(dur, rate0=18.0, rate1=40.0, seed=0, edges=False, f=2600.0):
+    """a tape measure paying out (or a winch): a run of dry clicks whose rate glides from rate0 to rate1 a second
+    (mono). edges=True keeps only what is above 5.2 kHz, so it can run under a line."""
+    n = int(dur * SR)
+    y = np.zeros(n)
+    r = np.random.default_rng(seed)
+    t, i, m = 0.0, 0, int(0.012 * SR)
+    while t < dur - 0.013:
+        k = int(t * SR)
+        click = (np.sin(2 * np.pi * f * (1 + 0.1 * r.uniform(-1, 1)) * ar(m)) * 0.6 + white(m, seed + i) * 0.8) * expdecay(m, 0.0022)
+        y[k:k + m] += click[: n - k] * (0.7 + 0.3 * r.random())
+        t += 1.0 / (rate0 + (rate1 - rate0) * (t / dur))
+        i += 1
+    if edges:
+        y = filt(y, "highpass", 5200, 4)
+    return y / (np.abs(y).max() + 1e-9)
+
+
+def boing(dur=0.5, f0=150.0, seed=0):
+    """a net or a trampoline taking a weight: a low spring note whose pitch wobbles as it settles (mono)"""
+    n = int(dur * SR)
+    t = ar(n)
+    f = f0 * (1 + 0.55 * np.exp(-t / 0.22) * np.sin(2 * np.pi * 11 * t) + 0.25 * (1 - np.exp(-t / 0.3)))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = (np.sin(ph) + 0.4 * np.sin(2 * ph) + 0.2 * np.sin(3.02 * ph)) * np.exp(-t / (dur * 0.36))
+    return fade(y * np.minimum(1, t / 0.004), 0.001, 0.06)

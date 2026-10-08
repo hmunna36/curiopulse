@@ -268,3 +268,6 @@ the lightning Short's views came from that feed). Frame coordinates:
   (`ffmpeg -i f.png -q:v 3 cover.jpg`).
 - You may render a dedicated cover frame with extra text (a `SC.cover` shot outside the timeline) if no moment
   works on its own.
+  `src/cover.sh` (in the template since 9 Oct 2026) renders `SC.cover` from a one-shot copy of the timeline into
+  `cover.jpg`; give the shot its light in `setLights({cover: ...})`. If it hangs (it did once, straight after a full
+  render), stop it and run it again by itself.

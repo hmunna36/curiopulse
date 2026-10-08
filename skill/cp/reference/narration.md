@@ -147,6 +147,13 @@ so its caption and cut land late. `T.first_loud(T.block(id)["start"])` (timeline
 word's start there in make_timeline.py when the alignment is more than ~0.1 s later (not after `[chuckles]`/`[sighs]`,
 which make a real sound first). voice.py already stops a word from ending after its own take.
 
+Check the answer line and every reveal in the speech band too (time-flies, 9 Oct 2026): `$PYTHON qc_inband.py ../.work`
+lists the words that sit more than 7 dB under the narration's median between 300 Hz and 4 kHz. Jessica's deadpan
+sentence endings drop into her chest: "…in new memories." read −18…−23 dB full band and −33…−35 dB in that band, where a
+phone's speaker lives, and no meter that looks at the whole band shows it. A flagged word with a tiny window ("You",
+"So", a drawn-out first word) is the alignment, not the voice. For a real one: audition seeds and pick the take whose
+last words hold up, and stop the score under the phrase.
+
 Retake a block when:
 - whisper mishears it;
 - the energy is flat where the story peaks;
