@@ -34,8 +34,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 9 Oct 2026 11:30 IST |
-| Instagram Reels | (after scheduling) | 10 Oct 2026 06:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/iGJlhUoxFhw | 9 Oct 2026 11:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | @curio_pulse_tv (scheduled in Meta Business Suite) | 10 Oct 2026 06:30 IST (automatic cover: the thumbnail picker never loaded) |
 
 **Title:** Why Do Mosquitoes Bite YOU More? 🦟
 
