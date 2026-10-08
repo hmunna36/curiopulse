@@ -29,7 +29,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | What Happens When You Crack Your Knuckles? | 33 s | [`videos/knuckle-cracking`](videos/knuckle-cracking) | [8 Oct 2026](https://youtube.com/shorts/WAcdN_jjI-8) |
 | Why Do Mosquitoes Bite You More? | 48 s | [`videos/mosquito-bites`](videos/mosquito-bites) | [9 Oct 2026](https://youtube.com/shorts/iGJlhUoxFhw) |
 | Why Does Time Fly as You Get Older? | 34 s | [`videos/time-flies`](videos/time-flies) | [9 Oct 2026](https://youtube.com/shorts/VLiKEQwxHqk) |
-| How Do Fireflies Glow? | 46 s | [`videos/fireflies-glow`](videos/fireflies-glow) | 10 Oct 2026 (to be scheduled) |
+| How Do Fireflies Glow? | 46 s | [`videos/fireflies-glow`](videos/fireflies-glow) | [10 Oct 2026](https://youtube.com/shorts/9cwzb7rjmR8) |
 
 Each folder has:
 - the finished MP4;

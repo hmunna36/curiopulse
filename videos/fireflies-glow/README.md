@@ -37,8 +37,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | 10 Oct 2026, 11:30 IST |
-| Instagram Reels | @curio_pulse_tv | 11 Oct 2026, 06:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/9cwzb7rjmR8 | 10 Oct 2026, 11:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | @curio_pulse_tv | 11 Oct 2026, 06:30 IST (scheduled in Meta Business Suite; automatic cover, see below) |
 
 **Title:** How Do Fireflies GLOW? ✨
 
@@ -74,6 +74,9 @@ Did YOU ever catch fireflies in a jar? 👇
 25.47 s = 55 %; the pill is up from 25.17 s to 27.73 s, and the lights of the meadow go out under it)
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): his face lit from the
 jar, the firefly in it, "HOW DO FIREFLIES GLOW?".
+It is the YouTube thumbnail: set through the API, and uploaded again in Studio, whose own slot for the Short showed an
+automatic frame after processing. Business Suite's thumbnail picker did not load when the Reel was scheduled, so the
+Reel has an automatic cover; it can be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 

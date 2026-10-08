@@ -39,18 +39,28 @@
   "cover": "cover.jpg",
   "captions": "fireflies-glow.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-10T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "9cwzb7rjmR8",
+    "url": "https://youtube.com/shorts/9cwzb7rjmR8",
+    "uploaded": "2026-10-08T22:01:50.637Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "studioThumbnail": "After processing, Studio's own Thumbnail slot showed an automatic frame (checked in Studio on 9 Oct 2026, about 03:40 IST); cover.jpg was uploaded there through Chrome and saved (the slot and the video's preview show it)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-11T06:30:00+05:30",
     "caption": "You catch a firefly in a jar... and your whole hand glows ✨\nIt's a living glow stick: two chemicals in its tail meet oxygen and make cold light. The blinking is a code... and some females fake it to catch dinner. 🍽️\nFollow @curio_pulse_tv for the next one: why we dream 🔔\n#science #fireflies #nature #bioluminescence #funfacts #reels ",
     "coverTime": 3.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-11 06:30 IST",
+    "coverSet": false,
+    "note": "Scheduled in Meta Business Suite through Chrome on 9 Oct 2026; the fields read 11 October 2026, 06:30 (24-hour clock, so the morning) before Schedule; verified in Content > Scheduled after a reload (11 October 06:30, Public, processing). Meta's check found no copyright issues. The thumbnail picker never loaded (the Chrome window was hidden), so the cover is an automatic frame: change it to cover.jpg in the Instagram app after it goes live."
   }
 }
