@@ -18,6 +18,7 @@ Phrases are matched on normalized words (lowercase, punctuation stripped), so "T
 the words "That's", "a", "hypnic." in the narration.
 """
 import json
+import os
 import re
 
 import numpy as np
@@ -38,6 +39,17 @@ def norm(w):
 def fr(t):
     """snap a time to the frame grid"""
     return round(t * FPS) / FPS
+
+
+def video_look(work):
+    """The picture's look: 'cine' (cinematic lighting, the house look since 8 Oct 2026; web/look.js) unless the
+    video's publish.json says "look": "classic" (the picture as it was before). render.js falls back to classic by
+    itself when the graphics chip is not available, and says so."""
+    try:
+        look = json.load(open(os.path.join(os.path.dirname(os.path.abspath(work)), "publish.json"))).get("look", "cine")
+    except (OSError, ValueError):
+        look = "cine"
+    return look if look in ("cine", "classic") else "cine"
 
 
 class Timeline:
@@ -164,7 +176,7 @@ class Timeline:
         voice = np.pad(self.audio, (0, max(0, n - len(self.audio))))[:n]
         sf.write(f"{self.work}/voice.wav", voice, self.sr, subtype="FLOAT")
         tl = {"fps": FPS, "duration": dur, "shots": shots, "captions": caps, "cues": cues, "words": self.words,
-              "events": self.events, **extra}
+              "events": self.events, "look": video_look(self.work), **extra}
         json.dump(tl, open(f"{self.work}/timeline.json", "w"), indent=1)
         for s in shots:
             print(f'{s["id"]:10s} {s["start"]:6.2f} -> {s["end"]:6.2f}  ({s["end"] - s["start"]:.2f}s)')

@@ -127,6 +127,9 @@ Read each reference file when you reach its phase. They are short; don't skip th
    every beat. Worked example: `reference/examples/make_timeline.finger-wrinkles.py`.
 6. **Picture** (`reference/visual.md`, `reference/engine.md`), shot by shot:
    - write the world files and `SC.<shot>` in `src/web/`, and list them in `scene.html`;
+   - the light (visual.md, "The light"; the cinematic look since 8 Oct 2026): `setLights({...})` with the place of
+     every shot, `actor(...)` round every character that is not the hiker, `paint(...)` round faces and labels, every
+     lamp in the glow layer;
    - render stills, tile a contact sheet, Read it, fix;
    - the hook first, then in order;
    - then the cover frame (`cover.jpg`).
@@ -290,7 +293,7 @@ own level, which in a routine run is medium. So:
 - `reference/analytics.md`: the numbers log, what the numbers said on 5 Oct 2026, the length test and how to read it
 - `numbers.md`, `numbers.jsonl`: written by `yt.mjs numbers` on every run (the report and its history); never edit by hand
 - `reference/narration.md`: Jessica, script.txt, voice.py, quota, the listening pass
-- `reference/visual.md`: the look, the subscribe cue, the hero rig, camera grammar, graphics, captions, safe area, the cover
+- `reference/visual.md`: the look, the light (cinematic lighting: `setLights`, `actor`, `paint`), the subscribe cue, the hero rig, camera grammar, graphics, captions, safe area, the cover
 - `reference/engine.md`: files, data flow, writing shots, borrowing world files from past videos, rendering
 - `reference/sound.md`: buses, the sfxkit vocabulary, mix rules, commands
 - `reference/qa.md`: checks while building, the qa.py gate, the ship bar, the loop

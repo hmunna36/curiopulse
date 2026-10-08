@@ -10,14 +10,15 @@
 | `audio.py` | cue-locked sound design + score → `mix.wav` (with `sfxkit.py`, `sfxlib.py`, `mixlib.py`) | yes |
 | `web/scene.html` | loads the engine, then the video's world files, then `scenes.js`, then `main.js` | yes (script list) |
 | `web/lib.js` | canvases (`ctx`, `gctx`, scratch layers), easing `E`, `ramp`, `inv`, `clamp`, `lerp`, noise, camera (`applyCam`, `screenSpace`, `CAM0`), drawing helpers | engine |
+| `web/shapemap.js`, `web/lightstage.js`, `web/look.js` | the cinematic look (8 Oct 2026): the shape map (every opaque shape again, flat, in a colour that is its serial number), the light stage (WebGL2 passes: drawn shadows, dropped shadows, rim, glow spill, the lens), and the switch with the light rig: `LIGHTS`, `setLights`, `flipLight`, `actor`, `paint`, `sunRays` | engine |
 | `web/env.js` | storm sky, clouds, hills, rain, lightning bolts, sparks, smoke (`initEnv`) | engine |
 | `web/character.js` | the hiker rig: `POSES`, `FACES`, `PAL`/`XPAL`, `drawCharacter` | engine |
 | `web/kit.js` | the lightning-era kit: `SC = {}`, `charLayer`, `pill`, `thermo`, the x-ray world (`initScenes`) | engine |
 | `web/fx.js` | shared scene helpers (see visual.md) | engine |
 | `web/scenes.js` (+ more) | this video's worlds, props and `SC.<shot>` functions, and `initScenes2()` | yes |
 | `web/subscribe.js` | the subscribe cue (pill, bell, cursor click, pop-out), mid-video, driven by `cues.sub_in` / `cues.sub_tap` / `cues.sub_out`; `subLift` tells main.js which caption chunks sit at y 1150 | engine |
-| `web/main.js` | the compositor: runs the active shot, bloom, push, blur, grade, VHS, grain, flash, captions | engine |
-| `render.js` | headless Chrome → PNG frames piped into ffmpeg (or to a folder for stills) | engine |
+| `web/main.js` | the compositor: runs the active shot, the light (`lookFrameStart`, `lookScene`, `lookFinal`), bloom, push, blur, grade, VHS, grain, flash, captions | engine |
+| `render.js` | headless Chrome → PNG frames piped into ffmpeg (or to a folder for stills); prints `look: …`, takes `CP_LOOK`, falls back to the classic look without a graphics chip | engine |
 | `make_srt.py`, `qa.py`, `qc_*.py`, `contact_sheet.py` | captions file, the QA gate, review tools | engine |
 
 Engine files are the template's. Improve them in the skill's `template/` when an improvement is general, then copy
@@ -63,6 +64,29 @@ SC.burst = (lt, t, shot) => {              // lt = time in the shot, t = video t
 - `const` and `let` names must be unique across all loaded scripts (a duplicate `const` is a SyntaxError that shows
   up as `[pageerror]`). Function declarations may override earlier ones.
 
+## The light in code (the cinematic look, 8 Oct 2026)
+
+What to write is in visual.md ("The light"). How it works, for when something looks wrong:
+
+- `timeline.json` carries `"look"` (timeline_lib.py reads publish.json; default `cine`). In `classic` the three files
+  do nothing and the picture is the old one, pixel for pixel.
+- **The shape map.** `ctx` and `lctx` are mirrored: each opaque `fill`, `fillRect` and thick `stroke` is drawn again
+  into a hidden canvas in a colour that is its serial number. Left out as paint: shapes under 10 px, lines under
+  14 px, anything see-through, blurred, blended or drawn inside a `clip()`, and whatever sits in `paint(fn)`. A solid
+  image or lettering over mapped shapes becomes one flat thing that is never lit. A later number is in front.
+- **The light stage** reads the picture, the map and the glow layer on the graphics chip. For each pixel it looks for
+  the edge of its own shape: where the neighbour beyond is behind, the shape leans away there (the drawn shadow on
+  the far side, the rim on a character); where it is in front, it drops a shadow. It runs when the hero is about to
+  be drawn (the set: light, pool, glow behind him), when the scene is done (him and the foreground), and after the
+  vignette (the lens).
+- **Where nothing is in shadow the picture is exactly what the scene drew**, so a place the map does not know never
+  shows a seam: the light only adds shadows, a rim and glow.
+- Looks wrong? `CP_LOOK=classic node render.js … "f"` shows the same frame unlit. A shadow ring round an eye: wrap the
+  face in `paint`. A thing lit as if it were what is behind it: it was drawn from a cached image or see-through;
+  draw it with opaque shapes. A line between two parts of one thing: give them the same colour, back to back.
+- If the light stage cannot start, or dies mid-render, render.js makes the picture in the classic look and says so.
+  Tuning lives in `LIGHT` and `LIGHTS` at the top of `look.js`; change the template, not one video.
+
 ## Borrowing from past videos
 
 The repo checkout is blobless and sparse. Fetch one file without checking the whole video out (only that file's
@@ -71,6 +95,10 @@ blob is downloaded):
 ```sh
 git -C ~/Desktop/curiopulse show HEAD:videos/hypnic-jerk/src/web/bedroom.js > src/web/bedroom.js
 ```
+
+World files written before 8 Oct 2026 know nothing of the light. They work as they are (the light is added on top).
+When you borrow one, wrap its characters in `actor(...)` and their faces in `paint(...)`, and take out a hand-painted
+shade stroke where it fights the drawn shadow (visual.md, "The light").
 
 | World file | What's in it |
 |---|---|
@@ -140,6 +168,9 @@ node render.js ../.work/timeline.json ../<slug>-short.mp4 --audio ../.work/mix.w
   marker:
   `(node render.js … > ../.work/render.log 2>&1; echo "EXIT $?" >> ../.work/render.log) &`
 - `[pageerror]` lines mean a scene threw. Fix it: it would repeat on every frame.
+- Every call prints `look: cine (light stage on: …)` or `look: classic …`. A WARNING there means the graphics chip was
+  not available and the picture is in the classic look (visual.md, "The switch"). `CP_LOOK=classic` in front of the
+  command renders one call unlit, for comparing a still.
 - Encoder settings: CRF 17, preset slow, High 4.2, closed GOP 30, bt709 tv range, AAC 256 k. A 64 s film-grain
   Short is ≈ 80 MB. **If a Short would pass 95 MB**, add `-maxrate 9M -bufsize 18M` in render.js. GitHub refuses
   files over 100 MB.

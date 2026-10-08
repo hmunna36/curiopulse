@@ -7,6 +7,13 @@
 
 const cu = () => TLd.cues;
 
+// ---------------------------------------------------------------- the light of each place (reference/visual.md "The light")
+// One line per shot id: a place from LIGHTS (room, lanterns, candle, day, sunset, night, inside, screen, water, diagram),
+// changed where this place needs it ({...LIGHTS.candle, rim: [1, 0.4, 0.3]}); flipLight() when the lamp is on the right.
+// A shot left out gets the house rig (LIGHTS.room). Characters other than the hiker: actor(() => drawThem()); a face,
+// a label or a pattern on something: paint(() => drawIt()); a sun or a bright window: sunRays(x, y) with the camera applied.
+setLights({ hook: LIGHTS.room, explain: LIGHTS.diagram, button: LIGHTS.room });
+
 // ---------------------------------------------------------------- the world(s)
 function roomBg(t) {
   darkBg('#1B2A4A', '#070B18');

@@ -164,8 +164,10 @@ function renderFrame(f) {
   ctx.fillStyle = '#05060F'; ctx.fillRect(0, 0, W, H);
   gctx.setTransform(1, 0, 0, 1, 0, 0); gctx.clearRect(0, 0, W / 2, H / 2);
   gctx.globalAlpha = 1; gctx.globalCompositeOperation = 'source-over';
+  lookFrameStart(f);                 // the cinematic look (look.js): a clean shape map for this frame
   const shot = shotAt(t);
   const post = SC[shot.id](t - shot.start, t, shot) || {};
+  lookScene(f);                      // the scene is drawn: light it, then add the glow layer on top
   composeGlow(post.glow === undefined ? 0.85 : post.glow);
   // digital camera push (graphic shots): post.push = {k, cx, cy}, k = scale factor
   if (post.push && Math.abs(post.push.k - 1) > 1e-4) {
@@ -182,6 +184,7 @@ function renderFrame(f) {
   if (post.glitch) vhs(post.glitch, t, 7);
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.drawImage(VIGNETTE, 0, 0);
+  lookFinal(f);                      // the lens: bloom, halation, grade, fringing (before grain, captions and the subscribe cue)
   if (post.overlay) post.overlay();
   // film grain (the encoder has no noise filter here): one of four noise plates, jittered per frame
   if (post.grain !== 0) {

@@ -14,7 +14,9 @@
     sheet;
   - check the composition, the safe area (put the mask on the stills: "The safe-area mask" below), caption overlap
     and readability;
-  - check for `[pageerror]`;
+  - check for `[pageerror]`, and that render.js printed `look: cine (light stage on: …)`;
+  - check the light (visual.md, "Check on the stills"): shadows fall away from the lamp named in `setLights`, eyes
+    and lettering are clean, nothing is outlined in light, he is the brightest thing;
   - then render the shot's frame range to a short MP4 without audio (`render.js tl.json /tmp/shot.mp4 "A-B"`)
     when the motion matters.
 - **After audio.py:** `qc_audio.py`. Masked words get fixed now, not after the render.
@@ -63,6 +65,7 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 | Subscribe aside | the word "subscribe" of the `sub` block at 50–70 % of the runtime (warns at 40–80 %; fails outside, or when it is missing) · the aside is ≤ 45 characters (warns to 60) |
 | Loudness | −14 ± 0.5 LUFS integrated, true peak ≤ −1.0 dBTP (decoded from the AAC) |
 | Picture | the first frame isn't black · it moves in the first 0.5 s · no frozen stretch over 1.5 s |
+| Look | the MP4 was rendered in the look the timeline asks for (render.js writes `.work/look.txt`); a warning when cine was asked for and it fell back to classic: ship it and say so |
 | Voice | content words: mean speech-band SNR ≥ 12 dB, ≤ 10 % under 6 dB, none under 3 dB (it lists the weak words) |
 | Intelligibility | whisper (base.en) transcript of the final mix vs the script: WER ≤ 8 % (it lists the differing words) |
 | Captions | every word captioned, ≤ 2 lines of ≤ 4 words, none under 0.25 s on screen (warning) |
@@ -92,7 +95,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 4 | **Show, don't tell** | every major statement has its visual; the camera travels to what's named; nothing is a slide |
 | 5 | **Narration** | sounds told, not read (brief: "NOT reading a book"); energy changes per beat; jokes land in the gaps; no mis-said words |
 | 6 | **Comedy** | 2–3 laugh beats (2 in a 30–35 s Short: the answer line and the button); timing comes from the gaps and cuts, not wacky voices |
-| 7 | **Look** | cinematic light and depth; the hero on model and acting; bloom/grain clean; nothing cropped by the safe area |
+| 7 | **Look** | cinematic light and depth: every shot has its place's light (`setLights`), shadows fall away from that lamp, the hero is the brightest thing, other characters are `actor`s, faces are `paint` (no shadow ring round an eye, nothing outlined in light); the hero on model and acting; bloom/grain clean; nothing cropped by the safe area |
 | 7b | **Safe area** | stills checked with the safe-area mask: nothing important under a covered zone (hook words, titles, labels, captions, the face, the key action, the pill); list the `.safe.png` frames in ship-review.md |
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |

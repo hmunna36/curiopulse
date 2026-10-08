@@ -18,6 +18,8 @@ Checks (FAIL blocks the upload; WARN is for the review):
   - the first frame is not black;
   - it moves in the first 0.5 s;
   - there is no frozen stretch over 1.5 s (sampled every 0.25 s).
+- Look (8 Oct 2026): the MP4 was rendered in the look the timeline asks for. render.js writes <work>/look.txt; a
+  warning when the cinematic look was asked for and the render fell back to the classic one (no graphics chip).
 - Voice: speech-band SNR >= 10 dB on all but 3 words (from the stems).
 - Intelligibility: whisper's transcript of the final mix vs the script, word error rate <= 8 %.
 - Captions: every word is captioned, chunks are 1-5 words, and none stays on screen under 0.25 s.
@@ -175,6 +177,22 @@ try:
         safe_note = "Safe-area sheet: skipped (bin/safe-area.py not found)"
 except Exception as e:  # never let the review sheet break the gate
     safe_note = f"Safe-area sheet: skipped ({e})"
+
+# ---------------------------------------------------------------- the look the MP4 was rendered in
+# render.js writes look.txt after every .mp4 render: "cine (light stage on: <chip>)", "classic", or
+# "classic (cine was asked for, but ...)" when the graphics chip was not there and it fell back.
+look_asked = json.load(open(os.path.join(WORK, "timeline.json"))).get("look", "classic")
+try:
+    look_got = open(os.path.join(WORK, "look.txt")).read().strip()
+except OSError:
+    look_got = ""
+if not look_got:
+    check(False, "Look", "no look.txt next to the timeline: render the MP4 with this video's own render.js", warn=True)
+elif look_asked == "cine" and not look_got.startswith("cine"):
+    check(False, "Look", look_got + ". The picture is in the classic look: render again when the chip is back, or ship "
+          "it and say so in the report", warn=True)
+else:
+    check(True, "Look", look_got)
 
 # ---------------------------------------------------------------- voice: per-word speech-band SNR (content words)
 STOP = set("a an the and or but so of to in on at by for with from as is are was were be been it its it's this that "

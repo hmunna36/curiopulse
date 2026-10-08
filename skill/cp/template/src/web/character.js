@@ -112,6 +112,7 @@ function rig(pose) {
 }
 
 function capsuleShaded(c, a, b, w, base, shade, hi, pal) {
+  if (CINE && c.__idMap && !pal.xray) { line(c, a[0], a[1], b[0], b[1], w, base); return; }   // cinematic look: one flat limb, lit by the light stage
   line(c, a[0], a[1], b[0], b[1], w, shade);
   const dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1;
   const nx = -dy / L, ny = dx / L; // normal
@@ -140,8 +141,8 @@ function drawHand(c, wr, d, kind, pal, side, t) {
       line(c, hx, hy, hx + Math.cos(ang) * 32, hy + Math.sin(ang) * 32, 7, pal.skin);
     }
   }
-  circle(c, hx, hy, 21, pal.skinSh);
-  circle(c, hx - 2, hy - 2, 18, pal.skin);
+  if (CINE && c.__idMap && !pal.xray) circle(c, hx, hy, 21, pal.skin);
+  else { circle(c, hx, hy, 21, pal.skinSh); circle(c, hx - 2, hy - 2, 18, pal.skin); }
   if (pal.outline) { c.beginPath(); c.arc(hx, hy, 21, 0, 7); c.lineWidth = 3; c.strokeStyle = pal.outline; c.stroke(); }
   if (kind === 'thumb') { // thumbs-up: thumb sticks straight up
     rrect(c, hx - 7, hy - 44, 15, 34, 7); c.fillStyle = pal.skinSh; c.fill();
@@ -236,7 +237,7 @@ function drawHead(c, r, face, st, pal, t) {
       ellipse(c, 28, -18, 14, 8, `rgba(35,28,40,${0.35 * so})`, -0.4);
       ellipse(c, 10, 40, 10, 6, `rgba(35,28,40,${0.3 * so})`);
     }
-    drawFace(c, face, pal);
+    paint(() => drawFace(c, face, pal));   // a face is paint on the head: it has no edge and drops no shadow
   }
   c.restore();
 }
@@ -330,6 +331,10 @@ function drawFace(c, f, pal) {
 // Draw the whole character into context c (already in world transform).
 // st: {x, y, s, pose, face, frizz, soot, shoeMissingL, headDX, headDY, headRot, xray, seed}
 function drawCharacter(c, st, t, pal = PAL) {
+  const lk = lookHeroBegin(c, st);   // the cinematic look: the set gets its light before he is drawn on it; his shapes count as a character
+  try { return drawCharacterRig(c, st, t, pal); } finally { lookHeroEnd(lk); }
+}
+function drawCharacterRig(c, st, t, pal = PAL) {
   const pose = st.pose, face = st.face;
   const r = rig(pose);
   c.save(); c.translate(st.x, st.y); c.scale(st.s, st.s);

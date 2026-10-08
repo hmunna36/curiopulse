@@ -3,6 +3,7 @@
   "file": "__SLUG__-short.mp4",
   "title": "",
   "description": "",
+  "look": "cine",
   "length": {"arm": "standard", "note": "new-short.sh replaces this object with the one `yt.mjs next-slot` prints; qa.py reads the arm"},
   "pinnedComment": "Next up: <teaser from topics.md> Subscribe so you do not miss it! (suggestion for the user to pin; never posted by the pipeline)",
   "tags": [],
