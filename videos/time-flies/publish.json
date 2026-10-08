@@ -37,18 +37,28 @@
   "cover": "cover.jpg",
   "captions": "time-flies.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-09T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "VLiKEQwxHqk",
+    "url": "https://youtube.com/shorts/VLiKEQwxHqk",
+    "uploaded": "2026-10-08T19:55:18.315Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "studioThumbnail": "cover.jpg shows in Studio's own Thumbnail slot straight from the API (checked in Studio on 9 Oct 2026, 01:30 IST): no second upload needed"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-10T18:30:00+05:30",
     "caption": "You blow out your candles... and it's already your birthday again 🎂\nYour brain measures time in new memories: fewer firsts, shorter years (that's the leading idea). In one small study, people dropped off a tower remembered their own fall as 36% longer. 🧠\nFollow @curio_pulse_tv for the next one: how fireflies glow 🔔\n#science #brain #psychology #funfacts #reels ",
     "coverTime": 2.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-10-10 18:30 IST",
+    "coverSet": false,
+    "note": "Scheduled in Meta Business Suite through Chrome on 9 Oct 2026; the fields read 10 October 2026, 18:30 (24-hour clock) before Schedule; verified in Content > Scheduled after a reload (10 October 18:30, Public, processing). Meta's check found no copyright issues. The thumbnail picker never loaded (the Chrome window was hidden), so the cover is an automatic frame: change it to cover.jpg in the Instagram app after it goes live."
   }
 }

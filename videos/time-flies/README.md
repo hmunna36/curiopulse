@@ -33,8 +33,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | 9 Oct 2026, 23:30 IST |
-| Instagram Reels | @curio_pulse_tv | 10 Oct 2026, 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/VLiKEQwxHqk | 9 Oct 2026, 23:30 IST (scheduled; thumbnail and captions set) |
+| Instagram Reels | @curio_pulse_tv | 10 Oct 2026, 18:30 IST (scheduled in Meta Business Suite; automatic cover, see below) |
 
 **Title:** Why Does Time FLY as You Get Older? ⏳
 
@@ -70,6 +70,9 @@ What was the longest summer of YOUR life? 👇
 20.09 s = 59 %; the pill is up from 19.79 s to 22.52 s)
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): his face, hands up,
 over three cakes in a row (29, 30, 31), "TIME FLIES?!".
+It is the YouTube thumbnail: set through the API, and Studio's own slot for the Short shows it. Business Suite's
+thumbnail picker did not load when the Reel was scheduled, so the Reel has an automatic cover; it can be changed to this
+file in the Instagram app once the Reel is live.
 
 ## Story and shots
 
