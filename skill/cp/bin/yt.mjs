@@ -158,6 +158,13 @@ async function api(method, url, {json, body, headers = {}, ok = [200]} = {}) {
     });
     if (ok.includes(r.status)) return r;
     const text = await r.text();
+    if (r.status === 401 && attempt < 3) {
+      // a token issued a moment ago is now and then refused once (9 Oct 2026: six of some 25 calls in one night, each
+      // fine on the next try). Get a new one and try again; a revoked sign-in still fails, at the refresh or here.
+      cached = null;
+      await new Promise((res) => setTimeout(res, 1500 * attempt));
+      continue;
+    }
     if ((r.status >= 500 || r.status === 429) && attempt < 5) {
       await new Promise((res) => setTimeout(res, 2000 * attempt * attempt));
       continue;

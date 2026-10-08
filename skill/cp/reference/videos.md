@@ -711,8 +711,10 @@ here for every new Short, with its links.
   `build.sh` as the final render: `timeline.json`, `mix.wav` and the SRT byte-identical, the same qa.py numbers.
 - `cover.sh` hung once (a headless Chrome that never drew, 7 minutes, straight after `build.sh` in the same background
   chain): kill it and run it again by itself; it took 2 s. Don't chain `qa.py` behind it without a time limit.
-- `yt.mjs` answered 401 on the first call of a batch four times this night (`numbers`, `whoami`, `upcoming`, the dry
-  run) and worked on the next call each time; the upload itself went through. Retry once before calling the sign-in broken.
+- `yt.mjs` answered 401 ("invalid authentication credentials") six times in some 25 calls this night (`numbers`,
+  `whoami`, `upcoming`, the dry run), each time with a token issued a moment before, and worked on the next call; the
+  upload itself went through. `api()` in yt.mjs now drops the token and tries again, twice, on a 401. A sign-in that
+  is really gone still fails (at the refresh, or after the retries): only then is it the blocker the routine means.
 - Studio's thumbnail slot showed cover.jpg straight from the API (no second upload). Business Suite (window hidden):
   buttons by text + `.click()`, the caption as a synthetic `paste`, a coordinate click on the date field and the day by
   its exact `aria-label`, 18 and 30 typed into the spinbuttons by ref, then Tab (the poll switch stayed off); the first

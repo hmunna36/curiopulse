@@ -252,6 +252,7 @@ YouTube has hypnic-jerk on 30 Sep and finger-wrinkles on 1 Oct at 23:30 IST. So 
 | Problem | Fix |
 |---|---|
 | `yt: token refresh failed … invalid_grant` | Access was revoked; `yt.mjs auth` again (the user clicks Allow) |
+| `yt: … → 401 Request had invalid authentication credentials` once, then fine | A freshly issued token refused once (seen 9 Oct 2026). yt.mjs retries it twice by itself since then; if it still fails three times running, treat it as the sign-in and say so |
 | `quotaExceeded` | The Google project's 10k units a day are shared with the va skill (an upload is ≈1,600). Upload after midnight Pacific |
 | Business Suite asks for a password | Stop: the user logs in. Never type it |
 | The SHA-256 in the page differs from the sheet | A part is missing or doubled. Rebuild the collector and upload the parts again |
