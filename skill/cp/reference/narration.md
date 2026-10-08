@@ -154,6 +154,11 @@ phone's speaker lives, and no meter that looks at the whole band shows it. A fla
 "So", a drawn-out first word) is the alignment, not the voice. For a real one: audition seeds and pick the take whose
 last words hold up, and stop the score under the phrase.
 
+A `[deadpan]` tag makes it worse (fireflies-glow, 9 Oct 2026): "…all night." read -33 dB in that band on four tagged
+takes and -25 dB on an untagged one. For a last line that is dry on paper, try it without the tag first. Some words stay
+faint on every take ("heat.", "him.": a first formant under 300 Hz, an unstressed ending): pick the take by that word,
+keep the score out under it, and stop re-rolling.
+
 Retake a block when:
 - whisper mishears it;
 - the energy is flat where the story peaks;

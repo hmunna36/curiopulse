@@ -1423,3 +1423,27 @@ def boing(dur=0.5, f0=150.0, seed=0):
     ph = 2 * np.pi * np.cumsum(f) / SR
     y = (np.sin(ph) + 0.4 * np.sin(2 * ph) + 0.2 * np.sin(3.02 * ph)) * np.exp(-t / (dur * 0.36))
     return fade(y * np.minimum(1, t / 0.004), 0.001, 0.06)
+
+
+# ================================================================= glass + a small lamp (fireflies-glow)
+def glass_tink(seed=0, f=2900.0, dur=0.16):
+    """something small and hard on glass: a fork on a jar, a lid on its rim (short, bright, inharmonic)"""
+    n = int(dur * SR)
+    t = ar(n)
+    r = np.random.default_rng(seed)
+    y = np.zeros(n)
+    for ratio, amp, tau in ((1.0, 1.0, 0.045), (2.76, 0.55, 0.03), (5.4, 0.3, 0.018), (8.93, 0.16, 0.01)):
+        y += amp * np.sin(2 * np.pi * f * ratio * (1 + 0.004 * r.standard_normal()) * t) * np.exp(-t / tau)
+    y += 0.4 * filt(white(n, seed + 5), "highpass", 6000) * expdecay(n, 0.003)
+    return fade(y / 1.6, 0.0005, 0.02)
+
+
+def lamp_pip(f=1760.0, dur=0.1, seed=0, rise=0.06):
+    """a small round pip, as a lamp comes on (a firefly's flash, an indicator): a sine that chirps up a little and
+    dies away, with a breath of an octave over it. It lives in the speech band: play it in a pause."""
+    n = int(dur * SR)
+    t = ar(n)
+    fr = f * (1 + rise * np.clip(t / 0.03, 0, 1))
+    ph = 2 * np.pi * np.cumsum(fr) / SR
+    y = (np.sin(ph) + 0.22 * np.sin(2 * ph)) * attack_decay(n, 0.004, dur * 0.45)
+    return fade(y / 1.22, 0.002, 0.02)

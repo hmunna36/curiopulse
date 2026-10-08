@@ -40,6 +40,7 @@ sfx.add(signal, t, gain, pan)      # mono is panned; (2, n) stereo is added as-i
 | Knuckles (knuckle-cracking) | `knuckle_crack(seed, n, spread, f, body, edges)` (n dry pops in quick succession: a click, a hollow pok and a small thud each; n=1 one joint, n=6 a whole hand; `edges=True` keeps only what is under 250 Hz and above 5.2 kHz, so it can sit on a word) |
 | Mosquitoes (mosquito-bites) | `mosquito_whine(dur, seed, f0, bend, edges, swell)` (a thin nasal whine near 600 Hz with a wing-beat flutter; `bend` glides it up or down; it lives in the speech band, so the full sound is for pauses and `edges=True` (only above 5.2 kHz) for under words), `slap_hit(seed, edges)` (an open hand on skin: a dry crack over a thud, 0.12 s) |
 | A party, an office, a tape, a net (time-flies) | `party_horn(dur, seed, f0)` (a paper party blower: it swoops up and sags; speech band, so in a pause), `page_rip(dur, seed)` (a page torn off a pad), `ratchet(dur, rate0, rate1, seed, edges)` (a tape measure paying out, a winch, a freewheel: dry clicks whose rate glides; `edges=True` keeps only what is above 5.2 kHz and runs under a line), `boing(dur, f0)` (a net or a trampoline taking a weight) |
+| A lamp, a jar (fireflies-glow) | `lamp_pip(f, dur, seed, rise)` (a small round pip as a lamp comes on: a firefly's flash, an indicator; speech band, so in a pause), `glass_tink(seed, f, dur)` (something small and hard on glass: a fork on a jar, a lid on its rim) |
 | Score | `groove(mus, t0, t1, bpm, chords, gain, seed, kick_on, snaps, arp, bass, padv, half, cutoff, sixteen)`, `drone(mus, t0, t1, midi_notes, cutoff, gain)`, `crash(mus, t)`, `bwomp(mus, t)` (comedic low blat) |
 
 New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's copy), not only into one audio.py.
@@ -66,6 +67,10 @@ New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's
 - **A tune is a gag, not score** (time-flies, 9 Oct 2026). A melody the viewer knows (a music box, a jingle) goes on the
   `sfx` bus, its notes in pauses. On the music bus it was 10 dB louder than any groove, so `master()`'s normalising
   pushed every groove down to −39…−46 dB, and its notes under the last line put both words under 4 dB.
+- **Say it on the word, do it in the pause** (fireflies-glow, 9 Oct 2026). When the thing the line names makes a sound
+  that lives in the speech band (a flash's pip, a bell), the picture and the sound happen together in the pause AFTER
+  the word, not on it: "he flashes," pip pip. A sound in a 0.2-0.3 s pause must end 0.1 s before the next word, its
+  tail included; and a groove starts after the first word of its line.
 - **Keep the voice ≥ 12 dB** above everything in the speech band (qa.py measures content words):
   - turn down the cue that masks a word;
   - move a hit off the word;

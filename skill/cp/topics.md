@@ -9,7 +9,6 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Queue
 
-- [ ] How do fireflies glow? — a summer night; luciferin + luciferase + oxygen, almost no heat (cold light); they flash in code
 - [ ] Why do we dream? — he dreams of the exam in pajamas; REM sleep and competing theories (memory, emotions, threat rehearsal), hedged; calls back to hypnic-jerk
 - [ ] Why do cats purr? — a cat on his chest; the larynx muscles buzz 25–150 times a second, and maybe healing frequencies (hedged)
 - [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
@@ -25,6 +24,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 - [ ] Why do feet stink? — he yanks off a boot after a long hike and the campsite clears; skin bacteria feast on sweat and dead skin and release a cheesy acid (isovaleric acid); their cousins ripen Limburger cheese. The "mosquitoes love that cheese like feet" fact was used in mosquito-bites (9 Oct 2026): find another bonus fact; no "250,000 sweat glands" figure
 
 ## Done
+- [x] How Do Fireflies GLOW? — fireflies-glow — YouTube https://youtube.com/shorts/9cwzb7rjmR8 10 Oct 2026 11:30 IST (standard arm, 46.1 s); Instagram 11 Oct 2026 06:30 IST (Business Suite)
 - [x] Why Does Time FLY as You Get Older? — time-flies — YouTube https://youtube.com/shorts/VLiKEQwxHqk 9 Oct 2026 23:30 IST (short arm, 34.0 s); Instagram 10 Oct 2026 18:30 IST (Business Suite)
 - [x] Why Do Mosquitoes Bite YOU More? — mosquito-bites — YouTube https://youtube.com/shorts/iGJlhUoxFhw 9 Oct 2026 11:30 IST (standard arm, 47.9 s); Instagram 10 Oct 2026 06:30 IST (Business Suite)
 - [x] What Happens When You CRACK Your Knuckles? — knuckle-cracking — YouTube https://youtube.com/shorts/WAcdN_jjI-8 8 Oct 2026 23:30 IST (short arm, 33.4 s); Instagram 9 Oct 2026 18:30 IST (Business Suite)

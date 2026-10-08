@@ -22,6 +22,7 @@
 | `knuckle-cracking`: "What Happens When You CRACK Your Knuckles? 💥" | 33 s (short arm) | https://youtube.com/shorts/WAcdN_jjI-8 · 8 Oct 2026 23:30 IST | Business Suite, 9 Oct 2026 18:30 IST (auto cover: the window was hidden) |
 | `mosquito-bites`: "Why Do Mosquitoes Bite YOU More? 🦟" | 48 s (standard arm) | https://youtube.com/shorts/iGJlhUoxFhw · 9 Oct 2026 11:30 IST | Business Suite, 10 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 | `time-flies`: "Why Does Time FLY as You Get Older? ⏳" | 34 s (short arm; the first Short in the cinematic look) | https://youtube.com/shorts/VLiKEQwxHqk · 9 Oct 2026 23:30 IST | Business Suite, 10 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
+| `fireflies-glow`: "How Do Fireflies GLOW? ✨" | 46 s (standard arm) | https://youtube.com/shorts/9cwzb7rjmR8 · 10 Oct 2026 11:30 IST | Business Suite, 11 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -720,3 +721,70 @@ here for every new Short, with its links.
   its exact `aria-label`, 18 and 30 typed into the spinbuttons by ref, then Tab (the poll switch stayed off); the first
   `file_upload` reported "never delivered" although the part had arrived: look in `window.__chunks` before sending a
   part twice. The Reel was in Content → Scheduled after a reload. The thumbnail picker stayed a skeleton: auto cover.
+
+**fireflies-glow** (9 Oct 2026, the second Short of the day; standard arm; 104 words → 46.10 s; the second Short in the cinematic look):
+- New worlds: `meadow.js` (a summer night painted once: stars, a moon on the right, a line of trees, mist, far grass;
+  `initMeadow`, `mdwBack(cam, t, {soft, far, glow, keep})` draws it sharp or out of focus with far fireflies that blink on
+  their own clocks; `mdwGrass` (a band of blades along a base line), `mdwBlade` (one tall blade to hold on to), `mdwLeaf`
+  (a broad leaf as a stage)), `firefly.js` (the firefly as a character `ffBug(x, y, s, t, o)`: front view, its lamp
+  hanging under it, wings beating or wing cases shut, 12 faces (`FF_FACES`: calm happy love shock worried smug meh dazed
+  evil chew sweat sweet), a bow tie, lashes, a napkin, a second species (`kind: 1`), `cook` (toasted), `noLamp`, arms to
+  targets; `ffPt`; a jumping spider `ffSpider` (hungry / lick / yuck / scared, `sick` turns it green, a walk); the jar
+  `ffJarBack` / `ffJarFront` / `ffLid`; a glow stick `ffStick` (bend, a vial that breaks, `lit`, wings and a face); a
+  light bulb for a tail `ffBulb`, heat or stink lines `ffHeat`, a thermometer `ffThermo`, a flame in a badge that gets
+  crossed out `ffNoFlame`, a flash pattern written on a strip `ffStrip(x, y, w, marks, beats, play, col)`, a paper mask
+  on a stick `ffMask`, `ffFork`, `ffKnife`, `ffFlowers`, a comic burst `ffBurst`), `lantern.js` (inside the tail:
+  `lanSection(t, o)`: the lamp as a chamber, fuel as hexagons docked in enzymes that are mouths, an air pipe with a tap,
+  oxygen as pairs of beads that queue down the pipe (`adv`), a spark and a ring for each that lands, three labels, the
+  bug in a round window; `view: {s, x, y}` draws the section larger or closer while labels and window stay put). In its
+  scenes: `jarState(tt)` / `jarCam(tt)` / `jarDraw(tt, t)` (the hook and the button as one function of time, valid at
+  negative time), `leafState(t)` (what she is up to, read by five shots), `pulseOf`, `bumpOf`, `eyesInDark`.
+- New sfxkit atoms (template too): `lamp_pip(f, dur)` (a small round pip as a lamp comes on: a firefly's flash),
+  `glass_tink(seed, f, dur)` (a fork on a jar, a lid on its rim). `qc_gags.py` is in its src.
+- **The first render passed the gate (18/18) and all but two items of the ship bar**, because the checks ran before it: the
+  narration through `qc_inband.py` and three audition rounds, the mix through three passes of `qc_audio.py` and
+  `qc_gags.py`, the picture through three sweeps of stills (every 0.5 s) and the safe-area sheet. Two rounds in all.
+- **The rig's head is about 131 units from hair to chin** (measured on a still: 330 px at zoom 2.52), not the 158 the
+  ellipse and the quiff suggest. For a 350 px head the zoom times his scale has to be 2.7 or more.
+- **A prop under his chin, in 9:16:** the jar is 0.66 of its drawn size, its lid just under his chin, one hand on its
+  side and one on the lid, his head centred at y 580 and the captions at y 1500 (two lines end at 1604). Bigger, or with
+  the hand under it, the first caption line sat on the jar. A lid held up on frame 0 must not be in front of his mouth.
+- **Say it on the word, do it in the pause.** A flash that has to be heard (`lamp_pip` lives in the speech band) cannot
+  sit on "flashes". The narration names it, and the firefly flashes in the pause after, picture and pip together:
+  "he flashes," pip pip; "she flashes back." pip. The same for the fake reply after "answer.".
+- **A sound in a 0.2-0.3 s pause has to END 0.1 s before the next word**, tail and reverb included: three notes after
+  "glow." rang into "No" (2.4 dB), a bell into "The", two pips into "she". Two notes of 0.17 s, a bell of 0.27 s, pips of
+  0.08 s fixed all three. Start the next groove after the first word of its line, not on it.
+- **A [deadpan] tag sinks the last word.** "…all night." read -33 dB between 300 Hz and 4 kHz on four tagged takes and
+  -25 dB on the untagged one (the line is dry enough without the tag). "heat." and "him." stayed 8-11 dB under the
+  median on nine takes and two wordings: it is the words (a first formant under 300 Hz, an unstressed ending). Pick the
+  take by that word and keep the score out; don't burn takes on it.
+- Whisper heard "Safest date" as "safe as date" on the first take; "It's the safest date" was heard right three times.
+- **A clock that does not divide the runtime jumps at the loop.** The far fireflies blinked on periods of 1.7-4.1 s:
+  three of them popped at the join (blocks of 21-37/255). `whole(w)` in `mdwBack` rounds every angular speed to a whole
+  number of turns in the Short: first frame against last 2.59 → 1.84/255, and only the firefly in the jar differs.
+  The template's fx.js has it as `loopW(w)` from now on: run every ambient clock (a blink, a sway, a hue) on it.
+- **cover.sh's timeline has one shot.** `shotOf('button')` is undefined there, so a state function that reads another
+  shot's start has to cope (`sb ? sb.start : D`). Render the cover once before the last build, not after it.
+- `lanSection` first drew a tap 80 px wide at the left edge of a 1080 px diagram: unreadable. The same section drawn at
+  1.3× round the pipe (`view`), a tap twice the size and OFF / ON in 120 px letters carry the shot.
+- Stink lines and a label in the same place fight: the lines went to her sides.
+- This Mac has no `timeout` command, and the pipeline's ffmpeg has no `select` filter: wait with a loop on a log's EXIT
+  line, and take single frames with `-ss <t> -frames:v 1`.
+- The routine fired at 01:31 IST this night instead of 06:00 (the app started it early; its restart check said NORMAL).
+  The midnight run still held the lock for six minutes: read the rulebooks and do the research while waiting, and take
+  the lock the moment it frees. The 06:04 firing was still on the schedule afterwards.
+- Studio: the Thumbnail slot showed the grey placeholder while the video was processing (don't judge it then) and an
+  automatic frame once it had; cover.jpg went in through the file input, Save from JavaScript, Save back to disabled.
+- Business Suite (window hidden; `open -a` did not bring it back): buttons by text + `.click()` (Create reel, Add video,
+  Next, Next, the Schedule option: the one WITH `aria-pressed`; the final Schedule: the one without); the parts into a
+  collector input made on the composer page, one `file_upload` call each; the hash compared in the page through
+  `.then()`; the caption as a synthetic `paste`; a coordinate click on the date field, then the day by its exact
+  `aria-label` ("Sunday, 11 October 2026"); 06 and 30 typed into the spinbuttons by ref, then Tab (the poll switch
+  stayed off). The Reel was in Content → Scheduled at once and after a reload. The thumbnail picker stayed a skeleton.
+- Voice: about 1,600 characters sent (613 for the script, 990 on eighteen audition takes of three lines; three were
+  installed); the account's balance went down by 924 (102,025 → 101,101 left).
+- Two QA rounds (safe area 7.5 → 9, packaging 7 → 8.5, hook 8 → 8.5, look 8 → 8.5, sound 8 → 8.5), 18/18 each time,
+  4.5-5.3 minutes a render, then `build.sh` twice (the proof, and once more after the loop fix): `timeline.json`,
+  `mix.wav` and the SRT byte-identical each time. Start to finish 2 h 10 min, 6 of them waiting for the lock.
+

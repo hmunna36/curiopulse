@@ -42,6 +42,14 @@ function sectionCam(t, keys) {
   return { x: 540 - fx * sc, y: sy - fy * sc, s: sc };
 }
 
+// an angular speed (rad/s) nudged so that it goes round a whole number of times in the Short. Run anything ambient on
+// it (a blink, a sway, a drifting light): it is then in the same place on the last frame as on the first, and the loop
+// holds (fireflies-glow, 9 Oct 2026: three background lights jumped at the join until their clocks divided the runtime)
+function loopW(w) {
+  const D = window.TL && window.TL.duration > 5 ? window.TL.duration : 0, T2 = Math.PI * 2;
+  return D ? (T2 * Math.max(1, Math.round((w * D) / T2))) / D : w;
+}
+
 // ---------------------------------------------------------------- comedy + emphasis graphics
 
 function shockLines(x, y, r, k, n = 10, col = '#FFFFFF', seed = 1) {
