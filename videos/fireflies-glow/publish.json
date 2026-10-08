@@ -1,0 +1,56 @@
+{
+  "slug": "fireflies-glow",
+  "file": "fireflies-glow-short.mp4",
+  "title": "How Do Fireflies GLOW? ✨",
+  "description": "You catch a firefly in a jar... and your whole hand glows.\n\nA firefly is a living glow stick. In its tail, a chemical called luciferin meets an enzyme (luciferase) and oxygen, and the reaction gives off light instead of heat. That is why it is called cold light: a light bulb's hot filament would cook the beetle. Scientists think it blinks by switching the oxygen to its lamp on and off; exactly how is still being worked out. Subscribe for a new strange question every day.\n\nThe blinking is a code. Each species has its own flash pattern: the males flash it as they fly, and a female of the same species answers from the grass. Some females of another group (Photuris) copy that answer, and eat the male who flies down. The meal has a point: his body carries bitter chemicals that spiders avoid, and she cannot make them herself. One more thing: the old line that a firefly turns nearly all of its energy into light is out of date. A 2008 measurement found about 4 in 10 of the reactions give off light. Still far cooler than any bulb. And if you do catch one, let it go again soon.\n\nNext up: why do we dream?\n\n#Shorts #Science #Fireflies #Nature #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "standard",
+    "min": 45,
+    "max": 50,
+    "test": "length-2026-10",
+    "slot": "2026-10-10T11:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why do we dream? 💤 Subscribe so you don't miss it!\nDid YOU ever catch fireflies in a jar? 👇",
+  "tags": [
+    "how do fireflies glow",
+    "why do fireflies glow",
+    "how do fireflies light up",
+    "fireflies",
+    "firefly",
+    "lightning bugs",
+    "bioluminescence",
+    "luciferin",
+    "luciferase",
+    "cold light",
+    "glow stick",
+    "firefly flash code",
+    "femme fatale firefly",
+    "insects",
+    "beetles",
+    "nature",
+    "science",
+    "fun facts",
+    "explained",
+    "animation",
+    "shorts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "fireflies-glow.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You catch a firefly in a jar... and your whole hand glows ✨\nIt's a living glow stick: two chemicals in its tail meet oxygen and make cold light. The blinking is a code... and some females fake it to catch dinner. 🍽️\nFollow @curio_pulse_tv for the next one: why we dream 🔔\n#science #fireflies #nature #bioluminescence #funfacts #reels ",
+    "coverTime": 3.4,
+    "shareToFeed": true
+  }
+}

@@ -1,0 +1,52 @@
+# Narration for "How Do Fireflies GLOW? ✨"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it.
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - `sub` (this id is required): the subscribe aside, <= 45 characters, right after the payoff, so that the word
+#   "subscribe" lands at 50-70 % of the runtime; it promises what is still coming IN THIS Short, never another video.
+# - the last block is the button; the Short ends on it and loops. No ask, no "Next up", no outro at the end.
+# - words in all, `sub` included: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+#   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
+
+## hook gap=0.10 tempo=1.00
+[excited] You catch a firefly in a jar and your whole hand glows!
+
+## answer gap=0.50 tighten=0.70 tempo=1.00
+[deadpan] That's a glow stick... with wings.
+
+## trick gap=0.30 tempo=1.04
+Same trick. Two chemicals in its tail meet oxygen... and glow.
+
+## cold gap=0.30 tighten=0.40 tempo=1.03
+No flame. Almost no heat. A light bulb would cook him.
+
+## blink gap=0.40 tempo=1.04
+[curious] The blinking? Scientists think he cuts the oxygen.
+
+## payoff gap=0.30 tempo=1.03
+And it's a code. Every species has its own... he flashes, she flashes back.
+
+## sub gap=0.35 tighten=0 tempo=1.00
+[mischievously] Subscribe... it gets dark.
+
+## fake gap=0.35 tempo=1.03
+Because some females fake another species' answer. He flies down for a date...
+
+## eat gap=0.20 tighten=0 tempo=1.00
+[deadpan] and she eats him.
+
+## taste gap=0.45 tighten=0.45 tempo=1.02
+Why? He tastes awful to spiders. Now... so does she.
+
+## button gap=0.50 tighten=0 tempo=1.00
+So that jar? It's the safest date he's had all night.
