@@ -20,6 +20,7 @@
 | `spicy-food`: "Why Does Spicy Food BURN? 🌶️" | 33 s (short arm) | https://youtube.com/shorts/R5rsvm9IN8M · 7 Oct 2026 23:30 IST | Business Suite, 8 Oct 2026 18:30 IST (auto cover: the window was hidden) |
 | `side-stitch`: "Why Do You Get a STITCH When You Run? 🏃" | 49 s (standard arm) | https://youtube.com/shorts/hUgCuDho7H4 · 8 Oct 2026 11:30 IST | Business Suite, 9 Oct 2026 06:30 IST (auto cover: not tried) |
 | `knuckle-cracking`: "What Happens When You CRACK Your Knuckles? 💥" | 33 s (short arm) | https://youtube.com/shorts/WAcdN_jjI-8 · 8 Oct 2026 23:30 IST | Business Suite, 9 Oct 2026 18:30 IST (auto cover: the window was hidden) |
+| `mosquito-bites`: "Why Do Mosquitoes Bite YOU More? 🦟" | 48 s (standard arm) | https://youtube.com/shorts/iGJlhUoxFhw · 9 Oct 2026 11:30 IST | Business Suite, 10 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -599,3 +600,55 @@ here for every new Short, with its links.
   in Content → Scheduled after a reload, still processing. The thumbnail picker stayed a skeleton.
 - Two QA rounds (hook 8 → 8.5, look 8 → 8.5, sound 8 → 8.5), 17/17 each time, then `build.sh` as the final render:
   `timeline.json` byte-identical. The whole run took 1 h 40 min.
+
+**mosquito-bites** (8 Oct 2026, the 06:00 second Short; standard arm; 97 words → 47.87 s):
+- New worlds: `mozzie.js` (the mosquito as a character `mozzie` (flying / landed, a belly that fills, faces calm / happy /
+  love / meh / lock / shock, a bib, a knife and fork, a halo), one of a swarm `mozMini`, a cloud `mozSwarm` (half in front
+  of him, half behind), `scentRibbon`, `acidMol` + `acidPlume`, the forearm up close `macroArm` (goosebumps' arm with pores
+  that bead with oil, bite welts, two skin tones) + `marmPt`), `camp.js` (a campsite painted once into a canvas and drawn
+  sharp or soft: `initCamp`, `campBack`, `campFire`; `campChar` (firelight, and the character cut out of the glow layer);
+  `headPt` / `headSpace` / `rigSpace`; the friend in a camp chair `campFriend`), `mlab.js` (`labBack`, the two-tube choice
+  box `olfBox` + `nylonSleeve` + `olfTag`, `faceDisc`, `yearCard`, the scales `labScale`, `cheeseWedge`, `bareFoot`,
+  `macroHand`, `cheeseBoard`). In its scenes: `slapState(tt)` (frame 1, valid at negative time), `drawLanders`,
+  `counterPill`, `comicBurst`, `olfMini`.
+- New sfxkit atoms (template too): `mosquito_whine(dur, seed, f0, bend, edges, swell)`, `slap_hit(seed, edges)`.
+  `qc_gags.py` is in its src.
+- **In 9:16 a "tight" shot still shows his shoes.** With his head 380 px tall (s·zoom 2.7) the frame holds him from hair to
+  feet unless a table hides his legs, so a slap on his forearm read as a full-body shot of a man with a small mosquito.
+  Restaged as a slap on his own cheek at s·zoom 3.1–3.4: the action is ON his face, the mosquito is a clear shape against
+  the dark beside it, and the first render's hook scored 8 without a rework. Put frame 1's action at head height.
+- **The glow layer washed over his face (again), and this time it was the background's.** A string of bulbs at head height
+  bloomed across him in every close-up. Two fixes that now live in `campChar`: after `charLayer`, draw `layerC` into `gctx`
+  with `destination-out` (the character blocks whatever glows behind him), and keep bright things above his head (the
+  bulbs hang at y 560–656; soft bokeh for close-ups is drawn on the main layer only). Worth moving into `charLayer`.
+- **The rig draws the head over the arms:** the slapping hand (`drawHand` in `rigSpace`) and the forearm under his nose
+  (`capsuleShaded` + `drawHand`) are drawn again in the `post`. An arm across the chest wants `ikReach(…, -1)`; `+1` puts
+  the elbow in the middle of his chest. A raised hand (target above the shoulder) wants `+1`.
+- **A hook that ran 4.5 s came down to 3.5 s by losing one capital.** "…your friend has ZERO bites!" lingered on ZERO and
+  on "bites!" (the answer landed at 5.2 s); "…has zero bites!" (same words, seed 11) ran 3.53 s. Four wordings auditioned
+  offline with a small script (`.work/audition/aud.py`: `voice.synth`, then `frame_db` for the spoken length).
+- **`W("not sweet")` found the answer's "not sweet blood"**, 38 s before the button's: the crossed-out SWEET never showed.
+  Anchor a repeated phrase to its own sentence (`W("So you're not sweet", 2)`), and look at every on-screen word in the sweep.
+- **A whine is in the speech band:** the full `mosquito_whine` plays only in pauses (frame 1 before "You", after "bites!",
+  before "dinner", after "away.", after "more."); under words only `edges=True` (above 5.2 kHz) on the bed bus. The
+  first mix had no content word under 10 dB from it.
+- **The duck lets go in a pause and the groove pokes up under the pick-up word** ("and" at −8 dB after "acids...", again
+  after "another..."): `silence(mus, …)` across the gap and the first word after it. The score also stops before "from
+  thirty feet away" (the reveal), which lifted "feet" from 5.7 to over 9.5 dB.
+- v3 stamped "You" at 0.10–0.18 s; she says it from 0.15 s (`first_loud`) until "slap": the word's window is moved after
+  the shots, captions and cues are computed. The frame-1 sound has to be over by then (0.10 s).
+- qa.py's `SPELL` now maps digits to words (whisper wrote "number 10", "30 feet", "100 times"; template too): WER 0.0 %.
+- A ribbon of smell that rises off an arm held under his nose crosses his face: let it rise off the hand, beside the face.
+  A cloud of mosquitoes round his head covers his eyes in a wide shot: gone before the button's stare.
+- Two QA rounds (look 7.5 → 8.5, safe area 7.5 → 8.5, hook 8 → 8.5, sound 8 → 8.5), 17/17 each time, 5.5–6.5 minutes a
+  render, then `build.sh` as the final render: `timeline.json`, `mix.wav` and the SRT byte-identical.
+- The session ended in the middle of the build (the app closed; about 40 minutes lost): everything was on disk (`.work`,
+  the `[~]` line, the lock), and the research agent for the queue refill was resumed with SendMessage. The queue got
+  10 new topics (15 queued).
+- Studio's thumbnail slot showed cover.jpg straight from the API this time (the user checked: "it's proper").
+- Business Suite (window hidden): buttons by text + `.click()` (Create reel, Add video, Next, Next, the Schedule option,
+  the final Schedule: the one with no `aria-pressed`); the caption as a synthetic `paste`; a coordinate click on the date
+  field, then the day by its exact `aria-label`; 06 and 30 typed into the spinbuttons by ref, then Tab (the Tab lands on
+  the poll switch: check it is still off); the hash compared in the page through `.then()`. The Reel was in Content →
+  Scheduled after a reload ("Processing..."). The thumbnail picker stayed a skeleton: auto cover.
+

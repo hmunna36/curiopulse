@@ -9,14 +9,24 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Queue
 
-- [ ] Why do mosquitoes bite some people more? — a camping trip where only he gets eaten; CO2, heat and skin chemistry (carboxylic acids); what doesn't matter
 - [ ] Why does time fly as you get older? — his birthday arrives faster every year; fewer new memories and the proportional theory (hedged)
 - [ ] How do fireflies glow? — a summer night; luciferin + luciferase + oxygen, almost no heat (cold light); they flash in code
 - [ ] Why do we dream? — he dreams of the exam in pajamas; REM sleep and competing theories (memory, emotions, threat rehearsal), hedged; calls back to hypnic-jerk
 - [ ] Why do cats purr? — a cat on his chest; the larynx muscles buzz 25–150 times a second, and maybe healing frequencies (hedged)
 - [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
+- [ ] Why does coffee wake you up? — he gulps his first coffee, eyes half shut; caffeine jams the brain's "I'm tired" docks (adenosine receptors), so the tiredness signal can't land; plants make caffeine as insect poison, yet lace their nectar with it so bees remember the flower (Science 2013). Not "it gives energy": it only masks sleep pressure
+- [ ] Why does pineapple make your mouth tingle? — he bites a dripping pineapple wedge and his tongue prickles; its enzyme (bromelain) snips the protein that guards your mouth, so the acid stings; fresh pineapple stops jelly setting because it digests the gelatin; hedged: needle-shaped crystals may share the blame. Skip the "erased cannery workers' fingerprints" story (unsourced)
+- [ ] Why does asparagus make your pee smell? — he crunches an asparagus spear, then recoils; the body breaks its sulfur acid into smelly gases; about 6 in 10 people surveyed notice no strong smell; hedged: the exact molecules are unconfirmed, and one lab test found only 6 % can't smell it. No exact onset time (never measured)
+- [ ] Why do we have earwax? — he twists a cotton bud in his ear and inspects the haul; the ear canal's skin creeps outward like a conveyor belt, carrying wax, dust and dead skin; one DNA letter decides wet or dry earwax, and dry-wax people rarely get smelly armpits. Say that cotton buds are not for cleaning ears
+- [ ] Why does soda burn your tongue? — he cracks a can and takes a giant gulp, eyes watering; an enzyme on the tongue turns the gas into acid that fires sour and pain sensors; it bites just as hard in a pressure chamber with no bubbles, and climbers on altitude pills lose the tingle. Not "the bubbles popping"
+- [ ] Why do you get a shock from a doorknob? — he reaches for a metal door handle: ZAP; shoes rubbing the floor load you with electrons, dry air traps them, they jump to metal; the tiny spark is thousands of volts; hedged: exactly why rubbing moves charge is still disputed after 2,600 years. No exact voltage figures
+- [ ] Why do you see stars when you rub your eyes? — he grinds his fists into tired eyes: fireworks; pressure makes retina cells fire, and the brain reads any retina signal as light; astronauts see flashes with their eyes shut as cosmic rays cross them (hedged: how is unsettled). Say not to rub hard
+- [ ] Why is one nostril always blocked? — he presses one nostril shut and sniffs: nothing; swelling tissue inflates one side and shrinks the other, swapping every couple of hours; each nostril smells the world slightly differently; hedged: what drives the swap is not fully known, and there is no fixed timetable
+- [ ] Why do pools smell like chlorine? — he pinches his nose and jumps into a pool that reeks; the smell is chlorine that has reacted with pee, sweat and skin (chloramines); by tracking an artificial sweetener, scientists estimated 75 litres of urine in one large public pool (one pool, not the average)
+- [ ] Why do feet stink? — he yanks off a boot after a long hike and the campsite clears; skin bacteria feast on sweat and dead skin and release a cheesy acid (isovaleric acid); their cousins ripen Limburger cheese. The "mosquitoes love that cheese like feet" fact was used in mosquito-bites (9 Oct 2026): find another bonus fact; no "250,000 sweat glands" figure
 
 ## Done
+- [x] Why Do Mosquitoes Bite YOU More? — mosquito-bites — YouTube https://youtube.com/shorts/iGJlhUoxFhw 9 Oct 2026 11:30 IST (standard arm, 47.9 s); Instagram 10 Oct 2026 06:30 IST (Business Suite)
 - [x] What Happens When You CRACK Your Knuckles? — knuckle-cracking — YouTube https://youtube.com/shorts/WAcdN_jjI-8 8 Oct 2026 23:30 IST (short arm, 33.4 s); Instagram 9 Oct 2026 18:30 IST (Business Suite)
 - [x] Why Do You Get a STITCH When You Run? — side-stitch — YouTube https://youtube.com/shorts/hUgCuDho7H4 8 Oct 2026 11:30 IST (standard arm, 49.0 s); Instagram 9 Oct 2026 06:30 IST (Business Suite)
 - [x] Why Does Spicy Food BURN? — spicy-food — YouTube https://youtube.com/shorts/R5rsvm9IN8M 7 Oct 2026 23:30 IST (short arm, 33.1 s); Instagram 8 Oct 2026 18:30 IST (Business Suite)
@@ -35,3 +45,17 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 - [x] What Really Happens When Lightning Hits a Human? — lightning-full — https://youtube.com/shorts/_4eJeFfXYCI · 29 Sep 2026 (made before /cp)
 - [x] Why Does Your Body Jerk When You're Falling Asleep? — hypnic-jerk — https://youtube.com/shorts/osyp3o0A4ZY · 30 Sep 2026 (made before /cp)
 - [x] Why Do Your Fingers Wrinkle in Water? — finger-wrinkles — https://youtube.com/shorts/KPn5s79_a6E · 1 Oct 2026 (made before /cp)
+
+## Sources for the 8 Oct 2026 refill (each Short still does its own research; these are leads)
+
+- coffee: sleepfoundation.org/how-sleep-works/adenosine-and-sleep · Wright et al., Science 2013 (caffeine in nectar and bee memory)
+- pineapple: mcgill.ca/oss (why pineapple makes your mouth tickle)
+- asparagus: PMC5154975 (6,909 people) · PMC3002398 (38 people)
+- earwax: hearinghealthfoundation.org (the ear is self-cleaning) · ABCC11 (Smithsonian Magazine)
+- soda: PMC6538946 (review) · PLOS ONE 10.1371/journal.pone.0071488 (pressure chamber)
+- static: Northwestern Engineering news, Sept 2024 · pa.uky.edu/sciworks (static)
+- eyes: dukeeyecenter.duke.edu (seeing stars) · PMC10919968 (astronauts' light flashes)
+- nostril: PMC5053491 (the nasal cycle) · Sobel et al., Nature 1999
+- pools: cdc.gov/healthy-swimming (chloramines) · Jmaiff Blackstock et al. 2017 (acesulfame in pools)
+- feet: PMC1601985 (Knols) · foot odour and isovaleric acid (Ara et al. 2006)
+

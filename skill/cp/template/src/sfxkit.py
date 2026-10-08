@@ -1337,3 +1337,38 @@ def knuckle_crack(seed=0, n=4, spread=0.08, f=1250.0, body=1.0, edges=False):
     if edges:
         y = filt(y, "lowpass", 250) + filt(y, "highpass", 5200)
     return fade(y / (np.abs(y).max() + 1e-9), 0.0004, 0.01)
+
+
+# ================================================================= mosquitoes (mosquito-bites)
+def mosquito_whine(dur=0.6, seed=0, f0=610.0, bend=0.0, edges=False, swell=True):
+    """a mosquito's whine: a thin nasal tone near 600 Hz with a fast flutter (the wing beat) and a wandering pitch (mono).
+    bend > 0 glides it up over its length (coming at you), < 0 down (flying off). edges=True keeps only what is above
+    5.2 kHz, so it can run under a spoken word (reference/sound.md); the full whine is in the speech band: pauses only."""
+    n = int(dur * SR)
+    t = ar(n)
+    r = np.random.default_rng(seed)
+    drift = 1 + 0.035 * np.sin(2 * np.pi * (2.3 + r.uniform(0, 1.5)) * t + r.uniform(0, 6)) + 0.02 * np.sin(2 * np.pi * 7.1 * t + seed)
+    f = f0 * drift * (1 + bend * (t / max(dur, 1e-6) - 0.5))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = sum(np.sin(k * ph + 0.7 * k) / k ** 0.9 for k in range(1, 15))
+    y = y * (0.72 + 0.28 * np.sin(2 * np.pi * 27 * t + seed))
+    y = filt(filt(y, "highpass", 450), "lowpass", 9000)
+    if edges:
+        y = filt(y, "highpass", 5200, 4)
+    env = np.minimum(1, t / 0.04) * np.minimum(1, (dur - t) / 0.06)
+    if swell:
+        env = env * (0.55 + 0.45 * np.sin(np.pi * t / dur))
+    return fade(y / (np.abs(y).max() + 1e-9) * env, 0.004, 0.02)
+
+
+def slap_hit(seed=0, edges=False):
+    """an open hand on skin: a dry crack over a short thud (mono, 0.12 s). edges=True keeps only what is under 250 Hz
+    and above 5.2 kHz, so it can sit ON a spoken word."""
+    n = int(0.12 * SR)
+    t = ar(n)
+    crack_ = filt(filt(white(n, seed), "highpass", 1100), "lowpass", 9500) * expdecay(n, 0.011)
+    body = np.sin(2 * np.pi * np.cumsum(70 + 150 * np.exp(-t / 0.018)) / SR) * expdecay(n, 0.035)
+    y = 0.9 * crack_ + 0.9 * body
+    if edges:
+        y = filt(y, "lowpass", 250) + filt(y, "highpass", 5200, 4)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.0004, 0.02)

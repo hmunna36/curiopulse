@@ -209,7 +209,11 @@ norm = lambda s: re.sub(r"[^a-z0-9' ]", " ", s.lower().replace("%", " percent"))
 # "chilli" in 70 words would have cost 5.7 % WER for a word it heard every time). Both sides are mapped to one spelling.
 SPELL = {"chili": "chilli", "chilis": "chillies", "chilies": "chillies", "chiles": "chillies", "color": "colour",
          "colors": "colours", "flavor": "flavour", "odor": "odour", "gray": "grey", "fiber": "fibre", "fibers": "fibres",
-         "liter": "litre", "meter": "metre", "meters": "metres", "tumor": "tumour", "mold": "mould"}
+         "liter": "litre", "meter": "metre", "meters": "metres", "tumor": "tumour", "mold": "mould",
+         # whisper writes a spoken number as digits ("number 10", "30 feet", "100 times"): the word was said right
+         "1": "one", "2": "two", "3": "three", "4": "four", "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine",
+         "10": "ten", "11": "eleven", "12": "twelve", "20": "twenty", "30": "thirty", "40": "forty", "50": "fifty",
+         "100": "hundred", "1000": "thousand", "smelier": "smellier"}
 _spell = lambda ws: [SPELL.get(w, w) for w in ws]  # noqa: E731
 ref = _spell(norm(" ".join(w["word"] for w in words)).split())
 whisper = shutil.which("whisper-cli")

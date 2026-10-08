@@ -135,7 +135,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
 8. **Pre-render sweep** (`reference/qa.md`): stills every 1 s across the whole timeline. Fix everything visible now.
    Put the safe-area mask on the hook, title/label, caption and subscribe stills (`bin/safe-area.py overlay`, qa.md):
    nothing important under a covered zone.
-9. **Render** in the background with a log and an EXIT marker (≈8 min), then `make_srt.py`.
+9. **Render** in the background with a log and an EXIT marker (≈8 min), then `make_srt.py`. Wait for the marker
+   inside the turn; never end the turn to wait for it (see "If interrupted": max effort ends with the turn).
 
 ### B. The quality loop (repeat until satisfied)
 
@@ -268,6 +269,17 @@ State exactly what's done and what the user must do (free disk, add a key, re-au
 - the Instagram sheet from `ig.mjs prepare` (route A) or the queue (route B).
 
 cleanup.sh never touches unsaved work, so an interrupted Short's folder stays on the Mac until it's pushed.
+
+**Max effort ends with the turn** (found 8 Oct 2026: 4 of the last 12 routine runs did part of their work at
+medium). The `effort: max` in this skill's frontmatter holds until the turn ends. A turn that starts later in the
+same chat ("continue", a question from the user, a job that reports after the run had paused) runs at the chat's
+own level, which in a routine run is medium. So:
+- never end the turn while a render, an upload or another job of this run is still working; wait for it inside
+  the turn;
+- when a run is continued by a later message, call the Skill tool with skill `max-effort` before any other step. It
+  puts the rest of that turn back at max and starts nothing; then resume as above. In a routine run a typed message
+  brings an automatic reminder (`~/.claude/bin/routine-max-effort.py`, a UserPromptSubmit hook in
+  `~/Desktop/.claude/settings.local.json`); do it without the reminder too.
 
 ## Files
 
