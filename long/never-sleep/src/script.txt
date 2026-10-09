@@ -1,0 +1,131 @@
+# Narration for "What Happens If You NEVER Sleep? (Day by Day)" (long-form: 4:00-5:00, never over 5:15)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there, not in
+# the take. [tags] are v3 performance directions; they are not spoken and never captioned. tighten=0 keeps the
+# take's own pauses (jokes and reveals). tempo: explanations 1.03-1.06, jokes and reveals 1.00.
+# The film: he wants to be the champion of NOT sleeping (his cat is the champion of sleeping) and to get his name
+# into the record book; his own brain is the obstacle; the turn: the record book refuses (nobody is allowed to try),
+# and what happens past the record; he gives up the record and sleeps, with the cat on him, the book as his pillow.
+# Wordless beats: the first microsleep (before `micro`), the coat that turns its head (before `coat`), the silence
+# after "sixty-five" (before `forgot`), the book closing and him lying down (before `bed`), the final image (after
+# `champ`). The clock (HUD, top left) is said out loud at every jump.
+
+## hook gap=0.10 tempo=1.00
+[excited] You chug a whole pot of coffee... so what happens if you never sleep?
+
+## promise gap=0.25 tighten=0.30 tempo=1.04
+Day by day... all the way to day eleven: the record nobody is allowed to try anymore.
+
+## want gap=0.50 tempo=1.03
+His cat sleeps most of the day. So he'll be the champion of NOT sleeping. Eleven days? How hard can it be?
+
+## very gap=0.65 tighten=0 tempo=1.00
+[deadpan] Very.
+
+## h16 gap=0.60 tempo=1.04
+Hour sixteen. Every hour you're awake, a chemical piles up in your brain... and the bigger the pile, the sleepier you feel.
+
+## coffee gap=0.35 tempo=1.04
+Coffee doesn't clear the pile. It plugs the sensors that feel it... like tape over a warning light.
+
+## blind gap=0.55 tighten=0 tempo=1.00
+[deadpan] He's not less tired. He just can't see it.
+
+## h17 gap=0.60 tempo=1.04
+Hour seventeen. In one study, seventeen hours awake hit people like a few drinks... right at the drink-drive limit in a lot of countries.
+
+## toast gap=0.55 tighten=0 tempo=1.00
+[deadpan] He hasn't had a drop. He just buttered his phone.
+
+## h24 gap=0.60 tighten=0.45 tempo=1.03
+Hour twenty-four. The sun comes up... and he feels great? That's a trap. His body clock is ringing the morning bell... but the pile hasn't gone anywhere.
+
+## feel gap=0.40 tempo=1.04
+And his feelings are turned way up. After one sleepless night, the brain's alarm center fired about sixty percent harder at upsetting pictures.
+
+## cereal gap=0.55 tighten=0 tempo=1.00
+He's sobbing at a cereal ad. [deadpan] It's a really nice cereal.
+
+## h30 gap=0.60 tempo=1.03
+Hour thirty. And now it gets spooky. Little patches of his brain start falling asleep... while he's still awake.
+
+## micro gap=2.40 tighten=0 tempo=1.00
+A microsleep. A few seconds, gone. And the scary part? You usually don't notice.
+
+## car gap=0.45 tighten=0 tempo=1.00
+On a couch, that's funny. At the wheel... it's how people crash.
+
+## easy gap=0.70 tighten=0 tempo=1.00
+[mischievously] And that... was the easy part.
+
+## day2 gap=0.80 tempo=1.03
+Day two. He's freezing. He's starving... mostly for donuts. And his brain keeps whispering: just one little nap?
+
+## day3 gap=0.55 tighten=0 tempo=1.02
+Day three. The edges of things start to wobble. The floor breathes. And the coat on the door...
+
+## coat gap=2.30 tighten=0 tempo=1.00
+[whispers] turns its head.
+
+## seeing gap=0.45 tempo=1.04
+Seeing things that aren't there is a classic effect of days without sleep.
+
+## cat gap=0.50 tighten=0 tempo=1.00
+He's fairly sure... the cat just told him to go to bed.
+
+## randy gap=0.65 tempo=1.03
+Could anyone really reach day eleven? Someone did. San Diego, nineteen sixty-four: Randy Gardner, seventeen, for a school science fair.
+
+## watch gap=0.35 tempo=1.04
+A sleep scientist from Stanford came to watch. Within days, Randy was moody, forgetful... and seeing things.
+
+## pinball gap=0.40 tempo=1.03
+To keep him awake, they played pinball all night. And Randy... kept beating the scientist.
+
+## count gap=0.55 tempo=1.02
+Day eleven. They asked him to count down from a hundred, in sevens.
+
+## sevens gap=0.35 tighten=0 tempo=1.00
+A hundred... ninety-three... eighty-six... seventy-nine... seventy-two... sixty-five...
+
+## forgot gap=2.20 tighten=0 tempo=1.00
+He stopped. He'd forgotten what he was doing.
+
+## record gap=0.55 tempo=1.03
+Eleven days and twenty-four minutes. Then he slept for about fourteen hours... and woke up fine.
+
+## refused gap=0.55 tempo=1.03
+So our hero goes to sign the record book... and finds out it stopped letting anyone try. Here's why.
+
+## rats gap=0.60 tempo=1.03
+In the nineteen-eighties, scientists kept rats awake for good. Within weeks, they were dead... and nobody could say exactly why.
+
+## flies gap=0.55 tempo=1.03
+In twenty-twenty, a Harvard lab tried it with fruit flies... and found the damage piling up somewhere nobody expected.
+
+## gut gap=0.45 tighten=0 tempo=1.00
+Not the brain. [gasps] The gut.
+
+## mop gap=0.45 tempo=1.03
+Mop it up with antioxidants... and flies that barely slept lived normal lives.
+
+## for gap=0.60 tempo=1.04
+So what is sleep for? One idea: while you sleep, fluid rinses your brain like a dishwasher. That's in mice... and a newer mouse study found the opposite.
+
+## argue gap=0.40 tighten=0 tempo=1.00
+[chuckles] Scientists are still arguing.
+
+## jelly gap=0.65 tighten=0 tempo=1.00
+But here's the weirdest part. Jellyfish seem to sleep too... and they don't even have a brain.
+
+## older gap=0.45 tempo=1.02
+So sleep may be older than brains... and life has never found a way to skip it.
+
+## bed gap=2.60 tighten=0 tempo=1.00
+So he does the bravest thing a record chaser can do. He goes to bed.
+
+## champ gap=0.70 tighten=0 tempo=1.00
+Turns out the champion of this house... was asleep the whole time.
+
+## sub gap=3.00 tighten=0.55 tempo=1.00
+[chuckles] Next week: what happens when you hold your breath. Subscribe... then breathe.

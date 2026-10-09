@@ -1,0 +1,4 @@
+.work/
+src/fonts/
+*.mp4
+__pycache__/
