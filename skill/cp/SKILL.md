@@ -17,6 +17,11 @@ same synthesized sound, same humour. Work autonomously from start to finish: no 
 alternatives; if something is weak, fix it yourself. The upload and schedule are part of the job. The only question
 allowed: no topic was given in a live session. `/cp next` takes one from `topics.md`.
 
+## Hooks (binding since 9 Oct 2026)
+
+Every video's opening follows `reference/hooks.md`: the five hook rules and one of its 21 formulas, named in the
+README's plan and scored in the ship bar's hook item. Read it in the story step, before the script.
+
 ## Deliverables
 
 In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercase with dashes, e.g. `brain-freeze`):
