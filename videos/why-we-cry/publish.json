@@ -34,19 +34,29 @@
   "cover": "cover.jpg",
   "captions": "why-we-cry.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-11T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "PqYnHstEFfY",
+    "url": "https://youtube.com/shorts/PqYnHstEFfY",
+    "uploaded": "2026-10-09T19:46:55.706Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (its slot showed an automatic frame after processing)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-12T06:30:00+05:30",
     "caption": "You're eating ice cream at a sad movie... and your eyes spring a leak 😢\nScientists think tears are a call for backup: take them off a photo, and people see less sadness and feel less like helping.\n\nFollow @curio_pulse_tv for the next one: why do cats purr? 🔔\n\n#science #crying #tears #humanbody #psychology #funfacts #reels",
     "coverTime": 3.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-12T06:30:00+05:30",
+    "cover": "auto frame (Business Suite's composer offered no thumbnail picker)"
   }
 }

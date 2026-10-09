@@ -44,8 +44,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_WHEN |
-| Instagram Reels | @curio_pulse_tv | IG_WHEN |
+| YouTube Shorts | https://youtube.com/shorts/PqYnHstEFfY | 11 Oct 2026, 11:30 IST (scheduled; thumbnail and captions set; in the playlist "Your Brain Is Weird") |
+| Instagram Reels | @curio_pulse_tv | 12 Oct 2026, 06:30 IST (scheduled in Meta Business Suite; automatic cover, see below) |
 
 **Title:** Why Do We CRY? 😢
 
@@ -85,6 +85,9 @@ became the answer line).
 **Subscribe cue (silent, the pill over the last 3.4 s):** 41.97–44.76 s; nobody says "subscribe"
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): his face mid-wail
 with both arcs of tears, the tub and the spoon, "WHY DO WE CRY?".
+It is the YouTube thumbnail: set through the API, and uploaded again in Studio, whose own slot for the Short showed an
+automatic frame after processing. Business Suite's composer offered no thumbnail picker when the Reel was scheduled,
+so the Reel has an automatic cover; it can be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 
