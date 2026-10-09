@@ -31,7 +31,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 **Pinned comment (suggestion, for the user to pin):** Next up: … Subscribe so you don't miss it!
 **Length arm:** standard (45–50 s) or short (30–35 s), from `yt.mjs next-slot`: …
 **Answer line (spoken, starts by 5 s):** …
-**Subscribe aside (spoken, ≤ 45 characters, at 50–70 % of the runtime):** … (at N s = NN %)
+**First cut (7 s or later):** N s
+**Subscribe cue (silent, the pill over the last 3.4 s):** N–N s; nobody says "subscribe"
 **Cover:** [`cover.jpg`](cover.jpg), the … frame at N s.
 
 ## Story and shots

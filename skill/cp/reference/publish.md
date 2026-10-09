@@ -37,7 +37,7 @@ a Reel too), and never before the Short's YouTube release.**
   is about 12 hours away.) Then one line answering the question ("What did YOU think it was?" invites replies). Do
   not post it or use the API to do so.
 - Since 5 Oct 2026 the pinned comment, the description and the Reel caption are the ONLY places the next topic is
-  teased: the spoken subscribe aside sits mid-video and promises the rest of the same Short (`narration.md`).
+  teased. Since 9 Oct 2026 nothing spoken asks or teases at all: the Subscribe cue is the silent pill (`narration.md`).
 - **Description:** end the first paragraph line with the ask too: `Subscribe for a new strange question every day.`
 - **Instagram caption:** the hook line with an emoji, 1–2 short lines, a **follow line** (Instagram says Follow, not
   Subscribe: `Follow @curio_pulse_tv for the next one: <teaser> 🔔`), then 4–6 hashtags

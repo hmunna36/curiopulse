@@ -64,8 +64,19 @@ node ~/.claude/skills/cp/bin/yt.mjs next-slot    # the slot this Short will take
 | The answer starts by 5.0 s, as a plain surprising claim or metaphor | `story.md` §2, `narration.md` | qa.py: the `answer` block's first word |
 | No spoken naming beat, no bridge before the answer | `story.md` §2 | ship bar items 1 and 2 |
 | Open with "You…" + a physical action | `story.md` §2 | qa.py warns; ship bar item 1 |
-| The subscribe aside and the pill sit mid-video, the word at 50–70 % of the runtime; ≤ 45 characters; the Short ends on the button and the loop | `narration.md`, `visual.md` | qa.py: position and length; ship bar item 11 |
+| ~~The subscribe aside and the pill sit mid-video, the word at 50–70 % of the runtime; ≤ 45 characters~~ Replaced on 9 Oct 2026 (below): the curve stepped down on the word there too. The Short still ends on the button and the loop | `narration.md`, `visual.md` | see below |
 | The length test: 30–35 s in a 23:30 slot, 45–50 s in an 11:30 slot | below | qa.py: the arm's band |
+
+## The rules of 9 Oct 2026 (user: "just keep the visual cue and say nothing"; "i need all updates which we identified")
+
+| Rule | Where it lives | The gate | How it is read |
+|---|---|---|---|
+| Nobody says "subscribe". The Subscribe pill plays silently over the last 3.4 s, on top of the button line | `narration.md`, `visual.md` | qa.py: fails a spoken "subscribe"; the pill pops in 2.6–4.5 s before the end | After 14 Shorts: the last four seconds of the curve (the step should be gone) and subscribers per 1,000 views, against 3.2 (spoken last line) and about 2.0 (mid-video aside). Under about 2.5, ONE spoken last line comes back: "A new strange question every day. Subscribe." |
+| The opening is one continuous shot through the answer: no cut before 7 s, no shot of his frozen face or stare before second 12, no title or name card in the first 15 s | `story.md` §2 | qa.py warns when the first cut is before 7 s; ship bar items 1 and 2 | After seven Shorts with curves: the share lost between seconds 5 and 12, against a median of 27 % (17–41 %) on the first 14. At 20 % or less, keep it. If nothing moves, the cut was not the cause: drop the rule |
+
+Three things changed on one day (these two, and the cinematic look the day before), so each is read where the others
+cannot reach: the opening by seconds 5–12, the cue by the last four seconds and by subscribers per 1,000 views. Both
+arms of the length test get the same changes, so its comparison stands.
 
 ## The length test (`length-2026-10`, from the Short released 6 Oct 2026 23:30 IST)
 
@@ -111,8 +122,10 @@ against the script:
 - **at 10 %:** the hook. Under 0.90 means frame 1 or the first words lost them.
 - **10 % → 25 %:** the answer and the start of the mechanism. This was the cliff before 5 Oct; with the answer by 5 s
   it should flatten.
-- **around 50–70 %:** the subscribe aside. A step down there that is steeper than the slope before it means the aside
-  reads as an outro: shorten it, or tie it harder to what comes next.
+- **second 5 → second 12:** the stretch after the hook. The first 14 Shorts lost 17–41 % of their viewers here
+  (median 27 %); the one-shot opening of 9 Oct is judged by this number (`--curve <id> --json` gives 100 points).
+- **the last 4 s:** the silent Subscribe pill. A step down there that is steeper than the slope before it means the
+  pill alone reads as an ending (the spoken word took 43–57 % of those still watching).
 - **90 % → 100 %:** the ending. A button that loops holds; an ending that announces itself drops.
 
 ## Readings
@@ -135,5 +148,37 @@ against the script:
     (correlations between −0.11 and +0.13). The rule is in `story.md` §2 ("The first picture"), from the Short for
     8 Oct 23:30 on. It applies to both lengths, so the length test is not disturbed.
   - Still open: hiccups' retention curve (due 8 Oct evening) will show whether the mid-video subscribe aside costs
-    viewers; its subscribers per 1,000 views so far is low (0.7) on one Short.
+    viewers; its subscribers per 1,000 views so far is low (0.7) on one Short. (Answered on 9 Oct, below: it does.)
+- **9 Oct 2026 (the retention curves of 14 Shorts, lightning to déjà vu; the user had noticed a pattern in Studio and
+  asked for all of them).** 82 subscribers, 30,736 views. Each curve (`yt.mjs analytics 1 --curve <id> --json`) was
+  set against the Short's shot table and its caption file; data, scripts and two charts are in
+  `~/.claude/wip/2026-10-09/cp-retention/`.
+  - **Viewers leave on the word "subscribe", wherever it is said.** Lined up on the second the word is spoken, all
+    ten Shorts that say it step down about one second later. Share of those still watching who had left three
+    seconds after the word: 43–57 % when it was the last line (onions 57, ears pop 52, sun sneeze 51, voice 46,
+    goosebumps 45, stomach growl 45, yawning 44, pins-needles 43); 24 % in hiccups (the word at 17.3 s of 34; the
+    same seconds in the other Shorts lose 3–19 %, median 11 %); 34 % in déjà vu (28.2 s of 47; elsewhere 3–20 %,
+    median 8 %; only 67 counted views). An ordinary four seconds after second 20 loses about 6 %, and the four
+    Shorts with no subscribe line lose 5–23 % in their last four seconds. In the old ending the leaving began on
+    "Next up:" (7–35 % of those watching, median 16 %), and the word then took 35–53 % of the rest.
+  - **The mid-video aside did not convert better.** Subscribers per 1,000 counted views: no line 1.8 (4 Shorts,
+    10 on 5,499), last line 3.2 (8 Shorts, 46 on 14,158), mid-video 0.6 (hiccups 1 on 1,425, and déjà vu's first 132
+    views). The whole channel, from the live log: 4.2 per 1,000 in the 27 hours before the first mid-video Short
+    (16 on 3,817 views), 2.0 in the 63 hours after it (23 on 11,722). Small numbers, one direction.
+  - **The loss after the hook has a shape.** Every curve starts above 100 % (the opening is replayed) and holds
+    through the opening shot: 0–3 % of the viewers leave per second in its last second and a half. In 11 of 14 the
+    rate reaches 4–11 % a second within two seconds of the first cut, and in 13 of 14 that cut goes to a close-up of
+    his frozen or deadpan face, usually followed by a title card or a dive inside the body. Lost between seconds 5
+    and 12: 17–41 %, median 27 % (yawning 17, goosebumps 21, voice 23, fingers 24, brain freeze 25, sun sneeze 25,
+    lightning 26, ears pop 29, hiccups 29, hypnic jerk 30, pins-needles 31, onions 35, stomach growl 35, déjà vu
+    41). Hiccups and déjà vu, made to the 5 Oct rules, are no better: the answer by second 5 did not flatten it.
+    The two that held longest kept the first scene moving (yawning: one travelling shot for 6.7 s; goosebumps:
+    something new in every shot until 10.5 s). All 14 hooks are 3–7 s long, so "the cut" and "second five" cannot
+    be told apart yet; the new rule is the test.
+  - After second 20 the fall eases (median 18 % lost from 20 s to 30 s). Against other videos of the same length
+    (YouTube's relative retention) the Shorts start at or above typical (0.45–0.63 in the first second, onions and
+    sun sneeze lower), are at 0.14–0.46 by second 5, bottom between seconds 9 and 28, and finish at 0.56–0.91 when
+    the ending carries no ask (0.31–0.62 with the spoken last line).
+  - **Decisions** (user, 9 Oct 2026: "just keep the visual cue and say nothing"; then "i need all updates which we
+    identified not just subscribe"): the table "The rules of 9 Oct 2026" above.
 

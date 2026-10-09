@@ -38,18 +38,18 @@ $PYTHON qa.py ../.work ../<slug>-short.mp4
 `src/build.sh` runs the whole chain from cached takes (voice → timeline → audio → render → srt). Use it for the final
 rebuild and to prove the folder rebuilds.
 
-## The numbers, the length arm, the answer and the subscribe aside in the order of work
+## The numbers, the length arm, the answer, the first cut and the subscribe cue in the order of work
 
 - Preflight: `yt.mjs numbers` (the log; read the length-test table), then `yt.mjs next-slot` (the slot and the length
   arm: SHORT 30–35 s for a 23:30 slot, STANDARD 45–50 s for an 11:30 slot). `analytics.md` explains both.
 - `new-short.sh` writes the arm into `publish.json` (`"length"`) and prints it; qa.py reads it from there. If the
   script says it could not reach YouTube, put the object `next-slot` prints there by hand.
-- Before `voice.py --synth`: the script has an `## answer` block (it must start by 5.0 s) and a `## sub` block (≤ 45
-  characters, right after the payoff); count the whole script's words against the arm's budget and its characters
+- Before `voice.py --synth`: the script has an `## answer` block (it must start by 5.0 s) and NO `sub` block: nobody
+  says "subscribe" (since 9 Oct 2026). Count the whole script's words against the arm's budget and its characters
   against `quota.mjs` (narration.md).
-- `make_timeline.py` sets `cues["sub_in"]` / `cues["sub_tap"]` / `cues["sub_out"]` from the word "subscribe" (already
-  in the template) and prints where the answer starts and where "subscribe" lands (it must be 50–70 % of the runtime).
-  Fix a miss now, with gaps or by moving a sentence across the aside, not after the render.
+- `make_timeline.py` sets `cues["sub_in"]` / `cues["sub_tap"]` / `cues["sub_out"]` from the duration (the silent pill
+  over the last 3.4 s; already in the template) and prints where the answer starts, where the first cut falls (7 s
+  or later: the `hook` shot covers the answer line) and that the cue is silent. Fix a miss now, not after the render.
 - Stills around the cue before the full render (qa.md, visual.md); nothing else to run: `subscribe.js` is part of the
   engine.
 - Skill-only change: new Shorts copy the template from `~/.claude/skills/cp/template/`, so no push to the repo is

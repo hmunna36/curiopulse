@@ -14,12 +14,13 @@ T = Timeline(sys.argv[1], tail=1.5)  # seconds after the last word: the button b
 # (shot id, phrase whose first word opens the shot). The first shot starts at 0. None = timed in `special`
 # (reaction beats: on a gasp, after a punchline word, in a silent gap). Every id needs an SC.<id> in web/.
 SHOTS = [
-    ("hook", None),       # the hero doing something physical on frame 1; the strange thing lands by 3 s
-    ("answer", "REPLACE with the first words of the `answer` block"),   # starts by 5.0 s (qa.py checks it)
-    ("explain", "REPLACE with the phrase that opens this shot"),
-    ("payoff", "REPLACE"),  # the subscribe aside follows it: subscribe.js draws the pill over whatever shot is on then,
-                            # so keep that shot's hero and key action above y ≈ 1050 for those 3 s
-    ("button", "REPLACE"),  # ends on the picture of frame 1 (the loop); no ask and no tease here
+    ("hook", None),       # ONE continuous shot: the hero doing something physical on frame 1, the strange thing by 3 s,
+                          # and the `answer` line (it starts by 5.0 s) spoken over the same shot as it runs on. No cut
+                          # before 7 s (qa.py warns): no frozen face, no stare, no title card here (story.md §2)
+    ("explain", "REPLACE with the phrase that opens the first mechanism shot (7 s or later)"),
+    ("payoff", "REPLACE"),
+    ("button", "REPLACE"),  # ends on the picture of frame 1 (the loop). The silent Subscribe pill plays over its last
+                            # 3.4 s (subscribe.js): keep the hero and the key action above y ≈ 1050 there
 ]
 special = {}  # e.g. {"stare": T.E("JUMPS") + 0.06, "nope": T.ev("chuckles")["t"] - 0.05}
 
@@ -43,17 +44,20 @@ W, E, ev, find = T.W, T.E, T.ev, T.find
 cues = {
     # "gasp": ev("gasps")["t"], "jumps": W("JUMPS"), "jumps_end": E("JUMPS"), "bam": W("BAM"),
 }
-# ---- the subscribe cue (web/subscribe.js): MID-VIDEO, on the spoken `## sub` aside that follows the payoff
-# (reference/narration.md). The word "subscribe" must land at 50-70 % of the runtime; qa.py checks it. The pill pops
-# ~0.3 s before the word, the cursor clicks in the pause just after it, and the pill pops out 1.3 s after the click:
-# about 2.6 s on screen. Captions that share the screen with it sit at y 1150 (main.js); the narration carries on.
-_sub_i = T.find("subscribe")                  # if the line says "subscribes"/"subscribing", use that word
-cues["sub_in"] = max(0.0, T.ws[_sub_i] - 0.30)
-cues["sub_tap"] = T.we[_sub_i] + 0.10         # in the "..." after the word, so the click never sits on a word
-cues["sub_out"] = cues["sub_tap"] + 1.30
+# ---- the subscribe cue (web/subscribe.js): SILENT, over the last seconds (since 9 Oct 2026; reference/analytics.md).
+# Nobody says "subscribe": wherever the word was spoken, as the last line or mid-video, a quarter to a half of the
+# viewers still watching left within three seconds of it. The pill pops in 3.4 s before the end, the cursor clicks
+# 1.25 s later, and the pill has popped out 0.6 s before the cut back to frame 1, so the loop stays clean. It plays
+# over the button shot while the last line is spoken; captions that share the screen with it sit at y 1150 (main.js).
+cues["sub_in"] = T.duration - 3.40
+cues["sub_tap"] = cues["sub_in"] + 1.25
+cues["sub_out"] = cues["sub_tap"] + 1.30       # + 0.24 s of pop-out: gone 0.61 s before the end
 T.write(shots, caps, cues)
 # the three numbers to read before any picture is built (qa.py checks them on the MP4; fixing them now is free)
 _ans = [w for w in T.words if w.get("block") == "answer"]
 print(f'length: {T.duration:.2f} s (the arm in publish.json: standard passes at 43-50 s, short at 30-35 s)')
 print(f'answer line: starts at {_ans[0]["start"]:.2f} s (must be 5.0 s or earlier)' if _ans else 'NO `## answer` BLOCK in script.txt (qa.py fails without it)')
-print(f'subscribe aside: the word at {T.ws[_sub_i]:.2f} s = {100 * T.ws[_sub_i] / T.duration:.0f} % of the runtime (must be 50-70 %)')
+print(f'first cut: {shots[1]["start"]:.2f} s (7.0 s or later: the opening is one shot through the answer)' if len(shots) > 1 else 'first cut: none')
+_spoken = [w["word"] for w in T.words if "subscrib" in w["word"].lower()]
+print(f'subscribe cue: silent, the pill is up {cues["sub_in"]:.2f}-{cues["sub_out"] + 0.24:.2f} s of {T.duration:.2f} s'
+      + (f'  BUT "{_spoken[0]}" IS SPOKEN: take it out of script.txt (qa.py fails it)' if _spoken else ''))

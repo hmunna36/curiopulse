@@ -16,7 +16,7 @@
 | `web/kit.js` | the lightning-era kit: `SC = {}`, `charLayer`, `pill`, `thermo`, the x-ray world (`initScenes`) | engine |
 | `web/fx.js` | shared scene helpers (see visual.md) | engine |
 | `web/scenes.js` (+ more) | this video's worlds, props and `SC.<shot>` functions, and `initScenes2()` | yes |
-| `web/subscribe.js` | the subscribe cue (pill, bell, cursor click, pop-out), mid-video, driven by `cues.sub_in` / `cues.sub_tap` / `cues.sub_out`; `subLift` tells main.js which caption chunks sit at y 1150 | engine |
+| `web/subscribe.js` | the subscribe cue (pill, bell, cursor click, pop-out), silent, over the last 3.4 s, driven by `cues.sub_in` / `cues.sub_tap` / `cues.sub_out` (make_timeline.py sets them from the duration); `SUB_LINE` = an optional line of text under the pill (empty); `subLift` tells main.js which caption chunks sit at y 1150 | engine |
 | `web/main.js` | the compositor: runs the active shot, the light (`lookFrameStart`, `lookScene`, `lookFinal`), bloom, push, blur, grade, VHS, grain, flash, captions | engine |
 | `render.js` | headless Chrome → PNG frames piped into ffmpeg (or to a folder for stills); prints `look: …`, takes `CP_LOOK`, falls back to the classic look without a graphics chip | engine |
 | `make_srt.py`, `qa.py`, `qc_*.py`, `contact_sheet.py` | captions file, the QA gate, review tools | engine |

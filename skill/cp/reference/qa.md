@@ -4,7 +4,7 @@
 
 - **After voice.py and make_timeline.py:** do the listening pass (narration.md), and read the three numbers
   make_timeline.py prints: the duration (inside the length arm's band), where the `answer` line starts (5.0 s or
-  earlier) and where the word "subscribe" lands (50–70 % of the runtime). Fix the words, the delivery and those three
+  earlier) and where the first cut falls (7 s or later); the subscribe line must read "silent". Fix the words, the delivery and those three
   before any picture exists; it is free now and a re-render later.
 - **The first picture, before any other shot is built:** render frames 0, 15 and 30 of the hook and Read them next to
   `reference/openings.jpg`. Frame 0 must belong in its top row: a tight shot of him already eating, drinking, cutting
@@ -20,7 +20,7 @@
   - then render the shot's frame range to a short MP4 without audio (`render.js tl.json /tmp/shot.mp4 "A-B"`)
     when the motion matters.
 - **After audio.py:** `qc_audio.py`. Masked words get fixed now, not after the render.
-- **Subscribe cue (mid-video):** stills from `sub_in − 0.5` to `sub_out + 0.5` (0.3 s steps) must show the pill
+- **Subscribe cue (the last 3.4 s, silent):** stills from `sub_in − 0.5` to `sub_out + 0.5` (0.3 s steps) must show the pill
   popping in, the click, SUBSCRIBED, the pill gone again, and the captions (at y 1150 meanwhile) and the hero clear of
   it throughout. Fix collisions in that shot before the full render.
 - **The loop:** a still of the last frame next to frame 0: the same picture, or close enough that the restart reads
@@ -61,8 +61,8 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 |---|---|
 | Streams | H.264 High 1080×1920 30 fps yuv420p, AAC 48 kHz stereo, moov first |
 | Length / size | the band of the Short's length arm (`"length"` in publish.json, from `yt.mjs next-slot`): STANDARD passes at 43–50 s and fails above 55 s; SHORT passes at 30–35 s and fails above 37 s; anything else warns · under 95 MB |
-| Opening | the first word is "You"/"Your" (warning only) · the `answer` block starts by 5.0 s (warns to 6.0 s; fails later, or when there is no `answer` block) |
-| Subscribe aside | the word "subscribe" of the `sub` block at 50–70 % of the runtime (warns at 40–80 %; fails outside, or when it is missing) · the aside is ≤ 45 characters (warns to 60) |
+| Opening | the first word is "You"/"Your" (warning only) · the `answer` block starts by 5.0 s (warns to 6.0 s; fails later, or when there is no `answer` block) · the first cut at 7.0 s or later (warning only; since 9 Oct 2026) |
+| Subscribe cue | nobody says "subscribe" (fails when the word is spoken anywhere) · the pill pops in 2.6–4.5 s before the end and has gone 0.3 s or more before it (fails otherwise, or when the cues are missing) |
 | Loudness | −14 ± 0.5 LUFS integrated, true peak ≤ −1.0 dBTP (decoded from the AAC) |
 | Picture | the first frame isn't black · it moves in the first 0.5 s · no frozen stretch over 1.5 s |
 | Look | the MP4 was rendered in the look the timeline asks for (render.js writes `.work/look.txt`); a warning when cine was asked for and it fell back to classic: ship it and say so |
@@ -79,6 +79,7 @@ A FAIL blocks the upload.
 - Calibration: the shipped finger-wrinkles Short scored 13/13 on the checks of its day, with content SNR 14.1 dB, WER
   2.8 %, and 64 s. Run on ears-pop (4 Oct 2026, the old shape), today's gate fails exactly the three new checks: no
   `answer` block, "subscribe" at 94 % of the runtime, a 70-character line. Its "Your ear just burped." starts at 4.37 s.
+  (That was the gate of 5 Oct. Since 9 Oct 2026 the subscribe checks are: not spoken, and the pill in the last seconds.)
 - A length WARN is not a pass: bring the Short into its band with `gap`, `tighten` and `tempo` (free), or cut a
   sentence, before shipping. Ship on a length warning only when the fix would hurt the comedy, and say so.
 
@@ -89,8 +90,8 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 
 | # | Item | Passes when (8+) |
 |---|---|---|
-| 1 | **Hook and answer** | frame 0 is a tight shot (his head about 350 px tall or more, or his hand that big) of him already eating, drinking, cutting or touching the thing, and it would sit in the top row of `reference/openings.jpg`; the first words are "You…" plus that action; the strange thing lands in ≤ 3 s; picture and sound hit together; the answer line starts by 5 s and is a plain, surprising claim or metaphor that leaves a "wait, how?"; you'd stop scrolling |
-| 2 | **Retention** | nothing between the hook and the answer; no spoken naming beat, no bridge-only line; a new visual question or reveal every 3–5 s; no stretch where only the captions move; escalation to the weirdest fact |
+| 1 | **Hook and answer** | frame 0 is a tight shot (his head about 350 px tall or more, or his hand that big) of him already eating, drinking, cutting or touching the thing, and it would sit in the top row of `reference/openings.jpg`; the first words are "You…" plus that action; the strange thing lands in ≤ 3 s; picture and sound hit together; the answer line starts by 5 s and is a plain, surprising claim or metaphor that leaves a "wait, how?"; the opening is ONE continuous shot through that line (the first cut at 7 s or later); you'd stop scrolling |
+| 2 | **Retention** | nothing between the hook and the answer; no shot of his frozen face, stare or held reaction before second 12; no title or name card in the first 15 s; the first look inside the body grows out of the scene (no cut to a separate diagram); no spoken naming beat, no bridge-only line; a new visual question or reveal every 3–5 s; no stretch where only the captions move; escalation to the weirdest fact |
 | 3 | **Story** | experience → answer → mechanism → payoff → the weirdest fact → button; every beat earns its seconds; the button reframes or undercuts, and the last shot returns to the picture of frame 1 (the loop); no ask, tease or outro at the end |
 | 4 | **Show, don't tell** | every major statement has its visual; the camera travels to what's named; nothing is a slide |
 | 5 | **Narration** | sounds told, not read (brief: "NOT reading a book"); energy changes per beat; jokes land in the gaps; no mis-said words |
@@ -100,7 +101,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |
 | 10 | **Packaging** | title ≤ 60 characters with a curiosity gap; the cover reads at thumbnail size; description, hashtags and IG caption written |
-| 11 | **Subscribe hook** | the `sub` aside exists (≤ 45 characters), is in voice and funny, sits right after the payoff with the word "subscribe" at 50–70 % of the runtime, and promises what is still coming in THIS Short (never another video, never an outro); the story does not stop for it; qa.py's speech SNR/whisper shows "subscribe" and the words after it clear (no weak-word entry, whisper hears them); the pill + bell + cursor click are on screen for ≥ 2.5 s, timed to the word, inside the key-content zone (mask on `sub_tap + 0.3`), they leave cleanly, and they never cover the hero, the key action or the captions (crop the frames from `sub_in` to `sub_out + 0.5`) |
+| 11 | **Subscribe cue** | nobody says "subscribe", and nothing spoken asks, teases or winds up; the pill + bell + cursor click play silently over the last 3.4 s, are on screen for ≥ 2.5 s inside the key-content zone (mask on `sub_tap + 0.3`), have gone 0.6 s before the end, and never cover the hero, the key action or the captions (crop the frames from `sub_in` to `sub_out + 0.5`); the button line stays clear under the cue's sounds (no weak-word entry there, whisper hears it) |
 
 - **Satisfied** means: qa.py has no FAIL, every ship-bar item scores 8 or more, and nothing in the review would make
   the user wince.

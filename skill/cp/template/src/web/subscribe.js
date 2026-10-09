@@ -1,13 +1,14 @@
 // Subscribe cue: a red SUBSCRIBE pill + bell that pops in, gets a cursor click, flips to SUBSCRIBED and pops out
-// again, about 2.6 s in all. Engine file (reference/visual.md). Since 5 Oct 2026 it plays in the MIDDLE of the Short,
-// on the spoken `sub` aside right after the payoff (the word "subscribe" at 50-70 % of the runtime): only 4-15 % of
-// viewers reached the last seconds, where it used to sit.
-// Timeline cues (make_timeline.py sets them; never type a time here):
-//   sub_in  = when the pill pops in (≈0.3 s before the spoken word "subscribe")
-//   sub_tap = when the cursor clicks (just after the word); defaults to sub_in + 1.25
-//   sub_out = when the pill starts to pop out; defaults to sub_tap + 1.3
-// If a timeline has no sub_in the cue falls back to the last 2.6 s, so it can never be forgotten silently
-// (qa.py fails a Short whose cue is missing or far from the middle).
+// again, about 2.8 s in all. Engine file (reference/visual.md). Since 9 Oct 2026 it is SILENT and plays over the last
+// seconds of the Short, on top of the button line: nobody says "subscribe". Wherever the word was spoken (the last
+// line until 5 Oct, a mid-video aside from 5 to 9 Oct) a quarter to a half of the viewers still watching left within
+// three seconds of it (reference/analytics.md).
+// Timeline cues (make_timeline.py sets them from the duration; never type a time here):
+//   sub_in  = when the pill pops in (3.4 s before the end)
+//   sub_tap = when the cursor clicks; defaults to sub_in + 1.25
+//   sub_out = when the pill starts to pop out; defaults to sub_tap + 1.3 (gone 0.6 s before the end, for the loop)
+// If a timeline has no sub_in the cue falls back to the same last seconds, so it can never be forgotten silently
+// (qa.py fails a Short whose cue is missing or not at the end).
 // Placement: inside the Shorts key-content zone measured 30 Sep 2026 (x 100-870 for y 1000-1640; the like/comment
 // column starts at x ≈ 880 from y ≈ 1050, the Related chip and channel row at y ≈ 1680): pill + bell centred on
 // x = 540 (pill x ≈ 221-701, bell x ≈ 727-859), y = 1420 (y ≈ 1354-1486). Every caption chunk that shares the screen
@@ -17,13 +18,15 @@
 
 const SUB_Y = 1420, SUB_CAPY = 1150, SUB_PILL_W = 480, SUB_PILL_H = 132, SUB_BELL_R = 66, SUB_GAP = 26;
 const SUB_EXIT = 0.24;   // seconds the pill and the bell take to pop out after sub_out
+const SUB_LINE = '';     // one line of text under the pill ('' = the pill alone, the default). Only what the user has
+//                          approved goes here; it is drawn at 46 px or smaller, never wider than the pill and the bell
 
 function subTimes() {
   const c = TLd.cues || {};
   const dur = TLd.duration;
-  const tin = c.sub_in !== undefined ? c.sub_in : dur - 2.6;
+  const tin = c.sub_in !== undefined ? c.sub_in : dur - 3.4;
   const tap = Math.min(c.sub_tap !== undefined ? c.sub_tap : tin + 1.25, dur - 0.75);
-  const tout = c.sub_out !== undefined ? c.sub_out : tap + 1.3;
+  const tout = c.sub_out !== undefined ? c.sub_out : Math.min(tap + 1.3, dur - 0.6);
   return { tin, tap, tout };
 }
 // true while the cue is on screen (from just before the pop-in to the end of the pop-out)
@@ -123,6 +126,22 @@ function drawSubscribe(t) {
     c.restore();
   }
   c.restore();
+
+  // ---- the line under the pill (SUB_LINE, off by default): it rises in just after the pill and leaves with it
+  const lineA = SUB_LINE ? E.outCubic(inv(0.18, 0.5, age)) * live : 0;
+  if (lineA > 0) {
+    c.save();
+    c.translate(W / 2, SUB_Y + SUB_PILL_H / 2 + 64 + (1 - lineA) * 16);
+    c.globalAlpha = lineA;
+    c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
+    const maxW = SUB_PILL_W + SUB_GAP + SUB_BELL_R * 2;
+    let fs = 46; c.font = `800 ${fs}px Montserrat`;
+    const tw = c.measureText(SUB_LINE).width;
+    if (tw > maxW) { fs = Math.floor(fs * maxW / tw); c.font = `800 ${fs}px Montserrat`; }
+    c.lineWidth = 11; c.strokeStyle = 'rgba(8,8,20,0.85)'; c.strokeText(SUB_LINE, 0, 0);
+    c.fillStyle = '#FFFFFF'; c.fillText(SUB_LINE, 0, 0);
+    c.restore();
+  }
 
   // ---- the bell: dark disc, white bell; after the click it goes yellow and rings
   c.save();

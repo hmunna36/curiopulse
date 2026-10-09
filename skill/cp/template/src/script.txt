@@ -5,17 +5,18 @@
 # [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
 # never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
 # take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
-# Rules (reference/narration.md, reference/story.md; changed 5 Oct 2026 from the channel's numbers):
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
 # - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
 #   settled ("One idea...", "Scientists think...").
 # - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
 # - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
-#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it.
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
 # - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
-# - `sub` (this id is required): the subscribe aside, <= 45 characters, right after the payoff, so that the word
-#   "subscribe" lands at 50-70 % of the runtime; it promises what is still coming IN THIS Short, never another video.
-# - the last block is the button; the Short ends on it and loops. No ask, no "Next up", no outro at the end.
-# - words in all, `sub` included: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The Subscribe pill plays silently over the last 3.4 s.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
 #   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
 
 ## hook gap=0.10 tempo=1.00
@@ -29,9 +30,6 @@ REPLACE: how it works, one mechanism, shown step by step (split into blocks as t
 
 ## payoff gap=0.30 tempo=1.02
 REPLACE: the moment it clicks (the proof, or "that's why...").
-
-## sub gap=0.35 tighten=0 tempo=1.00
-[mischievously] REPLACE (<= 45 characters, in voice): Subscribe... it gets weirder.
 
 ## weird gap=0.30 tempo=1.02
 REPLACE: the weirdest true fact.

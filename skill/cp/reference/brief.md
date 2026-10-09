@@ -46,21 +46,27 @@ EXPERIENCE the explanation, not be told it.
   new person per scene.
 - **Endings:** a memorable last line plus a visual button, and the last shot ends on the picture of frame 1 so the
   Short loops (finger-wrinkles dives back into the water; voice-recording cuts back to his thumb on PLAY). Since
-  5 Oct 2026 nothing else sits at the end: no ask, no "Next up", no outro.
-- **Subscribe hooks (2026-09-30, the user's explicit request; overrides the earlier "no call to action" and "no like and
+  5 Oct 2026 nothing else is said at the end: no ask, no "Next up", no outro (the Subscribe pill there is silent).
+- **Subscribe cue (2026-09-30, the user's explicit request; overrides the earlier "no call to action" and "no like and
   subscribe" rules).** The channel has almost no organic subscribers (lightning: 1,221 views, almost no subs), so every
-  Short carries two hooks. **Since 5 Oct 2026 (user: "yes") they sit in the middle, right after the payoff**: in the
-  first week only 4–15 % of viewers were still watching in the last seconds, where the hooks used to be, yet the
-  Shorts that carried them still converted about twice as well as those without (`analytics.md`).
-  - **Audible:** the `sub` block, an aside of ≤ 45 characters in Jessica's voice, funny, with the word "subscribe" at
-    50–70 % of the runtime. It promises what is still coming in this Short ("Subscribe... it gets weirder."). Not a
-    generic "like and subscribe", not a tease of another video, nothing that sounds like the end.
-  - **Visual:** the animated Subscribe pill + bell with a cursor click, `web/subscribe.js`: it pops in on that word,
-    gets clicked, and pops out again about 2.6 s later, inside the safe area, while the narration carries on.
-  - The story is never stopped for the ask: the aside rides the pause between the payoff and the weirdest fact.
-  - The next topic is teased in text only: the pinned comment, the description and the Reel caption.
+  Short carries one. What the numbers did to it (`analytics.md`):
+  - 30 Sep to 5 Oct: a spoken last line with a tease ("Next up: … Subscribe…") and the pill. About 3.2 subscribers per
+    1,000 views, but 43–57 % of the viewers still watching left within three seconds of the word.
+  - 5 to 9 Oct: a spoken aside mid-video ("Subscribe... it gets weirder."). The step moved with it (24 % and 34 % gone
+    in three seconds) and the channel's rate fell to about 2 per 1,000.
+  - **Since 9 Oct 2026 (user: "just keep the visual cue and say nothing"): the picture only.** The animated Subscribe
+    pill + bell with a cursor click (`web/subscribe.js`) plays silently over the last 3.4 s, on top of the button
+    line, inside the safe area. Nobody says "subscribe"; the script has no `sub` block.
+  - The story is never stopped for it, and nothing that is said sounds like an ending.
+  - The next topic is teased in text only: the "Next up" comment, the description and the Reel caption.
+  - Read it after 14 Shorts: the step at the end of the curve should be gone, and subscribers per 1,000 views are set
+    against 3.2 (spoken last line) and about 2.0 (mid-video aside). Under about 2.5, ONE spoken last line comes back:
+    "A new strange question every day. Subscribe."
 - **The opening (5 Oct 2026, user: "yes"; `story.md` §2):** "You…" + a physical action; the answer, as a plain
-  surprising claim or metaphor, starts by second 5; the scientific name is never a spoken beat.
+  surprising claim or metaphor, starts by second 5; the scientific name is never a spoken beat. Since 9 Oct 2026
+  (user: "i need all updates") the picture does not stop either: the opening is one continuous shot through the
+  answer, with no cut before 7 s, no shot of his frozen face or stare before second 12 and no title card in the
+  first 15 s. The deadpan beat lives later.
 - **No on-screen credits** (no "voice: ElevenLabs", no channel logo intro).
 
 ## The rules from the brief, in short
@@ -74,11 +80,11 @@ EXPERIENCE the explanation, not be told it.
   | 45–50 s | 30–35 s | Beat |
   |---|---|---|
   | 0–3 s | 0–3 s | hook: "You…" + a physical action, the strange thing |
-  | by 5 s | by 5 s | the answer starts |
+  | by 5 s | by 5 s | the answer starts, over the same shot (the first cut at 7 s or later) |
   | to ≈ 25 s | to ≈ 17 s | the mechanism, shown |
-  | ≈ 25–32 s | ≈ 17–22 s | payoff, then the subscribe aside (the word at 50–70 %) |
+  | ≈ 25–30 s | ≈ 17–21 s | payoff |
   | to ≈ 42 s | to ≈ 29 s | the weirdest true fact |
-  | to the end | to the end | button, and the cut back to frame 1 |
+  | to the end | to the end | button, and the cut back to frame 1; the silent Subscribe pill over the last 3.4 s |
 
 - **Never static.** Something meaningful changes every 1–3 s (camera, character, particles, light, process, text).
   But no random motion: every movement supports the story.

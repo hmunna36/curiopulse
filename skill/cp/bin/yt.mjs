@@ -17,6 +17,17 @@
 //                                         before 5 Oct 2026 lacks it: run `auth` once more and allow it).
 //   node yt.mjs next-slot [--json]        the next free YouTube slot and the length arm a Short for it must be built
 //                                         to (the length test: 23:30 slots are 30-35 s, 11:30 slots are 45-50 s)
+//   node yt.mjs comments-due [--dry-run]  posts the "Next up" comment on every Short that has gone public since it was
+//                                         uploaded (the queue is ~/.config/cp/comment-queue.json; `upload` fills it).
+//                                         "Next up" names the channel's next scheduled video at that moment. One comment
+//                                         per Short, never a reply. Pinning is done by hand: the API cannot pin.
+//   node yt.mjs queue-comment <publish.json>   put an already uploaded Short into that queue (no call to YouTube)
+//   node yt.mjs channel-info [--json]     read-only: the channel's description, trailer, Home sections and playlists
+//   node yt.mjs playlists                 read-only: the channel's playlists
+//   node yt.mjs playlist-create "<title>" "<description>" [--dry-run]
+//   node yt.mjs playlist-add "<title or id>" <videoId>... [--dry-run]     (skips videos already in it)
+//   node yt.mjs channel-set [--trailer <videoId>] [--description-file <file>] [--dry-run]
+//   node yt.mjs section-add "<playlist title or id>" [--dry-run]          a Home-tab row for one playlist
 //   node yt.mjs numbers                   the log every run starts with: rewrites <skill>/numbers.md (the length
 //                                         test's arms side by side, then every upload) and appends a line to
 //                                         <skill>/numbers.jsonl. Read-only on YouTube (reference/analytics.md).
@@ -41,7 +52,10 @@
 //   "youtube": { "publishAt": "auto", "privacy": "private", "categoryId": "27", "language": "en",
 //                "madeForKids": false, "syntheticMedia": false, "notifySubscribers": true },
 //   "instagram": { "publishAt": "auto", "caption": "…", "coverTime": 5.2, "shareToFeed": true } }
-// Progress is written back (youtube.id, url, thumbnailSet, captionsSet), so a re-run resumes.
+//   "youtube.playlist": "<title of one of the channel's playlists>" adds the Short to it after the upload (optional).
+//   "pinnedComment": "Next up: … Subscribe…\n<a question for the viewer>": `upload` queues its second line (the
+//   question) for `comments-due`; the "Next up" line itself is written from the channel's schedule when it is posted.
+// Progress is written back (youtube.id, url, thumbnailSet, captionsSet, playlistSet), so a re-run resumes.
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import http from 'node:http';
@@ -53,6 +67,7 @@ const CONF = path.join(os.homedir(), '.config/cp');
 const CLIENT_FILE = [path.join(CONF, 'youtube-client.json'), path.join(os.homedir(), '.config/va/youtube-client.json')].find((f) => fs.existsSync(f)) ?? path.join(CONF, 'youtube-client.json');
 const TOKEN_FILE = path.join(CONF, 'youtube-token.json');
 const IG_QUEUE = path.join(CONF, 'ig-queue.json');
+const COMMENT_QUEUE = process.env.CP_COMMENT_QUEUE ?? path.join(CONF, 'comment-queue.json');   // the env var is for dry runs
 const CHANNEL = 'CurioPulse';
 const SCOPE = 'https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/yt-analytics.readonly'; // upload, thumbnails, captions + read-only analytics
 const API = 'https://www.googleapis.com/youtube/v3';
@@ -430,6 +445,187 @@ async function upload(specPath, dryRun, autoSchedule = false) {
     save();
     console.log('  captions uploaded');
   }
+  if (y.playlist && !y.playlistSet) {
+    try {
+      await playlistAdd(y.playlist, [y.id], false);
+      y.playlistSet = true;
+      save();
+    } catch (e) {
+      console.log(`  not added to the playlist "${y.playlist}" (${e.message.slice(0, 160)}); retry with the same command later`);
+    }
+  }
+  try {
+    queueComment(spec);
+  } catch (e) {
+    console.log(`  the "Next up" comment was not queued (${e.message.slice(0, 160)}); \`yt.mjs queue-comment <publish.json>\` does it later`);
+  }
+}
+
+// ---- the "Next up" comment (since 9 Oct 2026) -------------------------------------------------------------------
+// One top-level comment per Short, from the channel, posted once the Short is public (YouTube takes no comments on a
+// private video). The queue lives in ~/.config/cp/comment-queue.json; `upload` adds to it, `comments-due` posts.
+const readCommentQueue = () => {
+  try {
+    return JSON.parse(fs.readFileSync(COMMENT_QUEUE, 'utf8'));
+  } catch {
+    return {posts: []};
+  }
+};
+const writeCommentQueue = (q) => {
+  fs.mkdirSync(CONF, {recursive: true});
+  q.posts = q.posts.slice(-60);
+  fs.writeFileSync(COMMENT_QUEUE, JSON.stringify(q, null, 2) + '\n');
+};
+function queueComment(spec) {
+  const y = spec.youtube ?? {};
+  if (!y.id || y.comment === false) return false;
+  const q = readCommentQueue();
+  if (q.posts.some((p) => p.videoId === y.id)) return false;
+  const draft = String(spec.pinnedComment ?? '').replace(/\s*\(suggestion[^)]*\)\s*$/i, '').trim();
+  const question = draft.split('\n').slice(1).join(' ').trim();     // line 1 is the drafted "Next up": rewritten when posted
+  q.posts.push({videoId: y.id, slug: spec.slug, title: spec.title, publishAt: y.publishAt && y.publishAt !== 'auto' ? new Date(y.publishAt).toISOString() : new Date().toISOString(), question, status: 'queued', queued: new Date().toISOString()});
+  writeCommentQueue(q);
+  console.log(`  "Next up" comment queued for ${spec.slug}: \`yt.mjs comments-due\` posts it once the Short is public`);
+  return true;
+}
+async function commentsDue(dryRun) {
+  const q = readCommentQueue();
+  const due = q.posts.filter((p) => p.status === 'queued');
+  if (!due.length) return console.log('comments: nothing queued');
+  const ch = await myChannel();
+  if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
+  const vids = await channelVideos();
+  for (const p of due) {
+    const v = vids.find((x) => x.id === p.videoId);
+    if (!v) {
+      p.status = 'gone';
+      console.log(`comments: ${p.slug}: the video is no longer on the channel`);
+      continue;
+    }
+    if (v.privacy !== 'public') {
+      console.log(`comments: ${p.slug}: not public yet (${v.when ? istTime(Date.parse(v.when)) : 'no release time'})`);
+      continue;
+    }
+    let threads;
+    try {
+      threads = (await (await api('GET', `${API}/commentThreads?part=snippet&videoId=${p.videoId}&maxResults=100&order=time`)).json()).items ?? [];
+    } catch (e) {
+      p.tries = (p.tries ?? 0) + 1;
+      if (p.tries >= 3) p.status = 'failed';
+      p.note = e.message.slice(0, 200);
+      console.log(`comments: ${p.slug}: could not read its comments (${p.note})`);
+      continue;
+    }
+    const mine = threads.find((t) => t.snippet?.topLevelComment?.snippet?.authorChannelId?.value === ch.id);
+    if (mine) {
+      Object.assign(p, {status: 'posted', commentId: mine.id, note: 'the channel had commented already'});
+      console.log(`comments: ${p.slug}: the channel has a comment there already; nothing posted`);
+      continue;
+    }
+    const t0 = Date.parse(v.when);
+    const next = vids.filter((x) => x.id !== v.id && x.when && Date.parse(x.when) > t0 && (x.privacy === 'public' || x.scheduled)).sort((a, b) => Date.parse(a.when) - Date.parse(b.when))[0];
+    const text = [next ? `Next up: ${next.title} Subscribe so you don't miss it!` : 'Subscribe for a new strange question every day.', p.question].filter(Boolean).join('\n');
+    if (dryRun) {
+      console.log(`comments: ${p.slug}: would post on ${p.videoId}:\n${text.split('\n').map((l) => '    | ' + l).join('\n')}`);
+      continue;
+    }
+    try {
+      const r = await (await api('POST', `${API}/commentThreads?part=snippet`, {json: {snippet: {videoId: p.videoId, topLevelComment: {snippet: {textOriginal: text}}}}})).json();
+      Object.assign(p, {status: 'posted', commentId: r.id, posted: new Date().toISOString(), text});
+      console.log(`comments: ${p.slug}: posted on ${p.videoId} ("${text.split('\n')[0]}"). To pin it: the YouTube app, the comment's menu, Pin`);
+    } catch (e) {
+      p.tries = (p.tries ?? 0) + 1;
+      if (p.tries >= 3) p.status = 'failed';
+      p.note = e.message.slice(0, 200);
+      console.log(`comments: ${p.slug}: not posted (${p.note})`);
+    }
+  }
+  if (!dryRun) writeCommentQueue(q);
+}
+
+// ---- playlists and the channel page -----------------------------------------------------------------------------
+async function myPlaylists() {
+  const out = [];
+  let page = '';
+  do {
+    const r = await (await api('GET', `${API}/playlists?part=snippet,contentDetails,status&mine=true&maxResults=50${page ? `&pageToken=${page}` : ''}`)).json();
+    out.push(...(r.items ?? []));
+    page = r.nextPageToken ?? '';
+  } while (page);
+  return out;
+}
+async function findPlaylist(titleOrId) {
+  const all = await myPlaylists();
+  const hit = all.find((p) => p.id === titleOrId) ?? all.find((p) => p.snippet.title.trim().toLowerCase() === String(titleOrId).trim().toLowerCase());
+  if (!hit) throw new Error(`no playlist "${titleOrId}" on the channel (it has: ${all.map((p) => `"${p.snippet.title}"`).join(', ') || 'none'})`);
+  return hit;
+}
+async function playlistsList() {
+  const all = await myPlaylists();
+  if (!all.length) return console.log('no playlists');
+  for (const p of all) console.log(`${p.id}  ${String(p.contentDetails?.itemCount ?? 0).padStart(3)} videos  ${p.status?.privacyStatus}  "${p.snippet.title}"`);
+}
+async function playlistCreate(title, description, dryRun) {
+  if (!title) die('usage: yt.mjs playlist-create "<title>" "<description>" [--dry-run]');
+  const all = await myPlaylists();
+  const have = all.find((p) => p.snippet.title.trim().toLowerCase() === title.trim().toLowerCase());
+  if (have) return console.log(`playlist "${title}" exists already: ${have.id}`);
+  if (dryRun) return console.log(`dry run: would create the public playlist "${title}" (${(description ?? '').length} characters of description)`);
+  const r = await (await api('POST', `${API}/playlists?part=snippet,status`, {json: {snippet: {title, description: description ?? '', defaultLanguage: 'en'}, status: {privacyStatus: 'public'}}})).json();
+  console.log(`created the playlist "${title}": ${r.id}`);
+}
+async function playlistAdd(titleOrId, videoIds, dryRun) {
+  if (!titleOrId || !videoIds.length) die('usage: yt.mjs playlist-add "<title or id>" <videoId>... [--dry-run]');
+  const pl = await findPlaylist(titleOrId);
+  const inIt = new Set();
+  let page = '';
+  do {
+    const r = await (await api('GET', `${API}/playlistItems?part=contentDetails&playlistId=${pl.id}&maxResults=50${page ? `&pageToken=${page}` : ''}`)).json();
+    for (const it of r.items ?? []) inIt.add(it.contentDetails.videoId);
+    page = r.nextPageToken ?? '';
+  } while (page);
+  for (const id of videoIds) {
+    if (inIt.has(id)) {
+      console.log(`  ${id}: already in "${pl.snippet.title}"`);
+      continue;
+    }
+    if (dryRun) {
+      console.log(`  dry run: would add ${id} to "${pl.snippet.title}"`);
+      continue;
+    }
+    await api('POST', `${API}/playlistItems?part=snippet`, {json: {snippet: {playlistId: pl.id, resourceId: {kind: 'youtube#video', videoId: id}}}});
+    console.log(`  ${id}: added to "${pl.snippet.title}"`);
+  }
+}
+// the trailer shown to people who have not subscribed, and the channel description. channels.update replaces the
+// whole brandingSettings part, so everything YouTube returned is sent back with only these two fields changed.
+async function channelSet(args) {
+  const val = (k) => (args.includes(k) ? args[args.indexOf(k) + 1] : null);
+  const trailer = val('--trailer'), descFile = val('--description-file'), dryRun = args.includes('--dry-run');
+  if (!trailer && !descFile) die('usage: yt.mjs channel-set [--trailer <videoId>] [--description-file <file>] [--dry-run]');
+  const ch = (await (await api('GET', `${API}/channels?part=brandingSettings,snippet&mine=true`)).json()).items?.[0];
+  if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
+  const b = structuredClone(ch.brandingSettings ?? {});
+  b.channel ??= {};
+  const before = {trailer: b.channel.unsubscribedTrailer ?? null, description: b.channel.description ?? ''};
+  if (trailer) b.channel.unsubscribedTrailer = trailer;
+  if (descFile) b.channel.description = fs.readFileSync(descFile, 'utf8').replace(/\s+$/, '');
+  console.log(`trailer: ${before.trailer ?? '(none)'} → ${b.channel.unsubscribedTrailer ?? '(none)'}`);
+  if (descFile) console.log(`description: ${before.description.length} → ${b.channel.description.length} characters`);
+  console.log(`kept as they are: ${Object.keys(b.channel).filter((k) => !['unsubscribedTrailer', 'description'].includes(k)).join(', ') || '(nothing else)'}; banner ${b.image?.bannerExternalUrl ? 'kept' : '(none set)'}`);
+  if (dryRun) return console.log('dry run: nothing sent');
+  const r = await (await api('PUT', `${API}/channels?part=brandingSettings`, {json: {id: ch.id, brandingSettings: b}})).json();
+  console.log(`saved. trailer now ${r.brandingSettings?.channel?.unsubscribedTrailer ?? '(none)'}; banner ${r.brandingSettings?.image?.bannerExternalUrl ? 'still there' : 'MISSING: set it again in Studio'}`);
+}
+async function sectionAdd(titleOrId, dryRun) {
+  if (!titleOrId) die('usage: yt.mjs section-add "<playlist title or id>" [--dry-run]');
+  const pl = await findPlaylist(titleOrId);
+  const sections = (await (await api('GET', `${API}/channelSections?part=snippet,contentDetails&mine=true`)).json()).items ?? [];
+  if (sections.some((s) => (s.contentDetails?.playlists ?? []).includes(pl.id))) return console.log(`"${pl.snippet.title}" has a Home row already`);
+  const position = sections.reduce((m, s) => Math.max(m, (s.snippet.position ?? -1) + 1), 0);
+  if (dryRun) return console.log(`dry run: would add a Home row for "${pl.snippet.title}" at position ${position}`);
+  await api('POST', `${API}/channelSections?part=snippet,contentDetails`, {json: {snippet: {type: 'singlePlaylist', position}, contentDetails: {playlists: [pl.id]}}});
+  console.log(`Home row added for "${pl.snippet.title}" at position ${position}`);
 }
 
 // ---- stats (read-only, Data API) ---------------------------------------------------------------------------------
@@ -642,6 +838,27 @@ async function numbers(outDir = SKILL_DIR) {
   console.log(`written: ${path.join(outDir, 'numbers.md')} · logged: ${logFile}`);
 }
 
+async function channelInfo(asJson) {
+  const ch = (await (await api('GET', `${API}/channels?part=snippet,statistics,brandingSettings,contentDetails&mine=true`)).json()).items?.[0];
+  if (!ch) die('the token has no YouTube channel');
+  const sections = (await (await api('GET', `${API}/channelSections?part=snippet,contentDetails&mine=true`)).json()).items ?? [];
+  const lists = await myPlaylists();
+  const b = ch.brandingSettings?.channel ?? {};
+  const out = {
+    id: ch.id, title: ch.snippet.title, handle: ch.snippet.customUrl, subscribers: Number(ch.statistics?.subscriberCount ?? 0),
+    description: b.description ?? ch.snippet.description ?? '', keywords: b.keywords ?? '', country: b.country ?? null,
+    trailer: b.unsubscribedTrailer ?? null, banner: Boolean(ch.brandingSettings?.image?.bannerExternalUrl),
+    sections: sections.map((x) => ({id: x.id, type: x.snippet.type, position: x.snippet.position, title: x.snippet.title ?? null, playlists: x.contentDetails?.playlists ?? []})),
+    playlists: lists.map((p) => ({id: p.id, title: p.snippet.title, items: p.contentDetails?.itemCount ?? 0, privacy: p.status?.privacyStatus})),
+  };
+  if (asJson) return console.log(JSON.stringify(out, null, 1));
+  console.log(`${out.title} (${out.handle ?? out.id}) · ${out.subscribers} subscribers · banner ${out.banner ? 'set' : 'not set'}`);
+  console.log(`description (${out.description.length} characters):\n${out.description.split('\n').map((l) => '  | ' + l).join('\n')}`);
+  console.log(`trailer for people who have not subscribed: ${out.trailer ?? '(none)'}`);
+  console.log(`Home rows: ${out.sections.length ? out.sections.map((x) => `${x.position}:${x.type}${x.title ? ` "${x.title}"` : ''}`).join(', ') : '(none)'}`);
+  console.log(`playlists: ${out.playlists.length ? out.playlists.map((p) => `"${p.title}" (${p.items}, ${p.privacy})`).join(' · ') : '(none)'}`);
+}
+
 async function status(ids) {
   const r = await (await api('GET', `${API}/videos?part=status,processingDetails,snippet&id=${ids.join(',')}`)).json();
   for (const v of r.items ?? [])
@@ -661,13 +878,25 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     else if (cmd === 'numbers') await numbers();
     else if (cmd === 'reschedule') await reschedule(args[0], args[1]);
     else if (cmd === 'status') await status(args);
+    else if (cmd === 'channel-info') await channelInfo(args.includes('--json'));
+    else if (cmd === 'comments-due') await commentsDue(args.includes('--dry-run'));
+    else if (cmd === 'queue-comment') {
+      const spec = JSON.parse(fs.readFileSync(path.resolve(args[0] ?? die('usage: yt.mjs queue-comment <publish.json>')), 'utf8'));
+      if (!spec.youtube?.id) die('this publish.json has no youtube.id: upload the Short first');
+      if (!queueComment(spec)) console.log(`not queued: ${spec.slug} is in the queue already, or has "comment": false`);
+    }
+    else if (cmd === 'playlists') await playlistsList();
+    else if (cmd === 'playlist-create') await playlistCreate(args.filter((a) => !a.startsWith('--'))[0], args.filter((a) => !a.startsWith('--'))[1], args.includes('--dry-run'));
+    else if (cmd === 'playlist-add') await playlistAdd(args.filter((a) => !a.startsWith('--'))[0], args.filter((a) => !a.startsWith('--')).slice(1), args.includes('--dry-run'));
+    else if (cmd === 'channel-set') await channelSet(args);
+    else if (cmd === 'section-add') await sectionAdd(args.filter((a) => !a.startsWith('--'))[0], args.includes('--dry-run'));
     else if (cmd === 'stats') await stats(Math.max(1, Math.min(200, Number(args.find((a) => /^\d+$/.test(a)) ?? 10))), args.includes('--json'));
     else if (cmd === 'analytics') {
       const ci = args.indexOf('--curve');
       const n = Number(args.find((a, i) => /^\d+$/.test(a) && (ci < 0 || i !== ci + 1)) ?? 10);
       await analytics(Math.max(1, Math.min(200, n)), args.includes('--json'), ci >= 0 ? args[ci + 1] : null);
     }
-    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | numbers');
+    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | comments-due [--dry-run] | queue-comment <publish.json> | channel-info | playlists | playlist-create | playlist-add | channel-set | section-add | numbers');
   } catch (e) {
     die(e.message);
   }

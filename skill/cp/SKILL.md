@@ -57,16 +57,16 @@ apart; user, 4 Oct 2026)**, never before the Short's YouTube release (Business S
   payoff, the weirdest fact, the button.
 - **Funny and curious:** 2–3 laugh beats (2 in a 30–35 s Short); the story escalates to the weirdest true fact; the
   button line reframes or undercuts.
-- **Subscribe hooks, audible AND visual, on every Short** (user's decision, 30 Sep 2026, because subscriber conversion
-  is the channel's bottleneck). **Since 5 Oct 2026 they sit in the MIDDLE of the Short**, because only 4–15 % of
-  viewers reached the last seconds, where they used to be:
-  - the spoken `sub` block is an aside of ≤ 45 characters, in voice, right after the payoff, with the word
-    "subscribe" at 50–70 % of the runtime. It promises what is still coming in THIS Short ("Subscribe... it gets
-    weirder."); it never teases another video and never sounds like an outro;
-  - the animated Subscribe pill + bell + cursor click (`web/subscribe.js`) pops in on that word, gets clicked, and
-    pops out again, about 2.6 s in all, while the narration carries on;
-  - the Short ends on the button line and loops back to frame 1: no ask, no "Next up", no outro at the end. The next
-    topic is teased in text only (pinned comment, description, Reel caption).
+- **Subscribe cue: the picture only, over the last seconds, on every Short** (subscriber conversion is the channel's
+  bottleneck: user's decision, 30 Sep 2026). **Since 9 Oct 2026 nobody says "subscribe"** (user: "just keep the visual
+  cue and say nothing"): in all ten Shorts that spoke the word, as the last line or as a mid-video aside, a quarter to
+  a half of the viewers still watching left within three seconds of it (`reference/analytics.md`):
+  - the animated Subscribe pill + bell + cursor click (`web/subscribe.js`) plays silently over the last 3.4 s, on top
+    of the button line, and has gone 0.6 s before the loop; make_timeline.py sets its cues from the duration;
+  - the script has no `sub` block and nothing that asks, teases or winds up: no "subscribe", no "Next up", no outro.
+    qa.py fails a spoken "subscribe";
+  - the Short ends on the button line and loops back to frame 1. The next topic is teased in text only (the "Next up"
+    comment, description, Reel caption).
   Details: `reference/brief.md`, `narration.md`, `visual.md`, `qa.md`.
 - **Watermarked:** the engine puts the channel name on every frame of every Short (user, 6 Oct 2026; `reference/visual.md`). Never remove it; check it is there on the QA sheets.
 - **The hiker** is the hero: the same rig, only the outfit changes.
@@ -108,18 +108,19 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - Skim `reference/videos.md` for what's been done and learned.
 2. **Research + story** (`reference/story.md`):
    - sources and a claims table;
-   - the curiosity angle, the hook sentence ("You…" + a physical action), the answer line (started by 5 s), the
-     beats (hook, answer, mechanism, payoff + the subscribe aside, the weirdest fact, button and loop), the jokes;
+   - the curiosity angle, the hook sentence ("You…" + a physical action), the answer line (started by 5 s, spoken
+     over the opening shot as it runs on: no cut before 7 s), the beats (hook, answer, mechanism, payoff, the
+     weirdest fact, button and loop), the jokes;
    - the world(s), and what to borrow from past videos;
-   - the subscribe aside (≤ 45 characters, right after the payoff), and for the text teasers only (pinned comment,
-     description, Reel caption) the next `[ ]` entry of `topics.md` (the one after this Short's);
+   - for the text teasers (the "Next up" comment, description, Reel caption) the next `[ ]` entry of `topics.md` (the
+     one after this Short's);
    - the cover moment.
 3. **Scaffold:** `~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"` creates
    `~/Desktop/curiopulse/videos/<slug>` from `template/`. Put the plan and the claims table into its README
    first. The script writes the length arm into its `publish.json` (`"length"`, from `yt.mjs next-slot`) and prints
    it: check it is the arm the preflight gave. If it says it could not, put the object there by hand.
 4. **Narration** (`reference/narration.md`):
-   - write `src/script.txt` (the block ids `answer` and `sub` are required; count the words against the arm's budget);
+   - write `src/script.txt` (the block id `answer` is required; there is no `sub` block; count the words against the arm's budget);
    - run `$PYTHON voice.py ../.work --synth`;
    - do the listening pass plus whisper;
    - retake or rewrite blocks until the performance is right. Timing edits (gap, tempo, tighten) are free.
@@ -146,7 +147,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
 10. **QA the MP4:**
     - `$PYTHON qa.py ../.work ../<slug>-short.mp4` must have no FAIL;
     - read every contact sheet and crop the risky moments;
-    - score the ship bar (12 items, incl. the safe area (7b) and the subscribe hook), with evidence;
+    - score the ship bar (12 items, incl. the safe area (7b) and the subscribe cue), with evidence;
     - log the round in `.work/qa/ship-review.md`.
 11. **Not satisfied? Fix the weak parts:**
     - name the cause of each item under 8;
@@ -196,7 +197,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
 18. **Deliver** (keep it short):
     - `SendUserFile` the MP4 and `cover.jpg` (`display: "render"`);
     - a message with the title, length and length arm, loudness, the YouTube link and release time, the Instagram
-      release time, the story in one line, where the answer and the subscribe aside landed (seconds, %), the QA rounds
+      release time, the story in one line, when the answer starts and when the first cut comes (seconds), the QA rounds
       and what changed, the ElevenLabs characters left, and anything pending.
 19. **Remember:** add the Short to `reference/videos.md` (and a lesson if there was one), a memory note, and a line
     in `MEMORY.md`. In `/cp next`, mark the topic `[x]` too. Then back up the skill, which carries videos.md,
@@ -328,7 +329,7 @@ own level, which in a routine run is medium. So:
   pipeline and ship bar, but set `"instagram": {"skip": true}` in publish.json and skip every Instagram step (no
   ig-queue entry, no Business Suite). No routine uses it now.
 - **A teaser says "Next up: …", never "tomorrow"**: the next Short is about 12 hours away. Since 5 Oct 2026 the
-  teaser lives in text only (pinned comment, description, Reel caption); the spoken subscribe aside does not tease.
+  teaser lives in text only (the "Next up" comment, description, Reel caption); nothing spoken teases or asks.
 - **Queue refill:** if fewer than 7 `[ ]` topics remain in topics.md, research and append 10 new "why does…" questions
   first (strange, second-person, body/nature/physics, a sourced mechanism and a weird true fact; no repeats of done
   topics), then take the next one.
@@ -339,12 +340,15 @@ own level, which in a routine run is medium. So:
 ## The 5 Oct 2026 changes and the length test (user: "yes" to all of it, from the channel's first-week numbers)
 
 What the numbers showed, the rules that came out of them and how to read the test: `reference/analytics.md`. In short:
-- **Opening:** "You…" + a physical action; the answer starts by 5 s; no spoken jargon beat (`reference/story.md`).
-- **Subscribe hooks:** mid-video, right after the payoff; the Short ends on the button and the loop
-  (`reference/narration.md`, `reference/visual.md`).
+- **Opening:** "You…" + a physical action; the answer starts by 5 s; no spoken jargon beat. Since 9 Oct 2026 the
+  opening is one continuous shot through the answer: no cut before 7 s, no shot of his frozen face, no title card
+  (`reference/story.md`).
+- **Subscribe cue:** silent since 9 Oct 2026: the pill over the last 3.4 s, nobody says the word; the Short ends on
+  the button and the loop (`reference/narration.md`, `reference/visual.md`).
 - **Length test `length-2026-10`:** a Short for a 23:30 slot is 30–35 s, a Short for an 11:30 slot stays 45–50 s.
   Both arms follow every other rule, so length is the only thing that differs. `yt.mjs next-slot` assigns the arm,
   qa.py enforces its band, `yt.mjs numbers` compares the arms. First reading on or after 14 Oct 2026; the run that
   makes it writes it into `reference/analytics.md` ("Readings") and leads its final report with it. The user decides
   what happens to the arms; a run never ends or swaps the test by itself.
-- qa.py checks all of it on the delivered MP4: the length band of the arm, the answer by 5 s, the aside at 50–70 %.
+- qa.py checks all of it on the delivered MP4: the length band of the arm, the answer by 5 s, the first cut (a
+  warning before 7 s), no spoken "subscribe", the pill in the last seconds.
