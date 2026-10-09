@@ -37,6 +37,9 @@ exact title is a small 2026 upload with 5–240 views (median 32). Against that:
 - **The questions that qualify have a body at stake and a clock in them:** "What happens (to your body) if / when
   you…", "What if you…", "How long could you survive…". A "Why can't you…" or "Why do we…" curiosity is a Short, not
   a film.
+- **A question the user asks for by name is made** when its demand check passes, whatever its wording (its line in
+  `topics.md` says who asked and when). Give it what the winners have inside the film: a body at stake and a clock.
+  "Why Do We Cry?" (the user, 9 Oct 2026) is one cry, second by second, not a list of facts about tears.
 - **Title it the way the winners are titled**, in our own words: the question, then the clock in brackets when it
   helps: "What Happens If You Never Sleep? (Day by Day)". Not a clever title: the words people type.
 - It may deepen a Short that did well (same subject, the full timeline); it never reuses a Short's script.
