@@ -9,6 +9,7 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 
 ## Queue
 
+- [ ] Why do we cry? — asked for by the user (9 Oct 2026): make it in the next run. Tears of feeling only: the onion Short already covers the eye-wash kind (one callback at most). He lifts a spoon of ice cream at a sad film, lip trembling, and a fat tear lands in the spoon; a tear is a distress flare meant for other people: the feeling part of the brain opens the tear glands, and people shown the same sad face with its tears erased rate it less sad and less in need of help; the tears drain into the nose (hence the sniffles); as far as we know, humans are the only animals that weep from feelings; hedged: whether a good cry makes you feel better (it seems to depend on who comforts you), and "tears flush out stress chemicals" is unproven. The weekly film takes the same question the same day (cp-long): the Short stands alone and does not tease it
 - [ ] Why do cats purr? — a cat on his chest; the larynx muscles buzz 25–150 times a second, and maybe healing frequencies (hedged)
 - [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
 - [ ] Why does coffee wake you up? — he gulps his first coffee, eyes half shut; caffeine jams the brain's "I'm tired" docks (adenosine receptors), so the tiredness signal can't land; plants make caffeine as insect poison, yet lace their nectar with it so bees remember the flower (Science 2013). Not "it gives energy": it only masks sleep pressure
