@@ -81,7 +81,9 @@ as drawn. Captions, the subscribe cue and the watermark are drawn afterwards and
 - Flat colour on limbs and props: no hand-painted shade side and no gloss streak (two shadows fight). `capsuleShaded`
   draws one flat limb in this look. A soft gradient on a big form (a head, a belly, a wall) is still fine.
 - The set first, then the hero, then whatever is in front of him. The set gets its light at the moment he is drawn;
-  what is drawn after him counts as in front of him.
+  what is drawn after him counts as in front of him. A part of him that is drawn separately and lies under him (seated
+  legs) goes on his own layer: `charLayer(cam, st, t, {pre: (lc) => actor(() => legs(lc, ...))})`. Drawn on the main
+  canvas before him it is set: dim, and out of focus in a close shot (why-we-cry, 10 Oct 2026).
 - Shapes of the same colour drawn straight after each other are one thing (the two segments of a limb, the puffs
   of a cloud): the light puts no line between them. To part two things of one colour, draw something between them.
 - A cached image (`drawImage` of a canvas built in an `init…()`) is flat and unlit, and it hides what is under it. Walls,

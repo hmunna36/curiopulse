@@ -879,6 +879,13 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     else if (cmd === 'numbers') await numbers();
     else if (cmd === 'reschedule') await reschedule(args[0], args[1]);
     else if (cmd === 'status') await status(args);
+    else if (cmd === 'thumbnail') {   // yt.mjs thumbnail <videoId> <image.jpg|png>: replace one video's thumbnail (under 2 MB)
+      const [vid, img] = args;
+      if (!vid || !img || !fs.existsSync(img)) die('usage: yt.mjs thumbnail <videoId> <image.jpg|png>');
+      if (fs.statSync(img).size > 2e6) die('image over 2 MB (YouTube thumbnail limit)');
+      await api('POST', `${UPLOAD}/thumbnails/set?videoId=${vid}&uploadType=media`, {body: fs.readFileSync(img), headers: {'Content-Type': img.endsWith('.png') ? 'image/png' : 'image/jpeg'}});
+      console.log(`thumbnail set on ${vid}`);
+    }
     else if (cmd === 'channel-info') await channelInfo(args.includes('--json'));
     else if (cmd === 'comments-due') await commentsDue(args.includes('--dry-run'));
     else if (cmd === 'queue-comment') {

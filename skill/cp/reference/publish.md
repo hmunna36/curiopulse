@@ -71,7 +71,8 @@ a Reel too), and never before the Short's YouTube release.**
    ~/.claude/skills/cp/bin/publish-short.sh <slug> <commit-msg-file>
    ```
 
-   - It commits `videos/<slug>` plus the root README row, pushes, and proves the remote matches.
+   - It commits `videos/<slug>` plus the root README row, pushes, and proves the remote matches. If another routine
+     pushed in the meantime (the weekly film does, from the cloud), it rebases on `origin/main` first.
    - It refuses to commit keys and files over 95 MB, and prints the repo size.
    - The repo is **public**: never put anything private in a video folder.
 2. **YouTube:**
@@ -212,6 +213,12 @@ proves nothing.
 - **Menus animate in.** A coordinate click during the fade lands on the row behind. Use `find` and click by ref.
 - **Refs go stale after a dialog closes.** Re-`find` after every new dialog, or click visible coordinates, and
   verify with JS.
+- **The JavaScript tool blocks some answers** (10 Oct 2026): a long hex string (the SHA-256) and any URL with a query
+  string come back as "[BLOCKED]". Compare the hash inside the page and return true or false; return
+  `location.pathname`, never `location.href`.
+- **The date field wants a coordinate click** (10 Oct 2026: a click by ref did not open the calendar; take a
+  screenshot, click the field, then the day by its exact `aria-label`). The time is a 24-hour clock with two
+  spinbuttons and no AM/PM.
 - **Clicking outside the composer asks "Discard post?".** Press Cancel.
 - **Editing a scheduled Reel** (⋯ → Manage post → Edit Reel) changes only the caption. Its "Exit without saving?"
   prompt discards only the edit; the schedule survives.

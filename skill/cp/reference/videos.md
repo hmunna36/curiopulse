@@ -24,6 +24,7 @@
 | `time-flies`: "Why Does Time FLY as You Get Older? ⏳" | 34 s (short arm; the first Short in the cinematic look) | https://youtube.com/shorts/VLiKEQwxHqk · 9 Oct 2026 23:30 IST | Business Suite, 10 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 | `fireflies-glow`: "How Do Fireflies GLOW? ✨" | 46 s (standard arm) | https://youtube.com/shorts/9cwzb7rjmR8 · 10 Oct 2026 11:30 IST | Business Suite, 11 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 | `why-we-dream`: "Why Do We DREAM? 💭" | 32 s (short arm) | https://youtube.com/shorts/FcY5zJ2Nlgs · 10 Oct 2026 23:30 IST | Business Suite, 11 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
+| `why-we-cry`: "Why Do We CRY? 😢" | 45 s (standard arm) | https://youtube.com/shorts/PqYnHstEFfY · 11 Oct 2026 11:30 IST | Business Suite, 12 Oct 2026 06:30 IST (auto cover: the composer showed no thumbnail picker) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -863,4 +864,68 @@ here for every new Short, with its links.
   reload ("Processing..."). The thumbnail picker stayed empty: auto cover.
 - The 06:00 routine did fire that morning as well as at 01:31 (its restart check said NORMAL both times), so three
   Shorts were built on 9 Oct and the calendar is one slot ahead (filled up to 10 Oct 23:30).
+
+**why-we-cry** (10 Oct 2026, nightly /cp next; standard arm; 110 words → 45.37 s; asked for by the user on 9 Oct):
+- New world files: `sofa.js` (goosebumps' living room relit for the cinematic look: one warm lamp on the right, the
+  moon behind on the left; the couch as shapes; `sofaSt(A)` / `sofaHero(cam, t, A)` draw him from a description A (face,
+  tub, wrist targets, a spoon that aims at a `tip`, a tissue, `cry`, the lamp on his head); `sofaLayer` = charLayer
+  with a `pre` step (his legs go on his own layer); `iceTub` (it can stand full of tears), `iceSpoon` (`scoop`, `hide`
+  for a bowl inside his mouth), `tearDrop`, `tearArcs` (two arcs from the corners of his eyes, head space), `cryOnFace`
+  (`well`, `run`, `pour`, `jets`, `bead`), `headLamp`, `tissueBox`, `tissueWad`, the faces `CRYFACE` (bite chew brim
+  wail sniff better robbed sad)), `pets.js` (his dog `pupDraw(c, x, y, s, t, o)`: sitting, front view; `dx` leans the
+  whole dog, `tilt`, `ears` -1 blown back .. 1 pricked, `paw`, `mouth: 'lick'` with a tongue to a point, `wet`, `smug`;
+  `pupPt`; the elephant in the room `ellyDraw` (behind the couch: head, ears, a trunk to any `trunk` tip, `rise`);
+  `popTub`), `tearhead.js` (the inside of his head from the front, in the rig's own head units, so it can be laid
+  exactly over his head in the scene: `thDraw(V, t, o)` with a heart for the feeling, an alarm bell, a nerve to each
+  side, a tank with a hand-wheel above each eye, eyes that fill and spill, a plughole in each inner corner, pipes into
+  the nose, drips; `thPt`, `thLabel`), `board.js` (a photograph of him `bdCard` (his portrait is `drawHead` inside a
+  clip), `bdEraser`, `bdCrumbs`, a half-round dial with a dashed needle where it stood before `bdDial`, a comic burst
+  `bdBurst`, eyes in the dark `peepEyes`, a scope `tearScope`, `verdictPill`). In its scenes: `hookA(tt)` / `hookCam`,
+  `couchDraw(t, {cam, A, D, dogFront, behind, before, after})`, `headView(keys, lt)` (keys [t, fx, fy, K, sy]; the zoom
+  is eased in its logarithm), `hookEnd()`, `sosLetters`, `helpA(t)`, `SC.cover`. `qc_gags.py` is in its src.
+- **The first render passed the gate (19/19) and every ship-bar item**; round 2 was `build.sh` itself (`timeline.json`
+  byte-identical). Start to finish 1 h 35 min, with the YouTube and Instagram scheduling.
+- **Count the seconds after the first voice pass, not the words.** 110 words came in at 40.95 s of narration (2.7
+  words a second: Jessica was quick that night), which would have been a 42.5 s Short in the 45-50 s arm. Nothing was
+  added: every gap got its gag and its length (0.5 s for the dog's "hm?", 1.1 s for HONK, 1.15 s for the lick) and the
+  explanation blocks went back to tempo 1.00: 45.37 s.
+- **A tag slows the hook.** The same 14 words: `[excited]` 4.37 s, `[panicked]` 5.00 s, no tag at seed 7: 3.55 s, at
+  seed 11: 3.43 s. Audition the untagged line first.
+- **What is drawn on the main canvas before the hero is the set.** His legs (drawn before `charLayer`, as in
+  goosebumps) came out blurred and dim in the close shot: the look had softened them with the room. They go on the
+  character layer, before him (`sofaLayer`'s `pre`, wrapped in `actor`). The template's `charLayer` takes `pre` now.
+- **An x-ray in his own head units is one camera move away.** K (px per head unit) = his scale times the zoom; the
+  first key of `headView` is worked out from the scene's camera, so the push from the couch into his head never cuts:
+  the room stays for 0.4 s while his head turns to glass, then only the head is drawn. For both tear glands to stay
+  inside the key zone the head cannot be wider than the frame: K at most 8.4.
+- **Two-bone arms in 2D: mind the shoulder line.** A hand held near the shoulder puts the elbow out sideways whichever
+  way it bends. A wrist above the shoulder line wants `bend -1` (the spoon at his mouth, and over the tub: the hand
+  stays above the line and only the spoon's angle changes), a wrist below it wants `+1` (a hand on the tub, on his
+  knee). A move that crosses the line flips the elbow in one frame: don't.
+- **The close-up decides where the second character sits.** The dog had to be just outside frame 0 (his left edge at
+  the frame's right edge), and two faces that far apart fit the key zone only up to zoom 1.7: work both out before
+  placing him. A character who leans across the hero is drawn in front of him only while he leans (`dogFront`), and
+  moves over as well as leans (a lean alone stretched him like rubber).
+- **The loop's join includes the focus and the draw order.** The last frame had the room sharp (the close shot's `dof`
+  lives in the hook's light) and the dog in front of a tissue he sits behind on frame 0: blocks up to 16/255. The last
+  shot's light ramps `dof` back up as the camera comes in, and the dog goes back into the set: 2.04/255, the rest is the
+  watermark.
+- **A flash can carry a cut.** The eyes in the dark, a shutter in the pause after "it.", a white flash over the last
+  frames of the shot and the first of the next: the photograph of him that the next line needs has just been taken.
+- **A groove pokes up in the pause before a pick-up word, again** ("you're" after "know,"): a low drone there instead.
+- A caption chunk that ended 0.05 s inside the pill's window was lifted to y 1150 for its whole life, onto the dog's
+  paw: make_timeline.py now ends such a chunk 0.08 s before `sub_in` (worth moving into `T.captions`).
+- **Another routine pushed while this one built** (the weekly film, from the cloud): `publish-short.sh` was refused
+  (non-fast-forward). It now rebases on `origin/main` by itself before it pushes.
+- The Chrome JavaScript tool blocks an answer that holds a long hex string or a URL with a query string: compare the
+  SHA-256 inside the page and return true or false; never return `location.href` (use `location.pathname`).
+- Business Suite (window hidden, screenshots worked): Create Reel, Add video, Next, Next and both Schedule buttons by
+  text + `.click()`; the parts into a collector on the composer page; the caption as a synthetic `paste`; the date
+  field needed a coordinate click (a click by ref did nothing), then the day by its exact `aria-label`; 06 and 30 typed
+  into the spinbuttons by ref, then Tab; the clock is 24-hour (no AM/PM field). The composer showed no thumbnail picker
+  at all: auto cover. Studio's thumbnail slot was the grey placeholder while the video processed and an automatic
+  frame ten minutes later; cover.jpg went in through the file input, Save from JavaScript.
+- Voice: about 1,260 characters sent (434 on six takes of the hook, 181 on three of the answer, 460 for the first
+  pass, 186 on three more takes of two lines; three were installed). The account went from 98,343 to 91,333 in the
+  same hour: the weekly film's cloud run was voicing "never-sleep" on it.
 

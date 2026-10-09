@@ -52,6 +52,11 @@ cues = {
 cues["sub_in"] = T.duration - 3.40
 cues["sub_tap"] = cues["sub_in"] + 1.25
 cues["sub_out"] = cues["sub_tap"] + 1.30       # + 0.24 s of pop-out: gone 0.61 s before the end
+# a chunk that would end a moment inside the pill's window is lifted to y 1150 for its whole life (main.js): it ends
+# just before the pill instead, and stays where it is (why-we-cry, 10 Oct 2026)
+for _c in caps:
+    if _c["start"] < cues["sub_in"] < _c["end"] < cues["sub_in"] + 0.3:
+        _c["end"] = round(cues["sub_in"] - 0.08, 3)
 T.write(shots, caps, cues)
 # the three numbers to read before any picture is built (qa.py checks them on the MP4; fixing them now is free)
 _ans = [w for w in T.words if w.get("block") == "answer"]

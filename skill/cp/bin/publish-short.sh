@@ -35,6 +35,12 @@ BIG=$(find "$DEST" -path "$DEST/.work" -prune -o -type f -size +95M -print)
 [ -z "$BIG" ] || { echo "refusing: over 95 MB (GitHub rejects files over 100 MB): $BIG"; exit 1; }
 git add -- "videos/$SLUG" README.md
 if git diff --cached --quiet; then echo "nothing new to commit in videos/$SLUG"; else git commit -q -F "$MSG"; fi
+# another routine may have pushed while this one built (the weekly film does, from the cloud): go on top of it
+git fetch -q origin
+if ! git merge-base --is-ancestor origin/main HEAD; then
+  echo "origin/main has moved: rebasing on it"
+  git pull -q --rebase --autostash origin main
+fi
 git push -q origin HEAD:main
 LOCAL=$(git rev-parse HEAD)
 REMOTE=$(git ls-remote origin refs/heads/main | cut -f1)

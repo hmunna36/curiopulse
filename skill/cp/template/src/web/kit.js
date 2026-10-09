@@ -19,6 +19,7 @@ function charLayer(cam, st, t, o = {}) {
   lctx.setTransform(1, 0, 0, 1, 0, 0);
   lctx.clearRect(0, 0, W, H);
   camTransform(lctx, cam, 1);
+  if (o.pre) o.pre(lctx);            // what belongs to him but lies under him (seated legs): on his layer, not in the set
   const r = drawCharacter(lctx, st, t, o.pal || PAL);
   if (o.post) o.post(lctx, r, st);
   lctx.setTransform(1, 0, 0, 1, 0, 0);
