@@ -148,6 +148,12 @@ COLOR = {
 DISPLAY = {"nineteen sixty-four": ["1964"], "sixty percent": ["60%"], "nineteen-eighties": ["1980s"],
            "twenty-twenty": ["2020"]}
 
+# a word the aligner squeezed into a sliver (< 0.1 s: "seeing", "Within") ends at the next word's start, so the
+# voice checks measure the sound of the word and not 40 ms of its onset (the caption pop is unchanged)
+for i in range(len(T.words) - 1):
+    if T.we[i] - T.ws[i] < 0.1:
+        T.we[i] = T.words[i]["end"] = round(max(T.we[i], min(T.ws[i + 1] - 0.01, T.ws[i] + 0.3)), 3)
+
 shots = T.shots(SHOTS, special)
 caps = T.captions(CHUNKS, COLOR, shots, DISPLAY)
 S0 = {s["id"]: s["start"] for s in shots}

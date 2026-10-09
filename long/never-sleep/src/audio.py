@@ -186,7 +186,7 @@ sfx.add(horror_stab(0.55, 1), wend("head") + 0.08, db(-20))
 sfx.add(meow(0.4, 600, 820, 500, 2), wend("bed", c["gotobed"]) + 0.12, db(-24))
 
 # ================================================================= 1964
-rag(mus, SHOT["sixty4"] + 0.2, END["pinball"] - 0.2, bpm=120, gain=-14, seed=2)
+rag(mus, SHOT["sixty4"] + 0.2, END["pinball"] - 0.2, bpm=120, gain=-20, seed=2)
 for k, t in enumerate(np.arange(SHOT["pinball"] + 0.4, END["pinball"] - 0.2, 0.42)):
     sfx.add(bell(1760 + 220 * (k % 3), 0.3, 0.15), t, db(-34), pan=0.4)
 sfx.add(jingle(0.8, 2), wend("scientist", c["beating"]) + 0.1, db(-28))
@@ -244,6 +244,7 @@ silence(mus, [
     (c["n65_end"], END["stop"]),
     (c["notbrain"] - 0.2, END["gut"]),
     (c["arguing"] - 0.1, END["argue"]),
+    (c["moody"] - 2.0, c["moody"] - 0.2), (c["seeing2"] - 0.3, c["seeing2"] + 0.9),
 ])
 for a, b in [(SHOT["skip"], END["skip"]), (c["n65_end"] + 0.1, END["stop"] - 0.05)]:
     i0, i1 = span(a, b)

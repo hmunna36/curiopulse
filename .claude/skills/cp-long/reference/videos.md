@@ -33,6 +33,29 @@ This file and `topics.md` are the only memory a cloud run has: write down anythi
 
 ## Videos
 
+- **never-sleep**: "What Happens If You NEVER Sleep? (Day by Day)" · 4:29 · https://youtu.be/GvZX6Yq81P4 · scheduled Sunday 11 Oct 2026 17:30 IST (made 9 Oct 2026)
+  - Story: he wants to be the champion of NOT sleeping (his cat is the champion of sleeping) and get into the record
+    book; hour 16 the pile, 17 tipsy, 24 the false dawn and the alarm centre, 30 microsleeps and the road; days 2–3
+    the blanket, donuts, the coat that turns its head, the cat that says GO TO BED; Randy Gardner 1964, pinball, the
+    sevens stop at 65; the record book refuses; rats, the flies' gut, the rinse fight, jellyfish; he sleeps on the
+    book with the cat on him at dawn, and the lullaby finally resolves.
+  - The run first took "Why Do We Cry?" (asked for by the user): its demand check failed in the run (2 of 8 on two
+    wordings), so it went under "Not made" and the next qualified line was made.
+  - New worlds (reusable): `night.js` (coffee pot that stays level when tipped, mug, the BOOK OF RECORDS with pages
+    and a stamp, the curled cat `catCurl` with one eye and a talking mouth, wall clock, window moon/dawn, the coat
+    that comes alive, a cereal-ad TV, donuts, a blanket wrap, a pink bargaining brain, the HUD clock `drawHud`;
+    faces with `bags`, `red`, `tears`), `inside.js` (adenosine balls, the pile in a dome, receptor cups with beans,
+    a TIRED lamp with tape, the brain as a city of lights with patches that go dark and an alarm centre),
+    `sixties.js` (sepia den, pinball machine, chalkboard of sevens, Randy and the scientist palettes, `sepia60`,
+    `film60`), `edge.js` (the rat lab, a big fruit fly with an x-ray gut, lifespan bars, brain tissue being rinsed,
+    the night sea floor and upside-down jellyfish).
+  - Lessons: `crickets`, `ticking`, `clock_ticks` take a LINEAR gain: passing dB (−30) blew the effects bus up and
+    `master()`'s normalising pushed every other effect 50 dB down. `speech()`'s col is the TEXT colour (white on white
+    = an empty bubble). heroSeated's own `post` overrides one passed in `o`: use `h.postX`. A long ending on one
+    framing reads as a dead stretch in the 2-second sweep: give the final image a close and a pull-back. The aligner
+    can leave 40–90 ms slivers that qa.py counts as masked words: widen them in make_timeline.py. A full render of
+    4:29 (8,068 frames, 3 browsers at ~450 ms/frame) took 21 min; audio.py ~4 min. The user asked mid-run for a
+    ChatGPT thumbnail (see the report); the uploaded thumbnail is the code-drawn one.
 - **tickle-yourself**: "Why Can't You TICKLE Yourself?" · 2:45 · https://youtu.be/RXYD9zslO1g · public since 4 Oct 2026 18:30 IST (made 4 Oct 2026; planned for 11 Oct, released early by the user)
   - Story: he trains to be untickleable before his niece Pip's Sunday visit; his cerebellum cancels his own touch;
     the tickle robot and his own delay machine backfire; pushes escalate 38 % a turn; rats chirp; the photos show

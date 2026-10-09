@@ -1,7 +1,7 @@
-# What Happens If You NEVER Sleep? (Day by Day) — long-form (N:NN)
+# What Happens If You NEVER Sleep? (Day by Day) — long-form (4:29)
 
 **Final file:** `never-sleep.mp4` (not kept in git: it is on YouTube, and `src/build.sh` rebuilds it from this folder)
-MP4 · H.264 High · 1920×1080 (16:9) · 30 fps · AAC 48 kHz stereo · N:NN · −14 LUFS integrated, ≤ −1 dBTP.
+MP4 · H.264 High · 1920×1080 (16:9) · 30 fps · AAC 48 kHz stereo · 4:29 · −14 LUFS integrated, ≤ −1 dBTP.
 Captions for YouTube: [`never-sleep.srt`](never-sleep.srt). Thumbnail: [`cover.jpg`](cover.jpg) (1280×720).
 
 A short animated film in the CurioPulse look. The hiker is at home in his blue hoodie on the teal couch (the living
@@ -99,15 +99,54 @@ in a row of one formula.
 | 23 | 4:24 | ASLEEP | Button + final image | — | "the champion was asleep the whole time"; dawn, the cat on his back, the lullaby resolves | next week | 4 | — |
 | 24 | 4:33 | ASLEEP | Subscribe | — | next week's question; the pill | — | 2 | — |
 
-## Narration (N words, performed)
+## Narration (590 words, performed)
 
-Directed in [`src/script.txt`](src/script.txt), one take per block. The joke timing sits in the gaps between blocks.
+Directed in [`src/script.txt`](src/script.txt), one take per block (41 blocks, 3,467 + 213 characters with retakes).
+The joke timing sits in the gaps between blocks. Retakes: the hook (shortened, it now asks the question by 4.6 s),
+"He just buttered his phone" (whisper heard "he processes"), and the cat line (whispered it became "the catch").
 
 ## Publishing
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube | https://youtu.be/… | Sunday … 17:30 IST |
+| YouTube | https://youtu.be/GvZX6Yq81P4 | Sunday 11 Oct 2026, 17:30 IST (scheduled; thumbnail and captions set) |
+
+**Title:** What Happens If You NEVER Sleep? (Day by Day) (46 characters)
+**Description, chapters, sources, tags:** [`publish.json`](publish.json). Chapters: 0:00 What if you never sleep? ·
+0:20 Hour 16 · 0:50 Hour 24 · 1:15 Hour 30: microsleeps · 1:42 Days 2 and 3 · 2:11 Day 11: the real record ·
+3:04 Past day 11 · 3:52 The weirdest part · 4:05 Bed. Hashtags #Science #HumanBody #Sleep.
+**Pinned comment (suggestion, for the user to pin):** Next week: what happens when you hold your breath, second by
+second. Subscribe so you don't miss it!
+**Subscribe line (spoken, 77 characters):** Next week: what happens when you hold your breath. Subscribe... then breathe.
+**Thumbnail:** [`cover.jpg`](cover.jpg): his face filling the right half, eyes wide and red-threaded, the coffee pot
+tipped at his mouth, **DAY / 11** in white and yellow on the left, a dark plum field with an orange glow. Three
+candidates (DAY 11 with the pot, DAY 3 with the wrecked face, DON'T SLEEP half asleep) went on a 320×180 shelf with
+six of the ranking thumbnails (TED-Ed, Peekaboo Kidz, Infographics, Insider ×2, Human Buddy); the first round's faces
+were too small and lost; the second round, the face doubled, DAY 11 + the pot won.
+**Still to do by hand in YouTube Studio:** the end screen, a card to the why-we-dream or hypnic-jerk Short, pinning the comment.
+
+## Sound design
+
+- **Beds:** a low room tone, birds by day, crickets on the nights; a soft inside-the-head hum; a 1960s projector
+  whirr under the sepia; a lab hum; a low sea swell; a road rumble.
+- **Hits:** the slurp and gulps of the hook, the pot on the table; a blip and a thump on every clock flip; bloops as
+  the violet balls drop; clicks as the beans dock; tape rips; an eye-twitch squeak; the "=" thump and the meter beep;
+  the knife scrape and the phone buzz; a riser into the sunrise; the alarm bell after "bell"; heartbeats under the
+  alarm centre; a grown man's sob after "cereal ad"; lights clicking off; three glitches and nothing else in the skip;
+  springs and a thump when he jolts; a car horn after "crash"; the racing clock; a shiver, donut chomps, a shush; a
+  floor creak, a breath, a horror stab after "turns its head", a meow after "go to bed"; stride piano and pinball
+  dings for 1964, a jingle when Randy wins, chalk for each number; one low bell after "what he was doing"; the
+  stamp's thump and a sad bwomp; a fly's buzz; a deep hit after "the gut"; bloops of antioxidants; gurgles; a record
+  scratch on "opposite"; a purr and morning birds at the end. Every punchline sound sits after its word.
+- **Score:** one theme, a lullaby in F (3/4: C A F | G A – | C A G | F – –) that never gets its last note until the
+  end: a music box under the promise, pizzicato for the bragging, a minor marimba in his head, a woozy waltz for
+  tired-drunk, a bright pad at the false dawn, detuned and minor on days two and three, ragtime for 1964, a music box
+  over Randy's fourteen hours, marimba for the antioxidants, glassy and slow for the jellyfish, piano when he lies
+  down. In the final shot it lands on F.
+- **Silence:** the skip (the microsleep), the stop after "sixty-five", "the gut", and the score drops out for "Very.",
+  the eye twitch, the buttered phone, "nice cereal", the couch, the coat, the cat, "still arguing".
+- **Mix:** voice first (leveler, studio compressor), effects duck under speech, music −15, ambience −22, −14 LUFS,
+  true peak −1.9 dBTP before AAC.
 
 ## Science notes
 
@@ -133,7 +172,34 @@ Every claim in the script, how sure science is, and where it comes from. Hedged 
 
 ## Ship review
 
-(being written)
+**qa.py (final): 14/14 pass.** 4:28.9 · −14.02 LUFS · −1.77 dBTP · WER 6.7 % (all differences are numerals) · 50 shots,
+mean 5.4 s. Shots over 8 s each carry arrivals inside them: the hook is one travelling shot (face → room → book),
+the sevens write a number every ~1.5 s, drunk travels between the two of him and pops "=" and 0.05 %, alarm adds the
+alarm centre, the bars and the picture card, watch walks the scientist in and adds "?" and the ghost, bed pushes into
+the book and pulls out as he lies down, micro builds the film strip, flies flies in and travels to the belly.
+
+**Rounds.** Stills sheets per act, then a 2-second sweep: (1) the book hid the cat, the blanket did not draw (wrong
+hook in heroSeated), the cat's speech bubble was white on white, the stamp was too small, Randy's hair floated:
+fixed. (2) The sweep found 12 alike frames at the end (bed → sub): the final image became a close shot of the two of
+them plus a pull-back to the whole room, a warm dawn wash, and the bed shot a push into the closing book. (3) The first
+mix had the effects bus 50 dB down (tick and cricket helpers take linear gain; I had passed dB) and 70 masked words;
+the slurp, room tone, music (−15) and ambience (−22) came down: 35, then the ragtime under "Within days… seeing
+things" was cut back and two aligner slivers ("seeing", "Within": 40–90 ms windows) were widened: qa.py clean.
+
+**Ship bar (0–10, 8+ to ship):** 0 Film 8 (a want by 0:15, champion of not sleeping; five wordless beats; the book and
+the cat return changed; the final image of both asleep at dawn lands on the lullaby's first resolved note) · 1 Hook 8
+(The Question; "You chug a whole pot of coffee... so what happens if you never sleep?" is the title's question in the
+first sentence; frame 1 is the thumbnail's face and pot; "day eleven" by 0:10) · 2 Retention 8 · 3 Story 8 · 4 Show 8
+· 5 Narration 8 · 6 Comedy 8 (Very.; buttered phone; nice cereal; GO TO BED.; pinball; still arguing; the champion)
+· 7 Look 8 · 8 Sound 8 · 9 Science 9 · 10 Packaging 8 · 11 Subscribe 8 · 12 Length 9 · 13 Every scene 8.
+
+**15-second audit** (they stay because…): 0:00 a man chugging a coffee pot and the question · 0:15 the cat, the record,
+"Very." · 0:30 the coffee-tape trick · 0:45 tired = tipsy, the buttered phone · 1:00 the false sunrise and the
+alarm centre · 1:15 the sob at a cereal ad, then the brain going dark · 1:30 the world skips · 1:45 the road, day two
+· 2:00 the floor breathes, the coat turns its head · 2:15 the cat talks; the real record · 2:30 1964, moody and
+forgetful · 2:45 he beats the scientist; the countdown · 3:00 he stops at 65; 11 days 24 min · 3:15 refused; the rats
+· 3:30 the gut, not the brain · 3:45 the dishwasher and the fight about it · 4:00 jellyfish with no brain sleep ·
+4:15 he goes to bed; the champion · 4:28 dawn, the subscribe line.
 
 ## Rebuild
 
