@@ -100,8 +100,8 @@ function lifeBar(x, y, w, v, k, col, label) {
   if (k <= 0) return;
   const c = ctx;
   c.save(); c.globalAlpha = clamp(k * 3);
-  c.font = '900 34px Montserrat'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillStyle = '#FFFFFF';
-  c.lineWidth = 7; c.strokeStyle = '#0B0B1A'; c.lineJoin = 'round'; c.strokeText(label, x, y - 46); c.fillText(label, x, y - 46);
+  c.font = '900 50px Montserrat'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillStyle = '#FFFFFF';
+  c.lineWidth = 9; c.strokeStyle = '#0B0B1A'; c.lineJoin = 'round'; c.strokeText(label, x, y - 62); c.fillText(label, x, y - 62);
   rrect(c, x, y - 18, w, 36, 18); c.fillStyle = 'rgba(10,14,30,0.8)'; c.fill(); c.lineWidth = 3; c.strokeStyle = 'rgba(255,255,255,0.4)'; c.stroke();
   const fw = Math.max(36, w * v * E.outCubic(clamp(k)));
   rrect(c, x, y - 18, fw, 36, 18); c.fillStyle = col; c.fill();

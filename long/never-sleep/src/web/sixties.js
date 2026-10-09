@@ -5,6 +5,7 @@
 'use strict';
 
 const RANDYPAL = Object.assign({}, PAL, {
+  hair: '#A07A4A', hairHi: '#D8B080',
   coat: '#F2F0EA', coatSh: '#C8C4B8', coatHi: '#FFFFFF', coatDk: '#A8A498',
   strap: '#C8323C', strapSh: '#8A1E26', pants: '#3A5A9A', pantsSh: '#26407A',
   shoe: '#F4F0E6', shoeSh: '#C8C2B0', sole: '#8A8576', pj: true,
@@ -18,9 +19,6 @@ const DOCPAL = Object.assign({}, PAL, {
 function randyKit(c, r, st) {
   const [hx, hy] = r.head;
   c.save(); c.translate(hx + (st.headDX || 0), hy + (st.headDY || 0)); c.rotate(r.lean + (st.headRot || 0));
-  c.beginPath(); c.moveTo(-64, -10); c.lineTo(-62, -64); c.lineTo(-40, -84); c.lineTo(40, -84); c.lineTo(62, -64); c.lineTo(64, -10);
-  c.quadraticCurveTo(50, -40, 0, -44); c.quadraticCurveTo(-50, -40, -64, -10); c.closePath(); c.fillStyle = '#7A5A3A'; c.fill();
-  for (let i = -3; i <= 3; i++) line(c, i * 15, -82, i * 15, -60, 3, 'rgba(255,230,190,0.25)');
   c.restore();
   c.save(); c.translate(r.P[0], r.P[1]); c.rotate(r.lean);
   c.fillStyle = '#C8323C'; c.fillRect(-84, -112, 168, 16); c.fillStyle = '#2A4A8A'; c.fillRect(-84, -92, 168, 8);
