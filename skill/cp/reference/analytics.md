@@ -5,6 +5,7 @@
 ```sh
 node ~/.claude/skills/cp/bin/yt.mjs numbers      # read-only on YouTube; ≈5 s
 node ~/.claude/skills/cp/bin/yt.mjs next-slot    # the slot this Short will take, and its length arm
+node ~/.claude/skills/cp/bin/yt.mjs comments-due # posts the "Next up" comment on Shorts that have gone public (publish.md)
 ```
 
 - `numbers` rewrites `numbers.md` in this skill (the length test's arms side by side, then every upload) and appends
@@ -16,6 +17,8 @@ node ~/.claude/skills/cp/bin/yt.mjs next-slot    # the slot this Short will take
   which runs about two days behind: a dash means YouTube has not processed that day yet, not that nobody watched.
 - If the report says "Analytics failed", carry on: the public counters are still logged. Put the reason in the final
   report. A scope or permission error needs the user (`yt.mjs auth`, both boxes ticked): never authorize unattended.
+- `comments-due` posts at most one comment per queued Short and prints what it did: put that into the final report.
+  If it fails, carry on; the routine `curiopulse-next-up-comment` (11:40 and 23:40 IST) runs it too.
 - A run reads the numbers; it does not change the rules from them. Rules change when the user says so, or through a
   dated entry under "Readings" below that the user has seen.
 
@@ -73,6 +76,11 @@ node ~/.claude/skills/cp/bin/yt.mjs next-slot    # the slot this Short will take
 |---|---|---|---|
 | Nobody says "subscribe". The Subscribe pill plays silently over the last 3.4 s, on top of the button line | `narration.md`, `visual.md` | qa.py: fails a spoken "subscribe"; the pill pops in 2.6–4.5 s before the end | After 14 Shorts: the last four seconds of the curve (the step should be gone) and subscribers per 1,000 views, against 3.2 (spoken last line) and about 2.0 (mid-video aside). Under about 2.5, ONE spoken last line comes back: "A new strange question every day. Subscribe." |
 | The opening is one continuous shot through the answer: no cut before 7 s, no shot of his frozen face or stare before second 12, no title or name card in the first 15 s | `story.md` §2 | qa.py warns when the first cut is before 7 s; ship bar items 1 and 2 | After seven Shorts with curves: the share lost between seconds 5 and 12, against a median of 27 % (17–41 %) on the first 14. At 20 % or less, keep it. If nothing moves, the cut was not the cause: drop the rule |
+
+Also since 9 Oct 2026 (user: "yes to all"; `publish.md`): the pipeline posts one "Next up" comment on every Short once
+it is public, and every Short goes into one of the channel's three playlists. The channel page got a trailer for
+people who have not subscribed (the voice-recording Short), a row for each playlist, and a last line in its
+description that says "A new strange question every day."
 
 Three things changed on one day (these two, and the cinematic look the day before), so each is read where the others
 cannot reach: the opening by seconds 5–12, the cue by the last four seconds and by subscribers per 1,000 views. Both

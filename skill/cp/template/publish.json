@@ -5,7 +5,7 @@
   "description": "",
   "look": "cine",
   "length": {"arm": "standard", "note": "new-short.sh replaces this object with the one `yt.mjs next-slot` prints; qa.py reads the arm"},
-  "pinnedComment": "Next up: <teaser from topics.md> Subscribe so you do not miss it! (suggestion for the user to pin; never posted by the pipeline)",
+  "pinnedComment": "Next up: REPLACE with the teaser from topics.md. Subscribe so you don't miss it!\nREPLACE with one question that invites replies",
   "tags": [],
   "cover": "cover.jpg",
   "captions": "__SLUG__.srt",
@@ -16,7 +16,8 @@
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "playlist": "REPLACE with one of: Why Does Your Body Do That? | Your Brain Is Weird | Strange Nature"
   },
   "instagram": {
     "publishAt": "auto",

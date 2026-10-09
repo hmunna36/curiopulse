@@ -27,7 +27,7 @@ In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercas
 | `cover.jpg` | 1080×1920 JPEG < 2 MB: the YouTube thumbnail and the Instagram cover |
 | `<slug>.srt` | English captions from the word timings |
 | `README.md` | script, publishing table + metadata, shot table, sound design, science notes with sources, ship review, rebuild |
-| `publish.json` | title, description, tags, IG caption (with the follow line), `pinnedComment` suggestion, the `length` arm, schedule; the tools write back ids and links |
+| `publish.json` | title, description, tags, IG caption (with the follow line), `pinnedComment` (the draft of the "Next up" comment), the `playlist`, the `length` arm, schedule; the tools write back ids and links |
 | `src/` | everything that rebuilds it (`build.sh`), including the cached voice takes |
 
 Plus: committed and pushed to the repo, a row in the root README, **YouTube scheduled for the next free slot: 11:30 AM or 11:30 PM IST (two slots a day; user, 2 Oct 2026)** (thumbnail +
@@ -94,6 +94,9 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - **Length arm:** `node ~/.claude/skills/cp/bin/yt.mjs next-slot` prints the YouTube slot this Short will take and
      the length it must be built to: SHORT (30–35 s, 66–76 words) for a 23:30 slot, STANDARD (45–50 s, 95–110 words)
      for an 11:30 slot. The word budget, `publish.json`'s `length` and qa.py's length band all follow it.
+   - **The "Next up" comment** (`reference/publish.md`): `node ~/.claude/skills/cp/bin/yt.mjs comments-due` posts the
+     queued comment on every Short that has gone public since it was uploaded: one comment per Short, and nothing
+     else is ever done with comments. Put what it prints into the final report. If it fails, carry on.
    - **Catch up Instagram:** an earlier Short whose Reel is still pending (its publish.json has no
      `instagram.scheduledVia`, no `"skip": true`, and its slot is still ahead) gets scheduled first, if Chrome is
      connected. A missed night never leaves a Reel behind. (If the slot slips past while you work, `ig.mjs prepare`
@@ -165,7 +168,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
 ### C. Ship (`reference/publish.md`)
 
 13. **Package:**
-    - fill in `publish.json`: title, description, tags, IG caption, `coverTime`;
+    - fill in `publish.json`: title, description, tags, IG caption, `coverTime`, `pinnedComment` (the "Next up"
+      line and one question) and `youtube.playlist` (one of the channel's three playlists, `reference/publish.md`);
     - write the README's metadata;
     - add the row to the root `README.md` table (YouTube date filled in after step 15);
     - run `node ~/.claude/skills/cp/bin/yt.mjs upload videos/<slug>/publish.json --dry-run`.
@@ -198,7 +202,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
     - `SendUserFile` the MP4 and `cover.jpg` (`display: "render"`);
     - a message with the title, length and length arm, loudness, the YouTube link and release time, the Instagram
       release time, the story in one line, when the answer starts and when the first cut comes (seconds), the QA rounds
-      and what changed, the ElevenLabs characters left, and anything pending.
+      and what changed, the playlist it went into, any "Next up" comment this run posted, the ElevenLabs characters
+      left, and anything pending.
 19. **Remember:** add the Short to `reference/videos.md` (and a lesson if there was one), a memory note, and a line
     in `MEMORY.md`. In `/cp next`, mark the topic `[x]` too. Then back up the skill, which carries videos.md,
     topics.md and the numbers log (`numbers.md`, `numbers.jsonl`): `bin/backup-skill.sh <msg-file>`.
@@ -234,7 +239,8 @@ user's request).
    - disk ≥ 8 GB free;
    - `quota.mjs` exits 0;
    - `yt.mjs whoami` says CurioPulse;
-   - `yt.mjs numbers`, then `yt.mjs next-slot` (the length arm; never build without knowing it);
+   - `yt.mjs numbers`, then `yt.mjs next-slot` (the length arm; never build without knowing it), then
+     `yt.mjs comments-due` (the "Next up" comment on Shorts that have gone public);
    - Instagram: `ig.mjs route` says `business-suite` and Claude in Chrome is connected (or it says `api` and `ig.mjs whoami` works). If neither holds, build and schedule YouTube anyway, and report Instagram as pending.
 3. Run A → B → C exactly as for `/cp <topic>`, including the cleanup (step 20).
 4. Close out: in step 19, mark the line `[x]` with its links and release day and move it under Done (the skill backup
@@ -307,7 +313,8 @@ own level, which in a routine run is medium. So:
 - `topics.md`: the topic queue for `/cp next`
 - `bin/new-short.sh`, `bin/publish-short.sh`, `bin/backup-skill.sh`, `bin/run-lock.sh`, `bin/cp-env.sh`
 - `bin/cleanup.sh`: back to the light checkout (`skill/` + top-level files) once everything is on GitHub
-- `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · next-slot · upload · reschedule · status · stats)
+- `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · next-slot · upload · reschedule · status · stats ·
+  comments-due · queue-comment · channel-info · playlists · playlist-create · playlist-add · channel-set · section-add)
   and YouTube Analytics (`numbers`: the log every run starts with; `analytics [n] [--curve <videoId>]`: stayed to
   watch, average % viewed, subscribers per 1,000 views, one video's retention curve). The length test's arms and
   slots are the constants `LENGTH_ARMS` and `LENGTH_TEST` at its top.

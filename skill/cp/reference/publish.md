@@ -30,13 +30,30 @@ a Reel too), and never before the Short's YouTube release.**
   - `syntheticMedia: false`: YouTube's altered-content question covers realistic people and events, and a cartoon
     with a narrator matches none;
   - notify subscribers;
-  - no playlist.
-- **Pinned comment (suggestion only, never posted by the pipeline):** store it in `publish.json` as `pinnedComment`
-  and in the README's metadata, for the user to pin. First line = the subscribe ask with the next Short's teaser, e.g.
-  `Next up: why onions make you cry 🧅 Subscribe so you don't miss it!` ("Next up", never "tomorrow": the next Short
-  is about 12 hours away.) Then one line answering the question ("What did YOU think it was?" invites replies). Do
-  not post it or use the API to do so.
-- Since 5 Oct 2026 the pinned comment, the description and the Reel caption are the ONLY places the next topic is
+  - one playlist (since 9 Oct 2026; user: "yes to all"): `"playlist"` in `youtube` is the title of the channel
+    playlist this Short belongs in, and `yt.mjs upload` adds it there (`playlistSet`; a title the channel does not
+    have only prints a note):
+    - "Why Does Your Body Do That?": what a body does (reflexes, sensations, aches, noises);
+    - "Your Brain Is Weird": memory, perception, sleep and dreams, time, feelings;
+    - "Strange Nature": animals, plants, weather, physics outside the body.
+    Each has a row on the channel's Home tab. `yt.mjs playlists` lists them. A new playlist is the user's call.
+- **The "Next up" comment (posted by the pipeline since 9 Oct 2026; user: "yes to all").** Write the draft into
+  `publish.json` as `pinnedComment` and into the README's metadata. Line 1 = the subscribe ask with the next Short's
+  teaser, e.g. `Next up: why onions make you cry 🧅 Subscribe so you don't miss it!` ("Next up", never "tomorrow":
+  the next Short is about 12 hours away). Line 2 = one question that invites replies ("What did YOU think it was?").
+  - `yt.mjs upload` puts the Short into the comment queue (`~/.config/cp/comment-queue.json`). `yt.mjs comments-due`
+    posts ONE top-level comment, from the channel, on each queued Short once it is public (YouTube takes no comments
+    on a private video). It writes line 1 again from the channel's schedule at that moment ("Next up: <title of the
+    next scheduled video> Subscribe so you don't miss it!"), so a tease is never stale when the queue is reordered,
+    and keeps line 2 as drafted. With nothing scheduled after it, line 1 is "Subscribe for a new strange question
+    every day."
+  - It runs in every run's preflight, and from the routine `curiopulse-next-up-comment` at 11:40 and 23:40 IST, ten
+    minutes after each release.
+  - That one comment is everything the pipeline does with comments: it never replies, likes, pins, hides or deletes
+    (the user's rule: only the comment actions they named). Pinning is the user's tap in the YouTube app; the API
+    cannot pin.
+  - `"comment": false` in `youtube` keeps a Short out of the queue.
+- Since 5 Oct 2026 the "Next up" comment, the description and the Reel caption are the ONLY places the next topic is
   teased. Since 9 Oct 2026 nothing spoken asks or teases at all: the Subscribe cue is the silent pill (`narration.md`).
 - **Description:** end the first paragraph line with the ask too: `Subscribe for a new strange question every day.`
 - **Instagram caption:** the hook line with an emoji, 1–2 short lines, a **follow line** (Instagram says Follow, not

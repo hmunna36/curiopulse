@@ -445,7 +445,7 @@ async function upload(specPath, dryRun, autoSchedule = false) {
     save();
     console.log('  captions uploaded');
   }
-  if (y.playlist && !y.playlistSet) {
+  if (y.playlist && !/REPLACE/.test(y.playlist) && !y.playlistSet) {
     try {
       await playlistAdd(y.playlist, [y.id], false);
       y.playlistSet = true;
@@ -482,7 +482,8 @@ function queueComment(spec) {
   const q = readCommentQueue();
   if (q.posts.some((p) => p.videoId === y.id)) return false;
   const draft = String(spec.pinnedComment ?? '').replace(/\s*\(suggestion[^)]*\)\s*$/i, '').trim();
-  const question = draft.split('\n').slice(1).join(' ').trim();     // line 1 is the drafted "Next up": rewritten when posted
+  let question = draft.split('\n').slice(1).join(' ').trim();       // line 1 is the drafted "Next up": rewritten when posted
+  if (/REPLACE|<[a-z ]+>/i.test(question)) question = '';              // a template line that was never filled in is not posted
   q.posts.push({videoId: y.id, slug: spec.slug, title: spec.title, publishAt: y.publishAt && y.publishAt !== 'auto' ? new Date(y.publishAt).toISOString() : new Date().toISOString(), question, status: 'queued', queued: new Date().toISOString()});
   writeCommentQueue(q);
   console.log(`  "Next up" comment queued for ${spec.slug}: \`yt.mjs comments-due\` posts it once the Short is public`);
