@@ -30,7 +30,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do Mosquitoes Bite You More? | 48 s | [`videos/mosquito-bites`](videos/mosquito-bites) | [9 Oct 2026](https://youtube.com/shorts/iGJlhUoxFhw) |
 | Why Does Time Fly as You Get Older? | 34 s | [`videos/time-flies`](videos/time-flies) | [9 Oct 2026](https://youtube.com/shorts/VLiKEQwxHqk) |
 | How Do Fireflies Glow? | 46 s | [`videos/fireflies-glow`](videos/fireflies-glow) | [10 Oct 2026](https://youtube.com/shorts/9cwzb7rjmR8) |
-| Why Do We Dream? | 32 s | [`videos/why-we-dream`](videos/why-we-dream) | 10 Oct 2026 |
+| Why Do We Dream? | 32 s | [`videos/why-we-dream`](videos/why-we-dream) | [10 Oct 2026](https://youtube.com/shorts/FcY5zJ2Nlgs) |
 
 Each folder has:
 - the finished MP4;

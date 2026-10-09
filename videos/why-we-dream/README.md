@@ -38,8 +38,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | 10 Oct 2026 23:30 IST |
-| Instagram Reels | @curio_pulse_tv | 11 Oct 2026 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/FcY5zJ2Nlgs | 10 Oct 2026 23:30 IST (scheduled; thumbnail and captions set through the API) |
+| Instagram Reels | @curio_pulse_tv | 11 Oct 2026 18:30 IST (scheduled in Meta Business Suite; automatic cover) |
 
 **Title:** Why Do We DREAM? 💭
 

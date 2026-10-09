@@ -33,18 +33,26 @@
   "cover": "cover.jpg",
   "captions": "why-we-dream.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-10T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "FcY5zJ2Nlgs",
+    "url": "https://youtube.com/shorts/FcY5zJ2Nlgs",
+    "uploaded": "2026-10-09T02:04:18.623Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-11T18:30:00+05:30",
     "caption": "You slap your alarm... in an exam hall, in your pajamas 😴\nRelax, you're dreaming. One idea: your brain is running a fire drill, with the logic switched off.\n\nFollow @curio_pulse_tv for the next one: why do cats purr? 🔔\n\n#science #dreams #sleep #brain #funfacts #reels",
     "coverTime": 3.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-11T18:30:00+05:30",
+    "cover": "auto frame (the thumbnail picker did not load in Business Suite)"
   }
 }
