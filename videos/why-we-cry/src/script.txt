@@ -1,0 +1,47 @@
+# Narration for "Why Do We CRY? 😢"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The Subscribe pill plays silently over the last 3.4 s.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+#   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
+
+## hook gap=0.10 tempo=1.00
+You're eating ice cream at a sad movie and your eyes spring a leak!
+
+## answer gap=0.50 tighten=0.60 tempo=1.00
+Relax, scientists think your face just called for backup.
+
+## alarm gap=0.50 tempo=1.00
+Big feelings trip an alarm in your brain, and it opens a tap above each eye.
+
+## drain gap=0.40 tighten=0.50 tempo=1.00
+The tiny drain in each eye leads to your nose... so your nose cries too.
+
+## spill gap=1.10 tempo=1.00
+The rest pours down your face, where everyone can see it.
+
+## proof gap=0.50 tighten=0.50 tempo=1.00
+It works. Erase the tears from a photo, and people see less sadness... and feel less like helping.
+
+## only gap=0.70 tempo=1.00
+[curious] As far as we know, you're the only animal that cries from feelings.
+
+## help gap=0.80 tighten=0.55 tempo=1.00
+And a good cry seems to help most... when backup shows up.
+
+## button gap=1.15 tighten=0 tempo=1.00
+[deadpan] Some backup.
