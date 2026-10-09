@@ -50,6 +50,12 @@ something is weak, fix it yourself. Never ask: nobody is there to answer.
   | 1080×1920, 45–50 s or 30–35 s, 95–110 or 66–76 words, the length test, `next-slot`, `numbers` | 1920×1080, 4:00–5:00 (≤ 5:15), 480–600 words; no length test here |
   | the `answer` block by 5 s, the mid-video `sub` aside, the watermark, "the first picture" | here: the promise by 0:08 and the first payoff by 0:30; the `sub` block is the LAST block (this skill's engine keeps the pill up once it appears); no watermark in this engine; the first picture is the one the thumbnail promised, close and in action |
 
+## Hooks (binding since 9 Oct 2026)
+
+The film's first 15 seconds follow `reference/hooks.md`: the five hook rules and one of its 21 formulas, named in the
+README's plan and scored in the ship bar's Hook item. Read it in the story step, before the script. Three candidate
+hooks in three formulas, keep the strongest; the first sentence confirms the title.
+
 ## Deliverables
 
 In `long/<slug>/` (slug = the topic's key words, lowercase with dashes):
