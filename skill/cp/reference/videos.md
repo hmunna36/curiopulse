@@ -23,6 +23,7 @@
 | `mosquito-bites`: "Why Do Mosquitoes Bite YOU More? 🦟" | 48 s (standard arm) | https://youtube.com/shorts/iGJlhUoxFhw · 9 Oct 2026 11:30 IST | Business Suite, 10 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 | `time-flies`: "Why Does Time FLY as You Get Older? ⏳" | 34 s (short arm; the first Short in the cinematic look) | https://youtube.com/shorts/VLiKEQwxHqk · 9 Oct 2026 23:30 IST | Business Suite, 10 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 | `fireflies-glow`: "How Do Fireflies GLOW? ✨" | 46 s (standard arm) | https://youtube.com/shorts/9cwzb7rjmR8 · 10 Oct 2026 11:30 IST | Business Suite, 11 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
+| `why-we-dream`: "Why Do We DREAM? 💭" | 32 s (short arm) | https://youtube.com/shorts/FcY5zJ2Nlgs · 10 Oct 2026 23:30 IST | Business Suite, 11 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -787,4 +788,79 @@ here for every new Short, with its links.
 - Two QA rounds (safe area 7.5 → 9, packaging 7 → 8.5, hook 8 → 8.5, look 8 → 8.5, sound 8 → 8.5), 18/18 each time,
   4.5-5.3 minutes a render, then `build.sh` twice (the proof, and once more after the loop fix): `timeline.json`,
   `mix.wav` and the SRT byte-identical each time. Start to finish 2 h 10 min, 6 of them waiting for the lock.
+
+**why-we-dream** (9 Oct 2026, the 06:00 routine's regular firing, the third Short built that day; the short arm; 74 words → 32.03 s):
+- New world file `dream.js`: the twin-bell alarm clock `dmClock(c, x, y, s, t, {ring, squash})` with `dmRingArcs` and
+  `dmSlapBurst`; a nightcap in head space `dmCap(c, sw)`; the dream bubble `dmBubble(x, y, r, k, tail, inside, o)` (a
+  cloud, a trail of puffs, a round window clipped on both layers; `inside(c)` draws in a frame where the window's radius
+  is 200); the exam paper as a monster `dmMonster` (a big red F, teeth, legs that run); `dmPenguin` (a classmate in
+  glasses); `dmLock` (a padlock on a cuff: pops on, swings open); the brain's control room (`initCtrl`, `ctrlRoom`,
+  `ctrlScreen(t, inside)`, four fears `fearCard(c, 'exam' | 'fall' | 'chase' | 'teeth', w, h, t)`, the lightbox
+  `fireSign(t, k)` with a beacon, the wall switch `logicPanel(t, p)`, `ctrlWhistle`). Borrowed: `exam.js`
+  (stomach-growl; the classmates' faces are `paint` and their limbs flat now), `bedroom.js` (hypnic-jerk), `mind.js`
+  (time-flies: `tfBrain` with its helmet). In its scenes: `hallState(tt)` / `hallCam(tt)` / `hallPose` /
+  `hallDraw(tt, t, {S, cam, inset})` (the hook as a function of time, valid at negative time; `inset: true` draws it
+  without a character layer, for inside a clip), `calmState`, `bedDraw(cam, t, o)` (the bed from above: padlocks,
+  pulses down his limbs, a hand that reaches for the clock), `bubChase`, `bubHall`, `brainWindow`, `nightDraw` (one
+  picture read by three shots), `ctrlDraw`, `sleeperDisc`, `SC.cover`.
+- New sfxkit atoms (template too): `alarm_ring(dur, seed, rate, f, edges)` (`edges=True`: only above 5.2 kHz, for under
+  a line), `pea_whistle(dur, seed, f)`, `lock_snap(seed, edges)`, `snore(dur, seed, f0)`. `qc_gags.py` is in its src.
+- **Count the sentence breaks, not only the words.** "Relax, you're dreaming. One idea: your brain is running... a fire
+  drill." ran 5.9-6.6 s on four takes, with or without the dots: v3 at stability 0 gives every full stop and colon its
+  half second and lingers on a two-word sentence. One sentence with the hedge inside it ("Relax, you're dreaming, and
+  your brain may be running a fire drill.") ran 4.5 s on both takes. "may be" hedges as well as "One idea:" does,
+  1.3 s cheaper.
+- **An aside that lands late wants a line after it, not longer gaps.** 68 words put "subscribe" at 69 % (72 % of the
+  words came before it) and the Short at 30.8 s. A callback after the weird fact ("The drill stays in your head.")
+  brought it to 62 % and 32.0 s, and gave "Usually." a line to undercut. A one-word button needs the sentence it
+  answers right before it: with a different sentence in between ("Your eyes still dart about."), "Usually." would
+  have answered that one.
+- **A cut within 0.05 s of the pill lifts the caption before it.** "scored / higher" jumped to y 1150 and sat on the
+  chart, because its chunk ended 0.01 s inside `subLift`'s window. The shot under the aside starts 0.30 s before the
+  word and the pill pops 0.22 s before it (`sub_in`), so the chunk ends 0.09 s clear.
+- **A picture inside a clip must not go through `charLayer`.** The layer's map of shapes is copied onto the main map
+  without the clip, so the light would draw a rim round a man who is not there. `hallDraw(..., {inset: true})` uses
+  `drawCharacterRig` and draws the cap with `headSpace` on the main canvas: everything inside a `clip()` stays unlit,
+  which suits a dream. A world point F lands on the bubble's centre B with
+  `{x: F.x, y: F.y, zoom, sx: B.x - 540, sy: B.y - 960}`; the hook's last picture closes down into the bubble when
+  its radius runs from 1150 px to its own size while B moves from the middle of the frame to its place (0.4 s, a
+  flash on the cut hides the change from lit to unlit).
+- **The set's softness can follow the camera.** `setLights({hook: (lt, t) => ({...HALL_LIGHT, dof: lerp(1.9, 0.4, pull)})})`:
+  the classmates are out of focus in the close shot (at `dof: 0.6` the one behind his hand was as sharp as he was)
+  and sharp once the camera lets go. And people who are "writing" look down (`blink: 0.95`): blurred, with open eyes,
+  the one behind him stared at the camera with two white discs.
+- **The watermark's corners caught three things in one Short** (x 110-330 and x 750-970 at y 405-455): a lit sign 560
+  px wide at y 428 ran under both, a chart's title pill under one, a pop-up window under the other. Start a shot's own
+  titles at y 460 or lower, or keep them between x 330 and 750; a pop-up goes over the set, not into a top corner.
+- **A chart's first second needs somebody on it.** "In one study," over an empty board with a title pill was 1.2 s of
+  nothing. He is on it from the first frame (he is one of the students), and two empty slots with question marks
+  wait for the bars. The bars start at zero (8.5 against 7.8 out of 20): the difference is small, and looks it.
+- **Hands on a desk are IK with the elbows out** (`ikReach(..., -1)`), and so is a hand that slaps something beside
+  him: the elbow stays up by his ear and the forearm swings down. Forearms and hands are drawn again after the desk
+  and the clock (`actor`), or the desk top covers them. A thumbs-up next to a prop is IK to a point above it
+  (bend +1), not the rig's fixed thumbs-up angles: those put the fist behind the clock.
+- **`hookLight` is taken** (kit.js). A `const` of that name in scenes.js stops the page: `[pageerror] Identifier
+  'hookLight' has already been declared`, then `initScenes2 is not defined`, then a 60 s timeout. Before naming a
+  helper, `grep -n "^function \|^const \|^let " web/kit.js web/fx.js web/lib.js`.
+- **The loop through a wind-up.** The slap lands at 0.26 s, on the word. The last 0.4 s cut from his bed to the dream
+  (the same hook state at negative time): his hand comes up, and frame 0 is the top of the swing. The alarm rings
+  from the moment his arm gets free, through the cut, and is cut off by the slap: full band in the tail and in the
+  first 0.1 s, only its top under "You".
+- The first render passed the gate (18/18) and all but two items of the ship bar (the sign under the watermark, a
+  thumbs-up hidden behind the clock, a chase that was two figures standing): six sheets of stills, a sweep every
+  0.5 s, the mask sheet and three mixes came first. Round 2 was `build.sh` itself: `timeline.json`, `mix.wav` and the
+  SRT byte-identical. 5.1-5.3 minutes a render (the Mac was busy: load 9). Start to finish about 1 h 20 min.
+- Voice: about 1,400 characters sent (422 for the first pass, 978 on sixteen audition takes of five lines; two were
+  installed); the account's balance went down by 616 (100,779 → 100,163 left).
+- Studio: the direct video URL gave "Oops, something went wrong", and the channel URL "you don't have permission to
+  view this page": Chrome was signed in to another account. No switching: the thumbnail check went into the report as
+  pending (the API had set the thumbnail).
+- Business Suite (window hidden): buttons by text + `.click()` (Create reel, Add video, Next, Next, the Schedule option
+  with `aria-pressed`, the final Schedule without it, after reading the date and the two spinbuttons back in the same
+  script); four parts into a collector on the composer page; the hash compared in the page through `.then()`; the
+  caption as a synthetic `paste`; a coordinate click on the date field and the day by its exact `aria-label`; 18 and 30
+  typed into the spinbuttons by ref, then Tab (the poll switch stayed off). The Reel was in Content → Scheduled after a
+  reload ("Processing..."). The thumbnail picker stayed empty: auto cover.
+- The 06:00 routine did fire that morning as well as at 01:31 (its restart check said NORMAL both times), so three
+  Shorts were built on 9 Oct and the calendar is one slot ahead (filled up to 10 Oct 23:30).
 

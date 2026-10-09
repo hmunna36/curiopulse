@@ -235,7 +235,8 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
   right (x 962), swapping with a short fade, so one fixed crop or blur box cannot remove it. Both spots are inside the
   key-content zone.
 - Keep a shot's own titles and labels off those two corners (x 110–330 and x 750–970 at y 405–455). The cover frame
-  carries it too; that is fine.
+  carries it too; that is fine. A wide sign, a chart's title pill and a pop-up window all ran into them in one Short
+  (why-we-dream, 9 Oct 2026): start a shot's own titles at y 460 or lower, or keep them between x 330 and 750.
 
 ## The Shorts safe area (1080×1920)
 

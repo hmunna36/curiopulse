@@ -80,6 +80,10 @@
   where it starts.
 - Nothing sits between the hook's take(s) and `answer`, and no block anywhere only names the thing or only asks "So
   what's going on?".
+- **Write the answer as one sentence** (why-we-dream, 9 Oct 2026). Three clauses ("Relax, you're dreaming. One idea:
+  your brain is running... a fire drill.") ran 5.9-6.6 s on four takes: v3 gives every full stop and colon its half
+  second. One sentence with the hedge inside it ("...and your brain may be running a fire drill.") ran 4.5 s. Count
+  the sentence breaks of a block, not only its words; "may be" hedges as well as "One idea:" does.
 
 ## The subscribe aside (the `sub` block, mid-video)
 

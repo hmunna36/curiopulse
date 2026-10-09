@@ -1447,3 +1447,57 @@ def lamp_pip(f=1760.0, dur=0.1, seed=0, rise=0.06):
     ph = 2 * np.pi * np.cumsum(fr) / SR
     y = (np.sin(ph) + 0.22 * np.sin(2 * ph)) * attack_decay(n, 0.004, dur * 0.45)
     return fade(y / 1.22, 0.002, 0.02)
+
+# ================================================================= an alarm clock, a whistle, a padlock, a snore (why-we-dream)
+def alarm_ring(dur=0.6, seed=0, rate=24.0, f=2350.0, edges=False):
+    """a twin-bell alarm clock: a hammer flying between two bells a tone apart, `rate` hits a second (mono). It
+    lives in the speech band: full band is for a pause; edges=True keeps only what is above 5.2 kHz (the hammer's
+    tick and the top of the bells), so it can run under a line."""
+    n = int(dur * SR)
+    y = np.zeros(n)
+    m = int(0.11 * SR)
+    k = 0
+    while k / rate < dur - 0.03:
+        ff = f * (1.0 if k % 2 == 0 else 1.122)
+        b = sum(np.sin(2 * np.pi * ff * q * ar(m) + 0.3 * k) * a for q, a in ((1, 1), (2.76, 0.45), (5.4, 0.25))) * expdecay(m, 0.03)
+        b = b + 0.35 * filt(white(m, seed + k), "highpass", 4000) * expdecay(m, 0.003)
+        i = int(k / rate * SR)
+        y[i:i + m] += b[: n - i] * (0.85 + 0.15 * ((k * 7919) % 5) / 4)
+        k += 1
+    if edges:
+        y = filt(y, "highpass", 5200, 4)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.002, 0.03)
+
+
+def pea_whistle(dur=0.3, seed=0, f=2900.0):
+    """a referee's whistle: a hard tone, the pea's trill, a little breath (mono). Speech band: for a pause."""
+    n = int(dur * SR)
+    t = ar(n)
+    ph = 2 * np.pi * np.cumsum(f * (1 + 0.03 * np.sin(2 * np.pi * 36 * t))) / SR
+    y = (np.sin(ph) + 0.35 * np.sin(2 * ph) + 0.15 * np.sin(3 * ph)) * (0.72 + 0.28 * np.sin(2 * np.pi * 36 * t + 1.0))
+    y = y + 0.25 * filt(white(n, seed), "bandpass", [2000, 7000])
+    return fade(y / (np.abs(y).max() + 1e-9) * np.minimum(1, t / 0.012), 0.002, 0.03)
+
+
+def lock_snap(seed=0, edges=False):
+    """a padlock snapping shut: the shackle's click, a second smaller one, the body's clunk (mono, 0.11 s).
+    edges=True keeps only what is under 250 Hz and above 5.2 kHz, so it can sit ON a spoken word."""
+    n = int(0.11 * SR)
+    t = ar(n)
+    click = (filt(white(n, seed), "bandpass", [1800, 7000]) * expdecay(n, 0.004) + 0.5 * np.sin(2 * np.pi * 3100 * t) * expdecay(n, 0.006)
+             + 0.35 * np.sin(2 * np.pi * 1750 * t) * expdecay(n, 0.012))
+    late = np.zeros(n)
+    i = int(0.035 * SR)
+    late[i:] = filt(white(n - i, seed + 1), "bandpass", [900, 4200]) * expdecay(n - i, 0.006) * 0.7
+    body = np.sin(2 * np.pi * np.cumsum(90 + 110 * np.exp(-t / 0.02)) / SR) * expdecay(n, 0.03)
+    y = click + late + 0.8 * body
+    if edges:
+        y = filt(y, "lowpass", 250) + filt(y, "highpass", 5200, 4)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.0005, 0.02)
+
+
+def snore(dur=0.5, seed=0, f0=58.0):
+    """one snore: a slow, rattly in-breath (mono; nearly all of it under 420 Hz)"""
+    n = int(dur * SR)
+    y = filt(buzz(n, f0, seed, 0.5), "lowpass", 420) * np.sin(np.pi * np.linspace(0, 1, n)) ** 0.7
+    return fade(y / (np.abs(y).max() + 1e-9), 0.02, 0.05)
