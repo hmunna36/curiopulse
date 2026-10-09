@@ -22,8 +22,8 @@ drawFace = function (c, f, pal) {
   const bags = f.bags || 0, red = f.red || 0, tears = f.tears || 0;
   if (bags > 0.02) for (const s of [-1, 1]) {   // drawn first: the eyes sit on top of them
     const ex = s * 24, ry = 16 * f.eyeOpen;
-    c.beginPath(); c.ellipse(ex, -2 + ry * 0.55, 19, 9 + 4 * bags, 0, 0.05, Math.PI - 0.05);
-    c.lineWidth = 7 + 5 * bags; c.strokeStyle = `rgba(110,60,120,${0.22 + 0.4 * bags})`; c.lineCap = 'round'; c.stroke();
+    c.beginPath(); c.ellipse(ex, -2 + ry * 0.62, 15, 5 + 3 * bags, 0, 0.25, Math.PI - 0.25);
+    c.lineWidth = 3.5 + 3 * bags; c.strokeStyle = `rgba(110,60,120,${0.2 + 0.35 * bags})`; c.lineCap = 'round'; c.stroke();
   }
   FACE0(c, f, pal);
   if (red > 0.02 && f.blink < 0.93) for (const s of [-1, 1]) {   // threads from the corners only (never over the pupil)

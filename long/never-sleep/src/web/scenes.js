@@ -247,14 +247,15 @@ SC.drunk = (lt, t, shot) => {
       }
     } });
   }
-  bigWord('17 HOURS AWAKE', 480, 190, 92, '#7FE9FF', pop(t, shot.start + 0.2));
-  bigWord('A FEW DRINKS', 1440, 190, 92, '#FF86A6', pop(t, c.drinks - 0.3));
+  // (the push below travels from him to his tipsy twin and back)
+  bigWord('17 HOURS AWAKE', 480, 270, 92, '#7FE9FF', pop(t, shot.start + 0.2));
+  bigWord('A FEW DRINKS', 1440, 270, 92, '#FF86A6', pop(t, c.drinks - 0.3));
   bigWord('=', 960, 470, 170, '#FFFFFF', pop(t, c.drinks + 0.2));
   // the meter on "limit"
   const mk = ramp(t, c.limit - 0.2, c.limit + 0.4, E.outBack);
   if (mk > 0) { ctx.save(); ctx.translate(960, 700); ctx.scale(mk, mk); rrect(ctx, -170, -70, 340, 140, 24); ctx.fillStyle = 'rgba(8,10,28,0.92)'; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = '#FF5A6E'; ctx.stroke();
     ctx.font = '400 92px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#FF5A6E'; ctx.fillText('0.05%', 0, 6); ctx.restore(); }
-  return { glow: 0.85 };
+  { const u = ramp(lt, 1.0, D * 0.45, E.inOutSine) - ramp(lt, D * 0.55, D - 0.5, E.inOutSine); return { glow: 0.85, push: { k: 1.08 + 0.04 * Math.sin(lt * 0.7), cx: lerp(480, 1440, u), cy: 520 } }; }
 };
 // He butters his phone
 SC.toast = (lt, t, shot) => {
@@ -759,7 +760,7 @@ function lyingHero(cm, t, k, face) {
 }
 SC.bed = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = camKeys(lt, [[0, 880, 560, 1.5], [2.2, 960, 620, 1.35], [D, 980, 640, 1.25]], E.inOutSine);
+  const cam = camKeys(lt, [[0, 900, 600, 1.9], [1.6, 840, 720, 2.6], [2.4, 840, 700, 2.4], [3.8, 960, 620, 1.35], [D, 980, 640, 1.25]], E.inOutSine);
   const look = ramp(lt, 0.3, 0.9), close = ramp(lt, 1.4, 2.0), lie = ramp(lt, 2.3, 3.6, E.inOutSine);
   const sleepy = ramp(t, c.gotobed2 - 0.2, c.gotobed2 + 0.4);
   const face = worn(lerpFace(Object.assign({}, FACES.tired, { lookX: look > 0.5 && close < 0.5 ? 0.9 : 0.4, lookY: close > 0.5 ? 0.8 : 0 }), FACES.peace, sleepy), t);
@@ -779,11 +780,23 @@ SC.champ = (lt, t, shot) => {
     applyCam(cm); recordBook(ctx, 690, 700, 300, t, { open: 0 });
     lyingHero(cm, t, 1, FACES.peace);
   } });
+  dawnWash(dw);
   return Object.assign(nightPost(), { tintA: 0.16 * (1 - dw) });
 };
 // The final image and the subscribe line: dawn gold, both asleep, the book his pillow
-function finalImage(lt, t, push) {
-  const cam = { x: 960, y: 620, zoom: 1.35 + push, rot: 0 };
+function dawnWash(k) {
+  if (k <= 0) return;
+  screenSpace();
+  ctx.save(); ctx.globalCompositeOperation = 'soft-light';
+  const g = ctx.createLinearGradient(0, 0, W, H); g.addColorStop(0, `rgba(255,190,110,${0.9 * k})`); g.addColorStop(1, `rgba(255,150,90,${0.35 * k})`);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.globalCompositeOperation = 'lighter';
+  const r = ctx.createRadialGradient(300, 380, 50, 300, 380, 1300); r.addColorStop(0, `rgba(255,200,130,${0.22 * k})`); r.addColorStop(1, 'rgba(255,200,130,0)');
+  ctx.fillStyle = r; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+}
+// The final image and the subscribe line: dawn gold, both asleep, the book his pillow
+function finalImage(lt, t, cam) {
   const dw = 0.6 + 0.4 * ramp(t, cu().final - 1, cu().final + 3, E.inOutSine);
   homeSet2(cam, t, { day: dw, dawn: dw, lamp: 0, noBook: true, cat: { x: 1000, y: 630, s: 0.6, zzz: 1, after: true }, hero: (cm) => {
     applyCam(cm); recordBook(ctx, 690, 700, 300, t, { open: 0 });
@@ -791,25 +804,27 @@ function finalImage(lt, t, push) {
     zzz(...toScreen(cm, 760, 560), t, cu().final - 0.5, 1, 1);
   } });
   applyCam(cam); sunRaysCheap(222, 470, dw, t);
-  return dayPost({ tint: '#FFD8A0', tintA: 0.14 });
+  dawnWash(dw);
+  return dayPost({ tint: '#FFD8A0', tintA: 0.1 });
 }
-SC.final = (lt, t, shot) => finalImage(lt, t, 0.02 * lt);
-SC.sub = (lt, t, shot) => finalImage(lt, t, 0.02 * (SHOT('final').end - SHOT('final').start + lt));
+// close on the two of them, the cat breathing on his chest; then the slow pull back to the whole room at dawn
+SC.final = (lt, t, shot) => finalImage(lt, t, { x: 900, y: 610, zoom: 2.5 - 0.06 * lt, rot: 0 });
+SC.sub = (lt, t, shot) => { const D = shot.end - shot.start; return finalImage(lt, t, camKeys(lt, [[0, 900, 610, 2.3], [D, 940, 560, 1.05]], E.inOutSine)); };
 
 // ================================================================= the thumbnail
 // variant (window.COVER_V or TLd.coverVariant): 0 his wired face + the pot + "DAY 11"; 1 the wrecked face + coat
 // eyes + "DAY 3"; 2 face half asleep + "DON'T SLEEP"
 SC.cover = (lt, t, shot) => {
   const v = TLd.coverVariant || 0;
-  darkBg(['#1A1040', '#120A2A', '#0A1A3A'][v], '#020108');
+  darkBg(['#3A0E3A', '#2A0A40', '#0A2A4A'][v], '#06020C');
   screenSpace();
-  softDot(ctx, 1240, 520, 700, ['#FF9A3C', '#B07CFF', '#7FE9FF'][v], 0.35);
-  const cam = { x: 820, y: 505, zoom: 3.4, rot: 0, sx: 300, sy: 20 };
+  softDot(ctx, 1300, 520, 760, ['#FF7A3C', '#B07CFF', '#5FC8FF'][v], 0.7);
+  const cam = { x: 800, y: 520, zoom: 4.6, rot: 0, sx: 330, sy: 50 };
   const face = [Object.assign({}, FACES.wired, { mouth: 'o', mouthOpen: 0.9, eyeOpen: 1.55, bags: 0.6, red: 0.9 }),
     Object.assign({}, FACES.wreck, { bags: 1, red: 1, eyeOpen: 1.5 }), Object.assign({}, FACES.tired, { bags: 1, red: 0.7, blink: 0.6 })][v];
   const k = v === 0 ? 1 : 0, P = potAtMouth(k, 0.3);
   const st = { x: HOME.hx, y: HOME.seatY, s: HOME.hs };
-  heroSeated(cam, 0.3, { face, frizz: v ? 1 : 0.3, R: v === 0 ? ikLocal(st, P.hand[0], P.hand[1]) : [40, -150], bendR: 1 }, { ambient: 0.05 });
+  heroSeated(cam, 0.3, { face, frizz: v ? 0.8 : 0.3, R: v === 0 ? ikLocal(st, P.hand[0], P.hand[1]) : [40, -150], bendR: 1 }, { ambient: 0, warm: 0.8, warmX: 1200, warmDir: -1, warmCol: '#FFB070' });
   applyCam(cam);
   if (v === 0) {
     coffeePot(ctx, P.x, P.y, P.s, 0.3, { tilt: P.tilt, level: 0.5 });
@@ -817,9 +832,9 @@ SC.cover = (lt, t, shot) => {
   }
   screenSpace();
   const words = [['DAY', '11'], ['DAY', '3'], ["DON'T", 'SLEEP']][v];
-  bigWord(words[0], 420, 330, 230, '#FFFFFF', 1, -0.05);
-  bigWord(words[1], 420, 610, v === 2 ? 230 : 330, '#FFD447', 1, -0.05);
-  return { glow: 0.9, noCaptions: true, noSubscribe: true, grain: 0, noHud: true };
+  bigWord(words[0], 430, 320, 260, '#FFFFFF', 1, -0.05);
+  bigWord(words[1], 430, 640, v === 2 ? 260 : 400, '#FFD447', 1, -0.05);
+  return { glow: 0.35, noCaptions: true, noSubscribe: true, grain: 0, noHud: true };
 };
 
 function initScenes2() { initHome(); initBrainHead(); initLab(); }
