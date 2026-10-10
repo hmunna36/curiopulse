@@ -25,6 +25,7 @@
 | `fireflies-glow`: "How Do Fireflies GLOW? ✨" | 46 s (standard arm) | https://youtube.com/shorts/9cwzb7rjmR8 · 10 Oct 2026 11:30 IST | Business Suite, 11 Oct 2026 06:30 IST (auto cover: the thumbnail picker never loaded) |
 | `why-we-dream`: "Why Do We DREAM? 💭" | 32 s (short arm) | https://youtube.com/shorts/FcY5zJ2Nlgs · 10 Oct 2026 23:30 IST | Business Suite, 11 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 | `why-we-cry`: "Why Do We CRY? 😢" | 45 s (standard arm) | https://youtube.com/shorts/PqYnHstEFfY · 11 Oct 2026 11:30 IST | Business Suite, 12 Oct 2026 06:30 IST (auto cover: the composer showed no thumbnail picker) |
+| `cats-purr`: "Why Do Cats PURR? 🐱" | 31 s (short arm) | https://youtube.com/shorts/Tj57vuNTmWg · 11 Oct 2026 23:30 IST | Business Suite, 12 Oct 2026 18:30 IST (auto cover: the thumbnail picker stayed a skeleton) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -929,3 +930,66 @@ here for every new Short, with its links.
   pass, 186 on three more takes of two lines; three were installed). The account went from 98,343 to 91,333 in the
   same hour: the weekly film's cloud run was voicing "never-sleep" on it.
 
+**cats-purr** (10 Oct 2026, the 06:00 second Short; the short arm; 69 words → 31.47 s; hook formula: Contrarian Flip):
+- New world files: `purrcat.js` (his ginger cat `purCat(c, x, y, s, t, o)`: sitting, front view, flat shapes, to be
+  called inside `actor`; `purr` (a shiver that flips every frame), `chin` (the head tips back), `eyes`: 'open' | 'half' |
+  'big' | 'happy' | 'shut' or a pair, `look`, `ears`, `mouth`: 'w' | 'open' | 'meow' | 'eat', `paw` + `pawTo` + `pawSide`,
+  `loaf` (lying, legs tucked), `kitten`, `cone` (a vet's collar), `bandage`, `crown`, `pal`; `purPt` (a point of her
+  head), `purMarks` (arcs leaving her sides), `purWord` (shivering letters: PRRRR, mew!), `purCrown`, `purBowTie`,
+  `purBowl`, `purFingers` (his fingers, scratching)), `lounge.js` (why-we-cry's living room without the TV, painted
+  twice: lamp on, and five in the morning by moonlight; `lngRoom(cam, t, {lamp})`, `lngCouchBack/Front`, `lngClutter`,
+  `lngHero(cam, t, A)`: him on the couch from a description, with the cat on his lap drawn on his own layer and his
+  forearms and hands drawn again in front of her, `scratch`, a `bowl` held up, a `tie`; faces `LNGFACE` (fond proud
+  unsure aww asleep awake beaten)), `throat.js` (the windpipe from the front in section: `thrDraw(t, {flow, dir, lung,
+  sound})`: two folds with a pad in each on a six-frame beat `thrGap`, beads of air that the folds chop, rings of
+  sound at each clap `thrClaps`, lungs that fill; `thrChevrons`, `thrInset` (the cat in a round window), `thrLabel`,
+  `thrMini` (the voice box as a small round window on her fur)), `places.js` (a basket in a warm corner `nestBack` /
+  `nestFront`, three kitten palettes `KITPALS`; the vet's `vetBack`, `vetTable`, `vetArm` (a gloved hand with a
+  stethoscope); `sndStrip` (a sound's trace on a strip: a fat slow wave with a thin fast one drawn on it, an icon in a
+  disc, a tag), `babyFace`, `sndTag`). In its scenes: `hookA(tt)` / `hookCam(tt)` (valid at negative time), `couchDraw`,
+  `purrBeam` (arcs travelling from her mouth to his ear), `nightCat`, `SC.loop` (a 0.4 s last shot that is the hook at
+  negative time), `SC.cover`. `qc_gags.py` is in its src.
+- New sfxkit atoms (template too): `purr_parts(dur, seed, rate, small, t0)` → (body, rattle) and
+  `pause_mask(words, n, lead, tail, ramp)`.
+- **A sound that is the subject, on a phone: two tracks and the pauses.** The kit's `purr` lives under 330 Hz, where a
+  phone speaker has nothing. The purr is now a train of knocks (25 a second; in-breath a little faster and brighter)
+  in two bands: the body (70–330 Hz) on the bed bus under the words, and the rattle (260–1,100 Hz) on the sfx bus
+  times a mask that is 1 only in the narration's pauses (from 0.03 s after a word to 0.12 s before the next). Every
+  pause while she purrs then carries it at −17 … −22 dB, and no word is masked (content words 18.6 dB clear).
+- **A full stop in the hook is a place for the sound the line names.** "You scratch your cat's chin, she purrs, so
+  she's happy, RIGHT?" ran 4.3–4.5 s on five takes and three wordings (v3 gives every comma its beat). "You scratch your
+  cat and she purrs. Happy cat, RIGHT?" ran 3.56 s with a 0.7 s pause after "purrs." (capped at 0.42: 3.28 s), and the
+  purr is heard alone in that pause. The answer starts at 3.74 s.
+- **The first look inside, through a window on the thing.** Round 1 dived into her with a zoom blur and cut to a
+  diagram. Round 2: a round window opens on her throat (`thrMini`: the next shot's voice box, small, already at
+  work), his hand gets out of its way, and the dive is `scaledCam` about that point plus `cam.sx` / `cam.sy`, so the
+  window ends where the next shot's voice box is (`THR.x`, `THR.foldY`) at nearly its size.
+- **Hands that hold something in front of his chest: `ikReach(..., -1)`** (elbows out). With +1 the elbows tuck in and
+  the forearms cross over what he is holding (they covered the cat's face). Whatever sits on his lap is drawn in his
+  layer's `post` as an `actor`; his forearms, cuffs and hands are then drawn again on top of it.
+- **Frame 1 can be wider if it comes in fast.** Motion in the first half second was 8.8 with a slow push from zoom
+  2.82; starting at 2.52 (his head 370 px) and pushing to 2.94 in 0.3 s, with her chin coming up into his fingers, gave
+  18.5. Keep the head at 350 px or more on frame 0.
+- **Half-shut eyes on an animal read as cross.** The loop's frames (and frame 0 for a moment) had her lids half down:
+  a grumpy cat next to "happy cat". Eyes open and on his hand, closing as he reaches her.
+- **A cone that reads hides the cat.** At 162 × 140 units round her head it covered her body and the bandaged paw;
+  140 × 118 leaves the paws out, and the bandaged leg goes out to the side (`pawSide`, `pawTo`). In the close-up (zoom
+  3.9) the cone is only a pale backdrop, so the pull-back on "or HURT" is the reveal.
+- **v3 stamped a take's first word short again** ("Her": an 0.08 s window before she says it). The mix check then put
+  it at 1.5 dB: the word's window, not the mix. make_timeline.py moves it to where the take gets loud, after the
+  shots, captions and cues are made. And "me.", the last word of the answer, read −33 … −38 dB in the speech band on
+  six takes and three wordings: it is lifted 4.5 dB (`master(voice_fx=lift)`), not re-rolled.
+- Voice: about 1,190 characters sent (394 for the first pass; 792 on thirteen audition takes of the hook and the
+  answer; one was installed); the account's balance went down by 523 (89,417 → 88,894 left).
+- Two QA rounds (hook 8 → 8.5, retention 8 → 8.5), 19/19 each time, 3.7 minutes a render; round 2 was `build.sh`
+  itself. Start to finish about one hour (06:04–07:05 IST), with both uploads.
+- Business Suite (window hidden, screenshots worked): Create Reel, Add video, Next, Next, the Schedule option (the one
+  with `aria-pressed`) and the final Schedule (the one without, clicked only after the date and both spinbuttons were
+  read back in the same script) by text + `.click()`; five parts into a collector on the composer page; the hash
+  compared in the page through `.then()`; the caption as a synthetic `paste`. A caption that ends in a hashtag leaves
+  a suggestion list open under it: blur the editor before clicking Next. A coordinate click on the date field, the day
+  by its exact `aria-label`, 18 and 30 typed into the spinbuttons by ref, then Tab. The Reel was in Content →
+  Scheduled ("Processing...") after a reload. The thumbnail picker stayed a skeleton: auto cover.
+- Studio: the direct video URL opened the right channel; the Thumbnail slot was the grey placeholder (the video was
+  still processing). cover.jpg went in through the file input and showed at once; Save from JavaScript, Save back to
+  disabled.

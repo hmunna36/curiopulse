@@ -74,6 +74,10 @@
   - **Write a hook that must end by 4 s in one breath** (spicy-food, 7 Oct 2026): no "..." and no capitals but the
     last word. Four takes of an 11-word hook with a pause ran 5.0–6.2 s; `[panicked]` + the same thought in 12 words
     with no pause came in at 4.0 s. Audition two or three wordings with `voice.synth` before building on a slow one.
+  - **Two short sentences can be faster than one with commas** (cats-purr, 10 Oct 2026). A 12-word hook with three
+    commas ran 4.3–4.5 s on five takes and three wordings; "You scratch your cat and she purrs. Happy cat, RIGHT?"
+    ran 3.56 s, and the 0.7 s pause after its full stop (capped with `tighten=0.42`) is where the sound the line names
+    is heard alone.
 - `## answer` (this id is required; qa.py looks for it): the answer as a plain, surprising claim or a metaphor. Its
   first word must be spoken by **5.0 s** (qa.py warns to 6.0 s and fails later), so keep the hook under ≈ 4 s and the
   gap before `answer` at 0.45–0.60: the deadpan beat is still there, it just isn't long. `make_timeline.py` prints

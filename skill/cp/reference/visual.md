@@ -145,6 +145,9 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
   viewer through a magnifying glass (one giant suspicious eye) and it read at once. Never add a free-floating sleeve:
   move his own arm (`heroSeatPose(stretch, shrug, point)`) and draw the prop at the rig's wrist (`r.wrR`).
 - A stretch passes through a T-pose if the forearm angle only interpolates; bend the elbows out halfway.
+- Hands that hold something in front of his chest (a cat, a jar, a tub) are IK with the elbows out: `ikReach(..., -1)`.
+  With +1 the forearms cross over the thing. What sits on his lap is drawn in his layer's `post` as an `actor`, and his
+  forearms and hands are drawn again on top of it (cats-purr's `lngHero`).
 - Acting sells the joke. Examples:
   - a deadpan stare after the chaos;
   - a glance down at his own body ("Thanks, body.");
@@ -165,6 +168,10 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
   arrives at each thing as the narration names it: pores, then nerve, then vessel, then skin.
 - **Dives and match cuts between scales:** window, head, brain; hand, fingertip, cutaway. Use a zoom blur on the
   way in (`zblur`) and a flash on the cut.
+- **The way into a body is a window on it** (cats-purr, 10 Oct 2026): a small round window opens on the spot (her
+  throat) with the next shot's subject already at work in it, small; the camera dives through it (`scaledCam` about
+  that point, plus `cam.sx` / `cam.sy`) so that it ends where the next shot's subject is, at nearly its size. A zoom
+  blur into a separate diagram is a cut to a diagram.
 - **Reaction cuts are hard cuts** on the beat: the stare, the raisin thud. Explanations get smooth moves.
 - **Split screen** for "what your brain thinks vs what's happening". Captions go to the seam with
   `post.capY = H / 2`.

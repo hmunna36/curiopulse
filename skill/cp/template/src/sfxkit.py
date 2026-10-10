@@ -1501,3 +1501,36 @@ def snore(dur=0.5, seed=0, f0=58.0):
     n = int(dur * SR)
     y = filt(buzz(n, f0, seed, 0.5), "lowpass", 420) * np.sin(np.pi * np.linspace(0, 1, n)) ** 0.7
     return fade(y / (np.abs(y).max() + 1e-9), 0.02, 0.05)
+
+
+# ================================================================= a purr a phone can play (cats-purr)
+def purr_parts(dur, seed=0, rate=25.0, small=False, t0=0.0):
+    """A purr, as two mono tracks: (body, rattle). A train of soft knocks, `rate` a second, that breathes: in (a little
+    faster and brighter), out. body = 70-330 Hz (it can hum under words, on the bed bus); rattle = 260-1100 Hz (what a
+    phone speaker plays: for the pauses, e.g. on the sfx bus times pause_mask()). small=True: a kitten (higher, thinner).
+    t0 = where the span starts in the video, so that two spans breathe on one clock."""
+    n = int(dur * SR)
+    t = ar(n) + t0
+    cyc = 1.25 if not small else 0.8
+    ph = (t % cyc) / cyc
+    inn = ph < 0.44
+    r = np.where(inn, rate * 1.06, rate * 0.94)
+    saw = (np.cumsum(r) / SR) % 1.0
+    knock = np.exp(-saw / 0.22) * np.minimum(1, saw / 0.03)
+    turn = 1 - 0.55 * np.exp(-((ph - 0.44) / 0.035) ** 2) - 0.55 * np.exp(-(np.minimum(ph, 1 - ph) / 0.035) ** 2)
+    lvl = np.where(inn, 1.0, 0.8) * turn
+    body = filt(brown(n, seed), "bandpass", [70, 330] if not small else [160, 420])
+    body = body / (np.abs(body).max() + 1e-9) * knock * lvl
+    rattle = filt(white(n, seed + 3), "bandpass", [260, 1100] if not small else [520, 1900])
+    rattle = rattle / (np.abs(rattle).max() + 1e-9) * knock * lvl * np.where(inn, 1.0, 0.7)
+    return body / (np.abs(body).max() + 1e-9), rattle / (np.abs(rattle).max() + 1e-9)
+
+
+def pause_mask(words, n, lead=0.03, tail=0.12, ramp=0.03):
+    """1 where nobody is speaking, 0 under the words (timeline.json's "words"): from `lead` s after a word to `tail` s
+    before the next, with soft edges. Multiply a speech-band sound by it and it is heard only in the pauses."""
+    m = np.ones(n)
+    for w in words:
+        m[max(0, int((w["start"] - tail) * SR)):int((w["end"] + lead) * SR)] = 0
+    k = max(1, int(ramp * SR))
+    return np.convolve(m, np.ones(k) / k, "same")
