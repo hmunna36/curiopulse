@@ -12,9 +12,8 @@ Edit this file freely: reorder, add, remove, or change an angle. One line per Sh
 Order since 10 Oct 2026 (the user's word): topics the viewer can feel or try on the spot, or that settle a common
 belief, go first. On Instagram the three biggest Reels were all of this kind (knuckle cracking 34K, ears pop 10K,
 leg falls asleep 6K views; the only ones with real follows). A refill keeps this order: such topics above the rest.
-The sky stays first because the cats-purr caption already promises it.
+The nostril topic stays first because the sky-blue caption already promises it.
 
-- [ ] Why is the sky blue (and sunsets red)? — he asks mid-hike; sunlight scatters off air molecules, blue most (Rayleigh); why not violet
 - [ ] Why is one nostril always blocked? — he presses one nostril shut and sniffs: nothing; swelling tissue inflates one side and shrinks the other, swapping every couple of hours; each nostril smells the world slightly differently; hedged: what drives the swap is not fully known, and there is no fixed timetable
 - [ ] Why do nails on a CHALKBOARD make you cringe? — he drags his nails down a blackboard and his whole body folds; the worst part of the screech sits around 2 to 4 kHz, the band the ear canal's shape boosts most, and scans show the brain's alarm centre (the amygdala) turning the hearing area up (Newcastle, 2012: verify). Frame 1 is the sound, kept short and not painful on a phone. Hedged: why we evolved to hate it is unknown; the "monkey alarm call" idea did not hold up (verify). From YouTube Studio's suggestions, 10 Oct 2026
 - [ ] Why does your FUNNY BONE hurt so much? — he swings round and cracks his elbow on a door frame: the zing; it is not a bone but a nerve (the ulnar nerve) crossing the elbow in a shallow groove with only skin over it; the jolt runs down to the ring and little finger because that is where the nerve goes. Tap-it-yourself topic. Hedged: the name may be a pun on the arm bone (humerus), origin unproven
@@ -37,6 +36,7 @@ The sky stays first because the cats-purr caption already promises it.
 - [ ] Why do feet stink? — he yanks off a boot after a long hike and the campsite clears; skin bacteria feast on sweat and dead skin and release a cheesy acid (isovaleric acid); their cousins ripen Limburger cheese. The "mosquitoes love that cheese like feet" fact was used in mosquito-bites (9 Oct 2026): find another bonus fact; no "250,000 sweat glands" figure
 
 ## Done
+- [x] Why Is the Sky BLUE? (It Should Be Black) — sky-blue — YouTube https://youtube.com/shorts/RS7bKKA_2d0 12 Oct 2026 11:30 IST (standard arm, 49.0 s); Instagram and the Facebook Page 13 Oct 2026 06:30 IST (Business Suite)
 - [x] Why Do Cats PURR? — cats-purr — YouTube https://youtube.com/shorts/Tj57vuNTmWg 11 Oct 2026 23:30 IST (short arm, 31.5 s); Instagram 12 Oct 2026 18:30 IST (Business Suite)
 - [x] Why Do We CRY? — why-we-cry — YouTube https://youtube.com/shorts/PqYnHstEFfY 11 Oct 2026 11:30 IST (standard arm, 45.4 s); Instagram 12 Oct 2026 06:30 IST (Business Suite)
 - [x] Why Do We DREAM? — why-we-dream — YouTube https://youtube.com/shorts/FcY5zJ2Nlgs 10 Oct 2026 23:30 IST (short arm, 32.0 s); Instagram 11 Oct 2026 18:30 IST (Business Suite)

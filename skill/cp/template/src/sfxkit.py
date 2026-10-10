@@ -1534,3 +1534,43 @@ def pause_mask(words, n, lead=0.03, tail=0.12, ramp=0.03):
         m[max(0, int((w["start"] - tail) * SR)):int((w["end"] + lead) * SR)] = 0
     k = max(1, int(ramp * SR))
     return np.convolve(m, np.ones(k) / k, "same")
+
+
+# ================================================================= a drink, a slide, a bumper, a twitch (sky-blue)
+def glug_low(seed=0):
+    """a swallow that can sit under the first words: a round knock that drops, all of it under 300 Hz, and a wet
+    tick on top (above 5.5 kHz). Put it on the bed bus."""
+    n = int(0.2 * SR)
+    f = 230.0 * 0.42 ** (np.linspace(0, 1, n) ** 0.7)
+    y = np.sin(2 * np.pi * np.cumsum(f) / SR) * attack_decay(n, 0.008, 0.07)
+    m = int(0.012 * SR)
+    y[:m] += 0.25 * filt(white(m, seed), "highpass", 5500) * expdecay(m, 0.003)
+    return fade(y, 0.002, 0.03)
+
+
+def slide(f0, f1, dur, vib=0.0, top=None, harm=6):
+    """a brassy slide from f0 to f1 Hz (a lazy "wah", something winding down, a "hmph"): `harm` harmonics, low-passed
+    at `top` Hz when given. It lives in the speech band unless top is under 300: play it in a pause."""
+    n = int(dur * SR)
+    t = ar(n)
+    f = f0 * (f1 / f0) ** (t / dur) * (1 + vib * np.sin(2 * np.pi * 5.5 * t))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = sum(np.sin(k * ph) / k for k in range(1, harm + 1))
+    if top:
+        y = filt(y, "lowpass", top, 4)
+    return fade(y / (np.abs(y).max() + 1e-9) * attack_decay(n, 0.03, dur * 0.6), 0.01, 0.06)
+
+
+def ding(m, dur=0.16, seed=0, bright=1.2):
+    """a pinball bumper: a short bright bar at MIDI note m. 0.06 s and very quiet when it falls on a word; 0.1-0.15 s
+    in a pause."""
+    return fade(marimba(mtof(m), dur, seed, bright) + 0.3 * bell(mtof(m + 12), dur, 0.05), 0.001, 0.03)
+
+
+def buzz_hi(dur, rate=31.0, seed=0, lo=5200):
+    """a twitchy buzz that lives above the speech band (it can run under a line): noise above `lo` Hz, chopped
+    `rate` times a second"""
+    n = int(dur * SR)
+    t = ar(n)
+    am = (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * rate * t))) * (0.7 + 0.3 * np.sin(2 * np.pi * 3.1 * t))
+    return fade(filt(white(n, seed), "highpass", lo, 4) * am, 0.01, 0.03)

@@ -26,6 +26,7 @@
 | `why-we-dream`: "Why Do We DREAM? 💭" | 32 s (short arm) | https://youtube.com/shorts/FcY5zJ2Nlgs · 10 Oct 2026 23:30 IST | Business Suite, 11 Oct 2026 18:30 IST (auto cover: the thumbnail picker never loaded) |
 | `why-we-cry`: "Why Do We CRY? 😢" | 45 s (standard arm) | https://youtube.com/shorts/PqYnHstEFfY · 11 Oct 2026 11:30 IST | Business Suite, 12 Oct 2026 06:30 IST (auto cover: the composer showed no thumbnail picker) |
 | `cats-purr`: "Why Do Cats PURR? 🐱" | 31 s (short arm) | https://youtube.com/shorts/Tj57vuNTmWg · 11 Oct 2026 23:30 IST | Business Suite, 12 Oct 2026 18:30 IST (auto cover: the thumbnail picker stayed a skeleton) |
+| `sky-blue`: "Why Is the Sky BLUE? (It Should Be Black) 🌌" | 49 s (standard arm) | https://youtube.com/shorts/RS7bKKA_2d0 · 12 Oct 2026 11:30 IST | Business Suite, 13 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -993,3 +994,73 @@ here for every new Short, with its links.
 - Studio: the direct video URL opened the right channel; the Thumbnail slot was the grey placeholder (the video was
   still processing). cover.jpg went in through the file input and showed at once; Save from JavaScript, Save back to
   disabled.
+
+**sky-blue** (11 Oct 2026, nightly /cp next; standard arm; 113 words → 49.00 s; hook formula: The Impossible Claim):
+- New world files: `trail.js` (a mountain trail whose sky can be blue, black with stars, or a sunset: `trSky` (with
+  patches of blue that spread from points), `trSun` (a halo in air, a bare disc with long spikes without), `trClouds`,
+  `trRidges` (snow peaks; lit bare, hazy or as dusk silhouettes), `trLedge`, `trGrass`; the hiker with a water bottle,
+  from a description: `trHero(cam, t, A)` (`drink` 0..1 brings the bottle to his mouth, `cheeks` 0..1 a mouthful held,
+  `suit` a spacesuit and a glass helmet, `hold` + `holdRot` where the bottle rests, `drinkE`, `flinch`, `ambient`),
+  `wtrBottle` (the water stays level at any tilt), `trReach` (IK that keeps the elbow out on its own side, so nothing
+  flips when the hand passes the shoulder line), `trCheeks`, `trHelmet`, `trRimAt`, `trDrops` (drops with no glow),
+  `trailDraw(t, {cam, A, blue, dusk, patches, clouds, sun, sky, behind, after})`, `mixH` (a hex mixer that returns hex)),
+  `photons.js` (light as ribbons with faces: `lightRibbon(path, sHead, {col, lam, amp, len, w, face, twitch, edge})`,
+  whose wave is fixed in the world, so the body goes where the head went; `downPath`, `polyPath`, `ribbonAt`; `HUE`
+  and `WAVES` (red long and lazy, violet short); air molecules `airMol` (two balls, a seam, a small face; `hit` =
+  spiral eyes, `glow`); `scatterBurst`; `airBg` / `airFar` (a field of far molecules with parallax); `tagPill` (a pill
+  with a dashed leader)), `worlds.js` (the Moon: `moonBack`, `earthBall`; Mars: `marsBack(cam, t, e)` with e = 0 a
+  butterscotch noon .. 1 a blue sunset, `marsDust`, `marsRover`; the long way through the air, in screen space: `LW`,
+  `lwSunDir`, `lwPath(el)`, `longBack`, `longBeam(t, el, {lose})`, `longSun`). In its scenes: `gulpA(tt)` /
+  `gulpCam(tt)` (frame 1 as a function of time, valid at negative time), `airOn` (a sky that goes out like a bulb),
+  `crashFx` / `crashPatches`, `packS`, `sideMols`, `blueS` + `PIN_PATH` (a ribbon that pinballs between molecules on
+  cues), `skyT` / `skyBlue`, `buttonA` + `mixA` (blend two descriptions of him: the button runs into frame 1),
+  `mixLight` (blend two lights), `SC.cover`. `qc_gags.py` is in its src.
+- New sfxkit atoms (template too): `glug_low(seed)` (a swallow under 300 Hz, for under the first words),
+  `slide(f0, f1, dur, vib, top, harm)` (a brassy slide: a lazy "wah", a power-down, a "hmph"), `ding(m, dur)` (a
+  pinball bumper), `buzz_hi(dur, rate, seed)` (a twitchy buzz above 5.2 kHz, for under a line). fx.js in the template
+  has `mixH` now.
+- **A running gag carries a topic that has no body in it.** The sky gives the hiker nothing to do, so the Short gave
+  him one thing: the mouthful he does not dare swallow once the sky goes out. Cheeks out on the trail, on the Moon
+  (where the bottle meets the helmet), at the edge of the Earth and on Mars, it put a character beat in every shot,
+  and the button was already written: "You can swallow now."
+- **Puffed cheeks sit low.** At ear height two bulges read as big ears. At mouth height (y 39 in head units), in the
+  head gradient's own colours (it is lighter on his right) and with a line on their outer edge, they read as a
+  mouthful.
+- **The sfx bus is peak-normalised too** (not only the music bus): turning the loudest gag down 5 dB brought every
+  other gag UP 3 to 4 dB. Move the bus with `levels={"sfx": ...}`, set the gags against each other, and run
+  `qc_gags.py` after every change.
+- **Keep suns out of the watermark's corners.** A sun at the top right sat under "CurioPulse" in the wide sky shot
+  (x 750–970, y 405–455; the left corner is x 110–330). A bright disc there makes the mark unreadable: the trail's
+  sun went 100 px lower.
+- **A lit sky wants a calm sun.** Halos of 250 px at 0.5 washed the hero out in the wide shots and at sunset. What
+  worked: a halo of at most 2.6 radii at 0.36 or less, at most 0.3 in the glow layer, `sunRays` at 0.3 or less; and
+  with no air almost no halo at all, only the disc and long spikes (it is also what a sun looks like without air).
+- **Light in front of a bright sky needs a dark edge.** The sunset's red ribbon was a pale squiggle against orange;
+  an under-stroke in dark red (`lightRibbon({edge})`), no white core and little glow made it read.
+- **One eye per ball is a pair of googly eyes.** The first molecules were white balls with an eye each. A body
+  colour, a seam where the two atoms meet and one small face in the middle read as a thing with a face.
+- **A diagram's picture is not its number.** The shell of air is drawn far too thick (to scale it would be a
+  hairline), so the beam is about 4 times longer in the air at sunset in the picture while the label says 38×; the
+  claims table says so. And work the path out from his EYES: computed from the ground, the point where the beam enters
+  the air floated above the shell.
+- **The first cut can be a dive into what the answer just showed.** The answer's picture is sunlight bursting in the
+  air; the camera dives into one burst and the next shot is the inside of the beam. No diagram arrives from nowhere.
+- Voice: the hook's 12 words ran 4.3 s with a capital on the last word, 3.2–3.4 s without, 3.55 s with "!" (again).
+  "black" still landed at 3.02 s; tempo 1.03 and a 0.06 s lead-in brought it to 2.90 s for free. 113 words came in
+  at 49.3 s (three blocks with "..." pauses ran 130–145 words a minute): for this arm write about 105 words when the
+  script has four or more "..." pauses. 1,026 characters sent (673 for the first pass, 353 on six audition takes of
+  two lines; one installed); the balance went 88,894 → 88,441.
+- Two QA rounds (hook 8 → 8.5, retention 8 → 8.5, sound 8 → 8.5), 19/19 each time, 5.2–5.3 minutes a render; round 2
+  was `build.sh` itself (`timeline.json` byte-identical), and a last sound polish went onto that render by remux
+  (`-c:v copy`). Start to finish 1 h 25 min (00:01–01:25 IST) with both uploads.
+- **Business Suite with both places ticked, as it is now:** "Post to" read "CurioPulse and curio_pulse_tv" by
+  default. The Share step shows TWO rows after the Schedule option, "Facebook" and "Instagram", each with its own date
+  field and two spinbuttons: a coordinate click on each date field, the day by its exact `aria-label` (take the
+  visible one), then 06 and 30 typed by ref into all four spinbuttons, and both rows read back in the script that
+  clicks the final Schedule. The dialog said "scheduled to publish on 13 Oct 2026 on Facebook and 13 Oct 2026 on
+  Instagram". Content → Scheduled lists two rows at that time, one with the Instagram badge (curio_pulse_tv) and one
+  with the Facebook badge (CurioPulse), both titled "Your reel" while it processes. That list is long now (the old
+  Reels queued for Facebook): scroll it down to the day before deciding the Reel is missing. Window hidden as
+  always; screenshots, clicks by ref and typing all worked. The thumbnail picker stayed a skeleton: auto cover.
+- Studio: the direct video URL opened the right channel; the Thumbnail slot showed an automatic frame. cover.jpg
+  went in through the file input, Save from JavaScript, Save back to disabled.

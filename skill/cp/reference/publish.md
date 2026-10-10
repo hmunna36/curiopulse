@@ -199,9 +199,14 @@ both. If it shows only one, open the drop-down and tick both. The same caption s
 - Composer layout drifts: after the first Reel in a tab, the "All videos on Facebook are now reels" banner is gone and
   every field sits about 100 px higher (Post to at y 198, Add video at y 342, description at y 192, Instagram tick at
   y 322). Take a screenshot before the first click on each Reel and use the layout it shows.
-- The first run with BOTH ticked has not been seen: the Share step may show one schedule for both or one per
-  place. Set both to the sheet's time, and in step 5 look for the Reel twice in Content → Scheduled (one row per
-  place, or one row naming both). Write what the screens did into `videos.md` and correct this note.
+- **With BOTH ticked (seen 11 Oct 2026, sky-blue):** after the Schedule option the Share step shows two rows,
+  "Facebook" and "Instagram", each with its own date field and two spinbuttons (hours, minutes; a 24-hour clock). Set
+  both to the sheet's time: a coordinate click on each date field, the day by its exact `aria-label` (the visible
+  one), then the hours and the minutes typed by ref into all four spinbuttons. Read all four and both dates back in
+  the same script that clicks the final Schedule. The dialog says "scheduled to publish on <day> on Facebook and <day>
+  on Instagram". Content → Scheduled then has two rows at that time, one with the Instagram badge (curio_pulse_tv) and
+  one with the Facebook badge (CurioPulse), titled "Your reel" until it has processed. The list is sorted latest
+  first and holds the old Reels queued for Facebook: scroll down to the day.
 - If Facebook refuses the Reel and Instagram accepts it, ship Instagram and report "Facebook still to post".
 
 1. Click **Create Reel** on the home page, then **Add video**. The file attaches; wait for the upload bar to finish.

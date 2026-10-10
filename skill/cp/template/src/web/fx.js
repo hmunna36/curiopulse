@@ -50,6 +50,12 @@ function loopW(w) {
   return D ? (T2 * Math.max(1, Math.round((w * D) / T2))) / D : w;
 }
 
+// like mixHex (lib.js), but it returns '#rrggbb', so the result can be mixed again or given to rgba()
+function mixH(h1, h2, t) {
+  const a = parseInt(h1.slice(1), 16), b = parseInt(h2.slice(1), 16), f = (sh) => Math.round(lerp((a >> sh) & 255, (b >> sh) & 255, clamp(t)));
+  return '#' + ((1 << 24) | (f(16) << 16) | (f(8) << 8) | f(0)).toString(16).slice(1);
+}
+
 // ---------------------------------------------------------------- comedy + emphasis graphics
 
 function shockLines(x, y, r, k, n = 10, col = '#FFFFFF', seed = 1) {
