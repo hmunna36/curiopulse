@@ -193,7 +193,13 @@ Read each reference file when you reach its phase. They are short; don't skip th
       2. In Claude in Chrome: open Business Suite, upload the parts into a collector input, reassemble, and check
          the SHA-256.
       3. Create Reel → Add video (with the click hook) → caption → Schedule, on the sheet's `date` at the sheet's
-         `time` (06:30 or 18:30; never assume 18:30).
+         `time` (06:30 or 18:30; never assume 18:30). **Post to: leave BOTH ticked, "CurioPulse" (the Facebook Page)
+         and "curio_pulse_tv" (Instagram), so one schedule releases the Reel on both (user, 10 Oct 2026; details
+         and the Facebook-only recipe in `reference/publish.md` step 4).** The caption's last line is the Follow line
+         for Instagram ("Follow @curio_pulse_tv for the next one: …"); that is fine on both. Read the Post to field
+         back before Add video. Check Content → Scheduled shows the Reel on Facebook too (one row per place or one
+         row naming both) and write what you saw in `videos.md` the first time. If Facebook refuses and Instagram
+         accepts, ship Instagram and report "Facebook still to post" (never skip Instagram for it).
       4. Verify it in Content → Scheduled, then record the slot with the sheet's `afterScheduling` command
          (`ig.mjs busy <date>T<HH:MM>`).
       - If Chrome isn't connected, or Business Suite wants a password, don't guess. Report "Instagram still to
