@@ -35,19 +35,34 @@
   "cover": "cover.jpg",
   "captions": "sky-blue.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-12T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "RS7bKKA_2d0",
+    "url": "https://youtube.com/shorts/RS7bKKA_2d0",
+    "uploaded": "2026-10-10T19:44:23.380Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (its slot showed an automatic frame)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-13T06:30:00+05:30",
     "caption": "You gulp your water under a blue sky that should be BLACK 🌌\nThe blue is sunlight crashing into the air: blue's short waves bounce everywhere, red's long waves slip past. At sunset the blue is all bounced away... and on Mars it's backwards.\nFollow @curio_pulse_tv for the next one: why is one nostril always blocked? 🔔\n#science #sky #physics #space #mars #funfacts #reels",
     "coverTime": 3.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-13T06:30:00+05:30",
+    "cover": "auto frame (Business Suite's thumbnail picker stayed a skeleton)",
+    "facebook": {
+      "page": "CurioPulse",
+      "scheduledAt": "2026-10-13T06:30:00+05:30",
+      "scheduledVia": "business-suite (the same Reel, Post to: CurioPulse and curio_pulse_tv)"
+    }
   }
 }

@@ -50,8 +50,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | 12 Oct 2026, 11:30 IST |
-| Instagram Reels + Facebook | @curio_pulse_tv | 13 Oct 2026, 06:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/RS7bKKA_2d0 | 12 Oct 2026, 11:30 IST (scheduled; thumbnail and captions set; in the playlist "Strange Nature") |
+| Instagram Reels | @curio_pulse_tv | 13 Oct 2026, 06:30 IST (scheduled in Meta Business Suite; automatic cover: the thumbnail picker stayed a skeleton) |
+| Facebook Reels | the CurioPulse Page | 13 Oct 2026, 06:30 IST (the same schedule in Business Suite: Post to both) |
 
 **Title:** Why Is the Sky BLUE? (It Should Be Black) 🌌
 
