@@ -1,0 +1,47 @@
+# Narration for "Why Is the Sky BLUE?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The Subscribe pill plays silently over the last 3.4 s.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+#   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
+
+## hook gap=0.06 tempo=1.03
+You gulp your water under a blue sky that should be black.
+
+## answer gap=0.45 tighten=0 tempo=1.00
+It's only blue because sunlight keeps crashing into the air.
+
+## colours gap=0.32 tighten=0.50 tempo=1.05
+[curious] Sunlight is every colour at once. Red rolls in on long, lazy waves... and slips right past the air.
+
+## blue gap=0.22 tighten=0.28 tempo=1.05
+[excited] Blue comes in short, twitchy waves. It smacks into air molecules... and bounces everywhere.
+
+## sky gap=0.30 tempo=1.02
+So blue hits your eyes from every direction. That's your sky.
+
+## moon gap=0.35 tighten=0.16 tempo=1.04
+No air, no blue: on the Moon, the sky is black at noon.
+
+## sunset gap=0.60 tighten=0.24 tempo=1.05
+At sunset, the light crosses nearly forty times more air. The blue's all bounced away... and you get the leftovers.
+
+## mars gap=0.40 tighten=0.26 tempo=1.00
+[mischievously] On Mars? Backwards. Butterscotch sky... blue sunset. Blame the dust.
+
+## button gap=0.70 tighten=0 tempo=1.00
+[deadpan] You can swallow now.

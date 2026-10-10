@@ -33,6 +33,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do We Dream? | 32 s | [`videos/why-we-dream`](videos/why-we-dream) | [10 Oct 2026](https://youtube.com/shorts/FcY5zJ2Nlgs) |
 | Why Do We Cry? | 45 s | [`videos/why-we-cry`](videos/why-we-cry) | [11 Oct 2026](https://youtube.com/shorts/PqYnHstEFfY) |
 | Why Do Cats Purr? | 31 s | [`videos/cats-purr`](videos/cats-purr) | [11 Oct 2026](https://youtube.com/shorts/Tj57vuNTmWg) |
+| Why Is the Sky Blue? | 49 s | [`videos/sky-blue`](videos/sky-blue) | 12 Oct 2026 |
 
 Each folder has:
 - the finished MP4;

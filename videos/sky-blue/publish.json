@@ -1,0 +1,53 @@
+{
+  "slug": "sky-blue",
+  "file": "sky-blue-short.mp4",
+  "title": "Why Is the Sky BLUE? (It Should Be Black) 🌌",
+  "description": "You gulp your water under a blue sky that should be black. Space is black and air is see-through: the sky is only blue because sunlight keeps crashing into the air. Subscribe for a new strange question every day.\n\nHow it works: sunlight is every colour at once. Red light comes in long waves and mostly slips past the molecules of the air; blue comes in short waves and gets bounced off them in every direction, several times more than red (Rayleigh scattering). So blue reaches your eyes from all over the sky. With no air there is nothing to do the bouncing, which is why the Moon's sky is black even at noon. At sunset the light crosses about 38 times more air than when the sun is overhead: the blue is bounced away on the way, and what is left is red. On Mars it is the other way round: fine dust makes the daytime sky butterscotch and the sunset blue. Why not violet? Violet is bounced even more, but the sun gives off less of it, the upper air soaks some up, and our eyes are weak at violet.\n\nNext up: why is one nostril always blocked?\n\n#Shorts #Science #Sky #Physics #Space #Mars #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "standard",
+    "min": 45,
+    "max": 50,
+    "test": "length-2026-10",
+    "slot": "2026-10-12T11:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why one nostril is always blocked 👃 Subscribe so you don't miss it!\nBe honest: did you think it was the ocean's reflection? 🌊",
+  "tags": [
+    "why is the sky blue",
+    "why is the sky blue explained",
+    "sky blue",
+    "blue sky",
+    "rayleigh scattering",
+    "why are sunsets red",
+    "sunset",
+    "why is space black",
+    "mars sunset",
+    "sunlight",
+    "light",
+    "physics",
+    "space",
+    "science",
+    "science shorts",
+    "fun facts",
+    "explained",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "sky-blue.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You gulp your water under a blue sky that should be BLACK 🌌\nThe blue is sunlight crashing into the air: blue's short waves bounce everywhere, red's long waves slip past. At sunset the blue is all bounced away... and on Mars it's backwards.\nFollow @curio_pulse_tv for the next one: why is one nostril always blocked? 🔔\n#science #sky #physics #space #mars #funfacts #reels",
+    "coverTime": 3.4,
+    "shareToFeed": true
+  }
+}
