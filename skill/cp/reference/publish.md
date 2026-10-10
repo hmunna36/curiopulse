@@ -192,6 +192,13 @@ both. If it shows only one, open the drop-down and tick both. The same caption s
   the Share step to the top before clicking Schedule options (it opens scrolled down). After "Reel scheduled", Done
   lands on the Planner; the collector input and the page helpers survive, so several Reels can go in one tab (go
   Home through the left bar, never by URL). Videos over 60 s show as "2 minutes": that is rounding.
+- **Editing a caption of an already-scheduled Instagram Reel did not stick (10 Oct 2026, twice):** Business Suite
+  accepted the edit ("We're processing your reel") but Content → Scheduled and a re-opened Edit Reel still showed the
+  old caption. Check the teaser line BEFORE scheduling; if a caption is wrong afterwards, fix it in the Instagram app
+  once the Reel is live (caption edits work there), or reschedule from scratch only with the user's word.
+- Composer layout drifts: after the first Reel in a tab, the "All videos on Facebook are now reels" banner is gone and
+  every field sits about 100 px higher (Post to at y 198, Add video at y 342, description at y 192, Instagram tick at
+  y 322). Take a screenshot before the first click on each Reel and use the layout it shows.
 - The first run with BOTH ticked has not been seen: the Share step may show one schedule for both or one per
   place. Set both to the sheet's time, and in step 5 look for the Reel twice in Content → Scheduled (one row per
   place, or one row naming both). Write what the screens did into `videos.md` and correct this note.
