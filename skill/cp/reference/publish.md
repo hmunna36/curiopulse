@@ -185,7 +185,14 @@ to** now reads "CurioPulse and curio_pulse_tv" by default: leave both ticked, so
 both. If it shows only one, open the drop-down and tick both. The same caption serves both.
 - The Business Suite asset id changed with the connection: never open a saved `asset_id=` URL, always start from
   `/latest/home`.
-- The first run after this note has not been seen: the Share step may show one schedule for both or one per
+- **Facebook-only posting works like this (seen 10 Oct 2026, 16 old Reels):** take a screenshot, click the Post to
+  drop-down, screenshot again to see it open, untick the profile you do not want, click away, and zoom on the field
+  to read it back before Add video. The Share step shows one "Facebook" date and time: type the date as
+  `dd/mm/yyyy` (select all first), Return, then click the hours and the minutes and type them; 24-hour clock. Scroll
+  the Share step to the top before clicking Schedule options (it opens scrolled down). After "Reel scheduled", Done
+  lands on the Planner; the collector input and the page helpers survive, so several Reels can go in one tab (go
+  Home through the left bar, never by URL). Videos over 60 s show as "2 minutes": that is rounding.
+- The first run with BOTH ticked has not been seen: the Share step may show one schedule for both or one per
   place. Set both to the sheet's time, and in step 5 look for the Reel twice in Content → Scheduled (one row per
   place, or one row naming both). Write what the screens did into `videos.md` and correct this note.
 - If Facebook refuses the Reel and Instagram accepts it, ship Instagram and report "Facebook still to post".
