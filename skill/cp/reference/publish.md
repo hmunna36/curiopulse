@@ -178,6 +178,18 @@ HTMLInputElement.prototype.click = function () {
 ```
 
 **4. Compose:**
+
+**Facebook too (since 10 Oct 2026, the user's word).** The Instagram profile is connected to the Facebook Page
+"CurioPulse" (facebook.com/profile.php?id=61595360306648; made for Facebook's Reels payouts). The composer's **Post
+to** now reads "CurioPulse and curio_pulse_tv" by default: leave both ticked, so one schedule releases the Reel on
+both. If it shows only one, open the drop-down and tick both. The same caption serves both.
+- The Business Suite asset id changed with the connection: never open a saved `asset_id=` URL, always start from
+  `/latest/home`.
+- The first run after this note has not been seen: the Share step may show one schedule for both or one per
+  place. Set both to the sheet's time, and in step 5 look for the Reel twice in Content → Scheduled (one row per
+  place, or one row naming both). Write what the screens did into `videos.md` and correct this note.
+- If Facebook refuses the Reel and Instagram accepts it, ship Instagram and report "Facebook still to post".
+
 1. Click **Create Reel** on the home page, then **Add video**. The file attaches; wait for the upload bar to finish.
 2. Paste the caption (the sheet's `caption`) into the text field. Check it landed with JS by reading the visible
    field's text.
