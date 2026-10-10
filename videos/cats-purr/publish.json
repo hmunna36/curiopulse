@@ -1,0 +1,52 @@
+{
+  "slug": "cats-purr",
+  "file": "cats-purr-short.mp4",
+  "title": "Why Do Cats PURR? 🐱",
+  "description": "You scratch your cat and she purrs... happy cat, right? Maybe. Cats purr when they're content, but also when they're hurt, frightened or hungry, so scientists think a purr is less \"I'm happy\" and more \"look after me\". Subscribe for a new strange question every day.\n\nHow it works: a cat's voice box flutters about 25 times a second while she breathes in AND out, so the sound never stops for breath. (A 2023 study found soft pads in the vocal folds that let them vibrate that slowly; how much the throat muscles drive each flutter is still debated.) Kittens start purring within days of birth, before their eyes open. And when a cat wants food, she slips a higher cry into the purr, at 220 to 520 Hz, close to a human baby's cry (300 to 600 Hz): in a 2009 study, people rated those purrs as more urgent, even people who had never owned a cat. The popular idea that purring heals bones has not been proven.\n\nNext up: why is the sky blue?\n\n#Shorts #Science #Cats #Purring #Animals #CatFacts #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "test": "length-2026-10",
+    "slot": "2026-10-11T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why is the sky blue? 🌤️ Subscribe so you don't miss it!\nDoes YOUR cat have a breakfast purr? 😼",
+  "tags": [
+    "why do cats purr",
+    "cat purring",
+    "how do cats purr",
+    "why does my cat purr",
+    "purr",
+    "cats",
+    "kittens",
+    "cat facts",
+    "cat behavior",
+    "cat sounds",
+    "animals",
+    "pets",
+    "science",
+    "science shorts",
+    "fun facts",
+    "explained",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "cats-purr.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You scratch your cat and she purrs... happy cat, right? 🐱\nMaybe. Scientists think a purr means \"look after me\": kittens do it days after birth, grown cats do it happy or hurt, and the hungry purr hides a cry pitched like a human baby's.\nFollow @curio_pulse_tv for the next one: why is the sky blue? 🔔\n#science #cats #catsofinstagram #purr #animals #funfacts #reels",
+    "coverTime": 7.6,
+    "shareToFeed": true
+  }
+}
