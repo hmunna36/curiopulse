@@ -32,7 +32,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | How Do Fireflies Glow? | 46 s | [`videos/fireflies-glow`](videos/fireflies-glow) | [10 Oct 2026](https://youtube.com/shorts/9cwzb7rjmR8) |
 | Why Do We Dream? | 32 s | [`videos/why-we-dream`](videos/why-we-dream) | [10 Oct 2026](https://youtube.com/shorts/FcY5zJ2Nlgs) |
 | Why Do We Cry? | 45 s | [`videos/why-we-cry`](videos/why-we-cry) | [11 Oct 2026](https://youtube.com/shorts/PqYnHstEFfY) |
-| Why Do Cats Purr? | 31 s | [`videos/cats-purr`](videos/cats-purr) | 11 Oct 2026 |
+| Why Do Cats Purr? | 31 s | [`videos/cats-purr`](videos/cats-purr) | [11 Oct 2026](https://youtube.com/shorts/Tj57vuNTmWg) |
 
 Each folder has:
 - the finished MP4;

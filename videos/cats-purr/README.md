@@ -41,8 +41,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (the link comes with the upload) | 11 Oct 2026, 23:30 IST (to be scheduled) |
-| Instagram Reels | @curio_pulse_tv | 12 Oct 2026, 18:30 IST (to be scheduled) |
+| YouTube Shorts | https://youtube.com/shorts/Tj57vuNTmWg | 11 Oct 2026, 23:30 IST (scheduled; thumbnail and captions set; in the playlist "Strange Nature") |
+| Instagram Reels | @curio_pulse_tv | 12 Oct 2026, 18:30 IST (scheduled in Meta Business Suite; automatic cover, see below) |
 
 **Title:** Why Do Cats PURR? 🐱
 
@@ -86,6 +86,10 @@ throat, and the camera goes in through that window
 **Subscribe cue (silent, the pill over the last 3.4 s):** 28.07–30.86 s; nobody says "subscribe"
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): the two of them
 close, her eyes huge, PRRRR, "WHY DO CATS PURR?".
+It is the YouTube thumbnail: set through the API, and uploaded again in Studio, whose own slot for the Short showed
+the grey placeholder while the video was processing. Business Suite's thumbnail picker stayed a skeleton when the Reel
+was scheduled, so the Reel has an automatic cover; it can be changed to this file in the Instagram app once the Reel
+is live.
 
 ## Story and shots
 

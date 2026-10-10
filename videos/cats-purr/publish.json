@@ -34,19 +34,29 @@
   "cover": "cover.jpg",
   "captions": "cats-purr.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-11T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "Tj57vuNTmWg",
+    "url": "https://youtube.com/shorts/Tj57vuNTmWg",
+    "uploaded": "2026-10-10T01:29:13.462Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (its slot showed the grey placeholder while the video processed)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-12T18:30:00+05:30",
     "caption": "You scratch your cat and she purrs... happy cat, right? 🐱\nMaybe. Scientists think a purr means \"look after me\": kittens do it days after birth, grown cats do it happy or hurt, and the hungry purr hides a cry pitched like a human baby's.\nFollow @curio_pulse_tv for the next one: why is the sky blue? 🔔\n#science #cats #catsofinstagram #purr #animals #funfacts #reels",
     "coverTime": 7.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-12T18:30:00+05:30",
+    "cover": "auto frame (Business Suite's thumbnail picker stayed a skeleton)"
   }
 }
