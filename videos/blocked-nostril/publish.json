@@ -34,19 +34,30 @@
   "cover": "cover.jpg",
   "captions": "blocked-nostril.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-12T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "KqsUFF1Mmm0",
+    "url": "https://youtube.com/shorts/KqsUFF1Mmm0",
+    "uploaded": "2026-10-11T01:26:43.014Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (its slot showed an automatic frame, the \"Weirder\" shot)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-13T18:30:00+05:30",
     "caption": "You pinch one nostril shut... and the other one is blocked. 👃\nRelax: your nostrils work in shifts. Spongy tissue swells one side nearly shut while the other opens wide, and every few hours they swap. Which one is on shift for you right now?\nFollow @curio_pulse_tv for the next one: why nails on a chalkboard make you cringe 🔔\n#science #humanbody #nose #breathing #funfacts #reels",
     "coverTime": 6.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-13T18:30:00+05:30",
+    "facebook": "scheduled in the same step for the CurioPulse Page, 2026-10-13 18:30 IST",
+    "cover": "auto frame (the composer showed no thumbnail picker)"
   }
 }

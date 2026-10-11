@@ -45,8 +45,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | 12 Oct 2026, 23:30 IST |
-| Instagram Reels and the Facebook Page | @curio_pulse_tv · CurioPulse | 13 Oct 2026, 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/KqsUFF1Mmm0 | 12 Oct 2026, 23:30 IST (scheduled; thumbnail and captions set; in the playlist "Why Does Your Body Do That?") |
+| Instagram Reels | @curio_pulse_tv | 13 Oct 2026, 18:30 IST (scheduled in Meta Business Suite; automatic cover, see below) |
+| Facebook Reels | the CurioPulse Page | 13 Oct 2026, 18:30 IST (the same schedule, both places ticked) |
 
 **Title:** Why Is One Nostril ALWAYS Blocked? 👃
 
@@ -93,6 +94,9 @@ the camera goes in through that window
 **Subscribe cue (silent, the pill over the last 3.4 s):** 27.33–30.12 s; nobody says "subscribe"
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): his face close, a
 finger on one side of his nose, an ON BREAK sign hanging out of the other nostril, "WHY IS ONE NOSTRIL BLOCKED?".
+It is the YouTube thumbnail: set through the API, and uploaded again in Studio, whose own slot for the Short showed an
+automatic frame. Business Suite's Reel composer showed no thumbnail picker, so the Reel has an automatic cover; it can
+be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 
