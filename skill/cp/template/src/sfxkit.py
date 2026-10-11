@@ -1574,3 +1574,22 @@ def buzz_hi(dur, rate=31.0, seed=0, lo=5200):
     t = ar(n)
     am = (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * rate * t))) * (0.7 + 0.3 * np.sin(2 * np.pi * 3.1 * t))
     return fade(filt(white(n, seed), "highpass", lo, 4) * am, 0.01, 0.03)
+
+
+# ================================================================= a nose (blocked-nostril)
+def sniff(dur=0.22, seed=0, blocked=0.0, edges=False, rise=1.0):
+    """A sniff: a quick breath in through the nose that swells and cuts off (mono). `blocked` 0..1 turns the rush of
+    air into a thin, climbing whistle (a stuffed nostril: nothing gets through). `rise` bends that whistle's pitch up
+    over the sniff. edges=True keeps only what is above 5.2 kHz, so it can run under a word."""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    env = np.minimum(1, u / 0.3) ** 1.4 * np.minimum(1, (1 - u) / 0.1)
+    air = filt(white(n, seed), "bandpass", [900, 6500])
+    air = air / (np.abs(air).max() + 1e-9)
+    y = (1 - 0.75 * blocked) * air
+    if blocked > 0.01:
+        wh = svf_bp(white(n, seed + 1), 1900.0 * (1 + 0.35 * rise * u) * (1 + 0.02 * np.sin(2 * np.pi * 27 * ar(n))), 0.035)
+        y = y + 1.3 * blocked * wh / (np.abs(wh).max() + 1e-9)
+    if edges:
+        y = filt(y, "highpass", 5200, 4) * 3.0
+    return fade(y / (np.abs(y).max() + 1e-9) * env, 0.004, 0.02)

@@ -92,11 +92,11 @@ function rig(pose) {
   const U = (x, y) => [P[0] + x * cs - y * sn, P[1] + x * sn + y * cs];
   const r = { P, U, lean: pose.lean };
   for (const [s, k] of [[-1, 'L'], [1, 'R']]) {
-    const arm = pose['arm' + k], leg = pose['leg' + k];
+    const arm = pose['arm' + k], leg = pose['leg' + k], len = pose['len' + k] || [100, 90];   // pose.lenL / lenR: an arm's two bones (armAt sets them)
     const sh = U(74 * s, -148);
     const d1 = DIR(s, arm.a + pose.lean * s), d2 = DIR(s, arm.a + arm.b + pose.lean * s);
-    const el = [sh[0] + d1[0] * 100, sh[1] + d1[1] * 100];
-    const wr = [el[0] + d2[0] * 90, el[1] + d2[1] * 90];
+    const el = [sh[0] + d1[0] * len[0], sh[1] + d1[1] * len[0]];
+    const wr = [el[0] + d2[0] * len[1], el[1] + d2[1] * len[1]];
     const hip = [36 * s, pose.hipY + 4];
     const e1 = DIR(s, leg.a), e2 = DIR(s, leg.a + leg.b);
     const kn = [hip[0] + e1[0] * 104, hip[1] + e1[1] * 104];
@@ -458,6 +458,20 @@ function ikLimb(pose, limb, target, bend) {
 function ikReach(pose, side, target, bend = 1) { return ikLimb(pose, 'arm' + side, target, bend); }   // side 'L' | 'R'
 function ikPlant(pose, side, target, bend = -1) { return ikLimb(pose, 'leg' + side, target, bend); }
 function ikLocal(st, wx, wy) { return [(wx - st.x) / st.s, (wy - st.y) / st.s]; }   // world point -> rig-local
+// Put an arm's elbow at e and its wrist at w (rig-local): the pose it takes, with that arm's two bone lengths in
+// pose.lenL / pose.lenR (rig() reads them). For a hand at his own face: with the fixed bones (100 + 90) a wrist near the
+// nose puts the elbow up beside his ear; an arm that comes toward the camera looks shorter above the elbow and longer
+// below it, so say where the two joints are instead (blocked-nostril, 11 Oct 2026: elbow [104, -292], wrist [71, -418]).
+// lerpPose drops the lengths: blend the two points with armMix and call armAt on the result.
+function armAt(pose, side, e, w) {
+  const s = side === 'L' ? -1 : 1, root = limbRoot(pose, 'arm' + side), lean = pose.lean * s;
+  const th1 = Math.atan2(s * (e[0] - root[0]), e[1] - root[1]), th2 = Math.atan2(s * (w[0] - e[0]), w[1] - e[1]);
+  const out = Object.assign({}, pose);
+  out['arm' + side] = { a: th1 - lean, b: th2 - th1 };
+  out['len' + side] = [Math.hypot(e[0] - root[0], e[1] - root[1]), Math.hypot(w[0] - e[0], w[1] - e[1])];
+  return out;
+}
+const armMix = (a, b, k) => ({ e: [lerp(a.e[0], b.e[0], k), lerp(a.e[1], b.e[1], k)], w: [lerp(a.w[0], b.w[0], k), lerp(a.w[1], b.w[1], k)] });
 // Walk toward the camera with planted feet: the standing foot stays exactly on the floor while the hips bob (lowest
 // when both feet are down), the other foot lifts; the weight sways over the standing foot; arms counter-swing and the
 // forearms trail them (follow-through). A drop-in for walkPose(t). o: {speed = 7, lift = 26, bob = 7, stance = 50, sway = 0.03}

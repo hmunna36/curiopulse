@@ -27,6 +27,7 @@
 | `why-we-cry`: "Why Do We CRY? 😢" | 45 s (standard arm) | https://youtube.com/shorts/PqYnHstEFfY · 11 Oct 2026 11:30 IST | Business Suite, 12 Oct 2026 06:30 IST (auto cover: the composer showed no thumbnail picker) |
 | `cats-purr`: "Why Do Cats PURR? 🐱" | 31 s (short arm) | https://youtube.com/shorts/Tj57vuNTmWg · 11 Oct 2026 23:30 IST | Business Suite, 12 Oct 2026 18:30 IST (auto cover: the thumbnail picker stayed a skeleton) |
 | `sky-blue`: "Why Is the Sky BLUE? (It Should Be Black) 🌌" | 49 s (standard arm) | https://youtube.com/shorts/RS7bKKA_2d0 · 12 Oct 2026 11:30 IST | Business Suite, 13 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
+| `blocked-nostril`: "Why Is One Nostril ALWAYS Blocked? 👃" | 31 s (short arm) | https://youtube.com/shorts/KqsUFF1Mmm0 · 12 Oct 2026 23:30 IST | Business Suite, 13 Oct 2026 18:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the composer showed no thumbnail picker) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1064,3 +1065,59 @@ here for every new Short, with its links.
   always; screenshots, clicks by ref and typing all worked. The thumbnail picker stayed a skeleton: auto cover.
 - Studio: the direct video URL opened the right channel; the Thumbnail slot showed an automatic frame. cover.jpg
   went in through the file input, Save from JavaScript, Save back to disabled.
+
+**blocked-nostril** (11 Oct 2026, the 06:00 second Short; the short arm; 73 words → 30.73 s; hook formula: The Direct Address, as a test the viewer can do):
+- New world files: `mirror.js` (a bathroom seen from its mirror, painted twice; the hero close in it from a description
+  `mirHero(cam, t, A)`: a nose of his own in head units `mirNose` (wings that squash under a finger, nostrils that plug
+  with swollen tissue, flare or go red), a finger on either nostril, shop signs hanging out of his nostrils on strings
+  `mirSign` (they drop, swing and turn over to a second text), a blanket, a jar `mirJar`; `mirAir` (air streaking into a
+  nostril or bouncing off a blocked one), `mintLeaf`, `fuelCan`, `mirSnail`, `mirGerm`), `nasal.js` (the inside of the
+  nose cut across: `nasDraw(c, t, o, g)` with three shelves a side that swell with blood, faces on the lowest ones
+  (asleep when swollen, a hard hat when working), air as beads, the signs at the doors, `pulse` to bounce a shelf as it
+  is named; `nasOn`, `nasMini` (the section in a round window), `nasClock`). In its scenes: `hookA(tt)` / `hookCam(tt)`,
+  `secState(t)` (one state for the window in the hook and two shots), `laneBadge`, `thinkBubble`, `swapArrows`,
+  `faceDisc`, `scentLane`, `SC.loop`, `SC.cover`. `qc_gags.py` is in its src.
+- New in the template: `armAt(pose, side, elbow, wrist)` and `armMix` in character.js (`rig()` reads an arm's two bone
+  lengths from `pose.lenL` / `pose.lenR`); the sfxkit atom `sniff(dur, seed, blocked, edges, rise)`.
+- **A hand at his own face: place the elbow and the wrist.** `ikReach` with the fixed bones put the elbow up beside
+  his ear with one bend and across his chest with the other. Saying where the two joints are (elbow [104, -292], wrist
+  [71, -418]: a short upper arm, a long forearm) reads as an arm coming toward the mirror. The forearm, the hand and
+  the finger are drawn again in `post`, because the head is drawn last.
+- **A topic that is a part of his face needs that part redrawn, and a tighter frame.** The rig's nose is an 8 × 6 oval.
+  At the first framing (his head 520 px) the pinch was a hand near a face. The nose drawn again in head units, a third
+  larger, and his head at 600 px on frame 0 (760 px after the first push) made the finger, the squashed wing and the
+  plugged nostril read. A finger wants to be thin (12 units) and to END on the wing: stopping 6 units short read as a
+  thumb on his cheek.
+- **Text on a prop reads when the prop is big in head units.** The signs are 57 × 21 units with 9.4-unit lettering:
+  about 250 px wide at zoom 4.4. At the doors of the section the same signs needed a scale of 3.4, and the captions of
+  that shot had to move down (`capY: 1524`) to clear them.
+- **Anything in front of a bright window needs black under it in the glow layer** (the old occluder rule, for
+  graphics too): a dark badge and a white thought bubble in front of the window were washed out by its bloom until
+  each filled its own shape with black in `gctx`.
+- **The second after the first cut has to move.** The first cut is where viewers leave, and the first 1.3 s inside the
+  nose had only a label popping. Now the six shelves bounce one after the other as "Spongy tissue" is said (a low
+  knock each) and the camera pushes in from the shot's first frame.
+- **A demonstration can start from a neutral state.** The hook shows one side already blocked; the section still opens
+  with the two sides nearly even, so that "fills with blood and swells" is seen happening. Nobody misses the
+  continuity, and the window in the hook shows the same neutral state.
+- **Turning every groove down changes nothing**: the music bus is scaled to its loudest moment. Thirteen words were
+  under 10 dB until the bus itself went to -14 (`levels={"music": -14}, duck={"music": 0.74}`); then three, all "and" or
+  "the". For a narration with soft line endings, start there.
+- **`slide_whistle` needs 0.11 s or more** (its fade is 0.1 s): a 0.09 s zip crashed the mix. `squeak(dur, f0, f1)`
+  does short glides.
+- Voice: one pass, nothing retaken. The hook as one breath with no capital and no "..." ("You pinch one nostril shut and
+  the other one's blocked.") ran 2.80 s, and the answer started at 3.31 s. 406 characters sent; 87,956 left.
+- Two QA rounds (retention 8 → 8.5), 19/19 each time, 3.8 minutes a render; round 2 was `build.sh` itself
+  (`timeline.json` byte-identical). Start to finish about 65 minutes (06:05–07:10 IST) with both uploads.
+- Business Suite (window hidden as always; screenshots, clicks by ref and typing all worked): "Post to" read
+  "CurioPulse and curio_pulse_tv" by default; five parts into a collector on the composer page, the hash compared in the
+  page through `.then()`; the caption as a synthetic `paste`, then `blur()`; Next, Next, the Schedule option (the one
+  with `aria-pressed`); a coordinate click on each of the two date fields and the day by its exact `aria-label`; 18 and
+  30 typed by ref into the four spinbuttons; both dates and all four values read back in the script that clicked the
+  final Schedule. "Reel scheduled ... on Facebook and ... on Instagram". Content → Scheduled: the Scheduled tab needed a
+  coordinate click (no element with exactly that text was found by script); two rows "Your reel" at 13 October 18:30,
+  one with each badge. No thumbnail picker in the composer: auto cover.
+- Studio: the direct video URL opened the right channel; the Thumbnail slot showed an automatic frame. `find` returns
+  the visible "Upload file" button, which `file_upload` refuses: give the hidden `input#file-loader` an `aria-label` and
+  a visible box from JavaScript, `find` that, upload cover.jpg into it, Save from JavaScript, "Changes saved".
+

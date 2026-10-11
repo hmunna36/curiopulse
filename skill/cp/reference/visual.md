@@ -148,6 +148,15 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 - Hands that hold something in front of his chest (a cat, a jar, a tub) are IK with the elbows out: `ikReach(..., -1)`.
   With +1 the forearms cross over the thing. What sits on his lap is drawn in his layer's `post` as an `actor`, and his
   forearms and hands are drawn again on top of it (cats-purr's `lngHero`).
+- **A hand at his own face: say where the elbow and the wrist are** (blocked-nostril, 11 Oct 2026). With the rig's
+  fixed bones `ikReach` puts the elbow up beside his ear (or across his chest) when the wrist is near his nose.
+  `armAt(pose, side, elbow, wrist)` (character.js) takes the two joints and gives the arm the bone lengths they imply:
+  shorter above the elbow, longer below, as an arm looks when it comes toward the camera. Blend between positions with
+  `armMix`, not `lerpPose` (it drops the lengths). Whatever the hand holds or does in front of his head is drawn again
+  in the layer's `post` (the head is drawn last): forearm, cuff, hand, finger.
+- **When the topic is a part of his face, draw that part again, larger, in head units** (the nose: `mirNose` in
+  blocked-nostril's `mirror.js`, drawn in `post` over the rig's own; wings that squash, nostrils that plug, flare or go
+  red), and frame him tighter than usual (his head 600 px on frame 0, 760 px a third of a second later).
 - Acting sells the joke. Examples:
   - a deadpan stare after the chaos;
   - a glance down at his own body ("Thanks, body.");

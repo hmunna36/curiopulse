@@ -43,6 +43,7 @@ sfx.add(signal, t, gain, pan)      # mono is panned; (2, n) stereo is added as-i
 | A lamp, a jar (fireflies-glow) | `lamp_pip(f, dur, seed, rise)` (a small round pip as a lamp comes on: a firefly's flash, an indicator; speech band, so in a pause), `glass_tink(seed, f, dur)` (something small and hard on glass: a fork on a jar, a lid on its rim) |
 | A purr for a phone (cats-purr) | `purr_parts(dur, seed, rate, small, t0)` → `(body, rattle)`: a train of soft knocks, `rate` a second, that breathes in and out. The body (70–330 Hz) can hum under words on the bed bus; the rattle (260–1,100 Hz) is what a phone speaker plays: put it on the sfx bus times `pause_mask(words, n)` (1 where nobody is speaking, from 0.03 s after a word to 0.12 s before the next). `small=True`: a kitten |
 | A drink, a slide, a bumper, a twitch (sky-blue) | `glug_low(seed)` (a swallow, all of it under 300 Hz with a wet tick on top: it can sit under the first words), `slide(f0, f1, dur, vib, top, harm)` (a brassy slide between two pitches: a lazy "wah", a power-down, a "hmph"; keep it in a pause unless `top` is under 300), `ding(m, dur, seed, bright)` (a pinball bumper: a short bright bar; 0.06 s and very quiet on a word, 0.1–0.15 s in a pause), `buzz_hi(dur, rate, seed, lo)` (a twitchy buzz above 5.2 kHz: it can run under a line) |
+| A nose (blocked-nostril) | `sniff(dur, seed, blocked, edges, rise)` (a quick breath in through the nose that swells and cuts off; `blocked` 0..1 turns the rush of air into a thin whistle that climbs: nothing gets through; `edges=True` keeps what is above 5.2 kHz, for under a word). In that video's audio.py: `sniff_at()` (the whole sniff in the pauses, only its top under the words) |
 | Score | `groove(mus, t0, t1, bpm, chords, gain, seed, kick_on, snaps, arp, bass, padv, half, cutoff, sixteen)`, `drone(mus, t0, t1, midi_notes, cutoff, gain)`, `crash(mus, t)`, `bwomp(mus, t)` (comedic low blat) |
 
 New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's copy), not only into one audio.py.
@@ -77,6 +78,10 @@ New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's
   moment, exactly as it does the music bus. Turning the loudest gag down 5 dB brought every other gag up 3 to 4 dB.
   Move the whole bus with `levels={"sfx": ...}`, set the gags against each other, and re-run `qc_gags.py` after
   every change.
+- **Turning every groove down changes nothing** (blocked-nostril, 11 Oct 2026): `master()` scales the music bus to its
+  loudest moment, so a groove's `gain` only sets it against the other grooves. When words are masked by the score all
+  through a Short (soft line endings: "shifts,", "hours...", "now."), move the bus: `levels={"music": -14}` (the house
+  level is -11) and, if needed, `duck={"music": 0.74}`. Thirteen words under 10 dB became three.
 - **Keep the voice ≥ 12 dB** above everything in the speech band (qa.py measures content words):
   - turn down the cue that masks a word;
   - move a hit off the word;
