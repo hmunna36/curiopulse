@@ -34,6 +34,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do We Cry? | 45 s | [`videos/why-we-cry`](videos/why-we-cry) | [11 Oct 2026](https://youtube.com/shorts/PqYnHstEFfY) |
 | Why Do Cats Purr? | 31 s | [`videos/cats-purr`](videos/cats-purr) | [11 Oct 2026](https://youtube.com/shorts/Tj57vuNTmWg) |
 | Why Is the Sky Blue? | 49 s | [`videos/sky-blue`](videos/sky-blue) | [12 Oct 2026](https://youtube.com/shorts/RS7bKKA_2d0) |
+| Why Is One Nostril Always Blocked? | 31 s | [`videos/blocked-nostril`](videos/blocked-nostril) | 12 Oct 2026 |
 
 Each folder has:
 - the finished MP4;
