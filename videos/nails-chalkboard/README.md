@@ -49,8 +49,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | 13 Oct 2026 11:30 IST |
-| Instagram Reels and the Facebook Page | (scheduled in Business Suite) | 14 Oct 2026 06:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/N2Wl7YPFLmg | 13 Oct 2026 11:30 IST (scheduled; playlist "Why Does Your Body Do That?") |
+| Instagram Reels and the Facebook Page | scheduled in Meta Business Suite, one step for both (@curio_pulse_tv and the CurioPulse Page) | 14 Oct 2026 06:30 IST |
 
 **Title:** Why Do Nails on a CHALKBOARD Make You Cringe? 😖
 

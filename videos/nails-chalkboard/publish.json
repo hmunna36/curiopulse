@@ -34,19 +34,30 @@
   "cover": "cover.jpg",
   "captions": "nails-chalkboard.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-13T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "N2Wl7YPFLmg",
+    "url": "https://youtube.com/shorts/N2Wl7YPFLmg",
+    "uploaded": "2026-10-11T19:50:02.986Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (through the page's file input; Save went back to disabled)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-14T06:30:00+05:30",
     "caption": "You drag your nails down a chalkboard and cringe. 😖\nYour own ear is making that screech louder: the worst of it sits in the one band of pitch your ear canal boosts, and your brain's alarm centre turns the volume up. Tell people it's modern music and they hate it less... their skin still reacts.\nFollow @curio_pulse_tv for the next one: why your funny bone hurts so much 🔔\n#science #humanbody #sound #hearing #funfacts #reels",
     "coverTime": 2.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-14T06:30:00+05:30",
+    "facebook": "scheduled in the same step for the CurioPulse Page, 2026-10-14 06:30 IST",
+    "cover": "auto frame (the composer's thumbnail picker stayed a skeleton)"
   }
 }
