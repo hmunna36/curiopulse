@@ -44,6 +44,7 @@ sfx.add(signal, t, gain, pan)      # mono is panned; (2, n) stereo is added as-i
 | A purr for a phone (cats-purr) | `purr_parts(dur, seed, rate, small, t0)` → `(body, rattle)`: a train of soft knocks, `rate` a second, that breathes in and out. The body (70–330 Hz) can hum under words on the bed bus; the rattle (260–1,100 Hz) is what a phone speaker plays: put it on the sfx bus times `pause_mask(words, n)` (1 where nobody is speaking, from 0.03 s after a word to 0.12 s before the next). `small=True`: a kitten |
 | A drink, a slide, a bumper, a twitch (sky-blue) | `glug_low(seed)` (a swallow, all of it under 300 Hz with a wet tick on top: it can sit under the first words), `slide(f0, f1, dur, vib, top, harm)` (a brassy slide between two pitches: a lazy "wah", a power-down, a "hmph"; keep it in a pause unless `top` is under 300), `ding(m, dur, seed, bright)` (a pinball bumper: a short bright bar; 0.06 s and very quiet on a word, 0.1–0.15 s in a pause), `buzz_hi(dur, rate, seed, lo)` (a twitchy buzz above 5.2 kHz: it can run under a line) |
 | A nose (blocked-nostril) | `sniff(dur, seed, blocked, edges, rise)` (a quick breath in through the nose that swells and cuts off; `blocked` 0..1 turns the rush of air into a thin whistle that climbs: nothing gets through; `edges=True` keeps what is above 5.2 kHz, for under a word). In that video's audio.py: `sniff_at()` (the whole sniff in the pauses, only its top under the words) |
+| A screech, a scream, a bottle (nails-chalkboard) | `screech(dur, seed, f0, mute, edges, rough, rise)` (nails on a blackboard: a stick-slip squeal near 2,650 Hz, nine tenths of it between 1.8 and 4.6 kHz; it IS the speech band and it is unpleasant on purpose, so: a pause to itself, a third of a second, never above the narrator's level; `mute=True` is the same scrape with that band filtered out, about 10 dB quieter and dull; `edges=True` keeps what is above 5.2 kHz, for under a line), `scream(dur, seed, f0)` (a short comic scream, three quarters of it between 1.8 and 4.6 kHz; for a pause), `bottle_toot(dur, f, seed)` (blowing across a bottle: a round note at 392 Hz with breath on it; for a pause) |
 | Score | `groove(mus, t0, t1, bpm, chords, gain, seed, kick_on, snaps, arp, bass, padv, half, cutoff, sixteen)`, `drone(mus, t0, t1, midi_notes, cutoff, gain)`, `crash(mus, t)`, `bwomp(mus, t)` (comedic low blat) |
 
 New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's copy), not only into one audio.py.
@@ -82,6 +83,17 @@ New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's
   loudest moment, so a groove's `gain` only sets it against the other grooves. When words are masked by the score all
   through a Short (soft line endings: "shifts,", "hours...", "now."), move the bus: `levels={"music": -14}` (the house
   level is -11) and, if needed, `duck={"music": 0.74}`. Thirteen words under 10 dB became three.
+- **A sound that is unpleasant on purpose is a ladder, not a level** (nails-chalkboard, 12 Oct 2026). The screech was
+  heard five times, each in a pause of its own, a third of a second long and a step louder than the last (−21, −22,
+  −19, −17, −16 dB in their gaps, the narrator at −17): the last one is the loudest thing in the Short and still not
+  above her. Set the steps against each other with one list of gains at the top of audio.py, then move the whole bus.
+  A soft-clipped sound (`tanh`) reads about 7 dB louder than its peak says: measure it, don't trust the gain.
+- **A before-and-after in sound must be the same sound.** The "muted" scrape is the screech's own samples with the
+  band filtered out, normalised by the UNFILTERED peak (not its own), so it is honestly about 10 dB quieter; it was
+  then lifted 4 dB so a phone plays it, and the README says so.
+- **All-top sounds overshoot after AAC.** A buzz above 5.2 kHz, a glass tick and the subscribe click together read
+  −1.90 dBTP in the mix and −0.94 in the MP4 (a FAIL). Turn such a pile down and give `master()` a lower ceiling
+  (`ceiling=-2.4`) when a Short ends on top-heavy sounds.
 - **Keep the voice ≥ 12 dB** above everything in the speech band (qa.py measures content words):
   - turn down the cue that masks a word;
   - move a hit off the word;

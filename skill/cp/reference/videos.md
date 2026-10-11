@@ -28,6 +28,7 @@
 | `cats-purr`: "Why Do Cats PURR? 🐱" | 31 s (short arm) | https://youtube.com/shorts/Tj57vuNTmWg · 11 Oct 2026 23:30 IST | Business Suite, 12 Oct 2026 18:30 IST (auto cover: the thumbnail picker stayed a skeleton) |
 | `sky-blue`: "Why Is the Sky BLUE? (It Should Be Black) 🌌" | 49 s (standard arm) | https://youtube.com/shorts/RS7bKKA_2d0 · 12 Oct 2026 11:30 IST | Business Suite, 13 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 | `blocked-nostril`: "Why Is One Nostril ALWAYS Blocked? 👃" | 31 s (short arm) | https://youtube.com/shorts/KqsUFF1Mmm0 · 12 Oct 2026 23:30 IST | Business Suite, 13 Oct 2026 18:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the composer showed no thumbnail picker) |
+| `nails-chalkboard`: "Why Do Nails on a CHALKBOARD Make You Cringe? 😖" | 46 s (standard arm) | https://youtube.com/shorts/N2Wl7YPFLmg · 13 Oct 2026 11:30 IST | Business Suite, 14 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1108,7 +1109,7 @@ here for every new Short, with its links.
 - Voice: one pass, nothing retaken. The hook as one breath with no capital and no "..." ("You pinch one nostril shut and
   the other one's blocked.") ran 2.80 s, and the answer started at 3.31 s. 406 characters sent; 87,956 left.
 - Two QA rounds (retention 8 → 8.5), 19/19 each time, 3.8 minutes a render; round 2 was `build.sh` itself
-  (`timeline.json` byte-identical). Start to finish about 65 minutes (06:05–07:10 IST) with both uploads.
+  (`timeline.json` byte-identical). Start to finish one hour (06:05–07:05 IST) with both uploads.
 - Business Suite (window hidden as always; screenshots, clicks by ref and typing all worked): "Post to" read
   "CurioPulse and curio_pulse_tv" by default; five parts into a collector on the composer page, the hash compared in the
   page through `.then()`; the caption as a synthetic `paste`, then `blur()`; Next, Next, the Schedule option (the one
@@ -1121,3 +1122,65 @@ here for every new Short, with its links.
   the visible "Upload file" button, which `file_upload` refuses: give the hidden `input#file-loader` an `aria-label` and
   a visible box from JavaScript, `find` that, upload cover.jpg into it, Save from JavaScript, "Changes saved".
 
+**nails-chalkboard** (12 Oct 2026, nightly /cp next; standard arm; 101 words → 46.33 s; hook formula: The Direct Address):
+- New world files: `classroom.js` (an empty classroom painted once at twice the size, a blackboard, chalk lettering and
+  lines, the scrape `clsScratch`, `clsRings`, a pitch ruler chalked on the board `clsRuler`, the hero at the board
+  `clsHero` with a hooked hand on the slate, a `cringe`, a `shrug`, a pointing finger, a larger ear and a window on
+  it), `earcanal.js` (the canal in section `canalDraw`, a wave that grows down the tube, a bottle `canBottle`),
+  `brainamp.js` (`brnDraw`: the hearing area as an amplifier with one knob, the alarm centre as a red almond with a
+  siren and an arm), `lab.js` (a listening booth: a sign that turns over, a skin meter whose needle leaves on a
+  spring, a score paddle, the hero in headphones, his brain in a beret). In its scenes: `hookA(tt)` / `hookCam(tt)`,
+  `dragU`, `classDraw`, `screechWord` (a sound as shaking letters), `screamHead`, `volBadge`, `muteIcon`, `SC.loop`,
+  `SC.cover`. `qc_gags.py` is in its src. The rows are in engine.md.
+- New sfxkit atoms (template too): `screech(dur, seed, f0, mute, edges)`, `scream(dur, seed, f0)`,
+  `bottle_toot(dur, f, seed)`. New in the skill's bin: `render-gate.sh`.
+- **When the topic is a sound, the sound is the demonstration** (sound.md has the three rules that came out of it):
+  the screech was heard five times, each a step louder (−21, −22, −19, −17.5, −16 dB, the narrator at −17), each alone
+  in a pause for a third of a second; and the proof ("Mute that band...") was the very same samples with 1.8–4.6 kHz
+  filtered out. Nothing under the hook but the screech, the room and his shiver: the score came in with the answer.
+- **A hook that names a sound gets the sound first, and its letters.** `gap=0.40` on the hook block: 0.38 s of the
+  screech alone, "You" at 0.40 s, the answer still at 3.92 s. SKREEEEE! is lettered above the scrape for whoever
+  watches with the sound off. Letters anchored to the board slid under the top band and the watermark as the camera
+  followed his hand down: they hold their place on SCREEN instead (`skreee`).
+- **Cut words, not tempo.** "...and your whole body cringes." (12 words) ran 4.0–5.0 s on four takes; "You drag your nails
+  down a chalkboard and cringe." (9 words) ran 2.93 s at seed 7 (3.16–3.27 s at two other seeds).
+- **The loop can start mid-action.** The scrape begins on the loop shot's first frame (`dragU` is offset by the loop's
+  0.4 s), so the cut lands with his nails already on the board and frame 0 has a length of chalk behind them: the
+  opening is "already doing it", and the join is one move. The screech on the soundtrack runs across it the same way.
+- **Marks must not hide what they mark.** The squeal's jagged marks sat right on the fresh chalk lines, so frame 0 read
+  as sparks off his fingers; in two fans, left and right of the nails, the four lines show between them. And scratch
+  lines want to be straight: a wobble of 1 px with a short wavelength drew them as squiggles.
+- **A hand on a wall beside him:** `ikReach` to the wrist left the palm up to 10 units off the chalk lines as the
+  forearm turned; solve it three times, each time aiming the wrist at palm − 14 × the forearm's direction
+  (`clsSt`). His hand is seen from the back, so the nails show: four fingers in two segments, hooked, a pale nail with a
+  thin dark edge on each.
+- **Things drawn on a wall run off the frame at the next zoom.** The ruler and its label sat inside the key zone at
+  zoom 1.5 and 20–40 px outside it at 1.6–1.7 (the proof shot): check every camera key of a world-space graphic under
+  the mask, and give lettering that must be read a second before the camera leaves (the band's label popped 0.3 s
+  before the push to his ear; the window now opens on "pitch", not on "of").
+- **The second after the first cut:** the wave comes down the tube as the shot arrives and taps the drum at 0.66 s, the
+  section settles from 10 % larger, and "tiny tube" got a picture of its own (the tube's outline lights up, OPEN at one
+  end, CLOSED at the drum), which the bottle then repeats: the comparison is seen, not only said.
+- **Whisper heard "Cut that band out" as "Get that band out"**: "Mute that band" was heard on both takes. And a
+  pause that has to hold a gag needs its own `tighten`: the default cut "modern music... and" to 0.23 s, and three
+  piano notes landed on "and they"; `tighten=0.62` gave the pause 0.55 s (free).
+- **The render gate was shut by an idle Blender window** (the user's app, open since the evening, 2 % of a core): the va
+  gate matches "Blender" by name. `bin/render-gate.sh` is the same gate with that one exemption; use it for /cp.
+  And `pgrep -fl` printed 500 lines: a shell started with a long here-document carries all of it in its command line.
+- Voice: about 1,130 characters sent (590 for the first pass; 543 on ten audition takes of three lines, two installed);
+  the account's balance went 87,956 → 87,456.
+- Three QA rounds: round 1 18/19 (true peak −0.94 dBTP after AAC at 44.1 s: a buzz above 5.2 kHz, a glass tick and the
+  subscribe click together; the mix itself was at −1.90), round 2 = `build.sh` itself (`timeline.json` byte-identical;
+  ceiling −2.4, he points at the band, OPEN / CLOSED) 19/19, round 3 picture only ("shhhf" off the band's label, the
+  squeal's fans) 19/19. 4.9 minutes a render. Start to finish 1 h 25 min (00:03–01:28 IST) with both uploads.
+- Business Suite (window hidden as always; screenshots, clicks by ref and typing all worked): "Post to" read
+  "CurioPulse and curio_pulse_tv" by default; six parts into a collector on the composer page, the hash compared in
+  the page through `.then()`; the caption as a synthetic `paste`, then `blur()`; Next, Next (the Share step opens
+  scrolled down, its button says "Share": scroll up first), the Schedule option (the one with `aria-pressed`); a
+  coordinate click on each of the two date fields and the day by its exact `aria-label` ("Wednesday, 14 October
+  2026"); 06 and 30 typed by ref into the four spinbuttons; both dates and all four values read back in the script
+  that clicked the final Schedule. "Reel scheduled ... on Facebook and ... on Instagram". Content → Scheduled (a
+  coordinate click on the tab, then 16 wheel ticks down): two rows "Your reel" at 14 October 06:30, one with each
+  badge. The thumbnail picker stayed a skeleton: auto cover.
+- Studio: the direct video URL opened the right channel; the hidden `input#file-loader` given an `aria-label` and a
+  visible box, cover.jpg uploaded into it, Save from JavaScript, Save back to disabled.

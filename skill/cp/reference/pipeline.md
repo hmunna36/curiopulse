@@ -70,6 +70,12 @@ rebuild and to prove the folder rebuilds.
   (exit 3 = still busy at the deadline: wait again, don't start). Chain it: `wait-renders.sh 60 && node render.js …`.
   A full Visual Algo render can hold the gate for 20–40 minutes: write the README, publish.json and the skill notes
   meanwhile. Don't re-run `audio.py` while your own full render is muxing `mix.wav`.
+  - **Use `~/.claude/skills/cp/bin/render-gate.sh [minutes]` for /cp** (12 Oct 2026). It is the same gate, but a
+    Blender that is only open (the user's app, idle) does not count: the va script matches "Blender" by name, and
+    an idle Blender window left open overnight held the gate shut for ten minutes before anyone looked. A Blender
+    counts only while it uses more than 40 % of a core. Never close the user's apps to get through a gate.
+  - Print PIDs, not command lines, when you look at what is running (`pgrep -f`, not `pgrep -fl`): a shell that
+    was started with a long here-document prints all of it.
 - **Disk:** keep ≥ 5 GB free on `/System/Volumes/Data` (`df -h /System/Volumes/Data`). A Short needs ≈ 400 MB
   while it builds (.work stems and mixes plus the MP4). `bin/cleanup.sh` gives it back at the end of every run,
   once everything is on GitHub.

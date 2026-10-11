@@ -1593,3 +1593,67 @@ def sniff(dur=0.22, seed=0, blocked=0.0, edges=False, rise=1.0):
     if edges:
         y = filt(y, "highpass", 5200, 4) * 3.0
     return fade(y / (np.abs(y).max() + 1e-9) * env, 0.004, 0.02)
+
+
+# ================================================================= nails on a blackboard (nails-chalkboard, 12 Oct 2026)
+def screech(dur=0.5, seed=0, f0=2650.0, mute=False, edges=False, rough=1.0, rise=0.05):
+    """nails on a blackboard: a stick-slip squeal (mono). A wavering tone near f0, in the 2-4 kHz band the ear is most
+    sensitive to, with two rough partials, chopped by the chatter of nails catching and slipping, over scraping noise.
+    mute=True takes 1.8-4.6 kHz out of it at the same level (what is left is a dull scrape, about 10 dB quieter: the band
+    that hurts is gone); edges=True keeps
+    only what is above 5.2 kHz, so it can run under a line. It IS the speech band: the full sound is for a pause.
+    Keep it short and well under the voice: it is unpleasant on purpose, and a phone speaker is loudest right there."""
+    n = int(dur * SR)
+    t = ar(n)
+    rng = np.random.default_rng(1000 + seed)
+    drift = filt(rng.standard_normal(n), "lowpass", 7)
+    drift /= np.abs(drift).max() + 1e-9
+    jit = filt(rng.standard_normal(n), "lowpass", 70)
+    jit /= np.abs(jit).max() + 1e-9
+    f = f0 * (1 + 0.045 * drift + 0.012 * jit) * (1 + rise * np.linspace(-1, 1, n))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = np.sin(ph) + 0.5 * np.sin(1.47 * ph + 0.6) + 0.26 * np.sin(2.02 * ph + 1.1) + 0.22 * np.sin(0.52 * ph)
+    chat = np.sign(np.sin(2 * np.pi * np.cumsum(86 * (1 + 0.3 * drift)) / SR + 1.5 * jit))    # catch, slip, catch
+    chat = 0.3 + 0.7 * np.clip(filt(0.5 + 0.5 * chat, "lowpass", 420), 0, 1)
+    nz = filt(white(n, 2000 + seed), "bandpass", [1200, 7500])
+    y = y * chat + 0.6 * rough * nz / (np.abs(nz).max() + 1e-9) * (0.5 + 0.5 * chat)
+    y *= 0.8 + 0.2 * np.sin(np.pi * np.linspace(0, 1, n)) ** 0.5
+    pk = np.abs(y).max() + 1e-9          # the level of the whole squeal: the muted one is the SAME scrape with the band gone
+    if mute:
+        y = filt(y, "bandstop", [1800, 4600], 5)
+    if edges:
+        y = filt(y, "highpass", 5200, 8)
+    return fade(y / pk, 0.012, 0.05)
+
+
+def scream(dur=0.45, seed=0, f0=1040.0):
+    """a short comic scream: a rough high voice that jumps up, wavers and sags, through two bright formants (mono).
+    For a pause: it lives in the speech band."""
+    n = int(dur * SR)
+    t = ar(n)
+    u = np.linspace(0, 1, n)
+    rng = np.random.default_rng(3000 + seed)
+    wob = filt(rng.standard_normal(n), "lowpass", 25)
+    wob /= np.abs(wob).max() + 1e-9
+    f = f0 * (0.78 + 0.3 * np.minimum(1, u / 0.1) - 0.1 * u ** 2) * (1 + 0.025 * np.sin(2 * np.pi * 12 * t) + 0.02 * wob)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    src = sum(np.sin(k * ph + 0.3 * k) / k for k in range(1, 9)) * (1 + 0.45 * np.sin(ph / 2 + 0.4))   # a rasp: a tone an octave under
+    y = 0.5 * filt(src, "bandpass", [1050, 1700]) + 2.2 * filt(src, "bandpass", [2300, 3300]) + 0.9 * filt(src, "bandpass", [3400, 4300]) + 0.06 * src
+    y += 0.1 * filt(white(n, 3100 + seed), "bandpass", [2000, 6000]) * np.abs(y).max()
+    env = np.minimum(1, t / 0.03) * np.minimum(1, (dur - t) / 0.11)
+    return fade(y / (np.abs(y).max() + 1e-9) * env, 0.004, 0.02)
+
+
+def bottle_toot(dur=0.32, f=392.0, seed=0):
+    """blowing across the mouth of a bottle: a round hollow note that scoops up into pitch, with breath on it (mono).
+    For a pause (it is in the speech band); under about 300 Hz a phone speaker would not play it."""
+    n = int(dur * SR)
+    t = ar(n)
+    ff = f * (1 - 0.05 * np.exp(-t / 0.035))
+    ph = 2 * np.pi * np.cumsum(ff) / SR
+    y = np.sin(ph) + 0.2 * np.sin(2 * ph + 0.4) + 0.12 * np.sin(3 * ph + 1.0)
+    br = white(n, 4000 + seed)
+    bb = filt(br, "bandpass", [f * 0.8, f * 1.25])
+    y += 0.5 * bb / (np.abs(bb).max() + 1e-9) + 0.05 * filt(br, "highpass", 3000)
+    env = np.minimum(1, t / 0.06) * np.minimum(1, (dur - t) / 0.12)
+    return fade(y / (np.abs(y).max() + 1e-9) * env, 0.004, 0.02)

@@ -323,6 +323,7 @@ own level, which in a routine run is medium. So:
 - `template/`: the video folder every Short starts from (engine + skeletons + README + publish.json)
 - `topics.md`: the topic queue for `/cp next`
 - `bin/new-short.sh`, `bin/publish-short.sh`, `bin/backup-skill.sh`, `bin/run-lock.sh`, `bin/cp-env.sh`
+- `bin/render-gate.sh`: the render gate for /cp (wait until no other pipeline is rendering; an idle open Blender does not count)
 - `bin/cleanup.sh`: back to the light checkout (`skill/` + top-level files) once everything is on GitHub
 - `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · next-slot · upload · reschedule · status · stats ·
   comments-due · queue-comment · channel-info · playlists · playlist-create · playlist-add · channel-set · section-add)
