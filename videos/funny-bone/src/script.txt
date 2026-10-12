@@ -1,0 +1,28 @@
+# Narration for "Why Does Your FUNNY BONE Hurt So Much?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses (jokes and reveals); tighten=<s> caps them. tempo speeds a take up
+# without changing pitch (explanations 1.03-1.06, jokes and reveals 1.00).
+# The short arm of the length test (a 23:30 slot): 30-35 s, 66-76 words. This script: 74 words.
+# Hook formula (reference/hooks.md): Contrarian Flip. The hook says the name everyone uses ("funny bone"); the answer
+# rejects both of its words by second 5 ("not funny... not a bone"); the proof starts at the first cut.
+# Nobody says "subscribe"; there is no `sub` block; the last block is the button and the Short loops.
+
+## hook gap=0.24 tempo=1.00
+[panicked] You bang your funny bone and your whole arm goes ZAP!
+
+## answer gap=0.45 tighten=0.42 tempo=1.00
+It's not funny, it's not a bone, it's a naked NERVE!
+
+## mech gap=0.32 tempo=1.04
+It hides under muscle down your whole arm... except at your elbow, where it runs over bone, right under the skin.
+
+## payoff gap=0.30 tempo=1.03
+One knock squashes it, and the zap lands in your PINKY, where the nerve ends.
+
+## weird gap=0.34 tempo=1.02
+And the bone it gets squashed against? The humerus.
+
+## button gap=0.50 tighten=0.55 tempo=1.00
+Humorous. ...Maybe that's the joke. Nobody's LAUGHING.
