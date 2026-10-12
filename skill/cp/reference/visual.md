@@ -157,6 +157,8 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 - **When the topic is a part of his face, draw that part again, larger, in head units** (the nose: `mirNose` in
   blocked-nostril's `mirror.js`, drawn in `post` over the rig's own; wings that squash, nostrils that plug, flare or go
   red), and frame him tighter than usual (his head 600 px on frame 0, 760 px a third of a second later).
+- **One hand's shape** (funny-bone, 12 Oct 2026): `pose.handL` / `pose.handR` override `pose.hand` for that side, so one
+  hand can be spread (zapped, reaching) while the other stays as it was.
 - Acting sells the joke. Examples:
   - a deadpan stare after the chaos;
   - a glance down at his own body ("Thanks, body.");
@@ -165,6 +167,17 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
   - wide eyes on the reveal;
   - a sweat drop and a pounding heart.
   Hold reactions in the narration gaps.
+
+## Staging round him (funny-bone, 12 Oct 2026)
+
+- **Bright things in the background go where his head is not.** A lamp painted behind his head, with its glow in the
+  glow layer, bloomed through his face on frame 0. Put lamps and windows to one side of him, and keep what is behind a
+  raised hand or arm dark.
+- **A burst that marks a hit is drawn BEHIND him**, between what he hit and his body, so the part of him that hit it
+  stays visible on top of it. Its word sits clear of his sleeve, inside the key zone.
+- **Nothing crosses his face in the first second**: what flies up (washing, popcorn, water) leaves to one side.
+- **Several shapes as one outlined thing** (a see-through limb, a silhouette): stroke them all, then fill them all,
+  with every subpath turning the same way; one outline, no seams.
 
 ## Camera grammar
 

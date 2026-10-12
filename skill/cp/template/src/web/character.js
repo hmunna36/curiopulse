@@ -411,7 +411,7 @@ function drawCharacterRig(c, st, t, pal = PAL) {
       capsuleShaded(c, r['el' + k], r['wr' + k], 38, pal.coat, pal.coatSh, pal.xray ? null : pal.coatHi, pal);
       line(c, wr[0] - d[0] * 6, wr[1] - d[1] * 6, wr[0] + d[0] * 2, wr[1] + d[1] * 2, 42, pal.coatSh);
     }
-    let hk = pose.hand;
+    let hk = pose['hand' + k] || pose.hand;   // pose.handL / pose.handR: one hand's shape, when the two differ
     if (hk === 'thumbR') hk = k === 'R' ? 'thumb' : 'open';
     drawHand(c, wr, d, hk, pal, s, t);
   }

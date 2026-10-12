@@ -1657,3 +1657,43 @@ def bottle_toot(dur=0.32, f=392.0, seed=0):
     y += 0.5 * bb / (np.abs(bb).max() + 1e-9) + 0.05 * filt(br, "highpass", 3000)
     env = np.minimum(1, t / 0.06) * np.minimum(1, (dur - t) / 0.12)
     return fade(y / (np.abs(y).max() + 1e-9) * env, 0.004, 0.02)
+
+
+def zap(dur=0.35, seed=0, f0=118.0, edges=False, rise=0.0):
+    """an electric zap (funny-bone, 12 Oct 2026): a rough mains buzz that stutters, with crackle on top. It lives in the
+    speech band, so the full sound is for a pause; `edges=True` keeps only what is under 250 Hz and above 5.2 kHz and
+    can run under a line. `rise` glides the buzz up by that fraction over its length (a charge building)"""
+    n = int(dur * SR)
+    t = ar(n)
+    r = np.random.default_rng(700 + seed)
+    f = f0 * (1 + rise * t / max(dur, 1e-6)) * (1 + 0.04 * np.sin(2 * np.pi * 29 * t + r.uniform(0, 6)))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = sum(np.sin(k * ph + k * 1.3) / k for k in range(1, 26))
+    st = np.repeat((r.random(n // 300 + 2) > 0.3).astype(float), 300)[:n]          # it stutters, 160 times a second
+    st = np.convolve(st, np.ones(48) / 48, "same")
+    body = filt(np.tanh(3 * y) * (0.35 + 0.65 * st), "bandpass", [160, 4200])
+    body = body / (np.abs(body).max() + 1e-9)
+    y = 0.75 * body + 0.85 * crackle(n, 300, 701 + seed, 2200, 11000) + 0.22 * filt(white(n, 702 + seed), "highpass", 6000, 2) * st
+    y = fade(y, 0.002, min(0.05, dur * 0.3))
+    if edges:
+        y = filt(y, "lowpass", 250, 4) + filt(y, "highpass", 5200, 4)
+    return y / (np.abs(y).max() + 1e-9)
+
+
+def rimshot(seed=0):
+    """ba-dum tss (funny-bone, 12 Oct 2026): two drum hits and a choked cymbal, 0.42 s in all, stereo. For the pause
+    after a pun"""
+    n = int(0.42 * SR)
+    y = np.zeros((2, n))
+
+    def put(sig, t0, g, pan=0.0):
+        s = sig if sig.ndim == 2 else pan_st(sig, pan)
+        i = int(t0 * SR)
+        m = min(s.shape[1], n - i)
+        y[:, i:i + m] += g * s[:, :m]
+
+    put(snare(seed, 0.11), 0.0, 0.9, -0.2)
+    put(thump(0.16, 210, 96, 0.05) + 0.4 * snare(seed + 1, 0.16)[: int(0.16 * SR)], 0.115, 1.0, 0.15)
+    cy = cymbal(seed + 2, 0.19)
+    put(cy * np.exp(-ar(cy.shape[1]) / 0.07), 0.225, 0.8)
+    return y / (np.abs(y).max() + 1e-9)

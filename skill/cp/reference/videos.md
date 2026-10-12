@@ -29,6 +29,7 @@
 | `sky-blue`: "Why Is the Sky BLUE? (It Should Be Black) 🌌" | 49 s (standard arm) | https://youtube.com/shorts/RS7bKKA_2d0 · 12 Oct 2026 11:30 IST | Business Suite, 13 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 | `blocked-nostril`: "Why Is One Nostril ALWAYS Blocked? 👃" | 31 s (short arm) | https://youtube.com/shorts/KqsUFF1Mmm0 · 12 Oct 2026 23:30 IST | Business Suite, 13 Oct 2026 18:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the composer showed no thumbnail picker) |
 | `nails-chalkboard`: "Why Do Nails on a CHALKBOARD Make You Cringe? 😖" | 46 s (standard arm) | https://youtube.com/shorts/N2Wl7YPFLmg · 13 Oct 2026 11:30 IST | Business Suite, 14 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
+| `funny-bone`: "Why Does Your FUNNY BONE Hurt So Much? ⚡" | 32 s (short arm) | https://youtube.com/shorts/JJYB6rAaF2w · 13 Oct 2026 23:30 IST | Business Suite, 14 Oct 2026 18:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1184,3 +1185,61 @@ here for every new Short, with its links.
   badge. The thumbnail picker stayed a skeleton: auto cover.
 - Studio: the direct video URL opened the right channel; the hidden `input#file-loader` given an `aria-label` and a
   visible box, cover.jpg uploaded into it, Save from JavaScript, Save back to disabled.
+
+**funny-bone** (12 Oct 2026, the 06:00 second Short; the short arm; 74 words → 31.73 s; hook formula: Contrarian Flip):
+- New world files: `doorway.js` (a doorway at home from the hallway, the lit room behind painted once and blurred, the
+  white door frame, a laundry basket and what flies out of it, the hero in a teal shirt from a description `fbHero`,
+  his arm flashing its bones `fbArmBones`, `fbZap`, `fbBurst`), `armxray.js` (his arm, see-through: `fbArm` with
+  muscles that pop on, the ulnar nerve from neck to little finger, a bare stretch with a face, a door frame pressed in
+  at a slant, lit fingers; `armOn` / `armView` / `armKeys`; `fbWindow`; his own head beside it, tinted blue). In its
+  scenes: `hookA(tt)` / `hookCam(tt)` / `hookDraw`, `boneTag` (a label that loses its words), `nameSticker` (HELLO my
+  name is ..., and it turns over), `SC.loop`, `SC.cover`. `qc_gags.py` is in its src. The rows are in engine.md.
+- New in the template: `pose.handL` / `pose.handR` in character.js (one hand's shape); the sfxkit atoms
+  `zap(dur, seed, f0, edges, rise)` and `rimshot(seed)`.
+- **A lamp behind his head blooms through his face.** The room's lamp was painted where his head would be, with a glow
+  in the glow layer: on frame 0 half his face was white. Bright things in the background go where he is not (the lamp
+  is now far right), and what is behind a raised hand is dark (a bookshelf).
+- **A burst that marks a hit goes BEHIND him.** In front, BONK! covered the elbow it was about. Drawn between the door
+  frame and him, his elbow sits on top of it, jammed into the frame.
+- **Nothing crosses his face in the first second.** The washing went up across it at 0.2–0.3 s; it now leaves from the
+  basket's right end, to the right. A sock comes down on his head from the side and stays: a prop that keeps the
+  joke going in every later shot of him.
+- **Several shapes as ONE outlined thing: stroke them all, then fill them all**, every subpath turning the same way
+  (the see-through arm is an arm path, a palm and five fingers with one outline and no seams). `rrect()` in lib.js
+  starts a new path: inside a combined path use one that does not (`fbRRPath`).
+- **A see-through limb needs him beside it.** A blue blob with two eyes read as a ghost. The rig's own `drawHead` with
+  a blue palette (`FB_XPAL`), 2.3 times its size at the edge of the frame, reads as him at once, and his face can
+  follow the story.
+- **A wall that presses on a curved limb: lean it.** A vertical door frame at the elbow cut through the forearm's
+  bulge; leaning 11 degrees it touches only the elbow. And a big flat prop eats the frame: it filled half of two shots
+  until the focus put it in the left quarter.
+- **Highlights in the glow layer burn out at close range.** Knob, skin and bare nerve lit together were one white blob
+  at 2.3 pixels to a unit; glow alphas of 0.2–0.3 and a thin bright line are enough.
+- **Strike a word out as it ENDS** when the strike's sound (a buzzer) sits in the pause after it.
+- **The key word's level decides the take** (again): "NERVE." read −33 dB in the speech band on the first take and −14
+  as "NERVE!" with commas instead of "..."; "LAUGHING" in capitals −14 against −35; "PINKY" stays at −29…−32 on
+  every take (stop re-rolling, keep the score out from under it).
+- **The bang gets a quarter second to itself:** `gap=0.24` on the hook block; the answer still starts at 4.06 s.
+- **The effects bus follows its loudest hit** (sky-blue's lesson, the other way round): with the bang at −5 dB every
+  joke sound sat at −26…−31 dB in its pause; with the low hits at −8…−12 and the gags raised, all sixteen are between
+  −19.5 and −24.
+- **When a caption would sit on a label, move the captions for that stretch** (`capY: 1480` from the answer line on,
+  switched between two chunks). And a chunk next to the Subscribe pill is drawn at y 1150 for its whole life: "THE
+  JOKE" ended 0.34 s into the pill's window and landed on a stamp, so the stamp moved (into the crook of the arm).
+- Voice: about 1,120 characters sent (417 for the first pass; 704 on ten audition takes of four lines, four
+  installed); the account's own counter went 86,951 → 86,455.
+- Two QA rounds, 19/19 each time (retention 8 → 8.5: a bead of light on the bare nerve while "where it runs" is said),
+  3.7 minutes a render. The chain from the saved takes was re-run into a clean folder: `timeline.json` and `mix.wav`
+  identical. Start to finish 1 h 05 min (06:05–07:10 IST) with both uploads.
+- Business Suite (window hidden as always; screenshots, clicks by ref and typing all worked): "Post to" read
+  "CurioPulse and curio_pulse_tv" by default; four parts into a collector on the composer page, the hash compared in
+  the page through `.then()`; the caption as a synthetic `paste`, then `blur()`; Next, Next, scroll up, the Schedule
+  option (the one with `aria-pressed`); a coordinate click on each of the two date fields and the day clicked from
+  JavaScript by its exact `aria-label` ("Wednesday, 14 October 2026": one visible match each time); 18 and 30 typed by
+  ref into the four spinbuttons; both dates and all four values read back in the script that clicked the final
+  Schedule. "Reel scheduled ... on 14 Oct 2026 on Facebook and 14 Oct 2026 on Instagram". Done lands on the Planner:
+  Content from the left bar, the Scheduled tab by a coordinate click, 16 wheel ticks down: two rows with the caption at
+  14 October 18:30, one with each badge. The thumbnail picker stayed a skeleton: auto cover.
+- Studio: the direct video URL opened the right channel; the slot showed a grey placeholder (the video was still
+  processing); the hidden `input#file-loader` given an `aria-label` and a visible box, cover.jpg uploaded into it,
+  Save from JavaScript, Save back to disabled about nine seconds later.
