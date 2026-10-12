@@ -34,19 +34,30 @@
   "cover": "cover.jpg",
   "captions": "funny-bone.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-13T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "JJYB6rAaF2w",
+    "url": "https://youtube.com/shorts/JJYB6rAaF2w",
+    "uploaded": "2026-10-12T01:32:11.681Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (its slot showed the grey placeholder of a video still processing)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-14T18:30:00+05:30",
     "caption": "You bang your funny bone and your whole arm goes ZAP. ⚡\nIt's not funny, and it's not a bone: it's a nerve that crosses your elbow on bare bone, right under the skin. One knock squashes it, and the zap lands in your pinky, where that nerve ends.\nFollow @curio_pulse_tv for the next one: why you see stars when you rub your eyes 🔔\n#science #humanbody #funnybone #nerves #funfacts #reels",
     "coverTime": 0.2,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-14T18:30:00+05:30",
+    "facebook": "scheduled in the same step for the CurioPulse Page, 2026-10-14 18:30 IST",
+    "cover": "auto frame (the composer's thumbnail picker stayed a skeleton)"
   }
 }

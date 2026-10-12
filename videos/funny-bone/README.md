@@ -42,9 +42,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 23:30 IST |
-| Instagram Reels | @curio_pulse_tv | … |
-| Facebook Reels | the CurioPulse Page | … |
+| YouTube Shorts | https://youtube.com/shorts/JJYB6rAaF2w | 13 Oct 2026, 23:30 IST (scheduled; thumbnail and captions set; in the playlist "Why Does Your Body Do That?") |
+| Instagram Reels | @curio_pulse_tv | 14 Oct 2026, 18:30 IST (scheduled in Meta Business Suite; automatic cover, see below) |
+| Facebook Reels | the CurioPulse Page | 14 Oct 2026, 18:30 IST (the same schedule, both places ticked) |
 
 **Title:** Why Does Your FUNNY BONE Hurt So Much? ⚡
 
@@ -88,7 +88,9 @@ Direct Address). The last three Shorts used The Impossible Claim, The Direct Add
 elbow, and the camera goes in through the window
 **Subscribe cue (silent, the pill over the last 3.4 s):** 28.33–31.12 s; nobody says "subscribe"
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): the bang, close, with
-"IT'S NOT A BONE".
+"IT'S NOT A BONE". It is the YouTube thumbnail: set through the API, and uploaded again in Studio, whose own slot for
+the Short showed a grey placeholder. Business Suite's Reel composer never loaded its thumbnail picker, so the Reel has
+an automatic cover; it can be changed to this file in the Instagram app once the Reel is live.
 
 ## Story and shots
 
