@@ -214,8 +214,9 @@ both. If it shows only one, open the drop-down and tick both. The same caption s
   (not "Description"), and the caption typed there did not stick. After EVERY schedule, read the row's title in
   Content → Scheduled: it must start with the caption's first words. If it says "Your reel", stop, report it before
   the slot, and do not call the Reel done. Editing a published Reel in Business Suite ("Manage post → Edit Post")
-  ended in "Failed to publish / This post didn't save correctly": do not do that; fix captions in the Instagram and
-  Facebook apps.
+  ended in "Failed to publish / This post didn't save correctly" and took the Facebook Reel off the Page: do not do
+  that. What works (13 Oct 2026): instagram.com in the user's Chrome (Reel → ⋯ → Edit → caption → Done) and, for the
+  Page, facebook.com/reel/<id> → ⋯ → Edit reel → Save. A Reel lost to a failed edit was re-posted Facebook-only.
 - If Facebook refuses the Reel and Instagram accepts it, ship Instagram and report "Facebook still to post".
 
 1. Click **Create Reel** on the home page, then **Add video**. The file attaches; wait for the upload bar to finish.
