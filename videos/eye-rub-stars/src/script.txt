@@ -1,0 +1,37 @@
+# Narration for "Why Do You See STARS When You Rub Your Eyes? ✨"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses (jokes and reveals); tighten=<s> caps them. tempo speeds a take up
+# without changing pitch (explanations 1.03-1.06, jokes and reveals 1.00).
+# The standard arm of the length test (an 11:30 slot): 45-50 s, 95-110 words. This script: 106 words.
+# Hook formula (reference/hooks.md): The Direct Address. The first sentence is the title's own words, done to the
+# viewer ("You rub your eyes ... stars"); the answer (no light got in: a pocket-dial) starts by second 5.
+# Nobody says "subscribe"; there is no `sub` block; the last block is the button and the Short loops.
+
+## hook gap=0.10 tempo=1.00
+You rub your eyes and the darkness fills with stars.
+
+## answer gap=0.45 tighten=0.40 tempo=1.00
+Relax, no light got in, your eyeball just pocket-dialed your brain.
+
+## sensors gap=0.75 tempo=1.00
+The back of your eye is lined with light sensors that know one word: LIGHT!
+
+## squeeze gap=0.55 tempo=1.00
+Rub your eye, they get squished... and they shout it anyway.
+
+## brain gap=0.60 tempo=1.00
+Your brain can't check, so it paints you fireworks.
+
+## newton gap=0.85 tighten=0.60 tempo=1.00
+Isaac Newton tested this by sliding a needle behind his own eyeball... and saw colored rings.
+
+## dont gap=0.70 tighten=0 tempo=1.00
+Do not do that.
+
+## astro gap=0.50 tempo=1.00
+Astronauts see flashes like this with their eyes shut... probably cosmic rays, zipping through their eyeballs and making the same call.
+
+## button gap=0.80 tighten=0.50 tempo=1.00
+So rub gently... that phone never gets an upgrade.
