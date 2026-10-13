@@ -37,7 +37,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Is One Nostril Always Blocked? | 31 s | [`videos/blocked-nostril`](videos/blocked-nostril) | [12 Oct 2026](https://youtube.com/shorts/KqsUFF1Mmm0) |
 | Why Do Nails on a Chalkboard Make You Cringe? | 46 s | [`videos/nails-chalkboard`](videos/nails-chalkboard) | [13 Oct 2026](https://youtube.com/shorts/N2Wl7YPFLmg) |
 | Why Does Your Funny Bone Hurt So Much? | 32 s | [`videos/funny-bone`](videos/funny-bone) | [13 Oct 2026](https://youtube.com/shorts/JJYB6rAaF2w) |
-| Why Do You See Stars When You Rub Your Eyes? | 46 s | [`videos/eye-rub-stars`](videos/eye-rub-stars) | 14 Oct 2026 (scheduled) |
+| Why Do You See Stars When You Rub Your Eyes? | 46 s | [`videos/eye-rub-stars`](videos/eye-rub-stars) | [14 Oct 2026](https://youtube.com/shorts/FuqnD4vj-q4) |
 
 Each folder has:
 - the finished MP4;

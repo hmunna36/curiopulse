@@ -36,19 +36,31 @@
   "cover": "cover.jpg",
   "captions": "eye-rub-stars.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-14T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "FuqnD4vj-q4",
+    "url": "https://youtube.com/shorts/FuqnD4vj-q4",
+    "uploaded": "2026-10-13T17:42:12.262Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (its slot showed the grey placeholder)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-15T06:30:00+05:30",
     "caption": "You rub your eyes and the darkness fills with stars. ✨\nNo light got in: pressing on your eyeball makes its light sensors fire anyway, and your brain reads every signal from them as light. Isaac Newton tested it with a needle (do not). Rub gently.\nFollow @curio_pulse_tv for the next one: why you get dizzy when you spin 🔔\n#science #humanbody #eyes #phosphenes #funfacts #reels",
     "coverTime": 0.3,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-15T06:30:00+05:30",
+    "facebook": "scheduled in the same step for the CurioPulse Page, 2026-10-15 06:30 IST",
+    "captionCheck": "typed with real keystrokes; Content > Scheduled shows the caption on both rows (not \"Your reel\")",
+    "cover": "auto frame (the composer's thumbnail picker stayed a skeleton)"
   }
 }

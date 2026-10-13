@@ -55,9 +55,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | 14 Oct 2026, 11:30 IST |
-| Instagram Reels | @curio_pulse_tv | 15 Oct 2026, 06:30 IST |
-| Facebook Reels | the CurioPulse Page | 15 Oct 2026, 06:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/FuqnD4vj-q4 | 14 Oct 2026, 11:30 IST (scheduled; thumbnail and captions set; in the playlist "Why Does Your Body Do That?") |
+| Instagram Reels | @curio_pulse_tv | 15 Oct 2026, 06:30 IST (scheduled in Meta Business Suite; the caption shows on its row; automatic cover, see below) |
+| Facebook Reels | the CurioPulse Page | 15 Oct 2026, 06:30 IST (the same schedule, both places ticked; the caption shows on its row) |
 
 **Title:** Why Do You See STARS When You Rub Your Eyes? ✨
 
@@ -102,7 +102,10 @@ Address, The Direct Address and Contrarian Flip.
 glass, the phone ringing and being answered, and the camera goes in through an eyeball
 **Subscribe cue (silent, the pill over the last 3.4 s):** 42.63–45.42 s; nobody says "subscribe"
 **Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`, rendered by `src/cover.sh`): his fists on his
-eyes, close, his mouth an O, the dark full of stars, and "SEEING STARS?".
+eyes, close, his mouth an O, the dark full of stars, and "SEEING STARS?". It is the YouTube thumbnail: set through the API, and uploaded again in Studio, whose own slot for the
+Short showed a grey placeholder. Business Suite's Reel composer showed only a skeleton where its thumbnail picker
+should be, so the Reel has an automatic cover; it can be changed to this file in the Instagram app once the Reel is
+live.
 
 ## Story and shots
 
