@@ -205,8 +205,17 @@ both. If it shows only one, open the drop-down and tick both. The same caption s
   one), then the hours and the minutes typed by ref into all four spinbuttons. Read all four and both dates back in
   the same script that clicks the final Schedule. The dialog says "scheduled to publish on <day> on Facebook and <day>
   on Instagram". Content → Scheduled then has two rows at that time, one with the Instagram badge (curio_pulse_tv) and
-  one with the Facebook badge (CurioPulse), titled "Your reel" until it has processed. The list is sorted latest
-  first and holds the old Reels queued for Facebook: scroll down to the day.
+  one with the Facebook badge (CurioPulse). The list is sorted latest first and holds the old Reels queued for
+  Facebook: scroll down to the day.
+- **"Your reel" is NOT a processing title: it means the caption was lost (13 Oct 2026, user: "some of the reels don't
+  have text").** sky-blue (06:30) and blocked-nostril (18:30) went out on Instagram and Facebook with no text
+  ("This post has no text" / "Your reel"); nails-chalkboard (14 Oct 06:30, both) was scheduled the same way. With both
+  ticked the composer has a "Customise post for Facebook and Instagram" toggle above a field labelled **Text**
+  (not "Description"), and the caption typed there did not stick. After EVERY schedule, read the row's title in
+  Content → Scheduled: it must start with the caption's first words. If it says "Your reel", stop, report it before
+  the slot, and do not call the Reel done. Editing a published Reel in Business Suite ("Manage post → Edit Post")
+  ended in "Failed to publish / This post didn't save correctly": do not do that; fix captions in the Instagram and
+  Facebook apps.
 - If Facebook refuses the Reel and Instagram accepts it, ship Instagram and report "Facebook still to post".
 
 1. Click **Create Reel** on the home page, then **Add video**. The file attaches; wait for the upload bar to finish.
