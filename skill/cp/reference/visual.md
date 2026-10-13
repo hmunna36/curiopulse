@@ -205,6 +205,10 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 - `stamp(txt…)` (UNPROVEN), `bigX` (the myth crossed out), `card(...)` (STUDY A: HELPS / STUDY B: MEH),
   `speech(...)` / `thoughtBubble(...)` ("Are we FALLING?!"), `neonWord` (ON PURPOSE), `heartIcon`, `sweatDrop`,
   `shockLines`, `zzz`, `splashDrops`, `snowflakes`, `leader` lines from a label to its spot.
+- `popK(t, t0, t1)` (13 Oct 2026): 0..1, in at t0 and out at t1. Bursts, tags and small stars pop in AND pop out with
+  it; a shape that fades goes grey on the way (under 90 % opacity it is drawn without its light).
+- `thinLeader(a, b, k, col)` (13 Oct 2026): a dashed leader with a small dot and no glow. kit.js's `leader()` ends in a
+  40 px glowing dot, which blooms into a white blob on or near a face.
 - Keep text to a few words, each tied to a narration beat. Never a paragraph, never a bullet slide. Numbers are big
   (70 %).
 

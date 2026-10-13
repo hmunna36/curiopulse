@@ -217,11 +217,19 @@ both. If it shows only one, open the drop-down and tick both. The same caption s
   ended in "Failed to publish / This post didn't save correctly" and took the Facebook Reel off the Page: do not do
   that. What works (13 Oct 2026): instagram.com in the user's Chrome (Reel → ⋯ → Edit → caption → Done) and, for the
   Page, facebook.com/reel/<id> → ⋯ → Edit reel → Save. A Reel lost to a failed edit was re-posted Facebook-only.
+- **TYPE the caption; never paste it (13 Oct 2026, eye-rub-stars: the first Reel whose text survived with both places
+  ticked).** The lost captions had all gone into the Text field as a synthetic `paste` event: the field showed them and
+  the composer did not keep them. Click into the Text field and enter the caption with the computer tool's `type`
+  action, one line at a time, with a `Return` key between the lines; the hashtags turn blue as the editor takes them
+  in (end the last line with a space, then click the "Reel details" heading to leave the field). Read the field back
+  from JavaScript before Next. After scheduling, type the caption's first words into the search box of Content →
+  Scheduled: it must list two rows with the caption as their title, one with each badge. The Planner's card for the
+  slot shows the text as well.
 - If Facebook refuses the Reel and Instagram accepts it, ship Instagram and report "Facebook still to post".
 
 1. Click **Create Reel** on the home page, then **Add video**. The file attaches; wait for the upload bar to finish.
-2. Paste the caption (the sheet's `caption`) into the text field. Check it landed with JS by reading the visible
-   field's text.
+2. TYPE the caption (the sheet's `caption`) into the text field with real keystrokes, a line at a time (see "TYPE the
+   caption" above; a pasted caption is lost). Check it landed with JS by reading the visible field's text.
 3. **Thumbnail:** Upload image (see the gotchas; it worked on 4 Oct 2026). If the picker hangs, skip it and note that
    the cover can be changed in the Instagram app after the Reel goes live (scheduled Reels can't change cover).
 4. **Edit** step: add nothing (no music, no crop).

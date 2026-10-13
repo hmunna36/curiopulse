@@ -30,6 +30,7 @@
 | `blocked-nostril`: "Why Is One Nostril ALWAYS Blocked? 👃" | 31 s (short arm) | https://youtube.com/shorts/KqsUFF1Mmm0 · 12 Oct 2026 23:30 IST | Business Suite, 13 Oct 2026 18:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the composer showed no thumbnail picker) |
 | `nails-chalkboard`: "Why Do Nails on a CHALKBOARD Make You Cringe? 😖" | 46 s (standard arm) | https://youtube.com/shorts/N2Wl7YPFLmg · 13 Oct 2026 11:30 IST | Business Suite, 14 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 | `funny-bone`: "Why Does Your FUNNY BONE Hurt So Much? ⚡" | 32 s (short arm) | https://youtube.com/shorts/JJYB6rAaF2w · 13 Oct 2026 23:30 IST | Business Suite, 14 Oct 2026 18:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
+| `eye-rub-stars`: "Why Do You See STARS When You Rub Your Eyes? ✨" | 46 s (standard arm) | https://youtube.com/shorts/FuqnD4vj-q4 · 14 Oct 2026 11:30 IST | Business Suite, 15 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule, the caption TYPED and seen on both rows (auto cover: the thumbnail picker stayed a skeleton) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1243,3 +1244,90 @@ here for every new Short, with its links.
 - Studio: the direct video URL opened the right channel; the slot showed a grey placeholder (the video was still
   processing); the hidden `input#file-loader` given an `aria-label` and a visible box, cover.jpg uploaded into it,
   Save from JavaScript, Save back to disabled about nine seconds later.
+
+**eye-rub-stars** (13 Oct 2026, nightly /cp next, fired at 21:56 IST; standard arm; 106 words → 46.03 s; hook formula: The Direct Address):
+- New world files: `desk.js` (his desk at night seen from his monitor, painted once and drawn far behind him: `initDesk`,
+  `dkRoom(cam, t, {dark})` (the room can go out), `dkDesk`; the hero in yellow pyjamas from a description `dkHero(cam, t, A)`
+  with arms as {e: elbow, f: the middle of the fist} (`DK_ARM`, `dkArmMix`), fists that are drawn again in front of his
+  head (`dkFist`: knuckles, a thumb, a twist), one bent knuckle for a gentle rub, `pre` / `post` in rig units, head
+  units through `dkHeadPt` / `dkInHead` / `dkInHeadW`; the stars he sees `initStars`, `phStar` (star / dot / ring / plus),
+  `phField(t, k, C, keep, o)` (a field that comes out nearest first, folded back into the frame, kept off whatever
+  `keep(x, y)` says); the brain with a telephone `erBrain` (time-flies' brain), `erPhone`, `erHandset`, `erRingArcs`; his
+  head turned to glass `dkXray(st, X, t)`: two eyeballs that squash under ghost fists, a cord from each to the brain at
+  the top of his skull, beads going up the cords, the phone ringing and being answered, a flash in an eyeball, a
+  sleep mask's outline), `eyeball.js` (an eyeball cut in half, seen from the side, in eye units through a view
+  `eyeOn` / `eyeView` / `eyeKeys` / `eyePt`: `eyeDraw(t, {squash, lid, dark, beam, sens, fist, pulses, wall})`: cornea,
+  iris and lens, the skin and two lids that are part of it, a band of light with beads on it, six sensors with faces on
+  the back wall `eyeSensor` (calm / ready / shout / oof, `hop`, `squish`, `fire`), a fist in a yellow sleeve, beads
+  leaving along the nerve; `eyeShout(txt, x, y, size, k, ...)` (a word in a jagged burst); the other end of the line
+  `brainRoom(t, o)`: the brain on an old handset with a curly cord, a screen marked WHAT YOU SEE that fills with stars
+  and fireworks, a paint brush, a question mark), `places.js` (a study in the 1660s `stRoom`, `stDesk` (candle, apple),
+  `newtHero` (a wig behind and over his hair, a cravat, a bodkin held in his fist that slides out of sight and can
+  drop), `ringVision` (circles one inside the other in a round window); a sleeping corner in orbit `orRoom` (panels,
+  handrails, the Earth in a porthole), `astroHero` (a sleeping bag strapped to the wall, an eye mask), `cosmicRay`).
+  In its scenes: `hookA(tt)` / `hookCam(tt)` / `hookDraw` (valid at negative time), `starKeep`, `rubMarks`,
+  `hookSparks`, `hookBeams` (light that knocks on his fists and bounces off), `newtA`, `buttonA`, `SC.loop`, `SC.cover`.
+  `qc_gags.py` is in its src. The rows are in engine.md.
+- New in the template: `popK(t, t0, t1)` and `thinLeader(a, b, k, col)` in fx.js; the sfxkit atoms `glint`, `pew`,
+  `harpsi`; and character.js no longer draws a yawn with a negative mouth.
+- **Type the Reel's caption, never paste it.** With both places ticked, a caption put in by a synthetic paste showed in
+  the field and was lost on the way out (three Reels went out, or were queued, as "Your reel"). Typed with real
+  keystrokes (the computer tool's `type`, one line at a time, Return between the lines; the hashtags turn blue as the
+  editor takes them in) it stuck: the Planner's card and both rows of Content → Scheduled carry it. Check it by typing
+  the caption's first words into Content → Scheduled's search box: two rows, one with each badge.
+- **A metaphor that names a thing puts the thing in the picture, and the thing comes back.** "Your eyeball just
+  pocket-dialed your brain" became a red telephone in his glass head and a brain asleep until it rings. The same phone
+  rings for the cosmic rays ("making the same call"), and the button is about it ("that phone never gets an upgrade").
+  One prop carried the answer, the weirdest fact and the last line.
+- **A blend between two faces can pass through a negative size, and only a full render finds it.** `lerpFace` from a
+  flat mouth with `mouthOpen: -0.4` to the yawn switched the mouth's kind while its size was still below zero:
+  `IndexSizeError` at frame 1,340 of 1,381, five minutes into the render; a sweep of stills every 0.5 s had missed the
+  three frames. The template clamps a yawn now. Before a full render, render EVERY frame of any stretch that blends
+  into a face not used before (`node render.js tl.json dir "1200-1380"`: 80 s).
+- **Measure the loop before the first full render, not after it.** Frame 0 against the last frame was 20/255 everywhere
+  (a 10 % `flash` on frame 0: it also veils the one frame that matters most) and up to 38/255 on him: the state for
+  negative time did not END where time zero starts (a bob of -3 units one frame before 0; the rub starting 4 units off
+  where his fists land). After: 1.27/255, where an ordinary step is 6.8. A motion that starts on frame 0 ramps in over
+  0.12 s; a bob for negative time is a hump that is back at zero on the join.
+- **In a tight opening the big effect is out of the picture.** At zoom 4.4 the field of stars began above his head,
+  half under the app's top band; round 1 scored the hook 8. Nine small stars that pop right beside his fists in the
+  first second and a half (`hookSparks`, each 0.36 s, `popK`) put the strange thing where the eye already is: 8.5.
+- **Light inside a pale thing does not show, and a wide translucent band in both layers goes white.** The inside of the
+  eye was pale blue and the band of light was 0.5 on the main layer plus 0.34 in the glow layer: a white blob over the
+  sensors. A dark inside, 0.44 + 0.14, and beads riding on the band read as light coming in.
+- **Things that would leave the frame fold back in; clamped, they pile up on the edge** (a row of stars along the top).
+- **`leader()` in kit.js ends in a 40 px glowing dot**: on Newton's face it was a white blob. `thinLeader` (fx.js now)
+  has a small dot and no glow.
+- **Bursts and tags pop out, they do not fade.** A burst fading over 0.2 s turned grey (under 90 % opacity a shape is
+  drawn without its light): `popK` scales it away in 0.1 s instead. Glass that spreads over his head grows from his
+  eyes inside a clip, for the same reason.
+- **`W("LIGHT!")` found the "light" of "no light got in"**, 10 s early: the shout never showed on the first stills.
+  Anchor a repeated word to its phrase (`W("word LIGHT", 1)`) and read the cue list make_timeline prints.
+- **The room-tone bus is scaled to its loudest bed too** (after the music bus and the effects bus): turning the
+  station's hum down brought every other room up 4.5 dB. Move it with `levels={"amb": ...}`. At the house levels the
+  joke sounds measured as loud as the narrator (-16...-18 dB): this Short ran `levels={"music": -13, "sfx": -8.5,
+  "amb": -21.5}`, gags at -18...-23.
+- **No score under the hook** (nails-chalkboard's rule held): the rub (low) and the first stars (above 5 kHz) have the
+  first three seconds; the score comes in with the answer.
+- Voice: 106 words came in at 41.6 s of narration (2.55 words a second): every pause got its gag and the explanation
+  blocks went back to tempo 1.00: 46.03 s. 774 characters sent (479 for the script, 295 on five audition takes of the
+  hook and the answer; two installed); the account's own counter went 86,455 → 86,116.
+- Two QA rounds, 19/19 each time (hook 8 → 8.5, the loop), 5.8 minutes a render. `voice.py`, `make_timeline.py` and
+  `audio.py` re-run into a clean folder: `timeline.json` and `mix.wav` byte-identical. Start to finish about 1 h 35 min
+  (21:56–23:30 IST) with both uploads.
+- The routine fired at 21:56 IST on 13 Oct, not at 00:00 (its restart check said NORMAL); the two runs of 13 Oct had
+  not happened (the calendar's next free slot was 14 Oct 11:30).
+- Business Suite (window hidden as always; screenshots, coordinate clicks, clicks by ref and typing all worked): "Post
+  to" read "CurioPulse and curio_pulse_tv" by default; five parts into a collector on the composer page, the hash
+  compared in the page through `.then()`; the caption typed (above); Next twice from JavaScript by its text; the Share
+  step opens scrolled down (scroll up); the Schedule option by a coordinate click; each date field by a coordinate
+  click and the day by a coordinate click from the screenshot (the day's rectangle read from JavaScript was 60 px off
+  while the calendar was still sliding in); 06 and 30 typed by ref into the four spinbuttons; both dates and all four
+  values read back in the script that clicked the final Schedule. "Reel scheduled ... on 15 Oct 2026 on Facebook and
+  15 Oct 2026 on Instagram". The thumbnail picker stayed a skeleton: auto cover.
+- That evening nails-chalkboard's two rows (14 Oct 06:30) still read "Your reel": no caption. Reported; a scheduled
+  Reel's caption cannot be mended in Business Suite (publish.md).
+- Studio: the direct video URL opened the right channel; the slot showed the grey placeholder; the hidden
+  `input#file-loader` given an `aria-label` and a visible box, cover.jpg uploaded into it, Save from JavaScript, Save
+  back to disabled eight seconds later.
+

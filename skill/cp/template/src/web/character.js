@@ -285,7 +285,7 @@ function drawFace(c, f, pal) {
   ellipse(c, 0, 16, 8, 6, 'rgba(190,110,80,0.55)');
   ellipse(c, -2, 14, 3, 2, 'rgba(255,230,210,0.8)');
   // mouth
-  const mo = f.mouthOpen;
+  const mo = f.mouth === 'yawn' ? Math.max(0.06, f.mouthOpen) : f.mouthOpen;   // a yawn cannot be less than shut: a blend from a flat mouth (mouthOpen < 0) gave a negative size and stopped a full render (eye-rub-stars, 13 Oct 2026)
   c.save(); c.translate(0, 40);
   if (f.mouth === 'o') {
     ellipse(c, 0, 0, 7 + 5 * mo, 8 + 8 * mo, pal.mouth);

@@ -192,7 +192,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
          builds the Reel-spec copy and splits it into parts of ≤ 9 MB.
       2. In Claude in Chrome: open Business Suite, upload the parts into a collector input, reassemble, and check
          the SHA-256.
-      3. Create Reel → Add video (with the click hook) → caption → Schedule, on the sheet's `date` at the sheet's
+      3. Create Reel → Add video (with the click hook) → the caption, TYPED with real keystrokes (a pasted caption is
+         lost: `reference/publish.md`) → Schedule, on the sheet's `date` at the sheet's
          `time` (06:30 or 18:30; never assume 18:30). **Post to: leave BOTH ticked, "CurioPulse" (the Facebook Page)
          and "curio_pulse_tv" (Instagram), so one schedule releases the Reel on both (user, 10 Oct 2026; details
          and the Facebook-only recipe in `reference/publish.md` step 4).** The caption's last line is the Follow line

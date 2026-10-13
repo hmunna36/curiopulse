@@ -50,6 +50,19 @@ function loopW(w) {
   return D ? (T2 * Math.max(1, Math.round((w * D) / T2))) / D : w;
 }
 
+// 0..1: in at t0, out at t1. For things that pop in and pop out: a burst, a tag, a small star. Nothing should FADE out
+// (a shape under 90 % opacity is drawn without its light and turns grey on the way); scale it by this instead
+// (eye-rub-stars, 13 Oct 2026). A function, so a video's scenes.js must not declare a const of the same name.
+function popK(t, t0, t1, i = 0.08, o = 0.1) { return Math.min(clamp((t - t0) / i), clamp((t1 - t) / o)); }
+// a dashed leader from a label to its spot, with a small dot and NO glow (screen space). kit.js's leader() puts a 40 px
+// glowing dot where it lands: on a face that blooms into a white blob. Use this one on or near a face.
+function thinLeader(a, b, k, col) {
+  if (k <= 0.01) return;
+  screenSpace();
+  const x = lerp(a[0], b[0], clamp(k)), y = lerp(a[1], b[1], clamp(k));
+  paint(() => { ctx.setLineDash([9, 9]); line(ctx, a[0], a[1], x, y, 3, rgba(col, 0.85)); ctx.setLineDash([]); if (k >= 1) circle(ctx, b[0], b[1], 7, col); });
+}
+
 // like mixHex (lib.js), but it returns '#rrggbb', so the result can be mixed again or given to rgba()
 function mixH(h1, h2, t) {
   const a = parseInt(h1.slice(1), 16), b = parseInt(h2.slice(1), 16), f = (sh) => Math.round(lerp((a >> sh) & 255, (b >> sh) & 255, clamp(t)));

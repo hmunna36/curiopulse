@@ -1697,3 +1697,33 @@ def rimshot(seed=0):
     cy = cymbal(seed + 2, 0.19)
     put(cy * np.exp(-ar(cy.shape[1]) / 0.07), 0.225, 0.8)
     return y / (np.abs(y).max() + 1e-9)
+
+
+def glint(f=6200.0, dur=0.09, seed=0):
+    """one tiny glass note above the speech band (eye-rub-stars, 13 Oct 2026): a star coming out, a ring appearing, a
+    flash. Everything in it is above 5 kHz, so it can sit ON a spoken word (bed bus). A sprinkle of them at random
+    pitches (5.4-8.2 kHz) and times is a twinkle"""
+    n = int(dur * SR)
+    t = ar(n)
+    r = np.random.default_rng(300 + seed)
+    y = np.sin(2 * np.pi * f * t) + 0.5 * np.sin(2 * np.pi * f * 1.5 * t + r.uniform(0, 6)) + 0.25 * np.sin(2 * np.pi * f * 2.02 * t)
+    return fade(y * attack_decay(n, 0.002, dur * 0.32), 0.0005, 0.02) / 1.75
+
+
+def pew(dur=0.13, seed=0, f0=3200.0, f1=700.0):
+    """something small and very fast going by (a cosmic ray): a quick falling whistle with air on it. It lives in the
+    speech band: play it in a pause"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    f = f0 * (f1 / f0) ** u
+    y = np.sin(2 * np.pi * np.cumsum(f) / SR) * (1 - u) ** 0.6 + 0.25 * filt(white(n, 60 + seed), "highpass", 3000) * (1 - u)
+    return fade(y, 0.002, 0.02)
+
+
+def harpsi(freq, dur=0.3, seed=0):
+    """a harpsichord string: a bright pluck that dies fast. Eighth notes of a broken chord at about 104 bpm, with the
+    root an octave down on each bar, say "a study, long ago" (music bus, about -17 dB a note against grooves at -12)"""
+    n = int(dur * SR)
+    t = ar(n)
+    y = sum(np.sin(2 * np.pi * freq * k * t * (1 + 0.0003 * k * k)) / k ** 0.8 for k in range(1, 12) if freq * k < 9000)
+    return fade(y * np.exp(-t / (dur * 0.34)) * np.minimum(1, t / 0.002), 0.0005, 0.03) / 3.2
