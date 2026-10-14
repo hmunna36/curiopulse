@@ -189,4 +189,26 @@ against the script:
     the ending carries no ask (0.31–0.62 with the spoken last line).
   - **Decisions** (user, 9 Oct 2026: "just keep the visual cue and say nothing"; then "i need all updates which we
     identified not just subscribe"): the table "The rules of 9 Oct 2026" above.
+- **14 Oct 2026 (the length test's first reading, from `numbers.md` written 14 Oct 15:23 IST; 155 subscribers).**
+  Eight Shorts per arm released, six per arm live 48 hours or more, five per arm with Analytics data: the reading is due.
 
+  | Group | Views per Short (live 48 h+) | Median views | Stayed | Avg % viewed | Subs per 1,000 views |
+  |---|---|---|---|---|---|
+  | short arm (30-35 s, 23:30) | 2,815 (6) | 2,617 | 56.5 % | 69.6 % | 1.4 (5) |
+  | standard arm (45-50 s, 11:30) | 1,950 (6) | 1,514 | 58.9 % | 53.9 % | 1.5 (5) |
+  | before · 46-50 s · 23:30 | 2,108 (3) | | 56.3 % | 59.1 % | 3.0 (3) |
+  | before · 46-50 s · 11:30 | 2,043 (4) | | 55.4 % | 57.5 % | 3.5 (4) |
+
+  - **The short arm gets more views per Short, past the 25 % bar:** 44 % more on the mean, 73 % more on the median.
+    Against its own slot it is up 34 % on "before · 23:30", while the standard arm is level with "before · 11:30"
+    (−5 %), so the gap follows the length, not the slot (the two slots drew the same at 46–50 s before the test).
+    One outlier carries part of the mean: knuckle cracking (6,149). Without it the means differ by 10 % (noise by
+    this test's rule), but the median gap stays at about 70 %. Not yet counted: blocked nostril (short arm, 12 Oct
+    23:30) had 14,025 views at 40 hours, the channel's biggest Short.
+  - **Conversion is the same in both arms** (1.4 and 1.5 subscribers per 1,000 views), so the short length does not
+    cost subscribers. Both arms convert at about half the "before" rows (3.0 and 3.5). That fall is shared by both
+    lengths, so it is not the length; it coincides with the subscribe line going mid-video (5 Oct) and then silent
+    (9 Oct), and with friends' views thinning out of the totals. Worth its own look.
+  - **What it suggests (the user decides):** 30–35 s for every slot looks like the better bet; a second week with the
+    arms' slots swapped is the cautious option, if the knuckle outlier is a worry. Until the user says, the test runs
+    on unchanged (this run built the short arm for 14 Oct 23:30, as assigned).

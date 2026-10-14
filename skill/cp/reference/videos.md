@@ -31,6 +31,7 @@
 | `nails-chalkboard`: "Why Do Nails on a CHALKBOARD Make You Cringe? 😖" | 46 s (standard arm) | https://youtube.com/shorts/N2Wl7YPFLmg · 13 Oct 2026 11:30 IST | Business Suite, 14 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 | `funny-bone`: "Why Does Your FUNNY BONE Hurt So Much? ⚡" | 32 s (short arm) | https://youtube.com/shorts/JJYB6rAaF2w · 13 Oct 2026 23:30 IST | Business Suite, 14 Oct 2026 18:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 | `eye-rub-stars`: "Why Do You See STARS When You Rub Your Eyes? ✨" | 46 s (standard arm) | https://youtube.com/shorts/FuqnD4vj-q4 · 14 Oct 2026 11:30 IST | Business Suite, 15 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule, the caption TYPED and seen on both rows (auto cover: the thumbnail picker stayed a skeleton) |
+| `dizzy-spin`: "Why Do You Get DIZZY When You Spin? 💫" | 33 s (short arm) | https://youtube.com/shorts/4Ts56nQI1-M · 14 Oct 2026 23:30 IST | pending (slot 15 Oct 2026 18:30 IST): the new Reel composer did not upload while Chrome was hidden; the Facebook Page is no longer connected |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1330,4 +1331,49 @@ here for every new Short, with its links.
 - Studio: the direct video URL opened the right channel; the slot showed the grey placeholder; the hidden
   `input#file-loader` given an `aria-label` and a visible box, cover.jpg uploaded into it, Save from JavaScript, Save
   back to disabled eight seconds later.
+
+**dizzy-spin** (14 Oct 2026, the 06:00 second Short, fired at 15:22 IST; short arm; 67 words → 32.73 s; hook formula: The Direct Address):
+- New world files: `office.js` (a night office painted once as a strip of one whole turn (`ofPaintStrip`, 3,600 px) that
+  streams past behind him while the chair spins, with a smear of shifted copies and speed lines (`ofRoom(cam, t, ang, w)`;
+  lamps glow only away from behind him); an office chair with its back up to his shoulders, arms, seat, column and
+  five-legged base (`ofChairBack`); the hero seated in a pale blue shirt with a red tie that flies with the turn (`OFPAL`,
+  `ofTie`, `ofLegs`: knees and shins on the seat; `ofHero(cam, t, A)`, arms as {e, w} `OF_ARM`); swoosh arcs round him,
+  back and front halves (`ofSwoosh`); black in the glow layer where he sits (`ofOcclude`)), `vestib.js` (the balance organ in
+  organ units: three loops of liquid round a sac, a bulge with a jelly flap on each loop, the snail dim, the nerve
+  (`initVestib`, `vbDraw(t, {flow, lit, bend, drop, finish, glowA})`); beads riding the loops; a droplet with a face
+  (`vbDrop`); a chequered finish line with a flag (`vbFinish`); a round window on his ear (`vbWindow(cam, C, R, S, k, t, o)`,
+  `o.focus` to centre one loop); `vbOn(V, fn)`; the bulge up close in amp units (`ampDraw`: walls, beads, the ridge, five hair
+  cells with faces (calm / alert / shout / strain / panic), their hairs into a jelly flap that bends (`bend`), nerve fibres
+  with a signal); `dzBurst` (a word in a jagged burst)), `brain.js` (time-flies' brain as `dzBrain` with a 'dizzy' face
+  (spiral eyes) and a 'smug' face; `dzStars` (stars round a head); `dzMegaphone`; a hair cell with a megaphone `dzCellGuy`;
+  an eyeball with legs and a megaphone `dzEyeGuy`), `stage.js` (a ballet stage: curtains, a spotlight cone and pool, a
+  floor (`stBack`, `stCurtains`, `stSpot`); the hero in a pink leotard and a tutu (`TUTUPAL`, `stTutu`); a pirouette as a
+  paper-doll turn: his layer squeezed by cos of the turn in `pre` (the transform holds through the rig and `post`), his
+  back drawn as hair over the face (`stHero`); a SPIN SIGNAL dial (`stDial`)). In its scenes: `hookA(tt)` / `hookCam(tt)`
+  / `hookDraw` (valid at negative time: he pushes off), `spinW` / `ghostW` / `roomAng` (the room's turn, and the slower
+  turn the other way his ears report after the stop), `nys(u)` (nystagmus: a slow drift and a snap back of the pupils),
+  `organKeys`, `ampFlow` / `ampBend`, `stageTurn` (whole turns ending facing us), `buttonA`, `SC.loop`, `SC.cover`, and a
+  light function that turns the back light round him with the room.
+- **A spin reads when the room streams, not when he turns.** The camera rides the chair, so he faces us and the room
+  slides behind him. A tall chair back hid the room and frame 0 read as a man sitting; cut to shoulder height, with
+  swoosh arcs round him, speed lines and a 1.35 smear, it read as a spin at once.
+- **A lamp passing behind a hero blooms through him**: the strip's lamps fade out within 420 px of the middle, and his
+  head and torso are black in the glow layer (`ofOcclude`).
+- **The loop at a fast spin:** the join (last frame to frame 0) differed by 12.7/255, less than an ordinary step at
+  that speed (13–17): measure the join against the steps beside it, not against zero.
+- **Business Suite's Reel composer changed (14 Oct 2026):** "Create reel" now shows "Share to" (not "Post to"),
+  "Caption reel · optional", "Upload up to 3 videos" and a copyright check. Its upload never started while the
+  extension's Chrome window was hidden: the page polled `rupload…/fb_video/<id>-0-1048576` (GET, HTTP 412) every ~9 s,
+  sent no upload, and `requestAnimationFrame` never fired; `open -a "Google Chrome"`, `resize_window` and a new tab
+  did not make it visible. The old composer had uploaded hidden. The caption typed with real keystrokes read back
+  whole. `tabs_close_mcp` on the composer tab then hung twice (a leave-page prompt, presumably): leave such a tab, or
+  Cancel → "Exit now" in the page first.
+- **The CurioPulse Facebook Page is no longer in the business portfolio** (14 Oct 2026): the switcher lists one asset,
+  the Instagram profile; the composer offers "Facebook Page: Connect a Facebook Page". Reconnecting is the user's call.
+- Voice: 386 characters for the script, then 224 on four audition takes of the answer (seed 14 kept); the account went
+  86,116 → 85,848.
+- Two QA rounds, 19/19 each time (sound 7 → 8.5: the cells' chorus and the megaphone squawk were louder than the narrator,
+  the gas lift inaudible); 3.9 minutes a render; the chain re-run into a clean folder gave a byte-identical timeline.json
+  and mix.wav. Start to finish about 1 h (15:22–16:20 IST) to the YouTube schedule.
+- The routine fired at 15:22 IST, not 06:00; the restart check said NORMAL.
 

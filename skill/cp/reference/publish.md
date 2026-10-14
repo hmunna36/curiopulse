@@ -251,6 +251,14 @@ proves nothing.
 - Close the tabs you opened.
 
 **Gotchas:**
+- **The Reel composer changed on 14 Oct 2026, and the Facebook Page is not connected any more** (dizzy-spin). "Create
+  Reel" opens "Create reel" with **Share to** (it listed only curio_pulse_tv; Facebook Page: "Connect a Facebook Page"),
+  **Caption reel · optional**, "Upload up to 3 videos" and a copyright check; the business switcher lists one asset,
+  the Instagram profile. Its upload did NOT start while the extension's Chrome window was hidden (status checks to
+  `rupload…/fb_video/…` answered 412 every ~9 s, no upload was sent, `requestAnimationFrame` never fired; Chrome to the
+  front, `resize_window` and a new tab did not help). Check `requestAnimationFrame` fires before uploading the parts:
+  if it does not, report the Reel pending. Never reconnect the Page yourself: report "Facebook still to post".
+  Closing the stuck composer tab with `tabs_close_mcp` hung twice: leave it, or Cancel → "Exit now" in the page first.
 - **A hidden window stalls everything (4 Oct 2026).** If the extension's Chrome window is minimized, the page is
   `hidden`: the upload stays at 0 %, screenshots time out, and any `await` in the JavaScript tool never returns (plain
   synchronous JavaScript still does). Right after opening Business Suite, check
