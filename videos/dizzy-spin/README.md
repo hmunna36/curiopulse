@@ -52,8 +52,9 @@ The answer take is seed 14 of four auditions ("DIDN'T!" read −20…−33 dB in
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 14 Oct 2026 23:30 IST |
-| Instagram Reels + the CurioPulse Facebook Page | Business Suite | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/4Ts56nQI1-M | 14 Oct 2026 23:30 IST (scheduled; thumbnail, captions, playlist set; cover.jpg also set in Studio) |
+| Instagram Reels | Business Suite | pending: slot 15 Oct 2026 18:30 IST, not yet scheduled (the new Reel composer did not upload while Chrome's window was hidden; the next run catches it up) |
+| CurioPulse Facebook Page | — | pending: the Page is no longer connected to the business portfolio in Business Suite |
 
 **Title:** Why Do You Get DIZZY When You Spin? 💫
 

@@ -34,19 +34,27 @@
   "cover": "cover.jpg",
   "captions": "dizzy-spin.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-14T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "4Ts56nQI1-M",
+    "url": "https://youtube.com/shorts/4Ts56nQI1-M",
+    "uploaded": "2026-10-14T10:41:40.938Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio 14 Oct 2026 16:15 IST (\"Changes saved\"); the slot showed the placeholder of a video still processing"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-15T18:30:00+05:30",
     "caption": "You spin in your chair, stop... and the room keeps going. 💫\nYour head stopped, but the liquid in your inner ears didn't: it keeps sloshing round three tiny loops, so your ears yell SPINNING while your eyes yell NOPE.\nFollow @curio_pulse_tv for the next one: why your ears ring after a loud concert 🔔\n#science #humanbody #dizzy #innerear #funfacts #reels",
     "coverTime": 0.7,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "pending": "not scheduled yet (14 Oct 2026 16:20 IST): Business Suite has a new Reel composer (\"Share to\", \"Caption reel\"), and its upload never started while the extension's Chrome window was hidden (status checks answered 412, no upload request, the page did not render). The CurioPulse Facebook Page is no longer connected to the business portfolio (the composer offers only curio_pulse_tv and \"Connect a Facebook Page\"). The next run catches the Reel up at instagram.publishAt (or the next free slot)."
   }
 }
