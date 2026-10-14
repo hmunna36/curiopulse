@@ -1,0 +1,52 @@
+{
+  "slug": "dizzy-spin",
+  "file": "dizzy-spin-short.mp4",
+  "title": "Why Do You Get DIZZY When You Spin? 💫",
+  "description": "You spin in your chair, stop, and the room keeps going. Your head stopped, but the liquid in your inner ears didn't. Subscribe for a new strange question every day.\n\nHow it works: deep in each inner ear are three tiny loops of liquid, the semicircular canals, set at right angles so that between them they feel every way your head can turn: nodding, shaking and tilting. When you turn, the liquid lags behind the walls and bends a small jelly flap with hair cells under it, and those cells tell your brain you're turning. Spin for a while and the liquid catches up. Stop, and it keeps going for several seconds, pushing the flap the other way, so your ears still report a spin while your eyes report a still room. That clash is the dizziness, and it's why the room seems to turn. Ballet dancers may learn to turn that signal down: in a 2013 Imperial College London study, 29 ballet dancers felt the spin fade sooner than 20 rowers did, and brain scans showed differences in the areas that handle it. If the room is spinning, sit down until it stops, and don't spin near stairs.\n\nNext up: why do your ears ring after a loud concert?\n\n#Shorts #Science #Dizzy #HumanBody #InnerEar #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "test": "length-2026-10",
+    "slot": "2026-10-14T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why your ears ring after a loud concert 🎸 Subscribe so you don't miss it!\nHow long can YOU spin before the room wins? 👇",
+  "tags": [
+    "why do you get dizzy when you spin",
+    "dizzy",
+    "dizziness",
+    "spinning",
+    "why does the room spin",
+    "inner ear",
+    "semicircular canals",
+    "balance",
+    "vestibular system",
+    "ballet dancers",
+    "human body",
+    "body facts",
+    "science",
+    "science shorts",
+    "fun facts",
+    "explained",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "dizzy-spin.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Why Does Your Body Do That?"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You spin in your chair, stop... and the room keeps going. 💫\nYour head stopped, but the liquid in your inner ears didn't: it keeps sloshing round three tiny loops, so your ears yell SPINNING while your eyes yell NOPE.\nFollow @curio_pulse_tv for the next one: why your ears ring after a loud concert 🔔\n#science #humanbody #dizzy #innerear #funfacts #reels",
+    "coverTime": 0.7,
+    "shareToFeed": true
+  }
+}
