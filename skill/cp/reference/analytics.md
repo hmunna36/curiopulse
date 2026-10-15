@@ -212,3 +212,38 @@ against the script:
   - **What it suggests (the user decides):** 30–35 s for every slot looks like the better bet; a second week with the
     arms' slots swapped is the cautious option, if the knuckle outlier is a worry. Until the user says, the test runs
     on unchanged (this run built the short arm for 14 Oct 23:30, as assigned).
+- **15 Oct 2026 (retention reading; the user: "get audience retention also. i want you analyse"; 179 subscribers).**
+  Curves of every Short through nails-chalkboard (13 Oct 11:30), measured as on 9 Oct (it reproduces that reading's
+  numbers). Data, scripts and two charts: `~/.claude/wip/2026-10-15/cp-retention/`. Which Shorts carry which rules was
+  read from their captions and shot tables: the spoken "subscribe" stops from why-we-cry (11 Oct 11:30) on, and the
+  one-shot opening starts there too (the dream, 10 Oct 23:30, still has the mid-video aside and a cut at 4.2 s).
+  - **The one-shot opening fails its own test.** Lost between seconds 5 and 12, on the five Shorts made to it that
+    have curves: cry 46 %, cats 28 %, sky 38 %, nostril 29 %, chalkboard 56 % (middle 38 %), against 27 % on the first
+    14 and the 20 % bar. Even if funny-bone and eye-rub-stars lose nobody, the middle of seven stays at 29 % or more.
+    The loss moved with the lesson instead: viewers leave when the picture goes inside the body (cut at 7.5–8.0 s in
+    cry, cats, sky and nostril; the leave rate rises 1.2–2.1 times in the 3 s after it) or, with no cut, when the
+    narration turns technical (chalkboard: 23 % of those watching left in second 10, on "one narrow band of pitch",
+    11.3 s into one shot). Over 14 Shorts: 3.8 % a second in the 3 s before the lesson starts, 5.3 % after. By the
+    rule's terms: drop it (the user decides).
+  - **The silent pill halves the ending step but does not remove it.** Lost in the last 4 s: 20–53 %, middle 24 % (cry
+    37, cats 21, sky 53, nostril 24, chalkboard 20), against 42–57 % (middle 47 %) when "subscribe" was the last line,
+    and 5–50 % (middle 13 %) in the Shorts of 6–10 Oct, which ended on the button with no pill. An ordinary 4 s after
+    second 20 loses about 9 %. Subscribers per 1,000 counted views on the five: 12 on 7,476 = 1.6 (2.2 without the
+    nostril, which has 0 on its first 2,036 counted views). The channel from the live log: 1.7 per 1,000 from 7 to
+    11 Oct (mid-video aside), 1.6 from 11 to 12 Oct, 1.9 from 12 to 15 Oct (74 on 39,426). Under the 2.5 bar so far;
+    the reading is due at 14 Shorts (about 19 Oct). For that reading: the spoken last line lost about half the
+    viewers in its last 4 s, and replays are what carried the nostril Short.
+  - **What the breakout did.** Blocked nostril is the highest curve on the channel for its first 27 s: 142 % at the
+    start (replays), 89 % at 12 s, 77 % at 20 s, 50 % at the end; 88.9 % average viewed. Against YouTube's typical
+    retention for its length it never falls below 0.54; every other Short drops to 0.13–0.44 somewhere between seconds
+    5 and 20. Its stayed-to-watch was ordinary (58.5 %): the first second did not make it, the seconds after did.
+  - **Length.** Reaching the end on YouTube: 17–50 % (middle 35 %) for the 30–35 s Shorts since 6 Oct, 10–24 %
+    (middle 18 %) for the 45–50 s ones. On Instagram the only two Reels watched 70 % or more are 31–33 s long.
+  - **Instagram** (no curve on the web; average watch time per account reached, replays included, as a share of the
+    length): nostril 81 % (567.6K views), knuckle 75 % (41.5K), every other Reel 28–56 % (0.1K–11.2K). Rank
+    correlation of share watched with views: 0.75 over the 21 Reels from 30 Sep on (0.63 with the first two). Both
+    breakouts are things the viewer does while watching (pinch a nostril, crack a knuckle): this backs the
+    try-it-yourself order of `topics.md`. Comments on the nostril Reel are mostly answers to its caption's question
+    ("both", "left one").
+  - Not in the data yet (Analytics runs two days behind): funny-bone, eye-rub-stars, dizzy-spin, ears-ring,
+    doorknob-shock.
