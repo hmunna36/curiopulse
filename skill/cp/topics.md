@@ -13,7 +13,6 @@ Order since 10 Oct 2026 (the user's word): topics the viewer can feel or try on 
 belief, go first. On Instagram the three biggest Reels were all of this kind (knuckle cracking 34K, ears pop 10K,
 leg falls asleep 6K views; the only ones with real follows). A refill keeps this order: such topics above the rest.
 
-- [~] Why do you get a shock from a doorknob? — doorknob-shock — started 2026-10-15
 - [ ] Why can't you BREATHE and SWALLOW at the same time? — he tries it mid-gulp on camera and splutters (the viewer can try it now); air and food share one pipe at the throat, and a flap (the epiglottis) folds over the windpipe on every swallow while breathing pauses. Skip "babies can do both" (disputed)
 - [ ] Why do you SHIVER when you're cold? — he steps out of a lake into the wind and his teeth rattle; the brain's thermostat (hypothalamus) orders muscles to twitch fast with no movement to show for it, so nearly all the energy comes out as heat. Fear-trembling is a different thing (adrenaline): one line at most, or leave it out. Goosebumps is already on the channel: do not repeat it. From YouTube Studio's suggestions, 10 Oct 2026
 - [ ] Why does soda burn your tongue? — he cracks a can and takes a giant gulp, eyes watering; an enzyme on the tongue turns the gas into acid that fires sour and pain sensors; it bites just as hard in a pressure chamber with no bubbles, and climbers on altitude pills lose the tingle. Not "the bubbles popping"
@@ -29,6 +28,7 @@ leg falls asleep 6K views; the only ones with real follows). A refill keeps this
 - [ ] Why do feet stink? — he yanks off a boot after a long hike and the campsite clears; skin bacteria feast on sweat and dead skin and release a cheesy acid (isovaleric acid); their cousins ripen Limburger cheese. The "mosquitoes love that cheese like feet" fact was used in mosquito-bites (9 Oct 2026): find another bonus fact; no "250,000 sweat glands" figure
 
 ## Done
+- [x] Why Does a Doorknob SHOCK You? — doorknob-shock — YouTube https://youtube.com/shorts/Vf-6HscC28w 15 Oct 2026 23:30 IST (short arm, 33.0 s); Instagram PENDING (17 Oct 2026 06:30 IST: Business Suite's upload stalled at 5% while the page was hidden; the Reel, caption and cover are in ~/Desktop/instagram-pending/ for the user)
 - [x] Why Do Your Ears RING After a Concert? — ears-ring — YouTube https://youtube.com/shorts/ORFb3ma5RyA 15 Oct 2026 11:30 IST (standard arm, 47.4 s); Instagram PENDING (slot 16 Oct 2026 06:30 IST: the Chrome window was hidden, so Business Suite's composer could not upload)
 - [x] Why Do You Get DIZZY When You Spin? — dizzy-spin — YouTube https://youtube.com/shorts/4Ts56nQI1-M 14 Oct 2026 23:30 IST (short arm, 32.7 s); Instagram PENDING (slot 15 Oct 2026 18:30 IST: the new Business Suite composer did not upload while Chrome was hidden); the Facebook Page is no longer connected
 - [x] Why Do You See STARS When You Rub Your Eyes? — eye-rub-stars — YouTube https://youtube.com/shorts/FuqnD4vj-q4 14 Oct 2026 11:30 IST (standard arm, 46.0 s); Instagram and the Facebook Page 15 Oct 2026 06:30 IST (Business Suite)

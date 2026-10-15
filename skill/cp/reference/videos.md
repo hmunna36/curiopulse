@@ -1428,3 +1428,41 @@ here for every new Short, with its links.
 - Chrome's window was hidden at 06:30-07:35 IST (`visibilityState` hidden, `outerWidth` 0; `open -a "Google Chrome"` did not
   change it): Studio still took the cover (the file input given an aria-label, `file_upload`, Save from JavaScript), but
   Business Suite's composer could not be used. Both Reels (dizzy-spin, ears-ring) are pending.
+
+**doorknob-shock** (15 Oct 2026, the 06:00 second Short, fired at 19:10 IST; short arm; 72 words → 33.03 s; hook formula: The Impossible Claim):
+- New world file `door.js`: a hallway on a winter evening (`dsHall`: a teal wall with a rail and panelling, a framed
+  snowy mountain, a wall lamp off to the left in the glow layer, a wooden door with two panels, a red runner), a brass
+  knob on its rose (`dsKnob`: `glow`, `burn`, and a face for the button `dsKnobFace`: spiral eyes, a wobbly mouth, a
+  plaster, smoke), a fat spark between two points (`dsSpark`: three jagged strands, hot ends, spit), electrons as cyan
+  beads with a minus sign or a face (`dsElectron`) and the charge on him (`dsSpots`, `dsCharge`: rig-local spots over
+  his jumper, legs and hair that pop on one by one), the hero in a red jumper from a description (`DSPAL`, `DS_ARM`:
+  reach / yank / show / scratch / shrug / amber / rub / fold; `dsHero` with an index finger out `finger`, returns the
+  fingertip), a shag carpet up close (`dsCarpet`, back and front rows) and his sneaker from the side with the trouser
+  leg (`dsSneaker`), Greece at sunset painted once (`initGreece`, `dsGreece`: columns and a lintel as shapes), a robe to
+  the ankles (`TOGAPAL`, `dsRobe` in the layer's post), a laurel wreath (`dsWreath`), amber (`dsAmber`), a scrap of fur
+  (`dsFur`), feathers (`dsFeather`), a chalkboard of arguments (`dsBoard`). In its scenes: `hookA` / `hookCam` /
+  `hookDraw` (valid at negative time), `tagPill`, `dsBurst` (a blue comic burst), `chargeMeter`, the storm with a bolt
+  on a giant doorknob (env.js's `drawStorm` + `makeBolt`/`drawBolt`), `LABPAL`, `SC.loop`, `SC.cover`.
+- **A cue for a word that appears twice: name the phrase.** `W("YOU.")` found the first "You" of the hook (norm
+  lowercases), so every "you" cue sat at 0.1 s: the electrons were on him from frame 0, the face went to its last
+  expression in the first second and the camera keys ran out of order. `W("of YOU.", k=1)` fixed it.
+- **A single raised finger beside his face can read as rude.** He looked at his index finger held up on "Relax"; the
+  rig's round hand plus one straight finger, seen from the back, was too close to a middle finger. He looks at his
+  open hand now.
+- **A reaction held for three seconds inside the opening shot still reads as a stare.** 1.5-4.5 s was one grimace
+  while the narration went on; small arcs crackling round his hair and hand, decaying, plus electrons gathering on his
+  palm on "spark", kept it moving without a cut.
+- **The punchline object must be big enough to read.** The knob's face at 70 px was invisible on the sheet; framed at
+  zoom 2.15 with the knob 1.9x (a cartoon cheat between shots) it reads, and a tear on "VICTIM" lands the joke.
+- **whisper heard "zapped" as "sapped" on the full mix only** (the voice alone, and the voice with each stem, all read
+  "zapped"); the crackle on the word was low-passed to 250 Hz anyway. WER 5.5 %, a pass.
+- Voice: 438 characters for the script, then 79 on retakes of the answer and the button without `[deadpan]` ("Relax,"
+  had read 13 dB under the narration in the speech band). The account read 85,370 before and 85,143 after (its counter lags behind the 517 characters spent).
+- Two QA rounds, 19/19 each time; about 6 minutes a render. Rebuild check: narration, timeline and mix into a clean
+  folder came out byte-identical. Start to finish about 1 h 10 min (19:10-20:20 IST) to the YouTube schedule.
+- **Instagram: the composer's upload stalled at 5% again** (rupload status checks answering 412 every ~9 s): the
+  extension's window flipped to hidden while another session drove Chrome. Per the rule another session added the same
+  evening (publish.md: after one 5 % stall, hand the files over), the Reel, caption and cover went to
+  `~/Desktop/instagram-pending/` (3-doorknob-shock-*), for 17 Oct 06:30 IST (16 Oct's two slots hold dizzy-spin and
+  ears-ring). The user had asked mid-run to leave the missed Reels to their other session.
+
