@@ -235,8 +235,8 @@ against the script:
     viewers in its last 4 s, and replays are what carried the nostril Short.
   - **What the breakout did.** Blocked nostril is the highest curve on the channel for its first 27 s: 142 % at the
     start (replays), 89 % at 12 s, 77 % at 20 s, 50 % at the end; 88.9 % average viewed. Against YouTube's typical
-    retention for its length it never falls below 0.54; every other Short drops to 0.13–0.44 somewhere between seconds
-    5 and 20. Its stayed-to-watch was ordinary (58.5 %): the first second did not make it, the seconds after did.
+    retention for its length it never falls below 0.54; every other Short drops to 0.13–0.44, at its lowest between
+    seconds 8 and 28 (most often 10–17), the stretch where the lesson runs. Its stayed-to-watch was ordinary (58.5 %): the first second did not make it, the seconds after did.
   - **Length.** Reaching the end on YouTube: 17–50 % (middle 35 %) for the 30–35 s Shorts since 6 Oct, 10–24 %
     (middle 18 %) for the 45–50 s ones. On Instagram the only two Reels watched 70 % or more are 31–33 s long.
   - **Instagram** (no curve on the web; average watch time per account reached, replays included, as a share of the
