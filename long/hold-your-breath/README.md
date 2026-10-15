@@ -150,7 +150,7 @@ Rewrites: the oxygen line moved into "Twenty." (it did not fit before the twenti
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube | (pending upload) | (the next free Sunday, 17:30 IST) |
+| YouTube | https://youtu.be/BhkHz6gpbrk | Sunday 18 Oct 2026, 17:30 IST (scheduled; thumbnail and captions set) |
 
 **Title:** What If You Hold Your Breath TOO Long? (Second by Second) (57 characters)
 **Description, chapters, sources, tags:** [`publish.json`](publish.json). The description opens with the title's
@@ -231,7 +231,87 @@ says the safer thing.
 
 ## Ship review
 
-(in progress)
+**qa.py (final): no FAIL.** 4:22.8 · −14.02 LUFS · −1.76 dBTP · voice over the mix: mean 22.7 dB, 0 % of content words
+under 6 dB, the weakest 6.8 dB · WER 4.4 % (every difference is a numeral) · 54 shots, mean 4.9 s · a sound event at
+least every 5 s · no still or dead second. Two visual-event gaps are planned beats: the hook's one travelling shot
+(0:02–0:09, while the viewer holds their breath and the clock ticks every real second) and the final image with the
+rise into space (4:10–4:17). The shots over 8 s carry cuts or arrivals inside (the candles are a five-view montage).
+
+**Rounds.** Before the render: four 2-second sweeps (the window ring in camera space, pills off the clock, the gauges
+out of the caption band, a thumbs-up that read as a head scratch, the flush over his eyes, a sharp "+0 OXYGEN" over
+the wind's blur, a still face and a drip instead of a pale bag for the curare, the doctor switching the machine back
+ON, a screen-space timer for the oxygen record, bigger bubbles, a long match for Pip's candles, "1 SECOND", his hand on
+his belly for the count). (1) First render: qa.py clean, but the skim test found three dead stretches (the whale, the
+pool's rules, "About four?") and nine stretches without a sound event: Retention, Sound, Every scene and Every second
+scored 7. The whale became a close pass plus a wide shot whose time races up to 3:42:00; the pool became three seconds
+of bubbles and then Pip, looking at us, blowing her birthday whistle before each rule; "About four?" got the viewer's
+4 and four breaths, then a cut inside his head where the old alarm flashes red and becomes the lifeguard; a big 15
+flies into the clock on "now"; 20 sounds went into the gaps between words. (2) Second render: clean; ship.
+
+**Ship bar (0–10, 8+ to ship):** 0 Film 8 (a want by 0:17, beat Pip and keep the cake; seven wordless beats; the
+candles return changed four times; he ends letting her win, laughing, as the held note resolves) · 1 Hook 8 (The
+Clock: the viewer holds their breath by 0:02, the promise and the 29-minute number by 0:09, the thumbnail's face in
+frame 1) · 2 Retention 8 · 3 Story 8 (SECOND → MINUTE → HOURS → TOO LONG? → BREATHING; the highest stakes open the
+last minute, then his turn, the button and the final image) · 4 Show 8 · 5 Narration 8 · 6 Comedy 8 (no cake; Easy;
+the candles; through her nose; Seriously; the birthday whistle; SPLAT; Pip has started on the cake; this whole video
+almost seven times; you're not a whale; one contest you're supposed to lose) · 7 Look 8 · 8 Sound 8 · 9 Science 9 ·
+10 Packaging 8 · 11 Subscribe 8 · 12 Length 9 · 13 Every scene 8 · 14 Takes part 8 (hold your breath at 0:01, a
+hand on your belly at 1:29, count your breaths at 3:33) · 15 Every second 8.
+
+**5-second audit** (they stay because…):
+- 0:00 they are holding their breath with him; the clock starts on "now"; the safety badge
+- 0:05 the promise: every second of their body, all the way to 29 minutes; the 29:03 timer flashes
+- 0:10 "Ten seconds. Easy." lands on their real tenth second, his thumbs-up; who is the girl?
+- 0:15 the bet: LOSER = NO CAKE; a window opens on his chest
+- 0:20 the dive into his chest on "Twenty"; the lungs glow full; OXYGEN 98 %
+- 0:25 violet exhaust appears in the blood and piles up; the way out is padlocked
+- 0:30 Pip's narrowed eyes, his red face; "Thirty. Feel that? That burn?" (they feel it)
+- 0:35 the reversal: not the missing oxygen: STILL 96 %, EXHAUST PILING UP, the sour lemon
+- 0:40 the sensor at the base of the brain tastes it and pulls the alarm; he turns purple
+- 0:45 PAAAH: he blows out her seven birthday candles; the smoke; Pip's stare
+- 0:50 Pip is still going... through her nose (the cheat); "And you?"
+- 0:55 BREATHE: their own second frozen on the clock; where does it rank?
+- 1:00 the ruler (most people let go at 30 s – 1 min, HIM 45, YOU?); the twist: the tank STILL FULL!
+- 1:05 the race: the exhaust needle flies while the oxygen barely moves
+- 1:10 round two: goggles, panting like a dog: what is the trick?
+- 1:15 TWEEEET: the birthday whistle; "she's right"; +0 OXYGEN
+- 1:20 a wind blows the exhaust out of the blood: the alarm rings late; it dozes off
+- 1:25 TOO LATE (a loop opened, paid at 3:08); the slow way: hand on your belly (the second test)
+- 1:30 they feel the belly push; the x-ray shows the dome of the diaphragm; "Remember it"
+- 1:35 SECOND 60: NEW RECORD; Pip lifts a dripping cloth: what is it for?
+- 1:40 SPLAT; the ancient switch flips to DIVE MODE
+- 1:45 the monitor slows 78 → 70; SAVING OXYGEN; the seal dives
+- 1:50 the seal's heart slows on every dive; the spleen squeezes out spare red cells
+- 1:55 SPARE RED CELLS; "Ninety. And here it comes..."
+- 2:00 the dome from the belly test starts kicking on its own: KICK!
+- 2:05 "Why does it hurt so much?" his strained face; the window on 1960s London
+- 2:10 two scientists paralysed themselves: his still face, the curare bag, the machine breathing for them
+- 2:15 the machine OFF; the wall clock races four minutes; no kicking
+- 2:20 his calm face; the doctor switches it back ON; STILL ARGUED, two speech bubbles
+- 2:25 PAAAH: 1:52, nearly three times his first try (the bars)
+- 2:30 Pip has started on the cake; "So how far can a human go?"
+- 2:35 the record pool: the timer races to 11:35 on one breath of air
+- 2:40 face down in the pool; the trick: an oxygen cylinder pops up
+- 2:45 the diver on the floor of the pool, the timer races to 29:03: the hook's promise paid
+- 2:50 this whole video, almost seven times (seven copies of the film fill up); a whale glides past the lens
+- 2:55 wide: the whale goes down while its time races up and lands on 3:42:00; "How?" and a big "?"
+- 3:00 STILL A PUZZLE; the whale goes down into the dark; "But you're not a whale."
+- 3:05 TOO LONG? the title's question; the whistle comes back
+- 3:10 the gauges: fast breathing first, the tank drains past BLACKOUT before the alarm rings
+- 3:15 "You just... switch off": black; then the empty pool at night, a trail of bubbles
+- 3:20 Pip, the lifeguard, looks straight at us and blows her whistle before each rule; the rules stack up
+- 3:25 relief: "On land? Your body won't let you."
+- 3:30 the alarm becomes a lifeguard and breathes for him; "Count your breaths for fifteen seconds": a big 15
+- 3:35 the 15 flies into the clock on "now"; the count starts; Pip's long match lights the first candle
+- 3:40 the candles light one by one on the theme's notes; his calm, breathing face
+- 3:45 the cake in close-up, the match hopping wick to wick; the countdown
+- 3:50 Pip's face in the candlelight; 1 SECOND; "About four?": a big 4 and four little breaths (their own number)
+- 3:55 "You didn't choose a single one"; inside his head the alarm he fought flashes red, then it is a lifeguard breathing for him
+- 4:00 back to his face, the lifeguard in a window beside him; "So this time, when Pip takes a big breath..."
+- 4:05 he lets the birthday girl win; "Turns out..."
+- 4:10 "...one contest you're supposed to lose": she blows out her candles, the held note resolves
+- 4:15 the smoke rises past the bunting; next week: space without a suit
+- 4:20 subscribe, the bell; "and keep breathing"
 
 ## Rebuild
 

@@ -25,12 +25,17 @@
   "cover": "cover.jpg",
   "captions": "hold-your-breath.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-18T17:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "BhkHz6gpbrk",
+    "url": "https://youtu.be/BhkHz6gpbrk",
+    "uploaded": "2026-10-15T20:38:35.690Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   }
 }
