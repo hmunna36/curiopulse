@@ -46,8 +46,8 @@ in the speech band and "here." (the first button's last word) 7 dB under; the bu
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_TIME |
-| Instagram Reels (+ Facebook if connected) | — | IG_TIME |
+| YouTube Shorts | https://youtube.com/shorts/Vf-6HscC28w | 15 Oct 2026 23:30 IST (scheduled through the API; playlist Strange Nature; thumbnail and captions set) |
+| Instagram Reels | — | PENDING for 17 Oct 2026 06:30 IST: Business Suite's upload stalled at 5% while the page was hidden; the Reel, caption and cover are in ~/Desktop/instagram-pending/ for the user (the Facebook Page is not connected) |
 
 **Title:** Why Does a Doorknob SHOCK You? ⚡
 

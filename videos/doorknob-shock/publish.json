@@ -32,19 +32,26 @@
   "cover": "cover.jpg",
   "captions": "doorknob-shock.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-15T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "Vf-6HscC28w",
+    "url": "https://youtube.com/shorts/Vf-6HscC28w",
+    "uploaded": "2026-10-15T14:40:00.146Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-17T06:30:00+05:30",
     "caption": "You touch a doorknob and ZAP ⚡\nThat spark came out of YOU: your shoes steal electrons from the carpet, and dry air won't let them go.\nFollow @curio_pulse_tv for the next one: why you can't breathe and swallow at the same time 🔔\n#science #physics #staticelectricity #funfacts #reels",
     "coverTime": 0.45,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "pending": "15 Oct 2026: Business Suite's upload stalled at 5% (the page was hidden); the Reel, caption and cover were handed to the user in ~/Desktop/instagram-pending/ (3-doorknob-shock-*) for 17 Oct 2026 06:30 IST"
   }
 }
