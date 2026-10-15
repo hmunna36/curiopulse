@@ -133,6 +133,10 @@ def cricket(seed=0, pulses=3, f=4700):
 
 
 def crickets(t0, t1, bus, gain, seed=0, f=4700, rate=1.1):
+    # gain is linear (db(-30) = 0.03); a negative number is read as dB: passed -30 as is, it played the crickets at 30x
+    # full scale, and the sfx bus (scaled to its loudest peak) pushed every other effect ~25 dB down (ears-ring, 15 Oct 2026)
+    if gain < 0:
+        gain = db(gain)
     r = np.random.default_rng(seed)
     tk = t0 + r.uniform(0, 0.4)
     while tk < t1:

@@ -31,7 +31,8 @@
 | `nails-chalkboard`: "Why Do Nails on a CHALKBOARD Make You Cringe? 😖" | 46 s (standard arm) | https://youtube.com/shorts/N2Wl7YPFLmg · 13 Oct 2026 11:30 IST | Business Suite, 14 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 | `funny-bone`: "Why Does Your FUNNY BONE Hurt So Much? ⚡" | 32 s (short arm) | https://youtube.com/shorts/JJYB6rAaF2w · 13 Oct 2026 23:30 IST | Business Suite, 14 Oct 2026 18:30 IST, on Instagram and on the Facebook Page in one schedule (auto cover: the thumbnail picker stayed a skeleton) |
 | `eye-rub-stars`: "Why Do You See STARS When You Rub Your Eyes? ✨" | 46 s (standard arm) | https://youtube.com/shorts/FuqnD4vj-q4 · 14 Oct 2026 11:30 IST | Business Suite, 15 Oct 2026 06:30 IST, on Instagram and on the Facebook Page in one schedule, the caption TYPED and seen on both rows (auto cover: the thumbnail picker stayed a skeleton) |
-| `dizzy-spin`: "Why Do You Get DIZZY When You Spin? 💫" | 33 s (short arm) | https://youtube.com/shorts/4Ts56nQI1-M · 14 Oct 2026 23:30 IST | pending (slot 15 Oct 2026 18:30 IST): the new Reel composer did not upload while Chrome was hidden; the Facebook Page is no longer connected |
+| `dizzy-spin`: "Why Do You Get DIZZY When You Spin? 💫" | 33 s (short arm) | https://youtube.com/shorts/4Ts56nQI1-M · 14 Oct 2026 23:30 IST | pending (slot 15 Oct 2026 18:30 IST): the new Reel composer did not upload while Chrome was hidden; the Facebook Page is no longer connected; still pending on 15 Oct 07:30 (the window hidden again) |
+| `ears-ring`: "Why Do Your Ears RING After a Concert? 🎸" | 47 s (standard arm) | https://youtube.com/shorts/ORFb3ma5RyA · 15 Oct 2026 11:30 IST | pending (slot moved to 16 Oct 2026 06:30 IST): the Chrome window was hidden (requestAnimationFrame never fired), and dizzy-spin's pending Reel holds 15 Oct 18:30 |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1377,3 +1378,53 @@ here for every new Short, with its links.
   and mix.wav. Start to finish about 1 h (15:22–16:20 IST) to the YouTube schedule.
 - The routine fired at 15:22 IST, not 06:00; the restart check said NORMAL.
 
+**ears-ring** (15 Oct 2026, nightly /cp next, fired at 06:30 IST; standard arm; 109 words → 47.37 s; hook formula: The Impossible Claim):
+- New world files: `concert.js` (a rock gig's front row: the hall painted once and soft (`initConcert`, `cnBack`: truss, lamps
+  whose beams sweep in the glow layer, haze, a drum kit and two players as shapes), `cnCrowd` (heads and horned hands that bob on
+  the beat), `cnSpeaker` (a two-cone cabinet; `pump` pushes the cones), `cnBlast` (fat rings off a cone); the hero in a black band
+  tee `CNPAL` (the rig's coat with the zip and the straps taken into the cloth, short sleeves) with a bolt print `cnTeeLogo`, arms
+  as {e, w} `CN_ARM` (horns up, by his side, a finger in an ear, earplugs in), `cnHorns` (index and little finger up from a fist,
+  the thumb across), `cnPlug` (orange foam earplugs), flying hair on a bang (`flyHair`), `cnHero(cam, t, A)`, `cnHeadPt`;
+  `cnOcclude` (black in the glow layer where he stands, so beams behind him never shine through him); `ringLines` (the ring:
+  wobbly bright arcs out of an ear)), `amp.js` (dizzy-spin's brain as `erBrain`; `erAmp(c, s, t, o)`: a scope, eight level lamps,
+  a VOLUME knob scaled 0-10 with a red 11 past it (`erKnobAng`, `erKnobPt`, `ERK`), a grille; `noise` turns the scope to snow,
+  `ring` to one thin line; `erAmpGlow`), `cells.js` (a row of five hair cells with faces on the floor of the snail, each with a
+  staircase of six hairs that bend flat (`bend`), nerve fibres down to one cord with beads (`signal`), music waves with notes that
+  slam down (`waves`), a dead cell that greys with X eyes and a halo (`gone`), a cell that pops up in a gap (`regrow`), a blue
+  'bird' hue; `erTag` (a pill with a leader), `erMeter` (TO BRAIN with five bars), `erNote`), `room.js` (a silent room: acoustic
+  foam as a grid of four-faced pyramids painted once, a wire floor, a SILENT ROOM sign that lights; yawning-contagious's
+  passengers as `rmPassenger` with their faces as paint; him seated `rmHero`), `chicken.js` (`erChicken`: a white hen in
+  profile with comb, wattle, a lid for deadpan or smug, sunglasses, a headbang about the neck; mirror her with scale(-1, 1)). In
+  its scenes: `beatU` / `bangDown` (a headbang locked to the band's beat grid, cue `beat_p`, valid at negative time), `hookA` /
+  `hookCam`, `gigDraw`, `brainWindow` (a round window over his head that shows the amp shot's own picture, `ampScene`, fitted
+  inside it), `vKeys` (a screen-space camera from keys), `ampXform`, `yardBg`, `buttonA`, `SC.loop`, `SC.cover`. `qc_gags.py` is
+  in its src.
+- **A band that lands on frame 1:** the beat period is the time to the last chord divided by four (`STOP / 4`), frame 0 is a
+  downbeat with his head at the bottom of a bang, and the band at the end plays on `DUR - k * beat`, so the loop is one more
+  beat. The bang, the speaker's pump, the crowd's bob and the strobe all read `beatU(tt)`.
+- **A loop shot draws its whole world on loop time.** The stage beams swept on clock time (`t`), so the last 0.4 s showed them
+  where they are at 47 s, not at 0: the join measured 26.1/255 against an ordinary step of 17.2. Passing `tt = t - DUR` as the
+  world's time made it 17.1. And `(t * k) % 1` is negative at negative time: an `arc` with a negative radius stopped the stills
+  (`IndexSizeError`). Use `((x % 1) + 1) % 1`.
+- **A glass head crowds the face; a window above it reads.** The brain and its amp inside his head (a glass dome) were too
+  small next to his eyes, which then looked like two huge white discs when the camera pushed in. A round window over his head
+  that shows the amp shot's own picture, fitted inside it, read at once, and the amp shot later is the same picture, large.
+- **`crickets(t0, t1, bus, gain, ...)` takes a LINEAR gain.** Passed -30 it played the crickets at 30 times full scale; the sfx
+  bus is scaled to its loudest peak, so every other effect came out about 25 dB too quiet (gags at -31...-34 dB). `db(-30)`
+  fixed it (the template's sfxkit now reads a negative gain as dB). Low thumps set the bus peak too: this Short's `low_thud`
+  takes 8 dB off whatever it is given.
+- **The ring as a sound:** a sine at 6.3 kHz with a slow beat (a second sine 0.2 % higher) sits above the speech band, so it
+  can run under the words at about -26 dB and still be heard in every pause; it climbs with the knob.
+- **Two pending Reels get the same slot.** dizzy-spin's Reel was never scheduled (its slot 15 Oct 18:30 is not "busy"), so
+  `yt.mjs upload` gave this Short's Reel 15 Oct 18:30 as well. Moved to 16 Oct 06:30 in publish.json by hand
+  (publish.md, gotchas).
+- Voice: the hook ran 5.2 s on its first take (the answer at 5.75 s); five auditions, and "You headbang at a concert, and now
+  your ears are RINGING." (seed 5) ran 3.8 s: the answer at 4.43 s. The static line's seed 2 has "ring." 7 dB clearer in the
+  speech band. The account's counter went 85,848 → 85,370.
+- Two QA rounds, 19/19 each time; 5.4 minutes a render. Round 2: the loop on loop time, foam pyramids (the alternating wedges
+  read as a maze), a narrower sign clear of the watermark, a puzzled "huh?" after the last chord instead of a half-lidded stare.
+  `voice.py`, `make_timeline.py` and `audio.py` re-run into a clean folder: `timeline.json` and `mix.wav` byte-identical.
+  Start to finish about 1 h 05 min (06:30-07:35 IST) to the YouTube schedule.
+- Chrome's window was hidden at 06:30-07:35 IST (`visibilityState` hidden, `outerWidth` 0; `open -a "Google Chrome"` did not
+  change it): Studio still took the cover (the file input given an aria-label, `file_upload`, Save from JavaScript), but
+  Business Suite's composer could not be used. Both Reels (dizzy-spin, ears-ring) are pending.

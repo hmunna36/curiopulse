@@ -259,6 +259,11 @@ proves nothing.
   front, `resize_window` and a new tab did not help). Check `requestAnimationFrame` fires before uploading the parts:
   if it does not, report the Reel pending. Never reconnect the Page yourself: report "Facebook still to post".
   Closing the stuck composer tab with `tabs_close_mcp` hung twice: leave it, or Cancel → "Exit now" in the page first.
+- **A pending Reel's slot is not "busy" (15 Oct 2026).** `yt.mjs` and `ig.mjs` count only the slots recorded with
+  `ig.mjs busy`. A Reel left pending by an earlier run (its publish.json has `instagram.publishAt` but no `scheduledVia`) does
+  not hold its slot, so the next upload can be given the same one (dizzy-spin and ears-ring both got 15 Oct 18:30). After
+  `yt.mjs upload`, if an earlier Reel is still pending at the slot it wrote, move the new Short's `instagram.publishAt` to the
+  next free 06:30 / 18:30 slot by hand and say so in the report; schedule the older Reel first.
 - **A hidden window stalls everything (4 Oct 2026).** If the extension's Chrome window is minimized, the page is
   `hidden`: the upload stays at 0 %, screenshots time out, and any `await` in the JavaScript tool never returns (plain
   synchronous JavaScript still does). Right after opening Business Suite, check
