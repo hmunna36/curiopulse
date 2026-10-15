@@ -31,19 +31,26 @@
   "cover": "cover.jpg",
   "captions": "ring-finger.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-16T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "jmFlKDR_P-8",
+    "url": "https://youtube.com/shorts/jmFlKDR_P-8",
+    "uploaded": "2026-10-15T17:50:31.768Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-17T18:30:00+05:30",
     "caption": "Hand flat, fold your middle finger under... now lift your ring finger. 💍\nStuck? It's on a leash: your ring finger has no lifting muscle of its own, and a little strap ties its cord to your middle finger's. Middle down... ring down.\nCould you lift it?\nFollow @curio_pulse_tv for the next one: which of your eyes is the boss 👁️🔔\n#science #humanbody #hands #anatomy #funfacts #reels",
     "coverTime": 8.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "pending": "15 Oct 2026 23:30 IST: not scheduled: the Chrome window was hidden (requestAnimationFrame never fired), so Business Suite's Create Reel composer would not open. The Reel, caption and cover are in ~/Desktop/instagram-pending/ (4-ring-finger-*) for 17 Oct 2026 18:30 IST; the next run's catch-up schedules it if Chrome is visible."
   }
 }
