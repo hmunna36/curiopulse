@@ -154,51 +154,65 @@ function labCast(cam, t, o = {}) {
   drawCharacter(ctx, st, t, LABDOC);
   ctx.save(); ctx.translate(st.x, st.y); ctx.scale(st.s, st.s); docKit2(ctx, rig(st.pose), st); ctx.restore();
 }
+// cameras on the lab: the window and its tower, the bed with the doctor, the drip bag, the machine, the clock
+const LABCAM = { win: { x: 1570, y: 340, zoom: 2.2 }, room: { x: 960, y: 520, zoom: 1.05 }, drip: { x: 300, y: 330, zoom: 2.6 },
+  pump: { x: 800, y: 330, zoom: 2.3 }, clock: { x: 1080, y: 210, zoom: 3.2 }, doc: { x: 1180, y: 560, zoom: 1.7 } };
+const LC = (k) => Object.assign({ rot: 0 }, LABCAM[k]);
+function labDraw(cam, t, o = {}) {
+  lab60(cam, t, { clockMin: o.mins === undefined ? 2 : o.mins, clockSec: o.secs === undefined ? t * 3 : o.secs });
+  applyCam(cam);
+  lab60Pump(t, { rate: 14, on: o.pumpOff ? 0 : 1 });
+  lab60Bed(t, {});
+  applyCam(cam);
+  ctx.save(); ctx.translate(300, 420);                                   // the drip bag of curare by the bed
+  line(ctx, 0, -250, 0, 460, 6, '#8A8E92'); line(ctx, -30, -250, 30, -250, 6, '#8A8E92');
+  rrect(ctx, -52, -244, 104, 150, 22); ctx.fillStyle = 'rgba(236,242,248,0.92)'; ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = '#A8B0B8'; ctx.stroke();
+  rrect(ctx, -46, -196, 92, 96, 18); ctx.fillStyle = '#E2B45C'; ctx.fill();                       // the drug
+  rrect(ctx, -44, -186, 88, 46, 6); ctx.fillStyle = '#FFFFFF'; ctx.fill();                         // its label
+  ctx.font = '900 21px Montserrat'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#5A2A1A'; ctx.fillText('CURARE', 0, -163);
+  rrect(ctx, -12, -94, 24, 56, 8); ctx.fillStyle = 'rgba(220,235,245,0.85)'; ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = '#A8B0B8'; ctx.stroke();
+  const dp = (t * 1.3) % 1, dr = 4 + 5 * ramp(dp, 0, 0.6);                // a drop swells, then falls
+  circle(ctx, 0, -84 + (dp < 0.6 ? 0 : 40 * ramp(dp, 0.6, 1, E.inCubic)), dr, 'rgba(226,180,92,0.95)');
+  ctx.beginPath(); ctx.moveTo(0, -38); ctx.quadraticCurveTo(20, 120, 140, 250); ctx.lineWidth = 5; ctx.strokeStyle = '#C8D0D8'; ctx.stroke();
+  ctx.restore();
+  labCast(cam, t, { stop: o.stop || 0 });
+  if (o.pumpOff) { applyCam(cam); rrect(ctx, 690, 120, 140, 60, 12); ctx.fillStyle = '#A0281E'; ctx.fill(); ctx.font = '400 44px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#FFF0D8'; ctx.fillText('OFF', 760, 152); }
+  if (o.pumpOn > 0.01) {   // the doctor switches it back on
+    applyCam(cam); ctx.save(); ctx.translate(760, 150); const s = E.outBack(clamp(o.pumpOn), 2.4); ctx.scale(s, s);
+    rrect(ctx, -70, -30, 140, 60, 12); ctx.fillStyle = '#2E8A4E'; ctx.fill(); ctx.font = '400 44px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#F0FFF4'; ctx.fillText('ON', 0, 2);
+    ctx.restore(); }
+  sepia60(1); film60(t, 1);
+}
 SC.proof = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = { x: lerp(1000, 900, lt / D), y: 520, zoom: lerp(1.0, 1.12, lt / D), rot: 0 };
-  lab60(cam, t, { clockMin: 2, clockSec: t * 3 });
-  applyCam(cam);
-  lab60Pump(t, { rate: 14, on: 1 });
-  lab60Bed(t, {});
-  // the drug: a drip bag on a stand by the bed
-  const dr = ramp(t, c.paralysed - 0.3, c.paralysed + 0.2, E.outBack);
-  if (dr > 0.01) {
-    ctx.save(); ctx.translate(250, 420); ctx.scale(dr, dr);
-    line(ctx, 0, -240, 0, 460, 6, '#8A8E92'); rrect(ctx, -46, -230, 92, 130, 20); ctx.fillStyle = 'rgba(230,240,250,0.85)'; ctx.fill();
-    ctx.font = '900 26px Montserrat'; ctx.textAlign = 'center'; ctx.fillStyle = '#5A3A2A'; ctx.fillText('CURARE', 0, -160);
-    line(ctx, 0, -100, 60, 200, 3, '#C8D0D8');
-    ctx.restore();
-  }
-  labCast(cam, t);
-  sepia60(1); film60(t, 1);
+  // the window with the clock tower -> the room (two scientists) -> the drug -> the machine that breathed for them
+  let cam;
+  if (t < c.london - 0.1) cam = mixCam(LC('win'), LC('room'), ramp(t, c.proof + 0.2, c.london - 0.1, E.inOutCubic));
+  else if (t < c.paralysed - 0.15) cam = Object.assign({}, LC('room'), { zoom: 1.05 + 0.08 * ramp(t, c.london, c.paralysed) });
+  else if (t < c.machine - 0.15) cam = mixCam({ x: 450, y: 590, zoom: 2.5, rot: 0 }, Object.assign({}, LC('drip'), { y: 300, zoom: 2.7 }), ramp(t, c.drug - 0.7, c.drug + 0.15, E.inOutSine));
+  else cam = Object.assign({}, LC('pump'), { zoom: 2.3 + 0.2 * ramp(t, c.machine, shot.end) });
+  labDraw(cam, t);
   screenSpace();
-  stamp('LONDON, 1960s', 1460, 230, ramp(t, c.sixties, c.sixties + 0.35), '#F2D7A0', -0.08, 70);
+  stamp('LONDON, 1960s', 1440, 230, ramp(t, c.sixties, c.sixties + 0.35) * (1 - ramp(t, c.paralysed - 0.3, c.paralysed - 0.1)), '#F2D7A0', -0.08, 70);
   return { glow: 0.45, grain: 0, flash: 0.35 * (1 - ramp(lt, 0, 0.2)) };
 };
 SC.proof2 = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  // the machine stops, the wall clock races through four minutes, the doctor stops it, then the argument
-  const off = t >= c.proof2 + 0.2 && t < c.doctor + 0.6;
-  const mins = lerp(2, 6, ramp(t, c.fourmin - 0.6, c.calm + 0.4, E.inOutSine));
-  const k = ramp(t, c.argue - 0.4, c.argue + 0.2, E.inOutCubic);
-  const toDoc = ramp(t, c.doctor - 0.6, c.doctor + 0.2, E.inOutCubic);
-  const cam = mixCam({ x: 900, y: 330, zoom: 1.35, rot: 0 }, { x: 1120, y: 520, zoom: 1.25, rot: 0 }, toDoc);
-  cam.zoom *= 1 - 0.2 * k;
-  lab60(cam, t, { clockMin: mins, clockSec: mins * 60 });
-  applyCam(cam);
-  lab60Pump(t, { rate: 14, on: off ? 0 : 1 });
-  lab60Bed(t, {});
-  labCast(cam, t, { stop: env2(t, c.doctor - 0.1, c.doctor + 1.4, 0.2) });
-  // "OFF" on the machine while it is stopped
-  if (off) { applyCam(cam); rrect(ctx, 690, 120, 140, 60, 12); ctx.fillStyle = '#A0281E'; ctx.fill(); ctx.font = '400 44px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#FFF0D8'; ctx.fillText('OFF', 760, 152); }
-  sepia60(1); film60(t, 1);
+  const mins = lerp(2, 6, ramp(t, c.fourmin - 0.4, c.calm + 0.3, E.inOutSine));
+  const off = t >= c.proof2 + 0.2 && t < c.doctor + 0.1;
+  // the machine switched off -> the clock races four minutes (and his calm face) -> the doctor stops it -> argued
+  let cam;
+  if (t < c.fourmin - 0.3) cam = Object.assign({}, LC('pump'), { x: 850, zoom: 2.0 });
+  else if (t < c.doctor - 0.4) cam = Object.assign({}, LC('clock'), { zoom: 3.2 + 0.4 * ramp(t, c.fourmin, c.doctor) });
+  else if (t < c.argue - 0.4) cam = { x: 1000, y: 380, zoom: 1.5, rot: 0 };
+  else cam = Object.assign({}, LC('room'), { zoom: 1.0 });
+  labDraw(cam, t, { mins, secs: mins * 60, pumpOff: off, pumpOn: t < c.argue - 0.4 ? ramp(t, c.doctor + 0.1, c.doctor + 0.4) : 0, stop: env2(t, c.doctor - 0.1, c.doctor + 1.4, 0.2) });
   screenSpace();
-  pill(960, 880 - 60, '4 MINUTES · NO KICKING', '#F2D7A0', ramp(t, c.fourmin, c.fourmin + 0.3) * (1 - ramp(t, c.doctor - 0.4, c.doctor)), 46);
+  pill(960, 760, '4 MINUTES · NO KICKING', '#F2D7A0', ramp(t, c.fourmin, c.fourmin + 0.3) * (1 - ramp(t, c.doctor - 0.6, c.doctor - 0.4)), 50);
   // his calm face, in a round window, while the clock races
-  const ci = env2(t, c.fourmin - 0.2, c.doctor - 0.3, 0.25);
+  const ci = env2(t, c.calm - 0.3, c.doctor - 0.45, 0.2);
   if (ci > 0.01) {
-    const R = 150 * E.outBack(clamp(ci * 1.4), 1.8), x = 1500, y = 330;
+    const R = 170 * E.outBack(clamp(ci * 1.4), 1.8), x = 1450, y = 420;
     ctx.save(); ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.clip();
     ctx.fillStyle = '#C8C0A8'; ctx.fillRect(x - R, y - R, 2 * R, 2 * R);
     ctx.translate(x, y + 20); ctx.scale(R / 150 * 1.6, R / 150 * 1.6);
@@ -207,12 +221,16 @@ SC.proof2 = (lt, t, shot) => {
     rrect(ctx, -34, 22, 68, 46, 18); ctx.fillStyle = '#5A6A72'; ctx.fill();
     ctx.restore();
     ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.lineWidth = 8; ctx.strokeStyle = '#F2D7A0'; ctx.stroke();
-    sepia60(0.0);
-    if (ci > 0.8) { ctx.font = '400 54px Anton'; ctx.textAlign = 'center'; ctx.fillStyle = '#F2D7A0'; ctx.fillText('CALM', x, y + R + 50); }
+    if (ci > 0.8) { ctx.font = '400 60px Anton'; ctx.textAlign = 'center'; ctx.fillStyle = '#F2D7A0'; ctx.fillText('CALM', x, y + R + 56); }
   }
-
-  if (k > 0.01) stamp('STILL ARGUED', 960, 520, k, '#FF9A3C', -0.1, 110);
-  return { glow: 0.45, grain: 0 };
+  // the argument: two speech bubbles over the room
+  const k = ramp(t, c.argue - 0.4, c.argue + 0.2, E.inOutCubic);
+  if (k > 0.01) {
+    stamp('STILL ARGUED', 960, 470, k, '#FF9A3C', -0.1, 110);
+    speech('IT\'S THE MUSCLE!', 520, 230, ramp(t, c.argue + 0.4, c.argue + 0.7), '#2A2A30', 54, -0.06);
+    speech('NOT SO FAST!', 1420, 260, ramp(t, c.argue + 0.9, c.argue + 1.2), '#2A2A30', 54, 0.06);
+  }
+  return { glow: 0.45, grain: 0, push: { k: 1 + 0.03 * kickOf(t, c.doctor, 4), cx: 960, cy: 540 } };
 };
 
 // ================================================================= his best: 1:52; Pip has started on the cake

@@ -102,12 +102,18 @@ SC.twenty = (lt, t, shot) => {
   if (dv < 1) {
     darkBg('#0A1A3A', '#02040C'); screenSpace();
     const P = [960 + 150 * 1.25, CHEST_V.y - 220 * 1.25];          // a spot in his left lung (our right)
-    const z = (1 + 0.05 * clamp((t - c.twenty) / 4)) * (1 + 7 * dv * dv);
+    const z = (1 + 0.05 * clamp((t - c.twenty) / 4)) * (1 + 2.2 * dv * dv);
     ctx.save(); ctx.translate(P[0], P[1]); ctx.scale(z, z); ctx.translate(-P[0], -P[1]);
     chestX(CHEST_V, t, { o2: 1, ex: 0.12 * ramp(t, c.exhaust - 2.2, c.exhaust - 1.2), puff: 1, heartGlow: 0.4, sweep: 1.2 * ramp(t, c.oxy - 0.9, c.oxy + 0.5) });
     ctx.restore();
     pill(960, 210, 'OXYGEN 98%', '#7FE9FF', ramp(t, c.oxy - 0.2, c.oxy + 0.15) * (1 - dv), 60);
-    return bodyPost({ zblur: 0.15 * dv, flash: 0.5 * ramp(dv, 0.8, 1) });
+    if (dv > 0.35) {   // the blood vessel opens up inside the lung, through a growing circle
+      const k = ramp(dv, 0.35, 1, E.inOutCubic), R = lerp(40, 1200, k);
+      ctx.save(); screenSpace(); ctx.beginPath(); ctx.arc(P[0] - 120 * k, P[1] + 60 * k, R, 0, Math.PI * 2); ctx.clip();
+      bloodTube(t, { o2: 0.97, ex: 0.12, y: 560, h: 620, flow: 1 });
+      ctx.restore();
+    }
+    return bodyPost();
   }
   const ex = 0.12 + 0.8 * ramp(t, c.exhaust - 0.2, c.nowhere + 1.0, E.inOutSine);
   screenSpace();
@@ -337,13 +343,22 @@ SC.whistle = (lt, t, shot) => {
 // Sometimes... too late." the gauges: the tank stays where it was; the exhaust needle falls to zero; the BLACKOUT line
 SC.dont = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  darkBg('#0A0A1A', '#000000'); screenSpace();
-  const blow = ramp(t, c.blows - 0.2, c.blows + 1.0, E.inOutCubic);
-  const ex = lerp(0.35, 0.0, blow);
-  const late = ramp(t, c.late - 0.3, c.toolate + 0.4);
-  gauges(t, { o2: 1, ex, x: 960, y: 470, s: 0.85, blackout: ramp(t, c.toolate - 0.2, c.toolate + 0.4) });
   screenSpace();
-  const na = ramp(t, c.noadd - 0.1, c.noadd + 0.3, E.outBack);
-  if (na > 0.01) stamp('+0 OXYGEN', 690, 520, na * (1 - ramp(t, c.late - 0.2, c.late)), '#7FE9FF', -0.12, 76);
-  return bodyPost({ push: { k: 1 + 0.06 * ramp(t, c.toolate - 0.3, c.toolate + 1.0), cx: 690, cy: 470 }, vhs: 0.18 * kickOf(t, c.toolate, 3) });
+  if (t < c.late - 0.25) {
+    // the blood: wind streaks blow the violet exhaust away; the red cells were already full (+0 OXYGEN)
+    const blow = ramp(t, c.blows - 0.3, c.blows + 1.2, E.inOutCubic);
+    bloodTube(t, { o2: 1, ex: 0.55 * (1 - blow), y: 560, h: 620, flow: 1 + 2.5 * blow });
+    const wind = env2(t, c.right + 0.8, c.late, 0.3);
+    for (let i = 0; i < 26; i++) { const ph = (t * 2.2 + hash(i)) % 1, y = 300 + 520 * hash(i * 3.1); line(ctx, -200 + 2300 * ph, y, -200 + 2300 * ph + 160, y, 5, `rgba(220,245,255,${0.5 * wind * Math.sin(Math.PI * ph)})`); }
+    const na = ramp(t, c.noadd - 0.1, c.noadd + 0.3, E.outBack);
+    // the stamp goes on after the wind's blur, so it stays sharp
+    return bodyPost({ blur: [24 * wind, 0], overlay: na > 0.01 ? () => stamp('+0 OXYGEN', 960, 200, na, '#7FE9FF', -0.08, 100) : null });
+  }
+  // the alarm: it should be ringing, and it is dozing; at "too late" its eye snaps open, in the dark
+  darkBg('#0A1A3A', '#02040C'); screenSpace();
+  const late = ramp(t, c.toolate - 0.1, c.toolate + 0.3);
+  alarmHead(t, { x: 900, y: 420, s: 1.55, sour: 0, ring: 0.6 * late, lick: 0.1 });
+  if (late < 0.5) zzz(1150, 330, t, c.late - 0.2, 1, 1.3);
+  if (late > 0.01) { ctx.fillStyle = `rgba(0,0,0,${0.45 * late})`; ctx.fillRect(0, 0, W, H); stamp('TOO LATE', 960, 760 - 60, late, '#FF5A6E', -0.1, 100); }
+  return bodyPost({ vhs: 0.18 * kickOf(t, c.toolate, 3), push: { k: 1 + 0.05 * late, cx: 960, cy: 400 } });
 };

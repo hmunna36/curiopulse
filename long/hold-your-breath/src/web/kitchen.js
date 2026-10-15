@@ -368,10 +368,11 @@ function kHat(c, col, k = 1, tilt = 0, hop = 0) {
   c.restore();
 }
 // cheeks puffed with a held breath (head space), k 0..1; wob = a wobble (the strain)
-function kCheeks(c, k, pal, wob = 0, t = 0) {
+function kCheeks(c, k, pal, wob = 0, t = 0, flush = 0, purple = 0) {
   if (k <= 0.03) return;
   const w = 1 + 0.06 * wob * Math.sin(t * 26);
   for (const s of [-1, 1]) ellipse(c, s * 50, 30, (15 + 14 * k) * w, (13 + 12 * k) / w, pal.skin);
+  if (flush > 0.02) for (const s of [-1, 1]) ellipse(c, s * 50, 30, (15 + 14 * k) * w, (13 + 12 * k) / w, purple > 0.5 ? `rgba(150,60,175,${0.45 * flush})` : `rgba(232,58,72,${0.42 * flush})`);
   for (const s of [-1, 1]) ellipse(c, s * 53, 30, 9 + 6 * k, 6 + 4 * k, 'rgba(255,110,110,0.34)');
   // lips pressed into a little knot
   c.beginPath(); c.moveTo(-9, 40); c.quadraticCurveTo(0, 46, 9, 40); c.lineWidth = 5; c.strokeStyle = pal.mouth; c.lineCap = 'round'; c.stroke();
@@ -453,7 +454,7 @@ function kitPerson(cam, t, who, h = {}) {
   // head-space extras
   lctx.save(); lctx.translate(st.x, st.y); lctx.scale(st.s, st.s);
   lctx.translate(r.head[0] + (st.headDX || 0), r.head[1] + (st.headDY || 0)); lctx.rotate(r.lean + (st.headRot || 0));
-  kCheeks(lctx, h.puff || 0, pal, h.wob || 0, t);
+  kCheeks(lctx, h.puff || 0, pal, h.wob || 0, t, h.flush || 0, h.purple || 0);
   if (h.sweat > 0) for (const s of [-1, 1]) sweatDrop(lctx, s * 68, -44 + 30 * ((t * 0.7 + (s > 0 ? 0.5 : 0)) % 1), 0.8, h.sweat);
   if (h.cloth) kCloth(lctx, h.cloth, t);
   if (h.goggles > 0.01) kGoggles(lctx, h.goggles);

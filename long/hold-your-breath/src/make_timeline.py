@@ -203,7 +203,7 @@ cues = {
     "spleen": W("And his spleen"), "squeezes": W("squeezes out"), "carriers": W("oxygen carriers"),
     "ninety": W("Ninety. And here"), "herecomes": W("here it comes"), "kicking": W("starts kicking"), "ownw": W("On its own"), "dome2": W("That dome of muscle"),
     "proof": W("Why does it hurt"), "sixties": W("nineteen-sixties,"), "london": W("London"), "paralysed": W("paralysed"),
-    "machine": W("machine"), "proof2": W("With no muscle"), "fourmin": W("four minutes", s=find("they went")),
+    "machine": W("machine"), "drug": W("drug,"), "proof2": W("With no muscle"), "fourmin": W("four minutes", s=find("they went")),
     "calm": W("calm..."), "doctor": W("doctor"), "argue": W("argue"),
     "best": best, "bestw": W("One minute"), "nearly": W("Nearly three"), "cake": W("Pip has started"),
     # ---- act 3: the edge

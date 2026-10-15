@@ -27,10 +27,14 @@ SC.record = (lt, t, shot) => {
 SC.oxygen = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   const secs = lerp(695, 1743, ramp(t, c.croatia - 0.4, c.t29 + 0.8, E.inOutSine));
-  const cam = { x: lerp(1250, 990, ramp(lt, 0, 1.6, E.inOutCubic)), y: lerp(420, 600, ramp(lt, 0, 1.6, E.inOutCubic)), zoom: lerp(1.5, 1.0, ramp(lt, 0, 1.6, E.inOutCubic)), rot: 0 };
-  poolScene(cam, t, { secs, label: 'BREATHING PURE OXYGEN FIRST', tank: ramp(t, c.pure - 0.3, c.pure + 0.1, E.outBack), floor: true, timerCol: '#FFD447' });
+  const k1 = ramp(t, c.pure - 0.5, c.pure + 0.3, E.inOutCubic), k2 = ramp(t, c.croatia - 0.6, c.croatia + 0.3, E.inOutCubic), k3 = ramp(t, c.t29 - 0.1, c.t29 + 1.4, E.inOutSine);
+  let cam = mixCam({ x: 1350, y: 600, zoom: 1.4, rot: 0 }, { x: 1560, y: 380, zoom: 2.1, rot: 0 }, k1);
+  cam = mixCam(cam, { x: 1010, y: 700, zoom: 1.7, rot: 0 }, k2);
+  cam = mixCam(cam, { x: 1000, y: 640, zoom: 1.3, rot: 0 }, k3);
+  poolScene(cam, t, { secs: 0, label: '', tank: ramp(t, c.pure - 0.3, c.pure + 0.1, E.outBack), floor: true });
   screenSpace();
-  pill(560, 380, 'CROATIA, 2025', '#FFD447', ramp(t, c.croatia, c.croatia + 0.3), 48);
+  poolTimer(secs, ramp(t, c.pure - 0.2, c.pure) > 0.5 ? 'BREATHING PURE OXYGEN FIRST' : 'ONE BREATH OF AIR', '#FFD447', 960, 160, 0.82, kickOf(t, c.t29, 6));
+  pill(960, 330, 'CROATIA, 2025', '#FFD447', ramp(t, c.croatia, c.croatia + 0.3), 44);
   return { glow: 0.95, flash: 0.35 * kickOf(t, c.t29, 7) };
 };
 // "That's this whole video... almost seven times." seven little copies of this film; the seventh two-thirds full
@@ -116,8 +120,17 @@ SC.off = (lt, t, shot) => {
 // "In water, that's how strong swimmers drown. So: never in water, never alone, and never fast breathing first."
 SC.water = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = { x: lerp(960, 900, lt / D), y: lerp(520, 470, lt / D), zoom: lerp(1.08, 1.18, lt / D), rot: 0 };
+  const cam = { x: lerp(980, 1000, lt / D), y: lerp(560, 640, ramp(lt, 0, D, E.inOutSine)), zoom: lerp(1.0, 1.45, ramp(lt, 0, D, E.inOutSine)), rot: 0 };
   poolScene(cam, t, { secs: 0, label: '', tank: 0, empty: true, night: true });
+  applyCam(cam);
+  for (let i = 0; i < 9; i++) {   // a trail of bubbles from the deep end, further and further apart, until the last one
+    const born = c.water + 0.1 + 0.35 * i + 0.06 * i * i, ph = clamp((t - born) / 2.6), r = 24 - 1.6 * i;
+    if (ph <= 0 || ph >= 1) continue;
+    const x = 760 + 16 * Math.sin(i * 2.1 + t * 3), y = lerp(1000, POOL.surf + 8, ph);
+    softDot(gctx, x, y, r * 2.4, '#9FE6FF', 0.35 * (1 - ph));
+    circle(ctx, x, y, r, `rgba(190,238,255,${0.75 * (1 - 0.6 * ph)})`); circle(ctx, x - r * 0.35, y - r * 0.35, r * 0.3, `rgba(255,255,255,${0.8 * (1 - 0.6 * ph)})`);
+    if (ph > 0.94) { const q = (ph - 0.94) / 0.06; ctx.beginPath(); ctx.ellipse(760, POOL.surf + 4, 20 + 50 * q, 5 + 8 * q, 0, 0, Math.PI * 2); ctx.lineWidth = 3; ctx.strokeStyle = `rgba(190,238,255,${0.6 * (1 - q)})`; ctx.stroke(); }
+  }
   screenSpace();
   ctx.fillStyle = 'rgba(0,4,20,0.35)'; ctx.fillRect(0, 0, W, H);
   const rows = [['NEVER IN WATER', c.never1], ['NEVER ALONE', c.never2], ['NEVER BREATHE FAST FIRST', c.never3]];
@@ -142,20 +155,45 @@ SC.land = (lt, t, shot) => {
 // ================================================================= the third test: count your breaths
 SC.count = (lt, t, shot) => {
   const D = shot.end - shot.start;
-  kitchenAt(camOnHead('hero', 2.8 + 0.3 * lt / D, -40, 10), t);
+  kitchenAt(camOnHead('hero', lerp(1.9, 2.6, ramp(lt, 0, D, E.inOutSine)), -40, lerp(-190, -40, ramp(lt, 0, D, E.inOutSine))), t);
   return duskPost();
 };
+// the match's tip (world): from her hand to the first wick, then wick to wick in little hops, each lit on its cue
+function matchTipAt(t, tips, L) {
+  const wick = (i) => [tips[i][0], tips[i][1] - 6];
+  if (t < L[0] - 0.3) { const k = ramp(t, L[0] - 1.0, L[0] - 0.3, E.inOutSine); return [lerp(wick(0)[0] + 200, wick(0)[0], k), lerp(wick(0)[1] + 90, wick(0)[1], k)]; }
+  for (let i = 0; i < 6; i++) {
+    if (t < L[i + 1] - 0.3) {
+      const k = ramp(t, L[i] + 0.2, L[i + 1] - 0.3, E.inOutSine), a = wick(i), b = wick(i + 1);
+      return [lerp(a[0], b[0], k), lerp(a[1], b[1], k) - 26 * Math.sin(Math.PI * k)];
+    }
+  }
+  return wick(6);
+}
 // wordless: the count; Pip relights her candles one by one; he breathes
 SC.candles = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   const L = c.lights;
-  const toCake = ramp(t, L[0] - 1.2, L[2], E.inOutCubic), out = ramp(t, L[6] + 0.4, L[6] + 2.2, E.inOutCubic);
-  const cam = mixCam(mixCam(Object.assign({}, TWO, { zoom: 1.35 }), { x: KIT.cakeX + 40, y: KIT.cakeY - 60, zoom: 2.3, rot: 0 }, toCake), Object.assign({}, TWO, { zoom: 1.4 }), out);
-  kitchenAt(cam, t);
-  // a little star on each candle as it lights
-  screenSpace();
   const tips = candleTips(KIT.cakeX, KIT.cakeY);
-  L.forEach((at, i) => { const k = ramp(t, at, at + 0.35); if (k > 0 && k < 1) { const [x, y] = toScreen(cam, tips[i][0], tips[i][1] - 20); shockLines(x, y, 30, k, 8, '#FFD447', i + 3); } });
+  // a different view for each pair of candles: the match at the first, his breathing face, a low view of the cake,
+  // Pip's face in the candle light, and all seven at the end
+  let cam;
+  if (t < L[1] - 0.3) cam = { x: tips[0][0] + 40, y: tips[0][1] + 10, zoom: 4.2 + 0.2 * lt, rot: 0 };
+  else if (t < L[3] - 0.3) cam = camOnHead('hero', 3.0 + 0.15 * (t - L[1]), -40, 10);
+  else if (t < L[5] - 0.3) cam = { x: KIT.cakeX + 40, y: KIT.cakeY - 40, zoom: 2.9 - 0.1 * (t - L[3]), rot: 0 };
+  else if (t < L[6] + 0.8) cam = camOnHead('pip', 3.6, 40, 20);
+  else cam = Object.assign({}, TWO, { zoom: 1.45 - 0.05 * (t - L[6]) });
+  kitchenAt(cam, t, { after: (cam2, H1, H2) => {
+    const tip = matchTipAt(t, tips, L), wr = [H2.st.x + H2.r.wrL[0] * H2.st.s, H2.st.y + H2.r.wrL[1] * H2.st.s];
+    const k = env2(t, L[0] - 1.0, L[6] + 0.8, 0.3);
+    if (k < 0.01) return;
+    ctx.save(); ctx.globalAlpha = k;
+    line(ctx, wr[0], wr[1], tip[0], tip[1], 7, '#E8C890'); circle(ctx, tip[0], tip[1], 6, '#C83A2A');
+    kitFlameL(ctx, tip[0], tip[1] - 4, 1.0, t); softDot(gctx, tip[0], tip[1] - 10, 40, '#FFC870', 0.6 * k);
+    ctx.restore();
+  } });
+  screenSpace();
+  L.forEach((at, i) => { const k = ramp(t, at, at + 0.35); if (k > 0 && k < 1) { const [x, y] = toScreen(cam, tips[i][0], tips[i][1] - 20); shockLines(x, y, 30 * cam.zoom / 2, k, 8, '#FFD447', i + 3); } });
   return duskPost();
 };
 SC.counted = (lt, t, shot) => {
@@ -239,18 +277,16 @@ SC.cover = (lt, t, shot) => {
   const glowCol = v === 2 ? '#FF2A3A' : '#FF6A2A';
   softDot(ctx, 1330, 600, 640, glowCol, 0.42);
   const hp = kitHead('hero');
-  const Z = 4.1, cam = { x: hp[0] - (1330 - 960) / Z, y: hp[1] - (600 - 540) / Z, zoom: Z, rot: 0 };
+  const Z = 5.0, HX = 1300, HY = 640, cam = { x: hp[0] - (HX - 960) / Z, y: hp[1] - (HY - 540) / Z, zoom: Z, rot: 0 };
+  // a dark halo behind the head so it separates from the glow at thumbnail size
+  softDot(ctx, HX, HY, 470, '#0A0010', 0.75);
   applyCam(cam);
-  const face = v === 2 ? Object.assign({}, FACES.dazed, { eyeOpen: 1.3, blink: 0.2 }) : Object.assign({}, FACES.bulge, { eyeOpen: 1.75, pupil: 0.38 });
-  kitPerson(cam, 0.35, 'hero', { face, puff: v === 2 ? 0.7 : 1.35, wob: 0, flush: 1, purple: v === 0 ? 0 : 1, sweat: 1, hat: [0, 0, 0] });
+  const face = v === 2 ? Object.assign({}, FACES.dazed, { eyeOpen: 1.35, blink: 0.25 }) : Object.assign({}, FACES.bulge, { eyeOpen: 2.0, pupil: 0.32, browY: 1.8 });
+  kitPerson(cam, 0.35, 'hero', { face, puff: v === 2 ? 0.7 : 1.45, wob: 0, flush: 1, purple: 1, sweat: 1, hat: [1, 0.22, 0] });
   applyCam(cam);
-  if (v === 1) {
-    const [mx, my] = kitPt('hero', [0, -282 + 60]);
-    for (let i = 0; i < 3; i++) { const x = mx - 60 + i * 60, y = my + 70; rrect(ctx, x - 8, y, 16, 90, 4); ctx.fillStyle = CANDLE_COL[i * 2]; ctx.fill(); kitFlame(x, y - 2, 1.5, 0, 0, 1, i); }
-  }
   screenSpace();
-  if (v === 0) { bigWord('29', 430, 390, 380, '#FFD447', 1); bigWord('MIN', 430, 700, 250, '#FFFFFF', 1); }
+  if (v === 0) { bigWord('29', 440, 400, 420, '#FFD447', 1); bigWord('MIN', 440, 730, 270, '#FFFFFF', 1); }
   else if (v === 1) { bigWord("DON'T", 440, 360, 230, '#FFFFFF', 1); bigWord('BREATHE', 440, 610, 210, '#FFD447', 1); }
-  else { bigWord('BLACK', 440, 380, 250, '#FFFFFF', 1); bigWord('OUT?', 440, 640, 270, '#FF5A6E', 1); }
+  else { bigWord('BLACK', 450, 380, 270, '#FFFFFF', 1); bigWord('OUT?', 450, 660, 300, '#FF5A6E', 1); }
   return { glow: 0.6, noCaptions: true, noSubscribe: true, grain: 0, noHud: true };
 };

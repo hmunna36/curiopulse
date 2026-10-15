@@ -111,12 +111,14 @@ function kState(t) {
       H.face = FACES.calm; P.face = Object.assign({}, FACES.soft, { lookX: -0.4 });
       const br = Math.sin((t - cue('land')) * 2 * Math.PI / 4.2);
       H.dy = -3 * br; P.dy = -2 * Math.sin((t - cue('land')) * 2 * Math.PI / 3.2);
+      const cnt = env2(t, cue('count') + 0.2, cue('counted') + 0.6, 0.5);   // the count: a hand on his belly, like the slow way
+      if (cnt > 0) { H.L = [lerp(-70, -20, cnt), lerp(-60, -20, cnt)]; H.dy = -3 * br - 5 * cnt * Math.max(0, br); H.face = Object.assign({}, FACES.calmK); }
       const L = cue('lights', []);
       cake.litEach = [...Array(7)].map((_, i) => (L[i] !== undefined ? ramp(t, L[i], L[i] + 0.25) : 0));
       cake.lit = 1;
       // Pip reaches to the cake with a long match while she lights them
       const lighting = L.length ? env2(t, L[0] - 0.8, L[6] + 0.6, 0.4) : 0;
-      if (lighting > 0) { P.L = [lerp(-70, -260, lighting), lerp(-60, -150, lighting)]; P.match = lighting; }
+      if (lighting > 0) { P.L = [lerp(-70, -260, lighting), lerp(-60, -150, lighting)]; P.matchK = lighting; }
       if (t >= cue('counted') - 0.3) H.face = Object.assign({}, FACES.soft, { lookX: 0.6 });
       if (t >= cue('turn')) { P.puff = ramp(t, cue('pipBreath') - 0.3, cue('pipBreath') + 0.3); P.face = Object.assign({}, FACES.hold, { lookX: -0.2 }); }
       if (t >= cue('button') - 0.2) H.face = FACES.laugh;

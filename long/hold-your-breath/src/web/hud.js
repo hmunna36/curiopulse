@@ -27,6 +27,7 @@ function drawHud(t, post) {
   if (txt.includes('{c}')) {     // a countdown of the viewer's 15 seconds
     const left = Math.max(0, Math.ceil(15 - (t - (TLd.cues.countFrom || 0)) - 1e-6));
     txt = txt.replace('{c}', String(left));
+    if (left === 1) txt = txt.replace('1 SECONDS', '1 SECOND');
     const frac = (t - (TLd.cues.countFrom || 0)) % 1;
     tickPop = left > 0 ? Math.exp(-frac * 14) : 0;
   }
