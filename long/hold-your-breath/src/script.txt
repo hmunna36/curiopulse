@@ -1,0 +1,120 @@
+# Narration for "What If You Hold Your Breath TOO Long? (Second by Second)" (long-form: 4:00-5:00, never over 5:15)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there, not in
+# the take. [tags] are v3 performance directions; they are not spoken and never captioned. tighten=0 keeps the
+# take's own pauses (jokes and reveals). tempo: explanations 1.03-1.06, jokes and reveals 1.00.
+# The film: on Pip's seventh birthday she bets her uncle she can hold her breath longer than him (loser gets no cake);
+# he wants to win something against her, just once. His own body is the obstacle (an alarm he cannot switch off, a
+# muscle that kicks). The viewer holds their breath with him in real time for the first minute: the clock (top left)
+# counts real seconds from "now" in the hook, and the gaps before "Ten", "Twenty", "Thirty", "Forty-five" are set so
+# each is said on its true second. Wordless beats: the candles going out (after `out`), Pip's nose (before `nose2`),
+# the whale going down (after `whale`), the blackout (after `toolong`), the breath count (after `count`), the final
+# image (after `button`).
+
+## hook gap=0.10 tempo=1.00
+[excited] Hold your breath. Right now... with him.
+
+## promise gap=0.25 tempo=1.04
+I'll tell you what your body's doing, every second... all the way to a man who held it for twenty-nine minutes.
+
+## ten gap=1.20 tighten=0 tempo=1.00
+Ten seconds. Easy.
+
+## bet gap=0.30 tempo=1.04
+It's Pip's birthday, and she bet him she'd last longer. Loser gets no cake.
+
+## twenty gap=2.87 tempo=1.04
+Twenty. Your blood is still almost totally full of oxygen. But every second, your body makes exhaust... and it's got nowhere to go.
+
+## thirty gap=1.75 tighten=0 tempo=1.00
+Thirty. Feel that? That burn?
+
+## alarm gap=0.40 tempo=1.04
+That's not the missing oxygen. It's mostly the exhaust. It makes your blood a tiny bit sour... and a sensor at the base of your brain tastes it... and pulls the alarm.
+
+## out gap=1.92 tighten=0 tempo=1.00
+Forty-five. He's out.
+
+## nose gap=2.20 tempo=1.00
+And Pip? Still going...
+
+## nose2 gap=0.70 tighten=0 tempo=1.00
+[deadpan] through her nose.
+
+## you gap=0.60 tighten=0 tempo=1.00
+And you? Breathe. Seriously.
+
+## result gap=0.45 tempo=1.04
+Most people let go between thirty seconds and a minute... with their blood still more than ninety percent full.
+
+## early gap=0.45 tempo=1.04
+You didn't run out. Your body rings the alarm on the exhaust... long before the oxygen gets low.
+
+## round2 gap=0.60 tempo=1.03
+Round two. He's seen a trick online: breathe really fast first.
+
+## whistle gap=1.10 tighten=0 tempo=1.00
+[deadpan] Pip got a whistle for her birthday.
+
+## dont gap=0.45 tighten=0.45 tempo=1.03
+And she's right. Fast breathing doesn't add oxygen. It just blows the exhaust away... so the alarm rings late. Sometimes... too late.
+
+## belly gap=0.60 tempo=1.04
+The slow way, then. Hand on your belly. Breathe in. Feel it push out? That's your diaphragm, a dome of muscle under your lungs. Remember it.
+
+## sixty gap=0.50 tempo=1.03
+Sixty seconds: a new record. And Pip has a cold, wet cloth.
+
+## dive gap=0.90 tempo=1.04
+Cold water on the face flips an ancient switch. His heart slows down, to save oxygen... the same switch a seal flips on every dive.
+
+## spleen gap=0.40 tempo=1.04
+And his spleen squeezes out spare red blood cells: oxygen carriers he didn't know he had.
+
+## ninety gap=0.50 tighten=0.45 tempo=1.02
+Ninety. And here it comes. That dome of muscle... starts kicking. On its own.
+
+## proof gap=0.50 tempo=1.04
+Why does it hurt so much? In the nineteen-sixties, two London scientists paralysed themselves with a drug, while a machine breathed for them.
+
+## proof2 gap=0.45 tighten=0.45 tempo=1.03
+With no muscle left to kick, they went four minutes without a breath, calm... until their doctor stopped it. Scientists still argue about what it proves.
+
+## best gap=0.60 tighten=0 tempo=1.00
+[excited] One minute fifty-two! Nearly three times his first try.
+
+## cake gap=0.70 tighten=0 tempo=1.00
+[deadpan] Pip has started on the cake.
+
+## human gap=0.70 tempo=1.03
+So how far can a human go? The official record, on one breath of air: eleven minutes and thirty-five seconds... face down in a pool.
+
+## oxygen gap=0.45 tempo=1.04
+With a trick, breathing pure oxygen first, a man in Croatia went twenty-nine minutes. That's this whole video... almost seven times.
+
+## whale gap=0.50 tempo=1.02
+And a whale once stayed down three hours and forty-two minutes. How? Scientists are still working it out.
+
+## toolong gap=2.20 tighten=0.45 tempo=1.03
+But you're not a whale. So what happens if you hold it too long? Remember the whistle? Breathe fast first, and your oxygen can run out before the alarm rings. You just... switch off.
+
+## water gap=1.40 tempo=1.02
+In water, that's how strong swimmers drown. So: never in water, never alone, and never fast breathing first.
+
+## land gap=0.60 tempo=1.03
+On land? Your body won't let you. Even if you blacked out, it would take over... and breathe for you.
+
+## count gap=0.60 tighten=0 tempo=1.00
+Count your breaths for fifteen seconds. Starting... now.
+
+## counted gap=14.61 tempo=1.02
+About four? You didn't choose a single one. That part of his brain he was fighting? It's been breathing for him his whole life.
+
+## turn gap=0.60 tempo=1.02
+So this time, when Pip takes a big breath... he lets the birthday girl win.
+
+## button gap=0.80 tighten=0 tempo=1.00
+Turns out... this is one contest you're supposed to lose.
+
+## sub gap=2.60 tighten=0.6 tempo=1.02
+[chuckles] Next week: what happens if you step into space without a suit. Subscribe... and keep breathing.
