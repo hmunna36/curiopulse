@@ -13,7 +13,7 @@ Order since 10 Oct 2026 (the user's word): topics the viewer can feel or try on 
 belief, go first. On Instagram the three biggest Reels were all of this kind (knuckle cracking 34K, ears pop 10K,
 leg falls asleep 6K views; the only ones with real follows). A refill keeps this order: such topics above the rest.
 
-- [ ] Why do you get a shock from a doorknob? — he reaches for a metal door handle: ZAP; shoes rubbing the floor load you with electrons, dry air traps them, they jump to metal; the tiny spark is thousands of volts; hedged: exactly why rubbing moves charge is still disputed after 2,600 years. No exact voltage figures
+- [~] Why do you get a shock from a doorknob? — doorknob-shock — started 2026-10-15
 - [ ] Why can't you BREATHE and SWALLOW at the same time? — he tries it mid-gulp on camera and splutters (the viewer can try it now); air and food share one pipe at the throat, and a flap (the epiglottis) folds over the windpipe on every swallow while breathing pauses. Skip "babies can do both" (disputed)
 - [ ] Why do you SHIVER when you're cold? — he steps out of a lake into the wind and his teeth rattle; the brain's thermostat (hypothalamus) orders muscles to twitch fast with no movement to show for it, so nearly all the energy comes out as heat. Fear-trembling is a different thing (adrenaline): one line at most, or leave it out. Goosebumps is already on the channel: do not repeat it. From YouTube Studio's suggestions, 10 Oct 2026
 - [ ] Why does soda burn your tongue? — he cracks a can and takes a giant gulp, eyes watering; an enzyme on the tongue turns the gas into acid that fires sour and pain sensors; it bites just as hard in a pressure chamber with no bubbles, and climbers on altitude pills lose the tingle. Not "the bubbles popping"

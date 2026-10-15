@@ -346,3 +346,10 @@ YouTube has hypnic-jerk on 30 Sep and finger-wrinkles on 1 Oct at 23:30 IST. So 
 | The scheduled Reel isn't in Content → Scheduled | It wasn't scheduled. Check Drafts, and redo the Share step |
 | Route B: ig `resumable route failed … video_url is required` | Expected with some Instagram-Login tokens. It falls back to the public GitHub URL, so push first |
 | Route B: a Reel posted twice | Never retry `media_publish` blindly (ig.mjs checks first). Delete the duplicate in the app |
+
+- **Reel upload stalls at 5% when the page's `document.visibilityState` is "hidden" (14-15 Oct 2026).** Meta's new
+  composer ("Share to", "Caption reel") only uploads while the tab is really visible. `osascript` to activate Chrome
+  and set the active tab made it "visible" for a moment but it flipped back to "hidden" within seconds (Chrome frontmost,
+  `hasFocus` true), and no `rupload` request went out; System Events window inspection is not allowed (no assistive
+  access; do not change that). Do not loop on it: after one 5% stall, copy the prepared mp4 and caption to
+  `~/Desktop/instagram-pending/` and tell the user the Reel is pending. 15 Oct: dizzy-spin and ears-ring went there.
