@@ -347,6 +347,13 @@ YouTube has hypnic-jerk on 30 Sep and finger-wrinkles on 1 Oct at 23:30 IST. So 
 | Route B: ig `resumable route failed … video_url is required` | Expected with some Instagram-Login tokens. It falls back to the public GitHub URL, so push first |
 | Route B: a Reel posted twice | Never retry `media_publish` blindly (ig.mjs checks first). Delete the duplicate in the app |
 
+- **What fixed the stalled upload (15 Oct 2026, after the user cleared Chrome's cache and restarted it):** with a clean
+  Chrome (one window, no leftover Business Suite tabs from other runs) the composer uploaded while
+  `document.visibilityState` still said "hidden" (31% → 95% → 100% in about 25 s), so the stall was not only visibility.
+  The routines' own stale composer tabs also fought mine for the foreground. In a clean Chrome: collector input
+  + `file_upload` parts, assemble (SHA-256 checked), Create reel, Add video, type the caption, Next, Next, Schedule, then
+  read the Scheduled row back (the caption must show). The Instagram-only date picker: click the date field, click the
+  day in the calendar; hours and minutes are two fields typed with real keystrokes (24-hour).
 - **Reel upload stalls at 5% when the page's `document.visibilityState` is "hidden" (14-15 Oct 2026).** Meta's new
   composer ("Share to", "Caption reel") only uploads while the tab is really visible. `osascript` to activate Chrome
   and set the active tab made it "visible" for a moment but it flipped back to "hidden" within seconds (Chrome frontmost,
