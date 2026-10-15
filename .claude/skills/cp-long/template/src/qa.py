@@ -18,6 +18,10 @@ Checks (FAIL blocks the upload; WARN is for the review):
 - Voice: speech-band SNR >= 10 dB on all but a few words (from the stems).
 - Intelligibility: the transcript of the final mix vs the script, word error rate <= 8 %.
 - Captions: every word is captioned, lines are 1-6 words, at most 2 lines, none on screen under 0.25 s.
+- Every second (the user, 15 Oct 2026: "every second should be interesting"; everysec.py, all warnings for the
+  review): no second without visible change; a visual event (a cut, a flash, a big arrival) at least every 5 s; a
+  sound event (hit, whoosh, pop, tick) at least every 5 s; the music changes at least every 30 s; no dead second
+  (nothing moved, no event, no voice). It writes qa/seconds.csv, one row per second.
 It also writes contact sheets, one frame per second (qa/sheet_*.png), for the visual review. Read them all.
 The true peak is ITU-R BS.1770's: the largest sample after 4x oversampling (scipy), measured next to pyloudnorm's
 integrated loudness on the AAC decoded from the MP4; the report names the moment of the peak.
@@ -34,6 +38,8 @@ import pyloudnorm as pyln
 import soundfile as sf
 from PIL import Image, ImageDraw
 from scipy import signal
+
+import everysec as ES   # the every-second measurements (reference/long-form.md, "The every-second rule")
 
 WORK, MP4 = sys.argv[1], sys.argv[2]
 TRANSCRIBE = "--no-transcribe" not in sys.argv
@@ -100,6 +106,7 @@ for x in still:
     longest = max(longest, cur)
 longest_s = (longest + GAP) / fps if longest else 0.0
 check(longest_s <= 2.0, "no frozen stretch over 2.0 s", f"longest {longest_s:.2f} s")
+sec_motion, vis_ev = ES.visual(frames, fps)   # per-second change and the visual events (the every-second rows below)
 
 # ---------------------------------------------------------------- contact sheets (one frame per second)
 sh_dir = os.path.join(QA, "_sheet")
@@ -153,6 +160,39 @@ if os.path.isdir(stems):
           + (f"; under 6 dB: {', '.join(f'{w}@{t:.2f} ({v:.1f})' for v, w, t in weak[:10])}" if weak else ""))
 else:
     check(False, "voice clear of the mix", "no stems/ (run audio.py)", warn=True)
+
+# ---------------------------------------------------------------- every second (the user, 15 Oct 2026; long-form.md)
+still_s = [s_ for s_, m_ in enumerate(sec_motion) if m_ < ES.STILL_SECOND]
+check(not still_s, "every second moves (no second without visible change)",
+      "none" if not still_s else f"{len(still_s)} still: " + ", ".join(ES.fmt_t(x) for x in still_s[:15]), warn=True)
+vg = ES.gaps(vis_ev, dur)
+check(not vg, f"a visual event (a cut, a flash, a big arrival) at least every {ES.EVENT_GAP:.0f} s",
+      f"{len(vis_ev)} events, {60 * len(vis_ev) / max(dur, 1):.0f} a minute"
+      + ("; gaps: " + ", ".join(f"{g:.1f} s from {ES.fmt_t(a)}" for g, a, b in vg[:10]) if vg else ""), warn=True)
+snd_ev, vfrac = [], [0.0] * len(sec_motion)
+if os.path.isdir(stems):
+    snd = st["sfx"].copy()
+    if os.path.exists(os.path.join(stems, "bed.wav")):
+        bed_ = sf.read(os.path.join(stems, "bed.wav"))[0]
+        snd[:len(bed_)] += (bed_.mean(axis=1) if bed_.ndim == 2 else bed_)[:len(snd)]
+    snd_ev = ES.onsets(snd)
+    sg = ES.gaps(snd_ev, dur)
+    check(not sg, f"a sound event (hit, whoosh, pop, tick) at least every {ES.EVENT_GAP:.0f} s",
+          f"{len(snd_ev)} events, {60 * len(snd_ev) / max(dur, 1):.0f} a minute"
+          + ("; gaps: " + ", ".join(f"{g:.1f} s from {ES.fmt_t(a)}" for g, a, b in sg[:10]) if sg else ""), warn=True)
+    flat = ES.music_flat(st["music"], dur)
+    check(not flat, "the music changes at least every 30 s (a build, a hit, a drop, a new section)",
+          "it moves" if not flat else "flat: " + ", ".join(f"{ES.fmt_t(a)}-{ES.fmt_t(b)} ({r:.1f} dB)" for a, b, r in flat[:8]),
+          warn=True)
+    vfrac = ES.voice_fraction(st["voice"], len(sec_motion))
+rows_s = ES.seconds_table(sec_motion, vis_ev, snd_ev, vfrac)
+dead = [r_["second"] for r_ in rows_s if r_["dead"]]
+check(not dead, "no dead second (nothing moved, no visual or sound event, no voice)",
+      "none" if not dead else f"{len(dead)}: " + ", ".join(ES.fmt_t(x) for x in dead[:15]), warn=True)
+with open(os.path.join(QA, "seconds.csv"), "w") as fh:
+    fh.write("second,motion,visual_events,sound_events,voice,dead\n")
+    for r_ in rows_s:
+        fh.write(f'{r_["second"]},{r_["motion"]},{r_["visual_events"]},{r_["sound_events"]},{r_["voice"]},{r_["dead"]}\n')
 
 # ---------------------------------------------------------------- intelligibility: whisper transcript vs script
 norm = lambda s: re.sub(r"[^a-z0-9' ]", " ", s.lower().replace("%", " percent"))  # noqa: E731

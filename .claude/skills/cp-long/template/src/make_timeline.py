@@ -46,6 +46,14 @@ W, E, ev, find = T.W, T.E, T.ev, T.find
 cues = {
     # "gasp": ev("gasps")["t"], "jumps": W("JUMPS"), "jumps_end": E("JUMPS"), "bam": W("BAM"),
 }
+# ---- the payoffs (the every-second rule, 15 Oct 2026; reference/long-form.md). Name every payoff of the scene table
+# here, on the word or the frame where it lands: "pay_<name>" for the small ones (a reveal, a number landing, the
+# viewer's test result: one every 3-5 s) and "big_<name>" for the big ones (a clock jump with its consequence, a scale
+# jump, each act's payoff: one every 15-20 s; the biggest in the last minute). audio.py builds a riser into every one
+# and lands a hit on it (a held breath of silence and a crash before each big one), and the scenes time their impact
+# (flash, squash, camera kick, sparks) to the same cue, so the eye and the ear are paid on the same frame.
+# cues["pay_first_number"] = W("SEVENTY")
+# cues["big_scale_jump"] = W("CELL")
 # ---- the subscribe cue (web/subscribe.js): the last ~2.6 s of the video. Needs a `## sub` block in script.txt with the word "subscribe".
 _sub_w = T.W("subscribe")                       # if the line says "subscribes"/"subscribing", use that word
 _sub_in = min(_sub_w - 0.30, T.duration - 2.6)  # pill pops ~0.3 s before the word, and at least 2.6 s remain

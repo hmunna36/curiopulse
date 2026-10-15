@@ -98,10 +98,74 @@ curiosity and real payoffs, never with a promise the film does not keep ("Truth"
 - **Proof it holds (every QA round):**
   - *the skim test*: on the one-frame-a-second contact sheets, any eight frames in a row that look alike are a dead
     stretch: fix it;
-  - *the 15-second audit*: for each 15 seconds of the film, one line in `.work/qa/ship-review.md`: "they stay
-    because …". A line you cannot write honestly means that stretch is rebuilt;
+  - *the 5-second audit* (since 15 Oct 2026; it was every 15 seconds): for each 5 seconds of the film, one line
+    in `.work/qa/ship-review.md`: "they stay because …". A line you cannot write honestly means that stretch is
+    rebuilt;
   - *the leave test*: for each scene, ask "if I stopped here, what would I miss in the next ten seconds?" and write
     the answer in the scene table. "Nothing much" fails the scene.
+
+## The every-second rule (the user, 15 Oct 2026: "every second should be interesting in the longform video with dopamine releasing visuals, explaination, music, e.t.c")
+
+The every-scene rule makes each scene earn the next one; this rule makes each SECOND earn the next one. What holds a
+viewer second after second is a rhythm of wanting and getting: something is always about to happen, and then it pays
+off, again and again, at different sizes. Three layers carry that rhythm together, and each is planned, not hoped
+for: what they see, what they are told, what they hear. Every payoff is real ("Truth", in the film bar): the rhythm
+comes from true reveals, never from a promise the film does not keep.
+
+**The reward rhythm (planned in the scene table: a "payoffs" column with a time for each)**
+- A small payoff every 3–5 s: a reveal, a transformation finishing, a number landing, something clicking into place,
+  a laugh, the result of the viewer's own test.
+- A bigger one every 15–20 s: a jump of the clock and what it does to him, a jump in scale, a "wait, WHAT?". An
+  act-sized one about every minute; the biggest of all in the last minute.
+- Vary the size and the spacing so it never becomes a metronome; a quiet beat now and then makes the next hit land.
+- Something is always pending: at any second the viewer could say what they are waiting for in the next five seconds.
+
+**Pictures that pay off**
+- Nothing is ever still. The camera always drifts, pushes or travels (a locked frame over one second only for a
+  planned wordless beat that carries a reveal); the hiker always acts (breath, blinks, small reactions, the eyes
+  leading); the world lives (particles, steam, flicker, light that breathes).
+- Every step of the explanation is a transformation, not a label: things fill, pour, assemble, split, glow, morph;
+  the camera dives from his face to a cell and back without a cut. Scale jumps are the film's biggest visual rewards.
+- Every event has juice: anticipation (a 4–8 frame wind-up), impact (a flash, a squash, a camera kick, sparks),
+  follow-through (an overshoot that settles). Big arrivals pop; nothing just appears.
+- Colour and light are the reward: the frame stays restrained so the reveal can get the saturated accent and a bloom
+  flash. A new palette or world every 15–20 s is a pattern interrupt in itself.
+- Numbers count up, flip and land with a hit; the clock ticks or flips on every jump.
+- Satisfying motion is a tool: perfect loops, things snapping into place, smooth fills, symmetric bursts, a match cut
+  from the everyday object to its inside.
+
+**The explanation, line by line**
+- Every sentence is a question, an answer, a surprise, a number, a joke, or an instruction for the viewer's test.
+  No connective tissue ("so basically", "now let's", "as we saw", "it turns out").
+- The picture explains; the words point at it and land the meaning. Say less than the picture shows.
+- Short loops pay fast (a question answered within 2–10 s) while one long loop per act runs underneath them.
+- The viewer's own body, everyday comparisons and numbers they can picture; a science word only as a label.
+
+**The music and the sound: the engine of the rhythm**
+- The score follows the scene table: one theme, a different energy for each stretch, and a change at least every
+  30 s (an instrument in or out, half time, a filter opening, a key lift, a drop-out). `SECTIONS` in audio.py.
+- A build into every payoff (a riser, a drum roll, a filter sweep): about 1 s into the small ones, 2–8 s into the big
+  ones. The payoff lands on a hit (a kick, a crash, a bell), then the music releases.
+- Silence is the strongest note: half a second to a second of held breath right before the biggest reveals, then
+  the hit.
+- Cut on the beat: the shot changes and the big visual events sit on the score's beat grid (`on_beat(t)` in
+  audio.py), so the edit feels right without anyone knowing why.
+- Every visual event has its sound: a whoosh on a camera move, a pop on an arrival, a tick on the clock, a click when
+  things lock, a shimmer on a reveal, a low boom on a scale jump. The voice stays clear above all of it (qa.py).
+- The template does the mechanics: name every payoff as a timeline cue, `pay_*` (small) or `big_*` (big), in
+  make_timeline.py, and audio.py builds the riser, the held breath and the hit on it; the scenes time their impact
+  to the same cue, so the eye and the ear are paid on the same frame.
+
+**Proof (every QA round)**
+- qa.py's "every second" rows (`everysec.py`): no second without visible change; a visual event (a cut, a flash, a
+  big arrival) at least every 5 s; a sound event at least every 5 s; the music changing at least every 30 s; no dead
+  second (nothing moved, no event, no voice). They are warnings for the review, and `qa/seconds.csv` has one row per
+  second. Each flag is fixed, or named in ship-review.md as a planned wordless beat that carries a reveal.
+- The 15-second audit becomes a **5-second audit**: one line for every 5 seconds of the film, "they stay because …"
+  (what they just got, what they are waiting for). A line you cannot write honestly is a stretch to rebuild.
+- The thresholds in everysec.py are first guesses (15 Oct 2026; on the funny-bone Short, a well-paced one, they flag
+  nothing: about one visual event a second). If one flags a stretch that is honestly gripping, say so in
+  ship-review.md and change the number there with a dated comment.
 
 ## The film bar (the user, 4 Oct 2026: "every video should be like oscar winning short film")
 
@@ -276,9 +340,10 @@ only the ones that qualify. `topics.md` holds the queue; one line per video, the
 | 12 | **Length** | 4:00–5:00; never over 5:15; no scene that could be cut unnoticed |
 | 13 | **Every scene holds** | the scene table is complete (waiting for, turn, leaves open, stakes) and matches the film; the clock is on screen and every jump is a hook; a promise at least every 30 s, each paid within 30 s; the first payoff by 0:30; the last minute is the strongest; the skim test finds no eight alike frames; the 15-second audit has an honest line for every 15 seconds; no scene fails the leave test |
 | 14 | **The viewer takes part** | three or more tests the viewer does while watching (one in the hook, one in each later act), each safe, seated and seconds long, each paid off by what it shows; the explanation points back to them in everyday words, with no science word spoken in the first 30 s; the description and the pinned-comment suggestion end with the question about the viewer's result |
+| 15 | **Every second** | the scene table has a payoffs column: a small payoff every 3–5 s, a bigger one every 15–20 s, the biggest in the last minute, sizes varied; every event juiced (anticipation, impact, follow-through); every explanation step a transformation; every line a question, answer, surprise, number, joke or test; the score builds into the payoffs (`pay_*` / `big_*` cues), holds its breath before the biggest, changes at least every 30 s and the cuts sit on its beat; qa.py's every-second rows clean, or each flag named as a planned beat; the 5-second audit has an honest line for every 5 seconds |
 
 Read every contact sheet (`.work/qa/sheet_*.png`, one frame per second) and crop the risky moments at full size.
-Score items 0, 13 and 14 hardest. Item 0: watch the sheets with the captions ignored and ask whether the story still
+Score items 0, 13, 14 and 15 hardest. Item 0: watch the sheets with the captions ignored and ask whether the story still
 reads. If it is an explainer with a character standing next to it, it is not done: restage the beats around what he
 wants. Item 13: go through the film one scene at a time and try to leave; every place where leaving costs nothing is
 a place a real viewer leaves.

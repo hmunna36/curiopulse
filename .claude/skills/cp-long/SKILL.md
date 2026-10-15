@@ -82,6 +82,12 @@ Plus: the video scheduled on YouTube with its thumbnail and captions, a row in `
 - **Every scene holds** (`reference/long-form.md`, "The every-scene rule"; the user, 7 Oct 2026): the scene table
   before the script, the clock on screen, a promise at least every 30 s, a new picture event every 3–5 s, the last
   minute the strongest. Ship-bar item 13.
+- **Every second holds** (`reference/long-form.md`, "The every-second rule"; the user, 15 Oct 2026: "every second
+  should be interesting in the longform video with dopamine releasing visuals, explaination, music"): a planned
+  rhythm of payoffs (a small one every 3–5 s, a bigger one every 15–20 s), pictures that transform and land with
+  juice, lines with no filler, and a score that builds into every payoff (`pay_*` / `big_*` cues), holds its breath
+  before the biggest and changes at least every 30 s. qa.py's every-second rows and the 5-second audit prove it.
+  Ship-bar item 15.
 - **4:00–5:00, never over 5:15.** qa.py fails anything over 315 s. If the cut runs long, cut the scene with the
   lowest stakes; never speed the narrator up to fit.
 - **Code-built only.** Procedural canvas animation plus synthesized sound. Never AI video, stock footage or generated
