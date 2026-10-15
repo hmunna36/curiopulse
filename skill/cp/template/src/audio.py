@@ -40,6 +40,7 @@ for i, s in enumerate(TL["shots"][1:]):
     sfx.add(pan_st(whoosh(0.28, 400 + 150 * (i % 4), 2400, 500 + i), 0), s["start"] - 0.2, db(-18))
 
 # ================================================================= subscribe cue (pill pop, cursor click, bell ding)
+# OFF since 16 Oct 2026: make_timeline.py sets no sub_in cue (no pill; the Short loops), so nothing below plays.
 # very quiet on purpose: the cue is silent (nobody says "subscribe", 9 Oct 2026) and plays under the button line, so
 # these three sounds sit under spoken words. Nothing here may mask one (qa.py lists weak words).
 if "sub_in" in c:

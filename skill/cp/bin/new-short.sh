@@ -54,7 +54,7 @@ spec.length = JSON.parse(j).length;
 fs.writeFileSync(f, JSON.stringify(spec, null, 2) + "\n");
 console.log(`length arm: ${spec.length.arm.toUpperCase()} (${spec.length.min}-${spec.length.max} s) for the YouTube slot ${spec.length.slot}, written to publish.json`);' "$DEST/publish.json" "$LEN"
 else
-  echo 'note: could not read the next YouTube slot, so publish.json still says length arm "standard": run yt.mjs next-slot and put its "length" object there before writing the script'
+  echo 'note: could not read the next YouTube slot, so publish.json still says length arm "short" (the template default since 16 Oct 2026): run yt.mjs next-slot and put its "length" object there before writing the script'
 fi
 mkdir -p "$DEST/.work" "$DEST/src/fonts"
 cp "$CACHE/fonts/"*.ttf "$DEST/src/fonts/" 2>/dev/null || echo "note: no cached fonts; build.sh downloads them"

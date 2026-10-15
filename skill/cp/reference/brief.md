@@ -18,7 +18,7 @@ EXPERIENCE the explanation, not be told it.
   - Every sound is synthesized in Python.
   - The only recorded element is the narration: ElevenLabs.
   - No stock footage, no generated images or video, no Higgsfield credits.
-- **Length: 40–50 s, never over 55 s.** The user, 1 Oct 2026: "can we reduce the short length? it's going to 73
+- **Length: 30–35 s since 16 Oct 2026 (below); 40–50 s from 1 Oct, never over 55 s.** The user, 1 Oct 2026: "can we reduce the short length? it's going to 73
   seconds".
   - The Shorts up to onion tears ran 64–75 s, after the user's hypnic-jerk note ("duration relaxed, everything matters
     is the production quality, subtle pacing and clarity with comedic pauses and extremely expressive"). That note
@@ -33,8 +33,10 @@ EXPERIENCE the explanation, not be told it.
     length (23–39 s, mostly 27–31), so from the Short released on 6 Oct 23:30 the one that takes a **23:30 YouTube
     slot is 30–35 s** (66–76 words) and the one that takes an **11:30 slot stays 45–50 s** (95–110 words).
     `yt.mjs next-slot` tells a run which it is building, and qa.py holds it to that band (30–35 s passes, over 37 s
-    fails). Everything else is identical in both, so length is the only difference. The user reads the comparison
-    from `numbers.md` (first reading on or after 14 Oct) and decides; until then the test continues.
+    fails). Everything else is identical in both, so length is the only difference.
+  - **Since 16 Oct 2026 every Short is 30–35 s, 66–76 words** (user, 15 Oct 2026: "yes", on the test's readings: twice
+    as many viewers reached the end, the short ones drew more views on both platforms, and both breakouts were
+    31–33 s). The length test is over; `yt.mjs next-slot` says "short" for every slot.
 - **The narrator is performed, not read.** Jessica (ElevenLabs `eleven_v3`, voice `cgSgspJ2msm6clMCkdW9`), stability
   0 ("creative"), with v3 delivery tags. The first lightning cut used Kokoro, and the user said it "sounded like
   someone was READING A BOOK". That must never happen again. See `narration.md`.
@@ -46,7 +48,8 @@ EXPERIENCE the explanation, not be told it.
   new person per scene.
 - **Endings:** a memorable last line plus a visual button, and the last shot ends on the picture of frame 1 so the
   Short loops (finger-wrinkles dives back into the water; voice-recording cuts back to his thumb on PLAY). Since
-  5 Oct 2026 nothing else is said at the end: no ask, no "Next up", no outro (the Subscribe pill there is silent).
+  5 Oct 2026 nothing else is said at the end: no ask, no "Next up", no outro; since 16 Oct 2026 no pill either. The
+  button is written to run into the hook when the Short loops.
 - **Subscribe cue (2026-09-30, the user's explicit request; overrides the earlier "no call to action" and "no like and
   subscribe" rules).** The channel has almost no organic subscribers (lightning: 1,221 views, almost no subs), so every
   Short carries one. What the numbers did to it (`analytics.md`):
@@ -54,37 +57,41 @@ EXPERIENCE the explanation, not be told it.
     1,000 views, but 43–57 % of the viewers still watching left within three seconds of the word.
   - 5 to 9 Oct: a spoken aside mid-video ("Subscribe... it gets weirder."). The step moved with it (24 % and 34 % gone
     in three seconds) and the channel's rate fell to about 2 per 1,000.
-  - **Since 9 Oct 2026 (user: "just keep the visual cue and say nothing"): the picture only.** The animated Subscribe
-    pill + bell with a cursor click (`web/subscribe.js`) plays silently over the last 3.4 s, on top of the button
-    line, inside the safe area. Nobody says "subscribe"; the script has no `sub` block.
+  - 9 to 15 Oct (user: "just keep the visual cue and say nothing"): the picture only, the animated Subscribe pill +
+    bell with a cursor click (`web/subscribe.js`) silently over the last 3.4 s. It halved the step at the end but did
+    not remove it (a middle 24 % of the viewers left in the last 4 s, 13 % with nothing there), and subscribers per
+    1,000 views stayed at 1.6–1.9, as without it.
+  - **Since 16 Oct 2026 (user, 15 Oct: "yes"; `analytics.md`): no cue in the video at all.** Nobody says
+    "subscribe", there is no pill, and the Short loops: replays, not the ask, carried the channel's breakout, and the
+    3½ days it spread brought 74 subscribers, more than the whole week before. The ask lives in text: the Reel caption
+    and the description end on a one-word question about the test, then the follow / subscribe line; the "Next up"
+    comment asks too (`publish.md`).
   - The story is never stopped for it, and nothing that is said sounds like an ending.
-  - The next topic is teased in text only: the "Next up" comment, the description and the Reel caption.
-  - Read it after 14 Shorts: the step at the end of the curve should be gone, and subscribers per 1,000 views are set
-    against 3.2 (spoken last line) and about 2.0 (mid-video aside). Under about 2.5, ONE spoken last line comes back:
-    "A new strange question every day. Subscribe."
-- **The opening (5 Oct 2026, user: "yes"; `story.md` §2):** "You…" + a physical action; the answer, as a plain
-  surprising claim or metaphor, starts by second 5; the scientific name is never a spoken beat. Since 9 Oct 2026
-  (user: "i need all updates") the picture does not stop either: the opening is one continuous shot through the
-  answer, with no cut before 7 s, no shot of his frozen face or stare before second 12 and no title card in the
-  first 15 s. The deadpan beat lives later.
+- **The topic and the opening (5 and 15 Oct 2026, user: "yes"; `story.md` §2 and §4):** since 15 Oct every topic is
+  a test the viewer can do on themselves while watching, and the hook is that test ("Pinch one nostril shut..."),
+  with "you"/"your" and the strange thing by 3 s; the answer, as a plain surprising claim or metaphor, starts by
+  second 5; the scientific name is never a spoken beat, and the lesson keeps pointing back to the viewer's test in
+  everyday words. No shot of his frozen face or stare before second 12 and no title card in the first 15 s (9 Oct);
+  the 9 Oct "one continuous shot, no cut before 7 s" rule was dropped on 15 Oct (it failed its own test). The
+  deadpan beat lives later.
 - **No on-screen credits** (no "voice: ElevenLabs", no channel logo intro).
 
 ## The rules from the brief, in short
 
-- **Hook:** the first second is ACTION.
+- **Hook:** the first second is ACTION, and it is the viewer's test: he is doing what they are about to try.
   - The viewer instantly sees that something strange is happening.
   - Never "Hey guys", "Welcome back", "Today we…", "Did you know…", a logo or a slow establishing shot.
   - Motion is on frame 1.
-- **Structure** (the later decisions above set it; the full table for both lengths is in `story.md` §3):
+- **Structure** (30–35 s since 16 Oct 2026; the full table is in `story.md` §3):
 
-  | 45–50 s | 30–35 s | Beat |
-  |---|---|---|
-  | 0–3 s | 0–3 s | hook: "You…" + a physical action, the strange thing |
-  | by 5 s | by 5 s | the answer starts, over the same shot (the first cut at 7 s or later) |
-  | to ≈ 25 s | to ≈ 17 s | the mechanism, shown |
-  | ≈ 25–30 s | ≈ 17–21 s | payoff |
-  | to ≈ 42 s | to ≈ 29 s | the weirdest true fact |
-  | to the end | to the end | button, and the cut back to frame 1; the silent Subscribe pill over the last 3.4 s |
+  | Time | Beat |
+  |---|---|
+  | 0–3 s | hook: the viewer's test, and the strange thing happens to them |
+  | by 5 s | the answer starts |
+  | to ≈ 17 s | the mechanism, shown, pointing back to the test |
+  | ≈ 17–21 s | payoff |
+  | to ≈ 29 s | the weirdest true fact |
+  | to the end | button (it runs into the hook), and the cut back to frame 1; no pill |
 
 - **Never static.** Something meaningful changes every 1–3 s (camera, character, particles, light, process, text).
   But no random motion: every movement supports the story.

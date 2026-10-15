@@ -56,21 +56,25 @@
   - Write numbers as words ("seventy percent"), with DISPLAY in make_timeline showing "70%".
   - Keep acronyms and hard words rare. If whisper mis-hears a line in QA, rephrase it: "isn't instant" became
     "is actually a handover".
-- **Pace:** the 46–50 s Shorts ran 94–111 words, so ≈ 2.15 words/s including the gaps. Write to the length arm that
-  `yt.mjs next-slot` gave this Short (the length test, `analytics.md`):
-  - **STANDARD, 45–50 s: 95–110 words**, about 560–680 characters;
-  - **SHORT, 30–35 s: 66–76 words**, about 400–470 characters.
+- **Pace:** ≈ 2.15 words/s including the gaps. **Every Short is 30–35 s since 16 Oct 2026** (the length test is over;
+  user, 15 Oct 2026; `analytics.md`): **66–76 words**, about 400–470 characters. `yt.mjs next-slot` says "short".
     (hiccups, 6 Oct 2026: 72 words came in at 37.1 s and 70 words at 33.9 s after capping the pauses. Every gag that needs a
     pause of its own costs 0.7–0.9 s: with three or more of those, write 66–70 words.)
   Count them before synthesizing; if the draft is longer, cut whole sentences (a second example, a bonus fact, the
   hedged debate), never the comedic gaps or the answer line. After `voice.py`, `make_timeline.py` prints
-  the duration: outside the arm's band (qa.py passes 43–50 s or 30–35 s), fix it with `gap`, `tighten` and `tempo`
-  (free) before touching the text.
+  the duration: outside 30–35 s (qa.py's band for the short arm), fix it with `gap`, `tighten` and `tempo`
+  (free) before touching the text. (The old 45–50 s arm, 95–110 words, is only in the Shorts made before 16 Oct.)
+- **Everyday words (15 Oct 2026, `story.md` §2).** Viewers leave when the words turn technical: chalkboard lost 23 % of
+  those still watching in one second, on "one narrow band of pitch". No science word is spoken in the first 15 s;
+  every mechanism line points back to what the viewer just did ("That blocked side? It's on its break.").
 
 ## The first two blocks: `hook` and `answer` (5 Oct 2026; `story.md` §2)
 
-- `## hook`: the first word is "You" or "Your", with something physical being done in the first few words; the
-  strange thing lands by 3 s. Split it in two takes when the jolt needs its own timing (hypnic-jerk's "hook" + "jump").
+- `## hook` (15 Oct 2026): **the test.** The line tells the viewer what to do to their own body, or what they are
+  doing right now, and the strange thing happens to them by 3 s: "Pinch one nostril shut. Now breathe. The other
+  side's blocked, right?" "You"/"your" sits in the first eight words (qa.py warns otherwise). Give the viewer the
+  half-second they need to try it: a short gap after the instruction, before the result. Split it in two takes when
+  the jolt needs its own timing (hypnic-jerk's "hook" + "jump").
   - **Write a hook that must end by 4 s in one breath** (spicy-food, 7 Oct 2026): no "..." and no capitals but the
     last word. Four takes of an 11-word hook with a pause ran 5.0–6.2 s; `[panicked]` + the same thought in 12 words
     with no pause came in at 4.0 s. Audition two or three wordings with `voice.synth` before building on a slow one.
@@ -99,11 +103,14 @@ reading is in `analytics.md`.
 - **The script has no `sub` block** and no line that asks, teases or winds up: no "subscribe", no "Next up…", no
   "Tomorrow…", no "like and…", no "thanks for watching", no "see you…". qa.py fails a spoken "subscribe";
   make_timeline.py says so first.
-- **The cue is the picture only:** the Subscribe pill plays silently over the last 3.4 s, on top of the button line
-  (`visual.md`; make_timeline.py sets `cues["sub_in"]`, `sub_tap` and `sub_out` from the duration). Its three sounds
-  are very quiet (audio.py) and sit under the button's words: nothing may mask them (qa.py lists weak words).
-- **The last block is the button.** Nothing comes after it but the tail (1.0–1.5 s) and the cut back to frame 1.
-- **Budget:** the totals are unchanged (95–110 words, or 66–76); the few words the aside took go to the story.
+- **No cue at all since 16 Oct 2026** (user, 15 Oct: "yes"; `analytics.md`): from 9 to 15 Oct a silent Subscribe pill
+  played over the last 3.4 s; it still made about a quarter of the viewers leave in the last 4 s and added no
+  subscribers, so it is gone and the Short loops. The subscribe ask lives in the caption, the description and the
+  comments (`publish.md`).
+- **The last block is the button, written to loop.** Nothing comes after it but the tail (1.0 s) and the cut back to
+  frame 1. Read the button and then the hook aloud as one sentence: the viewer should slide straight back into the
+  test.
+- **Budget:** 66–76 words; the few words an ask would take go to the story.
 - The next topic is teased in text only: the "Next up" comment, the description and the Reel caption (`publish.md`).
 - History: until 5 Oct 2026 `sub` was the last block, ≤ 70 characters, and teased the next Short ("Next up: …
   Subscribe…"); from 5 to 9 Oct it was a mid-video aside of ≤ 45 characters ("Subscribe... it gets weirder.") with the

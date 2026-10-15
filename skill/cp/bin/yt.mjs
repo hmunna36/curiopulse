@@ -78,16 +78,20 @@ export const SLOTS = {youtube: ['11:30', '23:30'], instagram: ['06:30', '18:30']
 const IST_MS = 5.5 * 3600 * 1000;
 const istDate = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 10); // YYYY-MM-DD in IST
 const istHM = (ms) => new Date(ms + IST_MS).toISOString().slice(11, 16); // HH:MM in IST
-// The length test (user, 5 Oct 2026): a Short that takes a 23:30 IST YouTube slot is built to the SHORT arm (30-35 s),
-// one that takes an 11:30 slot to the STANDARD arm (45-50 s, the house length). `next-slot` tells a run which arm it is
-// building, qa.py reads the arm from publish.json ("length"), and `numbers` puts the arms side by side.
-// To end the test, set LENGTH_TEST to null: every slot is standard again. To swap the arms, swap the two slot values.
+// The length test (user, 5 Oct 2026) ran from 6 Oct 23:30 to 16 Oct 11:30 IST: a Short that took a 23:30 YouTube slot
+// was built to the SHORT arm (30-35 s), one that took an 11:30 slot to the STANDARD arm (45-50 s). Its readings
+// (analytics.md, 14 and 15 Oct 2026) favoured 30-35 s, and the user chose it for every slot (15 Oct 2026: "yes"):
+// from LENGTH_TEST.end on, every Short is HOUSE_ARM. `next-slot` tells a run which arm it is building, qa.py reads the
+// arm from publish.json ("length"), and `numbers` keeps the test's rows and adds one for the Shorts made since.
 export const LENGTH_ARMS = {
   short: {min: 30, max: 35, words: '66-76', chars: '400-470'},
   standard: {min: 45, max: 50, words: '95-110', chars: '560-680'},
 };
-export const LENGTH_TEST = {name: 'length-2026-10', start: '2026-10-06T23:30:00+05:30', slots: {'23:30': 'short', '11:30': 'standard'}};
-const armOfSlot = (ms) => (LENGTH_TEST && ms >= Date.parse(LENGTH_TEST.start) ? LENGTH_TEST.slots[istHM(ms)] : null) ?? 'standard';
+export const LENGTH_TEST = {name: 'length-2026-10', start: '2026-10-06T23:30:00+05:30', end: '2026-10-16T11:30:00+05:30', slots: {'23:30': 'short', '11:30': 'standard'}};
+export const HOUSE_ARM = 'short'; // every slot from LENGTH_TEST.end on (user, 15 Oct 2026)
+const SINCE_GROUP = 'since 16 Oct · 30-35 s, the test'; // the numbers report's row for the Shorts made to the rules of 15 Oct
+const inTest = (ms) => Boolean(LENGTH_TEST) && ms >= Date.parse(LENGTH_TEST.start) && ms < Date.parse(LENGTH_TEST.end);
+const armOfSlot = (ms) => (inTest(ms) ? LENGTH_TEST.slots[istHM(ms)] ?? 'standard' : !LENGTH_TEST || ms >= Date.parse(LENGTH_TEST.end) ? HOUSE_ARM : 'standard');
 const SKILL_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const istTime = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 16).replace('T', ' ') + ' IST';
 
@@ -285,10 +289,11 @@ async function nextSlot(asJson) {
   const iso = await nextFreeYouTubeSlot();
   const arm = armOfSlot(Date.parse(iso));
   const a = LENGTH_ARMS[arm];
-  const length = {arm, min: a.min, max: a.max, ...(LENGTH_TEST ? {test: LENGTH_TEST.name} : {}), slot: iso};
+  const test = inTest(Date.parse(iso));
+  const length = {arm, min: a.min, max: a.max, ...(test ? {test: LENGTH_TEST.name} : {}), slot: iso};
   if (asJson) return console.log(JSON.stringify({slot: iso, length}));
   console.log(`next free YouTube slot: ${istTime(Date.parse(iso))}`);
-  console.log(`length arm: ${arm.toUpperCase()} = ${a.min}-${a.max} s, ${a.words} words in all (about ${a.chars} characters)${LENGTH_TEST ? ` · length test "${LENGTH_TEST.name}": 23:30 slots are short, 11:30 slots are standard` : ''}`);
+  console.log(`length arm: ${arm.toUpperCase()} = ${a.min}-${a.max} s, ${a.words} words in all (about ${a.chars} characters)${test ? ` · length test "${LENGTH_TEST.name}": 23:30 slots are short, 11:30 slots are standard` : ' · every Short is 30-35 s since 16 Oct 2026 (the length test is over)'}`);
   console.log(`put into publish.json → "length": ${JSON.stringify(length)}`);
 }
 async function reschedule(id, when) {
@@ -781,11 +786,13 @@ async function numbers(outDir = SKILL_DIR) {
     note = /insufficient|scope|forbidden/i.test(e.message) ? 'the token lacks yt-analytics.readonly: the user must run `yt.mjs auth` again and allow both permissions' : e.message;
   }
   const testStart = LENGTH_TEST ? Date.parse(LENGTH_TEST.start) : Infinity;
+  const testEnd = LENGTH_TEST?.end ? Date.parse(LENGTH_TEST.end) : Infinity;
   for (const v of vids) {
     v.live = v.privacy === 'public' && v.when <= now;
     v.hours = v.live ? (now - v.when) / 3600000 : 0;
     v.slot = istHM(v.when);
     v.group = v.seconds > 90 ? 'long-form' // the weekly film; a CurioPulse Short has never run past 75 s
+      : v.when >= testEnd ? SINCE_GROUP // the rules of 15 Oct 2026: every Short 30-35 s, a test the viewer tries, no pill
       : v.when >= testStart ? (v.seconds && v.seconds <= 37 ? 'TEST · short arm (30-35 s)' : v.seconds >= 43 ? 'TEST · standard arm (45-50 s)' : 'TEST · between the arms')
       : v.seconds > 55 ? 'before · 64-75 s' : `before · 46-50 s · ${v.slot} slot`;
     const r = an.find((x) => x.video === v.id);
@@ -807,15 +814,15 @@ async function numbers(outDir = SKILL_DIR) {
   // the report
   const mean = (xs) => (xs.length ? xs.reduce((p, q) => p + q, 0) / xs.length : null);
   const f = (x, d = 0, unit = '') => (x === null || x === undefined || Number.isNaN(x) ? '–' : `${x.toFixed(d)}${unit}`);
-  const order = ['TEST · short arm (30-35 s)', 'TEST · standard arm (45-50 s)', 'TEST · between the arms', 'before · 46-50 s · 23:30 slot', 'before · 46-50 s · 11:30 slot', 'before · 64-75 s'];
+  const order = [SINCE_GROUP, 'TEST · short arm (30-35 s)', 'TEST · standard arm (45-50 s)', 'TEST · between the arms', 'before · 46-50 s · 23:30 slot', 'before · 46-50 s · 11:30 slot', 'before · 64-75 s'];
   const groups = [...order.filter((g) => g.startsWith('TEST') && !g.includes('between') || vids.some((v) => v.group === g)), ...new Set(vids.map((v) => v.group).filter((g) => g !== 'long-form' && !order.includes(g)))];
   const md = [];
   md.push('# CurioPulse numbers', '');
   md.push(`Written by \`yt.mjs numbers\` on ${istTime(now)}. Do not edit: every /cp run rewrites it. How to read it: \`reference/analytics.md\`.`, '');
   md.push(`**Channel:** ${subsNow} subscribers${prev ? ` (${subsNow - prev.subscribers >= 0 ? '+' : ''}${subsNow - prev.subscribers} since the log of ${istTime(Date.parse(prev.at))})` : ''} · ${vids.filter((v) => v.live).length} public videos, ${vids.filter((v) => !v.live).length} scheduled.`);
   md.push(`Views and likes are the public counters, live. Stayed, viewed and subscribers come from YouTube Analytics, which runs about two days behind: a dash means YouTube has not processed that day yet.${note ? ` **Analytics failed: ${note}.**` : ''}`, '');
-  md.push(`## The length test${LENGTH_TEST ? ` (${LENGTH_TEST.name}, from ${istTime(testStart)})` : ' (ended)'}`, '');
-  md.push('A Short in a 23:30 slot is built to 30-35 s, one in an 11:30 slot to 45-50 s. The verdict is **views per Short** and **subscribers per 1,000 views**; a shorter video scores a higher average % viewed by construction, so that column is not the verdict. The "before" rows are the same slots before the test.', '');
+  md.push(`## The length test${LENGTH_TEST ? ` (${LENGTH_TEST.name}, ${istTime(testStart)} to ${LENGTH_TEST.end ? istTime(testEnd) : 'now'})` : ' (ended)'}, and the Shorts since`, '');
+  md.push(`During the test a Short in a 23:30 slot was built to 30-35 s, one in an 11:30 slot to 45-50 s. The verdict was **views per Short** and **subscribers per 1,000 views**; a shorter video scores a higher average % viewed by construction, so that column is not the verdict. The "before" rows are the same slots before the test. **"${SINCE_GROUP}"** are the Shorts made to the rules of 15 Oct 2026 (every Short 30-35 s, a test the viewer tries, no Subscribe pill: \`reference/analytics.md\`); read them against the short arm.`, '');
   md.push('| Group | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views |', '|---|---|---|---|---|---|---|');
   for (const g of groups) {
     const all = vids.filter((v) => v.group === g && v.live);

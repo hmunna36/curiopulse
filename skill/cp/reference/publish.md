@@ -40,7 +40,8 @@ a Reel too), and never before the Short's YouTube release.**
 - **The "Next up" comment (posted by the pipeline since 9 Oct 2026; user: "yes to all").** Write the draft into
   `publish.json` as `pinnedComment` and into the README's metadata. Line 1 = the subscribe ask with the next Short's
   teaser, e.g. `Next up: why onions make you cry 🧅 Subscribe so you don't miss it!` ("Next up", never "tomorrow":
-  the next Short is about 12 hours away). Line 2 = one question that invites replies ("What did YOU think it was?").
+  the next Short is about 12 hours away). Line 2 = the same one-word question about the test as the caption ("Left
+  or right? 👃"), since 15 Oct 2026; before that, any question that invited replies.
   - `yt.mjs upload` puts the Short into the comment queue (`~/.config/cp/comment-queue.json`). `yt.mjs comments-due`
     posts ONE top-level comment, from the channel, on each queued Short once it is public (YouTube takes no comments
     on a private video). It writes line 1 again from the channel's schedule at that moment ("Next up: <title of the
@@ -54,11 +55,21 @@ a Reel too), and never before the Short's YouTube release.**
     cannot pin.
   - `"comment": false` in `youtube` keeps a Short out of the queue.
 - Since 5 Oct 2026 the "Next up" comment, the description and the Reel caption are the ONLY places the next topic is
-  teased. Since 9 Oct 2026 nothing spoken asks or teases at all: the Subscribe cue is the silent pill (`narration.md`).
-- **Description:** end the first paragraph line with the ask too: `Subscribe for a new strange question every day.`
-- **Instagram caption:** the hook line with an emoji, 1–2 short lines, a **follow line** (Instagram says Follow, not
-  Subscribe: `Follow @curio_pulse_tv for the next one: <teaser> 🔔`), then 4–6 hashtags
-  (`#science #humanbody #biology #funfacts #reels`). At most 2,200 characters and 30 hashtags.
+  teased. Since 9 Oct 2026 nothing spoken asks or teases at all, and since 16 Oct there is no Subscribe pill either
+  (`narration.md`, `visual.md`): the text is the only place the subscribe ask lives.
+- **The one-word question (since 15 Oct 2026; user: "yes"; `analytics.md`).** The Reel caption and the description
+  end their story part with ONE question about the viewer's test that they can answer in a word: "Left or right?",
+  "Could you lift it?", "One nose or two?". The nostril Reel's caption asked which nostril was working right now and
+  drew 162 comments, mostly one-word answers; no other Reel drew more than 9. Ask about what they just did, never
+  "What do you think?" and never "comment below".
+- **Description:** the question at the end of the first paragraph, then the ask: `Subscribe for a new strange question
+  every day.`
+- **Instagram caption:** the hook line with an emoji (the test, as an instruction), 1–2 short lines, **the one-word
+  question**, a **follow line** (Instagram says Follow, not Subscribe: `Follow @curio_pulse_tv for the next one:
+  <teaser> 🔔`), then 4–6 hashtags (`#science #humanbody #biology #funfacts #reels`). At most 2,200 characters and 30
+  hashtags. The nostril Reel's caption is the model: "You pinch one nostril shut... and the other one is blocked. 👃
+  Relax: your nostrils work in shifts. [...] Which one is on shift for you right now? Follow @curio_pulse_tv for the
+  next one: [...] 🔔 #science #humanbody #nose #breathing #funfacts #reels"
   - `instagram.coverTime` (seconds) is the cover frame to aim for.
   - No AI label, the same as the Reels already posted. It is the user's call if they want Meta's AI label for the
     synthetic voice.

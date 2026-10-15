@@ -86,7 +86,34 @@ Three things changed on one day (these two, and the cinematic look the day befor
 cannot reach: the opening by seconds 5–12, the cue by the last four seconds and by subscribers per 1,000 views. Both
 arms of the length test get the same changes, so its comparison stands.
 
-## The length test (`length-2026-10`, from the Short released 6 Oct 2026 23:30 IST)
+Both 9 Oct rules were read on 15 Oct 2026 ("Readings" below) and replaced by the rules of 15 Oct: the one-shot
+opening failed its own test (dropped), and the silent pill gave way to no pill at all.
+
+## The rules of 15 Oct 2026 (user: "yes. let's do this.", after the retention reading of that day)
+
+The user asked for "suggestions to improve. every video should be a breakout based on this data"; these seven were
+the answer, applied from the Short released 16 Oct 2026 11:30 on. No rule can make every Short a breakout (the feed
+tries each one on a small batch); these build every Short the way the two breakouts were built.
+
+| Rule | Where it lives | The gate | How it is read |
+|---|---|---|---|
+| The topic is a test the viewer can do on themselves while watching, safely, phone in hand | `story.md` §4, `topics.md` (Queue / Held `[h]`) | ship bar item 1 | Per Short: Instagram share watched (average watch time per account ÷ length; the breakouts 75–81 %, all others 28–56 %) and YouTube's relative retention (never below 0.5, as only the nostril managed) |
+| The hook is that test, told to the viewer; frame 1 is him doing it | `story.md` §2, `narration.md`, `hooks.md` | qa.py: "you"/"your" in the first eight words (warning); ship bar 1 | Views per Short of the "since 16 Oct" row in `numbers.md` against the test's short arm (6,075 mean, 2,940 middle) |
+| 30–35 s, every Short (the length test is over) | `bin/yt.mjs` (`LENGTH_TEST.end`, `HOUSE_ARM`), `narration.md` | qa.py: the short arm's band | The same row; share reaching the end (short arm: middle 35 %) |
+| The lesson points back to the viewer's test, in everyday words; no science word spoken in the first 15 s; the one-shot opening rule is gone | `story.md` §2, `narration.md` | ship bar item 2 | The leave rate in the 3 s after the lesson starts against the 3 s before (3.8 → 5.3 % a second on 14 Shorts); the lowest relative retention between seconds 8 and 28 (0.13–0.44 so far) |
+| No Subscribe pill; the button runs into the hook and the Short loops | `visual.md`, `make_timeline.py`, `subscribe.js` | qa.py fails a pill; ship bar 11 (the loop) | The last 4 s (target: the 13 % of the endings with nothing there, against 24 % with the pill); replays at the start (the nostril 142 %); subscribers per 1,000 views (1.6–1.9 now): under about 1.2 over ten Shorts, tell the user |
+| The caption and the description end with a one-word question about the test | `publish.md`, `brief.md` | ship bar 10 | Comments per Reel and per Short (the nostril 162; no other Reel more than 9) |
+| No missed day (each run checks the last 48 h of Reels went out) and a hit is followed by its kin | `SKILL.md` step 1, `story.md` §4 | the run's report | Every scheduled Reel shows in Business Suite → Published; after a hit, the kin's views against the middle |
+
+Read them together after ten Shorts made to them have Analytics data (about a week at two a day): the "since 16 Oct"
+row against the short arm, the curves measured as on 15 Oct (`~/.claude/wip/2026-10-15/cp-retention/` has the
+scripts), and Instagram's share watched. The user decides what stays.
+
+## The length test (`length-2026-10`, from the Short released 6 Oct 2026 23:30 IST to 16 Oct 2026 11:30 IST)
+
+**Ended on 15 Oct 2026 (user: "yes. let's do this."): every Short is 30–35 s from the 16 Oct 11:30 slot on.** In
+`bin/yt.mjs`, `LENGTH_TEST.end` closes the test and `HOUSE_ARM` ("short") is the arm of every slot after it; `numbers`
+keeps the test's rows and adds a "since 16 Oct" row. What follows is how the test ran.
 
 - **Arms.** SHORT: 30–35 s, 66–76 words in all. STANDARD: 45–50 s, 95–110 words (the house length since 1 Oct).
   Both arms follow every other rule, so length is the only thing that differs between them.
@@ -114,9 +141,9 @@ arms of the length test get the same changes, so its comparison stands.
   comparison in two sentences, what it suggests) and leads its final report with it. The user decides: keep 30–35 s
   for every slot, go back to 45–50 s, or swap the arms' slots for a second week to cancel the slot effect. A run never
   ends, swaps or extends the test by itself; until the user says otherwise the test simply continues.
-- **Changing it** (after the user decides): the constants `LENGTH_TEST` and `LENGTH_ARMS` at the top of `bin/yt.mjs`
-  (`null` ends the test, every slot is standard again; swapping the two slot values swaps the arms), then the length
-  lines in `SKILL.md`, `brief.md`, `narration.md`, `story.md` §3 and the two routine prompts.
+- **Changing it** (after the user decides): the constants `LENGTH_TEST`, `LENGTH_ARMS` and `HOUSE_ARM` at the top of
+  `bin/yt.mjs`, then the length lines in `SKILL.md`, `brief.md`, `narration.md`, `story.md` §3 and the two routine
+  prompts (done on 15 Oct 2026 for the end of the test).
 
 ## Reading one Short's retention curve
 
@@ -247,3 +274,6 @@ against the script:
     ("both", "left one").
   - Not in the data yet (Analytics runs two days behind): funny-bone, eye-rub-stars, dizzy-spin, ears-ring,
     doorknob-shock.
+  - **Decision (user, 15 Oct 2026, on seven suggestions drawn from this reading: "yes. let's do this.")**: the rules
+    of 15 Oct above. The length test ended (every Short 30–35 s from 16 Oct 11:30), the one-shot opening rule was
+    dropped, and the silent pill gave way to no pill, so its reading at 14 Shorts is no longer due.

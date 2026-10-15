@@ -7,13 +7,15 @@ for the transcript check, and the stems from audio.py.
 Checks (FAIL blocks the upload; WARN is for the review):
 - Streams: H.264 High, 1080x1920, 30 fps, yuv420p, AAC 48 kHz stereo, faststart.
 - Length and file size: the band of the Short's length arm, read from ../publish.json "length" (`yt.mjs next-slot`
-  says which; the length test of 5 Oct 2026). standard: 43-50 s passes, over 55 s fails, anything else warns.
-  short: 30-35 s passes, over 37 s fails, anything else warns. The MP4 under 95 MB (GitHub's per-file limit is 100 MB).
-- Opening (5 Oct 2026, from the channel's retention curves): the `answer` block starts by 5.0 s (warns to 6.0, fails
-  later or when there is no such block); the first word is "You"/"Your" (a warning only); the first cut comes at
-  7.0 s or later (9 Oct 2026, a warning only: the opening is one continuous shot through the answer).
-- Subscribe cue (9 Oct 2026): nobody says "subscribe" (fails when it is spoken), and the silent pill sits over the
-  last seconds: it pops in 2.6-4.5 s before the end and has gone 0.3 s or more before it (fails otherwise).
+  says which; every Short is "short" since 16 Oct 2026). short: 30-35 s passes, over 37 s fails, anything else warns.
+  standard (the length test's other arm, 6-16 Oct): 43-50 s passes, over 55 s fails. The MP4 under 95 MB (GitHub's
+  per-file limit is 100 MB).
+- Opening (5 and 15 Oct 2026, from the channel's retention curves): the `answer` block starts by 5.0 s (warns to 6.0,
+  fails later or when there is no such block); the first line talks to the viewer about their own body, "you"/"your"
+  in the first eight words (the test the viewer tries; a warning only). The 9 Oct "no cut before 7 s" check is gone
+  (it failed its own test, 15 Oct 2026).
+- Subscribe (9 and 15 Oct 2026): nobody says "subscribe" (fails when it is spoken), and there is no Subscribe pill:
+  the timeline has no sub_in / sub_tap / sub_out cue (fails when it has one; the Short loops instead).
 - Delivered audio: integrated -14 +/- 0.5 LUFS; true peak <= -1.0 dBTP after AAC.
 - Picture:
   - the first frame is not black;
@@ -25,7 +27,7 @@ Checks (FAIL blocks the upload; WARN is for the review):
 - Intelligibility: whisper's transcript of the final mix vs the script, word error rate <= 8 %.
 - Captions: every word is captioned, chunks are 1-5 words, and none stays on screen under 0.25 s.
 It also writes contact sheets every 0.5 s (qa/sheet_*.png) for the visual review, and qa/safe_sheet.png: the hook,
-every shot, the subscribe cue and the last frame with the Shorts safe-area mask on them (bin/safe-area.py; red =
+every shot (and a subscribe cue, if a timeline still had one) and the last frame with the Shorts safe-area mask on them (bin/safe-area.py; red =
 covered by the YouTube UI or cropped, green = the key-content zone). Read them all.
 The true peak is ITU-R BS.1770's: the largest sample after 4x oversampling (scipy), measured next to pyloudnorm's
 integrated loudness on the AAC decoded from the MP4; the report names the moment of the peak.
@@ -173,7 +175,7 @@ try:
             d_.text((xx + 4, yy + 4), f"{float(lab):.2f}s", fill=(255, 255, 0))
         sheet.save(os.path.join(QA, "safe_sheet.png"))
         shutil.rmtree(sa_dir)
-        safe_note = f"Safe-area sheet: safe_sheet.png ({len(tiles)} frames: hook, every shot, the subscribe cue, the end)"
+        safe_note = f"Safe-area sheet: safe_sheet.png ({len(tiles)} frames: hook, every shot, the end)"
     else:
         safe_note = "Safe-area sheet: skipped (bin/safe-area.py not found)"
 except Exception as e:  # never let the review sheet break the gate
@@ -282,35 +284,27 @@ else:
 
 # ---------------------------------------------------------------- the opening and the subscribe cue (story.md, narration.md)
 said = lambda ws: " ".join(w["word"] for w in ws)  # noqa: E731
-first = re.sub(r"[^a-z']", "", words[0]["word"].lower())
-check(first in ("you", "your", "you're", "you've", "you'll"), 'opens with "You..." + a physical action',
-      f'first words: "{said(words[:7])}"', warn=True)
+# the test (15 Oct 2026): the two Shorts that broke out told the viewer to do something to their own body while
+# watching ("pinch one nostril", "lock your fingers"), so the first line speaks to them about it
+first8 = [re.sub(r"[^a-z']", "", w["word"].lower()) for w in words[:8]]
+check(any(w_ in ("you", "your", "you're", "you've", "you'll", "yours") for w_ in first8),
+      'opens with the test: "you"/"your" in the first eight words', f'first words: "{said(words[:8])}"', warn=True)
 ans = [w for w in words if w.get("block") == "answer"]
 if ans:
     check(ans[0]["start"] <= 5.0, "the answer starts by 5 s", f'"{said(ans)[:70]}" starts at {ans[0]["start"]:.2f} s',
           warn=ans[0]["start"] <= 6.0)
 else:
     check(False, "the answer starts by 5 s", "script.txt has no `## answer` block (the answer line, started by 5.0 s)")
-# one continuous shot from frame 1 through the answer (9 Oct 2026): in 11 of the first 14 Shorts the viewers began to
-# leave within two seconds of the first cut, which went to his frozen face, a title card or a diagram
-shots_ = tl.get("shots", [])
-if len(shots_) > 1:
-    check(shots_[1]["start"] >= 7.0, "no cut before 7 s (the opening is one shot through the answer)",
-          f'the first cut is at {shots_[1]["start"]:.2f} s ("{shots_[0].get("id")}" to "{shots_[1].get("id")}")', warn=True)
-# the subscribe cue is silent and sits over the last seconds (9 Oct 2026): wherever the word was spoken, a quarter to
-# a half of the viewers still watching left within three seconds of it
+# nobody says "subscribe" (9 Oct 2026: wherever the word was spoken, a quarter to a half of the viewers still watching
+# left within three seconds of it), and since 16 Oct 2026 there is no Subscribe pill either (15 Oct: the silent pill
+# still lost about a quarter in the last 4 s and added no subscribers): the Short ends on the button and loops
 spoken = [w for w in words if "subscrib" in w["word"].lower()]
-check(not spoken, 'nobody says "subscribe" (the cue is the silent pill)',
+check(not spoken, 'nobody says "subscribe"',
       "not spoken" if not spoken else f'spoken at {spoken[0]["start"]:.2f} s ("{said(spoken)}"): take it out of script.txt')
 cue = tl.get("cues", {})
-if all(isinstance(cue.get(k_), (int, float)) for k_ in ("sub_in", "sub_tap", "sub_out")):
-    gone = cue["sub_out"] + 0.24
-    check(dur - 4.5 <= cue["sub_in"] <= dur - 2.6 and gone <= dur - 0.3, "subscribe pill over the last seconds",
-          f'on screen {cue["sub_in"]:.2f}-{gone:.2f} s of {dur:.2f} s (it pops in 2.6-4.5 s before the end and has gone '
-          f'0.3 s or more before it)')
-else:
-    check(False, "subscribe pill over the last seconds",
-          "no sub_in / sub_tap / sub_out cue in the timeline (make_timeline.py sets them from the duration)")
+has_pill = [k_ for k_ in ("sub_in", "sub_tap", "sub_out") if isinstance(cue.get(k_), (int, float))]
+check(not has_pill, "no Subscribe pill (the Short ends on the button and loops)",
+      "none in the timeline" if not has_pill else f'the timeline sets {", ".join(has_pill)}: take them out of make_timeline.py')
 
 # ---------------------------------------------------------------- captions
 caps = tl["captions"]

@@ -3,12 +3,14 @@
 // seconds of the Short, on top of the button line: nobody says "subscribe". Wherever the word was spoken (the last
 // line until 5 Oct, a mid-video aside from 5 to 9 Oct) a quarter to a half of the viewers still watching left within
 // three seconds of it (reference/analytics.md).
-// Timeline cues (make_timeline.py sets them from the duration; never type a time here):
+// SINCE 16 OCT 2026 IT IS OFF (user, 15 Oct 2026: "yes"; reference/analytics.md, the rules of 15 Oct): the silent pill
+// still made about a quarter of the viewers leave in the last 4 s (13 % with nothing there) and added no subscribers,
+// so the Short ends on the button line and loops. The file stays in the template: it draws only when a timeline sets
+// cues.sub_in, and make_timeline.py no longer does (qa.py fails a Short that still has the cue).
+// Timeline cues (when the pill is wanted again, make_timeline.py sets them from the duration; never type a time here):
 //   sub_in  = when the pill pops in (3.4 s before the end)
 //   sub_tap = when the cursor clicks; defaults to sub_in + 1.25
 //   sub_out = when the pill starts to pop out; defaults to sub_tap + 1.3 (gone 0.6 s before the end, for the loop)
-// If a timeline has no sub_in the cue falls back to the same last seconds, so it can never be forgotten silently
-// (qa.py fails a Short whose cue is missing or not at the end).
 // Placement: inside the Shorts key-content zone measured 30 Sep 2026 (x 100-870 for y 1000-1640; the like/comment
 // column starts at x ≈ 880 from y ≈ 1050, the Related chip and channel row at y ≈ 1680): pill + bell centred on
 // x = 540 (pill x ≈ 221-701, bell x ≈ 727-859), y = 1420 (y ≈ 1354-1486). Every caption chunk that shares the screen
@@ -21,6 +23,7 @@ const SUB_EXIT = 0.24;   // seconds the pill and the bell take to pop out after 
 const SUB_LINE = '';     // one line of text under the pill ('' = the pill alone, the default). Only what the user has
 //                          approved goes here; it is drawn at 46 px or smaller, never wider than the pill and the bell
 
+const subOn = () => (TLd.cues || {}).sub_in !== undefined;   // no sub_in cue = no pill (since 16 Oct 2026)
 function subTimes() {
   const c = TLd.cues || {};
   const dur = TLd.duration;
@@ -31,12 +34,14 @@ function subTimes() {
 }
 // true while the cue is on screen (from just before the pop-in to the end of the pop-out)
 function subActive(t) {
+  if (!subOn()) return false;
   const { tin, tout } = subTimes();
   return t >= tin - 0.05 && t <= tout + SUB_EXIT;
 }
 // true for a caption chunk on screen from c0 to c1 that meets the cue at any moment: main.js draws that whole chunk
 // at SUB_CAPY, so a caption never sits under the pill and never jumps while it is being read
 function subLift(c0, c1) {
+  if (!subOn()) return false;
   const { tin, tout } = subTimes();
   return c1 > tin - 0.05 && c0 < tout + SUB_EXIT;
 }

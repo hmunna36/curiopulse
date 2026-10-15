@@ -61,10 +61,16 @@ A hook that only does the third is a summary, and it leaks viewers.
 ## In this pipeline (CurioPulse Shorts)
 
 - The hook is seconds 0 to 3; the answer line (by 5.0 s) is the artifact of rule 4.
-- The channel's own rules stay: frame 0 is a tight shot of him doing something physical, and the opening is one
-  continuous shot through the answer (`story.md` §2). The formula shapes the SENTENCE, not the picture.
-- "You..." stays the default first word (The Direct Address, or The Question put to the viewer). When another formula
-  carries the Short (The Statistic: "One in four people sneeze at the sun."; Contrarian Flip: "Everyone says cracking
-  your knuckles gives you arthritis."; The Mistake; The Impossible Claim), "you" or "your" still lands within the
-  first six words or in the very next sentence; qa.py's "opens with You" stays a warning, not a failure.
-- Not for a 30 to 50 s animated Short: The Receipt, The Teardown, The Stack, The Origin, The Deadline, The Insider.
+- **Since 15 Oct 2026 (user: "yes"; `story.md` §2) every hook is a test the viewer does while watching**, whatever
+  the formula: the channel's breakout was the only hook written that way ("The Direct Address, as a test the viewer
+  can do": "You pinch one nostril shut... and the other one is blocked."). The formula shapes the words around the
+  test, not the test itself:
+  - The Direct Address / The Mistake: "Pinch one nostril shut. One side's blocked, right?";
+  - Contrarian Flip: "Everyone says you can roll your tongue because of one gene. Try it now.";
+  - The Impossible Claim: "Your eye has a hole in it. Close your left eye and look at the X.";
+  - The Question put to the viewer: "Can you lift your ring finger? Put your hand flat on the table..."
+  Write the three candidates in three formulas as before; each must carry the test.
+- The channel's own rules stay: frame 0 is a tight shot of him doing the test (`story.md` §2). The formula shapes the
+  SENTENCE, not the picture. (The 9 Oct "one continuous shot" rule was dropped on 15 Oct.)
+- "You"/"your" lands within the first eight words (qa.py warns otherwise; an instruction about "your" body passes).
+- Not for a 30 to 35 s animated Short: The Receipt, The Teardown, The Stack, The Origin, The Deadline, The Insider.

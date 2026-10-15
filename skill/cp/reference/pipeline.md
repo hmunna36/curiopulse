@@ -38,20 +38,21 @@ $PYTHON qa.py ../.work ../<slug>-short.mp4
 `src/build.sh` runs the whole chain from cached takes (voice → timeline → audio → render → srt). Use it for the final
 rebuild and to prove the folder rebuilds.
 
-## The numbers, the length arm, the answer, the first cut and the subscribe cue in the order of work
+## The numbers, the length, the test, the answer and the loop in the order of work (rules of 15 Oct 2026)
 
-- Preflight: `yt.mjs numbers` (the log; read the length-test table), then `yt.mjs next-slot` (the slot and the length
-  arm: SHORT 30–35 s for a 23:30 slot, STANDARD 45–50 s for an 11:30 slot). `analytics.md` explains both.
+- Preflight: `yt.mjs numbers` (the log; read the "since 16 Oct" row against the length test's short arm), then
+  `yt.mjs next-slot` (the slot, and the arm: "short", 30–35 s, for every slot since 16 Oct 2026). `analytics.md`
+  explains both. Then the Instagram check of `SKILL.md` step 1 (did the last Reels really go out?).
+- The topic is the first `[ ]` line of `topics.md`'s Queue: a test the viewer can do on themselves while watching
+  (`story.md` §4). If a recent Short broke out (five times the middle views per Short), take its closest kin first.
 - `new-short.sh` writes the arm into `publish.json` (`"length"`) and prints it; qa.py reads it from there. If the
   script says it could not reach YouTube, put the object `next-slot` prints there by hand.
-- Before `voice.py --synth`: the script has an `## answer` block (it must start by 5.0 s) and NO `sub` block: nobody
-  says "subscribe" (since 9 Oct 2026). Count the whole script's words against the arm's budget and its characters
-  against `quota.mjs` (narration.md).
-- `make_timeline.py` sets `cues["sub_in"]` / `cues["sub_tap"]` / `cues["sub_out"]` from the duration (the silent pill
-  over the last 3.4 s; already in the template) and prints where the answer starts, where the first cut falls (7 s
-  or later: the `hook` shot covers the answer line) and that the cue is silent. Fix a miss now, not after the render.
-- Stills around the cue before the full render (qa.md, visual.md); nothing else to run: `subscribe.js` is part of the
-  engine.
+- Before `voice.py --synth`: the hook is the test ("you"/"your" in the first eight words), the script has an
+  `## answer` block (it must start by 5.0 s) and NO `sub` block: nobody says "subscribe". Count the whole script's
+  words (66–76) and its characters against `quota.mjs` (narration.md).
+- `make_timeline.py` prints the length, where the answer starts, the first words and "no pill, nothing said". It sets
+  no subscribe cue (since 16 Oct 2026; qa.py fails one). Fix a miss now, not after the render.
+- Stills of the last 3 s and of the loop (last frame next to frame 0) before the full render (qa.md).
 - Skill-only change: new Shorts copy the template from `~/.claude/skills/cp/template/`, so no push to the repo is
   needed for the nightly routine. `bin/backup-skill.sh` mirrors it to `skill/cp/` on GitHub.
 - A Short started before 5 Oct 2026 and resumed later keeps its own (older) engine and qa.py copies in its `src/`:
