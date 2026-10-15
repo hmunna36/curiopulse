@@ -41,6 +41,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do You Get Dizzy When You Spin? | 33 s | [`videos/dizzy-spin`](videos/dizzy-spin) | [14 Oct 2026](https://youtube.com/shorts/4Ts56nQI1-M) |
 | Why Do Your Ears Ring After a Concert? | 47 s | [`videos/ears-ring`](videos/ears-ring) | [15 Oct 2026](https://youtube.com/shorts/ORFb3ma5RyA) |
 | Why Does a Doorknob Shock You? | 33 s | [`videos/doorknob-shock`](videos/doorknob-shock) | [15 Oct 2026](https://youtube.com/shorts/Vf-6HscC28w) |
+| Why Can't You Lift Your Ring Finger? | 31 s | [`videos/ring-finger`](videos/ring-finger) | 16 Oct 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;

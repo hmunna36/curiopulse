@@ -1,0 +1,27 @@
+# Narration for "Why Can't You Lift Your RING FINGER? 💍"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# 30-35 s, 66-76 words (every Short since 16 Oct 2026). Hook formula: The Direct Address, as a test the viewer does
+# on the spot (reference/hooks.md). The rules of 15 Oct 2026: the hook is the test, the answer starts by 5.0 s, the
+# lesson keeps pointing back to the viewer's own hand in everyday words, nobody says "subscribe", no pill, and the
+# button runs straight back into the hook when the Short loops.
+
+## hook gap=0.08 tighten=0.20 tempo=1.06
+Hand flat, fold your middle finger under, now lift your RING finger.
+
+## answer gap=0.40 tighten=0.42 tempo=1.00
+Stuck? Relax, it's on a leash... held by your middle finger.
+
+## cords gap=0.35 tempo=1.04
+See the cords on your hand? They lift your fingers.
+
+## spare gap=0.30 tighten=0.42 tempo=1.03
+Pointer and pinky get a spare lifter each. Ring finger? Nope.
+
+## strap gap=0.35 tighten=0.42 tempo=1.03
+And a strap ties it to the middle one. Middle down... ring down.
+
+## weird gap=0.45 tighten=0.42 tempo=1.03
+In the eighteen-eighties, a surgeon snipped those straps for pianists... on purpose.
+
+## button gap=0.75 tighten=0.45 tempo=1.00
+Still trying, aren't you?
