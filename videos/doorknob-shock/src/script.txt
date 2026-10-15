@@ -1,0 +1,28 @@
+# Narration for "Why Does a Doorknob SHOCK You?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# Short arm of the length test (23:30 slot): 30-35 s, 66-76 words. Hook formula: The Impossible Claim.
+# Nobody says "subscribe"; the Subscribe pill plays silently over the last 3.4 s. The last block is the button.
+
+## hook gap=0.10 tempo=1.00
+[panicked] You touch a doorknob and get zapped by THOUSANDS of volts!
+
+## answer gap=0.45 tighten=0.42 tempo=1.00
+Relax, that spark came out of YOU.
+
+## steps gap=0.35 tempo=1.04
+Every step, your shoes scrape electrons off the carpet, and they pile onto you.
+
+## dry gap=0.25 tempo=1.04
+In dry air, they can't escape...
+
+## jump gap=0.12 tempo=1.02
+till your finger nears metal, and they ALL jump.
+
+## payoff gap=0.40 tighten=0.42 tempo=1.00
+[excited] A tiny bolt of lightning.
+
+## weird gap=0.40 tempo=1.03
+We noticed this twenty-six hundred years ago... and STILL can't fully explain it.
+
+## button gap=0.55 tighten=0.45 tempo=1.00
+So technically... the doorknob is the VICTIM.

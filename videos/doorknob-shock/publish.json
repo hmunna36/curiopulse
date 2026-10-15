@@ -1,0 +1,50 @@
+{
+  "slug": "doorknob-shock",
+  "file": "doorknob-shock-short.mp4",
+  "title": "Why Does a Doorknob SHOCK You? ⚡",
+  "description": "You touch a doorknob and get zapped by thousands of volts. Relax: that spark came out of YOU. Every step, your shoes rub electrons off the carpet and they pile onto your body. In dry air they can't leak away, so when your finger gets close to metal they all jump across at once: a tiny bolt of lightning. Subscribe for a new strange question every day.\n\nPeople noticed that rubbing makes things electric about 2,600 years ago (amber rubbed with fur pulls feathers), and scientists still argue about exactly why rubbing moves charge: electrons, ions, or tiny bits of the material itself.\n\nNext up: why you can't breathe and swallow at the same time.\n\n#Shorts #Science #StaticElectricity #Physics #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "test": "length-2026-10",
+    "slot": "2026-10-15T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why you can't breathe and swallow at the same time 😮 Subscribe so you don't miss it!\nWhat's the worst static shock you've ever had? ⚡",
+  "tags": [
+    "static electricity",
+    "static shock",
+    "doorknob shock",
+    "why do doorknobs shock you",
+    "electrons",
+    "triboelectric effect",
+    "lightning",
+    "dry air",
+    "winter static",
+    "carpet static",
+    "physics",
+    "science explained",
+    "science shorts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "doorknob-shock.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You touch a doorknob and ZAP ⚡\nThat spark came out of YOU: your shoes steal electrons from the carpet, and dry air won't let them go.\nFollow @curio_pulse_tv for the next one: why you can't breathe and swallow at the same time 🔔\n#science #physics #staticelectricity #funfacts #reels",
+    "coverTime": 0.45,
+    "shareToFeed": true
+  }
+}
