@@ -1,9 +1,9 @@
-# Publishing: GitHub, YouTube 11:30 AM + 11:30 PM IST, Instagram 06:30 + 18:30 IST (next free slot on each)
+# Publishing: GitHub, YouTube 11:30 AM + 11:30 PM IST, Instagram 18:30 + 21:00 IST (next free slot on each)
 
 The user's schedule: **two Shorts a day, each on both platforms. YouTube takes the next free of two daily slots,
 11:30 AM and 11:30 PM IST (user, 2 Oct 2026: the 11:30 AM releases brought subscribers). Instagram takes the next
-free of its own two daily slots, 06:30 and 18:30 IST, 12 hours apart (user, 4 Oct 2026: the second daily Short gets
-a Reel too), and never before the Short's YouTube release.**
+free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after the nostril Reel's views ran fastest
+21:30-03:30 IST; 06:30 and 18:30 from 4 Oct), and never before the Short's YouTube release.**
 - `yt.mjs upload … --schedule=auto` picks both slots and writes them into `publish.json` (`youtube.publishAt`,
   `instagram.publishAt`).
 - YouTube goes through the Data API.
@@ -105,7 +105,7 @@ a Reel too), and never before the Short's YouTube release.**
      it, wait for "Uploading..." to end, click `ytcp-button#save` from JavaScript and wait for "Changes saved". If
      Chrome is not connected or Studio opens another channel, leave it and report it as pending.
    - Shorts have no end screens or cards. The "Related video" link is optional (Studio, if the user asks).
-3. **Instagram** (the slot in `instagram.publishAt`: 06:30 or 18:30 IST):
+3. **Instagram** (the slot in `instagram.publishAt`: 18:30 or 21:00 IST):
    - Check the route with `node ~/.claude/skills/cp/bin/ig.mjs route`.
    - `business-suite` (the normal case) → route A below.
    - `api` → run `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json` (route B).
@@ -132,7 +132,7 @@ node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <sc
 ```
 
 - It prints a sheet: the Reel-spec copy (video copied, AAC 128 k, no edit list, moov first), its `sha256`, the
-  parts (≤ 9 MB each, because `file_upload` takes < 10 MB per call), the `date` and `time` (IST: 06:30 or 18:30,
+  parts (≤ 9 MB each, because `file_upload` takes < 10 MB per call), the `date` and `time` (IST: 18:30 or 21:00,
   from `instagram.publishAt`), the caption, the cover, and `afterScheduling` (the command that records the slot).
 - A `note` in the sheet means the stored slot had passed and the sheet moved the Reel to the next free one: write
   that time into publish.json.
@@ -247,13 +247,13 @@ both. If it shows only one, open the drop-down and tick both. The same caption s
 5. **Share** step: choose **Schedule**.
    - Date: open the calendar popup and click the day.
    - Time: two spinbuttons, "hours" and "minutes". `find` each, click it by ref, type the sheet's hours (`06` or
-     `18`) and then `30`, press Tab. If the dialog shows AM/PM, set it too (06:30 is AM, 18:30 is 6:30 PM), and read
+     `18`) and then `30`, press Tab. If the dialog shows AM/PM, set it too (18:30 is 6:30 PM, 21:00 is 9:00 PM), and read
      the fields back before clicking Schedule.
    - Then click Schedule.
 
 **5. Verify:** the "published according to your chosen publishing options" toast appears even for schedules, so it
 proves nothing.
-- Reload **Content → Scheduled** (or the Planner). The Reel must be listed at the sheet's day and time (06:30 or
+- Reload **Content → Scheduled** (or the Planner). The Reel must be listed at the sheet's day and time (18:30 or 21:00; was 06:30 or
   18:30; a Reel sitting 12 hours off means AM/PM went wrong: reschedule it).
 - Then record the slot with the sheet's `afterScheduling` command:
   `node ~/.claude/skills/cp/bin/ig.mjs busy <YYYY-MM-DD>T<HH:MM>` (a bare date would count as 18:30).
@@ -274,7 +274,7 @@ proves nothing.
   `ig.mjs busy`. A Reel left pending by an earlier run (its publish.json has `instagram.publishAt` but no `scheduledVia`) does
   not hold its slot, so the next upload can be given the same one (dizzy-spin and ears-ring both got 15 Oct 18:30). After
   `yt.mjs upload`, if an earlier Reel is still pending at the slot it wrote, move the new Short's `instagram.publishAt` to the
-  next free 06:30 / 18:30 slot by hand and say so in the report; schedule the older Reel first.
+  next free 18:30 / 21:00 slot by hand and say so in the report; schedule the older Reel first.
 - **A hidden window stalls everything (4 Oct 2026).** If the extension's Chrome window is minimized, the page is
   `hidden`: the upload stays at 0 %, screenshots time out, and any `await` in the JavaScript tool never returns (plain
   synchronous JavaScript still does). Right after opening Business Suite, check
@@ -302,7 +302,7 @@ proves nothing.
 `~/.cache/cp/ig-spool/`. Then the launchd job `com.curiopulse.ig-publish`, installed by `ig.mjs token`, takes over:
 - it runs `ig.mjs run-due` at 06:10 and 18:10 (20 minutes before each slot) and at login;
 - it uploads and waits for Instagram to process the Reel;
-- it publishes at exactly the slot time (06:30 or 18:30);
+- it publishes at exactly the slot time (18:30 or 21:00);
 - it records the permalink, notifies, and logs to `~/Library/Logs/curiopulse-ig.log`.
 
 To get a token:
@@ -322,7 +322,7 @@ tokens; `video_url` falls back to the public GitHub URL).
 node ~/.claude/skills/cp/bin/yt.mjs upcoming     # YouTube scheduled + Instagram slots taken + the next free slots
 node ~/.claude/skills/cp/bin/ig.mjs upcoming     # Instagram slots taken, queue (route B), job and token status
 node ~/.claude/skills/cp/bin/yt.mjs reschedule <id> 2026-10-05T23:30:00+05:30
-node ~/.claude/skills/cp/bin/ig.mjs busy 2026-10-07T06:30  # a slot booked in Business Suite, so auto skips it
+node ~/.claude/skills/cp/bin/ig.mjs busy 2026-10-17T21:00  # a slot booked in Business Suite, so auto skips it
 ```
 
 Instagram slots already taken ("busy" in `~/.config/cp/ig-queue.json`; `YYYY-MM-DDTHH:MM` in IST, and a bare date

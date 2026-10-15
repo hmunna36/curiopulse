@@ -32,8 +32,9 @@
 //                                         test's arms side by side, then every upload) and appends a line to
 //                                         <skill>/numbers.jsonl. Read-only on YouTube (reference/analytics.md).
 //
-// Release slots: YouTube 11:30 AM AND 11:30 PM IST (the user, 2 Oct 2026); Instagram 06:30 AND 18:30 IST, 12 hours
-// apart (the user, 4 Oct 2026: both daily Shorts get a Reel). Each run takes the next free slot on each platform.
+// Release slots: YouTube 11:30 AM AND 11:30 PM IST (the user, 2 Oct 2026); Instagram 18:30 AND 21:00 IST (the user,
+// 15 Oct 2026: the 06:30 slot moved to 21:00, after the nostril Reel's views ran fastest 21:30-03:30 IST and slowest
+// 12:30-16:30; 06:30 and 18:30 from 4 Oct). Each run takes the next free slot on each platform.
 // --schedule=auto (or "publishAt": "auto") takes the next free YouTube slot (no CurioPulse video public or scheduled
 // within 3 hours of it, at least 2 hours away), then the next free Instagram slot that is not before that YouTube
 // release (the times taken are in ~/.config/cp/ig-queue.json: "busy" plus the queue). It writes both times into
@@ -74,7 +75,7 @@ const API = 'https://www.googleapis.com/youtube/v3';
 const UPLOAD = 'https://www.googleapis.com/upload/youtube/v3';
 const YTA = 'https://youtubeanalytics.googleapis.com/v2/reports';
 const CHUNK = 8 * 1024 * 1024; // a multiple of 256 KiB, as resumable uploads require
-export const SLOTS = {youtube: ['11:30', '23:30'], instagram: ['06:30', '18:30']}; // IST: two slots a day on each platform (YouTube: user, 2 Oct 2026; Instagram: user, 4 Oct 2026)
+export const SLOTS = {youtube: ['11:30', '23:30'], instagram: ['18:30', '21:00']}; // IST: two slots a day on each platform (YouTube: user, 2 Oct 2026; Instagram: user, 15 Oct 2026)
 const IST_MS = 5.5 * 3600 * 1000;
 const istDate = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 10); // YYYY-MM-DD in IST
 const istHM = (ms) => new Date(ms + IST_MS).toISOString().slice(11, 16); // HH:MM in IST
@@ -257,9 +258,9 @@ async function nextFreeYouTubeSlot() {
   }
   throw new Error('no free YouTube slot in the next 60 days');
 }
-// Instagram has TWO slots a day as well, 06:30 and 18:30 IST, 12 hours apart (the user, 4 Oct 2026: the second
-// daily Short gets a Reel too). A Reel takes the next free slot: nothing taken within 3 hours of it, at least 2 hours
-// away, and not before `notBefore` (the Short's own YouTube release), so a Reel never comes out ahead of its Short.
+// Instagram has TWO slots a day as well, 18:30 and 21:00 IST (the user, 15 Oct 2026; 06:30 and 18:30 from 4 Oct). A
+// Reel takes the next free slot: nothing taken within 2 hours of it (the two slots are 2.5 hours apart), at least 2
+// hours away, and not before `notBefore` (the Short's own YouTube release), so a Reel never comes out ahead of its Short.
 function nextFreeIgSlot(notBefore = 0) {
   const taken = igTaken();
   for (let d = 0; d < 90; d++) {
@@ -268,7 +269,7 @@ function nextFreeIgSlot(notBefore = 0) {
       const iso = `${date}T${hm}:00+05:30`;
       const t = Date.parse(iso);
       if (t < Date.now() + 2 * 3600 * 1000 || t < notBefore) continue;
-      if (!taken.some((w) => Math.abs(w - t) < 3 * 3600 * 1000)) return iso;
+      if (!taken.some((w) => Math.abs(w - t) < 2 * 3600 * 1000)) return iso;
     }
   }
   throw new Error('no free Instagram slot in the next 90 days');

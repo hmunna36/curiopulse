@@ -4,7 +4,7 @@
 // A. Meta Business Suite in Chrome (the route in use since 2026-09-29).
 //    The user's Facebook account is blocked, so no Meta developer app and no API token can exist.
 //    `prepare` builds the Instagram-spec copy and splits it into parts under 10 MB (Claude in Chrome's upload limit).
-//    The /cp run then schedules the Reel in Business Suite itself, in its slot (06:30 or 18:30 IST; the sheet gives
+//    The /cp run then schedules the Reel in Business Suite itself, in its slot (18:30 or 21:00 IST; the sheet gives
 //    the date and time): see the skill's reference/publish.md. After that, `busy <date>T<HH:MM>` records the slot.
 // B. The API ("Instagram API with Instagram Login", graph.instagram.com; no Facebook Page needed), used as soon as
 //    `token` has stored a token (it also installs the launchd job). Everything below `queue` belongs to this route.
@@ -12,7 +12,7 @@
 // The API cannot schedule. So `queue` books a Reel into ~/.config/cp/ig-queue.json and keeps a spool copy of the
 // MP4, and a launchd job (install-job) runs `run-due` 20 minutes before each slot, at 06:10 and 18:10 IST (and at login).
 // run-due takes every Reel due within 25 minutes (or overdue): it creates the container and uploads, waits until
-// Instagram has processed it, sleeps until the exact release time (06:30 or 18:30 IST), publishes, and records the permalink.
+// Instagram has processed it, sleeps until the exact release time (18:30 or 21:00 IST), publishes, and records the permalink.
 //
 //   node ig.mjs prepare <publish.json> [--out DIR]   route A: IG copy + ≤9 MB parts + SHA-256 + caption/time sheet
 //   node ig.mjs route                     prints "api" (a token exists) or "business-suite"
@@ -53,7 +53,7 @@ const FFMPEG = path.join(HOME, '.cache/cp/bin/ffmpeg');
 const REPO_RAW = 'https://raw.githubusercontent.com/hmunna36/curiopulse/main';
 const V = 'v25.0';
 const G = `https://graph.instagram.com/${V}`;
-const SLOTS = ['06:30', '18:30']; // IST, 12 hours apart: two Reels a day (user, 4 Oct 2026; one a day at 18:30 since 2026-09-29)
+const SLOTS = ['18:30', '21:00']; // IST: two Reels a day (user, 15 Oct 2026; 06:30 and 18:30 from 4 Oct; one a day at 18:30 since 2026-09-29)
 const LEGACY_SLOT = '18:30'; // what a bare date in "busy" stands for (every Reel booked before 4 Oct 2026)
 const LEAD_MIN = 25; // start preparing a Reel this many minutes before its release
 const JOB_TIMES = SLOTS.map((hm) => {
@@ -207,8 +207,8 @@ function takenTimes(q) {
     ...(q.posts ?? []).filter((p) => p.status !== 'cancelled').map((p) => Date.parse(p.publishAt)),
   ].filter((t) => !Number.isNaN(t));
 }
-const slotTaken = (taken, t) => taken.some((w) => Math.abs(w - t) < 3 * 3600 * 1000);
-// The next free slot (06:30 or 18:30 IST) at least an hour away and not before `notBefore` (ms), as an ISO time.
+const slotTaken = (taken, t) => taken.some((w) => Math.abs(w - t) < 2 * 3600 * 1000); // the two slots are 2.5 h apart
+// The next free slot (18:30 or 21:00 IST) at least an hour away and not before `notBefore` (ms), as an ISO time.
 function nextFreeIgSlot(q, notBefore = 0) {
   const taken = takenTimes(q);
   for (let d = 0; d < 90; d++) {
@@ -524,7 +524,7 @@ async function prepare(specPath, outDir) {
     sha256: sha,
     parts,
     date: istDate(t),
-    time: istHM(t), // 06:30 or 18:30 IST: type these hours and minutes in Business Suite
+    time: istHM(t), // 18:30 or 21:00 IST: type these hours and minutes in Business Suite
     publishAtIST: istTime(t),
     afterScheduling: `node ${process.argv[1]} busy ${istDate(t)}T${istHM(t)}`,
     caption: ig.caption,
@@ -559,10 +559,10 @@ function markBusy(slots) {
   for (const raw of slots) {
     const s = raw.replace(' ', 'T').slice(0, 16);
     if (!/^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2})?$/.test(s)) {
-      console.log(`skipped "${raw}": use YYYY-MM-DDTHH:MM in IST, e.g. 2026-10-07T06:30`);
+      console.log(`skipped "${raw}": use YYYY-MM-DDTHH:MM in IST, e.g. 2026-10-17T21:00`);
       continue;
     }
-    if (s.length === 10) console.log(`note: ${s} has no time, so it counts as that day's ${LEGACY_SLOT} slot; use ${s}T06:30 for the morning slot`);
+    if (s.length === 10) console.log(`note: ${s} has no time, so it counts as that day's ${LEGACY_SLOT} slot; use ${s}T21:00 for the late slot`);
     if (!q.busy.includes(s)) q.busy.push(s);
   }
   q.busy.sort();

@@ -329,7 +329,7 @@ function drawFace(c, f, pal) {
 }
 
 // Draw the whole character into context c (already in world transform).
-// st: {x, y, s, pose, face, frizz, soot, shoeMissingL, headDX, headDY, headRot, xray, seed}
+// st: {x, y, s, pose, face, frizz, soot, shoeMissingL, headDX, headDY, headRot, xray, seed, noLegs, noArms}
 function drawCharacter(c, st, t, pal = PAL) {
   const lk = lookHeroBegin(c, st);   // the cinematic look: the set gets its light before he is drawn on it; his shapes count as a character
   try { return drawCharacterRig(c, st, t, pal); } finally { lookHeroEnd(lk); }
@@ -397,8 +397,8 @@ function drawCharacterRig(c, st, t, pal = PAL) {
   rrect(c, -17, -196, 34, 36, 10); c.fillStyle = pal.skinSh; c.fill();
   if (pal.outline) { c.lineWidth = 3; c.strokeStyle = pal.outline; c.stroke(); }
   c.restore();
-  // arms (in front of torso)
-  for (const [s, k] of [[-1, 'L'], [1, 'R']]) {
+  // arms (in front of torso); st.noArms skips them: a scene that draws his arms itself (ring-finger, 15 Oct 2026)
+  for (const [s, k] of st.noArms ? [] : [[-1, 'L'], [1, 'R']]) {
     capsuleShaded(c, r['sh' + k], r['el' + k], 42, pal.coat, pal.coatSh, pal.xray ? null : pal.coatHi, pal);
     const wr = r['wr' + k], d = r['armDir' + k];
     if (pal.shortSleeve && !pal.xray) {   // rolled-up sleeves: a cuff at the elbow, the forearm bare (pal.shortSleeve)
