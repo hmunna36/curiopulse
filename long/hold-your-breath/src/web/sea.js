@@ -124,12 +124,15 @@ function beakedWhale(c, x, y, s, t, o = {}) {
 const POOL = { surf: 560, bottom: 1010, x0: -200, x1: 2120, diverX: 980 };
 const DIVERPAL = Object.assign({}, PAL, { coat: '#1A1E2A', coatSh: '#0E1018', coatHi: '#3A4258', coatDk: '#06080E', strap: '#1A1E2A', strapSh: '#0E1018', pants: '#1A1E2A', pantsSh: '#0E1018', shoe: '#1A1E2A', shoeSh: '#0E1018', sole: '#1A1E2A', pj: true });
 const SAFEPAL = Object.assign({}, PAL, { coat: '#E2424B', coatSh: '#B02A34', coatHi: '#FF7A82', coatDk: '#8A1E26', strap: '#E2424B', strapSh: '#B02A34', pants: '#2A2F48', pantsSh: '#1A1E30', pj: true });
-// the pool's timer in screen space, centred at (x, y), scale s; pop (0..1) swells it for a beat
-function poolTimer(secs, label, col, x, y, s = 1, pop = 0) {
-  const sec = Math.max(0, secs), txt = `${Math.floor(sec / 60)}:${String(Math.floor(sec % 60)).padStart(2, '0')}`, k = s * (1 + 0.1 * pop);
+// the pool's timer in screen space, centred at (x, y), scale s; pop (0..1) swells it for a beat; hms: H:MM:SS
+function poolTimer(secs, label, col, x, y, s = 1, pop = 0, hms = false) {
+  const sec = Math.max(0, secs), p2 = (v) => String(Math.floor(v)).padStart(2, '0');
+  const txt = hms ? `${Math.floor(sec / 3600)}:${p2((sec / 60) % 60)}:${p2(sec % 60)}` : `${Math.floor(sec / 60)}:${p2(sec % 60)}`, k = s * (1 + 0.1 * pop);
   ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.translate(x, y); ctx.scale(k, k);
-  rrect(ctx, -260, -110, 520, 220, 22); ctx.fillStyle = 'rgba(4,7,14,0.92)'; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = '#2A3A5A'; ctx.stroke();
-  ctx.font = '400 150px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = col; ctx.fillText(txt, 0, -10);
+  ctx.font = '400 150px Anton';
+  const bw = Math.max(520, (hms ? ctx.measureText('0:00:00').width : 0) + 110);
+  rrect(ctx, -bw / 2, -110, bw, 220, 22); ctx.fillStyle = 'rgba(4,7,14,0.92)'; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = '#2A3A5A'; ctx.stroke();
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = col; ctx.fillText(txt, 0, -10);
   if (label) { ctx.font = '900 28px Montserrat'; ctx.fillStyle = '#9FB8E0'; ctx.fillText(label, 0, 76); }
   ctx.restore();
   gctx.save(); gctx.setTransform(0.5, 0, 0, 0.5, 0, 0); gctx.translate(x, y); gctx.scale(k, k);

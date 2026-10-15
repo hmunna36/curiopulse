@@ -18,7 +18,8 @@ SC.record = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   const secs = lerp(0, 695, ramp(t, c.official, c.thirtyfive + 0.6, E.inOutSine));
   const tilt = ramp(t, c.facedown - 0.6, c.facedown + 0.4, E.inOutCubic);
-  const cam = { x: lerp(960, 1010, tilt), y: lerp(250, 560, tilt), zoom: lerp(1.75, 1.45, tilt), rot: 0 };
+  const drift = ramp(t, c.facedown + 0.4, shot.end + 0.5);
+  const cam = { x: lerp(960, 1010, tilt) + 40 * drift, y: lerp(250, 560, tilt) + 10 * drift, zoom: lerp(1.75, 1.45, tilt) + 0.08 * drift, rot: 0 };
   poolScene(cam, t, { secs, label: 'ONE BREATH OF AIR', tank: 0 });
   return { glow: 0.9, flash: 0.3 * (1 - ramp(lt, 0, 0.2)) };
 };
@@ -64,24 +65,34 @@ SC.six = (lt, t, shot) => {
 };
 // ================================================================= the whale: 3 h 42 in the deep
 SC.whale = (lt, t, shot) => {
-  const c = cu(), D = shot.end - shot.start;
+  const D = shot.end - shot.start, k = lt / D;
   screenSpace();
-  const d = lerp(0.45, 0.9, lt / D);
-  seaBack(t, { depth: d, glow: 1 });
-  const x = lerp(520, 1150, lt / D), y = lerp(300, 560, lt / D);
-  beakedWhale(ctx, x, y, 1.15, t, { ang: 0.32 });
-  depthScale(t, Math.round(lerp(300, 1500, lt / D)), 1);
-  const q = ramp(t, c.how - 0.05, c.how + 0.3, E.outBack);
-  if (q > 0.01) bigWord('?', 1500, 330, 260 * q, '#7FFFE0', 1);
-  pill(560, 880 - 100, 'STILL A PUZZLE', '#7FFFE0', ramp(t, c.working, c.working + 0.3), 48);
+  seaBack(t, { depth: lerp(0.4, 0.5, k), glow: 1 });
+  beakedWhale(ctx, lerp(420, 700, k), lerp(420, 480, k), 2.5, t, { ang: 0.2 });   // close: it glides past the lens
+  depthScale(t, Math.round(lerp(300, 420, k)), 1);
   return { glow: 1, flash: 0.3 * (1 - ramp(lt, 0, 0.2)) };
+};
+// "...three hours and forty-two minutes. How? Scientists are still working it out." wide: it goes down; its time
+// races up like the record timers did, and lands on "minutes"
+SC.whale2 = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start, k = lt / D;
+  screenSpace();
+  seaBack(t, { depth: lerp(0.55, 0.9, k), glow: 1 });
+  beakedWhale(ctx, lerp(860, 1250, k), lerp(430, 640, k), lerp(0.95, 0.72, k), t, { ang: lerp(0.32, 0.45, k) });
+  depthScale(t, Math.round(lerp(560, 1500, k)), 1);
+  const secs = lerp(0, 13320, ramp(t, c.hours - 0.05, c.pay_342, E.inOutSine));
+  poolTimer(secs, 'ON ONE BREATH', '#7FFFE0', 960, 150, 0.78, kickOf(t, c.pay_342, 6), true);
+  const q = ramp(t, c.how - 0.05, c.how + 0.3, E.outBack);
+  if (q > 0.01) bigWord('?', 1480, 420, 260 * q, '#7FFFE0', 1);
+  pill(560, 780, 'STILL A PUZZLE', '#7FFFE0', ramp(t, c.working, c.working + 0.3), 48);
+  return { glow: 1, flash: 0.25 * kickOf(t, c.pay_342, 7) };
 };
 // wordless: the whale goes down into the dark
 SC.dark = (lt, t, shot) => {
   const D = shot.end - shot.start;
   screenSpace();
   seaBack(t, { depth: lerp(0.9, 1, lt / D), glow: 1 });
-  beakedWhale(ctx, lerp(1150, 1350, lt / D), lerp(560, 980, lt / D), 1.15 * lerp(1, 0.75, lt / D), t, { ang: lerp(0.32, 0.7, lt / D) });
+  beakedWhale(ctx, lerp(1250, 1420, lt / D), lerp(640, 1000, lt / D), lerp(0.72, 0.5, lt / D), t, { ang: lerp(0.45, 0.8, lt / D) });
   ctx.fillStyle = `rgba(0,0,0,${0.55 * ramp(lt, 0, D)})`; ctx.fillRect(0, 0, W, H);
   depthScale(t, Math.round(lerp(1500, 2900, lt / D)), 1);
   return { glow: 1 };
@@ -124,7 +135,7 @@ SC.water = (lt, t, shot) => {
   poolScene(cam, t, { secs: 0, label: '', tank: 0, empty: true, night: true });
   applyCam(cam);
   for (let i = 0; i < 9; i++) {   // a trail of bubbles from the deep end, further and further apart, until the last one
-    const born = c.water + 0.1 + 0.35 * i + 0.06 * i * i, ph = clamp((t - born) / 2.6), r = 24 - 1.6 * i;
+    const born = c.water + 0.05 + 0.22 * i + 0.025 * i * i, ph = clamp((t - born) / 1.6), r = 24 - 1.6 * i;
     if (ph <= 0 || ph >= 1) continue;
     const x = 760 + 16 * Math.sin(i * 2.1 + t * 3), y = lerp(1000, POOL.surf + 8, ph);
     softDot(gctx, x, y, r * 2.4, '#9FE6FF', 0.35 * (1 - ph));
@@ -133,9 +144,19 @@ SC.water = (lt, t, shot) => {
   }
   screenSpace();
   ctx.fillStyle = 'rgba(0,4,20,0.35)'; ctx.fillRect(0, 0, W, H);
-  const rows = [['NEVER IN WATER', c.never1], ['NEVER ALONE', c.never2], ['NEVER BREATHE FAST FIRST', c.never3]];
-  rows.forEach(([txt, at], i) => pill(960, 300 + 120 * i, txt, '#FF5A6E', ramp(t, at - 0.1, at + 0.2), 56));
   return { glow: 0.9, flash: 0.2 * (1 - ramp(lt, 0, 0.3)) };
+};
+// "So: never in water, never alone, and never fast breathing first." Pip, the lifeguard, at dusk, looks straight at
+// us with her birthday whistle: a blast before each rule, and the rule beside her
+SC.rules = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const cam = camOnHead('pip', lerp(3.4, 3.7, ramp(lt, 0, D, E.inOutSine)), -230, 40);
+  kitchenAt(cam, t);
+  screenSpace();
+  const rows = [['NEVER IN WATER', c.never1], ['NEVER ALONE', c.never2], ['NEVER BREATHE FAST FIRST', c.never3]];
+  rows.forEach(([txt, at], i) => pill(1330, 330 + 110 * i, txt, '#FF5A6E', ramp(t, at - 0.1, at + 0.2), 48));
+  const tw = (c.tweets || []).reduce((m, x) => Math.max(m, kickOf(t, x, 9)), 0);
+  return duskPost({ push: { k: 1 + 0.025 * tw, cx: 760, cy: 570 } });
 };
 // "On land? Your body won't let you. Even if you blacked out, it would take over... and breathe for you."
 SC.land = (lt, t, shot) => {
@@ -155,8 +176,12 @@ SC.land = (lt, t, shot) => {
 // ================================================================= the third test: count your breaths
 SC.count = (lt, t, shot) => {
   const D = shot.end - shot.start;
+  const c = cu();
   kitchenAt(camOnHead('hero', lerp(1.9, 2.6, ramp(lt, 0, D, E.inOutSine)), -40, lerp(-190, -40, ramp(lt, 0, D, E.inOutSine))), t);
-  return duskPost();
+  screenSpace();
+  const k15 = ramp(t, c.fifteen - 0.05, c.fifteen + 0.3, E.outBack), fly = ramp(t, c.cnow - 0.55, c.cnow - 0.05, E.inOutCubic);
+  if (k15 > 0.01 && fly < 0.98) bigWord('15', lerp(1400, 180, fly), lerp(420, 125, fly), lerp(300, 80, fly), '#4DFFB4', k15 * (1 - 0.5 * fly));
+  return duskPost({ flash: 0.15 * kickOf(t, c.fifteen, 8) });
 };
 // the match's tip (world): from her hand to the first wick, then wick to wick in little hops, each lit on its cue
 function matchTipAt(t, tips, L) {
@@ -198,23 +223,56 @@ SC.candles = (lt, t, shot) => {
 };
 SC.counted = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = camOnHead('hero', 2.4 + 0.5 * lt / D, -40, 10);
+  const cam = camOnHead('hero', 2.4 + 0.3 * lt / D, -240, 10);   // his face left of centre; the number on the right
   kitchenAt(cam, t);
-  // a window on the back of his head: the little sensor, pulsing with each breath, a whistle round its neck
-  const wk = ramp(t, c.fighting - 0.2, c.fighting + 0.4, E.outBack);
-  if (wk > 0.01) {
-    const [hx, hy] = toScreen(cam, ...kitHead('hero'));
-    const R = 120 * wk, x = hx + 300, y = hy - 40;
-    screenSpace();
-    ctx.save(); ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.clip();
-    ctx.fillStyle = '#0A1A3A'; ctx.fillRect(x - R, y - R, 2 * R, 2 * R);
-    alarmHead(t, { x: x + 10, y: y - 150, s: 1.25, sour: 0, ring: 0, whistle: 1, lick: 0.2 });
-    ctx.restore();
-    ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.lineWidth = 7; ctx.strokeStyle = '#4DFFB4'; ctx.stroke();
-    const pulse = 0.5 + 0.5 * Math.sin((t - c.fighting) * 2 * Math.PI / 4.0);
-    softDot(gctx, x, y, R * 1.3, '#4DFFB4', 0.25 + 0.3 * pulse);
+  screenSpace();
+  // "About four?": a big 4 and four little breaths, one after another
+  const k4 = ramp(t, c.fourw - 0.05, c.fourw + 0.3, E.outBack);
+  bigWord('4', 1060, 250, 300, '#FFD447', k4);
+  for (let i = 0; i < 4; i++) breathPuff(910 + 100 * i, 470, ramp(t, c.fourw + 0.3 + 0.16 * i, c.fourw + 0.55 + 0.16 * i, E.outBack), t, i);
+  return duskPost({ flash: 0.2 * kickOf(t, c.fourw, 8) });
+};
+// a little breath: three curls of air (screen space), popped in by k
+function breathPuff(x, y, k, t, i) {
+  if (k <= 0.01) return;
+  ctx.save(); ctx.translate(x, y + 4 * Math.sin(t * 3 + i)); ctx.scale(k, k);
+  ctx.lineCap = 'round'; ctx.lineWidth = 9; ctx.strokeStyle = '#BFF4FF';
+  for (const [dy, w] of [[-26, 46], [0, 62], [26, 40]]) { ctx.beginPath(); ctx.moveTo(-w / 2, dy); ctx.quadraticCurveTo(0, dy - 14, w / 2, dy); ctx.stroke(); }
+  ctx.restore();
+}
+// "That part of his brain he was fighting? It's been breathing for him his whole life." inside his head: the old
+// alarm flashes red for a moment, then it is the lifeguard with the whistle, breathing for him; on "whole life" the
+// view shrinks into a little window beside his face, back in the kitchen
+SC.fight = (lt, t, shot) => {
+  const c = cu();
+  const out = ramp(t, c.whole - 0.45, c.whole + 0.45, E.inOutCubic);
+  const cam = camOnHead('hero', 2.6, -40, 10);
+  if (out > 0) kitchenAt(cam, t); else { darkBg('#0A1A3A', '#02040C'); }
+  const [hx, hy] = toScreen(cam, ...kitHead('hero'));
+  const R = lerp(1250, 120, out), cx = lerp(960, hx + 300, out), cy = lerp(540, hy - 40, out);
+  const red = env2(t, c.fightw - 0.1, c.lifeB - 0.05, 0.12), green = ramp(t, c.lifeB - 0.1, c.lifeB + 0.3);
+  screenSpace();
+  ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.clip();
+  gctx.save(); gctx.beginPath(); gctx.arc(cx, cy, R, 0, Math.PI * 2); gctx.clip();
+  ctx.fillStyle = '#0A1A3A'; ctx.fillRect(0, 0, W, H);
+  const ax = lerp(900, cx + 10, out), ay = lerp(440, cy - 150, out), as = lerp(1.5, 1.25, out);
+  alarmHead(t, { x: ax, y: ay, s: as, sour: 0, ring: 0.9 * red, whistle: green, lick: 0.2 });
+  if (green > 0.01) {   // breathing for him: air streams in, then out, slow and even
+    const br = Math.sin((t - c.lifeB) * 2 * Math.PI / 3.2);
+    for (let i = 0; i < 14; i++) {
+      const ph = (t * 0.8 + i / 14) % 1, x0 = ax + 520 * as / 1.5, x = br > 0 ? lerp(x0 + 260, x0, ph) : lerp(x0, x0 + 260, ph), y = ay + 60 + 26 * Math.sin(i * 1.7);
+      line(ctx, x, y, x + 36, y, 6, `rgba(150,236,255,${green * Math.abs(br) * Math.sin(Math.PI * ph) * (1 - out)})`);
+    }
   }
-  return duskPost();
+  if (red > 0.01) { ctx.fillStyle = `rgba(255,40,60,${0.14 * red})`; ctx.fillRect(0, 0, W, H); }
+  gctx.restore(); ctx.restore();
+  if (out > 0.3) {
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.lineWidth = 7; ctx.strokeStyle = rgba('#4DFFB4', clamp((out - 0.3) * 2)); ctx.stroke();
+    const pulse = 0.5 + 0.5 * Math.sin((t - c.whole) * 2 * Math.PI / 4.0);
+    softDot(gctx, cx, cy, R * 1.3, '#4DFFB4', (0.25 + 0.3 * pulse) * clamp((out - 0.3) * 2));
+  }
+  pill(1450, 250, 'LIFEGUARD ON DUTY', '#4DFFB4', green * (1 - out), 46);
+  return out > 0 ? duskPost() : bodyPost({ flash: 0.2 * kickOf(t, c.fightw + 0.3, 8), vhs: 0.15 * red });
 };
 SC.turn = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;

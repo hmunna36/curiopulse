@@ -106,6 +106,14 @@ function kState(t) {
     P.eat = t >= cue('best') - 1 && t < cue('human') + 2 ? 1 : 0;
     P.face = P.eat ? Object.assign({}, FACES.chew, { mouthOpen: 0.25 + 0.2 * Math.abs(Math.sin(t * 9)) }) : FACES.calm;
     cake.lit = 0; cake.slice = P.eat || t > cue('cake') ? 1 : 0;
+    // the rules (at dusk): Pip, the lifeguard, looks straight at us, her birthday whistle in her mouth, a blast before each
+    if (t >= cue('rules') - 0.3 && t < cue('land') - 0.5) {
+      const wb = env2(t, cue('rules') - 0.2, cue('never3') + 0.1, 0.2);
+      P.whistleBlow = wb; P.R = [lerp(70, 20, wb), lerp(-60, -240, wb)];
+      P.puff = 0.9 * cue('tweets', []).reduce((m, x) => Math.max(m, env2(t, x - 0.03, x + 0.25, 0.05)), 0);
+      P.face = Object.assign({}, FACES.deadpan, { lookX: 0, lookY: 0, blink: 0.3 });
+      P.eat = 0;
+    }
     // act 3 at home (dusk): calm, breathing; the count; Pip relights her candles one by one; the final blow
     if (t >= cue('land') - 0.5) {
       H.face = FACES.calm; P.face = Object.assign({}, FACES.soft, { lookX: -0.4 });

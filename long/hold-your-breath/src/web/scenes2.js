@@ -54,7 +54,8 @@ SC.belly = (lt, t, shot) => {
     if (inh > 0.05) { line(ctx, ax, ay, ax + sd * 60 * inh, ay, 8, rgba('#FFD447', inh)); ctx.beginPath(); ctx.moveTo(ax + sd * (60 * inh + 22), ay); ctx.lineTo(ax + sd * 60 * inh, ay - 16); ctx.lineTo(ax + sd * 60 * inh, ay + 16); ctx.closePath(); ctx.fillStyle = rgba('#FFD447', inh); ctx.fill(); }
   }
   pill(1400, 300, 'DIAPHRAGM', '#FF9A3C', ramp(t, c.diaph - 0.1, c.diaph + 0.25), 56);
-  return bodyPost({ flash: 0.3 * (1 - ramp(t, c.bellyIn - 0.1, c.bellyIn + 0.2)) });
+  const kk = Math.max(kickOf(t, c.pushout, 6), kickOf(t, c.diaph, 6), kickOf(t, c.remember, 5));
+  return bodyPost({ flash: 0.3 * (1 - ramp(t, c.bellyIn - 0.1, c.bellyIn + 0.2)) + 0.12 * kickOf(t, c.remember, 6), push: { k: 1 + 0.035 * kk, cx: 960, cy: 600 } });
 };
 
 // ================================================================= his second try: sixty seconds; Pip's cold cloth

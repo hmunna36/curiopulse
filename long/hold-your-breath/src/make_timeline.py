@@ -69,16 +69,19 @@ SHOTS = [
     ("record", "The official record"),     # the record pool: 11:35
     ("oxygen", "With a trick"),            # the oxygen cylinder; the timer runs to 29:03
     ("six", "That's this whole video"),    # six copies of this film in a row
-    ("whale", "And a whale"),              # the deep sea: the whale going down
+    ("whale", "And a whale"),              # the deep sea: the whale glides past, close
+    ("whale2", "three hours"),             # wide: it goes down; its time races to 3:42:00
     ("dark", None),                        # wordless: the whale vanishes into the dark
     ("toolong", "But you're not a whale"), # TOO LONG? Pip's whistle again
     ("drain", "Breathe fast first"),       # the gauges: fast breathing first; the tank drains past BLACKOUT
     ("off", None),                         # black
-    ("water", "In water,"),                # the empty pool at night; the three rules
+    ("water", "In water,"),                # the empty pool at night; a trail of bubbles, thinning out
+    ("rules", "So: never"),                # Pip, the lifeguard, looks at us: a whistle for each rule
     ("land", "On land?"),                  # home at dusk; the sensor with a lifeguard's whistle breathes for him
     ("count", "Count your breaths"),       # the third test: 15 s
     ("candles", None),                     # the count: Pip relights her candles one by one
-    ("counted", "About four?"),            # his face, warm
+    ("counted", "About four?"),            # his face; the viewer's number: 4
+    ("fight", "That part of his"),         # inside his head: the alarm he fought is his lifeguard; back out to his face
     ("turn", "So this time"),              # Pip's big breath
     ("button", "Turns out"),               # he laughs
     ("final", None),                       # the final image: she blows them out; BREATHING
@@ -212,17 +215,20 @@ cues = {
     "trickO2": W("With a trick"), "pure": W("pure oxygen"), "croatia": W("Croatia"), "t29": W("twenty-nine minutes.", s=find("Croatia")),
     "six": W("That's this whole"), "sixw": W("seven times"),
     "whale": W("And a whale"), "hours": W("three hours"), "how": W("How? Scientists"), "working": W("working it out"),
+    "pay_342": W("minutes.", s=find("forty-two minutes")),
     "notwhale": W("But you're not"), "toolong": W("too long?"), "remember2": W("Remember the whistle"),
     "fastfirst": W("Breathe fast first"), "runout": W("run out", s=find("Breathe fast first")), "beforeRing": W("before the alarm"),
     "switchoff": W("switch off."), "off": off,
     "water": W("In water,"), "drown": W("drown."), "never1": W("never in water"), "never2": W("never alone"), "never3": W("never fast"),
+    "rules": W("So: never"), "tweets": [E("So:", s=find("So: never")) + 0.04, E("water,", s=find("never in water")) + 0.04, E("alone,") + 0.04],
     "land": W("On land?"), "wont": W("won't let you"), "blacked": W("blacked out"), "takes": W("take over"), "breathesfor": W("breathe for you"),
     "count": W("Count your breaths"), "cnow": W("now.", s=find("Starting")), "counted": W("About four?"),
+    "fifteen": W("fifteen seconds"), "fourw": W("four?", s=find("About four")), "fightw": W("fighting?"), "lifeB": W("It's been breathing"),
     "choose": W("didn't choose"), "fighting": W("That part of his brain"), "whole": W("whole life"),
     "turn": W("So this time"), "pipBreath": W("takes a big breath"), "win": W("girl win"),
     "button": W("Turns out"), "lose": W("lose."), "blow": blow, "final": S0["final"], "sub": W("Next week"),
     # the kitchen turns to dusk while we are away (act 3)
-    "dusk0": S0["land"] - 0.4, "dusk1": S0["land"],
+    "dusk0": S0["rules"] - 0.4, "dusk1": S0["rules"],
 }
 # the diaphragm's kicks: from "starts kicking" until his breath out, faster and faster
 k, t = [], cues["kicking"] + 0.15
@@ -263,7 +269,7 @@ for name, t in {
     "pay_argue": cues["argue"], "big_best": best, "pay_cake": cues["cake"] + 0.3, "pay_eleven": cues["eleven"],
     "big_29": cues["t29"], "pay_six": cues["sixw"], "big_whale": cues["hours"], "pay_how": cues["how"],
     "big_off": off, "pay_drown": cues["drown"], "pay_never": cues["never1"], "big_land": cues["breathesfor"],
-    "pay_counted": cues["counted"], "pay_win": cues["win"], "big_blow": blow,
+    "pay_counted": cues["fourw"], "pay_fifteen": cues["fifteen"], "pay_life": cues["lifeB"], "pay_win": cues["win"], "big_blow": blow,
 }.items():
     cues[name] = round(t, 3)
 

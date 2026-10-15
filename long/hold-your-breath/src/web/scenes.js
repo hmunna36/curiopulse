@@ -352,7 +352,8 @@ SC.dont = (lt, t, shot) => {
     for (let i = 0; i < 26; i++) { const ph = (t * 2.2 + hash(i)) % 1, y = 300 + 520 * hash(i * 3.1); line(ctx, -200 + 2300 * ph, y, -200 + 2300 * ph + 160, y, 5, `rgba(220,245,255,${0.5 * wind * Math.sin(Math.PI * ph)})`); }
     const na = ramp(t, c.noadd - 0.1, c.noadd + 0.3, E.outBack);
     // the stamp goes on after the wind's blur, so it stays sharp
-    return bodyPost({ blur: [24 * wind, 0], overlay: na > 0.01 ? () => stamp('+0 OXYGEN', 960, 200, na, '#7FE9FF', -0.08, 100) : null });
+    return bodyPost({ blur: [24 * wind, 0], overlay: na > 0.01 ? () => stamp('+0 OXYGEN', 960, 200, na, '#7FE9FF', -0.08, 100) : null,
+      flash: 0.22 * kickOf(t, c.noadd, 8), push: { k: 1 + 0.04 * kickOf(t, c.blows + 0.2, 5), cx: 960, cy: 560 } });
   }
   // the alarm: it should be ringing, and it is dozing; at "too late" its eye snaps open, in the dark
   darkBg('#0A1A3A', '#02040C'); screenSpace();

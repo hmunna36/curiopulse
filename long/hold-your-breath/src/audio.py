@@ -192,18 +192,18 @@ def ventilator(n, rate=14, t0=0.0):
 # ================================================================= ambience (one bed per world, gated to its shots)
 kitchen_day = shots("hook", "ten", "bet", "tense", "thirty", "shake", "out", "smoke", "pip", "breathe", "round2", "whistle",
                     "sixty", "splat", "ninety", "hurt", "best", "cake", "human", "toolong")
-kitchen_dusk = shots("land", "count", "candles", "counted", "turn", "button", "final")
+kitchen_dusk = shots("rules", "land", "count", "candles", "counted", "fight", "turn", "button", "final")
 amb.x += pan_st(filt(brown(N, 4), "lowpass", 170), 0) * 0.14 * gate(N, kitchen_day + kitchen_dusk, 0.25)
 amb.x += pan_st(0.025 * np.sin(2 * np.pi * 60 * tt) + 0.012 * np.sin(2 * np.pi * 120 * tt), 0.4) * gate(N, kitchen_day, 0.3)   # the fridge
 for k, t in enumerate(np.arange(SHOT["hook"] + 3.0, END["breathe"], 3.7)):
     if not any(a - 0.3 < t < b for a, b in shots("tense", "shake", "smoke")):
         sfx.add(tweet(k, 3200 + 280 * (k % 3)), t, db(-38), pan=0.7)
 crickets(SHOT["land"], END["final"], amb, 0.05, seed=3)
-body = shots("blood", "twenty", "alarm", "sensor", "belly", "spleen", "ninety", "land")
+body = shots("blood", "twenty", "alarm", "sensor", "belly", "spleen", "ninety", "land", "fight")
 amb.x += pan_st(filt(pink(N, 9), "bandpass", (110, 420)) * 0.35, 0) * gate(N, body, 0.3)
 stage = shots("result", "tank", "early", "dont", "dive", "six", "drain")
 amb.x += pan_st(filt(brown(N, 6), "lowpass", 90) * 0.5, 0) * gate(N, stage, 0.2)
-sea = shots("seal", "whale", "dark")
+sea = shots("seal", "whale", "whale2", "dark")
 amb.x += pan_st(filt(brown(N, 11), "lowpass", 300) * (0.8 + 0.2 * np.sin(2 * np.pi * 0.12 * tt)), 0) * 0.55 * gate(N, sea, 0.4)
 pool = shots("glimpse", "record", "oxygen", "water")
 amb.x += pan_st(filt(pink(N, 12), "bandpass", (200, 900)) * 0.12 + filt(brown(N, 13), "lowpass", 160) * 0.2, 0) * gate(N, pool, 0.3)
@@ -217,7 +217,7 @@ amb.x += pan_st(filt(pink(N, 21), "highpass", 4000) * 0.03, 0) * gate(N, space, 
 
 # ================================================================= whooshes into the cuts that move (not the comedy cuts)
 for s in TL["shots"][1:]:
-    if s["id"] in ("ten", "smoke", "whistle", "splat", "cake", "off", "final", "sub", "candles", "dark", "tense", "shake", "out"):
+    if s["id"] in ("ten", "smoke", "whistle", "splat", "cake", "off", "final", "sub", "candles", "dark", "tense", "shake", "out", "rules"):
         continue
     sfx.add(pan_st(whoosh(0.32, 500, 2800, 600 + int(s["start"])), 0), s["start"] - 0.28, db(-30))
 
@@ -289,6 +289,10 @@ sfx.add(pan_st(blip(800, 1500, 0.08, 12, 0.03), 0.3), SHOT["result"] + 0.9, db(-
 sfx.add(pan_st(thump(0.22, 200, 70, 0.05, 13), 0), c["ninetyPct"] + 0.05, db(-20))
 sfx.add(pan_st(alarm_bell(1.6, 5, 30.0, 2300.0), 0.3), SHOT["tank"] + 1.3, db(-29))
 sfx.add(pan_st(slide_whistle(0.5, 600, 1800), 0.4), c["faster"] - 0.1, db(-30))
+for k, t in enumerate(np.arange(c["rings"], c["rings"] + 1.4, 0.09)):                 # the exhaust needle racing
+    sfx.add(soft_tick(70 + k, 1.1), t, db(-31), pan=0.45)
+for k in range(3):                                                                       # the oxygen, barely moving
+    sfx.add(pan_st(blip(520, 500, 0.12, 80 + k, 0.04), -0.4), c["faster"] + 0.2 + 0.9 * k, db(-30))
 
 # ================================================================= ROUND TWO
 sfx.add(pan_st(blip(500, 300, 0.06, 15, 0.02), -0.2), c["round2"] + 0.4, db(-27))       # goggles snap
@@ -299,11 +303,17 @@ sfx.add(pan_st(scratch(0.3, 3), 0), c["whistleT"] - 0.05, db(-24))
 sfx.add(pan_st(buzzer(0.35), 0), c["noadd"] + 0.6, db(-34))
 sfx.add(pan_st(slide_whistle(0.9, 1500, 300), -0.3), c["blows"] + 0.2, db(-30))
 sfx.add(pan_st(thump(1.0, 90, 34, 0.4, 17), 0), c["toolate"] + 0.45, db(-12))
+for k, t in enumerate((c["late"] + 0.25, c["late"] + 1.6)):                          # the alarm dozing: soft snores
+    sfx.add(pan_st(filt(brown(int(0.55 * SR), 60 + k), "lowpass", 260) * np.sin(np.pi * ar(int(0.55 * SR)) / 0.55) * 0.9, 0.2), t, db(-27))
 
 # ================================================================= ACT 2
 # the belly test: a long breath in, then out
 sfx.add(inhale(1.4, 19), c["breathein"] + 0.15, db(-27))
-sfx.add(pan_st(blip(700, 1300, 0.08, 20, 0.03), 0.3), c["diaph"] + 0.05, db(-27))
+sfx.add(pan_st(blip(700, 1300, 0.08, 20, 0.01), 0.3), c["diaph"] + 0.05, db(-22))
+sfx.add(pan_st(blip(300, 520, 0.1, 21, 0.01), 0), c["pushout"] + 0.05, db(-21))
+sfx.add(pan_st(thump(0.3, 260, 120, 0.08, 22), 0), c["dome"] + 0.1, db(-22))            # the dome glows
+sfx.add(pan_st(thump(0.12, 420, 200, 0.03, 23), 0.1), c["bellyIn"] + 0.3, db(-22))      # the hand lands on the belly
+sfx.add(pan_st(bell(2093, 0.7, 0.3), 0.3), c["remember"] - 0.05, db(-31))
 # sixty: the stopwatch click and a little ding; the cloth's drips
 sfx.add(pan_st(soft_tick(50, 1.6), 0.4), c["sixty"] - 0.1, db(-22))
 sfx.add(pan_st(bell(1568, 0.5, 0.25), 0.3), c["record"] + 0.3, db(-28))
@@ -330,6 +340,8 @@ for t in np.arange(SHOT["seal"] + 0.3, END["seal"], 60 / 26):
 sfx.add(squelch(0.5, 6), c["squeezes"] + 0.1, db(-22))
 for k in range(9):
     bed.add(pan_st(bloop(520 + 50 * (k % 4), 260, 0.15), 0.3 * (-1) ** k), c["squeezes"] + 0.5 + 0.22 * k, db(-30))
+sfx.add(heartbeat(41, 1.0), c["ninety"] + 0.55, db(-22))
+sfx.add(heartbeat(42, 1.1), c["herecomes"] + 0.15, db(-21))
 # the kicks: each a hard low thud with a hiccup-ish squeak on top (edges only when a word is near)
 for k, t in enumerate(c["kicks"]):
     sfx.add(pan_st(thump(0.25, 140, 48, 0.07, 60 + k), 0), t, db(-14))
@@ -346,6 +358,10 @@ bwomp(mus, c["argue"] + 0.9, m=36, gain=-16)
 sfx.add(pan_st(big_exhale(0.5, 21), 0), c["best"], db(-7))
 sfx.add(pan_st(whoosh(0.5, 400, 2400, 22), 0.4), c["best"] + 0.1, db(-22))
 sfx.add(pan_st(riser(1.1, 23, 300, 1800), 0), c["nearly"] - 0.4, db(-28))
+# the two tries side by side: TRY 1 pops up, TRY 2 grows past it, 1:52 lands
+sfx.add(pan_st(blip(500, 900, 0.08, 24, 0.01), -0.5), c["nearly"] - 0.15, db(-20))
+sfx.add(pan_st(slide_whistle(0.6, 420, 1400), -0.3), c["nearly"] - 0.1, db(-26))
+sfx.add(pan_st(bell(1568, 0.7, 0.3), -0.3), c["nearly"] + 0.5, db(-23))
 # the cake: a chomp after "cake."
 ce = next(w["end"] for w in WORDS if w["word"] == "cake." and w["block"] == "cake")
 sfx.add(chomp(4), ce + 0.15, db(-10))
@@ -366,6 +382,12 @@ for i in range(7):
 sfx.add(pan_st(whale_moan(2.6, 190, 96, 2), -0.3), SHOT["whale"] + 0.6, db(-15))
 sfx.add(pan_st(whale_moan(2.2, 150, 80, 3), 0.3), SHOT["dark"] - 0.2, db(-17))
 sfx.add(pan_st(bell(2637, 1.2, 0.5), 0.4), c["how"] + 0.2, db(-30))
+for k, t in enumerate(np.arange(SHOT["whale"] + 0.2, END["dark"], 1.9)):               # sonar pings, fainter as it goes down
+    sfx.add(pan_st(bell(1318, 1.4, 0.6) * 0.6, 0.5 - 0.15 * k), t, db(-30 - 1.5 * k))
+for k, t in enumerate(np.arange(c["hours"] - 0.05, c["pay_342"] - 0.05, 0.1)):         # its time racing up
+    sfx.add(soft_tick(500 + k, 0.9), t, db(-33), pan=0.2)
+m342 = next(w["end"] for w in WORDS if w["word"] == "minutes." and w["start"] >= c["pay_342"] - 0.01)
+sfx.add(pan_st(bell(1760, 0.8, 0.4), 0.2), m342 + 0.03, db(-28))                        # after the word, not on it
 # too long: the whistle again, short; the tank draining; the power going down; silence
 sfx.add(pan_st(pea_whistle(0.45, 9, 2950, 0.8), 0.3), c["remember2"] + 0.85, db(-12))
 for k, t in enumerate(np.arange(c["fastfirst"], c["fastfirst"] + 1.1, 0.22)):
@@ -375,12 +397,20 @@ dn = slide_whistle(1.1, 900, 120)
 sfx.add(pan_st(dn, 0), c["off"] - 0.05, db(-24))
 # the water: three low knocks for the three rules
 for i in range(9):   # the bubble trail: each one reaches the surface with a soft blub, further and further apart
-    sfx.add(pan_st(drip(240 + i, 520 - 18 * i), -0.35), c["water"] + 0.1 + 0.35 * i + 0.06 * i * i + 2.5, db(-29 - 0.6 * i))
+    tb = c["water"] + 0.05 + 0.22 * i + 0.025 * i * i + 1.53
+    if tb < SHOT["rules"] - 0.05:
+        sfx.add(pan_st(drip(240 + i, 520 - 18 * i), -0.35), tb, db(-29 - 0.6 * i))
+for i, t in enumerate(c["tweets"]):                                                      # Pip's whistle: a short blast before each rule
+    sfx.add(pan_st(pea_whistle(0.22, 130 + i, 3050, 0.8), -0.2), t, db(-20))
 for i, k in enumerate(("never1", "never2", "never3")):
-    sfx.add(pan_st(thump(0.3, 120, 50, 0.08, 120 + i), 0), c[k] + 0.05, db(-17))
+    sfx.add(pan_st(thump(0.3, 120, 50, 0.08, 120 + i), 0), c[k] + 0.05, db(-20))
 # on land: the lifeguard's whistle (soft) and the breath in
 sfx.add(pan_st(pea_whistle(0.35, 11, 2700, 0.6), 0.3), c["takes"] + 0.45, db(-21))
 sfx.add(inhale(1.0, 23), c["breathesfor"] + 0.6, db(-22))
+sfx.add(pan_st(blip(600, 1300, 0.09, 150, 0.03), 0.4), c["fifteen"] + 0.02, db(-26))
+sfx.add(pan_st(whoosh(0.45, 2400, 600, 151), -0.5), c["cnow"] - 0.55, db(-30))
+sfx.add(pan_st(soft_tick(152, 1.6), -0.5), next(w["end"] for w in WORDS if w["word"] == "seconds." and w["start"] > c["fifteen"]) + 0.1, db(-22))   # the stopwatch, ready
+sfx.add(inhale(0.7, 153), next(w["end"] for w in WORDS if w["word"].startswith("Starting")) + 0.08, db(-26))           # he breathes in, ready
 # the breath count: his breaths, the matches; each candle lights on a note of the theme
 for k, t in enumerate(c["breaths"]):
     sfx.add(inhale(1.4, 160 + k), t, db(-30))
@@ -388,6 +418,16 @@ NOTES = [62, 66, 69, 74, 76, 78, 81]
 for i, t in enumerate(c["lights"]):
     sfx.add(pan_st(match_strike(170 + i), 0.15), t - 0.2, db(-25))
     mus.add(inst("box", mtof(NOTES[i]), 1.6, 180 + i), t + 0.05, db(-15), pan=-0.3 + 0.1 * i)
+sfx.add(pan_st(bell(1568, 0.9, 0.4), 0.3), c["fourw"] + 0.05, db(-27))
+for i in range(4):
+    sfx.add(pan_st(filt(white(int(0.16 * SR), 210 + i), "bandpass", (900, 3000)) * np.exp(-ar(int(0.16 * SR)) / 0.05), 0.2 + 0.1 * i), c["fourw"] + 0.3 + 0.16 * i, db(-31))
+fe = next(w["end"] for w in WORDS if w["word"] == "fighting?")
+sfx.add(pan_st(alarm_bell(0.22, 7, 28.0, 2100.0), 0.2), fe + 0.02, db(-29))
+sfx.add(pan_st(chime(1174.7, 1.2), 0.1), c["lifeB"] - 0.12, db(-30))
+for k, t in enumerate((c["lifeB"] + 0.6, c["lifeB"] + 2.2)):
+    sfx.add(inhale(1.2, 220 + k), t, db(-31))
+pb_end = next(w["end"] for w in WORDS if w["word"].startswith("breath") and w["start"] > c["pipBreath"])
+sfx.add(pan_st(inhale(0.9, 230), 0.4), pb_end + 0.05, db(-25))                          # Pip's big breath, after the word
 # the final blow: Pip's breath, seven flames out
 sfx.add(pan_st(big_exhale(0.7, 33), 0.2), c["blow"] - 0.05, db(-12))
 for i in range(7):
