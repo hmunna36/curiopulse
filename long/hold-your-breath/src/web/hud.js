@@ -24,6 +24,12 @@ function drawHud(t, post) {
   const x = 110, y = 132, flip = clamp(s.age / 0.26);
   let txt = s.cur[1];
   let tickPop = 0;
+  if (txt.includes('{c}')) {     // a countdown of the viewer's 15 seconds
+    const left = Math.max(0, Math.ceil(15 - (t - (TLd.cues.countFrom || 0)) - 1e-6));
+    txt = txt.replace('{c}', String(left));
+    const frac = (t - (TLd.cues.countFrom || 0)) % 1;
+    tickPop = left > 0 ? Math.exp(-frac * 14) : 0;
+  }
   if (txt.includes('{s}')) {
     const sec = Math.floor(heldSecs(t));
     txt = txt.replace('{s}', String(sec));
@@ -53,12 +59,12 @@ function drawHud(t, post) {
 function safetyBadge(lines, k, x = W - 110, y = 92) {
   if (k <= 0.01) return;
   ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.font = '900 30px Montserrat';
-  const w = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 56, h = 26 + 42 * lines.length;
+  ctx.font = '900 36px Montserrat';
+  const w = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 64, h = 30 + 50 * lines.length;
   ctx.translate(x - w / 2, y + h / 2); const sc = E.outBack(clamp(k), 2); ctx.scale(sc, sc);
   rrect(ctx, -w / 2, -h / 2, w, h, 22); ctx.fillStyle = 'rgba(8,12,34,0.86)'; ctx.fill();
   ctx.lineWidth = 4; ctx.strokeStyle = '#4DFFB4'; ctx.stroke();
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  lines.forEach((l, i) => { ctx.fillStyle = i === 0 ? '#4DFFB4' : '#FFFFFF'; ctx.fillText(l, 0, -h / 2 + 34 + 42 * i); });
+  lines.forEach((l, i) => { ctx.fillStyle = i === 0 ? '#4DFFB4' : '#FFFFFF'; ctx.fillText(l, 0, -h / 2 + 40 + 50 * i); });
   ctx.restore();
 }

@@ -346,11 +346,11 @@ function kitFlame(x, y, s, t, lean = 0, k = 1, seed = 0) {
 }
 // a wisp of smoke from a wick that has gone out (d = seconds since)
 function kitSmoke(x, y, s, d, seed = 0) {
-  if (d <= 0 || d > 2.4) return;
-  const a = clamp(d * 8) * clamp((2.4 - d) / 1.2);
-  ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = `rgba(230,222,240,${0.55 * a})`; ctx.lineWidth = (3 + 5 * d) * s;
+  if (d <= 0 || d > 3.6) return;
+  const a = clamp(d * 8) * clamp((3.6 - d) / 1.4);
+  ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = `rgba(190,184,204,${0.42 * a})`; ctx.lineWidth = (2.5 + 3.5 * d) * s;
   ctx.beginPath(); ctx.moveTo(x, y);
-  for (let i = 1; i <= 10; i++) { const u = i / 10, yy = y - u * (30 + 120 * d) * s; ctx.lineTo(x + Math.sin(u * 5 + d * 4 + seed) * (4 + 20 * u * d) * s, yy); }
+  for (let i = 1; i <= 10; i++) { const u = i / 10, yy = y - u * (30 + 95 * d) * s; ctx.lineTo(x + Math.sin(u * 5 + d * 3 + seed) * (4 + 16 * u * d) * s, yy); }
   ctx.stroke(); ctx.restore();
 }
 

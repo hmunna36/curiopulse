@@ -33,7 +33,7 @@ function kState(t) {
     H.tremble = 0.06 * clamp((k - 0.8) * 5);
     // the thumbs-up on "Ten seconds. Easy."
     const th = env2(t, cue('ten') - 0.15, cue('ten') + 1.8, 0.25);
-    if (th > 0) { H.R = [lerp(70, 40, th), lerp(-60, -250, th)]; H.hand = th > 0.5 ? 'thumbR' : 'open'; }
+    if (th > 0) { H.R = [lerp(70, 120, th), lerp(-60, -190, th)]; H.hand = th > 0.5 ? 'thumbR' : 'open'; }
     // his hand on his chest when it burns
     const bu = env2(t, cue('burn') - 0.1, cue('out') - 0.2, 0.3);
     if (bu > 0) H.L = [lerp(-70, -10, bu), lerp(-60, -150, bu)];
@@ -91,6 +91,8 @@ function kState(t) {
     } else H.face = FACES.calmK;
     P.puff = 0; P.face = Object.assign({}, FACES.deadpan, { lookX: -0.7 });
     P.stopwatch = env2(t, cue('sixty') - 0.4, cue('clothUp') - 0.2, 0.25);
+    if (P.stopwatch > 0) P.R = [lerp(70, 50, P.stopwatch), lerp(-60, -220, P.stopwatch)];
+    if (t >= cue('ninety') - 0.3 && t < cue('best')) { const sw2 = env2(t, cue('ninety') - 0.3, cue('best') - 0.3, 0.3); P.stopwatch = sw2; P.R = [lerp(70, 50, sw2), lerp(-60, -220, sw2)]; P.face = Object.assign({}, FACES.worriedK, { lookX: -0.8 }); }
     const up = env2(t, cue('clothUp'), cue('splat') + 0.3, 0.25);
     if (up > 0) { P.face = Object.assign({}, FACES.glee, { lookX: -0.8 }); P.L = [lerp(-70, -150, up), lerp(-60, -260, up)]; P.clothUp = up; }
   } else {

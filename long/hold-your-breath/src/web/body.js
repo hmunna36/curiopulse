@@ -126,6 +126,14 @@ function chestX(v, t, o = {}) {
     for (const [a, bx2, by2, w2] of [[1, 196, -292, 8], [1, 226, -200, 8], [2, 208, -120, 7], [2, 150, -100, 8], [2, 96, -110, 7], [1, 96, -200, 6]]) {
       c.lineWidth = w2; c.beginPath(); c.moveTo(br[a][0], br[a][1]); c.quadraticCurveTo((br[a][0] + sd * bx2) / 2 + sd * 10, (br[a][1] + by2) / 2 - 12, sd * bx2, by2); c.stroke();
     }
+    // a sweep of cyan rising through them (o.sweep 0..1: "full of oxygen")
+    if ((o.sweep || 0) > 0.01 && o.sweep < 1.6) {
+      const yTop = lerp(80, -360, clamp(o.sweep)), band = 120;
+      const gg = c.createLinearGradient(0, yTop - band, 0, yTop + band);
+      gg.addColorStop(0, 'rgba(127,233,255,0)'); gg.addColorStop(0.5, `rgba(160,245,255,${0.55 * (1 - clamp(o.sweep - 0.6))})`); gg.addColorStop(1, 'rgba(127,233,255,0.18)');
+      c.fillStyle = gg; c.fillRect(sd < 0 ? -300 : 0, yTop - band, 300, 500);
+      G((g) => { g.fillStyle = `rgba(127,233,255,${0.25 * (1 - clamp(o.sweep - 0.6))})`; g.fillRect(sd < 0 ? -300 : 0, yTop - band * 0.5, 300, band); });
+    }
     // the air in them: oxygen (cyan) and exhaust (violet) as soft dots that drift
     const o2 = o.o2 === undefined ? 0.7 : o.o2, ex = o.ex || 0;
     for (let i = 0; i < 44; i++) {

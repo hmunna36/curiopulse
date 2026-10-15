@@ -70,47 +70,66 @@ SC.bet = (lt, t, shot) => {
 };
 // "Right now, your blood is still almost completely full of oxygen." a round window opens on his chest; the camera
 // dives through it into the x-ray chest: lungs full of cyan oxygen
-const CHEST = () => kitPt('hero', [0, -130]);
+const CHEST = () => kitPt('hero', [0, -150]);
+// the chest x-ray framed to fill the screen (its lungs centred)
+const CHEST_V = { x: 960, y: 830, s: 1.25 };
 SC.blood = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const dive = ramp(lt, 0.9, 1.9, E.inCubic);
-  if (dive < 1) {
-    const base = camOnHead('hero', 2.0, -40, -100);
-    const cam = scaledCam(base, CHEST(), 1 + 9 * dive);
-    kitchenAt(cam, t);
-    // the window on his chest, with the x-ray inside it
-    const [wx, wy] = toScreen(cam, ...CHEST()), R = (40 + 90 * ramp(lt, 0.1, 0.6, E.outBack)) * cam.zoom / 2.0;
-    ctx.save(); screenSpace(); ctx.beginPath(); ctx.arc(wx, wy, R, 0, Math.PI * 2); ctx.clip();
-    ctx.fillStyle = '#081430'; ctx.fillRect(0, 0, W, H);
-    chestX({ x: wx, y: wy + 160 * R / 130, s: 0.9 * R / 130 }, t, { o2: 1, ex: 0, puff: 1 });
-    ctx.restore();
-    ctx.beginPath(); ctx.arc(wx, wy, R, 0, Math.PI * 2); ctx.lineWidth = 8; ctx.strokeStyle = '#7FE9FF'; ctx.stroke();
-    softDot(gctx, wx, wy, R * 1.2, '#7FE9FF', 0.3);
-    return dayPost({ zblur: 0.12 * dive });
-  }
-  // inside: the chest, the lungs glowing with oxygen
-  darkBg('#0A1A3A', '#02040C'); screenSpace();
-  const a = lt - 1.9;
-  const s = lerp(1.15, 1.25, clamp(a / (D - 1.9)));
-  chestX({ x: 960, y: 760 + 60 * clamp(a / (D - 1.9)), s }, t, { o2: 1, ex: 0, puff: 1, heartGlow: 0.4 });
-  pill(960, 150, 'OXYGEN 98%', '#7FE9FF', ramp(t, c.oxy - 0.1, c.oxy + 0.25), 58);
-  return bodyPost({ zblur: 0.1 * (1 - ramp(a, 0, 0.4)), flash: 0.25 * (1 - ramp(a, 0, 0.25)) });
+  const base = camOnHead('hero', 2.2 + 0.25 * ramp(lt, 0, D), -60, -120);
+  kitchenAt(base, t);
+  // the window on his chest opens, then grows until it is the whole frame
+  const [wx, wy] = toScreen(base, ...CHEST());
+  const open = ramp(lt, 0.15, 0.7, E.outBack), grow = ramp(lt, 1.0, D, E.inCubic);
+  const R = lerp(150 * open, Math.hypot(W, H), grow);
+  const k = grow;                                   // the x-ray inside: from "fits his chest" to the full-frame view
+  const v = { x: lerp(wx, CHEST_V.x, k), y: lerp(wy + 130, CHEST_V.y, k), s: lerp(0.22, CHEST_V.s, k) };
+  screenSpace();
+  ctx.save(); ctx.beginPath(); ctx.arc(lerp(wx, 960, k), lerp(wy, 540, k), Math.max(1, R), 0, Math.PI * 2); ctx.clip();
+  const bg = ctx.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#0A1A3A'); bg.addColorStop(1, '#02040C');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  chestX(v, t, { o2: 1, ex: 0, puff: 1, heartGlow: 0.4 });
+  ctx.restore();
+  screenSpace();
+  if (grow < 0.98) { ctx.beginPath(); ctx.arc(lerp(wx, 960, k), lerp(wy, 540, k), Math.max(1, R), 0, Math.PI * 2); ctx.lineWidth = 8; ctx.strokeStyle = '#7FE9FF'; ctx.stroke(); softDot(gctx, lerp(wx, 960, k), lerp(wy, 540, k), R * 1.15, '#7FE9FF', 0.25 * (1 - grow)); }
+  return dayPost({ zblur: 0.06 * grow * (1 - grow) * 4 });
 };
-// "Twenty. But every second, your body makes exhaust... and right now, it's got nowhere to go." the blood up close:
-// violet exhaust bubbles appear between the cells and multiply
+// "Twenty. Your blood is still almost totally full of oxygen. But every second, your body makes exhaust... and it's
+// got nowhere to go." the chest, lungs glowing cyan (OXYGEN 98 %); then the camera dives into a lung's blood vessel:
+// violet exhaust bubbles appear, multiply and crowd against the exit, which is locked (his mouth is shut)
 SC.twenty = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const ex = 0.1 + 0.75 * ramp(t, c.exhaust - 0.3, c.nowhere + 1.2, E.inOutSine);
+  const dv = ramp(t, c.exhaust - 1.1, c.exhaust - 0.2, E.inOutCubic);
+  if (dv < 1) {
+    darkBg('#0A1A3A', '#02040C'); screenSpace();
+    const P = [960 + 150 * 1.25, CHEST_V.y - 220 * 1.25];          // a spot in his left lung (our right)
+    const z = (1 + 0.05 * clamp((t - c.twenty) / 4)) * (1 + 7 * dv * dv);
+    ctx.save(); ctx.translate(P[0], P[1]); ctx.scale(z, z); ctx.translate(-P[0], -P[1]);
+    chestX(CHEST_V, t, { o2: 1, ex: 0.12 * ramp(t, c.exhaust - 2.2, c.exhaust - 1.2), puff: 1, heartGlow: 0.4, sweep: 1.2 * ramp(t, c.oxy - 0.9, c.oxy + 0.5) });
+    ctx.restore();
+    pill(960, 210, 'OXYGEN 98%', '#7FE9FF', ramp(t, c.oxy - 0.2, c.oxy + 0.15) * (1 - dv), 60);
+    return bodyPost({ zblur: 0.15 * dv, flash: 0.5 * ramp(dv, 0.8, 1) });
+  }
+  const ex = 0.12 + 0.8 * ramp(t, c.exhaust - 0.2, c.nowhere + 1.0, E.inOutSine);
   screenSpace();
-  ctx.save(); const z = 1 + 0.08 * lt / D; ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2);
-  bloodTube(t, { o2: 0.97, ex, y: 560, h: 620, flow: lerp(1, 0.4, ramp(t, c.nowhere, c.nowhere + 1)) });
+  const a = t - (c.exhaust - 0.2), z = 1.06 + 0.06 * clamp(a / 5);
+  ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2);
+  bloodTube(t, { o2: 0.97, ex, y: 560, h: 620, flow: lerp(1, 0.25, ramp(t, c.nowhere, c.nowhere + 1)) });
   ctx.restore();
-  pill(1500, 170, 'EXHAUST', '#B48CFF', ramp(t, c.exhaust, c.exhaust + 0.3), 50);
-  // "nowhere to go": the way out is shut (his lips sealed): a padlock pops at the top of the frame
-  const lk = ramp(t, c.nowhere, c.nowhere + 0.3, E.outBack);
-  if (lk > 0.01) { ctx.save(); ctx.translate(420, 170); ctx.scale(lk, lk); padlock(ctx, 0, 0, 1.2); ctx.restore(); }
-  return bodyPost();
+  // the exit at the right end of the vessel, locked
+  const lk = ramp(t, c.nowhere - 0.1, c.nowhere + 0.25, E.outBack);
+  exitDoor(1750, 560, 1, lk);
+  pill(1360, 230, 'EXHAUST', '#B48CFF', ramp(t, c.exhaust, c.exhaust + 0.3), 56);
+  return bodyPost({ flash: 0.35 * (1 - ramp(a, 0, 0.25)) });
 };
+// a door at the end of the vessel: EXIT, and a padlock on it that drops in (k 0..1)
+function exitDoor(x, y, s, k) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  rrect(ctx, -90, -230, 180, 460, 20); ctx.fillStyle = '#3A1830'; ctx.fill(); ctx.lineWidth = 8; ctx.strokeStyle = '#FF8AA0'; ctx.stroke();
+  ctx.font = '400 54px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#4DFFB4'; ctx.fillText('EXIT', 0, -170);
+  softDot(gctx, x, y - 170 * s, 90, '#4DFFB4', 0.5);
+  if (k > 0.01) { ctx.save(); ctx.translate(0, -40 - 120 * (1 - k)); ctx.scale(1.3, 1.3); padlock(ctx, 0, 0, 1); ctx.restore(); }
+  ctx.restore();
+}
 // a padlock (screen units)
 function padlock(c, x, y, s) {
   c.save(); c.translate(x, y); c.scale(s, s);
@@ -130,7 +149,7 @@ SC.tense = (lt, t, shot) => {
 // "Thirty. Feel that? That burn?" his chest glows hot; his hand on it
 SC.thirty = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = camOnHead('hero', 2.3 + 0.2 * lt / D, -20, -150);
+  const cam = camOnHead('hero', 2.9 + 0.25 * lt / D, -10, -170);
   kitchenAt(cam, t, {
     after: (cm) => {
       const [x, y] = toScreen(cm, ...CHEST()), k = ramp(t, c.burn - 0.3, c.burn + 0.3) * (0.85 + 0.15 * Math.sin(t * 9));
@@ -141,19 +160,19 @@ SC.thirty = (lt, t, shot) => {
   });
   return dayPost();
 };
-// "That's not the missing oxygen. It's the exhaust. It makes your blood a tiny bit sour... and a sensor at the base of
-// your brain tastes it... and pulls the alarm." the gauge (oxygen still nearly full), the sour blood, then the sensor
+// "That's not the missing oxygen. It's mostly the exhaust. It makes your blood a tiny bit sour..." his whole chest:
+// the oxygen pill still says 96 %, the lungs fill up with violet exhaust, and a sour lemon pops in
 SC.alarm = (lt, t, shot) => {
-  const c = cu();
-  darkBg('#0A0A1A', '#000000'); screenSpace();
-  const ex = 0.35 + 0.3 * ramp(t, c.itsex, c.sour + 0.5);
-  const sour = ramp(t, c.sour - 0.2, c.sour + 0.6);
-  bloodTube(t, { o2: 0.96, ex, y: 560, h: 640, flow: 0.5 });
-  // the oxygen pill, still green; then a sour-face stamp over the blood
-  pill(560, 170, 'OXYGEN: STILL 96%', '#4DFFB4', ramp(t, c.notmissing, c.notmissing + 0.3), 50);
-  pill(1360, 170, 'EXHAUST: PILING UP', '#B48CFF', ramp(t, c.itsex, c.itsex + 0.3), 50);
-  if (sour > 0.01) { ctx.save(); ctx.translate(960, 560); const s = E.outBack(clamp(sour * 1.6), 2); ctx.scale(s, s); lemon(ctx, 0, 0, 1.4, t); ctx.restore(); }
-  return bodyPost({ push: { k: 1 + 0.05 * lt / (shot.end - shot.start), cx: 960, cy: 560 } });
+  const c = cu(), D = shot.end - shot.start;
+  darkBg('#140A28', '#04020C'); screenSpace();
+  const ex = 0.25 + 0.6 * ramp(t, c.itsex - 0.2, c.sour + 0.4);
+  const v = { x: 760, y: 900 - 60 * ramp(lt, 0, D), s: 0.9 + 0.06 * ramp(lt, 0, D) };
+  chestX(v, t, { o2: 0.9, ex, puff: 1, heartGlow: 0.5, bpm: 92 });
+  pill(1440, 300, 'OXYGEN: STILL 96%', '#4DFFB4', ramp(t, c.notmissing - 0.1, c.notmissing + 0.25), 50);
+  pill(1440, 420, 'EXHAUST: PILING UP', '#B48CFF', ramp(t, c.itsex, c.itsex + 0.25), 50);
+  const sour = ramp(t, c.sour - 0.25, c.sour + 0.35);
+  if (sour > 0.01) { ctx.save(); ctx.translate(1440, 680); const sc = E.outBack(clamp(sour), 2); ctx.scale(sc, sc); ctx.rotate(0.06 * Math.sin(t * 9)); lemon(ctx, 0, 0, 1.25, t); ctx.restore(); }
+  return bodyPost();
 };
 // a lemon with a sour face (screen units): "a tiny bit sour"
 function lemon(c, x, y, s, t) {
@@ -188,7 +207,7 @@ SC.shake = (lt, t, shot) => {
 SC.out = (lt, t, shot) => {
   const c = cu();
   const a = t - c.out;
-  const cam = Object.assign({}, TWO, { zoom: TWO.zoom * (1 + 0.06 * kickOf(t, c.out, 4)), x: TWO.x - 30 });
+  const cam = { x: 800, y: 560, zoom: 1.85 * (1 + 0.06 * kickOf(t, c.out, 4)), rot: 0 };
   kitchenAt(cam, t, {
     after: (cm) => {
       if (a > 0 && a < 0.9) {   // the blast: streaks of air from his mouth across the cake
@@ -236,10 +255,10 @@ SC.result = (lt, t, shot) => {
   darkBg('#14102A', '#05040C'); screenSpace();
   const x0 = 260, x1 = 1660, y = 560, X = (s) => lerp(x0, x1, s / 60);
   const draw = ramp(lt, 0, 0.6);
-  line(ctx, x0, y, lerp(x0, x1, draw), y, 10, '#FFFFFF');
+  line(ctx, x0, y, lerp(x0, x1, draw), y, 14, '#FFFFFF');
   for (let s = 0; s <= 60; s += 10) if (X(s) <= lerp(x0, x1, draw) + 1) {
     line(ctx, X(s), y - 20, X(s), y + 20, 6, '#FFFFFF');
-    ctx.font = '400 54px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = '#FFFFFF'; ctx.fillText(`${s}`, X(s), y + 36);
+    ctx.font = '400 66px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = '#FFFFFF'; ctx.fillText(`${s}`, X(s), y + 40);
   }
   // the band 30-60 s
   const b = ramp(t, c.band30 - 0.2, c.minute + 0.2, E.inOutCubic);
@@ -264,10 +283,10 @@ SC.tank = (lt, t, shot) => {
   darkBg('#0A0A1A', '#000000'); screenSpace();
   const ex = lerp(0.2, 0.86, ramp(lt, 0.2, 1.4, E.inOutCubic));
   const o2 = lerp(1, 0.94, ramp(lt, 0.2, 1.4));
-  gauges(t, { o2, pctLo: 0, ex, x: 960, y: 560, s: 0.95 });
+  gauges(t, { o2, pctLo: 0, ex, x: 960, y: 470, s: 0.85 });
   const wow = ramp(t, c.ninetyPct - 0.1, c.ninetyPct + 0.3, E.outBack);
-  if (wow > 0.01) stamp('STILL FULL!', 640, 300, wow, '#4DFFB4', -0.12, 90);
-  return bodyPost({ push: { k: 1 + 0.05 * lt / D, cx: 960, cy: 560 }, flash: 0.25 * kickOf(t, c.ninetyPct, 8) });
+  if (wow > 0.01) stamp('STILL FULL!', 690, 520, wow, '#4DFFB4', -0.14, 84);
+  return bodyPost({ push: { k: 1 + 0.05 * lt / D, cx: 960, cy: 470 }, flash: 0.25 * kickOf(t, c.ninetyPct, 8) });
 };
 // "You didn't run out. Your body pulled the alarm early... because exhaust builds up much faster than oxygen runs down."
 // the race: the exhaust needle swings up fast and rings; the oxygen tank barely moves
@@ -277,17 +296,17 @@ SC.early = (lt, t, shot) => {
   const run = clamp(inv(c.faster - 0.6, c.faster + 1.6, t));
   const ex = run < 0.02 ? 0.86 * (1 - ramp(lt, 0, 0.6)) : lerp(0.1, 0.9, E.outCubic(run));
   const o2 = run < 0.02 ? 1 : lerp(1, 0.95, run);
-  gauges(t, { o2, pctLo: 0, ex, x: 960, y: 560, s: 0.95 });
+  gauges(t, { o2, pctLo: 0, ex, x: 960, y: 470, s: 0.85 });
   screenSpace();
   if (run > 0.05) {
-    ctx.font = '400 70px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
-    ctx.lineWidth = 12; ctx.strokeStyle = '#0B0B1A';
-    ctx.globalAlpha = clamp(run * 3);
-    ctx.strokeText('FAST ⬆', 1245, 880); ctx.fillStyle = '#B48CFF'; ctx.fillText('FAST ⬆', 1245, 880);
-    ctx.strokeText('SLOW ⬇', 640, 950); ctx.fillStyle = '#7FE9FF'; ctx.fillText('SLOW ⬇', 640, 950);
-    ctx.globalAlpha = 1;
+    ctx.save(); ctx.font = '400 84px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+    ctx.lineWidth = 14; ctx.strokeStyle = '#0B0B1A'; ctx.globalAlpha = clamp(run * 3);
+    const bump = 1 + 0.08 * Math.sin(t * 10);
+    ctx.save(); ctx.translate(1600, 470); ctx.scale(bump, bump); ctx.strokeText('FAST!', 0, 0); ctx.fillStyle = '#B48CFF'; ctx.fillText('FAST!', 0, 0); ctx.restore();
+    ctx.strokeText('slow...', 330, 470); ctx.fillStyle = '#7FE9FF'; ctx.fillText('slow...', 330, 470);
+    ctx.restore();
   }
-  return bodyPost({ push: { k: 1.02 + 0.04 * lt / D, cx: 960, cy: 560 } });
+  return bodyPost({ push: { k: 1.02 + 0.04 * lt / D, cx: 960, cy: 470 } });
 };
 // "Round two. He's seen a trick online: breathe really fast first." swimming goggles on; he pants like a dog
 SC.round2 = (lt, t, shot) => {
@@ -301,8 +320,10 @@ SC.round2 = (lt, t, shot) => {
 // TWEEEET: Pip blows her whistle (her present); he freezes mid-pant. Then "[deadpan] Pip got a whistle for her birthday."
 SC.whistle = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = camOnHead('pip', 3.6 + 0.2 * lt / D, 30, 40);
+  const frozen = t >= c.whistleT + 0.45 && t < c.pipgot - 0.12;
+  const cam = frozen ? camOnHead('hero', 3.4, 0, 20) : camOnHead('pip', 3.6 + 0.2 * lt / D, 30, 40);
   kitchenAt(cam, t);
+  if (frozen) { screenSpace(); return dayPost({ push: { k: 1 + 0.05 * kickOf(t, c.whistleT + 0.45, 5), cx: 960, cy: 500 } }); }
   const [px, py] = toScreen(cam, ...kitPt('pip', [10, -282 + 46]));
   const w = env2(t, c.whistleT - 0.05, c.whistleT + 0.9, 0.08);
   if (w > 0.01) {
@@ -320,9 +341,9 @@ SC.dont = (lt, t, shot) => {
   const blow = ramp(t, c.blows - 0.2, c.blows + 1.0, E.inOutCubic);
   const ex = lerp(0.35, 0.0, blow);
   const late = ramp(t, c.late - 0.3, c.toolate + 0.4);
-  gauges(t, { o2: 1, ex: ex + 0.25 * late * Math.max(0, Math.sin((t - c.late) * 1.4)) * 0, x: 960, y: 560, s: 0.95, blackout: ramp(t, c.toolate - 0.2, c.toolate + 0.4) });
+  gauges(t, { o2: 1, ex, x: 960, y: 470, s: 0.85, blackout: ramp(t, c.toolate - 0.2, c.toolate + 0.4) });
   screenSpace();
   const na = ramp(t, c.noadd - 0.1, c.noadd + 0.3, E.outBack);
-  if (na > 0.01) stamp('+0 OXYGEN', 640, 290, na * (1 - ramp(t, c.late - 0.2, c.late)), '#7FE9FF', -0.1, 80);
-  return bodyPost({ push: { k: 1 + 0.06 * ramp(t, c.toolate - 0.3, c.toolate + 1.0), cx: 640, cy: 560 }, vhs: 0.18 * kickOf(t, c.toolate, 3) });
+  if (na > 0.01) stamp('+0 OXYGEN', 690, 520, na * (1 - ramp(t, c.late - 0.2, c.late)), '#7FE9FF', -0.12, 76);
+  return bodyPost({ push: { k: 1 + 0.06 * ramp(t, c.toolate - 0.3, c.toolate + 1.0), cx: 690, cy: 470 }, vhs: 0.18 * kickOf(t, c.toolate, 3) });
 };

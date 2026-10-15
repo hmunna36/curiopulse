@@ -132,6 +132,7 @@ function poolScene(cam, t, o = {}) {
   c.fillStyle = wg; c.fillRect(-400, -300, W + 800, POOL.surf + 300);
   for (const lx of [300, 1620]) { softDot(gctx, lx, 40, 260, '#BFE6FF', 0.5); circle(c, lx, 40, 26, '#E8F6FF'); }
   // the timer
+  if (o.label !== '' || o.secs) {
   rrect(c, 700, 70, 520, 220, 22); c.fillStyle = '#04070E'; c.fill(); c.lineWidth = 6; c.strokeStyle = '#2A3A5A'; c.stroke();
   const sec = Math.max(0, o.secs || 0), mm = Math.floor(sec / 60), ss = Math.floor(sec % 60);
   const txt = `${mm}:${String(ss).padStart(2, '0')}`;
@@ -139,18 +140,22 @@ function poolScene(cam, t, o = {}) {
   for (const g2 of [c]) { g2.fillStyle = o.timerCol || '#FF5A4A'; g2.fillText(txt, 960, 176); }
   gctx.save(); gctx.font = '400 150px Anton'; gctx.textAlign = 'center'; gctx.textBaseline = 'middle'; gctx.fillStyle = rgba(o.timerCol || '#FF5A4A', 0.8); gctx.fillText(txt, 960, 176); gctx.restore();
   if (o.label) { c.font = '900 30px Montserrat'; c.fillStyle = '#9FB8E0'; c.fillText(o.label, 960, 262); }
+  }
+  // a ring buoy on the wall (the empty pool at night)
+  if (o.night) { c.save(); c.translate(1560, 380); c.lineWidth = 34; c.strokeStyle = '#E2424B'; c.beginPath(); c.arc(0, 0, 70, 0, Math.PI * 2); c.stroke();
+    c.strokeStyle = '#FFFFFF'; for (let i = 0; i < 4; i++) { c.beginPath(); c.arc(0, 0, 70, i * Math.PI / 2 - 0.25, i * Math.PI / 2 + 0.25); c.stroke(); } c.restore(); }
   // the deck and the edge
   c.fillStyle = '#C8D4E2'; c.fillRect(-400, POOL.surf - 30, 520, 30); c.fillRect(1800, POOL.surf - 30, 520, 30);
   // the oxygen cylinder by the pool (the second record)
   if ((o.tank || 0) > 0.01) {
-    c.save(); c.translate(1880, POOL.surf - 30); c.scale(o.tank, o.tank);
+    c.save(); c.translate(1690, POOL.surf - 30); c.scale(o.tank, o.tank);
     rrect(c, -40, -260, 80, 260, 30); c.fillStyle = '#E8ECF2'; c.fill(); rrect(c, -40, -260, 80, 70, 30); c.fillStyle = '#4DB8A0'; c.fill();
     rrect(c, -14, -290, 28, 34, 6); c.fillStyle = '#8A94A8'; c.fill();
     c.font = '400 48px Anton'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillStyle = '#1A2A3A'; c.fillText('O₂', 0, -110);
     c.restore();
   }
   // the water: a surface band, then the cutaway under it
-  const wt = c.createLinearGradient(0, POOL.surf, 0, POOL.bottom); wt.addColorStop(0, '#3AC8E8'); wt.addColorStop(1, '#0A5A8A');
+  const wt = c.createLinearGradient(0, POOL.surf, 0, POOL.bottom); wt.addColorStop(0, o.night ? '#0E3A5A' : '#3AC8E8'); wt.addColorStop(1, o.night ? '#02101E' : '#0A5A8A');
   c.fillStyle = wt; c.fillRect(120, POOL.surf, 1680, POOL.bottom - POOL.surf + 200);
   // tiles and lane line on the bottom
   for (let x = 120; x < 1800; x += 60) line(c, x, POOL.surf + 20, x, POOL.bottom + 200, 2, 'rgba(255,255,255,0.08)');
@@ -160,13 +165,24 @@ function poolScene(cam, t, o = {}) {
   for (let i = 0; i < 40; i++) { const x = 140 + 1640 * hash(i * 3.3), y = POOL.surf + 60 + 380 * hash(i * 5.7); ellipse(c, x + 14 * Math.sin(t + i), y, 40 + 20 * Math.sin(t * 1.3 + i), 6, 'rgba(160,240,255,0.08)'); }
   c.restore();
   c.fillStyle = '#1A2A44'; c.fillRect(120 - 20, POOL.surf - 10, 20, POOL.bottom); c.fillRect(1800, POOL.surf - 10, 20, POOL.bottom);
-  // the freediver, face down at the surface, seen from the side: back and the back of his head just out of the water
-  floatDiver(c, POOL.diverX, POOL.surf + 6 + 4 * Math.sin(t * 0.9), 1, t);
+  // the freediver: face down at the surface (on air), or lying on the pool's floor (the oxygen record); none at night
+  if (!o.empty) {
+    if (o.floor) {   // a shallower floor for this shot, so he lies above the captions
+      const fy = 860;
+      c.fillStyle = '#2A8AB8'; c.fillRect(120, fy, 1680, 400);
+      for (let x = 120; x < 1800; x += 60) line(c, x, fy, x, fy + 400, 2, 'rgba(255,255,255,0.12)');
+      line(c, 120, fy, 1800, fy, 5, 'rgba(200,240,255,0.5)');
+      floorDiver(c, POOL.diverX, fy - 4, 1, t);
+    }
+    else floatDiver(c, POOL.diverX, POOL.surf + 6 + 4 * Math.sin(t * 0.9), 1, t);
+  }
   // the safety diver beside him: standing in the water up to his chest, a hand on the diver's back
+  if (!o.empty && !o.floor) {
   c.save();
   const sx = POOL.diverX + 330;
-  drawCharacter(c, { x: sx, y: POOL.surf + 330, s: 0.7, pose: ikReach(Object.assign({}, POSES.stand, { armL: { a: 0.4, b: 0.6 } }), 'L', [-260, -300], 1), face: Object.assign({}, FACES.calm, { lookX: -0.8, lookY: 0.5 }), seed: 6 }, t, SAFEPAL);
+  drawCharacter(c, { x: sx, y: POOL.surf + 330, s: 0.7, pose: ikReach(Object.assign({}, POSES.stand, { armL: { a: 0.4, b: 0.6 } }), 'L', [-300, -330], 1), face: Object.assign({}, FACES.calm, { lookX: -0.8, lookY: 0.5 }), seed: 6 }, t, SAFEPAL);
   c.restore();
+  }
   // the water's surface on top of them (a translucent band so the parts below look wet)
   c.save(); c.beginPath(); c.moveTo(120, POOL.surf);
   for (let x = 120; x <= 1800; x += 20) c.lineTo(x, POOL.surf + 5 * Math.sin(x * 0.02 + t * 2));
@@ -192,5 +208,16 @@ function floatDiver(c, x, y, s, t) {
   ellipse(c, 0, 0, 46, 40, '#E8A880'); ellipse(c, 6, -14, 46, 30, PAL.hair);
   rrect(c, -40, 14, 40, 18, 6); c.fillStyle = '#3FA7FF'; c.fill();
   c.restore();
+  c.restore();
+}
+
+// the oxygen record: lying on the pool's floor, face down, from the side (local: head at -x; y = the floor)
+function floorDiver(c, x, y, s, t) {
+  c.save(); c.translate(x, y); c.scale(s, s);
+  const suit = '#151924';
+  c.beginPath(); c.moveTo(-150, -40); c.quadraticCurveTo(-40, -58, 80, -42); c.lineTo(250, -34); c.lineTo(254, -6); c.lineTo(80, -4); c.quadraticCurveTo(-40, 4, -150, 0); c.closePath(); c.fillStyle = suit; c.fill();
+  c.beginPath(); c.moveTo(250, -34); c.lineTo(360, -30); c.lineTo(364, -4); c.lineTo(254, -6); c.closePath(); c.fillStyle = '#2A5ADA'; c.fill();
+  c.save(); c.translate(-188, -26); ellipse(c, 0, 0, 46, 40, '#E8A880'); ellipse(c, 4, -14, 46, 30, PAL.hair); rrect(c, -40, 10, 40, 18, 6); c.fillStyle = '#3FA7FF'; c.fill(); c.restore();
+  for (let i = 0; i < 3; i++) { const ph = (t * 0.25 + i / 3) % 1; circle(c, -200 + 10 * Math.sin(t + i), -60 - 300 * ph, 6 + 3 * i, `rgba(220,245,255,${0.4 * (1 - ph)})`); }
   c.restore();
 }
