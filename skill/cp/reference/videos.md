@@ -34,6 +34,7 @@
 | `dizzy-spin`: "Why Do You Get DIZZY When You Spin? 💫" | 33 s (short arm) | https://youtube.com/shorts/4Ts56nQI1-M · 14 Oct 2026 23:30 IST | Business Suite, published 15 Oct 2026 20:53 IST, Instagram only (missed its 15 Oct 18:30 slot: the new Reel composer did not upload while Chrome was hidden; the Facebook Page is no longer connected) |
 | `ears-ring`: "Why Do Your Ears RING After a Concert? 🎸" | 47 s (standard arm) | https://youtube.com/shorts/ORFb3ma5RyA · 15 Oct 2026 11:30 IST | Business Suite, 16 Oct 2026 06:30 IST, Instagram only (scheduled on 15 Oct evening after the hidden-window stalls) |
 | `doorknob-shock`: "Why Does a Doorknob SHOCK You? ⚡" | 33 s (short arm) | https://youtube.com/shorts/Vf-6HscC28w · 15 Oct 2026 23:30 IST | Business Suite, 16 Oct 2026 18:30 IST, Instagram only |
+| `ring-finger`: "Why Can't You Lift Your RING FINGER? 💍" | 31 s (short arm) | https://youtube.com/shorts/jmFlKDR_P-8 · 16 Oct 2026 11:30 IST | PENDING for 17 Oct 2026 18:30 IST (Chrome hidden: the composer would not open; files in ~/Desktop/instagram-pending/4-ring-finger-*) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1470,3 +1471,43 @@ here for every new Short, with its links.
   at 20:53, ears-ring was scheduled for 16 Oct 06:30 and this Reel for 16 Oct 18:30 IST (Instagram only, captions
   read back). `~/Desktop/instagram-pending/` is no longer needed.
 
+**ring-finger** (15 Oct 2026, nightly /cp next, fired at 22:27 IST; short arm, the first Short of the rules of 15 Oct;
+73 words → 30.53 s; hook formula: The Direct Address, as the test itself):
+- **A hand as a small 3D rig** (`hand3d.js`): centimetres, x right, y up off the table, z toward the camera, and one
+  perspective camera (`hvCam`, keyed with `hvKeys`: elevation, target, distance, where the target lands). Fingers are
+  three tapered capsules each (`hdFinger`: lying with the tip on the table by bisection, lifted by an angle, or folded
+  under in two phases so it never passes through the table; `hdThumb`), the back of the hand a smoothed 3D outline
+  (`hdDorsum`, `hdSmooth`), a cast shadow on the table, the forearm either seen from across the table (`armTo`: the
+  sleeve back to his shoulder as screen points) or in 3D (the glass shots). It made the café front view, the crane up
+  over the hand and the see-through forearm one continuous move. Four fingers of the same skin colour are one thing to
+  the light (no shadow between them): give each a colour a hair apart (`HF.*.col`).
+- In it: `hdGlass` (the skin as glass: every part drawn OPAQUE on the scratch layer `tctx`, then laid over at one
+  alpha; translucent capsules drawn one by one darkened every joint into polka dots, and a nonzero union path of
+  opposite windings left holes), `hdInside` (cords from the forearm over the knuckles to the fingertips that glow and
+  carry beads when they pull, the shared lifting muscle and the two green spares as spindles with fibres, a dashed
+  empty place, the strap between the ring and middle cords that `pull` drags and `snip` cuts in two), `hdLeash` (a
+  collar on the ring finger and a leash that loops up when slack, straight when taut), `hdKnuckleFace`, and in
+  scenes.js `rfFoldArrow`, `rfTag`, `rfSmall`, `rfLock`. `cafe.js`: a café at night painted once and blurred, a plank
+  table whose far edge sits just behind his wrist (`cafeTable`: a real round table put its far edge above the frame
+  and hid him), a cup on a saucer in 3D, his body behind the table without arms (`st.noArms`, new in the template's
+  character.js). `parlour.js`: an 1880s parlour, scissors held by a surgeon's hand (`parScissors`), old film
+  (`parOldFilm`), a waving bandaged hand (`parWaveHand`), the tailcoat palette `PARPAL`.
+- **The opening of the rules of 15 Oct:** the line is the instruction ("Hand flat, fold your middle finger under, now
+  lift your RING finger."), and frame 0 is his hand slapping flat on the table, tight, his face behind it. The answer
+  ran 4.73 s only after `tighten=0.20 tempo=1.06` on the hook (three seeds of the same words ran 4.4-4.7 s at the
+  house settings).
+- **The aligner can give a word's vowel to the next word.** qa.py failed "See" (-8 dB) twice: the take's "See" was
+  9.83-9.91 s (its hiss, out of the speech band) and its vowel sat in "the". Tracing the voice stem in 10 ms steps
+  showed the boundary; make_timeline.py moves it, with an assert that fails if the take changes.
+- Voice: 413 characters, no retakes; three audition seeds of the hook (about 210 characters) were not used. The
+  account read 85,143 before.
+- Two QA rounds, 18/18 at the end; about 3.6 minutes a render. Round 2: a creep in and head acting through "Stuck?
+  Relax" (the camera had held still for 1.6 s), the ring finger held up and slammed down on "ring", the fold arrow on
+  "Middle down", a quieter freed finger with a FREE! tag. Rebuild check: timeline.json and mix.wav byte-identical.
+- **Instagram:** the Chrome window was hidden again (`outerWidth` 0, no animation frames, `open -a "Google Chrome"`
+  did not help); the chunks went in and the SHA-256 matched, but Create Reel would not open the composer. Handed to
+  the user in `~/Desktop/instagram-pending/` (4-ring-finger-*) for 17 Oct 18:30 IST. The slot is NOT marked busy.
+- The missed Reels: chalkboard (16 Oct 12:30) and funny-bone (17 Oct 12:30) were found back in Business Suite's
+  Scheduled list at 22:30 IST, and 21:00 on 16, 17 and 18 Oct was booked in ig-queue.json by another session; eye-rub
+  stars was neither published nor scheduled at 22:30. This run did not schedule it, to avoid a duplicate while that
+  session works on them.
