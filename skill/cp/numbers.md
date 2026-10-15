@@ -1,8 +1,8 @@
 # CurioPulse numbers
 
-Written by `yt.mjs numbers` on 2026-10-15 21:56 IST. Do not edit: every /cp run rewrites it. How to read it: `reference/analytics.md`.
+Written by `yt.mjs numbers` on 2026-10-15 22:28 IST. Do not edit: every /cp run rewrites it. How to read it: `reference/analytics.md`.
 
-**Channel:** 180 subscribers (+1 since the log of 2026-10-15 20:54 IST) · 32 public videos, 1 scheduled.
+**Channel:** 181 subscribers (+1 since the log of 2026-10-15 21:56 IST) · 32 public videos, 1 scheduled.
 Views and likes are the public counters, live. Stayed, viewed and subscribers come from YouTube Analytics, which runs about two days behind: a dash means YouTube has not processed that day yet.
 
 ## The length test (length-2026-10, 2026-10-06 23:30 IST to 2026-10-16 11:30 IST), and the Shorts since
@@ -11,8 +11,8 @@ During the test a Short in a 23:30 slot was built to 30-35 s, one in an 11:30 sl
 
 | Group | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views |
 |---|---|---|---|---|---|---|
-| TEST · short arm (30-35 s) | 9 | 6076 (7) | 56.9 % | 73.5 % | 24 s | 1.2 (6) |
-| TEST · standard arm (45-50 s) | 9 | 1961 (7) | 59.0 % | 52.2 % | 25 s | 1.8 (7) |
+| TEST · short arm (30-35 s) | 9 | 6084 (7) | 56.9 % | 73.5 % | 24 s | 1.2 (6) |
+| TEST · standard arm (45-50 s) | 9 | 1962 (7) | 59.0 % | 52.2 % | 25 s | 1.8 (7) |
 | before · 46-50 s · 23:30 slot | 3 | 2119 (3) | 56.3 % | 59.1 % | 28 s | 3.0 (3) |
 | before · 46-50 s · 11:30 slot | 4 | 2053 (4) | 55.5 % | 57.5 % | 28 s | 3.5 (4) |
 | before · 64-75 s | 5 | 1448 (5) | 58.1 % | 48.6 % | 33 s | 2.1 (5) |
@@ -26,16 +26,16 @@ In brackets: how many Shorts the figure rests on. Analytics figures count a Shor
 | Released (IST) | Length | Group | Views | Likes | Counted | Stayed | Avg % viewed | Avg s | Subs | Per 1,000 | Title |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-10-15 23:30 (scheduled) | 34 s | TEST · short arm (30-35 s) | 2 | 0 | – | – | – | – | – | – | [Why Does a Doorknob SHOCK You? ⚡](https://youtu.be/Vf-6HscC28w) |
-| 2026-10-15 11:30 | 48 s | TEST · standard arm (45-50 s) | 1491 | 18 | – | – | – | – | – | – | [Why Do Your Ears RING After a Concert? 🎸](https://youtu.be/ORFb3ma5RyA) |
-| 2026-10-14 23:30 | 33 s | TEST · short arm (30-35 s) | 1412 | 30 | – | – | – | – | – | – | [Why Do You Get DIZZY When You Spin? 💫](https://youtu.be/4Ts56nQI1-M) |
-| 2026-10-14 11:30 | 47 s | TEST · standard arm (45-50 s) | 417 | 16 | – | – | – | – | – | – | [Why Do You See STARS When You Rub Your Eyes? ✨](https://youtu.be/FuqnD4vj-q4) |
-| 2026-10-13 23:30 | 32 s | TEST · short arm (30-35 s) | 3538 | 53 | – | – | – | – | – | – | [Why Does Your FUNNY BONE Hurt So Much? ⚡](https://youtu.be/JJYB6rAaF2w) |
-| 2026-10-13 11:30 | 47 s | TEST · standard arm (45-50 s) | 1726 | 33 | 610 | 60.8 % | 36.5 % | 17 | 1 | 1.6 | [Why Do Nails on a CHALKBOARD Make You Cringe? 😖](https://youtu.be/N2Wl7YPFLmg) |
-| 2026-10-12 23:30 | 31 s | TEST · short arm (30-35 s) | 25212 | 588 | 2036 | 58.5 % | 88.9 % | 27 | 0 | 0.0 | [Why Is One Nostril ALWAYS Blocked? 👃](https://youtu.be/KqsUFF1Mmm0) |
-| 2026-10-12 11:30 | 50 s | TEST · standard arm (45-50 s) | 1623 | 35 | 1425 | 58.0 % | 59.8 % | 29 | 4 | 2.8 | [Why Is the Sky BLUE? (It Should Be Black) 🌌](https://youtu.be/RS7bKKA_2d0) |
+| 2026-10-15 11:30 | 48 s | TEST · standard arm (45-50 s) | 1514 | 20 | – | – | – | – | – | – | [Why Do Your Ears RING After a Concert? 🎸](https://youtu.be/ORFb3ma5RyA) |
+| 2026-10-14 23:30 | 33 s | TEST · short arm (30-35 s) | 1402 | 30 | – | – | – | – | – | – | [Why Do You Get DIZZY When You Spin? 💫](https://youtu.be/4Ts56nQI1-M) |
+| 2026-10-14 11:30 | 47 s | TEST · standard arm (45-50 s) | 420 | 16 | – | – | – | – | – | – | [Why Do You See STARS When You Rub Your Eyes? ✨](https://youtu.be/FuqnD4vj-q4) |
+| 2026-10-13 23:30 | 32 s | TEST · short arm (30-35 s) | 3576 | 54 | – | – | – | – | – | – | [Why Does Your FUNNY BONE Hurt So Much? ⚡](https://youtu.be/JJYB6rAaF2w) |
+| 2026-10-13 11:30 | 47 s | TEST · standard arm (45-50 s) | 1729 | 34 | 610 | 60.8 % | 36.5 % | 17 | 1 | 1.6 | [Why Do Nails on a CHALKBOARD Make You Cringe? 😖](https://youtu.be/N2Wl7YPFLmg) |
+| 2026-10-12 23:30 | 31 s | TEST · short arm (30-35 s) | 25266 | 589 | 2036 | 58.5 % | 88.9 % | 27 | 0 | 0.0 | [Why Is One Nostril ALWAYS Blocked? 👃](https://youtu.be/KqsUFF1Mmm0) |
+| 2026-10-12 11:30 | 50 s | TEST · standard arm (45-50 s) | 1628 | 36 | 1425 | 58.0 % | 59.8 % | 29 | 4 | 2.8 | [Why Is the Sky BLUE? (It Should Be Black) 🌌](https://youtu.be/RS7bKKA_2d0) |
 | 2026-10-11 23:30 | 32 s | TEST · short arm (30-35 s) | 2940 | 80 | 2170 | 52.6 % | 76.9 % | 24 | 4 | 1.8 | [Why Do Cats PURR? 🐱](https://youtu.be/Tj57vuNTmWg) |
 | 2026-10-11 17:30 | 269 s | long-form | 318 | 8 | 164 | – | – | – | – | – | [What Happens If You NEVER Sleep? (Day by Day)](https://youtu.be/GvZX6Yq81P4) |
-| 2026-10-11 11:30 | 46 s | TEST · standard arm (45-50 s) | 1369 | 31 | 1235 | 66.2 % | 48.6 % | 22 | 3 | 2.4 | [Why Do We CRY? 😢](https://youtu.be/PqYnHstEFfY) |
+| 2026-10-11 11:30 | 46 s | TEST · standard arm (45-50 s) | 1371 | 31 | 1235 | 66.2 % | 48.6 % | 22 | 3 | 2.4 | [Why Do We CRY? 😢](https://youtu.be/PqYnHstEFfY) |
 | 2026-10-10 23:30 | 33 s | TEST · short arm (30-35 s) | 211 | 7 | 156 | – | – | – | – | – | [Why Do We DREAM? 💭](https://youtu.be/FcY5zJ2Nlgs) |
 | 2026-10-10 11:30 | 47 s | TEST · standard arm (45-50 s) | 1119 | 30 | 1078 | 55.5 % | 50.5 % | 23 | 0 | 0.0 | [How Do Fireflies GLOW? ✨](https://youtu.be/9cwzb7rjmR8) |
 | 2026-10-09 23:30 | 35 s | TEST · short arm (30-35 s) | 3138 | 70 | 2997 | 60.3 % | 65.2 % | 22 | 4 | 1.3 | [Why Does Time FLY as You Get Older? ⏳](https://youtu.be/VLiKEQwxHqk) |
@@ -50,7 +50,7 @@ In brackets: how many Shorts the figure rests on. Analytics figures count a Shor
 | 2026-10-05 11:30 | 46 s | before · 46-50 s · 11:30 slot | 1705 | 46 | 1670 | 58.0 % | 49.5 % | 22 | 5 | 3.0 | [Why Does the Sun Make You SNEEZE? 🤧](https://youtu.be/2x0QZwQfxY0) |
 | 2026-10-04 23:30 | 48 s | before · 46-50 s · 23:30 slot | 2235 | 39 | 2203 | 56.6 % | 67.8 % | 32 | 6 | 2.7 | [Why Do Your Ears POP on a Plane? ✈️](https://youtu.be/2R-7TRKVPso) |
 | 2026-10-04 18:30 | 165 s | long-form | 84 | 4 | 79 | – | – | – | – | – | [Why Can't You TICKLE Yourself?](https://youtu.be/RXYD9zslO1g) |
-| 2026-10-04 11:30 | 49 s | before · 46-50 s · 11:30 slot | 2170 | 44 | 2148 | 48.1 % | 60.2 % | 29 | 6 | 2.8 | [Why Do We Get GOOSEBUMPS? 😱](https://youtu.be/OqIGuc9sYZE) |
+| 2026-10-04 11:30 | 49 s | before · 46-50 s · 11:30 slot | 2171 | 44 | 2148 | 48.1 % | 60.2 % | 29 | 6 | 2.8 | [Why Do We Get GOOSEBUMPS? 😱](https://youtu.be/OqIGuc9sYZE) |
 | 2026-10-03 23:30 | 50 s | before · 46-50 s · 23:30 slot | 1602 | 37 | 1587 | 48.2 % | 55.9 % | 27 | 2 | 1.3 | [Why Does Your Stomach GROWL? 🤫](https://youtu.be/KMS1wThr4jk) |
 | 2026-10-03 11:30 | 50 s | before · 46-50 s · 11:30 slot | 2297 | 35 | 2279 | 60.9 % | 55.4 % | 27 | 9 | 3.9 | [Why Is Yawning CONTAGIOUS? 🥱](https://youtu.be/kJsQ55sjjIU) |
 | 2026-10-02 23:30 | 74 s | before · 64-75 s | 1388 | 26 | 1372 | 67.0 % | 36.1 % | 26 | 4 | 2.9 | [Why Do Onions Make You CRY? 🧅](https://youtu.be/yaD9MFbpv_I) |
