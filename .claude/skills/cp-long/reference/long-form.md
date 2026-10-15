@@ -15,6 +15,29 @@ Why it exists: Shorts bring views; a longer video is where a viewer decides the 
 its watch time counts toward monetization. So the goal of every second is that the viewer is still there for the
 next one.
 
+## The viewer takes part (15 Oct 2026; the user: "the longform video let's design across this")
+
+The Shorts' retention reading of 15 Oct 2026 (`skill/cp/reference/analytics.md`) found what the channel's two
+breakouts had in common: blocked nostril (567K views on Instagram, 25K on YouTube) and knuckle cracking (41.5K and
+6.2K) were the only videos that had the viewer DO something to their own body while watching. They were the only two
+Reels watched past 70 %, and the nostril was the only Short that never fell below YouTube's typical retention. The
+Shorts were rebuilt around that the same day; the film takes it over:
+- **The hook is a test the viewer does with him, now.** Frame 1 is the hiker doing it; the first sentence asks the
+  viewer to join in ("Hold your breath. Now. I'll count."). The clock can run on the viewer's own test.
+- **One more test in every act, three or more in the film.** Each takes seconds, sitting down, phone in hand, and its
+  result is a payoff: the viewer wants to know what their number means, so they stay for the explanation.
+- **The explanation keeps pointing back to what the viewer just felt** ("That burn in your chest? That's not the
+  missing oxygen."), in everyday words. No science word is spoken in the first 30 s; later only as a throwaway or a
+  label. Viewers of the Shorts left fastest when the words turned technical.
+- **The description and the pinned-comment suggestion end with a one-word or one-number question about the viewer's
+  test** ("How many seconds did you last?"). The nostril Reel asked which nostril was working and drew 162 comments,
+  mostly one-word answers; no other Reel drew more than 9.
+- **Never a test that could hurt.** Seated, on dry land, stop whenever you like; nothing hot, sharp or spinning.
+  Breath-holding only seated and dry, with no fast breathing first, and the film says on screen: never in or near
+  water. Cold water only as a splash or a wet cloth on the face. A test that needs a warning longer than one line is
+  not used.
+- **Among questions that pass the demand check, the one the viewer can take part in goes first** (`topics.md`).
+
 ## Which questions get made (7 Oct 2026, from the first film's numbers)
 
 The first film, "Why Can't You TICKLE Yourself?", was shown 588 times in three days, clicked 1.5 % of the time and
@@ -137,13 +160,13 @@ try any more, and what is still unknown).
 
 | Time | Beat | What happens |
 |---|---|---|
-| 0:00–0:08 | **Hook + promise** | Frame 1 is the picture the thumbnail promised, in action, in the second person. By 0:08 the viewer knows the question and the big promise (the last number on the clock). It says the title's words in the first sentence. No intro, no logo, no "in this video". |
+| 0:00–0:08 | **Hook + promise** | Frame 1 is the picture the thumbnail promised, in action, in the second person, and the viewer's first test starts: they do it with him (15 Oct 2026). By 0:08 the viewer knows the question and the big promise (the last number on the clock). It says the title's words in the first sentence. No intro, no logo, no "in this video". |
 | 0:08–0:30 | **His want, the stake, the clock starts** | Why HE is doing this (a dare, a deadline, a bet), a joke, the clock's first jump and the first payoff. Announce the worst number that is coming. |
-| 0:30–1:40 | **Act 1: what you would feel** | The first stretch of the clock, three or four jumps. The mechanism shown inside the body. Each jump ends on what the next one brings. |
+| 0:30–1:40 | **Act 1: what you would feel** | The first stretch of the clock, three or four jumps. The mechanism shown inside the body, pointing back to what the viewer just felt in their own test. Each jump ends on what the next one brings. |
 | ~1:40 | **Turn** | "And this is the easy part." A new world or a change of scale; the stakes go up a full step. |
-| 1:40–3:10 | **Act 2: what breaks, and the proof** | The dangerous stretch. The real case: the person, the experiment, one name, one number, one image. His own plan goes wrong here. |
+| 1:40–3:10 | **Act 2: what breaks, and the proof** | The dangerous stretch. The real case: the person, the experiment, one name, one number, one image. His own plan goes wrong here. A second viewer test, safe and seconds long. |
 | ~3:10 | **Turn** | "Nobody is allowed to go further. Here is why." |
-| 3:10–4:15 | **Act 3: the edge** | The weirdest true thing and the highest stakes; what is still unknown (hedged, stamped on screen when useful); the one thing the viewer can use tonight. |
+| 3:10–4:15 | **Act 3: the edge** | The weirdest true thing and the highest stakes; what is still unknown (hedged, stamped on screen when useful); the one thing the viewer can try tonight (the third test). |
 | 4:15–4:40 | **His turn, button, final image** | He changes his mind or gets what he needed instead of what he wanted; the line that calls back to the hook; the planned final image, held while the theme resolves. |
 | last ~8 s | **Subscribe** | The `sub` block: next week's question as a teaser, the word "subscribe", the pill + bell + click. End on a frame that could loop into the hook. |
 
@@ -207,7 +230,8 @@ clicked 1.5 % of the time. Decide both before the script.
 - **Title:** ≤ 60 characters, the question in the words people type ("What Happens If You…", "What If You…", "How
   Long Could You Survive…"), the clock in brackets when it helps ("(Day by Day)"), one word in CAPS at most, no emoji
   needed, never `#Shorts`. It must be true to the video.
-- **Description:** the hook question as the first line (it shows in search), 2 short paragraphs, then chapters:
+- **Description:** the hook question as the first line (it shows in search), 2 short paragraphs (the first ends with
+  the one-word or one-number question about the viewer's test, "How many seconds did you last?"), then chapters:
 
       0:00 <hook as 2–4 words>
       0:30 <the first stretch of the clock, e.g. "The first 24 hours">
@@ -219,15 +243,16 @@ clicked 1.5 % of the time. Decide both before the script.
   10 s long, times from the real timeline), then "Sources:" with
   the 3–5 main ones, then 3 hashtags (`#Science #HumanBody #<Topic>`). No voice credit.
 - **Tags:** about 15, lowercase, ending with `curiopulse`.
-- `pinnedComment`: "Next week: <teaser>. Subscribe so you don't miss it!" (a suggestion for the user; never posted).
+- `pinnedComment`: "Next week: <teaser>. Subscribe so you don't miss it!" and, on a second line, the same question
+  about the viewer's test (a suggestion for the user; never posted).
 - Category Education (27), English, not made for kids, `syntheticMedia: false` (a cartoon with a narrator is not
   altered or realistic synthetic media).
 - **Not possible from the cloud** (YouTube Studio only): the end screen and cards. Say so in the report every time.
 
 ## Topics
 
-A long-form topic passes the demand check ("Which questions get made"), has a body at stake and a clock in it, and
-needs three acts: what you would feel, what breaks and the proof, and the edge with something still unknown. It has a
+A long-form topic passes the demand check ("Which questions get made"), has a body at stake and a clock in it, lets
+the viewer take part with at least three safe tests ("The viewer takes part"), and needs three acts: what you would feel, what breaks and the proof, and the edge with something still unknown. It has a
 funny human situation to hang it on and a mechanism that can be SHOWN. When the queue runs low, look for new ones the
 same way: think of "what happens if you…" questions about the body, run `yt.mjs demand` on the best four, and add
 only the ones that qualify. `topics.md` holds the queue; one line per video, the demand and the angle after the dash.
@@ -237,7 +262,7 @@ only the ones that qualify. `topics.md` holds the queue; one line per video, the
 | # | Item | Passes when (8+) |
 |---|---|---|
 | 0 | **Film** | the hiker wants something and it is clear by 0:15; he ends in a different state than he began; at least three wordless beats where acting, image and score carry the story; a motif returns changed; the final image is earned and the last ten seconds leave a feeling you can name; it could play at a festival without embarrassment |
-| 1 | **Hook** | frame 1 is action; the question and the promise land by 0:08; it pays off the thumbnail and title; picture and sound hit together |
+| 1 | **Hook** | frame 1 is action; the viewer is doing the first test with him by 0:08; the question and the promise land by 0:08; it pays off the thumbnail and title; picture and sound hit together |
 | 2 | **Retention** | a new picture event every 3–5 s; a pattern interrupt every 15–20 s; a hook at every jump of the clock and at each act turn; no shot over 8 s without a cut, an arrival or a new element; no stretch over 3 s where only the captions move |
 | 3 | **Story** | three acts on the clock that escalate; each ends on the question the next one answers; the weirdest fact and the highest stakes are in the last minute; the button calls back to the hook |
 | 4 | **Show, don't tell** | every statement has its picture; the camera travels to what is named; nothing is a slide |
@@ -250,9 +275,10 @@ only the ones that qualify. `topics.md` holds the queue; one line per video, the
 | 11 | **Subscribe hook** | the `sub` line (≤ 110 characters) is in voice, names next week's question and says "subscribe" clearly; the pill + bell + click are on screen ≥ 2.5 s, timed to the word, clear of the captions and the hero's face |
 | 12 | **Length** | 4:00–5:00; never over 5:15; no scene that could be cut unnoticed |
 | 13 | **Every scene holds** | the scene table is complete (waiting for, turn, leaves open, stakes) and matches the film; the clock is on screen and every jump is a hook; a promise at least every 30 s, each paid within 30 s; the first payoff by 0:30; the last minute is the strongest; the skim test finds no eight alike frames; the 15-second audit has an honest line for every 15 seconds; no scene fails the leave test |
+| 14 | **The viewer takes part** | three or more tests the viewer does while watching (one in the hook, one in each later act), each safe, seated and seconds long, each paid off by what it shows; the explanation points back to them in everyday words, with no science word spoken in the first 30 s; the description and the pinned-comment suggestion end with the question about the viewer's result |
 
 Read every contact sheet (`.work/qa/sheet_*.png`, one frame per second) and crop the risky moments at full size.
-Score items 0 and 13 hardest. Item 0: watch the sheets with the captions ignored and ask whether the story still
+Score items 0, 13 and 14 hardest. Item 0: watch the sheets with the captions ignored and ask whether the story still
 reads. If it is an explainer with a character standing next to it, it is not done: restage the beats around what he
 wants. Item 13: go through the film one scene at a time and try to leave; every place where leaving costs nothing is
 a place a real viewer leaves.

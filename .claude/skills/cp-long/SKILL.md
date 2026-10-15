@@ -88,8 +88,11 @@ Plus: the video scheduled on YouTube with its thumbnail and captions, a row in `
   images. The narration is the only recorded element.
 - **Human, performed narration:** Jessica (`cgSgspJ2msm6clMCkdW9`), `eleven_v3`, stability 0, v3 tags, comedy in the
   gaps. Paid ElevenLabs account only (voice.py and quota.mjs skip free plans).
-- **Hook on frame 1**, second person, an experience the viewer has had; by 0:08 the viewer knows the question and
-  what they will get for staying.
+- **Hook on frame 1**, second person, an experience the viewer has had, and since 15 Oct 2026 a test the viewer does
+  with him right now; by 0:08 the viewer knows the question and what they will get for staying.
+- **The viewer takes part** (`reference/long-form.md`, "The viewer takes part"; the user, 15 Oct 2026, after the
+  Shorts' retention reading): three or more safe tests the viewer does while watching, the explanation pointing back
+  to them in everyday words, and the description ending on a question about the viewer's result. Ship-bar item 14.
 - **Show, don't tell.** Every statement has its picture; the camera travels to what is named; never static for more
   than 3 s; never slides.
 - **A story in three acts on a clock** with a hook at every jump, 8–12 laugh beats that come from character, the

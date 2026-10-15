@@ -63,5 +63,7 @@ A hook that only does the third is a summary, and it leaks viewers.
 - The hook is 0:00 to 0:15: frame 1 is the picture the thumbnail promised, and the first sentence says the title's
   question in the viewer's words. By 0:20 the first real piece of the answer is on screen (rule 4).
 - The film's own rules stay (`long-form.md`: the clock, the every-scene rule, the first 30 seconds).
+- Since 15 Oct 2026 the hook is also a test the viewer does with the hiker, now (`long-form.md`, "The viewer takes
+  part"): "Hold your breath. Now. I'll count." Whatever the formula, the viewer is doing something by 0:08.
 - Good fits: The Question, The Statistic, I Tried It (the hiker tries it, with a cost), The Clock ("day by day"),
   Contrarian Flip, The Impossible Claim, Someone Else's Result (a named, sourced person).
