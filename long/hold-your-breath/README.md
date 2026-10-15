@@ -22,7 +22,7 @@ median 556,220 views, **3 of 8 at a million or more** (The Ninja Fam 19.5M "How 
 Peekaboo Kidz 4.7M "What if You Hold Your Breath for Too Long?", Veritasium 4.1M "Pushing The Limits Of Extreme
 Breath-Holding"; also Breathe With Gert 682K, Inferno 430K "How Long Can You Hold Your Breath? (TEST)"), so it
 qualifies on the three-at-a-million rule. The winners run 5:03–18:39. Our title: **What If You Hold Your Breath TOO
-Long? (Second by Second)** (56 characters): the words people type, and the clock in brackets.
+Long? (Second by Second)** (57 characters): the words people type, and the clock in brackets.
 
 **The clock:** the seconds of one held breath. For the first minute it is the VIEWER's own breath: it starts on
 "now" in the hook and counts real seconds (SECOND 0, 1, 2…) while the narrator says what their body is doing; he
@@ -105,7 +105,7 @@ with their times; each is a `pay_*` or `big_*` cue in make_timeline.py, so the s
 | 18 | 1:04 | — | "Your body rings the alarm on the exhaust... long before the oxygen gets low." | why the exhaust? | the race: the needle flies, the tank barely moves | can you trick the alarm? | 3 | 1:06 the race | round two |
 | 19 | 1:11 | — | Round two: goggles on, he pants like a dog | what is his plan? | the fast-breathing trick | does it work? | 3 | 1:11 ROUND 2 | the whistle |
 | 20 | 1:15 | — | TWEEEET: Pip's whistle (her birthday present) | why stop him? | the seven-year-old is the lifeguard | is the trick dangerous? | 4 | **1:15 the whistle** | why it is dangerous |
-| 21 | 1:18 | — | "Fast breathing doesn't add oxygen... the alarm rings late. Sometimes... too late." | why not? | +0 OXYGEN; the needle falls to zero; a BLACKOUT line | too late for what? (paid at 3:08) | 4 | 1:20 +0; 1:26 BLACKOUT | the slow way |
+| 21 | 1:18 | — | "Fast breathing doesn't add oxygen... the alarm rings late. Sometimes... too late." | why not? | +0 OXYGEN; a wind blows the violet exhaust out of his blood; the alarm in his brain dozes off | too late for what? (paid at 3:08) | 4 | 1:20 +0 OXYGEN; 1:22 the exhaust blown away; 1:27 TOO LATE | the slow way |
 | 22 | 1:28 | — | The viewer's second test: a hand on the belly; the diaphragm | how do you do it right? | they feel the muscle push; the x-ray shows the dome | why remember it? (paid at 1:58) | 3 | 1:31 push out; 1:33 the dome | his second try |
 | 23 | 1:37 | SECOND 60 | "Sixty seconds: a new record. And Pip has a cold, wet cloth." | can he beat 45? | 60 s; Pip lifts a dripping cloth | what is it for? | 3 | 1:37 "60" | the splat |
 | 24 | 1:42 | SECOND 65 | SPLAT | — | the cloth lands on his face | why? | 3 | 1:42 the splat | the reflex |
@@ -115,7 +115,7 @@ with their times; each is a `pay_*` or `big_*` cue in make_timeline.py, so the s
 | 28 | 1:58 | SECOND 90 | "Ninety. And here it comes... starts kicking." | what is coming? | the diaphragm from the belly test kicks on its own | why does it hurt so much? | 4 | **2:01 the kicks** | the 1960s experiment |
 | 29 | 2:06 | — | "Why does it hurt so much?" his face, the kicks | why? | — | the answer | 4 | — | the scientists |
 | 30 | 2:08 | — | London, the 1960s: two scientists paralyse themselves; a machine breathes for them | how could anyone test that? | the experiment | what happened? | 4 | 2:08 1960s | the result |
-| 31 | 2:15 | — | "...four minutes without a breath, calm... until their doctor stopped it. Scientists still argue." | did it work? | 4 minutes, calm; the doctor stops it; ARGUED | how far did HE get? | 4 | **2:18 four minutes**; 2:23 argued | his result |
+| 31 | 2:15 | — | "...four minutes without a breath, calm... until their doctor stopped it. Scientists still argue." | did it work? | the machine OFF; the wall clock races four minutes; his calm face; the doctor switches it back ON; STILL ARGUED | how far did HE get? | 4 | **2:18 four minutes**; 2:21 ON; 2:23 argued | his result |
 | 32 | 2:25 | SECOND 112 | "One minute fifty-two!" | did he win? | nearly three times his first try | did Pip see it? | 3 | **2:25 his breath out** | Pip |
 | 33 | 2:31 | — | "Pip has started on the cake." | who won? | she won by eating it | how far can anyone go? | 3 | 2:31 the cake | the record |
 | 34 | 2:33 | — | "So how far can a human go?" | how far? | he looks up | — | 3 | — | the record |
@@ -130,7 +130,7 @@ with their times; each is a `pay_*` or `big_*` cue in make_timeline.py, so the s
 | 43 | 3:17 | — | "In water, that's how strong swimmers drown. Never in water, never alone, never fast breathing first." | is it real? | the empty pool; three rules | and on land? | 5 | 3:19 drown; 3:21 the rules | the relief |
 | 44 | 3:26 | — | "On land? Your body won't let you... it would breathe for you." | could I hurt myself? | the sensor, now a lifeguard with a whistle, breathes for him | who breathes for me? | 4 | **3:31 it breathes for you** | the third test |
 | 45 | 3:33 | 15 SECONDS | The viewer's third test: "Count your breaths for fifteen seconds." | how many? | they count, the clock counts down | what is my number? | 3 | 3:37 the count starts | the candles |
-| 46 | 3:38 | 15 → 0 | Wordless count: Pip relights her seven candles one by one | — | a candle every two seconds; his calm breaths | what does my number mean? | 3 | seven small lightings | the answer |
+| 46 | 3:38 | 15 → 0 | Wordless count: Pip relights her seven candles one by one with a long match; his hand on his belly, eyes shut | — | a candle every two seconds, each on a note of the theme; his calm breaths | what does my number mean? | 3 | seven small lightings | the answer |
 | 47 | 3:52 | BREATHING | "About four? You didn't choose a single one... it's been breathing for him his whole life." | what does it mean? | the alarm he fought is his lifeguard | what will he do now? | 4 | 3:52 "About four?" | his choice |
 | 48 | 4:00 | BREATHING | "So this time, when Pip takes a big breath... he lets the birthday girl win." | will he compete? | he lets go | — | 4 | 4:03 win | the button |
 | 49 | 4:06 | BREATHING | "Turns out... this is one contest you're supposed to lose." | — | the theme said once | — | 4 | — | the final image |
@@ -145,6 +145,64 @@ each is spoken on its true second after "now" (the clock in the corner counts th
 transcript of the takes matched the script word for word (numbers aside).
 Rewrites: the oxygen line moved into "Twenty." (it did not fit before the twentieth second), and "six times" became
 "almost seven times" once the film's length was known (29:03 is 6.6 of these films).
+
+## Publishing
+
+| Platform | Link | Release |
+|---|---|---|
+| YouTube | (pending upload) | (the next free Sunday, 17:30 IST) |
+
+**Title:** What If You Hold Your Breath TOO Long? (Second by Second) (57 characters)
+**Description, chapters, sources, tags:** [`publish.json`](publish.json). The description opens with the title's
+question and ends its first paragraph on the viewer's result ("How many seconds did you last?"); the second carries
+the safety line. Chapters, named after the clock: 0:00 Hold your breath, right now · 0:21 Second 20: still full of
+oxygen · 0:45 Second 45: out · 1:10 Round two: the trick · 1:58 Second 90: why does it hurt? · 2:35 Minute 11 to 3
+hours: the records · 3:03 Too long? · 3:32 Count your breaths. Hashtags #Science #HumanBody #BreathHolding.
+**Pinned comment (suggestion, for the user to pin):** Next week: what happens if you step into space without a suit.
+Subscribe so you don't miss it! How many seconds did you last?
+**Subscribe line (spoken):** Next week: what happens if you step into space without a suit. Subscribe... and keep
+breathing.
+**Thumbnail:** [`cover.jpg`](cover.jpg): his face filling the right half, cheeks puffed and purple, sweat flying, the
+party hat askew; **29 / MIN** in yellow and white on the left; a dark plum field with a red-orange glow. Three
+candidates (29 MIN with the bulging face, DON'T BREATHE, BLACK OUT? with a dazed face) went on a 320×180 shelf with
+six of the ranking thumbnails (The Ninja Fam, Peekaboo Kidz, Veritasium, Breathe With Gert, Inferno, Seeker); 29 MIN
+read first and promises the film's last number, which the hook names in its second sentence.
+**Still to do by hand in YouTube Studio:** the end screen, a card to the related Short, pinning the comment.
+
+## Sound design
+
+- **Beds, one per world:** a warm kitchen room tone with a far-off garden by day and a quieter dusk; a low
+  inside-the-body hum with a heartbeat under the chest shots; a soft stage hum for the gauges; a cold sea swell for
+  the seal and the whale; a 1960s projector whirr and a breathing machine (that stops when it is switched off and
+  starts again when the doctor turns it back on) for London; the echoing pool hall.
+- **The clock:** a tick on every real second of the first minute (the viewer's own breath), a flip on every jump, soft
+  ticks for the 15-second count.
+- **Hits:** the big breath in on frame 1; the timer's beeps in the glimpse; a sad slide after "no cake"; the dive's
+  whoosh and bubble; bloops as the exhaust appears, a padlock click; the burn's sizzle; the lemon's squeaky pop; the
+  alarm bell, quiet under the words and loud in the gap; PAAAH and seven flames out, the hat hopping; the wicks'
+  hiss; Pip's nose whistle; the viewer's breath and a release chord on "Breathe."; pops on the ruler, the STILL FULL
+  stamp; the pea whistle (TWEEET); the wind of the exhaust blowing away; the alarm's snore; the belly breath; the
+  stopwatch click; SPLAT and drips; the switch's clunk, a monitor slowing from 78 to 70; the seal's bubbles; the
+  spleen's squelch; a thud for every kick; the drip bag's blip, the machine's clunk off and on, the racing clock;
+  his best (PAAAH again, a crash); a chomp after "cake"; the record timer's beeps; the whale's moan; the tank
+  draining and the power going down; one blub for each bubble reaching the surface of the empty pool; three low knocks
+  for the three rules; the lifeguard's soft whistle; a match strike for every candle; Pip's breath and the candles
+  out; the subscribe pop, click and bell. Every punchline sound sits after its word.
+- **Score:** one theme, a rising arpeggio that stops on a held note (a held breath, D F# A | E…). A music box in the
+  hook, cut on "now"; the held E over a low D drone through the first hold; pizzicato for Pip's nose; a curious
+  marimba for the gauges; jittery pizzicato for the fast-breathing trick, cut dead by the whistle; a low drone for
+  "too late"; a pad that breathes in and out for the slow way; glassy and slow for the cold water and the seal; an old
+  upright piano for 1960s London; a bright marimba for his best, stopped dead for the cake; wide climbing pads for the
+  records and a big hit on 29; the theme slow and low for the whale; rising tension into the blackout, then nothing;
+  one sparse chord for the water; a warm swell for "on land"; the candles add the theme's notes over a soft pulse; the
+  theme on piano for the turn; on the final image the E finally falls to D and the exhale line plays out; a shimmer
+  over the stars.
+- **Every second:** a riser into each payoff and a hit on it (`pay_*` and `big_*` cues); the music drops out before
+  the biggest ones (the alarm, the blast, the whistle, the seal, the kicks, four minutes, his best, 29, the whale,
+  the blackout, the blow), for the punchlines, the smoke and the blackout.
+- **Mix:** voice first (leveler, studio compressor), effects duck under speech, music −8 and ambience −20 on their
+  buses, −14 LUFS, true peak −1.9 dBTP before AAC. Voice over the rest, in the speech band: mean 23 dB, no word under
+  6 dB.
 
 ## Science notes
 
@@ -181,6 +239,5 @@ says the safer thing.
 pedalboard for the studio mix chain, else the classic chain runs), node with playwright-core and a Chrome or Chromium
 (`CHROME_PATH`), and ffmpeg with libx264/aac. `.claude/skills/cp-long/bin/cloud-setup.sh` installs all of it on a
 fresh Ubuntu machine. The JavaScript libraries the scenes use are vendored in `src/web/vendor/` (MIT, licences
-inside). Recorded one-shots come from the repo's shared CC0 folder `assets/sfx/` (credits in `assets/sfx/CREDITS.md`).
-The narration takes are committed in `src/voice/`, so no API call is needed unless a line of `src/script.txt`
+inside). Every sound is synthesized in `src/audio.py` (no recordings besides the narration). The narration takes are committed in `src/voice/`, so no API call is needed unless a line of `src/script.txt`
 changes. For a changed line, run `src/build.sh --synth` with `ELEVENLABS_API_KEY` set.
