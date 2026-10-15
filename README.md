@@ -39,7 +39,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Does Your Funny Bone Hurt So Much? | 32 s | [`videos/funny-bone`](videos/funny-bone) | [13 Oct 2026](https://youtube.com/shorts/JJYB6rAaF2w) |
 | Why Do You See Stars When You Rub Your Eyes? | 46 s | [`videos/eye-rub-stars`](videos/eye-rub-stars) | [14 Oct 2026](https://youtube.com/shorts/FuqnD4vj-q4) |
 | Why Do You Get Dizzy When You Spin? | 33 s | [`videos/dizzy-spin`](videos/dizzy-spin) | [14 Oct 2026](https://youtube.com/shorts/4Ts56nQI1-M) |
-| Why Do Your Ears Ring After a Concert? | 47 s | [`videos/ears-ring`](videos/ears-ring) | 15 Oct 2026 (scheduled) |
+| Why Do Your Ears Ring After a Concert? | 47 s | [`videos/ears-ring`](videos/ears-ring) | [15 Oct 2026](https://youtube.com/shorts/ORFb3ma5RyA) |
 
 Each folder has:
 - the finished MP4;

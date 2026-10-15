@@ -53,8 +53,8 @@ clearer in the speech band).
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 15 Oct 2026 11:30 IST |
-| Instagram Reels | (Business Suite) | the next free 06:30 / 18:30 IST slot after the YouTube release |
+| YouTube Shorts | https://youtube.com/shorts/ORFb3ma5RyA | 15 Oct 2026 11:30 IST (scheduled; thumbnail, captions, playlist set; cover.jpg also uploaded in Studio) |
+| Instagram Reels | pending (Business Suite) | slot 16 Oct 2026 06:30 IST: not scheduled yet, the Chrome window was hidden (Business Suite's new composer does not upload then); dizzy-spin's pending Reel holds 15 Oct 18:30 |
 
 **Title:** Why Do Your Ears RING After a Concert? 🎸
 

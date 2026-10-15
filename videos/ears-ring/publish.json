@@ -36,19 +36,27 @@
   "cover": "cover.jpg",
   "captions": "ears-ring.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-15T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "ORFb3ma5RyA",
+    "url": "https://youtube.com/shorts/ORFb3ma5RyA",
+    "uploaded": "2026-10-15T01:59:19.445Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (its slot showed the grey placeholder); Save went back to disabled"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-16T06:30:00+05:30",
     "caption": "Ears ringing after a concert? 🎸\nThat ring probably isn't your ears: loud music flattens the tiny hair cells inside them, so your brain turns its own volume up, and hears its own static. Chickens can regrow those cells. You can't. Earplugs!\nFollow @curio_pulse_tv for the next one: why a doorknob gives you a shock ⚡🔔\n#science #humanbody #tinnitus #hearing #funfacts #reels",
-    "coverTime": 0.0,
-    "shareToFeed": true
+    "coverTime": 0,
+    "shareToFeed": true,
+    "pending": "not scheduled yet: the Chrome window was hidden on 15 Oct 2026 (requestAnimationFrame never fired, so Business Suite's new composer cannot upload). Its slot moved from 15 Oct 18:30 to 16 Oct 06:30 IST, because dizzy-spin's pending Reel holds 15 Oct 18:30. Schedule both in Business Suite when the window is visible."
   }
 }
