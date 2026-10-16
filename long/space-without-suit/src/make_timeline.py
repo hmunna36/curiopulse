@@ -59,9 +59,9 @@ SHOTS = [
     ("hook", None),                            # his face, close, cheeks full of a held breath; air streaming to the hatch
     ("out", "Breathe OUT"),                    # he blows it all out; the cloud leaves through the hatch; SECOND 0
     ("lungs", "Holding it in"),                # x-ray: held air balloons the lungs until they tear (red)
-    ("promise", "Now, second by second"),      # wide: the airlock, the clock; the camera finds the green REPRESS
     ("want", "All he wanted"),                 # his phone: Pip's message, NO GOLDFISH BOWL, her drawing
     ("depress", "So he pressed"),              # the panel: his finger on DEPRESS; Ball's flat eyes
+    ("promise", "Now, second by second"),      # wide: the airlock, the clock; the camera finds the green REPRESS
     ("explode", "Second one."),                # the movies: an astronaut inflates, BOOM; MYTH
     ("intact", "Your skin is"),                # back on him: whole; he pats himself
     ("silence", "Second two."),                # the last fog leaves; the alarm screams without a sound
@@ -112,11 +112,12 @@ special = {
 }
 
 CHUNKS = [
-    "You're in space.", "No suit.", "Your instinct?", "Hold your breath.", "WRONG.",
+    "You're in space.", "No suit.", "You've got about", "fifteen seconds.", "Your instinct?", "Hold your breath.", "WRONG.",
     "Breathe OUT,", "with him...", "all of it...", "now.",
-    "Holding it in", "could tear your lungs.", "Now, second by second,", "here's what your body does...", "and how long", "a rescue has.",
+    "Holding it in", "could tear your lungs.",
     "All he wanted", "was a selfie", "for his niece, Pip.", "Without the helmet.", '"You look like', 'a goldfish,"', "she said.",
     "So he pressed", "the button marked", "DEPRESS...", "thinking it meant", '"take the picture."',
+    "Now, second by second,", "here's what your body does...", "and how long", "a rescue has.",
     "Second one.", "Good news:", "you don't explode.", "That's just the movies.", "Your skin is", "tougher than that.",
     "Second two.", "The air is gone...", "and so is the sound.", "The alarm is screaming.", "He can't hear a thing.",
     "Is he freezing?", "Not yet.", "Space is cold,", "but empty:", "there's nothing to carry", "his heat away.", "Space is basically...", "a giant thermos.",
@@ -172,7 +173,7 @@ DISPLAY = {
     "second one": ["SECOND", "1"], "second two": ["SECOND", "2"], "second five": ["SECOND", "5"], "second ten": ["SECOND", "10"],
     "second twenty": ["SECOND", "20"], "second thirty": ["SECOND", "30"], "second forty-five": ["SECOND", "45"],
     "second sixty": ["SECOND", "60"], "second eighty": ["SECOND", "80"], "second ninety": ["SECOND", "90"],
-    "fourteen": ["14..."], "fifteen": ["15..."], "in 1960": ["IN", "1960"], "in 1966": ["IN", "1966"],
+    "fourteen": ["14..."], "fifteen": ["15..."], "fifteen seconds": ["15", "SECONDS"], "in 1960": ["IN", "1960"], "in 1966": ["IN", "1966"],
     "nineteen miles up": ["19", "MILES", "UP"], "fourteen seconds": ["14", "SECONDS"], "in the nineteen-sixties": ["IN", "THE", "1960s"],
     "ninety seconds": ["90", "SECONDS"], "at body temperature": ["AT", "BODY", "TEMPERATURE"],
 }
@@ -185,7 +186,7 @@ S1 = {s["id"]: s["end"] for s in shots}
 
 cues = {
     # ---- the hook: the held breath, DON'T, the breath out
-    "dont": W("WRONG."), "breatheOut": W("Breathe OUT"), "allofit": W("all of it"), "now": now, "tick0": now,
+    "fifteenW": W("fifteen seconds."), "instinct": W("Your instinct?"), "holdW": W("Hold your breath."), "dont": W("WRONG."), "breatheOut": W("Breathe OUT"), "allofit": W("all of it"), "now": now, "tick0": now,
     "tear": W("tear your lungs"), "rescue": W("rescue has."),
     "want": W("All he wanted"), "noHelmet": W("Without the helmet"), "goldfish": W("goldfish,\""), "pressed": W("So he pressed"),
     "depressW": W("DEPRESS..."), "thinking": W("thinking it meant"), "picture": W("picture.\""),
@@ -197,7 +198,7 @@ cues = {
     "noair": W("With no air"), "bodyT": W("at body temperature"), "tearsW": W("His tears."), "steals": W("steals heat"), "frost": W("Almost freezing"),
     "s10": W("Second ten."), "inhere": W("is in here"), "lungsEmpty": W("lungs are empty"), "pours": W("pours OUT"), "wrongWay": W("the wrong way"),
     "thatBlood": W("And that blood"), "toBrain": W("to his brain"),
-    "s14": W("Fourteen..."), "s15": W("fifteen..."), "lightsOut": W("lights out"), "dark": dark,
+    "s14": W("Fourteen..."), "s15": W("fifteen...", s=find("Fourteen...")), "lightsOut": W("lights out"), "dark": dark,
     # ---- act 2: the race, what breaks, the proof
     "heOut": W("He's out."), "notDead": W("Not dead"), "newClock": W("a different clock"),
     "ballW": W("Ball, the camera"), "fans": W("But its fans"), "pushAg": W("to push against"), "justBall": W("Ball is just"), "aBall": W("a ball."),
@@ -250,7 +251,7 @@ cues["clock"] = [
 ]
 # ---- the payoffs (the every-second rule): small ones (pay_) and big ones (big_); audio.py builds into each
 for name, t in {
-    "pay_dont": cues["dont"], "big_now": E("now.") + 0.06, "pay_tear": cues["tear"] + 0.3, "pay_rescue": cues["rescue"],
+    "pay_fifteen0": cues["fifteenW"] + 0.2, "pay_dont": cues["dont"], "big_now": E("now.") + 0.06, "pay_tear": cues["tear"] + 0.3, "pay_rescue": cues["rescue"],
     "pay_goldfish": cues["goldfish"], "pay_depress": cues["depressW"], "pay_picture": cues["picture"] + 0.3,
     "big_myth": cues["noExplode"] + 0.4, "pay_skin": cues["skin"], "big_mute": mute, "pay_thermos": cues["thermosW"] + 0.4,
     "big_boil": cues["boilingW"] + 0.2, "pay_body": cues["bodyT"], "pay_frost": cues["frost"], "big_out": cues["pours"],

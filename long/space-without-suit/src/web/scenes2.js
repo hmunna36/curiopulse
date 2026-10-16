@@ -36,46 +36,58 @@ function corridorMini(t) {
 // when the inset is up: from her launch to the moment she is at the airlock's window
 const sisOn = (t) => ramp(t, cue('sisGo') + 1.5, cue('sisGo') + 1.9) * (1 - ramp(t, cue('sisWin') - 0.3, cue('sisWin')));
 
-// ================================================================= ACT 2
 // "He's out. Not dead... out. And now, a different clock starts." the airlock, wide: he floats limp in front of the
-// open hatch, the beacon turning; a heart pulses on his chest on "Not dead"; the clock turns red: UNCONSCIOUS
+// open hatch; a heart pulses on his chest on "Not dead"; on "a different clock starts" a cut to a big stopwatch, its
+// hand already past fifteen, the danger arc red ahead of it (the rescue window)
 SC.turn = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
+  if (t >= c.newClock - 0.1) {
+    darkBg('#2A0A14', '#08020A'); screenSpace();
+    const secs = 15 + 1.0 * clamp((t - c.newClock) / 3);
+    bigStopwatch(960, 520, 1.25 + 0.04 * (t - c.newClock), t, secs, ramp(t, c.newClock - 0.1, c.newClock + 0.25));
+    stampWord('UNCONSCIOUS', 960, 120, 80, '#FF5A6E', ramp(t, c.newClock + 0.3, c.newClock + 0.6), 0);
+    return inPost({ flash: 0.3 * kickAt(t, c.newClock - 0.1, 8) });
+  }
   const cam = mixCam({ x: 1300, y: 520, zoom: 1.35, rot: 0 }, headCam(S, 1.9, 900, 420), ramp(t, c.notDead - 0.3, c.notDead + 0.4, E.inOutCubic));
   alScene(cam, t, S, { after: (cm, res, h) => {
-    const hb = ramp(t, c.notDead, c.notDead + 0.3) * (1 - ramp(t, c.newClock, c.newClock + 0.4));
+    const hb = ramp(t, c.notDead, c.notDead + 0.3);
     if (hb > 0.01) { const P = alPt(h, [16, -330]), b = beatAt(t, 70, c.notDead); ctx.save(); ctx.translate(P[0], P[1]); ctx.scale(1 + 0.25 * b, 1 + 0.25 * b); heartShape(ctx, 34, 0); ctx.fillStyle = rgba('#FF4A5E', hb); ctx.fill(); ctx.restore(); softDot(gctx, P[0], P[1], 90, '#FF4A5E', 0.6 * hb * (0.5 + b)); }
   } });
-  return alPost({ flash: 0.15 * kickAt(t, c.newClock, 8) });
+  return alPost();
 };
 // "Ball, the camera drone, wants to help. But its fans need air to push against. Right now, Ball is just... a ball."
-// Ball, close: it narrows its eyes and spins its fans flat out; nothing happens; in a window, a fan in air pushes
-// little air beads (it moves), the same fan in space has nothing to push; Ball's eyes go flat; it drifts
+// three framings: Ball, close, narrowing its eyes and spinning its fans flat out (nothing happens); the fans
+// full-frame, side by side, in air (beads blown along: it moves) and in space (nothing to push); Ball again, eyes flat,
+// drifting: JUST A BALL
 SC.ball = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
   const B = S.ball;
-  const cam = mixCam(ptCam([B.x, B.y], 3.0, 760, 520), ptCam([B.x, B.y], 3.3, 700, 540), ramp(lt, 0, D));
-  const effort = env2(t, c.ballW + 0.6, c.justBall - 0.2, 0.3);
+  if (t >= c.fans - 0.1 && t < c.justBall - 0.35) {
+    darkBg('#0E1A33', '#03060F'); screenSpace();
+    const fk = ramp(t, c.fans - 0.1, c.fans + 0.25);
+    for (const [px, inAir, lab] of [[620, true, 'IN AIR'], [1300, false, 'IN SPACE']]) {
+      ctx.save(); ctx.translate(px, 470); const k = E.outBack(fk, 1.8) * 1.6; ctx.scale(k, k);
+      circle(ctx, 0, 0, 170, inAir ? 'rgba(20,40,80,0.95)' : 'rgba(5,6,15,0.95)'); ctx.lineWidth = 6; ctx.strokeStyle = inAir ? '#7FE9FF' : '#8A90B8'; ctx.beginPath(); ctx.arc(0, 0, 170, 0, 7); ctx.stroke();
+      for (let i = 0; i < 3; i++) { const a = t * 30 + i * 2.09; line(ctx, -60, 0, -60 + Math.cos(a) * 56, Math.sin(a) * 56, 14, '#C8CEE0'); }
+      circle(ctx, -60, 0, 14, '#5A607E');
+      if (inAir) { for (let i = 0; i < 14; i++) { const ph = (t * 1.5 + i / 14) % 1; circle(ctx, -30 + 170 * ph, -70 + 140 * hash(i), 8, `rgba(127,233,255,${1 - ph})`); } }
+      else { for (let i = 0; i < 5; i++) circle(ctx, 30 + 25 * i, -40 + 20 * Math.sin(i), 3, 'rgba(255,255,255,0.15)'); }
+      ctx.restore();
+      pill(px, 820, lab, inAir ? '#7FE9FF' : '#C8A8FF', fk, 46);
+    }
+    stampWord('PUSH!', 620, 160, 100, '#4DFFB4', ramp(t, c.pushAg, c.pushAg + 0.25), -0.08);
+    stampWord('NOTHING', 1300, 160, 100, '#C8A8FF', ramp(t, c.pushAg + 0.25, c.pushAg + 0.5), -0.08);
+    return inPost();
+  }
+  const late = t >= c.justBall - 0.35;
+  const cam = late ? ptCam([B.x, B.y], 3.4 - 0.3 * ramp(t, c.justBall, shot.end), 960, 520) : ptCam([B.x, B.y], 3.0 + 0.2 * lt, 760, 520);
+  const effort = env2(t, c.ballW + 0.6, c.fans - 0.1, 0.3);
   alScene(cam, t, S, { noBall: true });
   applyCam(cam);
-  const sh = effort * 2.5 * Math.sin(t * 60);
-  alBall(B.x + sh, B.y, B.s, t, { mood: t > c.aBall - 0.1 ? 'flat' : (effort > 0.3 ? 'worried' : 'calm'), look: [-1, 0.4], fans: 1 + 6 * effort, tilt: -0.1 * effort });
+  const sh = effort * 2.5 * Math.sin(t * 60), drift = late ? 30 * (t - c.justBall) : 0;
+  alBall(B.x + sh + drift, B.y + drift * 0.3, B.s, t, { mood: t > c.aBall - 0.1 ? 'flat' : (effort > 0.3 ? 'worried' : 'calm'), look: [-1, 0.4], fans: late ? 0.2 : 1 + 6 * effort, tilt: late ? 0.15 * (t - c.justBall) : -0.1 * effort });
   if (effort > 0.05) for (const sd of [-1, 1]) for (let i = 0; i < 3; i++) { const ph = (t * 6 + i / 3) % 1; ctx.beginPath(); ctx.arc(B.x + sd * 52 * B.s, B.y, (20 + 40 * ph) * B.s, -0.8, 0.8); ctx.lineWidth = 3; ctx.strokeStyle = `rgba(255,255,255,${0.5 * (1 - ph) * effort})`; ctx.stroke(); }
   screenSpace();
-  // the two fans side by side: in air (beads blown along, an arrow: it moves) and in space (nothing)
-  const fk = ramp(t, c.fans - 0.1, c.fans + 0.3) * (1 - ramp(t, c.justBall - 0.3, c.justBall));
-  if (fk > 0.01) {
-    for (const [px, inAir, lab] of [[1260, true, 'IN AIR'], [1640, false, 'IN SPACE']]) {
-      ctx.save(); ctx.translate(px, 430); const k = E.outBack(fk, 1.8); ctx.scale(k, k);
-      circle(ctx, 0, 0, 150, inAir ? 'rgba(20,40,80,0.92)' : 'rgba(5,6,15,0.95)'); ctx.lineWidth = 6; ctx.strokeStyle = inAir ? '#7FE9FF' : '#8A90B8'; ctx.beginPath(); ctx.arc(0, 0, 150, 0, 7); ctx.stroke();
-      for (let i = 0; i < 3; i++) { const a = t * 30 + i * 2.09; line(ctx, -40, 0, -40 + Math.cos(a) * 46, Math.sin(a) * 46, 12, '#C8CEE0'); }
-      circle(ctx, -40, 0, 12, '#5A607E');
-      if (inAir) { for (let i = 0; i < 12; i++) { const ph = (t * 1.5 + i / 12) % 1; circle(ctx, -20 + 140 * ph, -60 + 120 * hash(i), 7, `rgba(127,233,255,${1 - ph})`); } ctx.font = '400 60px Anton'; ctx.textAlign = 'center'; ctx.fillStyle = '#4DFFB4'; ctx.fillText('←', -40, 100); }
-      else { ctx.font = '400 50px Anton'; ctx.textAlign = 'center'; ctx.fillStyle = '#8A90B8'; ctx.fillText('NOTHING', 40, 100); }
-      ctx.restore();
-      pill(px, 640, lab, inAir ? '#7FE9FF' : '#C8A8FF', fk, 38);
-    }
-  }
   stampWord('JUST A BALL', 1360, 260, 120, '#FFFFFF', ramp(t, c.aBall + 0.05, c.aBall + 0.35), -0.08);
   return alPost();
 };
@@ -83,13 +95,36 @@ SC.ball = (lt, t, shot) => {
 // corridor, red: her face as she hears it; she launches toward us; a polaroid pops: the two of them as kids
 SC.sister = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const go = ramp(t, c.commander - 0.2, c.commander + 0.8, E.inCubic);
-  corridor(t, { k: 0.3 * t + 2.5 * go * go, red: 1, sis: { x: 960, y: lerp(980, 1500, go), s: lerp(0.62, 1.5, go), face: go > 0.2 ? FACES.stern : FACES.alarmed, fly: go, rot: 0 } });
+  const go = ramp(t, c.commander - 0.2, c.commander + 1.4, E.inOutCubic);
+  // first her face as she hears the alarm (close, in the corridor); then she launches and flies across it, flat out,
+  // arms forward like a swimmer pushing off, the camera panning with her
+  if (t < c.commander - 0.1) {
+    corridor(t, { k: 0.3 * t, red: 1 });
+    screenSpace();
+    const st = { x: 900, y: 1190 + 10 * Math.sin(t * 1.3), s: 1.55, face: t < c.sisW + 0.2 ? FACES.calm : FACES.alarmed, noLegs: true, seed: 3,
+      pose: { hipY: -222, lean: 0, armL: { a: 0.3, b: 0.2 }, armR: { a: 0.3, b: 0.2 }, legL: { a: 0, b: 0 }, legR: { a: 0, b: 0 }, hand: 'open', feetFront: 1 } };
+    lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.clearRect(0, 0, W, H);
+    drawCharacter(lctx, st, t, SISPAL); sisHair(lctx, st);
+    lctx.globalCompositeOperation = 'source-atop'; lctx.fillStyle = `rgba(255,40,60,${0.15 * (0.5 + 0.5 * Math.sin(t * 10))})`; lctx.fillRect(0, 0, W, H); lctx.globalCompositeOperation = 'source-over';
+    ctx.drawImage(layerC, 0, 0); occludeGlow();
+    return alPost();
+  }
+  corridor(t, { k: 0.3 * t + 3.0 * go, red: 1 });
   screenSpace();
+  const x = lerp(2150, 760, go), y = 800 + 30 * Math.sin(t * 3);
+  const st = { x, y, s: 0.95, face: Object.assign({}, FACES.stern, { lookX: -0.9 }), seed: 3,
+    pose: { hipY: -222, lean: 0, armL: { a: 2.9, b: 0.1 }, armR: { a: 2.75, b: 0.2 }, legL: { a: 0.05, b: -0.15 }, legR: { a: 0.12, b: -0.35 }, hand: 'open', feetFront: 0 } };
+  lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.clearRect(0, 0, W, H);
+  const mid = [x, y - 330 * st.s];
+  lctx.translate(mid[0], mid[1]); lctx.rotate(-Math.PI / 2 + 0.08 * Math.sin(t * 2)); lctx.translate(-mid[0], -mid[1]);
+  drawCharacter(lctx, st, t, SISPAL); sisHair(lctx, st);
+  lctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.drawImage(layerC, 0, 0); occludeGlow();
+  for (let i = 0; i < 12; i++) { const yy = mid[1] - 160 + i * 28, L = 200 + 260 * hash(i); line(ctx, x + 260, yy, x + 260 + L, yy, 6, `rgba(255,255,255,${0.45 * go * (0.4 + 0.6 * hash(i * 3))})`); }
   pill(960, 150, 'THE COMMANDER', '#FF9A3C', ramp(t, c.commander, c.commander + 0.3) * (1 - ramp(t, c.four - 0.5, c.four - 0.2)), 50);
   const pk = ramp(t, c.four - 0.25, c.four + 0.2);
-  if (pk > 0.01) polaroidKids(1380, 520, 1.0, pk, t);
-  return alPost({ zblur: 0.06 * go * (1 - go) * 4, flash: 0.15 * kickAt(t, c.commander + 0.6, 8) });
+  if (pk > 0.01) polaroidKids(1450, 520, 1.0, pk, t);
+  return alPost({ flash: 0.15 * kickAt(t, c.commander + 0.2, 8) });
 };
 // a polaroid: her at about eight, pulling him (about four) out of a paddling pool by his collar. AGE 4.
 function polaroidKids(x, y, s, k, t) {
@@ -167,14 +202,15 @@ function pinchHand(x, y, s, tent, grip, t) {
     ctx.beginPath(); ctx.moveTo(tx - 110, -66); ctx.quadraticCurveTo(tx - 30, -66 - th * 0.9, tx, -66 - th); ctx.quadraticCurveTo(tx + 30, -66 - th * 0.9, tx + 110, -66); ctx.closePath();
     ctx.fillStyle = '#F4BE9C'; ctx.fill(); line(ctx, tx, -66 - th + 8, tx, -60, 3, 'rgba(190,110,80,0.5)');
   }
-  // the pinching fingertips (another hand's thumb and finger), from above
+  // the pinching hand, from above: a palm, the index finger and the thumb meeting at the top of the tent
   if (grip > 0.01) {
-    for (const sd of [-1, 1]) {
-      const fx = tx + sd * (70 - 40 * grip), fy = -66 - th * 0.6 - 220 * (1 - grip);
-      ctx.save(); ctx.translate(fx, fy); ctx.rotate(sd * -0.25);
-      rrect(ctx, -26, -260, 52, 280, 26); ctx.fillStyle = '#EFB08C'; ctx.fill(); ellipse(ctx, 0, 6, 22, 14, '#F8D0B8');
-      ctx.restore();
-    }
+    const lift = 240 * (1 - grip), top = -66 - th - 6 - lift;
+    ctx.fillStyle = '#EFB08C';
+    rrect(ctx, tx - 150, top - 330, 210, 190, 70); ctx.fill();                                                  // the palm
+    rrect(ctx, tx + 30, top - 300, 150, 60, 30); ctx.fill();                                                    // the folded fingers
+    ctx.save(); ctx.translate(tx + 14, top - 6); ctx.rotate(-0.35); rrect(ctx, -22, -190, 44, 200, 22); ctx.fill(); ellipse(ctx, 0, -4, 18, 12, '#F8D0B8'); ctx.restore();   // the index
+    ctx.save(); ctx.translate(tx - 18, top - 2); ctx.rotate(0.55); rrect(ctx, -24, -170, 48, 180, 24); ctx.fill(); ellipse(ctx, 0, -2, 19, 12, '#F8D0B8'); ctx.restore();  // the thumb
+    rrect(ctx, tx - 180, top - 520, 200, 220, 40); ctx.fillStyle = '#2E4D9A'; ctx.fill();                       // his other sleeve
   }
   ctx.restore();
 }
@@ -234,16 +270,25 @@ SC.leb1 = (lt, t, shot) => {
   sisInset(t, sisOn(t));
   return alPost({ vhs: 0.4 * ramp(t, shot.end - 0.25, shot.end) });
 };
-// "In 1966, Jim LeBlanc was testing a spacesuit in a NASA vacuum chamber, when its air hose came loose." old film:
-// the chamber's round window, the suited man inside, the engineers outside; the hose comes loose and whips
+// "In 1966, Jim LeBlanc was testing a spacesuit in a NASA vacuum chamber, when its air hose came loose." old film: the
+// chamber from outside in its hangar; a cut to its round window, the suited man inside, the engineers; a cut close on
+// the hose as it comes loose and whips
 SC.leb2 = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = mixCam({ x: 1100, y: 520, zoom: 0.92, rot: 0 }, { x: 900, y: 420, zoom: 1.35, rot: 0 }, ramp(t, c.chamber - 0.5, c.hose, E.inOutCubic));
+  if (t < c.leblanc + 0.9) {
+    chamberOutside({ x: 960 + 40 * lt, y: 520, zoom: 0.95 + 0.04 * lt, rot: 0 }, t, { walk: lt });
+    sepia60(0.9); film60(t, 1);
+    screenSpace();
+    tagPill('1966 · HOUSTON', 330, 230, ramp(t, c.y1966, c.y1966 + 0.3), '#FFD447', 50);
+    tagPill('JIM LEBLANC', 330, 330, ramp(t, c.leblanc + 0.1, c.leblanc + 0.4), '#FFFFFF', 46);
+    return { glow: 0.6 };
+  }
+  const close = t >= c.hose - 0.35;
+  const cam = close ? { x: 1020 + 20 * Math.sin(t * 9) * kickAt(t, c.hose, 3), y: 290, zoom: 2.6, rot: 0 } : { x: 900, y: 440, zoom: 1.2 + 0.05 * (t - c.leblanc), rot: 0 };
   chamber66(cam, t, { hose: ramp(t, c.hose, c.hose + 0.3), fog: 0, fall: 0, eng: ramp(t, c.hose + 0.4, c.hose + 0.8) });
   sepia60(0.9); film60(t, 1);
   screenSpace();
-  tagPill('1966 · HOUSTON', 330, 260, ramp(t, c.y1966, c.y1966 + 0.3), '#FFD447', 50);
-  tagPill('JIM LEBLANC', 330, 360, ramp(t, c.leblanc + 0.1, c.leblanc + 0.4), '#FFFFFF', 46);
+  stampWord('LOOSE!', 1500, 300, 130, '#FF5A6E', ramp(t, c.hose + 0.25, c.hose + 0.5), -0.1);
   return { glow: 0.6, flash: 0.25 * kickAt(t, c.hose, 9) };
 };
 // "He stayed awake for about fourteen seconds. The last thing he remembered? The spit on his tongue... starting to

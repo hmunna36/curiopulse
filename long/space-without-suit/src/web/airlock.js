@@ -501,15 +501,16 @@ function alHairBlown(c, k, t) {
   }
 }
 function alCheeks(c, k, t) {
-  // a mouthful of held air: both cheeks bulge out past the face, flushed, with a shine; the lips pressed tight
+  // a mouthful of held air: both cheeks bulge out past the face, low and to the sides (the eyes stay clear), flushed,
+  // with a shine; the lips pressed tight
   for (const s of [-1, 1]) {
     const wob = 1 + 0.05 * Math.sin(t * 13 + s);
-    ellipse(c, s * 44, 26, 34 * k * wob, 30 * k * wob, '#E89A7A');
-    ellipse(c, s * 42, 24, 31 * k * wob, 27 * k * wob, '#F4AE8C');
-    ellipse(c, s * 40, 30, 18 * k, 12 * k, 'rgba(255,90,90,0.35)');
-    ellipse(c, s * 48, 12, 9 * k, 6 * k, 'rgba(255,240,230,0.75)');
+    ellipse(c, s * 48, 44, 32 * k * wob, 24 * k * wob, '#E89A7A');
+    ellipse(c, s * 46, 42, 29 * k * wob, 21 * k * wob, '#F4AE8C');
+    ellipse(c, s * 44, 47, 17 * k, 10 * k, 'rgba(255,90,90,0.35)');
+    ellipse(c, s * 52, 33, 8 * k, 5 * k, 'rgba(255,240,230,0.75)');
   }
-  c.beginPath(); c.moveTo(-14, 38); c.quadraticCurveTo(0, 33 + 4 * k, 14, 38); c.lineWidth = 6; c.strokeStyle = '#8A3A3A'; c.lineCap = 'round'; c.stroke();
+  c.beginPath(); c.moveTo(-13, 46); c.quadraticCurveTo(0, 41 + 4 * k, 13, 46); c.lineWidth = 6; c.strokeStyle = '#8A3A3A'; c.lineCap = 'round'; c.stroke();
 }
 // his tongue out, with spit that bubbles (boil 0..1) and a little frost on it (cold from the boiling)
 function alTongue(c, k, boil, t) {

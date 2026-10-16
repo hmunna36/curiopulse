@@ -124,7 +124,7 @@ const PIP_PJ = Object.assign({}, PAL, { coat: '#FF86A6', coatSh: '#D8607E', coat
 function pipKid(cam, t, P) {
   const st = { x: P.x || 720, y: P.y || 840, s: P.s || 0.5, face: P.face || FACES.happy, noLegs: true, seed: 9,
     pose: { hipY: -34, lean: 0, armL: { a: 0.3, b: 0.2 }, armR: { a: 0.3, b: 0.2 }, legL: { a: 0, b: 0 }, legR: { a: 0, b: 0 }, hand: 'open', feetFront: 1 } };
-  st.pose = ikReach(st.pose, 'L', [-40, -150], -1); st.pose = ikReach(st.pose, 'R', [40, -150], 1);
+  st.pose = ikReach(st.pose, 'L', [-60, -120], -1); st.pose = ikReach(st.pose, 'R', [60, -120], 1);
   lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.clearRect(0, 0, W, H);
   camTransform(lctx, cam, 1);
   const r = drawCharacter(lctx, st, t, PIP_PJ);
@@ -132,7 +132,7 @@ function pipKid(cam, t, P) {
   if (typeof pigtails2 === 'function') pigtails2(lctx, r, st, t); else pipTails(lctx, r, st, t);
   // the tablet she holds up, its back to us with its screen glow on her face
   const k = P.tablet === undefined ? 1 : P.tablet;
-  if (k > 0.01) { rrect(lctx, -80, -250, 160, 110, 12); lctx.fillStyle = '#2A2E44'; lctx.fill(); circle(lctx, 0, -195, 6, '#5A607E'); }
+  if (k > 0.01) { rrect(lctx, -80, -180, 160, 100, 12); lctx.fillStyle = '#2A2E44'; lctx.fill(); circle(lctx, 0, -130, 6, '#5A607E'); }
   lctx.restore();
   lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.globalCompositeOperation = 'source-atop';
   lctx.fillStyle = 'rgba(40,30,90,0.28)'; lctx.fillRect(0, 0, W, H);

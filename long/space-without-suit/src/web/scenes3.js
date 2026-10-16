@@ -100,31 +100,32 @@ function dogIcon(x, y, s, ok) {
   ctx.restore();
 }
 // "In 1971, a valve opened on a Soyuz capsule, on its way home. Its three cosmonauts are still the only people who ever
-// died in space." the Earth from orbit, dark; the capsule drifting; a thin jet from its valve; then three small stars
-// come out, one by one, over the thin blue line (a quiet memorial)
+// died in space." the Earth from orbit, dark, the capsule drifting (1971); a cut close on its hull, the valve venting
+// its air; then the capsule gone and three small stars coming out, one by one, over the thin blue line (a memorial)
 SC.soyuz = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
+  if (t >= c.home - 0.2 && t < c.cosmo - 0.1) {
+    soyuzValve(t, ramp(t, c.home - 0.1, c.home + 0.4));
+    return { glow: 0.9, flash: 0.15 * kickAt(t, c.home - 0.2, 10) };
+  }
   screenSpace();
   spaceField(ctx, 0, 0, W, H, t);
-  const z = 1 + 0.06 * lt / D;
+  const later = t >= c.cosmo - 0.1;
+  const z = later ? 1.0 + 0.06 * (t - c.cosmo) : 1.15 + 0.05 * lt;
   ctx.save(); ctx.translate(960, 540); ctx.scale(z, z); ctx.translate(-960, -540);
   earthLimb(ctx, 960, 2900, 2200, t, { line: 0.018, night: 0.6 });
-  // the capsule: a bell-shaped descent module, turning slowly
-  const cx = 960 + 120 * Math.sin(lt * 0.15), cy = 430, rot = 0.3 + 0.08 * lt;
-  const ck = 1 - ramp(t, c.cosmo - 0.6, c.cosmo, E.inOutCubic);
-  if (ck > 0.01) {
-    ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot); ctx.globalAlpha = ck;
+  if (!later) {
+    const cx = 960 + 120 * Math.sin(lt * 0.15), cy = 430, rot = 0.3 + 0.08 * lt;
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot);
     ctx.beginPath(); ctx.moveTo(-60, -90); ctx.quadraticCurveTo(-110, 40, -120, 90); ctx.lineTo(120, 90); ctx.quadraticCurveTo(110, 40, 60, -90); ctx.closePath();
     const g = ctx.createLinearGradient(-120, 0, 120, 0); g.addColorStop(0, '#5A5E66'); g.addColorStop(0.5, '#A8ACB4'); g.addColorStop(1, '#4A4E56'); ctx.fillStyle = g; ctx.fill();
     rrect(ctx, -130, 84, 260, 26, 10); ctx.fillStyle = '#3A3020'; ctx.fill();
     circle(ctx, 0, -10, 18, '#20242C'); circle(ctx, 0, -10, 12, '#5A7AAA');
-    const v = ramp(t, c.valve, c.valve + 0.4) * (1 - ramp(t, c.home + 0.8, c.cosmo));
-    if (v > 0.01) for (let i = 0; i < 8; i++) { const ph = (t * 2 + i / 8) % 1; softDot(ctx, 70 + 160 * ph, -40 - 40 * ph, 10 + 30 * ph, '#E8ECF4', 0.5 * (1 - ph) * v); }
     ctx.restore();
   }
   ctx.restore();
-  tagPill('1971', 330, 230, ramp(t, c.y1971, c.y1971 + 0.3) * (1 - ramp(t, c.cosmo - 0.5, c.cosmo)), '#FFD447', 56);
-  // three stars over the Earth
+  tagPill('1971', 330, 230, ramp(t, c.y1971, c.y1971 + 0.3) * (later ? 0 : 1), '#FFD447', 56);
+  tagPill('SOYUZ 11', 330, 330, ramp(t, c.valve + 0.4, c.valve + 0.7) * (later ? 0 : 1), '#FFFFFF', 46);
   for (let i = 0; i < 3; i++) {
     const sk = ramp(t, c.cosmo + 0.4 + 0.5 * i, c.cosmo + 0.9 + 0.5 * i);
     if (sk <= 0.01) continue;
@@ -185,16 +186,16 @@ SC.rush = (lt, t, shot) => {
   ctx.fillStyle = `rgba(255,255,255,${0.35 * kickAt(t, c.slam + 0.6, 2)})`; ctx.fillRect(0, 0, W, H);
   return alPost({ glow: 1.0 });
 };
-// "Second ninety. Air. And like Jim LeBlanc... he wakes up." his face, close: a gasp; his eyes flutter open; Ball's eyes
-// light up happy; the inner hatch opens and his sister floats in beside him
+// "Second ninety. Air. And like Jim LeBlanc... he wakes up." his face, close: a gasp, AIR!; on "he wakes up" a cut to
+// the two of them: his eyes open, Ball's eyes light up happy, and his sister floats in and puts a hand on his shoulder
 SC.wake = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
-  const close = headCam(S, 3.0, 900, 470), two = headCam(S, 1.6, 1150, 430);
-  const cam = mixCam(close, two, ramp(t, c.wakes + 0.6, shot.end, E.inOutCubic));
+  const two = t >= c.wakes - 0.1;
+  const cam = two ? headCam(S, 1.7 + 0.1 * (t - c.wakes), 1150, 430) : headCam(S, 3.0 + 0.15 * lt, 900, 470);
   alScene(cam, t, S, { after: (cm, res, h) => {
-    const sk = ramp(t, c.wakes + 0.4, c.wakes + 1.6, E.outCubic);
-    if (sk > 0.01) {   // his sister floats in from the left and puts a hand on his shoulder
-      const hp = alHeadPt(h), x = lerp(hp[0] - 900, hp[0] - 330, sk), y = hp[1] + 420;
+    const sk = ramp(t, c.wakes - 0.1, c.wakes + 1.2, E.outCubic);
+    if (sk > 0.01) {
+      const hp = alHeadPt(h), x = lerp(hp[0] - 700, hp[0] - 330, sk), y = hp[1] + 420;
       const st = { x, y, s: 0.78, face: Object.assign({}, FACES.stern, { lookX: 0.8 }), seed: 3,
         pose: ikReach({ hipY: -222, lean: 0.12, armL: { a: 0.3, b: 0.3 }, armR: { a: 0.3, b: 0.3 }, legL: { a: 0.1, b: -0.3 }, legR: { a: 0.15, b: -0.4 }, hand: 'open', feetFront: 1 }, 'R', [260, -330], 1) };
       lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.clearRect(0, 0, W, H); camTransform(lctx, cm, 1);
@@ -204,27 +205,31 @@ SC.wake = (lt, t, shot) => {
   } });
   screenSpace();
   stampWord('AIR!', 1460, 300, 170, '#7FE9FF', ramp(t, c.air - 0.05, c.air + 0.25) * (1 - ramp(t, c.likeLB, c.likeLB + 0.3)), -0.1);
-  return alPost({ flash: 0.3 * kickAt(t, c.air, 6) });
+  return alPost({ flash: 0.3 * kickAt(t, c.air, 6) + 0.12 * kickAt(t, c.wakes - 0.1, 10) });
 };
 // "Hold out your hand. Right now, the air is pressing on it with the weight of a grown-up. You don't feel it, because
-// your body pushes back just as hard." an open palm, big: blue arrows of air press down on it; a tiny grown-up (his
-// sister, at the scale of a toy) lands standing on the palm: about 80 kg; then orange arrows push back from inside
+// your body pushes back just as hard." an open palm: blue arrows of air press down on it; a cut close as a tiny grown-up
+// (his sister, at the scale of a toy) lands standing on the palm: about 80 kg; back wide as orange arrows push back
 SC.palm = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   darkBg('#0E1E44', '#03060F'); screenSpace();
   const k = ramp(lt, 0, 0.4), press = ramp(t, c.pressing - 0.2, c.pressing + 0.6), back = ramp(t, c.pushBack - 0.2, c.pushBack + 0.5);
+  const close = t >= c.grownup - 0.15 && t < c.pushBack - 0.6;
   const P = [1000, 660];
+  ctx.save();
+  if (close) { ctx.translate(960, 560); ctx.scale(1.8, 1.8); ctx.translate(-(P[0] - 90), -(P[1] - 230)); }
   palmPress(P[0], P[1], 1.6, k, t, { press, back });
   const gk = ramp(t, c.grownup - 0.1, c.grownup + 0.35, E.outBack);
   if (gk > 0.01) {
     const st = { x: P[0] - 100, y: P[1] - 80 - 60 * (1 - clamp(gk)), s: 0.55, face: Object.assign({}, FACES.stern, { lookX: 0, lookY: 0.4 }), seed: 3,
       pose: { hipY: -222, lean: 0, armL: { a: 0.5, b: 0.6 }, armR: { a: 0.5, b: 0.6 }, legL: { a: 0.12, b: 0 }, legR: { a: 0.12, b: 0 }, hand: 'open', feetFront: 1 } };
     drawCharacter(ctx, st, t, SISPAL); sisHair(ctx, st);
-    pill(P[0] + 330, P[1] - 330, '≈ 80 KG', '#FFD447', gk, 56);
   }
+  ctx.restore();
+  if (gk > 0.01) pill(close ? 1450 : P[0] + 330, close ? 300 : P[1] - 330, '≈ 80 KG', '#FFD447', gk, close ? 70 : 56);
   testBadge(['TRY IT', 'HOLD OUT YOUR HAND'], ramp(t, c.palm, c.palm + 0.3) * (1 - ramp(t, c.pressing + 1.5, c.pressing + 1.8)));
   stampWord('PUSHING BACK', 1450, 860, 80, '#FF9A3C', ramp(t, c.pushBack + 0.3, c.pushBack + 0.6), -0.04);
-  return inPost({ push: { k: 1 + 0.04 * lt / D, cx: 960, cy: 600 } });
+  return inPost({ push: { k: 1 + 0.04 * lt / D, cx: 960, cy: 600 }, flash: 0.15 * kickAt(t, c.grownup - 0.15, 10) });
 };
 // "Space doesn't pull you apart. It just stops holding you together." him in the airlock, air back: blue arrows press in
 // all round him (the air's hug); on "doesn't pull you apart" they vanish (space: nothing presses); on "holding you
@@ -244,27 +249,46 @@ SC.apart = (lt, t, shot) => {
   } });
   return alPost();
 };
-// "He was puffy for a couple of days. His pride... a lot longer." the two of them, close: his face still a little puffy,
-// sheepish; hers, one eyebrow up
+// "He was puffy for a couple of days. His pride... a lot longer." his face, close, still puffy; on "His pride" a cut to
+// the two of them: him sheepish, her with one eyebrow up
 SC.puffy = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
-  const cam = headCam(S, 2.2 + 0.15 * lt / D, 1180, 470);
+  const two = t >= c.pride - 0.1;
+  const cam = two ? headCam(S, 2.0 + 0.1 * (t - c.pride), 1180, 470) : headCam(S, 3.6, 960, 470);
   alScene(cam, t, S, { after: (cm, res, h) => {
+    if (!two) return;
     const hp = alHeadPt(h), x = hp[0] - 330, y = hp[1] + 420;
-    const st = { x, y, s: 0.78, face: Object.assign({}, FACES.stern, { lookX: 0.8, browTilt: t > c.pride ? -1.1 : -0.6 }), seed: 3,
+    const st = { x, y, s: 0.78, face: Object.assign({}, FACES.stern, { lookX: 0.8, browTilt: -1.1 }), seed: 3,
       pose: ikReach({ hipY: -222, lean: 0.1, armL: { a: 0.3, b: 0.3 }, armR: { a: 0.3, b: 0.3 }, legL: { a: 0.1, b: -0.3 }, legR: { a: 0.15, b: -0.4 }, hand: 'open', feetFront: 1 }, 'R', [140, -150], 1) };
     lctx.setTransform(1, 0, 0, 1, 0, 0); lctx.clearRect(0, 0, W, H); camTransform(lctx, cm, 1);
     drawCharacter(lctx, st, t, SISPAL); sisHair(lctx, st);
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(layerC, 0, 0); occludeGlow(); applyCam(cm);
   } });
+  screenSpace();
+  tagPill('PUFFY: 2 DAYS', 1450, 250, ramp(t, c.puffy + 0.6, c.puffy + 0.9) * (two ? 0 : 1), '#FF86A6', 50);
   return alPost();
 };
-// "So: one more selfie. Helmet on. Goldfish bowl and all." both of them in helmets, his arm out with the stick; Ball
-// takes it (flash); then the phone, big: Pip's reply, a heart and a goldfish
+// "So: one more selfie. Helmet on. Goldfish bowl and all." the two of them put their helmets on, his arm out with the
+// stick; on the flash a cut to the photo itself (two helmets, the Earth's thin blue line behind them); then his phone:
+// Pip's answer, a heart and a goldfish
 SC.selfie = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
+  const flashT = c.helmetOn + 0.7;
+  if (t >= flashT) {                                    // the photo itself; Pip's answer pops onto it
+    darkBg('#10141F', '#05060F'); screenSpace();
+    selfiePhoto(960, 500, 1.15 + 0.03 * (t - flashT), t, ramp(t, flashT, flashT + 0.25), kickAt(t, flashT, 4));
+    const pk = ramp(t, c.bowlW - 0.1, c.bowlW + 0.25);
+    if (pk > 0.01) {
+      ctx.save(); ctx.translate(1450, 770); const b = E.outBack(pk, 2); ctx.scale(b, b); ctx.rotate(-0.06);
+      rrect(ctx, -230, -100, 460, 200, 50); ctx.fillStyle = '#FF86A6'; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = '#FFFFFF'; ctx.stroke();
+      ctx.save(); ctx.translate(-110, 0); heartShape(ctx, 48, 0); ctx.fillStyle = '#FFFFFF'; ctx.fill(); ctx.restore();
+      goldfish(ctx, 80, 0, 1.0, t); ctx.restore();
+      pill(1450, 600, 'PIP', '#FF86A6', pk, 40);
+    }
+    return inPost({ flash: 0.6 * kickAt(t, flashT, 7) });
+  }
   const cam = headCam(S, 1.9, 1160, 470);
-  S.ball.x = 1650; S.ball.y = 420; S.ball.flash = kickAt(t, c.helmetOn + 0.7, 5);
+  S.ball.x = 1650; S.ball.y = 420; S.ball.flash = kickAt(t, flashT, 5);
   alScene(cam, t, S, { after: (cm, res, h) => {
     const hp = alHeadPt(h), x = hp[0] - 300, y = hp[1] + 420;
     const st = { x, y, s: 0.78, face: Object.assign({}, FACES.happy, { lookX: 0.5 }), seed: 3,
@@ -275,10 +299,7 @@ SC.selfie = (lt, t, shot) => {
     alHelmet(lctx, 0, -8, 0.82 * E.outBack(ramp(t, c.helmetOn - 0.2, c.helmetOn + 0.3), 1.6)); lctx.restore();
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(layerC, 0, 0); occludeGlow(); applyCam(cm);
   } });
-  screenSpace();
-  const pk = ramp(t, c.bowlW - 0.2, c.bowlW + 0.3);
-  if (pk > 0.01) phoneReply(1500, 560, 0.9, pk, t);
-  return alPost({ flash: 0.5 * kickAt(t, c.helmetOn + 0.7, 7) });
+  return alPost();
 };
 // Pip's reply on his phone: the selfie, a heart, a goldfish
 function phoneReply(x, y, s, k, t) {
@@ -303,16 +324,16 @@ function phoneReply(x, y, s, k, t) {
   ctx.restore();
   ctx.restore();
 }
-// "Turns out... we all live in a goldfish bowl. Ours is just very big... and very thin." Pip's bedroom at night: the
-// goldfish bowl on the sill with his selfie leaning on it, Pip in bed with her tablet; the camera pushes into the bowl
+// "Turns out... we all live in a goldfish bowl. Ours is just very big... and very thin." Pip's bedroom at night: Pip on
+// her bed in the foreground with her tablet (his photo on it), the goldfish bowl on the sill with the printed selfie
+// leaning on it; the camera pushes past her into the bowl, and the water becomes the curve of the Earth
 SC.button = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   const bowl = [1210, 590];
-  const a = { x: 1000, y: 560, zoom: 1.1, rot: 0 }, b = ptCam(bowl, 3.2, 960, 540);
+  const a = { x: 980, y: 600, zoom: 1.15 + 0.05 * lt, rot: 0 }, b = ptCam(bowl, 3.4, 960, 540);
   const push = ramp(t, c.weAll - 0.2, c.ours + 0.6, E.inOutCubic);
   const cam = mixCam(a, b, push);
-  pipRoom(cam, t, { pip: { x: 700, y: 860, s: 0.55, face: Object.assign({}, FACES.happy, { lookX: 0.8 }) }, photo: 1, station: ramp(t, shot.start, shot.end) });
-  // inside the bowl: as the camera reaches it, the water turns into the curve of the Earth seen from space
+  pipRoom(cam, t, { pip: { x: 560, y: 900, s: 1.25, face: Object.assign({}, FACES.happy, { lookX: 0.9 }) }, photo: 1, station: ramp(t, shot.start, shot.end) });
   const m = ramp(t, c.ours - 0.2, c.thin + 0.6, E.inOutCubic);
   if (m > 0.01) {
     screenSpace();
@@ -320,14 +341,15 @@ SC.button = (lt, t, shot) => {
   }
   return { glow: 0.95, zblur: 0.06 * push * (1 - push) * 4 };
 };
-// the final image (wordless): the curve of the Earth and its thin blue line of air; the station, a bright dot, crosses
+// the final image (wordless) and the sign-off: the curve of the Earth and its thin blue line of air, drifting; the sun
+// comes up over the edge; the station, a bright dot with a short trail, crosses it
 SC.final = (lt, t, shot) => {
   screenSpace();
   spaceField(ctx, 0, 0, W, H, t);
-  const z = 1 + 0.04 * ramp(t, cu().final - 0.5, cu().final + 8);
-  ctx.save(); ctx.translate(960, 540); ctx.scale(z, z); ctx.translate(-960, -540);
-  earthLimb(ctx, 960, 3000, 2300, t, { line: 0.026, rot: 0.002 * t });
-  // the sun coming up over the edge: a bright star on the line, the air lit gold-blue around it
+  const u0 = ramp(t, cu().final - 0.5, DUR_(), (x) => x);
+  const z = 1 + 0.08 * u0, dx = -60 * u0;
+  ctx.save(); ctx.translate(960 + dx, 540); ctx.scale(z, z); ctx.rotate(-0.03 * u0); ctx.translate(-960, -540);
+  earthLimb(ctx, 960, 3000, 2300, t, { line: 0.026, rot: 0.004 * t });
   const sun = ramp(t, cu().final, cu().final + 3, E.inOutSine), sx0 = 1320, sy0 = 3000 - Math.sqrt(2300 * 2300 - 360 * 360) - 30;
   softDot(ctx, sx0, sy0, 420 * sun, '#9FD8FF', 0.35 * sun); softDot(gctx, sx0, sy0, 300 * sun, '#FFF2D0', 0.9 * sun); softDot(ctx, sx0, sy0, 60 * sun, '#FFFFFF', 0.9 * sun);
   ctx.restore();

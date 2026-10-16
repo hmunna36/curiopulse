@@ -14,20 +14,23 @@
 # (after `lights`), the chip bag popping without a sound (after `swell`), the air roaring back (before `wake`), the
 # final image (after `button`).
 
-## hook gap=0.10 tighten=0.42 tempo=1.00
-[excited] You're in space. No suit. Your instinct? Hold your breath. WRONG.
+## hook gap=0.10 tighten=0.26 tempo=1.05
+[excited] You're in space. No suit. You've got about fifteen seconds. Your instinct? Hold your breath. WRONG.
 
 ## out gap=0.30 tighten=0 tempo=1.00
 Breathe OUT, with him... all of it... now.
 
-## promise gap=0.50 tempo=1.04
-Holding it in could tear your lungs. Now, second by second, here's what your body does... and how long a rescue has.
+## lungs gap=0.50 tempo=1.03
+Holding it in could tear your lungs.
 
 ## want gap=0.45 tempo=1.04
 All he wanted was a selfie for his niece, Pip. Without the helmet. "You look like a goldfish," she said.
 
 ## depress gap=0.40 tighten=0 tempo=1.02
 So he pressed the button marked DEPRESS... [deadpan] thinking it meant "take the picture."
+
+## promise gap=0.55 tempo=1.04
+Now, second by second, here's what your body does... and how long a rescue has.
 
 ## explode gap=0.75 tempo=1.03
 Second one. Good news: you don't explode. That's just the movies. Your skin is tougher than that.

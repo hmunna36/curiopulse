@@ -49,15 +49,19 @@ function testBadge(lines, k, x = W - 120, y = 80) {
 
 // ================================================================= THE HOOK
 // Frame 1: his face, close, cheeks full of a held breath, hair and air streaming toward the open hatch, the Earth behind
-// him; the beacon flashes red. "WRONG." stamps beside him; he blows it all out on "Breathe OUT".
+// him; the beacon flashes red. "fifteen seconds": the thumbnail's 15 SECONDS lands beside him (a punch-in); "Hold your
+// breath": the camera punches in on his cheeks; "WRONG." stamps beside him and the camera snaps back.
 SC.hook = (lt, t, shot) => {
   const c = cu(), S = alState(t);
-  let cam = headCam(S, 3.25 - 0.25 * ramp(t, 0, c.dont, E.inOutSine), 720, 470);
-  cam = shakeCam(cam, t, 5 + 10 * kickAt(t, c.dont, 4));
+  const p1 = kickAt(t, c.fifteenW, 3.5), p2 = ramp(t, c.holdW - 0.15, c.holdW + 0.2, E.outBack) * (1 - ramp(t, c.dont - 0.1, c.dont + 0.15));
+  let cam = headCam(S, 3.15 + 0.35 * p1 + 0.9 * p2, lerp(720, 860, p2), lerp(470, 400, p2));
+  cam = shakeCam(cam, t, 5 + 12 * kickAt(t, c.dont, 4) + 8 * p1);
   alScene(cam, t, S);
   screenSpace();
+  const fk = ramp(t, c.fifteenW + 0.05, c.fifteenW + 0.3) * (1 - ramp(t, c.holdW - 0.3, c.holdW - 0.05));
+  stampWord('15', 1350, 330, 260, '#FFD447', fk, -0.08); stampWord('SECONDS', 1370, 520, 110, '#FFFFFF', fk, -0.08);
   stampWord('WRONG!', 1380, 330, 190, '#FF5A6E', ramp(t, c.dont - 0.05, c.dont + 0.25), -0.14);
-  return alPost({ zblur: 0.05 * (1 - ramp(lt, 0, 0.4)), flash: 0.25 * kickAt(t, c.dont, 8) });
+  return alPost({ zblur: 0.05 * (1 - ramp(lt, 0, 0.4)) + 0.04 * kickAt(t, c.holdW, 6), flash: 0.25 * kickAt(t, c.dont, 8) });
 };
 // "Breathe OUT, with him... all of it... now." his cheeks empty, a cloud of breath leaves for the hatch; the camera pulls
 // back to the airlock; the clock starts on "now"; the badge asks the viewer to do it with him
@@ -90,58 +94,62 @@ SC.lungs = (lt, t, shot) => {
   stampWord('TEAR!', 1500, 300, 150, '#FF5A6E', cr, 0.1);
   return inPost({ flash: 0.4 * kickAt(t, c.tear + 0.3, 9), push: { k: 1 + 0.05 * lt / D, cx: 960, cy: 500 } });
 };
-// "Now, second by second, here's what your body does... and how long a rescue has." the whole airlock, wide: the camera
-// drifts to the panel, where the green REPRESS button lights up (someone will have to press it)
+// "Now, second by second, here's what your body does... and how long a rescue has." back to now (the rewind's glitch
+// out): the airlock, wide, the camera sweeping across it; a cut to the panel, where the green REPRESS button lights up
 SC.promise = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
-  const a = { x: 1180, y: 560, zoom: 1.12, rot: 0 }, b = ptCam([AL.panX, AL.panY + 150], 2.1, 900, 560);
-  const cam = mixCam(a, b, ramp(t, c.rescue - 0.9, c.rescue + 0.6, E.inOutCubic));
+  if (t < c.rescue - 0.85) {
+    const cam = mixCam({ x: 1300, y: 520, zoom: 1.35, rot: 0 }, { x: 900, y: 540, zoom: 1.05, rot: 0 }, ramp(lt, 0, c.rescue - 0.85 - shot.start, E.inOutSine));
+    alScene(cam, t, S);
+    return alPost({ vhs: 0.5 * (1 - ramp(lt, 0, 0.3)) });
+  }
+  const cam = ptCam([AL.panX, AL.panY + 150], 2.1 + 0.15 * ramp(t, c.rescue - 0.85, shot.end), 900, 560);
   S.room.flashRep = 0.8 * ramp(t, c.rescue - 0.2, c.rescue + 0.3) * (0.7 + 0.3 * Math.sin(t * 8));
   alScene(cam, t, S);
   screenSpace();
   tagPill('HOW LONG?', 1300, 260, ramp(t, c.rescue, c.rescue + 0.3), '#4DFFB4', 60);
   return alPost();
 };
-// "All he wanted was a selfie for his niece, Pip. Without the helmet. 'You look like a goldfish,' she said." his phone at
-// the end of the stick: Pip's message and her drawing; then the helmet he left behind, floating, spinning
+// "All he wanted was a selfie for his niece, Pip. Without the helmet. 'You look like a goldfish,' she said." his phone,
+// big: Pip's face, her messages (one on each beat), then her drawing of him as a goldfish in a bowl; behind it the
+// helmet he left floating
 SC.want = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
-  // the airlock behind, out of focus-ish (a slow push on him), the phone card big in front
   const cam = headCam(S, 1.5 + 0.2 * lt / D, 560, 430);
   const camHelmet = ptCam([S.helmet.x, S.helmet.y], 2.2, 600, 470);
   const k = ramp(t, c.noHelmet - 0.4, c.noHelmet + 0.3, E.inOutCubic) * (1 - ramp(t, c.goldfish - 0.6, c.goldfish, E.inOutCubic));
   alScene(mixCam(cam, camHelmet, k), t, S);
   screenSpace();
   ctx.fillStyle = 'rgba(5,6,15,0.25)'; ctx.fillRect(0, 0, W, H);
-  phoneCard(1380, 470, 1.0, ramp(lt, 0.05, 0.45), t, { msg2: ramp(t, c.goldfish - 0.15, c.goldfish + 0.15), drawing: ramp(t, c.goldfish + 0.3, c.goldfish + 0.7) });
+  phoneCard(1380, 470, 1.0, ramp(lt, 0.05, 0.45), t, { msg1: ramp(t, shot.start + 0.4, shot.start + 0.7), msg2: ramp(t, c.noHelmet - 0.1, c.noHelmet + 0.2), drawing: ramp(t, c.goldfish - 0.1, c.goldfish + 0.3) });
   return alPost();
 };
-// his phone, big, in screen space: Pip's messages (a chat), then her drawing of him as a goldfish in a bowl
+// his phone, big, in screen space: Pip's face and name, her messages (a chat), then her drawing of him as a goldfish
 function phoneCard(x, y, s, k, t, o = {}) {
   if (k <= 0.01) return;
   ctx.save(); ctx.translate(x, y + 60 * (1 - k)); const sc = s * E.outBack(clamp(k), 1.6); ctx.scale(sc, sc); ctx.rotate(0.04);
   rrect(ctx, -250, -420, 500, 840, 56); ctx.fillStyle = '#15182A'; ctx.fill();
   rrect(ctx, -232, -400, 464, 800, 42); ctx.fillStyle = '#FFF6EE'; ctx.fill();
   ctx.save(); rrect(ctx, -232, -400, 464, 800, 42); ctx.clip();
-  ctx.fillStyle = '#FFD9E6'; ctx.fillRect(-232, -400, 464, 110);
-  circle(ctx, -150, -345, 34, '#FF86A6'); ctx.font = '900 30px Montserrat'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#FFFFFF'; ctx.fillText('P', -150, -343);
-  ctx.textAlign = 'left'; ctx.font = '900 40px Montserrat'; ctx.fillStyle = '#8A2A50'; ctx.fillText('PIP', -100, -345);
+  ctx.fillStyle = '#FFD9E6'; ctx.fillRect(-232, -400, 464, 120);
+  ctx.restore();
+  pipAvatar(-150, -340, 46, t);
+  ctx.font = '900 44px Montserrat'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#8A2A50'; ctx.fillText('PIP, 7', -80, -340);
   const bubble = (yy, txt, col, tc, kk) => {
     if (kk <= 0.01) return;
     ctx.save(); ctx.translate(-30, yy); const b = E.outBack(clamp(kk), 2); ctx.scale(b, b);
-    ctx.font = '900 34px Montserrat'; const w = Math.min(430, ctx.measureText(txt).width + 56);
-    rrect(ctx, -185, -40, w, 80, 30); ctx.fillStyle = col; ctx.fill(); ctx.textAlign = 'left'; ctx.fillStyle = tc; ctx.fillText(txt, -157, 3); ctx.restore();
+    ctx.font = '900 36px Montserrat'; const w = Math.min(430, ctx.measureText(txt).width + 56);
+    rrect(ctx, -185, -42, w, 84, 30); ctx.fillStyle = col; ctx.fill(); ctx.textAlign = 'left'; ctx.fillStyle = tc; ctx.fillText(txt, -157, 3); ctx.restore();
   };
-  bubble(-220, 'Photo from space?', '#FF86A6', '#FFFFFF', 1);
-  bubble(-110, 'NO GOLDFISH BOWL!', '#FF5A6E', '#FFFFFF', o.msg2 || 0);
+  bubble(-210, 'Photo from space?', '#FF86A6', '#FFFFFF', o.msg1 === undefined ? 1 : o.msg1);
+  bubble(-100, 'NO GOLDFISH BOWL!', '#FF5A6E', '#FFFFFF', o.msg2 || 0);
   const d = o.drawing || 0;
   if (d > 0.01) {   // her drawing: him as a goldfish in a bowl, in crayon colours
-    ctx.save(); ctx.translate(0, 150); const b = E.outBack(clamp(d), 1.8); ctx.scale(b, b);
+    ctx.save(); ctx.translate(0, 160); const b = E.outBack(clamp(d), 1.8); ctx.scale(b, b);
     rrect(ctx, -190, -160, 380, 320, 20); ctx.fillStyle = '#FFFFFF'; ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = '#E0D0C0'; ctx.stroke();
     ctx.beginPath(); ctx.arc(0, 10, 120, 0, 7); ctx.fillStyle = 'rgba(127,200,255,0.4)'; ctx.fill(); ctx.lineWidth = 8; ctx.strokeStyle = '#3A7AC8'; ctx.stroke();
     goldfish(ctx, 4, 20, 1.15, t); ctx.restore();
   }
-  ctx.restore();
   ctx.restore();
   softDot(gctx, x, y, 420 * s * k, '#FFD9E6', 0.15);
 }
@@ -223,10 +231,26 @@ SC.nosound = (lt, t, shot) => {
   alScene(cam, t, S);
   return alPost({ desat: 0.25 });
 };
-// "Is he freezing? Not yet. Space is cold, but empty: there's nothing to carry his heat away." he hugs himself; his own
-// warmth stays round him as an orange glow; little heat arrows leave his skin and come straight back
+// "Is he freezing? Not yet. Space is cold, but empty: there's nothing to carry his heat away." first his face, close,
+// a thermometer beside it that stays at 37 °C (NOT YET); then a cut to him whole: his heat stays round him as an orange
+// glow, little heat arrows leave his skin and come straight back
 SC.cold = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
+  if (t < c.empty - 0.45) {
+    const cam = headCam(S, 3.0 + 0.2 * lt, 760, 470);
+    alScene(cam, t, S);
+    screenSpace();
+    const k = ramp(t, c.freezing + 0.2, c.freezing + 0.5);
+    if (k > 0.01) {
+      ctx.save(); ctx.translate(1450, 470); const b = E.outBack(k, 2); ctx.scale(b, b);
+      rrect(ctx, -34, -260, 68, 440, 34); ctx.fillStyle = '#F4F4F8'; ctx.fill(); circle(ctx, 0, 190, 62, '#F4F4F8');
+      circle(ctx, 0, 190, 46, '#FF5A3C'); const lev = lerp(0.3, 0.72, ramp(t, c.freezing + 0.3, c.notyet)); rrect(ctx, -16, 190 - 400 * lev, 32, 400 * lev, 16); ctx.fillStyle = '#FF5A3C'; ctx.fill();
+      ctx.restore();
+      bigWord('37°C', 1450, 830, 90, '#FF9A3C', k, 0);
+    }
+    tagPill('NOT YET', 1180, 220, ramp(t, c.notyet, c.notyet + 0.25), '#7FE9FF', 64);
+    return alPost();
+  }
   const cam = headCam(S, 1.5 + 0.12 * lt / D, 800, 330);
   alScene(cam, t, S, { after: (cm, res, h) => {
     const k = ramp(t, c.heatAway - 0.6, c.heatAway);
@@ -239,9 +263,8 @@ SC.cold = (lt, t, shot) => {
     }
   } });
   screenSpace();
-  tagPill('NOT YET', 1320, 260, ramp(t, c.notyet, c.notyet + 0.25) * (1 - ramp(t, c.empty, c.empty + 0.2)), '#7FE9FF', 60);
   tagPill('NOTHING OUT THERE TO TAKE HIS HEAT', 1250, 260, ramp(t, c.empty + 0.1, c.empty + 0.4), '#FF9A3C', 46);
-  return alPost();
+  return alPost({ flash: 0.12 * kickAt(t, c.empty - 0.45, 10) });
 };
 // "Space is basically... a giant thermos." a giant thermos pops in beside him: its walls with nothing between them
 SC.thermos = (lt, t, shot) => {
@@ -266,25 +289,42 @@ SC.spit = (lt, t, shot) => {
   stampWord('BOILING!', 1450, 640, 140, '#FF5A6E', ramp(t, c.boilingW + 0.1, c.boilingW + 0.4), 0.1);
   return alPost({ flash: 0.2 * kickAt(t, c.boilingW + 0.1, 9) });
 };
-// "With no air pressing on it, water boils at body temperature. His spit. His tears. And boiling steals heat so
-// fast... his tongue could frost over." macro on his mouth: 100 °C crossed out, 37 °C; his eyes; frost on his tongue
+// "With no air pressing on it, water boils at body temperature. His spit. His tears. And all that boiling steals heat...
+// so his mouth gets cold. Almost freezing." four pictures: a bell jar (a beaker of water at 37 °C; the air is pumped out
+// and it boils); his tongue, very close, bubbling; his eyes, the tears bubbling; his face going blue-white with cold
 SC.boil = (lt, t, shot) => {
-  const c = cu(), S = alState(t), D = shot.end - shot.start;
-  const mouth = headCam(S, 5.2, 760, 380), eyes = headCam(S, 5.0, 900, 640);
-  let cam = mixCam(mouth, eyes, env2(t, c.tearsW - 0.35, c.steals - 0.1, 0.35));
+  const c = cu(), D = shot.end - shot.start;
+  if (t < c.bodyT + 1.4) {                               // the bell jar
+    darkBg('#0E1A33', '#03060F'); screenSpace();
+    const pump = ramp(t, c.noair + 0.1, c.bodyT - 0.2), boil = ramp(t, c.bodyT - 0.4, c.bodyT + 0.4);
+    bellJar(880, 560, 1.15 + 0.05 * lt, t, { pump, boil, k: ramp(lt, 0, 0.35) });
+    tagPill('AIR: PUMPED OUT', 880, 120, ramp(t, c.noair + 0.3, c.noair + 0.6), '#7FE9FF', 46);
+    if (t > c.bodyT - 0.5) { bigWord('100°C', 1560, 330, 110, '#FFFFFF', E.outBack(ramp(t, c.bodyT - 0.5, c.bodyT - 0.2), 2), -0.06); if (t > c.bodyT + 0.05) line(ctx, 1410, 370, 1710, 290, 14, '#FF3A4E'); bigWord('37°C', 1570, 540, 160, '#FF5A6E', E.outBack(ramp(t, c.bodyT + 0.3, c.bodyT + 0.6), 2), 0.05); }
+    return inPost({ flash: 0.25 * kickAt(t, c.bodyT, 8) });
+  }
+  if (t < c.tearsW - 0.1) {                              // his spit: the tongue, very close
+    darkBg('#3A1A20', '#100608'); screenSpace();
+    tongueMacro(960, 600, 1.05 + 0.04 * (t - c.bodyT), t, 1);
+    return inPost();
+  }
+  const S = alState(t);
+  if (t < c.steals - 0.1) {                              // his tears: the eyes, close, bubbling
+    const cam = headCam(S, 6.2, 960, 560);
+    alScene(cam, t, S);
+    return alPost({ flash: 0.15 * kickAt(t, c.tearsW - 0.1, 10) });
+  }
+  // the cold: his face, a blue-white chill spreading from the mouth; a thermometer falling toward 0
+  const cam = headCam(S, 3.4 + 0.3 * ramp(t, c.steals, shot.end), 760, 430);
   alScene(cam, t, S);
   screenSpace();
-  const th = ramp(t, c.bodyT - 0.2, c.bodyT + 0.2) * (1 - ramp(t, c.tearsW - 0.4, c.tearsW - 0.1));
-  if (th > 0.01) {
-    bigWord('100°C', 1450, 300, 120, '#FFFFFF', E.outBack(th, 2), -0.06);
-    if (t > c.bodyT + 0.3) line(ctx, 1290, 340, 1610, 250, 14, '#FF3A4E');
-    bigWord('37°C', 1460, 520, 170, '#FF5A6E', E.outBack(ramp(t, c.bodyT + 0.45, c.bodyT + 0.75), 2), 0.05);
-  }
-  const fr = ramp(t, c.frost - 0.1, c.frost + 0.5);
-  if (fr > 0.01) { softDot(ctx, 760, 520, 300, '#BFF0FF', 0.25 * fr); stampWord('ALMOST', 1450, 300, 110, '#BFF0FF', fr, -0.1); stampWord('FREEZING', 1460, 430, 130, '#BFF0FF', ramp(t, c.frost + 0.25, c.frost + 0.55), -0.1); }
-  const cl = ramp(t, c.steals - 0.1, c.steals + 0.4) * (1 - fr);
-  if (cl > 0.01) stampWord('COOLING...', 1450, 330, 110, '#7FE9FF', cl, -0.08);
-  return alPost({ push: { k: 1 + 0.04 * lt / D, cx: 760, cy: 450 } });
+  const fr = ramp(t, c.frost - 0.1, c.frost + 0.5), cl = ramp(t, c.steals, c.frost + 0.4);
+  softDot(ctx, 760, 560, 360, '#BFF0FF', 0.3 * cl);
+  ctx.save(); ctx.translate(1460, 470); const b = E.outBack(ramp(t, c.steals, c.steals + 0.3), 2); ctx.scale(b, b);
+  rrect(ctx, -34, -260, 68, 440, 34); ctx.fillStyle = '#F4F4F8'; ctx.fill(); circle(ctx, 0, 190, 62, '#F4F4F8');
+  const lev = lerp(0.72, 0.12, cl); circle(ctx, 0, 190, 46, '#5AB8FF'); rrect(ctx, -16, 190 - 400 * lev, 32, 400 * lev, 16); ctx.fillStyle = '#5AB8FF'; ctx.fill();
+  ctx.restore();
+  stampWord('ALMOST FREEZING', 1300, 880 - 40, 86, '#BFF0FF', fr, -0.05);
+  return alPost();
 };
 // "Second ten. The real danger is in here. His lungs are empty, so the oxygen in his blood pours OUT... the wrong way."
 // a round window opens on his chest; the camera dives through it to an air sac of his lung: no air in it, and the
@@ -312,28 +352,33 @@ SC.oxygen = (lt, t, shot) => {
   return inPost();
 };
 // "And that blood, with almost nothing left in it, is on its way to his brain." his head and neck as an x-ray: the
-// oxygen-poor blood (a dark front with a sour face) climbs the neck toward the brain's city of lights
+// camera rides up the neck with the dark front of oxygen-poor blood toward the brain's city of lights
 SC.brain = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   screenSpace();
   const front = 0.15 + 0.7 * ramp(t, c.thatBlood, c.toBrain + 0.4, E.inOutSine);
-  const k = ramp(lt, 0, D);
-  headXray(t, { front, dark: 0, x: 860 - 40 * k, y: 520 - 30 * k, s: 0.95 + 0.08 * k });
-  tagPill('ALMOST NO OXYGEN', 1480, 700, ramp(t, c.thatBlood + 1.0, c.thatBlood + 1.3), '#C8A8FF', 46);
+  const z = 1.55 - 0.45 * ramp(lt, 0, D, E.inOutSine), yy = lerp(-260, 220, ramp(lt, 0, D, E.inOutSine));
+  ctx.save(); ctx.translate(960, 540); ctx.scale(z, z); ctx.translate(-960, -540 + yy * 0);
+  headXray(t, { front, dark: 0, x: 860, y: 520 - yy, s: 1.0 });
+  ctx.restore();
+  tagPill('ALMOST NO OXYGEN', 1500, 260, ramp(t, c.thatBlood + 1.0, c.thatBlood + 1.3), '#C8A8FF', 46);
   return inPost();
 };
-// "Fourteen... fifteen... lights out." the dark blood reaches the brain; the city's lights go out in patches, all at once
+// "Fourteen... fifteen... lights out." close on the brain: on each number a cut closer, the number stamped big, and a
+// patch of the city goes dark; on "lights out" the rest goes, all at once
 SC.lights = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   screenSpace();
   const dk = 0.35 * ramp(t, c.s14, c.s14 + 0.5) + 0.3 * ramp(t, c.s15, c.s15 + 0.5) + 0.6 * ramp(t, c.lightsOut, c.lightsOut + 0.45, E.inCubic);
-  const z = 1.0 + 0.6 * ramp(lt, 0, D, E.inOutCubic);
-  ctx.save(); ctx.translate(880, 360); ctx.scale(z, z); ctx.translate(-880, -360);
+  const z = t < c.s15 - 0.1 ? 1.8 : (t < c.lightsOut - 0.1 ? 2.3 : 2.6);
+  ctx.save(); ctx.translate(960, 540); ctx.scale(z, z); ctx.translate(-880, -330);
   headXray(t, { front: 1.0, dark: dk, x: 860, y: 520, s: 1.0 });
   ctx.restore();
+  stampWord('14', 1560, 330, 220, '#FFD447', ramp(t, c.s14, c.s14 + 0.25) * (1 - ramp(t, c.s15 - 0.2, c.s15 - 0.05)), -0.08);
+  stampWord('15', 1560, 330, 260, '#FF5A6E', ramp(t, c.s15, c.s15 + 0.25) * (1 - ramp(t, c.lightsOut - 0.2, c.lightsOut)), -0.08);
   const bl = ramp(t, c.lightsOut + 0.2, c.dark, E.inCubic);
   screenSpace(); if (bl > 0) { ctx.fillStyle = `rgba(0,0,0,${bl})`; ctx.fillRect(0, 0, W, H); gctx.fillStyle = `rgba(0,0,0,${bl})`; gctx.fillRect(0, 0, W, H); }
-  return inPost();
+  return inPost({ flash: 0.25 * (kickAt(t, c.s14, 9) + kickAt(t, c.s15, 9)) });
 };
 // wordless: black. Only a heartbeat.
 SC.black = (lt, t, shot) => {

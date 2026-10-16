@@ -221,7 +221,7 @@ for t0_, t1_ in [(0, c["mute"])] + shots("sister") + [(SHOT["repress"], slam + 0
 # ================================================================= the hook: the air roaring out, the held breath, WRONG, the breath out
 sfx.add(pan_st(air_roar(3.0, 1, out=True), 0.4), 0.0, db(-16))                         # the burst as the hatch opens
 _rum = filt(air_roar(max(2.0, gone - 2.4), 2, out=True), "lowpass", 450)                 # then a low rumble while it empties
-sfx.add(pan_st(_rum / (np.abs(_rum).max() + 1e-9), 0.4), 2.4, db(-21))
+sfx.add(pan_st(_rum / (np.abs(_rum).max() + 1e-9), 0.4), 2.4, db(-27))
 sfx.add(pan_st(whoosh(0.4, 300, 2400, 20, 0.9), 0), 0.0, db(-16))
 sfx.add(pan_st(thump(0.5, 160, 50, 0.15, 21), 0), word_end("WRONG.") + 0.03, db(-14))
 sfx.add(pan_st(big_exhale(1.6, 22), 0.2), c["breatheOut"] + 0.05, db(-17))
@@ -375,6 +375,70 @@ sfx.add(pan_st(blip(700, 1500, 0.09, 71, 0.03), 0), c["sub_in"], db(-26))
 sfx.add(pan_st(snap(3), 0), c["sub_tap"], db(-22))
 sfx.add(pan_st(bell(1760, 1.2, 0.5), 0), c["sub_tap"] + 0.08, db(-28))
 
+# ================================================================= round 2: events in the gaps, a whoosh on every cut, the new pictures
+# the hook: an alarm bweep after "No suit.", a punch on 15 SECONDS, a puff as the cheeks fill on "Hold your breath"
+sfx.add(pan_st(blip(1200, 900, 0.18, 300, 0.05), 0.3), word_end("suit.") + 0.04, db(-19))
+sfx.add(pan_st(thump(0.35, 220, 70, 0.08, 301), 0), word_end("seconds.", c["fifteenW"]) + 0.03, db(-14))
+sfx.add(pan_st(bell(1568, 0.5, 0.2), 0.2), word_end("seconds.", c["fifteenW"]) + 0.05, db(-22))
+sfx.add(pan_st(balloon_inflate(0.35, 302), 0), c["holdW"] - 0.05, db(-24))
+# the breath out: the badge pops; the cloud leaves (a soft whoosh into the hatch)
+sfx.add(pan_st(blip(800, 1400, 0.09, 303, 0.03), 0.6), c["breatheOut"] + 0.35, db(-20))
+sfx.add(pan_st(whoosh(0.6, 1800, 300, 304, 0.7), 0.7), word_end("him...", c["breatheOut"]) + 0.05, db(-20))
+# the lungs: the cut in (an x-ray hum swell), the tear louder
+sfx.add(pan_st(blip(300, 700, 0.15, 305, 0.05), 0), SHOT["lungs"] + 0.05, db(-20))
+# the want: the card pops; the rewind's end; the promise: a sweep across the airlock, the cut to the panel
+sfx.add(pan_st(blip(600, 1200, 0.1, 306, 0.03), 0.4), SHOT["want"] + 0.08, db(-19))
+sfx.add(pan_st(whoosh(0.5, 400, 2200, 307), 0), SHOT["promise"] + 0.05, db(-20))
+sfx.add(pan_st(thump(0.2, 400, 160, 0.04, 308), -0.3), c["rescue"] - 0.82, db(-19))
+# intact and the silence: his pats louder; the last of the air leaving; the sound draining away
+for k in range(4):
+    sfx.add(pan_st(thump(0.08, 300, 140, 0.02, 310 + k), -0.2), c["skin"] + 0.1 + 0.18 * k, db(-19))
+sfx.add(pan_st(whoosh(0.9, 900, 120, 314, 0.6), 0.7), c["gone"] + 0.4, db(-19))
+sfx.add(pan_st(slide_whistle(0.5, 1200, 300), 0.4), word_end("sound.", c["soundGone"]) + 0.02, db(-24))
+# the cold: the thermometer pops in; the cut out to him whole
+sfx.add(pan_st(blip(700, 1100, 0.09, 315, 0.03), 0.5), c["freezing"] + 0.25, db(-20))
+sfx.add(pan_st(whoosh(0.4, 500, 1800, 316), 0), c["empty"] - 0.5, db(-21))
+# the bell jar: the pump's chuffs while the air goes, the water bursting into a boil
+for k, tk in enumerate(np.arange(c["noair"] + 0.1, c["bodyT"] - 0.2, 0.22)):
+    bed.add(pan_st(filt(white(int(0.08 * SR), 320 + k), "bandpass", [300, 1400]) * np.exp(-ar(int(0.08 * SR)) / 0.03), 0.6), tk, db(-27))
+sfx.add(pan_st(bubbles(1.4, 330, 22, 300, 900), 0), c["bodyT"] - 0.3, db(-22))
+sfx.add(pan_st(bloop(260, 120, 0.3), 0), word_end("temperature.", c["bodyT"]) + 0.03, db(-17))
+# the tongue cut, the eyes cut, the cold cut
+sfx.add(pan_st(whoosh(0.3, 600, 2000, 331), 0), word_end("temperature.", c["bodyT"]) + 0.5, db(-24))
+sfx.add(pan_st(blip(1800, 1200, 0.08, 332, 0.02), 0), c["tearsW"] - 0.1, db(-22))
+# the brain: the camera rides up (a rising tone), the numbers stamp
+sfx.add(pan_st(riser(1.6, 333, 200, 900), 0), SHOT["brain"] + 0.3, db(-28))
+for k, w in enumerate(("Fourteen...", "fifteen...")):
+    sfx.add(pan_st(thump(0.25, 260, 90, 0.05, 334 + k), 0), c["s14"] + 0.02 if k == 0 else c["s15"] + 0.02, db(-18))
+# the different clock: a big tick-tock
+for k in range(5):
+    sfx.add(pan_st(filt(white(int(0.03 * SR), 340 + k), "bandpass", [1800, 5000]) * np.exp(-ar(int(0.03 * SR)) / 0.006), 0.2 * (-1) ** k), c["newClock"] + 0.3 + 0.5 * k, db(-17))
+# Ball's fans: the cut to the fans, PUSH! and NOTHING
+sfx.add(pan_st(whoosh(0.35, 500, 2000, 345), 0), c["fans"] - 0.1, db(-21))
+sfx.add(pan_st(whoosh(0.4, 600, 1600, 346), -0.4), c["pushAg"] + 0.05, db(-21))
+sfx.add(pan_st(thump(0.2, 200, 90, 0.05, 347), 0.4), c["pushAg"] + 0.3, db(-20))
+# the hangar in 1966: a door clank, the cut to the window, the hose close
+sfx.add(pan_st(thump(0.3, 300, 100, 0.08, 350), -0.5), SHOT["leb2"] + 0.2, db(-20))
+sfx.add(pan_st(whoosh(0.35, 500, 1800, 351), 0), c["leblanc"] + 0.85, db(-23))
+# Soyuz: the cut to the valve (a clunk), the cut to the stars (a low swell)
+sfx.add(pan_st(thump(0.25, 220, 80, 0.06, 352), 0.3), c["home"] - 0.2, db(-19))
+sfx.add(pan_st(bloop(180, 60, 0.6), 0), c["cosmo"] - 0.1, db(-22))
+# wake: the cut to the two of them; his sister's hand on his shoulder
+sfx.add(pan_st(thump(0.12, 380, 180, 0.03, 353), -0.4), c["wakes"] + 0.9, db(-20))
+# the palm: the arrows land (pops), the cut close on the grown-up
+for k in range(7):
+    sfx.add(pan_st(blip(900 + 60 * k, 700, 0.05, 354 + k, 0.015), -0.6 + 0.2 * k), c["pressing"] + 0.35 + 0.06 * k, db(-25))
+sfx.add(pan_st(whoosh(0.3, 700, 2000, 362), 0), c["grownup"] - 0.2, db(-23))
+# puffy: a squeaky inflate on his face; her eyebrow: a ding
+sfx.add(pan_st(balloon_inflate(0.3, 363), 0), SHOT["puffy"] + 0.1, db(-23))
+sfx.add(pan_st(bell(2637, 0.3, 0.1), 0.4), c["pride"] + 0.05, db(-21))
+
+# a whoosh into every cut (ending on the cut), quiet, in the pause before the phrase
+for i_, s_ in enumerate(TL["shots"][1:]):
+    if s_["id"] in ("black", "nosound", "pop", "rush", "final", "sub"):
+        continue
+    sfx.add(pan_st(whoosh(0.22, 500 + 120 * (i_ % 5), 2600, 400 + i_, 0.8), 0.2 * (-1) ** i_), s_["start"] - 0.2, db(-27))
+
 # ================================================================= the clock: a tick on every new second it shows
 for e in C["clock"]:
     if len(e) >= 7 and e[5] > e[4]:
@@ -450,8 +514,10 @@ for t_, k_ in PAY:
     sfx.add(pan_st(riser(r_, seed=int(t_ * 7), f0=180 if big_ else 500, f1=1800 if big_ else 2600), 0), t_ - r_, db(-31 if big_ else -36))
     if big_:
         held.append((t_ - 0.5, t_ - 0.02))
-    else:
-        sfx.add(pan_st(bell(1568 + 196 * (int(t_) % 3), 0.45, 0.22), 0.2), t_, db(-34))
+    else:   # the bright little reward lands just after the word it sits on, never on it
+        on_w = [w for w in WORDS if w["start"] - 0.05 <= t_ <= w["end"]]
+        tb = on_w[0]["end"] + 0.03 if on_w else t_
+        sfx.add(pan_st(bell(1568 + 196 * (int(t_) % 3), 0.45, 0.22), 0.2), tb, db(-34))
 # the music drops out: before each big payoff (held breath), for the punchlines, and the vacuum's silence; the score
 # never plays while the air is gone? It does (the score is ours, not his) except for the silence beat itself
 punch = [(c["dont"] - 0.05, c["dont"] + 0.35), (c["soundGone"] + 0.25, c["freezing"] - 0.05), (c["thermosW"] - 0.1, c["thermosW"] + 0.5),
