@@ -32,19 +32,33 @@
  "cover": "cover.jpg",
  "captions": "blind-spot.srt",
  "youtube": {
-  "publishAt": "auto",
+  "publishAt": "2026-10-17T11:30:00+05:30",
   "privacy": "private",
   "categoryId": "27",
   "language": "en",
   "madeForKids": false,
   "syntheticMedia": false,
   "notifySubscribers": true,
-  "playlist": "Your Brain Is Weird"
+  "playlist": "Your Brain Is Weird",
+  "id": "wn5ow9UxzoI",
+  "url": "https://youtube.com/shorts/wn5ow9UxzoI",
+  "uploaded": "2026-10-16T19:22:40.114Z",
+  "thumbnailSet": true,
+  "captionsSet": true,
+  "playlistSet": true
  },
  "instagram": {
-  "publishAt": "auto",
+  "publishAt": "2026-10-19T21:00:00+05:30",
   "caption": "Close your left eye, stare at the X... and bring your phone closer. 👁️ The red dot VANISHES.\nYour eye has a hole: where the cable to your brain plugs in, there are no light sensors. Your brain just paints over the gap.\nDid it vanish?\nFollow @curio_pulse_tv for the next one: why you can feel TWO noses 🔔\n#science #humanbody #eyes #brain #funfacts #reels",
-  "coverTime": 1.0,
-  "shareToFeed": true
+  "coverTime": 1,
+  "shareToFeed": true,
+  "queued": true,
+  "scheduledVia": "api",
+  "note": "Queued 17 Oct 2026 01:00 IST with ig.mjs queue (route B, the Instagram API): the launchd job publishes it at 2026-10-19 21:00 IST."
+ },
+ "facebook": {
+  "status": "pending",
+  "publishAt": "2026-10-19T21:00:00+05:30",
+  "note": "Not posted. 17 Oct 2026 ~01:00 IST: Business Suite Create reel (Post to: CurioPulse only, Instagram unticked) took the file and the typed caption, but the upload kept restarting (95% -> 76% -> 47% -> 12% -> 90%) and Next never enabled; Cancel and Back did nothing while it looped, so the tab was left open. Files for a manual post: ~/Desktop/instagram-pending/6-blind-spot-*."
  }
 }
