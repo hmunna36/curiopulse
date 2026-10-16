@@ -75,7 +75,7 @@ const API = 'https://www.googleapis.com/youtube/v3';
 const UPLOAD = 'https://www.googleapis.com/upload/youtube/v3';
 const YTA = 'https://youtubeanalytics.googleapis.com/v2/reports';
 const CHUNK = 8 * 1024 * 1024; // a multiple of 256 KiB, as resumable uploads require
-export const SLOTS = {youtube: ['11:30', '23:30'], instagram: ['21:00']}; // IST. The 'instagram' slots are the Meta slots: since 16 Oct 2026 (Instagram suspended; the user: "1 yes") ONE Reel a day goes to the new Facebook Page at 21:00. Back to ['18:30', '21:00'] when Instagram returns (user, 15 Oct 2026)
+export const SLOTS = {youtube: ['11:30', '23:30'], instagram: ['18:30', '21:00']}; // IST: two slots a day on each platform (YouTube: user, 2 Oct 2026; Meta: user, 15 Oct 2026; Facebook-only 16 Oct while Instagram was suspended, back the same evening)
 const IST_MS = 5.5 * 3600 * 1000;
 const istDate = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 10); // YYYY-MM-DD in IST
 const istHM = (ms) => new Date(ms + IST_MS).toISOString().slice(11, 16); // HH:MM in IST

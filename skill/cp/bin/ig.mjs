@@ -53,7 +53,7 @@ const FFMPEG = path.join(HOME, '.cache/cp/bin/ffmpeg');
 const REPO_RAW = 'https://raw.githubusercontent.com/hmunna36/curiopulse/main';
 const V = 'v25.0';
 const G = `https://graph.instagram.com/${V}`;
-const SLOTS = ['21:00']; // IST. Since 16 Oct 2026 (Instagram suspended): ONE Reel a day, to the new Facebook Page, at 21:00. Back to ['18:30', '21:00'] when Instagram returns (user, 15 Oct 2026)
+const SLOTS = ['18:30', '21:00']; // IST: two Reels a day (user, 15 Oct 2026; one a day at 21:00 on 16 Oct while Instagram was suspended)
 const LEGACY_SLOT = '18:30'; // what a bare date in "busy" stands for (every Reel booked before 4 Oct 2026)
 const LEAD_MIN = 25; // start preparing a Reel this many minutes before its release
 const JOB_TIMES = SLOTS.map((hm) => {

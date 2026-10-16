@@ -14,7 +14,15 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
     NEW Page (below). Never open, create or suggest any other account.
   - If the user ever has a token, route B takes over automatically. `ig.mjs route` tells which route is live.
 
-## FACEBOOK-ONLY MODE (since 16 Oct 2026; the user: "1 yes") — read this before any Meta step
+## ENDED 16 Oct 2026 (late evening): Instagram's suspension was lifted and the user linked @curio_pulse_tv to the new Page
+## in ONE business portfolio ("curio_pulse_tv": the Page CurioPulse + the Instagram account; admins Harshad Munna A and the
+## old account). Business Suite (open it from `/latest/home`) shows both. The normal flow is back: Create Reel, Post to
+## BOTH ticked, ONE schedule, Meta slots 18:30 and 21:00 IST (`SLOTS`), step 16 of SKILL.md. Dead schedules: chalkboard failed
+## in the suspension and was moved to 18 Oct 18:30. Go gently on both accounts (one upload per run, no bulk edits, never
+## edit the profile link or bio), and the 'Facebook backlog' in topics.md is now just "dominant-eye, next".
+## The Facebook-only rules below are kept for the record (use them again only if Instagram is lost again).
+
+## FACEBOOK-ONLY MODE (16 Oct 2026, ended the same evening) — kept for the record
 
 @curio_pulse_tv was SUSPENDED on 16 Oct 2026 ~20:15 IST (an appeal is pending; if it fails, the account is gone for
 good). Chrome is now signed in to the user's NEW Facebook account, which manages a NEW Page. Until the user says

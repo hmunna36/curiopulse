@@ -123,8 +123,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - **The "Next up" comment** (`reference/publish.md`): `node ~/.claude/skills/cp/bin/yt.mjs comments-due` posts the
      queued comment on every Short that has gone public since it was uploaded: one comment per Short, and nothing
      else is ever done with comments. Put what it prints into the final report. If it fails, carry on.
-   - **Did the last Reels really go out?** (In FACEBOOK-ONLY MODE: the new Page's Content → Published / Scheduled in Business
-     Suite; never open instagram.com.) **(15 Oct 2026: three scheduled Reels, chalkboard, funny bone and eye-rubbing
+   - **Did the last Reels really go out?** **(15 Oct 2026: three scheduled Reels, chalkboard, funny bone and eye-rubbing
      stars, vanished from Business Suite's schedule when Facebook locked the user's account, and nobody noticed for
      two days.)** If Chrome is connected, open Business Suite → Content → Published (open it the way `reference/publish.md` says: never from a saved `asset_id=` link)
      and check that every Reel scheduled for the last 48 hours is there (the profile's post count is a quick
@@ -215,10 +214,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
     next free one at 18:30 or 21:00 IST that is not before the YouTube release) into `instagram.publishAt`. Confirm with
     `yt.mjs status <id>`, then check the Short's own thumbnail in Studio and upload cover.jpg there if the slot shows
     anything else (`reference/publish.md`, step 2).
-16. **FACEBOOK-ONLY MODE since 16 Oct 2026 (Instagram suspended; the user: "1 yes"): read `reference/publish.md`,
-    "FACEBOOK-ONLY MODE", first. It overrides the Instagram lines below: the new Facebook Page only, ONE Reel a day at
-    21:00 IST, the first entry of `topics.md`'s "Facebook backlog", at most one upload per run, never instagram.com.**
-    **Instagram**, in the slot from `instagram.publishAt`: 18:30 or 21:00 IST (`reference/publish.md`). Every Short
+16. (Facebook-only mode of 16 Oct 2026 ended the same evening: Instagram is back, linked with the new Page in one portfolio; Post to BOTH ticked, slots 18:30 and 21:00; see `reference/publish.md`.) **Instagram**, in the slot from `instagram.publishAt`: 18:30 or 21:00 IST (`reference/publish.md`). Every Short
     gets a Reel, from both daily routines (user, 4 Oct 2026), unless publish.json says `"skip": true`:
     - **Route A (Business Suite, the normal case):**
       1. `node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <scratchpad>/ig-<slug>`
