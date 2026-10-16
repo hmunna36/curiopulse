@@ -31,19 +31,26 @@
   "cover": "cover.jpg",
   "captions": "dominant-eye.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-16T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "8QjXeZNUq9Y",
+    "url": "https://youtube.com/shorts/8QjXeZNUq9Y",
+    "uploaded": "2026-10-16T14:46:06.703Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-18T18:30:00+05:30",
     "caption": "Point at something... shut one eye... now the other. 👁️ Did your finger JUMP?\nOne eye is the boss: your brain aims with its picture. Shut the boss and you get the other eye's view, so the finger jumps.\nLeft or right?\nFollow @curio_pulse_tv for the next one: find the blind spot in your own eye 🔔\n#science #humanbody #eyes #brain #funfacts #reels",
     "coverTime": 7.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "pendingNote": "16 Oct 2026 20:20 IST: NOT scheduled. Business Suite had signed out, and 'Continue with Instagram' led to instagram.com/accounts/suspended: 'You submitted an appeal on October 16, 2026 ... Your account is not visible to people on Instagram, and you can't use it.' Nothing was clicked there. The Reel-spec copy, caption and cover are in ~/Desktop/instagram-pending/ (5-dominant-eye-*); the slot 18 Oct 18:30 IST is not marked busy."
   }
 }

@@ -27,8 +27,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … IST |
-| Instagram Reels | — | … IST |
+| YouTube Shorts | https://youtube.com/shorts/8QjXeZNUq9Y | 16 Oct 2026 23:30 IST (scheduled; thumbnail = cover.jpg, also set in Studio; captions; playlist "Your Brain Is Weird") |
+| Instagram Reels | — | PENDING: slot 18 Oct 2026 18:30 IST not scheduled. On 16 Oct at 20:20 IST Business Suite had signed out and Instagram showed @curio_pulse_tv suspended, with an appeal submitted that day. The Reel copy, caption and cover are in ~/Desktop/instagram-pending/ (5-dominant-eye-*) |
 
 **Title:** Why Does Your Finger JUMP When You Close One Eye? 👁️
 
