@@ -1,0 +1,120 @@
+# Narration for "What If You Went to Space WITHOUT a Suit? (Second by Second)" (long-form: 4:00-5:00, never over 5:15)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there, not in
+# the take. [tags] are v3 performance directions; they are not spoken and never captioned. tighten=0 keeps the
+# take's own pauses (jokes and reveals). tempo: explanations 1.03-1.06, jokes and reveals 1.00.
+# The film: on the space station, the hiker wants one selfie with the Earth for his niece Pip, without the helmet
+# ("you look like a goldfish"). He presses the button marked DEPRESS, thinking it means "take the picture", and the
+# airlock opens on space. The viewer breathes out with him (the first test), and the clock counts the seconds he is in
+# space with no suit: what he feels (silence, no freezing, his spit boiling), what breaks (the oxygen pouring out of his
+# blood, lights out at fifteen, the swelling), the proof (Joe Kittinger's hand in 1960, Jim LeBlanc in 1966), the edge
+# (how long a rescue has), while his big sister, the commander, races to the airlock. She hits REPRESS; he wakes up.
+# The air was holding him together all along. He takes the selfie in the helmet, the goldfish bowl, and the last shot
+# turns Pip's goldfish bowl into the Earth's thin blue line. Wordless beats: the silence (before `cold`), lights out
+# (after `lights`), the chip bag popping without a sound (after `swell`), the air roaring back (before `wake`), the
+# final image (after `button`).
+
+## hook gap=0.10 tighten=0.42 tempo=1.00
+[excited] You're in space. No suit. Your instinct? Hold your breath. WRONG.
+
+## out gap=0.30 tighten=0 tempo=1.00
+Breathe OUT, with him... all of it... now.
+
+## promise gap=0.50 tempo=1.04
+Holding it in could tear your lungs. Now, second by second, here's what your body does... and how long a rescue has.
+
+## want gap=0.45 tempo=1.04
+All he wanted was a selfie for his niece, Pip. Without the helmet. "You look like a goldfish," she said.
+
+## depress gap=0.40 tighten=0 tempo=1.02
+So he pressed the button marked DEPRESS... [deadpan] thinking it meant "take the picture."
+
+## explode gap=0.75 tempo=1.03
+Second one. Good news: you don't explode. That's just the movies. Your skin is tougher than that.
+
+## silence gap=0.45 tempo=1.02
+Second two. The air is gone... and so is the sound. The alarm is screaming. He can't hear a thing.
+
+## cold gap=1.80 tempo=1.03
+Is he freezing? Not yet. Space is cold, but empty: there's nothing to carry his heat away. Space is basically... a giant thermos.
+
+## spit gap=0.65 tempo=1.02
+But his spit? Touch your tongue to your lip. Feel that? Second five: his is boiling.
+
+## why gap=0.40 tempo=1.04
+With no air pressing on it, water boils at body temperature. His spit. His tears. And all that boiling steals heat... so his mouth gets cold. Almost freezing.
+
+## oxygen gap=0.55 tempo=1.04
+Second ten. The real danger is in here. His lungs are empty, so the oxygen in his blood pours OUT... the wrong way.
+
+## brain gap=0.40 tempo=1.03
+And that blood, with almost nothing left in it, is on its way to his brain.
+
+## lights gap=0.40 tighten=0 tempo=1.00
+Fourteen... fifteen... lights out.
+
+## turn gap=1.60 tighten=0.5 tempo=1.00
+He's out. Not dead... out. And now, a different clock starts.
+
+## ball gap=0.45 tempo=1.02
+Ball, the camera drone, wants to help. But its fans need air to push against. [deadpan] Right now, Ball is just... a ball.
+
+## sister gap=0.55 tempo=1.04
+Down the hall, the alarm reaches his big sister, the commander. She's been rescuing him since he was four.
+
+## swell gap=0.50 tempo=1.03
+Second twenty. The water in his body is turning to gas. He's swelling... like his bag of chips.
+
+## pinch gap=1.10 tempo=1.02
+Pinch the skin on the back of your hand. Let go. It snaps back, right? That's what's holding him together.
+
+## kittinger gap=0.45 tempo=1.04
+In 1960, a pilot named Joe Kittinger rode a balloon nineteen miles up. One of his gloves failed. His hand swelled to twice its size... and three hours after he landed, the swelling was gone.
+
+## leblanc gap=0.55 tempo=1.04
+Second thirty. What does this feel like? One man knows. In 1966, Jim LeBlanc was testing a spacesuit in a NASA vacuum chamber, when its air hose came loose.
+
+## memory gap=0.40 tempo=1.02
+He stayed awake for about fourteen seconds. The last thing he remembered? The spit on his tongue... starting to bubble.
+
+## fine gap=0.40 tempo=1.03
+They pumped the air back in, fast. And he was fine. He just couldn't taste much... for four days.
+
+## gut gap=0.60 tighten=0 tempo=1.00
+Second forty-five. Every bit of gas in his gut is swelling too. [deadpan] Yes. That gas.
+
+## heart gap=0.70 tempo=1.02
+Second sixty. His heart is still beating... but slower, and slower.
+
+## edge gap=0.45 tempo=1.04
+So how long does he have? Nobody's allowed to test that on a person. In the nineteen-sixties, they tested it on animals.
+
+## dogs gap=0.40 tempo=1.03
+Every dog brought back within ninety seconds lived. After about three minutes... most didn't.
+
+## soyuz gap=0.55 tempo=1.02
+In 1971, a valve opened on a Soyuz capsule, on its way home. Its three cosmonauts are still the only people who ever died in space.
+
+## repress gap=0.80 tighten=0 tempo=1.00
+Second eighty. Her hand hits REPRESS.
+
+## wake gap=2.20 tighten=0 tempo=1.00
+Second ninety. Air. And like Jim LeBlanc... he wakes up.
+
+## palm gap=0.80 tempo=1.03
+Hold out your hand. Right now, the air is pressing on it with the weight of a grown-up. You don't feel it, because your body pushes back just as hard.
+
+## apart gap=0.45 tempo=1.00
+Space doesn't pull you apart. It just stops holding you together.
+
+## puffy gap=0.70 tempo=1.02
+He was puffy for a couple of days. His pride... a lot longer.
+
+## selfie gap=0.55 tempo=1.02
+So: one more selfie. Helmet on. Goldfish bowl and all.
+
+## button gap=0.80 tighten=0 tempo=1.00
+Turns out... we all live in a goldfish bowl. Ours is just very big... and very thin.
+
+## sub gap=1.80 tempo=1.03
+Next week: what happens if you stop brushing your teeth. Subscribe... and keep your helmet on.
