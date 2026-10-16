@@ -14,6 +14,16 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
     NEW Page (below). Never open, create or suggest any other account.
   - If the user ever has a token, route B takes over automatically. `ig.mjs route` tells which route is live.
 
+## Facebook Page by API (16 Oct 2026, in progress): `bin/fb.mjs`
+The second Meta app "CurioPulse Page Publisher" (App ID 2668049813624414, use case "Manage everything on your Page";
+permissions pages_show_list, pages_read_engagement, pages_manage_posts; development mode, no App Review) lets the Page take
+Reels by API, and Facebook SCHEDULES natively (10 min to 75 days ahead; no Mac job needed). The user stores the token:
+Graph API Explorer (app selected, the three permissions ticked) > Generate Access Token > copy; then in their own
+terminal `node ~/.claude/skills/cp/bin/fb.mjs token` (hidden prompts: the user token, then the app secret from App settings >
+Basic; only the never-expiring Page token is saved, in ~/.config/cp/facebook.json). Then `fb.mjs whoami`, and `fb.mjs reel
+<publish.json> --at ISO [--dry-run]` (the MP4 must be pushed in the public repo). fb.mjs is UNTESTED end to end until its first
+Reel; until then the Page stays on Business Suite. The Instagram app (ID 1091274800190017) cannot hold the Page use case.
+
 ## ENDED 16 Oct 2026 (late evening): Instagram's suspension was lifted and the user linked @curio_pulse_tv to the new Page
 ## in ONE business portfolio ("curio_pulse_tv": the Page CurioPulse + the Instagram account; admins Harshad Munna A and the
 ## old account). Business Suite (open it from `/latest/home`) shows both. The normal flow is back: Create Reel, Post to
