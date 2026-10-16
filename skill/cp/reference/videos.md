@@ -34,7 +34,8 @@
 | `dizzy-spin`: "Why Do You Get DIZZY When You Spin? 💫" | 33 s (short arm) | https://youtube.com/shorts/4Ts56nQI1-M · 14 Oct 2026 23:30 IST | Business Suite, published 15 Oct 2026 20:53 IST, Instagram only (missed its 15 Oct 18:30 slot: the new Reel composer did not upload while Chrome was hidden; the Facebook Page is no longer connected) |
 | `ears-ring`: "Why Do Your Ears RING After a Concert? 🎸" | 47 s (standard arm) | https://youtube.com/shorts/ORFb3ma5RyA · 15 Oct 2026 11:30 IST | Business Suite, 16 Oct 2026 06:30 IST, Instagram only (scheduled on 15 Oct evening after the hidden-window stalls) |
 | `doorknob-shock`: "Why Does a Doorknob SHOCK You? ⚡" | 33 s (short arm) | https://youtube.com/shorts/Vf-6HscC28w · 15 Oct 2026 23:30 IST | Business Suite, 16 Oct 2026 18:30 IST, Instagram only |
-| `ring-finger`: "Why Can't You Lift Your RING FINGER? 💍" | 31 s (short arm) | https://youtube.com/shorts/jmFlKDR_P-8 · 16 Oct 2026 11:30 IST | PENDING for 17 Oct 2026 18:30 IST (Chrome hidden: the composer would not open; files in ~/Desktop/instagram-pending/4-ring-finger-*) |
+| `ring-finger`: "Why Can't You Lift Your RING FINGER? 💍" | 31 s (short arm) | https://youtube.com/shorts/jmFlKDR_P-8 · 16 Oct 2026 11:30 IST | Business Suite, 17 Oct 2026 18:30 IST, Instagram only (caught up by the 16 Oct 06:00 run; at risk: the account was suspended on 16 Oct evening, see dominant-eye) |
+| `dominant-eye`: "Why Does Your Finger JUMP When You Close One Eye? 👁️" | 32 s (short arm) | https://youtube.com/shorts/8QjXeZNUq9Y · 16 Oct 2026 23:30 IST | PENDING for 18 Oct 2026 18:30 IST: @curio_pulse_tv showed as SUSPENDED (appeal submitted 16 Oct) when the run reached Instagram at 20:20 IST; files in ~/Desktop/instagram-pending/5-dominant-eye-* |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1511,3 +1512,39 @@ here for every new Short, with its links.
   Scheduled list at 22:30 IST, and 21:00 on 16, 17 and 18 Oct was booked in ig-queue.json by another session; eye-rub
   stars was neither published nor scheduled at 22:30. This run did not schedule it, to avoid a duplicate while that
   session works on them.
+
+**dominant-eye** (16 Oct 2026, the second routine of the day: started at 06:04 IST, stopped at 06:23 after the voice
+and the timeline, resumed by the same routine firing at 19:41 IST; short arm, 75 words → 31.80 s; hook formula: The
+Direct Address, the test itself, with the jolt as its own take, "It JUMPED!"):
+- **The test happens twice: once to him, once to the viewer.** Frame 0 is him on a night hill, tight, already pointing
+  at the moon (his finger stops a little short of it: on the moon the bloom swallowed the fingertip); then the camera
+  goes into his own eyes (`pov.js`): the sky, the moon, his hand rising from the lower right with the finger up, two
+  eye icons for which eye is open, a blink between the eyes, and the finger jumps right off the moon with a dashed
+  ghost where it was. The near finger shifts right when the left eye looks, which is the real parallax.
+- **The way in is a window on his forehead, and the room inside plays the viewer's own test.** The brain's control
+  room (`brainroom.js`, from pins-needles' `brainy.js`, made ready for the light): two screens on the wall, one per
+  eye, each running the same POV drawing under a view (`povSet` maps a 1080x1920 "pov space" anywhere), name plates
+  BOSS (crown) and INTERN (lanyard card), a green reticle that locks on, a roller shutter with a swinging CLOSED sign.
+  The push into the intern's screen ends at exactly the full-screen POV's scale and position, so the cut to his eyes
+  is a match cut (the moon and the finger stay put; only the room disappears).
+- **Props in head units:** a gold crown over the boss eye and an INTERN lanyard badge clipped to the other brow that
+  swings and turns over to JOB: DEPTH (`hill.js`: `hlCrown`, `hlBadge`), and the wink (`shutL` / `shutR` on any face)
+  and the pointing hand (`'point'`), both now in the template's character.js.
+- **Clones as "us":** three of him in yellow, teal and red coats for "two in three of us" (crowns on two right eyes
+  and one left), each raising a pencil in his writing hand: tick, cross (right-eyed, left-handed), tick. Three
+  `charLayer` calls in one shot worked with the light.
+- **Gags as loud as the narrator.** Round 1's gags sat at -15...-18 dB in their gaps (voice -16.5), the slide whistle
+  at -11.6. The sfx bus went to -11 (house -5) with the whistle 6 dB down: -17...-22. Measure the gags in mix.wav
+  every time; qa.py only checks the words.
+- Voice: the morning run's takes (retakes of answer, weird and button at 06:17-06:18); no new characters tonight.
+  82,927 left on account 2. Two QA rounds, 18/18 both; 3.6 minutes a render. Rebuild check: the MP4 rebuilt from the
+  cached takes is byte-identical.
+- **Instagram: the account was suspended.** At 20:12 IST Business Suite worked (the 48-hour check: dizzy-spin 15 Oct
+  20:53, ears-ring 16 Oct 06:31 and doorknob 16 Oct 18:31 all published; chalkboard 16 Oct 21:00, ring-finger 17 Oct
+  18:30, funny-bone 17 Oct 21:00 and eye-rub stars 18 Oct 21:00 all in Scheduled with their captions). Minutes later
+  a new tab landed on Meta's login page, and "Continue with Instagram" led to instagram.com/accounts/suspended: "You
+  submitted an appeal on October 16, 2026 ... Your account is not visible to people on Instagram, and you can't use
+  it." Nothing was clicked there. The Reel went to `~/Desktop/instagram-pending/` (5-dominant-eye-*); the slot is not
+  marked busy. The Reels scheduled from 16 Oct 21:00 on will most likely not go out while the account is suspended;
+  the next run's 48-hour check will show it.
+

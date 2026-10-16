@@ -262,6 +262,10 @@ proves nothing.
 - Close the tabs you opened.
 
 **Gotchas:**
+- **A suspended account (16 Oct 2026, dominant-eye).** If Business Suite signs out and "Continue with Instagram" lands on
+  `instagram.com/accounts/suspended` ("You submitted an appeal..."), stop: click nothing on that page, never start or
+  answer an appeal, never log in another way. Put the Reel in `~/Desktop/instagram-pending/` and lead the report with
+  it. Each later run checks once (Business Suite home) and stops the same way until the account is back.
 - **The Reel composer changed on 14 Oct 2026, and the Facebook Page is not connected any more** (dizzy-spin). "Create
   Reel" opens "Create reel" with **Share to** (it listed only curio_pulse_tv; Facebook Page: "Connect a Facebook Page"),
   **Caption reel · optional**, "Upload up to 3 videos" and a copyright check; the business switcher lists one asset,

@@ -144,7 +144,13 @@ function drawHand(c, wr, d, kind, pal, side, t) {
   if (CINE && c.__idMap && !pal.xray) circle(c, hx, hy, 21, pal.skin);
   else { circle(c, hx, hy, 21, pal.skinSh); circle(c, hx - 2, hy - 2, 18, pal.skin); }
   if (pal.outline) { c.beginPath(); c.arc(hx, hy, 21, 0, 7); c.lineWidth = 3; c.strokeStyle = pal.outline; c.stroke(); }
-  if (kind === 'thumb') { // thumbs-up: thumb sticks straight up
+  if (kind === 'point') { // a fist with the index finger out along the forearm, the thumb tucked along it (dominant-eye, 16 Oct 2026)
+    const fx = hx + d[0] * 12, fy = hy + d[1] * 12, L = 44;
+    if (CINE && c.__idMap && !pal.xray) line(c, fx, fy, fx + d[0] * L, fy + d[1] * L, 14, pal.skin);
+    else { line(c, fx, fy, fx + d[0] * L, fy + d[1] * L, 15, pal.skinSh); line(c, fx - 1, fy - 1, fx + d[0] * (L - 1) - 1, fy + d[1] * (L - 1) - 1, 10, pal.skin); }
+    if (pal.outline) { c.lineWidth = 3; c.strokeStyle = pal.outline; c.beginPath(); c.moveTo(fx, fy); c.lineTo(fx + d[0] * L, fy + d[1] * L); c.stroke(); }
+    line(c, hx - d[1] * side * 12 - d[0] * 4, hy + d[0] * side * 12 - d[1] * 4, hx - d[1] * side * 12 + d[0] * 12, hy + d[0] * side * 12 + d[1] * 12, 2.5, pal.skinSh);   // the curled fingers' crease
+  } else if (kind === 'thumb') { // thumbs-up: thumb sticks straight up
     rrect(c, hx - 7, hy - 44, 15, 34, 7); c.fillStyle = pal.skinSh; c.fill();
     rrect(c, hx - 6, hy - 43, 11, 31, 6); c.fillStyle = pal.skin; c.fill();
     line(c, hx - 14, hy - 4, hx + 14, hy - 4, 2.5, pal.skinSh);
@@ -249,8 +255,11 @@ function drawFace(c, f, pal) {
   // eyes
   const lid = pal.skin[0] === '#' && pal.skinSh[0] === '#' ? mixHex(pal.skin, pal.skinSh, 0.3) : pal.skinSh;
   for (const s of [-1, 1]) {
+    // one eye can shut on its own (a wink; dominant-eye, 16 Oct 2026): f.shutR = his right eye (screen-left),
+    // f.shutL = his left eye (screen-right), 0..1 on top of f.blink; that side's brow comes down a little with it
+    const bl = Math.max(f.blink, (s < 0 ? f.shutR : f.shutL) || 0), wk = Math.max(0, bl - f.blink);
     const ex = s * 24, ey = -2, ry = 16 * f.eyeOpen;
-    if (f.blink >= 0.93) { // closed: a soft lash curve, no eye white
+    if (bl >= 0.93) { // closed: a soft lash curve, no eye white
       c.beginPath(); c.moveTo(ex - 14, ey - 1); c.quadraticCurveTo(ex, ey + 10, ex + 14, ey - 1);
       c.lineWidth = 4.5; c.strokeStyle = '#5A2E22'; c.lineCap = 'round'; c.stroke();
       line(c, ex + s * 13, ey - 1, ex + s * 18, ey - 5, 3, '#5A2E22');
@@ -259,15 +268,15 @@ function drawFace(c, f, pal) {
       const lx = f.cross > 0.5 ? -s * 5 : f.lookX * 5, ly = f.lookY * Math.min(7, ry * 0.45);
       circle(c, ex + lx, ey + ly, 7.5 * f.pupil, pal.pupil);
       circle(c, ex + lx - 2.2, ey + ly - 2.8, 2.6, '#FFFFFF');
-      if (f.blink > 0.01) { // upper lid, skin-toned, with a lash line on its edge
+      if (bl > 0.01) { // upper lid, skin-toned, with a lash line on its edge
         c.save(); c.beginPath(); c.ellipse(ex, ey, 15, ry + 1, 0, 0, Math.PI * 2); c.clip();
-        c.fillStyle = lid; c.fillRect(ex - 16, ey - ry - 2, 32, (2 * ry + 2) * f.blink + 1);
-        line(c, ex - 15, ey - ry + (2 * ry) * f.blink, ex + 15, ey - ry + (2 * ry) * f.blink, 3.5, '#6A3526');
+        c.fillStyle = lid; c.fillRect(ex - 16, ey - ry - 2, 32, (2 * ry + 2) * bl + 1);
+        line(c, ex - 15, ey - ry + (2 * ry) * bl, ex + 15, ey - ry + (2 * ry) * bl, 3.5, '#6A3526');
         c.restore();
       }
     }
-    // brow
-    const by = -30 - f.browY * 8;
+    // brow (a wink pulls that side's brow down)
+    const by = -30 - f.browY * 8 + 7 * wk;
     line(c, s * 11, by - f.browTilt * 7, s * 37, by + f.browTilt * 3, 7.5, pal.hair);
   }
   // a squeezed-shut yawn: creases at the outer eye corners, and a tear
