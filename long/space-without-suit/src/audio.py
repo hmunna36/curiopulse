@@ -252,8 +252,8 @@ for k in range(4):
     sfx.add(pan_st(thump(0.08, 300, 140, 0.02, 40 + k), -0.2), c["skin"] + 0.1 + 0.18 * k, db(-25))
 # the silence: the air's last gasp, then NOTHING. Only his heartbeat, until REPRESS brings the room back.
 mute = c["mute"]
-for t in np.arange(mute - 0.2, c["freezing"] + 0.1, 60 / 64):
-    bed.add(pan_st(heartbeat(int(t * 10) + 1, 1.0), 0), t, db(-14))
+for t in np.arange(c["soundGone"] + 0.3, c["freezing"] + 0.1, 60 / 64):   # from the moment the sound goes
+    bed.add(pan_st(heartbeat(int(t * 10) + 1, 1.0), 0), t, db(-14 if t >= mute - 0.25 else -19))
 # the cold: a little shiver; the heat arrows bouncing back: soft pings
 sfx.add(shiver(0.5, 41), c["freezing"] + 0.4, db(-26))
 for k in range(5):
@@ -394,7 +394,6 @@ sfx.add(pan_st(thump(0.2, 400, 160, 0.04, 308), -0.3), c["rescue"] - 0.82, db(-1
 for k in range(4):
     sfx.add(pan_st(thump(0.08, 300, 140, 0.02, 310 + k), -0.2), c["skin"] + 0.1 + 0.18 * k, db(-19))
 sfx.add(pan_st(whoosh(0.9, 900, 120, 314, 0.6), 0.7), c["gone"] + 0.4, db(-19))
-sfx.add(pan_st(slide_whistle(0.5, 1200, 300), 0.4), word_end("sound.", c["soundGone"]) + 0.02, db(-24))
 # the cold: the thermometer pops in; the cut out to him whole
 sfx.add(pan_st(blip(700, 1100, 0.09, 315, 0.03), 0.5), c["freezing"] + 0.25, db(-20))
 sfx.add(pan_st(whoosh(0.4, 500, 1800, 316), 0), c["empty"] - 0.5, db(-21))
@@ -432,6 +431,17 @@ sfx.add(pan_st(whoosh(0.3, 700, 2000, 362), 0), c["grownup"] - 0.2, db(-23))
 # puffy: a squeaky inflate on his face; her eyebrow: a ding
 sfx.add(pan_st(balloon_inflate(0.3, 363), 0), SHOT["puffy"] + 0.1, db(-23))
 sfx.add(pan_st(bell(2637, 0.3, 0.1), 0.4), c["pride"] + 0.05, db(-21))
+
+# ================================================================= round 3: sharp attacks where the sound was smooth
+# The breath out (0:08-0:14) and the run into the silence (0:42-0:47) had no sound event qa.py could hear for 8-9 s:
+# the exhale, the rumble and the whooshes swell in. In the pauses between words: two pushes of breath, a stopwatch
+# click as the clock appears on "now", the click of the clock's jump to SECOND 2, the alarm's last blast before the
+# sound goes.
+sfx.add(pan_st(hiss(0.3, 330, tau=0.08), 0.5), word_end("him...", c["breatheOut"]) + 0.08, db(-17))
+sfx.add(pan_st(hiss(0.25, 331, tau=0.06), 0.5), word_end("it...", c["allofit"]) + 0.05, db(-18))
+sfx.add(pan_st(key_click(332), -0.6), c["now"] - 0.09, db(-16))
+sfx.add(pan_st(key_click(333), -0.6), SHOT["silence"], db(-16))
+sfx.add(pan_st(siren(0.45, 334), 0.3), word_end("two.", c["s2"]) + 0.03, db(-19))
 
 # a whoosh into every cut (ending on the cut), quiet, in the pause before the phrase
 for i_, s_ in enumerate(TL["shots"][1:]):

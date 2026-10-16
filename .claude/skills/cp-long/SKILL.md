@@ -160,7 +160,8 @@ $K/bin/preflight.sh          # installs the toolchain (2–5 min on a fresh mach
    scene by scene from the table);
    `cd long/<slug>/src && $PYTHON voice.py ../.work --synth`; listen through the transcript check and the word
    timings; retake or rewrite blocks until the performance is right. Timing edits (gap, tempo, tighten) are free.
-   Check the length now: `make_timeline.py` prints the duration. Over 5:00 → cut the scene with the lowest stakes.
+   Then `$PYTHON realign.py ../.work && cp ../.work/align.json voice/` (whisper's word times; `make_timeline.py` takes
+   them only for the blocks where v3's alignment put words in silence, which qa.py would fail). Check the length now: `make_timeline.py` prints the duration. Over 5:00 → cut the scene with the lowest stakes.
    **Checkpoint:** once the takes are final, `$K/bin/push.sh <slug> <msg-file>` ("WIP: <topic> narration"). The takes
    cost characters; a crashed run must not lose them.
 4. **Timeline:** `src/make_timeline.py`: SHOTS (anchored to phrases), CHUNKS, COLOR, DISPLAY, a cue for every beat.

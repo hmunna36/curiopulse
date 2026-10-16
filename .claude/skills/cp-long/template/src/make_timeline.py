@@ -10,6 +10,42 @@ from timeline_lib import PALETTE as P, Timeline
 
 T = Timeline(sys.argv[1], tail=1.5)  # seconds after the last word: the button beat (a held look, a last gag, the loop)
 
+# Word-timing repairs (space-without-suit, 16 Oct 2026). v3's alignment can crowd a phrase into the pause before it
+# ("The last thing he" sat 0.3 s early, in silence: its captions popped early and qa.py measured the words at -40 dB).
+# realign.py re-times the words with whisper (<work>/align.json; build.sh keeps a copy in src/voice/). Whisper drags
+# words across long pauses, so a block takes its whisper times only when some of its words sit in silence (< -38 dB)
+# and whisper puts fewer there.
+import json as _json, os as _os  # noqa: E401
+import numpy as _np
+_ap = _os.path.join(sys.argv[1], "align.json")
+if _os.path.exists(_ap):
+    _al = _json.load(open(_ap))
+    if len(_al) == len(T.words):
+        _lev = lambda a, b: 20 * _np.log10(_np.sqrt((T.audio[int(a * T.sr):max(int(a * T.sr) + 1, int(b * T.sr))] ** 2).mean()) + 1e-9)  # noqa: E731
+        _blocks = {}
+        for _i, _w in enumerate(T.words):
+            _blocks.setdefault(_w.get("block"), []).append(_i)
+        for _b, _idx in _blocks.items():
+            _sh = T.block(_b)["start"] - _al[_idx[0]].get("b0", T.block(_b)["start"])   # the block moved (a gap changed)
+            for _i in _idx:
+                _al[_i] = {"start": _al[_i]["start"] + _sh, "end": _al[_i]["end"] + _sh}
+            _old = sum(1 for _i in _idx if _lev(T.ws[_i], T.we[_i]) < -38)
+            _new = sum(1 for _i in _idx if _lev(_al[_i]["start"], _al[_i]["end"]) < -38)
+            if _old > 0 and _new < _old:
+                for _i in _idx:
+                    T.ws[_i] = T.words[_i]["start"] = _al[_i]["start"]
+                    T.we[_i] = T.words[_i]["end"] = _al[_i]["end"]
+                print(f"realigned {_b}: {_old} words in silence before, {_new} after")
+# v3's alignment can hand a pause to the next word: snap every word's start to its first loud frame.
+for _i in range(len(T.words)):
+    _fl = T.first_loud(T.ws[_i], span=max(0.02, T.we[_i] - T.ws[_i] + 0.1))
+    if _fl - T.ws[_i] > 0.08:
+        T.ws[_i] = T.words[_i]["start"] = round(min(_fl, T.we[_i] - 0.04), 3)
+# a word the aligner squeezed into a sliver ends at the next word's start (the voice checks measure the whole word)
+for _i in range(len(T.words) - 1):
+    if T.we[_i] - T.ws[_i] < 0.1:
+        T.we[_i] = T.words[_i]["end"] = round(max(T.we[_i], min(T.ws[_i + 1] - 0.01, T.ws[_i] + 0.3)), 3)
+
 # (shot id, phrase whose first word opens the shot). The first shot starts at 0. None = timed in `special`
 # (reaction beats: on a gasp, after a punchline word, in a silent gap). Every id needs an SC.<id> in web/.
 SHOTS = [

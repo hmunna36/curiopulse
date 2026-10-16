@@ -359,4 +359,70 @@ SC.final = (lt, t, shot) => {
   return { glow: 1.0 };
 };
 const DUR_ = () => TLd.duration;
-SC.sub = (lt, t, shot) => SC.final(lt, t, shot);
+// next week's teaser over the final image: a tooth that grows plaque while "stop brushing your teeth" is said, and a
+// toothbrush with a cobweb; it leaves after the pill, so the last seconds are the Earth again (the end screen's ground)
+function teaserTooth(x, y, s, t, o = {}) {
+  ctx.save(); ctx.translate(x + (o.shake || 0) * 5 * Math.sin(t * 46), y); ctx.scale(s, s);
+  ctx.beginPath();
+  ctx.moveTo(-90, -40);
+  ctx.bezierCurveTo(-96, -112, -40, -122, -20, -96);
+  ctx.bezierCurveTo(-6, -82, 6, -82, 20, -96);
+  ctx.bezierCurveTo(40, -122, 96, -112, 90, -40);
+  ctx.bezierCurveTo(88, 10, 72, 40, 62, 62);
+  ctx.bezierCurveTo(56, 122, 40, 152, 25, 142);
+  ctx.bezierCurveTo(12, 132, 10, 84, 0, 74);
+  ctx.bezierCurveTo(-10, 84, -12, 132, -25, 142);
+  ctx.bezierCurveTo(-40, 152, -56, 122, -62, 62);
+  ctx.bezierCurveTo(-72, 40, -88, 10, -90, -40);
+  ctx.closePath();
+  ctx.fillStyle = '#FBF7EE'; ctx.fill(); ctx.lineWidth = 7; ctx.strokeStyle = '#2A2E44'; ctx.stroke();
+  const P = [[-70, -70], [-48, -100], [62, -88], [80, -50], [-84, -20], [30, -98], [-10, -84], [74, 0], [-76, 20], [52, 40],
+    [-56, 46], [8, -88], [-30, -108], [86, -20], [-88, -50], [44, -112]];
+  const pl = o.plaque || 0;
+  P.forEach(([px, py], i) => { const a = clamp(pl * P.length - i); if (a > 0) circle(ctx, px, py, (7 + 4 * (i % 3)) * E.outBack(a, 2), 'rgba(176,204,64,0.9)'); });
+  const uh = o.uh || 0;
+  for (const sx of [-1, 1]) {
+    circle(ctx, 30 * sx, -36, 17, '#FFFFFF'); ctx.lineWidth = 4; ctx.strokeStyle = '#2A2E44'; ctx.beginPath(); ctx.arc(30 * sx, -36, 17, 0, 6.283); ctx.stroke();
+    circle(ctx, 30 * sx + 3 * sx * (1 - uh), -34 - 4 * uh, 8 - 2 * uh, '#1A1C2C');
+    line(ctx, 30 * sx - 16, -62 - 10 * uh * (sx > 0 ? 1 : 0), 30 * sx + 16, -62 - 10 * uh * (sx < 0 ? 1 : 0), 6, '#2A2E44');   // worried: inner ends up
+  }
+  ctx.beginPath();
+  if (uh > 0.5) { ctx.moveTo(-26, 6); for (let i = 1; i <= 6; i++) ctx.lineTo(-26 + i * 8.7, 6 + (i % 2 ? -7 : 7)); }
+  else { ctx.moveTo(-20, 0); ctx.quadraticCurveTo(0, 14, 20, 0); }
+  ctx.lineWidth = 6; ctx.strokeStyle = '#2A2E44'; ctx.lineCap = 'round'; ctx.stroke();
+  ctx.restore();
+}
+function teaserBrush(x, y, s, t) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(-0.32); ctx.scale(s, s);
+  rrect(ctx, -170, -16, 250, 32, 16); ctx.fillStyle = '#4FC3F7'; ctx.fill();
+  rrect(ctx, 66, -20, 100, 24, 8); ctx.fillStyle = '#4FC3F7'; ctx.fill();
+  for (let i = 0; i < 7; i++) { rrect(ctx, 76 + i * 12, -66, 8, 48, 3); ctx.fillStyle = '#FFFFFF'; ctx.fill(); }
+  ctx.strokeStyle = 'rgba(235,240,255,0.9)'; ctx.lineWidth = 3.5;                              // a cobweb: unused for ages
+  const cx = 166, cy = -66;
+  for (let i = 0; i < 5; i++) { const a = Math.PI * (0.55 + i * 0.11); ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + 70 * Math.cos(a), cy + 70 * Math.sin(a)); ctx.stroke(); }
+  for (const r of [22, 40, 58]) { ctx.beginPath(); for (let i = 0; i < 5; i++) { const a = Math.PI * (0.55 + i * 0.11); const xx = cx + r * Math.cos(a), yy = cy + r * Math.sin(a); if (i) ctx.lineTo(xx, yy); else ctx.moveTo(xx, yy); } ctx.stroke(); }
+  const sw = Math.sin(t * 2.2) * 0.25, ly = 70 + 6 * Math.sin(t * 1.3);                            // a spider on its thread
+  ctx.save(); ctx.translate(cx - 30, cy + 10); ctx.rotate(sw);
+  line(ctx, 0, 0, 0, ly, 3, 'rgba(235,240,255,0.9)');
+  for (const sx of [-1, 1]) for (let j = 0; j < 3; j++) line(ctx, 0, ly + 10, sx * 22, ly + 2 + j * 9, 4, '#0B0C16');
+  circle(ctx, 0, ly + 10, 13, '#0B0C16'); circle(ctx, -4, ly + 7, 3, '#FFFFFF'); circle(ctx, 4, ly + 7, 3, '#FFFFFF');
+  ctx.restore();
+  ctx.restore();
+}
+SC.sub = (lt, t, shot) => {
+  const post = SC.final(lt, t, shot), c = cu();
+  screenSpace();
+  const kin = ramp(t, c.sub + 0.15, c.sub + 0.55), kout = ramp(t, c.sub_in + 1.4, c.sub_in + 1.8, E.inCubic);
+  const k = kin * (1 - kout);
+  if (k > 0.01) {
+    const sc = 1.15 * E.outBack(clamp(kin), 1.6) * (1 - 0.25 * kout);
+    ctx.save(); ctx.globalAlpha = clamp(1 - kout); ctx.translate(960, 370 - 40 * kout); ctx.scale(sc, sc);
+    rrect(ctx, -330, -200, 660, 400, 34); ctx.fillStyle = 'rgba(16,20,44,0.92)'; ctx.fill();
+    ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.stroke();
+    teaserTooth(-130, 30, 0.95, t, { plaque: ramp(t, c.sub + 0.7, c.teeth + 0.4, (x) => x), uh: ramp(t, c.teeth + 0.15, c.teeth + 0.3), shake: env2(t, c.teeth + 0.15, c.teeth + 0.75, 0.15) });
+    teaserBrush(150, 60, 0.85, t);
+    ctx.restore();
+    tagPill('NEXT WEEK', 960, 370 - 200 * sc - 40 * kout, k, '#FFD447', 40);
+  }
+  return post;
+};

@@ -22,6 +22,13 @@ if [ ! -s "$SRC/fonts/Montserrat-900.ttf" ]; then cp "$SKILL/fonts/"*.ttf "$SRC/
 # 2. narration: ElevenLabs eleven_v3 takes (cached in src/voice/) -> trimmed, paced, word-timed
 "$PY" "$SRC/voice.py" "$WORK" "$@"
 
+# 2b. word timings from whisper, for the blocks where ElevenLabs' alignment put words in silence (realign.py, which
+# needs faster-whisper). Its result for the committed takes is kept in src/voice/align.json, so a plain rebuild needs
+# no whisper; after --synth (or any voice.py argument) it is made again, and if that fails the v3 timings are used.
+if [ "$#" -eq 0 ] && [ -f "$SRC/voice/align.json" ]; then cp "$SRC/voice/align.json" "$WORK/align.json"
+else "$PY" "$SRC/realign.py" "$WORK" && cp "$WORK/align.json" "$SRC/voice/align.json" \
+  || { echo "realign.py failed: using ElevenLabs' word timings"; rm -f "$WORK/align.json"; }; fi
+
 # 3. edit timeline: shots anchored to phrases, caption chunks, cues
 (cd "$SRC" && "$PY" make_timeline.py "$WORK")
 

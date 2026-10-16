@@ -1,7 +1,7 @@
-# What If You Went to Space WITHOUT a Suit? (Second by Second) — long-form (N:NN)
+# What If You Went to Space WITHOUT a Suit? (Second by Second) — long-form (4:33)
 
 **Final file:** `space-without-suit.mp4` (not kept in git: it is on YouTube, and `src/build.sh` rebuilds it from this folder)
-MP4 · H.264 High · 1920×1080 (16:9) · 30 fps · AAC 48 kHz stereo · N:NN · −14 LUFS integrated, ≤ −1 dBTP.
+MP4 · H.264 High · 1920×1080 (16:9) · 30 fps · AAC 48 kHz stereo · 4:33 · −14 LUFS integrated, ≤ −1 dBTP.
 Captions for YouTube: [`space-without-suit.srt`](space-without-suit.srt). Thumbnail: [`cover.jpg`](cover.jpg) (1280×720).
 
 A short animated film in the CurioPulse look. The space station's airlock (white padded walls, yellow handrails, a
@@ -25,11 +25,11 @@ Our title: **What If You Went to Space WITHOUT a Suit? (Second by Second)** (60 
 clock in brackets. It was also promised: the last film's subscribe line said "Next week: what happens if you step into
 space without a suit."
 
-**The clock:** the seconds he has been in space with no suit (SECOND 0 on "now", when the viewer breathes out with him).
-It creeps forward a second at a time and jumps on the beats: 1 (you don't explode), 2 (the silence), 5 (his spit
+**The clock:** the seconds he has been in space with no suit (SECOND 0 on "now", when the viewer breathes out with
+him). It creeps forward a second at a time and jumps on the beats: 1 (you don't explode), 2 (the silence), 5 (his spit
 boils), 10 (the oxygen pours out), 15 (lights out), 20 (the swelling), 30 (Jim LeBlanc), 45, 60 (his heart), 80 (his
-sister hits REPRESS), 90 (air: he wakes up). The last number, promised by 0:15 ("how long a rescue has"): ninety
-seconds.
+sister hits REPRESS), 90 (air: he wakes up). The first number is promised at 0:04 ("You've got about fifteen seconds");
+the last one at 0:35 ("how long a rescue has"): ninety seconds.
 
 ## The film in five lines
 
@@ -63,14 +63,17 @@ seconds.
 ## The hook (reference/hooks.md, binding since 9 Oct 2026)
 
 Three candidates, checked against the five rules and each formula's "fails when":
-- **Contrarian Flip** (kept): *"You're in space. No suit. You'd want to hold your breath. DON'T. Breathe OUT, with
-  him... all of it... now."* The first sentence is the title's situation word for word (rule 1); one idea, a body in
-  space second by second (rule 2); the belief (hold your breath) is rejected with its evidence in the next sentence:
-  "Holding it in could tear your lungs" (the formula's "fails when": the evidence comes at 0:09); specific: the clock
-  starts on "now", and "how long a rescue has" is answered with ninety seconds (rule 3); the first piece of the answer
-  is on screen by 0:30 (you don't explode, rule 4); no greeting (rule 5). It is also the viewer's first test: they
-  breathe out with him by 0:06 (15 Oct rule). Frame 1 is the thumbnail's picture in action: his face, close, cheeks
-  puffed with a held breath, hair and air streaming toward the open hatch, the Earth behind him.
+- **Contrarian Flip** (kept): *"You're in space. No suit. You've got about fifteen seconds. Your instinct? Hold your
+  breath. WRONG. Breathe OUT, with him... all of it... now. Holding it in could tear your lungs."* The first sentence is
+  the title's situation word for word (rule 1), and the thumbnail's "15 SECONDS" lands on screen at 0:04; one idea, a
+  body in space second by second (rule 2); the belief (hold your breath) is rejected at 0:07 and its evidence follows
+  the breath out, at 0:15 (the formula's "fails when": no evidence); specific: fifteen seconds, the clock starting on
+  "now", and "how long a rescue has" answered with ninety seconds (rule 3); the first answers are on screen by 0:39 (the
+  torn lungs at 0:16, MYTH at 0:39, rule 4); no greeting (rule 5). It is also the viewer's first test: they breathe out
+  with him from 0:08 to 0:14 (15 Oct rule). Frame 1 is the thumbnail's picture in action: his face, close, cheeks
+  puffed with a held breath, hair and air streaming toward the open hatch, the Earth behind him. (Round 1 opened on
+  "You'd want to hold your breath. DON'T." and kept the promise for 0:15; round 2 moved the stakes into the first
+  sentence and the want after the breath.)
 - *Someone Else's Result*: "In 1966, a NASA engineer's suit leaked in a vacuum chamber. His last memory: his spit,
   boiling on his tongue." Strong and sourced, but the first sentence is about another man, not the viewer, and it does
   not confirm the title's words.
@@ -86,84 +89,92 @@ with their times; each is a `pay_*` or `big_*` cue in make_timeline.py, so the s
 
 | # | Time | Clock | Scene | Waiting for | Turn | Leaves open | Stakes | Payoffs | If they left here they would miss |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | 0:00 | — | Hook: his face, close, cheeks full of a held breath, the air streaming past him to the open hatch, the Earth behind | what is going on? | "Your instinct? Hold your breath. WRONG." | why wrong? | 3 | 0:05 WRONG! | what to do instead |
-| 2 | 0:06 | SECOND 0 | "Breathe OUT, with him... now." He blows it all out; the viewer does it with him (the first test, a badge) | what do I do? | the breath leaves him in a cloud; the clock starts | why out? | 3 | **0:12 the clock starts** | why holding it is the mistake |
-| 3 | 0:13 | 0 | x-ray: the held air balloons his lungs until they tear | why out? | TEAR! | so what happens now? | 3 | 0:14 the tear | the promise |
-| 4 | 0:15 | 0 | The promise: second by second, and how long a rescue has; the green REPRESS button glows | how long? | a rescue is possible | why is he here? | 3 | 0:20 HOW LONG? | the selfie |
-| 5 | 0:21 | 0 | The want: his phone, Pip's messages: "Photo from space?", "NO GOLDFISH BOWL!", her drawing of him as a goldfish | why no helmet? | a selfie for his niece | how did the door open? | 2 | 0:26 the goldfish drawing | the button |
-| 6 | 0:28 | 0 | Rewind, 10 seconds ago: he presses DEPRESS with a grin, thinking it means "take the picture"; Ball's eyes go flat | how? | the joke: DEPRESS | what does space do to him? | 2 | 0:30 DEPRESS; 0:33 the camera "?" | the first answer |
-| 7 | 0:34 | SECOND 1 | The movies: an astronaut puffs up, BOOM, crossed out: MYTH | will he explode? | no | then what? | 3 | **0:36 MYTH** (the first payoff, by 0:36) | the silence |
-| 8 | 0:39 | 1 | He pats himself: whole. "Your skin is tougher than that." | is he OK? | he's in one piece | what does it feel like? | 2 | 0:39 the pat | the silence |
-| 9 | 0:41 | SECOND 2 | The last air leaves; the alarm screams; its sound waves stop dead | what does he hear? | nothing | what now? | 3 | **0:48 the sound cuts** | the silence itself |
-| 10 | 0:48 | 2 | Wordless: his mouth open in a shout, no sound, only his heartbeat (1.9 s) | — | total silence | is he freezing? | 3 | — | the cold |
-| 11 | 0:50 | SECOND 3 | "Is he freezing? Not yet." His own heat stays round him, little heat arrows bounce back | is he freezing? | no, nothing out there takes his heat | why? | 3 | 0:52 NOT YET; 0:55 the heat arrows | the thermos |
-| 12 | 0:56 | 4 | "Space is basically... a giant thermos." | why not? | the thermos pops in, its gap labelled NOTHING HERE | so what is the danger? | 3 | 0:59 the thermos | the spit |
-| 13 | 1:00 | SECOND 4–5 | The second test: tongue to your lip; his tongue out, his spit starts to boil | what happens to his body? | BOILING! | how can it boil? | 4 | **1:05 the spit boils** | why at 37 °C |
-| 14 | 1:06 | 6–8 | 100 °C crossed out, 37 °C; his tears boil too; the boiling cools his mouth almost to freezing | how? | no air pressing on it | is that what kills you? | 4 | 1:09 37 °C; 1:13 the tears; 1:17 ALMOST FREEZING | the real danger |
-| 15 | 1:18 | SECOND 10 | A window opens on his chest; the dive into an air sac of his lung: no air in it, the oxygen leaves the blood | what is the real danger? | OXYGEN: OUT, the wrong way | where does that blood go? | 4 | **1:24 the oxygen pours out** | the brain |
-| 16 | 1:27 | 12 | His head as an x-ray: the dark blood climbs the neck to the brain's city of lights | when? | ALMOST NO OXYGEN | lights out? | 4 | 1:31 it reaches the brain | lights out |
-| 17 | 1:32 | 14–15 | "Fourteen... fifteen... lights out." The city goes dark, patch by patch | will he black out? | he does | is he dead? | 5 | **1:37 lights out** | the black |
-| 18 | 1:38 | 15 | Wordless: black, a heartbeat (1.5 s) | — | — | is he dead? | 5 | — | the race |
-| 19 | 1:40 | 15 | "He's out. Not dead... out. And now, a different clock starts." A heart pulses on his chest; the clock turns red: UNCONSCIOUS | is he dead? | no; a race begins | who will save him? | 4 | 1:44 the new clock | Ball |
-| 20 | 1:46 | 16–18 | Ball, the camera drone, tries to fly to him: its fans spin flat out; a fan in air pushes, in space it has nothing to push; "Ball is just... a ball." | can Ball help? | no air, no flying (a laugh) | who, then? | 4 | 1:54 JUST A BALL | his sister |
-| 21 | 1:55 | 19 | The corridor, red: his big sister, the commander, hears the alarm and launches; a polaroid: her pulling him out of a paddling pool, age 4 | who can save him? | his sister (a laugh) | will she make it? (paid at 3:38) | 4 | 1:58 THE COMMANDER; 2:00 the polaroid | the swelling |
-| 22 | 2:01 | SECOND 20 | He swells; so does his bag of chips; her run in a small window | what breaks next? | the water in him turning to gas | will he burst? | 4 | 2:05 the swelling | the pop |
-| 23 | 2:08 | 21 | Wordless: the chip bag bursts without a sound | will he burst? | the bag does; silence | will HE? | 4 | **2:08 the silent pop** | the pinch |
-| 24 | 2:09 | 22–23 | The third test: pinch the back of your hand, let go: it snaps back; his outline holds | why doesn't he burst? | the skin holds him together | proof? | 3 | 2:12 SNAP!; 2:14 HIS SKIN HOLDS | Kittinger |
-| 25 | 2:15 | 24–25 | 1960, old film: Joe Kittinger's open gondola under the balloon, the altimeter climbing to 102,800 ft | proof? | 19 MILES UP | what happened up there? | 4 | 2:19 19 MILES UP | the glove |
-| 26 | 2:21 | 26–27 | One glove failed: his hand swells to twice its size | what happened? | 2× | did it last? | 4 | **2:24 2×** | three hours |
-| 27 | 2:26 | 28 | A clock spins three hours; the hand back to normal: GONE | did it last? | no: three hours | what is it like inside? | 3 | 2:28 GONE | LeBlanc |
-| 28 | 2:30 | SECOND 30 | The airlock: him floating, swollen; "One man knows." The picture turns to old film | what does it feel like? | a witness | who? | 4 | 2:33 one man | the chamber |
-| 29 | 2:34 | 31–33 | 1966, Houston: Jim LeBlanc in a NASA vacuum chamber; his air hose comes loose | what happened? | the accident | how long did he last? | 4 | 2:40 the hose | his fourteen seconds |
-| 30 | 2:42 | 34–37 | His visor fogs, he sags: 14 SEC; the last thing he remembered: the spit on his tongue, bubbling (the viewer's tongue test, paid) | how long? | 14 seconds; the spit | did he live? | 4 | 2:43 14 SEC; **2:47 the bubbles** | the rescue |
-| 31 | 2:49 | 38–42 | The engineers spin the valve; the air swirls back: FINE; a taste meter drops to almost nothing: 4 DAYS | did he live? | yes, and he couldn't taste much for four days (a laugh) | and our hero? | 3 | 2:51 FINE; 2:55 4 DAYS | the gut |
-| 32 | 2:56 | SECOND 45 | His gut swells, an x-ray balloon; "Yes. That gas." Ball slowly looks away | what else? | the gut (a laugh) | how long can he last? | 3 | 3:03 Ball looks away | the heart |
-| 33 | 3:04 | SECOND 60 | His chest dim; the heart monitor slows, 118 → 40 beats a minute | how long can he last? | the heart is slowing | how long does he have? | 5 | 3:07 slower | the window |
-| 34 | 3:09 | 61–65 | Wordless reveal: his sister's face at the inner hatch's window, palm on the glass; "So how long does he have? Nobody's allowed to test that on a person." | is she there? | she is; but can she open it? | how long? | 5 | 3:10 HOW LONG? | the 1960s tests |
-| 35 | 3:13 | 66–68 | The 1960s, old film: a test chamber with a dog sitting in it, a scientist with a stopwatch | how do we know? | they tested animals | what did they find? | 4 | 3:15 THE 1960s | the window |
-| 36 | 3:16 | 68–72 | The window as a bar, 0–3 min: every dog brought back within 90 s lived (green, ALL LIVED); after about three minutes most didn't (red); HIM: a marker creeping toward 90 | how long has he got? | 90 seconds; he is at 70 | will she make it? | 5 | **3:18 90 SECONDS**; 3:22 MOST DIDN'T | Soyuz |
-| 37 | 3:23 | 73–79 | 1971: the Soyuz capsule coming home, a thin jet from its valve; three stars come out over the Earth | is this real? | the only three people who ever died in space | will he be the fourth? | 5 | **3:32 the three stars** | REPRESS |
-| 38 | 3:35 | SECOND 80 | The corridor side: through the hatch window, him unconscious; her hand slams REPRESS | will she make it? | she does | does it work? | 5 | **3:38 the slam** | the air |
-| 39 | 3:38 | 85–88 | Wordless: the outer hatch swings shut, the air roars back in as fog, the white light floods back, the room's hum returns (2.8 s) | will the air come back? | it does | will he wake? | 5 | 3:39 the hatch shuts | the gasp |
-| 40 | 3:41 | SECOND 90 | "Air." His gasp; "And like Jim LeBlanc... he wakes up." His eyes open; Ball's happy eyes; his sister floats in | will he wake? | he does | what saved him, really? | 5 | **3:43 AIR!**; 3:47 he wakes | the palm |
-| 41 | 3:49 | BREATHING | The fourth test: hold out your hand; the air presses on it with the weight of a grown-up (his sister, toy-sized, lands on the palm: ≈ 80 KG); your body pushes back | what saved him? | the air has been squeezing you all along | so what is space? | 4 | 3:53 ≈ 80 KG; 3:56 PUSHING BACK | the reframe |
-| 42 | 3:58 | BREATHING | "Space doesn't pull you apart. It just stops holding you together." Air arrows round him vanish, then come back, glowing | — | the reframe | and him? | 4 | **4:00 holding you together** | his pride |
-| 43 | 4:02 | BREATHING | "He was puffy for a couple of days. His pride... a lot longer." His sheepish face, her raised eyebrow | what now? | a laugh | the selfie? | 3 | 4:05 her eyebrow | the selfie |
-| 44 | 4:07 | BREATHING | "One more selfie. Helmet on. Goldfish bowl and all." Both in helmets, Ball's flash; Pip answers with a heart and a goldfish | does he get his photo? | he does, in the bowl | — | 3 | 4:09 the flash; 4:13 Pip's heart | the button |
-| 45 | 4:12 | BREATHING | Pip's bedroom at night: the bowl on the sill, the photo leaning on it; the camera pushes into the bowl: "we all live in a goldfish bowl. Ours is just very big... and very thin." | what does it mean? | the bowl becomes the Earth | — | 4 | 4:13 the push | the final image |
-| 46 | 4:20 | BREATHING | The final image: the Earth's thin blue line, the sun coming over the edge, the station crossing; the theme resolves | — | home | — | 4 | **4:20 the resolve** | the teaser |
-| 47 | 4:23 | BREATHING | Subscribe: next week, what happens if you stop brushing your teeth; "keep your helmet on" | — | the pill, the bell | — | 2 | — | — |
+| 1 | 0:00 | — | Hook: his face, close, cheeks full of a held breath, the air streaming past him to the open hatch, the Earth behind; "about fifteen seconds" stamps 15 SECONDS | what is going on? | "Your instinct? Hold your breath. WRONG." | why wrong? | 3 | 0:04 15 SECONDS; 0:07 WRONG! | what to do instead |
+| 2 | 0:08 | SECOND 0 | "Breathe OUT, with him... all of it... now." He blows it all out; the viewer does it with him (the first test, a badge) | what do I do? | the breath leaves him in a cloud; the clock starts | why out? | 3 | **0:14 the clock starts** | why holding it is the mistake |
+| 3 | 0:14 | 0 | x-ray: the held air balloons his lungs until they tear | why out? | TEAR! | why is he out here at all? | 3 | 0:16 the tear | the selfie |
+| 4 | 0:17 | 0 | The want: his phone, Pip's messages: "Photo from space?", "NO GOLDFISH BOWL!", her drawing of him as a goldfish | why no helmet? | a selfie for his niece | how did the door open? | 2 | 0:22 the goldfish drawing | the button |
+| 5 | 0:24 | 0 | Rewind, ten seconds ago: he presses DEPRESS with a grin, thinking it means "take the picture"; Ball's eyes go flat | how? | the joke: DEPRESS | what will space do to him? | 2 | 0:26 DEPRESS; 0:29 "take the picture" | the promise |
+| 6 | 0:30 | 0 | The promise: "second by second, here's what your body does... and how long a rescue has"; a wide sweep, then a cut to the green REPRESS button glowing | how long? | a rescue is possible | will he explode? | 3 | 0:35 HOW LONG? | the first answer |
+| 7 | 0:37 | SECOND 1 | The movies: an astronaut puffs up, BOOM, crossed out: MYTH | will he explode? | no | then what? | 3 | **0:39 MYTH** | the silence |
+| 8 | 0:42 | 1 | He pats himself: whole. "Your skin is tougher than that." | is he OK? | he's in one piece | what does it feel like? | 2 | 0:42 the pat | the silence |
+| 9 | 0:44 | SECOND 2 | The last air leaves; the alarm screams; its sound waves stop dead | what does he hear? | nothing | what now? | 3 | **0:51 the sound cuts** | the silence itself |
+| 10 | 0:51 | 2 | Wordless: his mouth open in a shout, no sound, only his heartbeat (1.9 s) | — | total silence | is he freezing? | 3 | — | the cold |
+| 11 | 0:53 | 3–4 | "Is he freezing? Not yet." A thermometer at 37 °C: NOT YET; a cut to heat arrows bouncing back round him | is he freezing? | no: nothing out there takes his heat | why? | 3 | 0:54 NOT YET; 0:58 the heat arrows | the thermos |
+| 12 | 0:59 | 4 | "Space is basically... a giant thermos." | why not? | the thermos pops in, its gap labelled NOTHING HERE | so what is the danger? | 3 | 1:01 the thermos | the spit |
+| 13 | 1:03 | SECOND 5 | The second test: tongue to your lip; his tongue out, his spit starts to boil | what happens to his body? | BOILING! | how can it boil? | 4 | **1:07 the spit boils** | why at 37 °C |
+| 14 | 1:09 | 6–9 | A bell jar: water boiling with no air pressing on it; 100 °C crossed out, 37 °C; a macro of his tongue, his tears boil too; the boiling cools his mouth: a thermometer falls, ALMOST FREEZING | how? | no air pressing on it | is that what kills you? | 4 | 1:11 37 °C; 1:14 the tears; 1:19 ALMOST FREEZING | the real danger |
+| 15 | 1:21 | SECOND 10 | A window opens on his chest; the dive into an air sac of his lung: no air in it, the oxygen leaves the blood | what is the real danger? | OXYGEN: OUT, the wrong way | where does that blood go? | 4 | **1:27 the oxygen pours out** | the brain |
+| 16 | 1:30 | 12–13 | His head as an x-ray: the dark blood climbs the neck to the brain's city of lights | when? | ALMOST NO OXYGEN | lights out? | 4 | 1:34 it reaches the brain | lights out |
+| 17 | 1:35 | 14–15 | "Fourteen... fifteen... lights out." Close cuts stamped 14 and 15; the city goes dark, patch by patch | will he black out? | he does | is he dead? | 5 | **1:40 lights out** | the black |
+| 18 | 1:41 | 15 | Wordless: black, a heartbeat (1.5 s) | — | — | is he dead? | 5 | — | the race |
+| 19 | 1:42 | 15 | "He's out. Not dead... out. And now, a different clock starts." A heart pulses on his chest; a cut to a big stopwatch: UNCONSCIOUS, and the clock turns red | is he dead? | no; a race begins | who will save him? | 4 | 1:46 the new clock | Ball |
+| 20 | 1:48 | 15–18 | Ball, the camera drone, tries to fly to him: its fans spin flat out; a fan in air pushes (PUSH!), in space it has NOTHING to push; "Ball is just... a ball." | can Ball help? | no air, no flying (a laugh) | who, then? | 4 | 1:57 JUST A BALL | his sister |
+| 21 | 1:58 | 18–20 | The corridor, red: his big sister, the commander, close; she flies; a polaroid: her pulling him out of a paddling pool, age 4 | who can save him? | his sister (a laugh) | will she make it? (paid at 3:41) | 4 | 2:01 THE COMMANDER; 2:03 the polaroid | the swelling |
+| 22 | 2:04 | SECOND 20 | He swells; so does his bag of chips; her run in a small window | what breaks next? | the water in him turning to gas | will he burst? | 4 | 2:08 the swelling | the pop |
+| 23 | 2:10 | 22 | Wordless: the chip bag bursts without a sound | will he burst? | the bag does; silence | will HE? | 4 | **2:11 the silent pop** | the pinch |
+| 24 | 2:11 | 22–25 | The third test: pinch the back of your hand, let go: it snaps back; his outline holds | why doesn't he burst? | the skin holds him together | proof? | 3 | 2:15 SNAP!; 2:17 HIS SKIN HOLDS | Kittinger |
+| 25 | 2:18 | 25–27 | 1960, old film: Joe Kittinger's open gondola under the balloon, the altimeter climbing to 102,800 ft | proof? | 19 MILES UP | what happened up there? | 4 | 2:22 19 MILES UP | the glove |
+| 26 | 2:24 | 27–28 | One glove failed: his hand swells to twice its size | what happened? | 2× | did it last? | 4 | **2:27 2×** | three hours |
+| 27 | 2:29 | 29–30 | A clock spins three hours; the hand back to normal: GONE | did it last? | no: three hours | what is it like inside? | 3 | 2:31 GONE | LeBlanc |
+| 28 | 2:33 | SECOND 30 | The airlock: him floating, swollen; "One man knows." The picture turns to old film | what does it feel like? | a witness | who? | 4 | 2:35 one man | the chamber |
+| 29 | 2:37 | 32–36 | 1966, Houston: Jim LeBlanc in a NASA vacuum chamber, from outside, then through its window; a close cut: his air hose comes LOOSE! | what happened? | the accident | how long did he last? | 4 | 2:43 the hose | his fourteen seconds |
+| 30 | 2:44 | 37–41 | His visor fogs, he sags: 14 SEC; the last thing he remembered: the spit on his tongue, bubbling (the viewer's tongue test, paid) | how long? | 14 seconds; the spit | did he live? | 4 | 2:45 14 SEC; **2:50 the bubbles** | the rescue |
+| 31 | 2:52 | 41–45 | The engineers spin the valve; the air swirls back: FINE; a taste meter drops to almost nothing: 4 DAYS | did he live? | yes, and he couldn't taste much for four days (a laugh) | and our hero? | 3 | 2:54 FINE; 2:57 4 DAYS | the gut |
+| 32 | 2:59 | SECOND 45 | His gut swells, an x-ray balloon; "Yes. That gas." Ball slowly looks away | what else? | the gut (a laugh) | how long can he last? | 3 | 3:05 Ball looks away | the heart |
+| 33 | 3:07 | SECOND 60 | His chest dim; the heart monitor slows, 118 → 40 beats a minute; his sister's face reaches the inner hatch's window, palm on the glass | how long can he last? | the heart is slowing; she is there | can she get him back in time? | 5 | 3:08 her face; 3:10 slower | the window |
+| 34 | 3:12 | 63–66 | "So how long does he have? Nobody's allowed to test that on a person." | how long? | it was never tested on people | how do we know? | 5 | 3:12 HOW LONG? | the 1960s tests |
+| 35 | 3:16 | 66–68 | The 1960s, old film: a test chamber with a dog sitting in it, a scientist with a stopwatch | how do we know? | they tested animals | what did they find? | 4 | 3:18 THE 1960s | the window |
+| 36 | 3:19 | 68–72 | The window as a bar, 0–3 min: every dog brought back within 90 s lived (green, ALL LIVED); after about three minutes most didn't (red); HIM: a marker creeping toward 90 | how long has he got? | 90 seconds; he is at 70 | will she make it? | 5 | **3:21 90 SECONDS**; 3:24 MOST DIDN'T | Soyuz |
+| 37 | 3:26 | 72–80 | 1971: the Soyuz capsule coming home, a cut to its valve opening, a thin jet; three stars come out over the Earth | is this real? | the only three people who ever died in space | will he be the fourth? | 5 | **3:35 the three stars** | REPRESS |
+| 38 | 3:37 | SECOND 80 | The corridor side: through the hatch window, him unconscious; her hand slams REPRESS | will she make it? | she does | does it work? | 5 | **3:41 the slam** | the air |
+| 39 | 3:41 | 85–90 | Wordless: the outer hatch swings shut, the air roars back in as fog, the white light floods back, the room's hum returns (2.8 s) | will the air come back? | it does | will he wake? | 5 | 3:42 the hatch shuts | the gasp |
+| 40 | 3:44 | SECOND 90 | "Air." His gasp; "And like Jim LeBlanc... he wakes up." His eyes open; a two-shot with his sister; Ball's happy eyes | will he wake? | he does | what saved him, really? | 5 | **3:46 AIR!**; 3:50 he wakes | the palm |
+| 41 | 3:52 | BREATHING | The fourth test: hold out your hand; the air presses on it with the weight of a grown-up (his sister, toy-sized, lands on the palm: ≈ 80 KG); your body pushes back | what saved him? | the air has been squeezing you all along | so what is space? | 4 | 3:55 ≈ 80 KG; 3:58 PUSHING BACK | the reframe |
+| 42 | 4:00 | BREATHING | "Space doesn't pull you apart. It just stops holding you together." Air arrows round him vanish, then come back, glowing | — | the reframe | and him? | 4 | **4:02 holding you together** | his pride |
+| 43 | 4:05 | BREATHING | "He was puffy for a couple of days. His pride... a lot longer." His sheepish face, close, then her raised eyebrow | what now? | a laugh | the selfie? | 3 | 4:07 her eyebrow | the selfie |
+| 44 | 4:09 | BREATHING | "One more selfie. Helmet on. Goldfish bowl and all." Both in helmets, Ball's flash, the photo; Pip answers with a heart and a goldfish | does he get his photo? | he does, in the bowl | — | 3 | 4:11 the flash; 4:12 Pip's heart | the button |
+| 45 | 4:14 | BREATHING | Pip's bedroom at night: the bowl on the sill, the photo leaning on it; the camera pushes into the bowl: "we all live in a goldfish bowl. Ours is just very big... and very thin." | what does it mean? | the bowl becomes the Earth | — | 4 | 4:16 the push | the final image |
+| 46 | 4:23 | BREATHING | The final image: the Earth's thin blue line, the sun coming over the edge, the station crossing; the theme resolves | — | home | — | 4 | **4:23 the resolve** | the teaser |
+| 47 | 4:25 | BREATHING | Subscribe: next week, what happens if you stop brushing your teeth; "keep your helmet on" | — | the pill, the bell | — | 2 | — | — |
 
-## Narration (615 words, performed)
+## Narration (620 words, performed)
 
-Directed in [`src/script.txt`](src/script.txt), one take per block (35 blocks; 3,045 + 927 characters with the
-fact-check rewrites). The whisper transcript of the takes matched the script (numerals aside; "rode" heard as "wrote"
-once). Rewrites after the research: the hook's "You'd want to hold your breath. DON'T." ran on into "Breathe OUT" and
-could be heard as "Don't breathe out", so it became "Your instinct? Hold your breath. WRONG."; "his tongue could frost
-over" became "his mouth gets cold. Almost freezing." (frost is documented only on dogs after two minutes); the dogs line
+Directed in [`src/script.txt`](src/script.txt), one take per block (36 blocks, 3,402 characters in the final takes; the
+first pass cost 3,045, the fact-check rewrites 927, and round 2's new opening, the hook, "lungs" and the promise, about
+300 more). The whisper transcript of the takes matched the script (numerals aside; "rode" heard as "wrote" once).
+Rewrites after the research: the hook's "You'd want to hold your breath. DON'T." ran on into "Breathe OUT" and could be
+heard as "Don't breathe out", so it became "Your instinct? Hold your breath. WRONG."; "his tongue could frost over"
+became "his mouth gets cold. Almost freezing." (frost is documented only on dogs after two minutes); the dogs line
 became "Every dog brought back within ninety seconds lived. After about three minutes... most didn't."; LeBlanc got his
 real after-effect (he couldn't taste much for four days); Ball's joke and the Soyuz 11 line were added; "puffy for a
-day" became "a couple of days" (chimps' faces took up to 72 hours). The words are re-timed with whisper
-(`src/realign.py`) in the blocks where ElevenLabs' alignment had put words in silence.
+day" became "a couple of days" (chimps' faces took up to 72 hours). QA round 2 put the stakes in the first sentence
+("You've got about fifteen seconds"), gave "Holding it in could tear your lungs" its own block right after the breath
+out, and moved the promise ("Now, second by second, here's what your body does... and how long a rescue has") after the
+DEPRESS joke, so the want arrives at 0:17 instead of 0:21 and the joke leads straight into the promise. The words are
+re-timed with whisper (`src/realign.py`) in the blocks where ElevenLabs' alignment had put words in silence.
 
 ## Publishing
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube | (after the upload) | Sunday 25 Oct 2026, 17:30 IST |
+| YouTube | https://youtu.be/KpftORrT9_A | Sunday 25 Oct 2026, 17:30 IST (scheduled; private until then) |
 
 **Title:** What If You Went to Space WITHOUT a Suit? (Second by Second) (60 characters)
 **Description, chapters, sources, tags:** [`publish.json`](publish.json). The description opens with the title's
 question and ends its first paragraph on the viewer's tests ("Tongue, pinch or palm: which test got you?").
-Chapters, named after the clock: 0:00 Space, no suit: breathe OUT · 0:34 Second 1: do you explode? · 1:00 Second 5:
-your spit boils · 1:18 Second 10: the oxygen leaves · 1:40 Second 15: lights out, the race · 2:30 Second 30: the man
-who lived it · 3:04 Second 60: how long a rescue has · 3:35 Second 80: REPRESS. Hashtags #Science #HumanBody #Space.
+Chapters, named after the clock: 0:00 Space, no suit: breathe OUT · 0:36 Second 1: do you explode? · 1:02 Second 5:
+your spit boils · 1:20 Second 10: the oxygen leaves · 1:42 Second 15: lights out, the race · 2:32 Second 30: the man
+who lived it · 3:06 Second 60: how long a rescue has · 3:37 Second 80: REPRESS. Hashtags #Science #HumanBody #Space.
 **Pinned comment (suggestion, for the user to pin):** Next week: what happens if you stop brushing your teeth.
 Subscribe so you don't miss it! Tongue, pinch or palm: which test got you?
 **Subscribe line (spoken):** Next week: what happens if you stop brushing your teeth. Subscribe... and keep your
 helmet on.
-**Still to do by hand in YouTube Studio:** the end screen, a card to the related Short (sky-blue has the hiker in a
-spacesuit), pinning the comment.
+**Thumbnail:** [`cover.jpg`](cover.jpg): his face, close, cheeks puffed with a held breath, the alarm's red on one side
+and the Earth's glow on the other, "15 / SECONDS" (variant 1 of 3, picked by the shelf test at 320×180); the film's
+first frame is the same picture in action.
+**Still to do by hand in YouTube Studio:** the end screen over the last 8 s (4:25–4:33, the Earth under the subscribe
+line: the NEXT WEEK card leaves at 4:31), a card to the related Short (sky-blue has the hiker in a spacesuit), pinning
+the comment.
 
 ## Sound design
 
@@ -173,20 +184,22 @@ spacesuit), pinning the comment.
   air there); far crickets in Pip's bedroom.
 - **The clock:** a soft tick on every new second it shows (it creeps forward a second at a time between the jumps), a
   blip when it flips to AIR! and BREATHING.
-- **Hits:** the air bursting out of the hatch and a low rumble while the airlock empties; a thump after WRONG; his big
-  breath out; a creak and a crack for the lungs; a chime on the green REPRESS; phone pings for Pip; a tape rewind and a
-  click on DEPRESS, a shutter on "take the picture"; a balloon and a thunderclap for the movies' BOOM; pats on his chest;
-  a shiver, heat pings, a cork pop for the thermos; bubbles for the spit and the tears, frost; a whoosh into his chest,
-  bloops for the oxygen leaving; a power-down, a heavy thud and black with a heartbeat; Ball's fans whining, a wah-wah;
-  her launch whoosh, a shutter for the polaroid; creaks of swelling; THE CHIP BAG'S POP IS SILENT (no air: every bus
-  drops out for 0.8 s); an elastic thwip for the pinch; balloon creaks and the altimeter's ticks, a glove hiss, a clock
-  running three hours; the hose's hiss, a timer to 14, bubbles, the valve's squeak and the air back, a bwomp for "four
-  days"; a stomach growl and a squeak; the monitor's beeps slowing with his heartbeat; her palm on the glass; a warm
-  chord for ALL LIVED, a thud for MOST DIDN'T; the Soyuz valve's hiss and three soft bells for the three stars; a drum
-  roll into the slam, the hatch shutting, the air ROARING back, his first breath in the gap and a small one after "Air.";
-  Ball's happy chirp; whooshes for the palm's arrows and a thud for the grown-up; the arrows vanishing and a shimmer
-  coming back; a slide down on "pride"; helmets clicking, the shutter, Pip's pings; bubbles in the bowl; a shimmer for
-  the sunrise. Every punchline sound sits after its word.
+- **Hits:** the air bursting out of the hatch and a low rumble while the airlock empties; an alarm bweep after "No
+  suit.", a punch and a bell on 15 SECONDS; a thump after WRONG; his big breath out, two more pushes of breath in the
+  pauses and a stopwatch click as the clock appears on "now"; a creak and a crack for the lungs; a chime on the green
+  REPRESS; phone pings for Pip; a tape rewind and a click on DEPRESS, a shutter on "take the picture"; a balloon and a
+  thunderclap for the movies' BOOM; pats on his chest; the clock's click on SECOND 2 and the alarm's last blast before
+  the sound goes, then only his heartbeat; a shiver, heat pings, a cork pop for the thermos; bubbles for the spit and
+  the tears, frost; a whoosh into his chest, bloops for the oxygen leaving; a power-down, a heavy thud and black with a
+  heartbeat; Ball's fans whining, a wah-wah; her launch whoosh, a shutter for the polaroid; creaks of swelling; THE
+  CHIP BAG'S POP IS SILENT (no air: every bus drops out for 0.8 s); an elastic thwip for the pinch; balloon creaks and
+  the altimeter's ticks, a glove hiss, a clock running three hours; the hose's hiss, a timer to 14, bubbles, the
+  valve's squeak and the air back, a bwomp for "four days"; a stomach growl and a squeak; the monitor's beeps slowing
+  with his heartbeat; her palm on the glass; a warm chord for ALL LIVED, a thud for MOST DIDN'T; the Soyuz valve's hiss
+  and three soft bells for the three stars; a drum roll into the slam, the hatch shutting, the air ROARING back, his
+  first breath in the gap and a small one after "Air."; Ball's happy chirp; whooshes for the palm's arrows and a thud
+  for the grown-up; the arrows vanishing and a shimmer coming back; a slide down on "pride"; helmets clicking, the
+  shutter, Pip's pings; bubbles in the bowl; a shimmer for the sunrise. Every punchline sound sits after its word.
 - **Score:** one theme, a phrase that climbs and hangs (G C D G | F...). A music box over the roaring air in the hook,
   cut by WRONG; a held pad for the breath out, a slow ticking groove for the promise; bouncing pizzicato for Pip and
   the rewind; a bright marimba for "you don't explode", stopped dead by the silence; a curious half-time marimba for the
@@ -201,8 +214,9 @@ spacesuit), pinning the comment.
   the biggest ones and for the punchlines (WRONG, the silence, the thermos, lights out, "a ball", the pop, "That gas",
   MOST DIDN'T, the air coming back, his pride).
 - **Mix:** voice first (leveler, studio compressor), effects duck under speech, music −9 and ambience −20 on their
-  buses, −14 LUFS, −1.9 dBTP before AAC. Voice over the rest in the speech band (content words): mean 25 dB, none under
-  6 dB.
+  buses, −14 LUFS, −1.9 dBTP before AAC. Voice over the rest in the speech band (content words): mean 23.3 dB, none
+  under 6 dB (the lowest 6.3). A quiet whoosh leads into every cut except the hard ones (black, the silence, the pop,
+  the air rushing back).
 
 ## Science notes
 
@@ -235,3 +249,130 @@ oxygen first), so the film says what was measured and no more.
 | The air presses on your palm with the weight of a grown-up; you don't feel it because your body pushes back just as hard | established physics (101 kPa on a palm of about 8–10 × 10 cm is 800–1,000 N, the weight of 80–100 kg; the pressure inside the body balances it) | standard atmosphere, 101.325 kPa |
 | He was puffy for a couple of days | established as a range (the gross swelling goes in seconds once the air is back; the chimps' facial swelling took up to 72 hours to go, Kittinger's hand about 3 hours) | NASA CR-329 (1965); Bancroft & Dunn 1965 |
 | We all live in a goldfish bowl, very big and very thin | the comparison is ours; the thinness is established (about 60 miles of atmosphere on an 8,000-mile Earth, "a thin sheet of plastic wrapped around" a basketball; half the air lies below about 5.5 km) | NASA Glenn Research Center (https://www.grc.nasa.gov/WWW/K-12/airplane/atmosphere.html) |
+
+## Ship review
+
+**qa.py (final): no FAIL.** 4:33.2 · −14.02 LUFS · −1.68 dBTP · voice over the mix: mean 23.3 dB, 0 % of content words
+under 6 dB, the weakest 6.3 dB · WER 2.9 % (every difference is a numeral or "spacesuit" as two words) · 46 shots, mean
+5.9 s · a sound event at least every 5 s (247, 54 a minute) · the music moves every 30 s. The one still second is the
+planned black of lights out (1:41). Nine visual-event gaps of 5.0–6.7 s hold arrivals the detector does not count, each
+planned: the sister's close-up, flight and polaroid (1:57), the three stars coming out for Soyuz 11 (3:31), the
+altimeter climbing to 19 MILES UP (2:18), the gut swelling (2:58), the blood climbing to the brain (1:29), the heart
+monitor falling (3:06), the breath out with the viewer (0:08), the oxygen pouring out (1:24), the hand swelling (2:23).
+The shots over 8 s cut inside (the boil is a bell jar, a tongue, the eyes and a thermometer; Soyuz is the capsule, the
+valve and the stars; Ball is three framings; the palm cuts close on the grown-up).
+
+**Rounds.** Before the render: 2-second sweeps of every act (the sister's face out of the captions, her flight
+across the corridor, Pip bigger in her room, the selfie's faces, a big green badge for each test, the frost claim
+turned into "almost freezing"). The narration was re-timed with whisper (`src/realign.py`) where ElevenLabs had put
+words in silence (qa.py measured them at −40 dB). (1) First render (4:30.6): qa.py clean, but Film, Hook, Retention,
+Look, Sound, Every scene and Every second scored 7: the want came at 0:21 and the promise at 0:15–0:20; eight dead
+stretches on the one-a-second sheet (the boil, the head x-ray, Ball, the chamber, Soyuz, the cold, puffy, the final
+image); three stretches with no sound event for 6–13 s. Round 2 put the stakes in the first sentence, in the
+thumbnail's words ("You've got about fifteen seconds"), gave the lungs line its own block and moved the promise after
+the DEPRESS joke (the want at 0:17); every dead stretch became two or three framings with a cut and a payoff (the bell
+jar, a macro of his tongue, the hose LOOSE!, the Soyuz valve, the close on the grown-up, the photo itself); sounds in
+the gaps and a quiet whoosh into every cut. (2) Second render (4:33.2): qa.py clean; two short stretches still had no
+sound event qa.py could hear (the exhale and the rumble swell in), the thermos shot's camera saw past the airlock's
+painted wall for two seconds, and the final image held 13 alike frames under the subscribe line. (3) Round 3: sharp
+sounds in the pauses (two pushes of breath, a stopwatch click as the clock appears, the clock's click on SECOND 2,
+the alarm's last blast; the heartbeat now starts the moment the sound goes), re-muxed without a re-render; the
+thermos shot recomposed (him on the right, the thermos on the left) and a NEXT WEEK card over the subscribe line (a
+tooth growing plaque, a toothbrush with a cobweb), both re-rendered as two short ranges and spliced in at keyframes
+(frame-exact, checked at every seam). Ship.
+
+**Ship bar (0–10, 8+ to ship):** 0 Film 8 (a want by 0:17, the selfie stick in his hand from frame 1; five wordless
+beats: the silence, lights out, the silent pop, the air roaring back, the final image; the goldfish bowl returns
+changed: Pip's insult, his fish mouth, the helmet he chooses, Pip's bowl, the Earth's thin blue line; he ends humbled,
+helmet on, with the photo he wanted) · 1 Hook 9 (frame 1 is the thumbnail in action; 15 SECONDS by 0:04; WRONG at
+0:07; the viewer breathes out with him from 0:08) · 2 Retention 8 · 3 Story 9 (SECOND 0 → 15 lights out → the race
+→ 60 the edge → 90 AIR; the highest stakes open the last minute; the button calls back to the goldfish bowl) · 4 Show
+9 · 5 Narration 8 · 6 Comedy 9 (WRONG; the goldfish drawing; DEPRESS = take the picture; just the movies; a giant
+thermos; Ball is just a ball; rescuing him since he was four; the silent chip bag; four days without taste; "Yes. That
+gas."; a grown-up on your palm; his pride; goldfish bowl and all) · 7 Look 8 · 8 Sound 8 · 9 Science 9 · 10 Packaging
+8 · 11 Subscribe 9 · 12 Length 9 · 13 Every scene 8 · 14 Takes part 9 (breathe out at 0:08, tongue to your lip at
+1:04, pinch your hand at 2:11, hold out your palm at 3:52; each paid: the TEAR, LeBlanc's bubbling tongue, SNAP, ≈ 80
+KG) · 15 Every second 8.
+
+**15-second audit** (a viewer who would leave here would miss…):
+- 0:00 what to do instead of holding your breath (WRONG at 0:07) · 0:15 why he is out here (Pip's selfie)
+- 0:30 how long a rescue has; do you explode? · 0:45 the silence of space · 1:00 the thermos and the boiling spit
+- 1:15 where the oxygen goes · 1:30 lights out · 1:45 the new clock, Ball and who is coming
+- 2:00 his sister, the swelling, the silent pop · 2:15 the pinch test and Kittinger's hand · 2:30 the man who lived it
+- 2:45 LeBlanc's last memory and his four days · 3:00 the gut and the slowing heart · 3:15 how long: the dogs' 90 s
+- 3:30 Soyuz 11 and REPRESS · 3:45 AIR and the palm test · 4:00 the reframe, his pride, the selfie
+- 4:15 the goldfish bowl becomes the Earth; next week's question
+
+**5-second audit** (they stay because…):
+- 0:00 frame 1 is the thumbnail in action: cheeks full, the air streaming to the open hatch; "You're in space. No suit."
+- 0:05 15 SECONDS slams in; "Your instinct? Hold your breath." WRONG!
+- 0:10 they breathe out with him (DO IT WITH HIM), the cloud streams into space
+- 0:15 the clock starts on "now"; the x-ray: the held air would TEAR his lungs
+- 0:20 why is he out here? Pip's messages: "Photo from space?" "NO GOLDFISH BOWL!", her goldfish drawing
+- 0:25 rewind, ten seconds ago: he presses DEPRESS
+- 0:30 "thinking it meant take the picture" (the camera's ?); "Now, second by second..."
+- 0:35 "...and how long a rescue has": HOW LONG? on the glowing REPRESS; SECOND 1: the movies' BOOM
+- 0:40 MYTH: you don't explode; he pats himself, whole
+- 0:45 SECOND 2: the alarm's last blast; the air is gone, and so is the sound
+- 0:50 the alarm screams in silence; only his heartbeat; his mouth open
+- 0:55 37 °C: NOT YET; heat arrows bounce back: nothing out there takes his heat
+- 1:00 "Space is basically... a giant thermos": NOTHING HERE
+- 1:05 the tongue test (TRY IT); SECOND 5: his spit boils (BOILING!)
+- 1:10 the bell jar: with no air pressing on it, water boils at 37 °C
+- 1:15 a macro of his tongue; his tears boil too
+- 1:20 the thermometer falls: ALMOST FREEZING; SECOND 10: a window opens on his chest
+- 1:25 the dive into an air sac: HIS LUNGS: EMPTY, NO AIR
+- 1:30 OXYGEN: OUT, the wrong way; the dark blood climbs to the brain's city of lights
+- 1:35 ALMOST NO OXYGEN; "Fourteen..." stamped big
+- 1:40 "fifteen... lights out": the city goes dark; black and a heartbeat
+- 1:45 "He's out. Not dead... out."; his heart pulses; a different clock: UNCONSCIOUS
+- 1:50 Ball, the camera drone, spins its fans: PUSH! in air, NOTHING in space
+- 1:55 "Ball is just... a ball."; the corridor: his big sister hears the alarm
+- 2:00 THE COMMANDER flies; the polaroid: her pulling him out of a paddling pool, age 4
+- 2:05 SECOND 20: he swells, and so does his bag of chips: WATER → GAS
+- 2:10 the chip bag bursts without a sound; the pinch test (TRY IT)
+- 2:15 SNAP! it snaps back; HIS SKIN HOLDS him together
+- 2:20 1960: Kittinger's open gondola, the altimeter climbing to 19 MILES UP
+- 2:25 one glove failed: his hand swells to 2×
+- 2:30 three hours later: GONE; SECOND 30: "One man knows"
+- 2:35 1966, Houston: Jim LeBlanc in the vacuum chamber, from outside, then through its window
+- 2:40 the air hose comes LOOSE!; 14 SEC
+- 2:45 his last memory: the spit on his tongue starting to bubble (their tongue test, paid)
+- 2:50 they pump the air back in: FINE; he couldn't taste much (the lollipop's meter drops)
+- 2:55 4 DAYS; SECOND 45: his gut swells
+- 3:00 GAS; "Yes. That gas." Ball slowly looks away
+- 3:05 SECOND 60: his heart slows, 118 → 45; his sister in the window
+- 3:10 her face at the hatch: HOW LONG? "Nobody's allowed to test that on a person"
+- 3:15 NOT ON PEOPLE; the 1960s: a dog in a test chamber
+- 3:20 the window as a bar, HIM at 68 s: within ninety seconds, ALL LIVED
+- 3:25 after about three minutes, MOST DIDN'T; 1971: Soyuz 11 coming home
+- 3:30 a valve opens; three stars come out over the Earth
+- 3:35 the only people who ever died in space; SECOND 80: her hand comes down on REPRESS
+- 3:40 the slam; the hatch shuts, the air ROARS back as fog
+- 3:45 SECOND 90: "Air." AIR! and his gasp; "like Jim LeBlanc..."
+- 3:50 "...he wakes up", his sister beside him; the palm test (TRY IT)
+- 3:55 the air presses on your palm with the weight of a grown-up: his sister lands on it, ≈ 80 KG
+- 4:00 your body pushes back just as hard; "Space doesn't pull you apart. It just stops holding you together."
+- 4:05 PUFFY: 2 DAYS; "His pride... a lot longer" (her eyebrow)
+- 4:10 one more selfie, helmet on; the flash, the photo, Pip's heart and goldfish
+- 4:15 Pip's bedroom: the bowl on the sill, the photo leaning on it; "we all live in a goldfish bowl"
+- 4:20 the push through the bowl: the Earth's thin blue line, the sunrise; the theme resolves
+- 4:25 NEXT WEEK: a tooth grows plaque beside a toothbrush with a cobweb
+- 4:30 SUBSCRIBE and the bell; "keep your helmet on"
+
+## Rebuild
+
+`src/build.sh` rebuilds the MP4 from scratch. It needs python3 (numpy, scipy, soundfile, pyloudnorm, pillow, certifi;
+pedalboard for the studio mix chain, else the classic chain runs), node with playwright-core and a Chrome or Chromium
+(`CHROME_PATH`), and ffmpeg with libx264/aac. `.claude/skills/cp-long/bin/cloud-setup.sh` installs all of it on a
+fresh Ubuntu machine. The JavaScript libraries the scenes use are vendored in `src/web/vendor/` (MIT, licences
+inside). Every sound effect and the whole score are synthesized in `src/audio.py` (no recorded one-shots). The
+narration takes are committed in `src/voice/`, so no API call is needed unless a line of `src/script.txt`
+changes. For a changed line, run `src/build.sh --synth` with `ELEVENLABS_API_KEY` set.
+
+The word timings: ElevenLabs' alignment put a few phrases in the silence before them, so `src/realign.py` re-times
+the words with whisper (faster-whisper, base.en) and `make_timeline.py` takes whisper's times for the blocks where
+that puts fewer words in silence. Its result for the committed takes is `src/voice/align.json`, which `build.sh`
+copies into the work folder; after `--synth` it runs `realign.py` again (and falls back to ElevenLabs' timings if
+faster-whisper is missing). A full render of 4:33 (8,196 frames, 3 browsers at 400–550 ms a frame) takes about 25
+minutes on 4 CPUs.

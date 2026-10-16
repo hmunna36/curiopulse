@@ -269,13 +269,14 @@ SC.cold = (lt, t, shot) => {
 // "Space is basically... a giant thermos." a giant thermos pops in beside him: its walls with nothing between them
 SC.thermos = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
-  const cam = headCam(S, 1.25, 560, 300);
+  // him on the right, the thermos on the left: with his head left of x 1320 the camera saw past the room's right wall
+  const cam = headCam(S, 1.25, 1340, 300);
   alScene(cam, t, S);
   screenSpace();
   const k = ramp(t, c.thermosW, c.thermosW + 0.35);
   ctx.fillStyle = `rgba(5,6,15,${0.5 * k})`; ctx.fillRect(0, 0, W, H);
-  thermos(1390, 600, 1.05, k, t, { heat: ramp(t, c.thermosW + 0.6, c.thermosW + 1.2) });
-  tagPill('NOTHING HERE', 1390, 150, ramp(t, c.thermosW + 0.8, c.thermosW + 1.1), '#C8A8FF', 44);
+  thermos(560, 560, 1.05, k, t, { heat: ramp(t, c.thermosW + 0.6, c.thermosW + 1.2) });
+  tagPill('NOTHING HERE', 900, 600, ramp(t, c.thermosW + 0.8, c.thermosW + 1.1), '#C8A8FF', 44);   // beside the gap, clear of the clock
   return alPost({ flash: 0.2 * kickAt(t, c.thermosW, 9) });
 };
 // "But his spit? Touch your tongue to your lip. Feel that? Second five: his is boiling." his face, close; the viewer's

@@ -14,8 +14,9 @@ T = Timeline(sys.argv[1], tail=1.4)
 W, E, ev, find = T.W, T.E, T.ev, T.find
 
 # v3's alignment can crowd a phrase into the pause before it ("The last thing he" sat 0.3 s early, in silence):
-# realign.py re-times the words with whisper (.work/align.json). Whisper drags words across long pauses, so a block
-# takes its whisper times only when some of its words sit in silence (< -38 dB) and whisper puts fewer there.
+# realign.py re-times the words with whisper (.work/align.json; build.sh copies src/voice/align.json there). Whisper
+# drags words across long pauses, so a block takes its whisper times only when some of its words sit in silence
+# (< -38 dB) and whisper puts fewer there.
 import json as _json, os as _os  # noqa: E401
 import numpy as _np
 _ap = _os.path.join(sys.argv[1], "align.json")

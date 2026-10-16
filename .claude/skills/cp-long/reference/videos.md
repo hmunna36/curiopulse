@@ -30,8 +30,60 @@ This file and `topics.md` are the only memory a cloud run has: write down anythi
 - Landscape staging that worked: a couch scene with the hero on the left seat (x 800) and a door + calendar on the
   right; faces at zoom 2.5-3 for the deadpans; the head cutaway on the right with the cerebellum's thought bubble
   on the left; a black spotlight stage as a pattern interrupt between acts.
+- **A late fix rarely needs a full render (16 Oct 2026).** Sound only: re-mux the new mix.wav (`-c:v copy`). A few
+  seconds of picture: render.js writes a keyframe every 30 frames with closed GOPs, so re-render from one keyframe to
+  just before another and splice with stream copy (the space-without-suit entry has the commands). Both took minutes
+  instead of a 24-minute render; check the seams and run qa.py on the result.
+- **Run `realign.py` after the takes (16 Oct 2026):** v3's alignment can put a whole phrase in the silence before it
+  (qa.py fails those words at -40 dB); the template's make_timeline.py uses whisper's times only where they help.
 
 ## Videos
+
+- **space-without-suit**: "What If You Went to Space WITHOUT a Suit? (Second by Second)" · 4:33 · https://youtu.be/KpftORrT9_A · scheduled Sunday 25 Oct 2026 17:30 IST (made 16 Oct 2026)
+  - Story: he wants one selfie with the Earth for his niece Pip without the helmet she calls a goldfish bowl, and
+    presses DEPRESS thinking it means "take the picture"; the viewer breathes out with him as the clock starts at
+    SECOND 0; second by second: no explosion, the silence, not freezing (space is a thermos), the spit boiling at
+    37 °C, the oxygen pouring out of the blood the wrong way, lights out at fifteen; a different clock: Ball the camera
+    drone cannot fly without air, his big sister the commander races to the airlock; the swelling and the chip bag's
+    silent pop; Kittinger's hand in 1960, LeBlanc's fourteen seconds and the spit on his tongue in 1966; the gut, the
+    slowing heart, the dogs' ninety-second window, Soyuz 11; at eighty she slams REPRESS, the air roars back, he wakes;
+    the palm test (the air has been holding us together all along); one more selfie, helmet on; Pip's goldfish bowl
+    becomes the Earth's thin blue line.
+  - Demand: "what happens if you go to space without a suit" median 211,587, 3 of 8 at a million (Ridddle 4.2M,
+    Peekaboo Kidz 3.3M, The Infographics Show 1.1M); it was also promised by the last film's subscribe line. Queue
+    refill (the other three demand calls): "what happens if you stop eating" (median 1,991,390, 6 of 8), "didn't drink
+    water" (3 of 8), "stopped showering" (3 of 8).
+  - New worlds (reusable): `airlock.js` (an ISS-style airlock: padded walls, handrails, the DEPRESS/REPRESS panel and
+    gauge, a red beacon, the open hatch on space and the Earth's limb; the floating hero in socks with cheeks, blow-out,
+    tongue, boiling spit, frost, blue lips, swelling and a helmet; Ball, an Int-Ball-style camera drone; the chip bag,
+    phone and selfie stick), `state.js` (`alState(t)`: his whole continuity from cues, so every shot agrees),
+    `places.js` (the station corridor and the flying sister, Pip's bedroom at night with the goldfish bowl, Kittinger's
+    gondola, the 1966 vacuum chamber, a thermos, a movie screen, a palm with a toy-sized grown-up on it), `inbody.js`
+    (an alveolus with the oxygen leaving, a head x-ray with the brain as a city of lights, the gut as a balloon),
+    `extras.js` (a bell jar, a big stopwatch, the chamber from outside, the Soyuz valve, the selfie as a photo, Pip's
+    avatar); `hud.js` gained a "{n}" mode: a clock that creeps a second at a time between the jumps, with a tick.
+  - Three QA rounds. Round 1 (4:30.6): qa.py clean, but seven items at 7: the want at 0:21 and the promise at
+    0:15–0:20, eight dead stretches on the one-a-second sheet, three stretches of 6–13 s with no sound event. Round 2:
+    the stakes moved into the first sentence in the thumbnail's words ("You've got about fifteen seconds"), the want to
+    0:17, each dead stretch became two or three framings with a cut and a payoff, sounds in the gaps and a quiet whoosh
+    into every cut. Round 3 without a full render: sharp sounds in two smooth stretches (re-muxed), the thermos shot
+    recomposed and a NEXT WEEK card (a tooth growing plaque) over the subscribe line, re-rendered as two short ranges
+    and spliced in at keyframes. Every ship-bar item 8 or more. Voice: 3,402 characters in the final takes (about
+    4,300 spent with the rewrites and the new opening).
+  - Lessons: ElevenLabs v3's alignment can put a whole phrase in the silence before it, and qa.py then measures those
+    words at -40 dB (a FAIL): `realign.py` (faster-whisper word times matched to the script) fixes it, but whisper
+    drags words across long pauses, so make_timeline.py takes its times only for the blocks where they put fewer words
+    in silence (now in the template). A new early word can steal a later anchor: the hook's "fifteen seconds" made
+    `W("fifteen...")` match at 0:04 and the lights went out in the hook; anchor with `s=find(...)`. A payoff bell on a
+    word masks it: put it at the word's end. The vacuum device worked: every bus drops out, only his heartbeat on the
+    bed bus, and a chip bag bursting without a sound. qa.py's sound events need sharp attacks: an exhale, a rumble
+    and whooshes swell in and never count; a stopwatch click, a short hiss or one siren cycle in the pauses do. An
+    audio-only fix needs no re-render: re-mux the new mix.wav (`ffmpeg -i video -i mix.wav -map 0:v -c:v copy -map
+    1:a -c:a aac -b:a 256k`). A picture fix in a few seconds needs no full render either: render.js encodes with
+    `-g 30` and closed GOPs, so re-render from a keyframe to just before a later keyframe (`node render.js tl out.mp4
+    a-b`), copy the untouched parts with `-c copy -frames:v N` (and `-ss` at the keyframe for the middle part), join
+    them with the concat demuxer and check the seams (the frames on both sides decoded identical, 0.000 difference). A
+    full render of 4:33 (8,196 frames, 3 browsers at 400–550 ms a frame) took about 24 min; audio.py about 3.5 min.
 
 - **hold-your-breath**: "What If You Hold Your Breath TOO Long? (Second by Second)" · 4:23 · https://youtu.be/BhkHz6gpbrk · scheduled Sunday 18 Oct 2026 17:30 IST (made 15 Oct 2026)
   - Story: on Pip's seventh birthday she bets him she can out-hold him (loser gets no cake), and the viewer holds
