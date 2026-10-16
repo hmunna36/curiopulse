@@ -277,7 +277,7 @@ function movieScreen(x, y, s, k, t, o = {}) {
   spaceField(ctx, -310, -180, 620, 360, t);
   const b = o.boom || 0;
   if (b < 0.3) {   // a cartoon astronaut, cheeks bulging, about to blow
-    const bl = 1 + 0.6 * b / 0.3;
+    const bl = 1 + 1.6 * Math.pow(b / 0.3, 1.5);
     circle(ctx, 0, 10, 60 * bl, '#F2B892'); circle(ctx, -20, 0, 10, '#FFFFFF'); circle(ctx, 20, 0, 10, '#FFFFFF'); circle(ctx, -20, 0, 5, '#111'); circle(ctx, 20, 0, 5, '#111');
   } else {         // BOOM: a comic burst
     const kk = E.outBack(clamp((b - 0.3) / 0.3), 2);

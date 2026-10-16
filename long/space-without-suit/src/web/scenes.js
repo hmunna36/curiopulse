@@ -33,7 +33,19 @@ function tagPill(txt, x, y, k, col = '#FFD447', size = 50) { if (k > 0.01) pill(
 // a big stamp word with a pop and a little tilt (screen space)
 function stampWord(txt, x, y, size, col, k, rot = -0.12) { if (k > 0.01) bigWord(txt, x, y, size, col, E.outBack(clamp(k), 2.2), rot); }
 // the badge for a viewer's test (hud.js's safetyBadge, green): lines of text, top right
-function testBadge(lines, k) { safetyBadge(lines, k, W - 110, 92); }
+function testBadge(lines, k, x = W - 120, y = 80) {
+  if (k <= 0.01) return;
+  ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.font = '900 50px Montserrat';
+  const w = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 84, h = 40 + 64 * lines.length;
+  ctx.translate(x - w / 2, y + h / 2); const sc = E.outBack(clamp(k), 2); ctx.scale(sc, sc); ctx.rotate(-0.02);
+  rrect(ctx, -w / 2, -h / 2, w, h, 28); ctx.fillStyle = 'rgba(8,12,34,0.9)'; ctx.fill();
+  ctx.lineWidth = 6; ctx.strokeStyle = '#4DFFB4'; ctx.stroke();
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  lines.forEach((l, i) => { ctx.font = i === 0 ? '900 40px Montserrat' : '900 50px Montserrat'; ctx.fillStyle = i === 0 ? '#4DFFB4' : '#FFFFFF'; ctx.fillText(l, 0, -h / 2 + 52 + 64 * i); });
+  ctx.restore();
+  softDot(gctx, x - w / 2, y + h / 2, w * 0.6, '#4DFFB4', 0.25 * k);
+}
 
 // ================================================================= THE HOOK
 // Frame 1: his face, close, cheeks full of a held breath, hair and air streaming toward the open hatch, the Earth behind
@@ -94,27 +106,45 @@ SC.promise = (lt, t, shot) => {
 // the end of the stick: Pip's message and her drawing; then the helmet he left behind, floating, spinning
 SC.want = (lt, t, shot) => {
   const c = cu(), S = alState(t), D = shot.end - shot.start;
-  const r = alHero({ x: -9999, y: 0 }, t, {}) && null;   // (no-op: keeps the layer clear)
-  const phoneAt = (h) => { const p = alPt(h, [0, 0]); return p; };
-  // the phone: where the stick ends (rig-local: the right wrist plus the stick)
-  const h = Object.assign({}, S.hero, { y: S.hero.y + (S.hero.dy || 0) });
-  const st = alFloatPose(h), rg = rig(st), w = alPt(h, rg.wrR), a = h.stick.a + (h.rot || 0), L = 420 * AL.hs;
-  const ph = [w[0] + Math.cos(a) * (L + 60 * AL.hs), w[1] + Math.sin(a) * (L + 60 * AL.hs)];
-  const camPhone = ptCam(ph, 3.2, 760, 520), camHelmet = ptCam([S.helmet.x, S.helmet.y], 2.4, 1100, 500);
+  // the airlock behind, out of focus-ish (a slow push on him), the phone card big in front
+  const cam = headCam(S, 1.5 + 0.2 * lt / D, 560, 430);
+  const camHelmet = ptCam([S.helmet.x, S.helmet.y], 2.2, 600, 470);
   const k = ramp(t, c.noHelmet - 0.4, c.noHelmet + 0.3, E.inOutCubic) * (1 - ramp(t, c.goldfish - 0.6, c.goldfish, E.inOutCubic));
-  const cam = mixCam(camPhone, camHelmet, k);
-  alScene(cam, t, S);
+  alScene(mixCam(cam, camHelmet, k), t, S);
   screenSpace();
-  const gk = ramp(t, c.goldfish - 0.1, c.goldfish + 0.3);
-  if (gk > 0.01) {   // Pip's drawing, big: him as a goldfish in a bowl
-    ctx.save(); ctx.translate(1420, 420); const sc = E.outBack(gk, 2) * 1.6; ctx.scale(sc, sc); ctx.rotate(0.08);
-    circle(ctx, 0, 0, 120, 'rgba(127,233,255,0.25)'); ctx.lineWidth = 8; ctx.strokeStyle = '#3A7AC8'; ctx.beginPath(); ctx.arc(0, 0, 120, 0, 7); ctx.stroke();
-    goldfish(ctx, 0, 10, 1.2, t); ctx.restore();
-    softDot(gctx, 1420, 420, 260, '#FF9A3C', 0.3 * gk);
-  }
-  tagPill('PIP, 7', 1420, 160, ramp(t, c.want + 0.8, c.want + 1.1) * (1 - gk), '#FF86A6', 46);
+  ctx.fillStyle = 'rgba(5,6,15,0.25)'; ctx.fillRect(0, 0, W, H);
+  phoneCard(1380, 470, 1.0, ramp(lt, 0.05, 0.45), t, { msg2: ramp(t, c.goldfish - 0.15, c.goldfish + 0.15), drawing: ramp(t, c.goldfish + 0.3, c.goldfish + 0.7) });
   return alPost();
 };
+// his phone, big, in screen space: Pip's messages (a chat), then her drawing of him as a goldfish in a bowl
+function phoneCard(x, y, s, k, t, o = {}) {
+  if (k <= 0.01) return;
+  ctx.save(); ctx.translate(x, y + 60 * (1 - k)); const sc = s * E.outBack(clamp(k), 1.6); ctx.scale(sc, sc); ctx.rotate(0.04);
+  rrect(ctx, -250, -420, 500, 840, 56); ctx.fillStyle = '#15182A'; ctx.fill();
+  rrect(ctx, -232, -400, 464, 800, 42); ctx.fillStyle = '#FFF6EE'; ctx.fill();
+  ctx.save(); rrect(ctx, -232, -400, 464, 800, 42); ctx.clip();
+  ctx.fillStyle = '#FFD9E6'; ctx.fillRect(-232, -400, 464, 110);
+  circle(ctx, -150, -345, 34, '#FF86A6'); ctx.font = '900 30px Montserrat'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#FFFFFF'; ctx.fillText('P', -150, -343);
+  ctx.textAlign = 'left'; ctx.font = '900 40px Montserrat'; ctx.fillStyle = '#8A2A50'; ctx.fillText('PIP', -100, -345);
+  const bubble = (yy, txt, col, tc, kk) => {
+    if (kk <= 0.01) return;
+    ctx.save(); ctx.translate(-30, yy); const b = E.outBack(clamp(kk), 2); ctx.scale(b, b);
+    ctx.font = '900 34px Montserrat'; const w = Math.min(430, ctx.measureText(txt).width + 56);
+    rrect(ctx, -185, -40, w, 80, 30); ctx.fillStyle = col; ctx.fill(); ctx.textAlign = 'left'; ctx.fillStyle = tc; ctx.fillText(txt, -157, 3); ctx.restore();
+  };
+  bubble(-220, 'Photo from space?', '#FF86A6', '#FFFFFF', 1);
+  bubble(-110, 'NO GOLDFISH BOWL!', '#FF5A6E', '#FFFFFF', o.msg2 || 0);
+  const d = o.drawing || 0;
+  if (d > 0.01) {   // her drawing: him as a goldfish in a bowl, in crayon colours
+    ctx.save(); ctx.translate(0, 150); const b = E.outBack(clamp(d), 1.8); ctx.scale(b, b);
+    rrect(ctx, -190, -160, 380, 320, 20); ctx.fillStyle = '#FFFFFF'; ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = '#E0D0C0'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(0, 10, 120, 0, 7); ctx.fillStyle = 'rgba(127,200,255,0.4)'; ctx.fill(); ctx.lineWidth = 8; ctx.strokeStyle = '#3A7AC8'; ctx.stroke();
+    goldfish(ctx, 4, 20, 1.15, t); ctx.restore();
+  }
+  ctx.restore();
+  ctx.restore();
+  softDot(gctx, x, y, 420 * s * k, '#FFD9E6', 0.15);
+}
 // "So he pressed the button marked DEPRESS... thinking it meant 'take the picture.'" a rewind: him at the panel, grinning,
 // pressing DEPRESS with the selfie stick up; Ball's eyes go flat. Then back to now.
 SC.depress = (lt, t, shot) => {
@@ -122,18 +152,20 @@ SC.depress = (lt, t, shot) => {
   const rw = ramp(lt, 0, 0.35);                         // the rewind's glitch in
   // ten seconds ago: the room still full of air, the hatch shut, him at the panel
   const R0 = Object.assign({}, S.room, { open: 0, gauge: 1, beacon: 0, red: 0, air: 0, dep: kickAt(t, c.depressW, 3) > 0.05 ? 1 : 0, flashDep: kickAt(t, c.depressW, 3) });
-  const cam = mixCam(ptCam([AL.panX + 140, AL.panY - 60], 1.9, 900, 520), ptCam([AL.panX + 60, AL.panY + 40], 2.5, 800, 560), ramp(t, c.depressW - 0.5, c.depressW + 0.2, E.inOutCubic));
+  const cam = mixCam(ptCam([AL.panX + 160, AL.panY - 40], 1.7, 960, 520), ptCam([AL.panX + 40, AL.panY + 40], 2.4, 820, 560), ramp(t, c.depressW - 0.5, c.depressW + 0.2, E.inOutCubic));
   alRoom(cam, t, R0);
   applyCam(cam);
   alHelmet(ctx, AL.panX + 260, AL.panY - 260, 0.7, 0.2);
   const push = ramp(t, c.depressW - 0.35, c.depressW, E.inOutCubic);
-  const hh = { x: AL.panX + 330, y: AL.panY + 470, s: 0.78, face: Object.assign({}, FACES.selfie, { lookX: -0.4, lookY: 0.2 }), hair: 0, rot: -0.05,
-    stick: { k: 1, a: -1.6 }, phone: { kind: 'msg' }, L: [lerp(-200, -300, push), lerp(-330, -350, push)], R: [140, -420], legs: 0.4 };
+  const hx = AL.panX + 210, hy = AL.panY + 330, btn = [AL.panX, AL.panY + 40];
+  const tgt = [(btn[0] - hx) / 0.78, (btn[1] - hy) / 0.78];
+  const hh = { x: hx, y: hy, s: 0.78, face: Object.assign({}, FACES.selfie, { lookX: 0.5, lookY: -0.4 }), hair: 0, rot: 0.04,
+    stick: { k: 1, a: -1.3 }, phone: { kind: 'msg' }, L: [lerp(-150, tgt[0] + 30, push), lerp(-300, tgt[1], push)], R: [150, -420], legs: 0.4 };
   alHero(cam, t, hh);
   applyCam(cam);
-  alBall(AL.panX + 520, AL.panY - 300, 0.8, t, { mood: t > c.thinking ? 'flat' : 'calm', look: [-1, 0.5] });
+  alBall(AL.panX + 470, AL.panY - 330, 0.8, t, { mood: t > c.thinking ? 'flat' : 'calm', look: [-1, 0.5] });
   screenSpace();
-  stampWord('◀◀ 10 SECONDS AGO', 560, 150, 64, '#FFFFFF', rw, 0);
+  stampWord('◀◀ 10 SECONDS AGO', 1100, 130, 64, '#FFFFFF', rw, 0);
   if (t > c.picture - 0.1) { ctx.save(); ctx.translate(1450, 360); const k = E.outBack(ramp(t, c.picture - 0.1, c.picture + 0.2), 2); ctx.scale(k, k);
     rrect(ctx, -110, -70, 220, 140, 20); ctx.fillStyle = '#2A2E44'; ctx.fill(); circle(ctx, 0, 0, 46, '#11131F'); circle(ctx, 0, 0, 30, '#3A5AA8'); circle(ctx, -10, -10, 8, '#FFFFFF');
     rrect(ctx, -90, -92, 60, 26, 8); ctx.fillStyle = '#2A2E44'; ctx.fill(); ctx.restore(); stampWord('?', 1590, 250, 140, '#FFD447', ramp(t, c.picture, c.picture + 0.3), 0.15); }
@@ -147,10 +179,10 @@ SC.explode = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   darkBg('#140A28', '#04020C'); screenSpace();
   for (let i = 0; i < 7; i++) { rrect(ctx, 200 + i * 230, 900, 180, 140, 40); ctx.fillStyle = '#0A0614'; ctx.fill(); circle(ctx, 290 + i * 230, 870, 60, '#0A0614'); }   // the audience, from behind
-  const boom = ramp(t, c.noExplode - 0.9, c.noExplode - 0.1);
+  const boom = ramp(t, c.s1 - 0.2, c.noExplode - 0.1);
   movieScreen(960, 440, 1.35 + 0.05 * lt / D, ramp(lt, 0, 0.35), t, { boom });
   softDot(gctx, 960, 440, 500, '#6FB6FF', 0.25);
-  if (t > c.noExplode + 0.3) { bigX(960, 440, 300, ramp(t, c.noExplode + 0.3, c.noExplode + 0.6)); }
+  if (t > c.noExplode + 0.3) { bigX(960, 440, 1.1, ramp(t, c.noExplode + 0.3, c.noExplode + 0.6)); }
   stampWord('MYTH', 1480, 260, 170, '#FF5A6E', ramp(t, c.movies - 0.05, c.movies + 0.25), 0.16);
   return inPost({ flash: 0.4 * kickAt(t, c.noExplode - 0.1, 8) });
 };
@@ -219,8 +251,8 @@ SC.thermos = (lt, t, shot) => {
   screenSpace();
   const k = ramp(t, c.thermosW, c.thermosW + 0.35);
   ctx.fillStyle = `rgba(5,6,15,${0.5 * k})`; ctx.fillRect(0, 0, W, H);
-  thermos(1350, 520, 0.95, k, t, { heat: ramp(t, c.thermosW + 0.6, c.thermosW + 1.2) });
-  tagPill('NOTHING', 1350 + 175, 120, ramp(t, c.thermosW + 0.8, c.thermosW + 1.1), '#C8A8FF', 40);
+  thermos(1390, 600, 1.05, k, t, { heat: ramp(t, c.thermosW + 0.6, c.thermosW + 1.2) });
+  tagPill('NOTHING HERE', 1390, 150, ramp(t, c.thermosW + 0.8, c.thermosW + 1.1), '#C8A8FF', 44);
   return alPost({ flash: 0.2 * kickAt(t, c.thermosW, 9) });
 };
 // "But his spit? Touch your tongue to your lip. Feel that? Second five: his is boiling." his face, close; the viewer's
@@ -249,7 +281,9 @@ SC.boil = (lt, t, shot) => {
     bigWord('37°C', 1460, 520, 170, '#FF5A6E', E.outBack(ramp(t, c.bodyT + 0.45, c.bodyT + 0.75), 2), 0.05);
   }
   const fr = ramp(t, c.frost - 0.1, c.frost + 0.5);
-  if (fr > 0.01) { softDot(ctx, 760, 520, 300, '#BFF0FF', 0.25 * fr); stampWord('FROST?', 1440, 340, 130, '#BFF0FF', fr, -0.1); }
+  if (fr > 0.01) { softDot(ctx, 760, 520, 300, '#BFF0FF', 0.25 * fr); stampWord('ALMOST', 1450, 300, 110, '#BFF0FF', fr, -0.1); stampWord('FREEZING', 1460, 430, 130, '#BFF0FF', ramp(t, c.frost + 0.25, c.frost + 0.55), -0.1); }
+  const cl = ramp(t, c.steals - 0.1, c.steals + 0.4) * (1 - fr);
+  if (cl > 0.01) stampWord('COOLING...', 1450, 330, 110, '#7FE9FF', cl, -0.08);
   return alPost({ push: { k: 1 + 0.04 * lt / D, cx: 760, cy: 450 } });
 };
 // "Second ten. The real danger is in here. His lungs are empty, so the oxygen in his blood pours OUT... the wrong way."

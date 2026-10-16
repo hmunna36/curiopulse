@@ -98,7 +98,7 @@ In 1971, a valve opened on a Soyuz capsule, on its way home. Its three cosmonaut
 ## repress gap=0.80 tighten=0 tempo=1.00
 Second eighty. Her hand hits REPRESS.
 
-## wake gap=2.20 tighten=0 tempo=1.00
+## wake gap=2.90 tighten=0 tempo=1.00
 Second ninety. Air. And like Jim LeBlanc... he wakes up.
 
 ## palm gap=0.80 tempo=1.03
@@ -116,5 +116,5 @@ So: one more selfie. Helmet on. Goldfish bowl and all.
 ## button gap=0.80 tighten=0 tempo=1.00
 Turns out... we all live in a goldfish bowl. Ours is just very big... and very thin.
 
-## sub gap=1.80 tempo=1.03
+## sub gap=3.00 tempo=1.03
 Next week: what happens if you stop brushing your teeth. Subscribe... and keep your helmet on.

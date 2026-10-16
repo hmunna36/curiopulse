@@ -13,6 +13,30 @@ from timeline_lib import PALETTE as P, Timeline
 T = Timeline(sys.argv[1], tail=1.4)
 W, E, ev, find = T.W, T.E, T.ev, T.find
 
+# v3's alignment can crowd a phrase into the pause before it ("The last thing he" sat 0.3 s early, in silence):
+# realign.py re-times the words with whisper (.work/align.json). Whisper drags words across long pauses, so a block
+# takes its whisper times only when some of its words sit in silence (< -38 dB) and whisper puts fewer there.
+import json as _json, os as _os  # noqa: E401
+import numpy as _np
+_ap = _os.path.join(sys.argv[1], "align.json")
+if _os.path.exists(_ap):
+    _al = _json.load(open(_ap))
+    if len(_al) == len(T.words):
+        _lev = lambda a, b: 20 * _np.log10(_np.sqrt((T.audio[int(a * T.sr):max(int(a * T.sr) + 1, int(b * T.sr))] ** 2).mean()) + 1e-9)  # noqa: E731
+        _blocks = {}
+        for _i, _w in enumerate(T.words):
+            _blocks.setdefault(_w.get("block"), []).append(_i)
+        for _b, _idx in _blocks.items():
+            _sh = T.block(_b)["start"] - _al[_idx[0]].get("b0", T.block(_b)["start"])   # the block moved (a gap changed)
+            for _i in _idx:
+                _al[_i] = {"start": _al[_i]["start"] + _sh, "end": _al[_i]["end"] + _sh}
+            _old = sum(1 for _i in _idx if _lev(T.ws[_i], T.we[_i]) < -38)
+            _new = sum(1 for _i in _idx if _lev(_al[_i]["start"], _al[_i]["end"]) < -38)
+            if _old > 0 and _new < _old:
+                for _i in _idx:
+                    T.ws[_i] = T.words[_i]["start"] = _al[_i]["start"]
+                    T.we[_i] = T.words[_i]["end"] = _al[_i]["end"]
+                print(f"realigned {_b}: {_old} words in silence before, {_new} after")
 # v3's alignment can hand a pause to the next word: snap every word's start to its first loud frame.
 for i in range(len(T.words)):
     fl = T.first_loud(T.ws[i], span=max(0.02, T.we[i] - T.ws[i] + 0.1))
@@ -226,7 +250,7 @@ cues["clock"] = [
 ]
 # ---- the payoffs (the every-second rule): small ones (pay_) and big ones (big_); audio.py builds into each
 for name, t in {
-    "pay_dont": cues["dont"], "big_now": now + 0.05, "pay_tear": cues["tear"] + 0.3, "pay_rescue": cues["rescue"],
+    "pay_dont": cues["dont"], "big_now": E("now.") + 0.06, "pay_tear": cues["tear"] + 0.3, "pay_rescue": cues["rescue"],
     "pay_goldfish": cues["goldfish"], "pay_depress": cues["depressW"], "pay_picture": cues["picture"] + 0.3,
     "big_myth": cues["noExplode"] + 0.4, "pay_skin": cues["skin"], "big_mute": mute, "pay_thermos": cues["thermosW"] + 0.4,
     "big_boil": cues["boilingW"] + 0.2, "pay_body": cues["bodyT"], "pay_frost": cues["frost"], "big_out": cues["pours"],

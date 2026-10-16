@@ -501,8 +501,15 @@ function alHairBlown(c, k, t) {
   }
 }
 function alCheeks(c, k, t) {
-  for (const s of [-1, 1]) { const wob = 1 + 0.04 * Math.sin(t * 13 + s); ellipse(c, s * 36, 30, 26 * k * wob, 22 * k * wob, 'rgba(242,170,140,0.95)'); ellipse(c, s * 40, 24, 9 * k, 6 * k, 'rgba(255,220,200,0.7)'); }
-  line(c, -12, 40, 12, 40, 5, '#8A3A3A');
+  // a mouthful of held air: both cheeks bulge out past the face, flushed, with a shine; the lips pressed tight
+  for (const s of [-1, 1]) {
+    const wob = 1 + 0.05 * Math.sin(t * 13 + s);
+    ellipse(c, s * 44, 26, 34 * k * wob, 30 * k * wob, '#E89A7A');
+    ellipse(c, s * 42, 24, 31 * k * wob, 27 * k * wob, '#F4AE8C');
+    ellipse(c, s * 40, 30, 18 * k, 12 * k, 'rgba(255,90,90,0.35)');
+    ellipse(c, s * 48, 12, 9 * k, 6 * k, 'rgba(255,240,230,0.75)');
+  }
+  c.beginPath(); c.moveTo(-14, 38); c.quadraticCurveTo(0, 33 + 4 * k, 14, 38); c.lineWidth = 6; c.strokeStyle = '#8A3A3A'; c.lineCap = 'round'; c.stroke();
 }
 // his tongue out, with spit that bubbles (boil 0..1) and a little frost on it (cold from the boiling)
 function alTongue(c, k, boil, t) {
@@ -527,8 +534,8 @@ function alFrost(c, k) {
 }
 // the cloud of a big breath out (k 0..1: how far it has travelled), drawn from the mouth toward the right
 function alBreathCloud(c, k, t) {
-  for (let i = 0; i < 9; i++) {
-    const f = clamp(k * 1.3 - i * 0.04), x = 30 + 220 * f * (0.6 + 0.4 * hash(i)), y = 40 + (hash(i * 3) - 0.5) * 70 * f, r = 12 + 34 * f;
-    softDot(c, x, y, r, '#F4F8FF', 0.55 * (1 - f) + 0.1);
+  for (let i = 0; i < 14; i++) {
+    const f = clamp(k * 1.25 - i * 0.03), x = 40 + 520 * f * (0.55 + 0.45 * hash(i)), y = 44 + (hash(i * 3) - 0.5) * 140 * f - 40 * f, r = 18 + 60 * f;
+    softDot(c, x, y, r, '#F4F8FF', 0.75 * (1 - f) + 0.08);
   }
 }
