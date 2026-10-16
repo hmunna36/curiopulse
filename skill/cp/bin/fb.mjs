@@ -3,6 +3,8 @@
 // "CurioPulse Page Publisher" (App ID 2668049813624414). Written 16 Oct 2026; NOT yet proven end to end: the first
 // `reel` is the test. No dependencies; Node 22+.
 //
+//   node fb.mjs token --system         store the Page token from a SYSTEM-USER token (one hidden prompt, no app secret): the way for a
+//                                       Page owned by a business portfolio (16 Oct 2026: /me/accounts is empty for such a Page).
 //   node fb.mjs token                  store a Page token. You paste a user token from the Graph API Explorer (hidden input)
 //                                       and then the app secret (hidden input); the user token is exchanged for a long-lived
 //                                       one, the Page token is taken from /me/accounts (never expires when it comes from a
@@ -24,6 +26,7 @@ import readline from 'node:readline';
 const V = 'v25.0';
 const G = `https://graph.facebook.com/${V}`;
 const APP_ID = '2668049813624414';
+const PAGE_ID = '1390449614145195'; // the Page "CurioPulse" (Business Suite asset id; read fine in the Explorer 16 Oct 2026)
 const REPO_RAW = 'https://raw.githubusercontent.com/hmunna36/curiopulse/main';
 const CFG = path.join(os.homedir(), '.config/cp/facebook.json');
 const IST_MS = 5.5 * 3600 * 1000;
@@ -57,6 +60,16 @@ async function hidden(prompt) {
   return v.trim();
 }
 
+async function setSystemToken() {
+  // a system-user token (Business Settings > System users > Generate token): no app secret, no exchange; the Page token is read by id
+  const tok = await hidden('Paste the system-user token (input hidden), then press Return: ');
+  if (tok.length < 40 || /\s/.test(tok)) die('that does not look like an access token');
+  const page = await graph('GET', PAGE_ID, {fields: 'id,name,access_token'}, tok);
+  if (!page.access_token) die(`the token reads the Page "${page.name}" but returned no Page access token: check that the system user has the Page (Content) and the app, and that pages_manage_posts is ticked`);
+  fs.mkdirSync(path.dirname(CFG), {recursive: true});
+  fs.writeFileSync(CFG, JSON.stringify({page_id: page.id, page_name: page.name, page_token: page.access_token, tasks: page.tasks, via: 'system-user', obtained: new Date().toISOString()}, null, 2) + '\n', {mode: 0o600});
+  log(`saved the Page token for "${page.name}" (page id ${page.id}, tasks: ${(page.tasks ?? []).join(', ') || '?'}) to ${CFG}`);
+}
 async function setToken() {
   const short = await hidden('Paste the user token from the Graph API Explorer (input hidden), then press Return: ');
   if (short.length < 40 || /\s/.test(short)) die('that does not look like an access token');
@@ -64,8 +77,13 @@ async function setToken() {
   if (secret.length < 20 || /\s/.test(secret)) die('that does not look like an app secret');
   const ex = await graph('GET', 'oauth/access_token', {grant_type: 'fb_exchange_token', client_id: APP_ID, client_secret: secret, fb_exchange_token: short});
   const pages = await graph('GET', 'me/accounts', {fields: 'id,name,access_token,tasks', limit: 50}, ex.access_token);
-  const list = pages.data ?? [];
-  if (!list.length) die('the token manages no Pages: in the Graph API Explorer tick pages_show_list and choose the CurioPulse Page when Facebook asks which Pages to allow');
+  let list = pages.data ?? [];
+  if (!list.length) {
+    // a Page owned by a business portfolio does not show in /me/accounts: ask for it by id (16 Oct 2026: the Explorer read it fine)
+    const direct = await graph('GET', PAGE_ID, {fields: 'id,name,access_token'}, ex.access_token).catch(() => null);
+    if (direct?.access_token) list = [direct];
+  }
+  if (!list.length) die('the token reaches no Page: in the Graph API Explorer tick pages_show_list, pages_manage_posts and pages_read_engagement and choose the CurioPulse Page when Facebook asks which Pages to allow');
   const page = list.find((p) => /curiopulse/i.test(p.name)) ?? (list.length === 1 ? list[0] : null);
   if (!page) die(`several Pages and none is named CurioPulse: ${list.map((p) => p.name).join(', ')}`);
   fs.mkdirSync(path.dirname(CFG), {recursive: true});
@@ -115,8 +133,9 @@ async function status(id) {
 }
 
 const [cmd, ...args] = process.argv.slice(2);
-if (cmd === 'token') await setToken();
+if (cmd === 'token' && args.includes('--system')) await setSystemToken();
+else if (cmd === 'token') await setToken();
 else if (cmd === 'whoami') await whoami();
 else if (cmd === 'reel' && args[0]) await reel(args[0], args);
 else if (cmd === 'status' && args[0]) await status(args[0]);
-else console.log('usage: fb.mjs token | whoami | reel <publish.json> [--at ISO] [--dry-run] | status <video_id>');
+else console.log('usage: fb.mjs token [--system] | whoami | reel <publish.json> [--at ISO] [--dry-run] | status <video_id>');

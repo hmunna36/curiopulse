@@ -14,7 +14,15 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
     NEW Page (below). Never open, create or suggest any other account.
   - If the user ever has a token, route B takes over automatically. `ig.mjs route` tells which route is live.
 
-## Facebook Page by API (16 Oct 2026, in progress): `bin/fb.mjs`
+## Facebook Page by API (16 Oct 2026): `bin/fb.mjs` WORKS (first Reel accepted)
+Token path that worked: a SYSTEM USER (Business Settings > Users > System users: "CurioPulse Publisher", Employee; assigned the
+Page with Content access, and the app "CurioPulse Page Publisher" with Develop app; Generate token: app, 60 days, pages_manage_posts +
+pages_read_engagement + pages_show_list), then `fb.mjs token --system` (one hidden prompt) saves a Page token that does NOT expire
+(~/.config/cp/facebook.json, chmod 600). The user-token route (`fb.mjs token`) fails for this Page: a portfolio-owned Page is absent
+from /me/accounts. First test: dominant-eye scheduled on the Page for 18 Oct 21:00 IST (video 1935907214059208): upload complete,
+processing in progress, scheduled_publish_time right, caption with "Follow CurioPulse". STILL TO CONFIRM: that it publishes at the time
+(check `fb.mjs status <id>` and the Page on 18 Oct). Until then the Page stays on Business Suite in the routines.
+(Older notes, kept:)
 The second Meta app "CurioPulse Page Publisher" (App ID 2668049813624414, use case "Manage everything on your Page";
 permissions pages_show_list, pages_read_engagement, pages_manage_posts; development mode, no App Review) lets the Page take
 Reels by API, and Facebook SCHEDULES natively (10 min to 75 days ahead; no Mac job needed). The user stores the token:
