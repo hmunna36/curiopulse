@@ -1,0 +1,28 @@
+# Narration for "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# 30-35 s, 66-76 words (every Short since 16 Oct 2026). Hook formula: The Direct Address, as the test the viewer does
+# on the spot, on the screen itself (reference/hooks.md), with The Impossible Claim as the answer ("Your eye has a HOLE
+# in it."). The rules of 15 Oct 2026: the hook is the test, the answer starts by 5.0 s, the lesson keeps pointing back
+# to the viewer's own dot in everyday words, nobody says "subscribe", no pill, and the button runs straight back into
+# the hook when the Short loops ("Show-off." / "Close your left eye...").
+
+## hook gap=0.08 tighten=0.22 tempo=1.06
+Close your left eye, stare at the X, and bring your phone closer.
+
+## answer gap=0.24 tighten=0.35 tempo=1.00
+[mischievously] The dot vanished? Your eye has a HOLE in it.
+
+## cable gap=0.42 tighten=0.4 tempo=1.04
+That's where the cable to your brain plugs in... no room for light sensors.
+
+## nobody gap=0.30 tighten=0 tempo=1.00
+So the dot landed... on nobody.
+
+## paint gap=0.55 tighten=0.4 tempo=1.03
+And you didn't see a hole there... because your brain paints over it with whatever's around it.
+
+## octopus gap=0.50 tighten=0.4 tempo=1.02
+An octopus? Its eye is wired from behind... no hole at all.
+
+## button gap=0.72 tighten=0 tempo=1.00
+[sarcastic] Show-off.
