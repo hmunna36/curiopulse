@@ -1,4 +1,4 @@
-# Publishing: GitHub, YouTube 11:30 AM + 11:30 PM IST, Instagram 18:30 + 21:00 IST (next free slot on each)
+# Publishing: GitHub, YouTube 11:30 AM + 11:30 PM IST, Meta: Facebook-only, one Reel a day at 21:00 IST while Instagram is suspended (normally Instagram 18:30 + 21:00)
 
 The user's schedule: **two Shorts a day, each on both platforms. YouTube takes the next free of two daily slots,
 11:30 AM and 11:30 PM IST (user, 2 Oct 2026: the 11:30 AM releases brought subscribers). Instagram takes the next
@@ -7,12 +7,37 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
 - `yt.mjs upload … --schedule=auto` picks both slots and writes them into `publish.json` (`youtube.publishAt`,
   `instagram.publishAt`).
 - YouTube goes through the Data API.
-- **Instagram goes through Meta Business Suite in the user's Chrome** (route A below). The user's Facebook account
-  is blocked, and Meta developer apps (the only way to get an Instagram API token) can only be created from a
-  Facebook account. So no API token exists.
-  - Never suggest opening another Facebook account to get around the block; Meta's terms forbid it.
-  - If the user ever has a token (a successful appeal, or someone with a Facebook account adds @curio_pulse_tv as
-    an Instagram tester on their app), route B takes over automatically. `ig.mjs route` tells which route is live.
+- **Instagram goes through Meta Business Suite in the user's Chrome** (route A below). The old Facebook account was
+  created in the brand's name, so it can never pass Meta's ID check (the user, 16 Oct 2026); it is blocked, and no
+  Meta developer app (the only way to an Instagram API token) could be made from it. So no API token exists.
+  - On 16 Oct 2026 the user made a personal Facebook account in their real name ("Harshad Munna A"); it manages the
+    NEW Page (below). Never open, create or suggest any other account.
+  - If the user ever has a token, route B takes over automatically. `ig.mjs route` tells which route is live.
+
+## FACEBOOK-ONLY MODE (since 16 Oct 2026; the user: "1 yes") — read this before any Meta step
+
+@curio_pulse_tv was SUSPENDED on 16 Oct 2026 ~20:15 IST (an appeal is pending; if it fails, the account is gone for
+good). Chrome is now signed in to the user's NEW Facebook account, which manages a NEW Page. Until the user says
+Instagram is back:
+- **Where:** the new Page **CurioPulse**, https://www.facebook.com/profile.php?id=61595716220090 (Business Suite
+  asset_id 1390449614145195; still open Business Suite from `/latest/home`). Facebook only: the Reel composer's
+  "Share to" lists only CurioPulse. Never click "Connect Instagram", never open instagram.com, never log in to
+  anything. If a login page, a checkpoint or "suspended" shows up anywhere, stop and report it.
+- **How many:** ONE Reel a day, at 21:00 IST (the Meta slot in `yt.mjs`/`ig.mjs` is `['21:00']` for this mode). A
+  brand-new account is watched closely: at most ONE upload per run, no rescheduling, no opening composers you do
+  not finish, no other edits on the Page.
+- **Which:** the first entry of "Facebook backlog" in `topics.md` (oldest first). Every run first appends its own
+  Short's Reel to the end of that list (files and caption into `~/Desktop/instagram-pending/` as before), then
+  schedules the FIRST unscheduled entry at the next free 21:00 slot, marks it there with the date, and records the
+  slot (`ig.mjs busy <date>T21:00`). The 48-hour check reads the Page's Content → Published / Scheduled instead.
+- **Caption:** the Reel's own caption with its one-word question, but the follow line becomes "Follow CurioPulse
+  for a new strange question every day 🔔" (no @curio_pulse_tv: the account is suspended). Type it with real
+  keystrokes, as always, and read it back in Content → Scheduled.
+- **First-visit popups** under the new account ("Save time with Meta Business Suite", "Switch between your user
+  profiles", "Get started"): close them with their ✕ or "Done"; never "Get started", never accept anything.
+- The rest of route A (prepare → parts → collector input → Add video → caption → Schedule → read back) is unchanged.
+- When the user says Instagram is back: SLOTS go back to `['18:30', '21:00']`, the backlog goes to Instagram as well,
+  and the dead Instagram schedules (`instagram_suspended_16oct` in `ig-queue.json`) are checked first.
 
 ## Packaging (the conventions the first Shorts set; the user didn't change them)
 

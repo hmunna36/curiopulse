@@ -30,6 +30,14 @@ the blind spot (it happens on the screen itself). A refill keeps to tests; anyth
 - [ ] Why does your foot SWITCH direction? — the test, sitting down: circle your right foot clockwise, then draw a 6 in the air with your right hand: your foot flips. He tries it at his desk and his foot betrays him; the brain's movement plans for one side of the body like to run in step, so the hand's circle drags the foot's along (hedged: exactly why is not settled). Caption question: "Could you keep it going?"
 - [ ] Why can't you see your own EYES move in a mirror? — the test: in a mirror, look from your left eye to your right eye: you never catch them moving. Then try it in your phone's selfie camera: now you can. He stares into the bathroom mirror, then at his phone; during each eye jump the brain blanks the picture (saccadic masking), and the camera's tiny delay shows you the jump after it is over. Caption question: "Did you catch them?"
 
+## Facebook backlog (FACEBOOK-ONLY MODE since 16 Oct 2026; `reference/publish.md`)
+
+One Reel a day goes to the NEW Facebook Page CurioPulse at 21:00 IST, oldest first. Each run appends its own Reel at
+the end, then schedules the FIRST entry without a date. Files: `~/Desktop/instagram-pending/`.
+
+- ring-finger — 4-ring-finger-17Oct-1830.mp4 + 4-ring-finger-caption.txt — scheduled 17 Oct 2026 21:00 IST (16 Oct evening)
+- dominant-eye — 5-dominant-eye-18Oct-1830.mp4 + 5-dominant-eye-caption.txt
+
 ## Held (no test the viewer can do on the spot yet; `/cp next` never takes these)
 
 Kept from the queue of 10-14 Oct. Each comes back to the Queue only with a safe test the viewer can do while watching.
