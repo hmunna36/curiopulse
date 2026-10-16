@@ -1,0 +1,30 @@
+# Narration for "Why Does Your Finger JUMP When You Close One Eye? 👁️"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# 30-35 s, 66-76 words (every Short since 16 Oct 2026). Hook formula: The Direct Address, as the test the viewer does
+# on the spot (reference/hooks.md). The rules of 15 Oct 2026: the hook is the test, the answer starts by 5.0 s, the
+# lesson keeps pointing back to the viewer's own finger in everyday words, nobody says "subscribe", no pill, and the
+# button runs straight back into the hook when the Short loops ("...and winking." / "Point your finger...").
+
+## hook gap=0.08 tighten=0.22 tempo=1.04
+Point your finger at something. Shut one eye... now the other.
+
+## jump gap=0.10 tighten=0 tempo=1.00
+[excited] It JUMPED!
+
+## answer gap=0.36 tighten=0.40 tempo=1.00
+Relax. One eye is the boss... the other's the intern.
+
+## each gap=0.62 tempo=1.02
+Each eye sees your finger in a different spot,
+
+## aims gap=0.14 tighten=0.5 tempo=1.02
+so your brain aims with just one: the boss.
+
+## payoff gap=0.55 tighten=0.5 tempo=1.00
+Shut the boss, and you get the intern's picture... jump.
+
+## weird gap=0.75 tighten=0.55 tempo=1.00
+[curious] Two in three of us have a right-eye boss... and it doesn't always match your writing hand.
+
+## button gap=0.85 tighten=0 tempo=1.00
+The intern still does depth... and winking.

@@ -42,6 +42,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do Your Ears Ring After a Concert? | 47 s | [`videos/ears-ring`](videos/ears-ring) | [15 Oct 2026](https://youtube.com/shorts/ORFb3ma5RyA) |
 | Why Does a Doorknob Shock You? | 33 s | [`videos/doorknob-shock`](videos/doorknob-shock) | [15 Oct 2026](https://youtube.com/shorts/Vf-6HscC28w) |
 | Why Can't You Lift Your Ring Finger? | 31 s | [`videos/ring-finger`](videos/ring-finger) | [16 Oct 2026](https://youtube.com/shorts/jmFlKDR_P-8) |
+| Why Does Your Finger Jump When You Close One Eye? | 32 s | [`videos/dominant-eye`](videos/dominant-eye) | — |
 
 Each folder has:
 - the finished MP4;
