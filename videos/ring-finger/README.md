@@ -27,7 +27,7 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 | Platform | Link | Release |
 |---|---|---|
 | YouTube Shorts | https://youtube.com/shorts/jmFlKDR_P-8 | 16 Oct 2026 11:30 IST (scheduled; thumbnail = cover.jpg, set in Studio; captions; playlist "Why Does Your Body Do That?") |
-| Instagram Reels | — | PENDING for 17 Oct 2026 18:30 IST: Chrome's window was hidden, so Business Suite's composer would not open; the Reel, caption and cover are in `~/Desktop/instagram-pending/` (4-ring-finger-*) |
+| Instagram Reels | — | Scheduled 17 Oct 2026 18:30 IST (Business Suite, Instagram only; caught up by the 16 Oct 06:00 run after the 15 Oct run's Chrome window was hidden) |
 
 **Title:** Why Can't You Lift Your RING FINGER? 💍
 
