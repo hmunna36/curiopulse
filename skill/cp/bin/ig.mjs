@@ -256,7 +256,7 @@ async function queue(specPath, at) {
   const t = Date.parse(when);
   if (Number.isNaN(t)) die(`not a date: ${when}`);
   if (t < Date.now() + 5 * 60 * 1000) die(`the release time must be at least 5 minutes away: ${when}`);
-  const clash = q.posts.find((p) => p.slug !== slug && p.status !== 'cancelled' && Math.abs(Date.parse(p.publishAt) - t) < 3 * 3600 * 1000);
+  const clash = q.posts.find((p) => p.slug !== slug && p.status !== 'cancelled' && Math.abs(Date.parse(p.publishAt) - t) < 2 * 3600 * 1000);   // 2 h, the same rule as slotTaken (18:30 and 21:00 are 2.5 h apart)
   if (clash || slotTaken(takenTimes({busy: q.busy, posts: []}), t)) log(`note: ${istTime(t)} already has a Reel (${clash?.slug ?? 'booked outside the API'}); queuing anyway`);
   const rel = path.relative(path.resolve(base, '../..'), file).split(path.sep).join('/'); // videos/<slug>/<file>
   const cover = spec.cover ? path.relative(path.resolve(base, '../..'), path.resolve(base, spec.cover)).split(path.sep).join('/') : null;

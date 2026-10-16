@@ -353,6 +353,13 @@ proves nothing.
 
 ## Route B: the Instagram API (only when `ig.mjs route` says `api`)
 
+**Route B and the Facebook Page (17 Oct 2026, blind-spot).** Since 16 Oct late evening a token exists, so `ig.mjs route`
+says `api` and the Reel goes by `ig.mjs queue`. The Page then needs its own schedule at the same slot: Business Suite
+with Post to = **CurioPulse only** (untick curio_pulse_tv and read the field back), never both ticked, or Instagram gets
+the Reel twice. Don't run `ig.mjs busy` for it (the API queue already holds the slot). On 17 Oct that composer's upload
+looped and the Page copy was left pending in `~/Desktop/instagram-pending/` (`videos.md`, blind-spot); `fb.mjs reel`
+is the next path once its first Reel is seen going out.
+
 `ig.mjs queue videos/<slug>/publish.json` books the Reel for `instagram.publishAt` and keeps a spool copy in
 `~/.cache/cp/ig-spool/`. Then the launchd job `com.curiopulse.ig-publish`, installed by `ig.mjs token`, takes over:
 - it runs `ig.mjs run-due` at 06:10 and 18:10 (20 minutes before each slot) and at login;

@@ -1548,3 +1548,46 @@ Direct Address, the test itself, with the jolt as its own take, "It JUMPED!"):
   marked busy. The Reels scheduled from 16 Oct 21:00 on will most likely not go out while the account is suspended;
   the next run's 48-hour check will show it.
 
+
+**blind-spot** (17 Oct 2026, the nightly routine: started 00:03 IST, YouTube scheduled by 00:58; short arm, 73 words →
+31.20 s; hook formula: The Direct Address, the test itself, with The Impossible Claim as the answer, "Your eye has a
+HOLE in it."; YouTube wn5ow9UxzoI, 17 Oct 11:30 IST, playlist Your Brain Is Weird):
+- **A test on the screen itself: we ARE his phone.** The X and the red dot are drawn last, in screen space, "on the
+  glass" (`bed.js` `testCard`, `CARD`): X at (185, 600), dot at (905, 640), radius 50, 720 px apart, the dot 40 px
+  lower (the blind spot sits 1.5° below the line of sight). On a phone showing the frame 6.4–7.6 cm wide that is
+  about 5 cm, so the dot vanishes at about 13–23 cm. The wall around both is plain (no edge or lamp within ~250 px of
+  the dot), they stay on for the first 9 s, and the loop brings them back. Behind them, tight on him in bed, his palm
+  already flat over his left eye (frame 0), and the camera pushes in as she says "bring your phone closer".
+- **The rig's palm over an eye** (`bdPalm`, `BD_ARM.palm`): the forearm and the back of the hand are drawn again in
+  the layer's `post` (the head is drawn last); the fingers point along the arm's direction (`atan2(d) + π/2`; the
+  first try pointed them back at the elbow). Rig side names: the arm `R` and the face's `shutL` are both screen right.
+- **eye-rub-stars' eyeball, rewired** (`eyecut.js`): twelve sensors along the back wall, each wire running over the
+  INSIDE of the wall to one plug where the cable leaves (no sensor can stand there: the hole); light as beams that
+  cross at the lens, the X's onto the sensor straight back, the dot's onto the plug (a solid red bead drawn last, like
+  the dot on the screen). `behind: true` is the octopus: the wires leave each sensor out of the back of the wall, the
+  wall is whole and a sensor stands where our hole is. The two side by side (YOU / OCTOPUS) told "wired from behind"
+  at a glance.
+- **Comedy that pointed back to the test:** the dot lands "on nobody" while the two neighbours turn and stare (? ?) and
+  a cricket chirps; a double-take in the hook (on "vanished?" his eye darts to where the dot was and back) replaced a
+  held gasp face in round 2.
+- New world files: `bed.js` (bedroom from the phone's side, the hero in bed, the window on his eye), `eyecut.js`,
+  `brainpaint.js` (the brain under a WHAT YOU SEE screen showing the viewer's own test with a hole; a brush that dabs
+  the wall beside it and paints it over in strokes), `octo.js` (an octopus character: bar-shaped pupils, eight
+  tapered tentacles with suckers, one over its eye, one holding a phone with the test card, sunglasses; the sea).
+- Voice: 423 + 65 characters and about 180 for auditions (the octopus line without its `[curious]` tag, which had
+  put the take 4 dB low with "from" at −43 dB in the speech band; "Show-off." on four seeds: whisper heard "Love." on
+  the first). The hook lost "slowly" and the answer's gap went to 0.24 s: the answer moved from 5.38 s to 4.91 s.
+- Two QA rounds, every item 8+ in round 2; the final MP4 came from `src/build.sh` (timeline.json and mix.wav
+  byte-identical to round 1's). About 3.7 minutes a render.
+- **Instagram went by the API (route B) for the first time from a routine**: `ig.mjs queue` booked 19 Oct 21:00 IST
+  (dominant-eye holds 18:30 that day). Its clash note used a 3-hour window and called 18:30 and 21:00 a clash; it is
+  2 hours now, the same as `slotTaken`.
+- **Facebook did not go:** with Instagram on the API, the Page needs its own schedule. Business Suite's Create reel
+  (Post to: CurioPulse only, Instagram unticked, read back) took the file (SHA-256 checked) and the typed caption, but
+  the upload looped (95 → 76 → 47 → 12 → 90 %), Next stayed disabled, and Cancel, Back and the trash did nothing
+  ("At least one video is required."); only OPTIONS preflights to rupload showed. The tab was left open (closing a
+  stuck composer hung twice before). Files in `~/Desktop/instagram-pending/6-blind-spot-*` with a FACEBOOK ONLY note.
+  `fb.mjs reel` (the Page by API) is the obvious next path once dominant-eye's API Reel is seen going out on 18 Oct.
+- Studio: the custom thumbnail showed grey; cover.jpg went in through the file input. A hidden "Uploading..." text
+  stays in the DOM after the upload: check the picture, not the text. A `querySelectorAll('*')` loop in the
+  JavaScript tool froze Business Suite's renderer for 45 s: query the one element instead.
