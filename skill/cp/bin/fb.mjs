@@ -112,6 +112,7 @@ async function reel(file, args) {
   if (t > Date.now() + 74 * 86400 * 1000) die('Facebook schedules at most 75 days ahead');
   const caption = (spec.instagram?.caption ?? '').replace(/Follow @curio_pulse_tv/g, 'Follow CurioPulse');
   const dry = args.includes('--dry-run');
+  if (spec.facebook?.videoId && !args.includes('--force')) die(`already on the Page (video ${spec.facebook.videoId}, ${spec.facebook.publishAt}): use \`status ${spec.facebook.videoId}\`, or --force to upload again`);
   log(`${dry ? 'would schedule' : 'scheduling'} ${spec.slug ?? rel} on the Page "${c.page_name}" for ${new Date(t + IST_MS).toISOString().slice(0, 16).replace('T', ' ')} IST from ${url}`);
   if (dry) return;
   const head = await fetch(url, {method: 'HEAD'});
@@ -124,6 +125,8 @@ async function reel(file, args) {
   log(`uploaded (video ${start.video_id}); finishing`);
   const fin = await graph('POST', `${c.page_id}/video_reels`, {upload_phase: 'finish', video_id: start.video_id, video_state: 'SCHEDULED', scheduled_publish_time: Math.floor(t / 1000), description: caption}, c.page_token);
   log(`finish: ${JSON.stringify(fin).slice(0, 200)}`);
+  spec.facebook = {videoId: start.video_id, publishAt: new Date(t + IST_MS).toISOString().slice(0, 19) + '+05:30', via: 'api', scheduledAt: new Date().toISOString()};
+  fs.writeFileSync(file, JSON.stringify(spec, null, 2) + '\n');
   log(`check it with: node ${process.argv[1]} status ${start.video_id}`);
 }
 async function status(id) {
@@ -138,4 +141,4 @@ else if (cmd === 'token') await setToken();
 else if (cmd === 'whoami') await whoami();
 else if (cmd === 'reel' && args[0]) await reel(args[0], args);
 else if (cmd === 'status' && args[0]) await status(args[0]);
-else console.log('usage: fb.mjs token [--system] | whoami | reel <publish.json> [--at ISO] [--dry-run] | status <video_id>');
+else console.log('usage: fb.mjs token [--system] | whoami | reel <publish.json> [--at ISO] [--dry-run] [--force] | status <video_id>');

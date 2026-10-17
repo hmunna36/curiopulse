@@ -14,6 +14,21 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
     NEW Page (below). Never open, create or suggest any other account.
   - If the user ever has a token, route B takes over automatically. `ig.mjs route` tells which route is live.
 
+## META BY API (the user, 17 Oct 2026: "update all pipelines to upload via API for instagram and fb") — the normal route
+- **Instagram:** `ig.mjs queue <publish.json>` (token in ~/.config/cp/instagram.json; ~59 days, the job refreshes it weekly). The launchd
+  job `com.curiopulse.ig-publish` runs `ig.mjs run-due` at 18:10 and 20:40 IST (and at login): it uploads the MP4 from its public GitHub
+  address (the resumable upload is refused for this kind of token), waits for processing, sleeps to the slot and publishes. THE MAC MUST
+  BE ON AND AWAKE at 18:10 / 20:40. The API cannot schedule; `ig.mjs upcoming` lists the queue and the last results.
+  First proof: dominant-eye (19 Oct 18:30), blind-spot (19 Oct 21:00), two-noses (20 Oct 18:30). The morning runs of 17 Oct already queued
+  blind-spot and two-noses this way (the route flipped to `api` when the token was saved).
+- **Facebook Page:** `fb.mjs reel <publish.json>` uploads and schedules natively for `instagram.publishAt` (no Mac needed at the time);
+  `fb.mjs status <id>` must say `scheduled` / `ready`. Scheduled so far: ring-finger (Business Suite, 17 Oct 21:00), dominant-eye
+  (API, 18 Oct 21:00, status ready/scheduled), blind-spot (API, 19 Oct 21:00), two-noses (API, 20 Oct 18:30).
+- **Checking that Reels really went out:** Instagram `ig.mjs upcoming` (results) and instagram.com only if needed; the Page `fb.mjs status <videoId>`
+  (`publish_status: published`) or the Page's Content → Published list. A miss is reported first.
+- **Fallback:** Business Suite (Route A, below) when an API fails twice. Tokens/permissions errors are for the user.
+- **Never** create or change Meta apps, system users or tokens from a run; never edit the Instagram profile.
+
 ## Facebook Page by API (16 Oct 2026): `bin/fb.mjs` WORKS (first Reel accepted)
 Token path that worked: a SYSTEM USER (Business Settings > Users > System users: "CurioPulse Publisher", Employee; assigned the
 Page with Content access, and the app "CurioPulse Page Publisher" with Develop app; Generate token: app, 60 days, pages_manage_posts +

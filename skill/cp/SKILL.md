@@ -214,28 +214,31 @@ Read each reference file when you reach its phase. They are short; don't skip th
     next free one at 18:30 or 21:00 IST that is not before the YouTube release) into `instagram.publishAt`. Confirm with
     `yt.mjs status <id>`, then check the Short's own thumbnail in Studio and upload cover.jpg there if the slot shows
     anything else (`reference/publish.md`, step 2).
-16. (Facebook-only mode of 16 Oct 2026 ended the same evening: Instagram is back, linked with the new Page in one portfolio; Post to BOTH ticked, slots 18:30 and 21:00; see `reference/publish.md`.) **Instagram**, in the slot from `instagram.publishAt`: 18:30 or 21:00 IST (`reference/publish.md`). Every Short
-    gets a Reel, from both daily routines (user, 4 Oct 2026), unless publish.json says `"skip": true`:
-    - **Route A (Business Suite, the normal case):**
-      1. `node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <scratchpad>/ig-<slug>`
-         builds the Reel-spec copy and splits it into parts of ≤ 9 MB.
-      2. In Claude in Chrome: open Business Suite, upload the parts into a collector input, reassemble, and check
-         the SHA-256.
-      3. Create Reel → Add video (with the click hook) → the caption, TYPED with real keystrokes (a pasted caption is
-         lost: `reference/publish.md`) → Schedule, on the sheet's `date` at the sheet's
-         `time` (18:30 or 21:00; never assume 18:30). **Post to: leave BOTH ticked, "CurioPulse" (the Facebook Page)
-         and "curio_pulse_tv" (Instagram), so one schedule releases the Reel on both (user, 10 Oct 2026; details
-         and the Facebook-only recipe in `reference/publish.md` step 4).** The caption's last line is the Follow line
-         for Instagram ("Follow @curio_pulse_tv for the next one: …"); that is fine on both. Read the Post to field
-         back before Add video. Check Content → Scheduled shows the Reel on Facebook too (one row per place or one
-         row naming both) and write what you saw in `videos.md` the first time. If Facebook refuses and Instagram
-         accepts, ship Instagram and report "Facebook still to post" (never skip Instagram for it).
-      4. Verify it in Content → Scheduled, then record the slot with the sheet's `afterScheduling` command
-         (`ig.mjs busy <date>T<HH:MM>`).
-      - If Chrome isn't connected, or Business Suite wants a password, don't guess. Report "Instagram still to
-        schedule" and leave the prepared sheet, so the user or the next run can finish it.
-    - **Route B (API):** `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json`; the launchd job
-      publishes it. Check `ig.mjs job-status` and `ig.mjs whoami`.
+16. **Meta: Instagram AND the Facebook Page, both by API (the user, 17 Oct 2026: "update all pipelines to upload via API
+    for instagram and fb"; the tokens were set up on 16 Oct; `reference/publish.md`, "META BY API"). Every Short gets a Reel on
+    both, in the slot from `instagram.publishAt` (18:30 or 21:00 IST), unless publish.json says `"skip": true`.** The Short's
+    folder must already be pushed (step 14): both APIs fetch the MP4 from its public GitHub address.
+    1. **Instagram:** `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json`. It books the Reel in the queue and
+       the Mac's launchd job (18:10 and 20:40) uploads and publishes it at the slot (the Mac must be on and awake then).
+       Check `ig.mjs upcoming` shows it, and `ig.mjs whoami` is happy.
+    2. **Facebook Page:** `node ~/.claude/skills/cp/bin/fb.mjs reel videos/<slug>/publish.json`. It uploads and SCHEDULES the
+       Reel natively on Facebook for the same time (the caption's Follow line becomes "Follow CurioPulse…"), and writes
+       `facebook.videoId` into publish.json. Then `fb.mjs status <videoId>`: `publish_status` must read `scheduled` (processing
+       may take a few minutes; wait for `ready`).
+    3. **If either API fails** (an error, a token problem, `status` shows an error): do NOT retry in a loop. One retry after
+       a minute, then fall back to Route A below for that platform and say so in the report. A token or permission error
+       (code 190, 10, 200) needs the user: report it, do not try to fix it.
+    4. **Route A (Business Suite in Chrome) is the FALLBACK only:**
+       1. `node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <scratchpad>/ig-<slug>` builds the
+          Reel-spec copy and splits it into parts of ≤ 9 MB.
+       2. In Claude in Chrome: open Business Suite, upload the parts into a collector input, reassemble, check the SHA-256.
+       3. Create Reel → Add video (with the click hook) → the caption, TYPED → Schedule at the sheet's `date` and `time`.
+          Post to: Instagram and the Page ticked as needed (`reference/publish.md`). Read the row back in Content → Scheduled.
+       4. Record the slot with the sheet's `afterScheduling` command (`ig.mjs busy <date>T<HH:MM>`).
+       - If Chrome isn't connected, or Business Suite wants a password, don't guess: report "still to schedule" with the
+         prepared sheet. Business Suite's upload loops when the window is hidden: after one stall, hand the files over.
+    5. **Be gentle with both accounts** (they were suspended once, 16 Oct 2026): one upload per run, never bulk edits,
+       never edit the Instagram profile (link, bio, name), never create or change Meta apps, users or tokens.
 17. **Record:**
     - put the YouTube link, both release times and the queue status into the README and the root table;
     - commit and push again with publish-short.sh. Nothing may stay uncommitted, or the cleanup refuses.
@@ -361,7 +364,8 @@ own level, which in a routine run is medium. So:
   and YouTube Analytics (`numbers`: the log every run starts with; `analytics [n] [--curve <videoId>]`: stayed to
   watch, average % viewed, subscribers per 1,000 views, one video's retention curve). The length arms, the test's
   dates and the arm since are the constants `LENGTH_ARMS`, `LENGTH_TEST` and `HOUSE_ARM` at its top.
-- `bin/ig.mjs`: Instagram. Route A: prepare · busy · route. Route B, the API: token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel ·
+- `bin/fb.mjs`: the Facebook Page by API: token --system · whoami · reel <publish.json> · status <video_id> (native scheduling; ~/.config/cp/facebook.json)
+- `bin/ig.mjs`: Instagram. Route A (fallback): prepare · busy · route. Route B, the API (the normal route): token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel ·
   test-container · install-job)
 - `bin/quota.mjs`: ElevenLabs characters left per account (exit 2 = not enough for a Short)
 
