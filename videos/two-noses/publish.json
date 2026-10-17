@@ -31,19 +31,26 @@
   "cover": "cover.jpg",
   "captions": "two-noses.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-17T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "vW0AeAfgNe0",
+    "url": "https://youtube.com/shorts/vW0AeAfgNe0",
+    "uploaded": "2026-10-17T01:30:41.183Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-20T18:30:00+05:30",
     "caption": "Cross your fingers and rub your nose in the gap... two noses? 🤞👃\nYour fingers swapped places and your brain never got the memo: a touch on both outside edges at once has always meant two things.\nOne nose or two?\nFollow @curio_pulse_tv for the next one: can you roll your tongue? 🔔\n#science #humanbody #brain #illusion #funfacts #reels",
-    "coverTime": 1.0,
-    "shareToFeed": true
+    "coverTime": 1,
+    "shareToFeed": true,
+    "queued": true
   }
 }
