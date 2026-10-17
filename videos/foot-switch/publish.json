@@ -31,19 +31,32 @@
   "cover": "cover.jpg",
   "captions": "foot-switch.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-18T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "5sYH3lRmDDk",
+    "url": "https://youtube.com/shorts/5sYH3lRmDDk",
+    "uploaded": "2026-10-17T21:32:29.286Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-21T18:30:00+05:30",
     "caption": "Circle your right foot clockwise and draw a 6 with your right hand... 🦶\nYour foot flips, right? Your right hand and foot share a boss (the left side of your brain), and it wants them going the same way. Try the 6 with your LEFT hand: easier.\nDid it flip? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't hum with your nose pinched 🔔\n#science #humanbody #brain #braintest #funfacts #reels",
     "coverTime": 3.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true,
+    "apiNote": "18 Oct 2026 03:04 IST: the Instagram and Page APIs still answer 'API access blocked' (code 200), as since 00:05 IST. Queued anyway (local queue): it goes out at the slot only if API access works again by the 18:10 job on 21 Oct. Business Suite (route A) was not tried: it looped for Instagram-only on 18 Oct 00:15 (reference/publish.md). Reel-spec copy, caption and cover in ~/Desktop/instagram-pending/9-foot-switch-*"
+  },
+  "facebook": {
+    "pending": true,
+    "publishAt": "2026-10-21T18:30:00+05:30",
+    "note": "fb.mjs reel failed: POST video_reels -> 400 API access blocked (code 200), 18 Oct 2026 03:04 IST (a permission error: for the user, not retried). Files in ~/Desktop/instagram-pending/9-foot-switch-* (the caption file has the Page version)."
   }
 }

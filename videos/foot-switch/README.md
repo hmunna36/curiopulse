@@ -59,24 +59,24 @@ and pushed the answer past 5 s; one sentence with "and" (seed 5) ran 4.4 s, 4.1 
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | https://www.instagram.com/reel/… | … 06:30 or 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/5sYH3lRmDDk | 18 Oct 2026 23:30 IST (scheduled; the cover set again in Studio, "Changes saved") |
+| Instagram Reels | — | 21 Oct 2026 18:30 IST, queued by the Instagram API (route B); the API answers "API access blocked" since 18 Oct, so it goes out only if access is restored by then |
+| Facebook Page | — | still to post (the Page API answered "API access blocked"); planned for 21 Oct 2026 18:30 IST |
 
-**Title:** …
+**Title:** Why Does Your Foot FLIP When You Draw a 6? 🦶
 
-**Description:**
-…
+**Description:** see `publish.json` (the story part ends on "Did your foot flip? Yes or no?", then the subscribe line).
 
-**Hashtags:** #Shorts #Science #…
-**Tags:** …
-**Reels caption:** the hook line (the test) … the one-word question about the test … then the Follow line
-**"Next up" comment (posted by the pipeline once the Short is public; pinning is the user's tap):** Next up: … Subscribe so you don't miss it! / the one-word question about the test (the caption's)
-**Playlist:** Why Does Your Body Do That? · Your Brain Is Weird · Strange Nature (one of them)
-**Length arm:** short (30–35 s, every Short since 16 Oct 2026), from `yt.mjs next-slot`: …
-**The viewer's test (rules of 15 Oct 2026):** what the first line tells them to do, and what they feel: …
-**Answer line (spoken, starts by 5 s):** …
-**The loop:** the button line … runs into the hook; no Subscribe pill, nobody says "subscribe"
-**Cover:** [`cover.jpg`](cover.jpg), the … frame at N s.
+**Hashtags:** #Shorts #Science #Brain #BrainTest #HumanBody #FunFacts
+**Tags:** foot trick, draw a 6 foot trick, circle your foot clockwise, right foot clockwise draw 6, foot changes direction, …
+**Reels caption:** "Circle your right foot clockwise and draw a 6 with your right hand... 🦶" … "Did it flip? Yes or no?" … the Follow line (next: why you can't hum with your nose pinched)
+**"Next up" comment (posted by the pipeline once the Short is public; pinning is the user's tap):** Next up: why you can't hum with your nose pinched 🤐 Subscribe so you don't miss it! / Did your foot flip? Yes or no? 🦶
+**Playlist:** Your Brain Is Weird
+**Length arm:** short (30–35 s), from `yt.mjs next-slot`: 2026-10-18T23:30:00+05:30.
+**The viewer's test (rules of 15 Oct 2026):** sitting, circle your right foot clockwise and draw a 6 with your right hand: the foot flips to the 6's way.
+**Answer line (spoken, starts at 4.72 s):** "Yep, your hand just HIJACKED your foot."
+**The loop:** "Your foot's not broken. It's a copycat." runs into "Circle your right foot clockwise..."; no Subscribe pill, nobody says "subscribe"
+**Cover:** [`cover.jpg`](cover.jpg): `SC.cover`, him mid-test with the cyan 6 and the flipped foot, DID IT / FLIP?
 
 ## Story and shots
 

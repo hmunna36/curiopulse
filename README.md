@@ -46,7 +46,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Does This Dot Vanish? (Find Your Blind Spot) | 31 s | [`videos/blind-spot`](videos/blind-spot) | [17 Oct 2026](https://youtube.com/shorts/wn5ow9UxzoI) |
 | Why Do You Feel Two Noses? (Cross Your Fingers) | 34 s | [`videos/two-noses`](videos/two-noses) | [17 Oct 2026](https://youtube.com/shorts/vW0AeAfgNe0) |
 | Can You Roll Your Tongue? (It's Not Just Genes) | 32 s | [`videos/roll-tongue`](videos/roll-tongue) | [18 Oct 2026](https://youtube.com/shorts/id7jJEKKNtI) |
-| Why Does Your Foot Flip When You Draw a 6? | 33 s | [`videos/foot-switch`](videos/foot-switch) | 18 Oct 2026 (scheduled) |
+| Why Does Your Foot Flip When You Draw a 6? | 33 s | [`videos/foot-switch`](videos/foot-switch) | [18 Oct 2026](https://youtube.com/shorts/5sYH3lRmDDk) |
 
 Each folder has:
 - the finished MP4;
