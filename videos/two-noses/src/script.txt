@@ -1,0 +1,49 @@
+# Narration for "Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. No Subscribe pill either (since 16 Oct 2026): the Short loops.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 66-76 (every Short is 30-35 s since 16 Oct 2026; `yt.mjs next-slot` says "short").
+
+# This Short: the SHORT arm (30-35 s) for the YouTube slot of 17 Oct 2026 23:30 IST. 74 words.
+# Hook formula (reference/hooks.md): The Impossible Claim ("You've got TWO noses."), proved on the spot by the
+# viewer's own test ("Cross your fingers and rub your nose in the gap."). Not The Direct Address: the last three
+# Shorts (ring finger, dominant eye, blind spot) all used it. The button ("Keep your fingers crossed.") runs straight
+# back into the claim and the test when the Short loops.
+
+## claim gap=0.06 tighten=0.25 tempo=1.00
+You've got two noses.
+
+## hook gap=0.12 tighten=0.20 tempo=1.06
+Cross your fingers and rub your nose in the gap.
+
+## answer gap=0.26 tighten=0.30 tempo=1.02
+Your fingers swapped seats... and nobody told your brain.
+
+## map gap=0.30 tighten=0.3 tempo=1.04
+It still thinks they're side by side.
+
+## edges gap=0.26 tighten=0.28 tempo=1.05
+Both OUTSIDE edges touched at once? Always two things.
+
+## payoff gap=0.28 tighten=0.26 tempo=1.05
+Cross them, and both edges touch ONE nose... so your brain counts TWO.
+
+## weird gap=0.72 tighten=0.26 tempo=1.06
+Volunteers once kept two fingers crossed for up to SIX MONTHS... until their brains caught on.
+
+## button gap=0.55 tighten=0.42 tempo=1.00
+Still two? Keep your fingers crossed.
