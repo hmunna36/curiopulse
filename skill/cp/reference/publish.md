@@ -27,6 +27,11 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
 - **Checking that Reels really went out:** Instagram `ig.mjs upcoming` (results) and instagram.com only if needed; the Page `fb.mjs status <videoId>`
   (`publish_status: published`) or the Page's Content → Published list. A miss is reported first.
 - **Fallback:** Business Suite (Route A, below) when an API fails twice. Tokens/permissions errors are for the user.
+- **18 Oct 2026: both APIs answer "API access blocked" (code 200)** to every call (`ig.mjs whoami`, `fb.mjs whoami`,
+  `fb.mjs reel`): the app or the business is restricted, a permission problem for the user (Meta for Developers / the
+  business's support home). Until `whoami` works again: still `ig.mjs queue` the Reel (it is local; the Mac's job posts
+  it if access is back by the slot), put its files in `~/Desktop/instagram-pending/`, and lead the report with it. Route A
+  looped the same night even for Instagram-only, so it is no way round it for now.
 - **Never** create or change Meta apps, system users or tokens from a run; never edit the Instagram profile.
 
 ## Facebook Page by API (16 Oct 2026): `bin/fb.mjs` WORKS (first Reel accepted)
@@ -223,6 +228,8 @@ the CurioPulse business as @curio_pulse_tv.
   4. **Never type a password.** If a password is needed, stop and ask the user to log in.
 
 **3. Get the video into the page** (the parts are reassembled in the page):
+**Do it inside the composer** (18 Oct 2026): "Create reel" opens the composer as a full page load, so a collector input
+and a click hook set up on the page before it are gone. Open the composer first, then build the collector there.
 
 ```js
 // a collector input, well away from any page controls (clicking it would open a native file picker)

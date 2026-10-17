@@ -75,6 +75,9 @@ rebuild and to prove the folder rebuilds.
     Blender that is only open (the user's app, idle) does not count: the va script matches "Blender" by name, and
     an idle Blender window left open overnight held the gate shut for ten minutes before anyone looked. A Blender
     counts only while it uses more than 40 % of a core. Never close the user's apps to get through a gate.
+  - **It also passes when every match is hung** (18 Oct 2026): a wojak-story `remotion still` sat at 0 % CPU for five
+    hours and held the gate shut. If none of the matching processes uses any CPU time over a 20 s sample, the gate says
+    "idle (hung?)", names the PIDs and lets the render go. It never stops them: they belong to another session.
   - Print PIDs, not command lines, when you look at what is running (`pgrep -f`, not `pgrep -fl`): a shell that
     was started with a long here-document prints all of it.
 - **Disk:** keep ≥ 5 GB free on `/System/Volumes/Data` (`df -h /System/Volumes/Data`). A Short needs ≈ 400 MB

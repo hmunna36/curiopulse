@@ -38,6 +38,7 @@
 | `dominant-eye`: "Why Does Your Finger JUMP When You Close One Eye? 👁️" | 32 s (short arm) | https://youtube.com/shorts/8QjXeZNUq9Y · 16 Oct 2026 23:30 IST | PENDING for 18 Oct 2026 18:30 IST: @curio_pulse_tv showed as SUSPENDED (appeal submitted 16 Oct) when the run reached Instagram at 20:20 IST; files in ~/Desktop/instagram-pending/5-dominant-eye-* |
 | `blind-spot`: "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️" | 31 s (short arm) | https://youtube.com/shorts/wn5ow9UxzoI · 17 Oct 2026 11:30 IST | Instagram API queue (route B), 19 Oct 2026 21:00 IST; the Facebook Page copy still to post (Business Suite's upload looped twice) |
 | `two-noses`: "Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞" | 34 s (short arm) | https://youtube.com/shorts/vW0AeAfgNe0 · 17 Oct 2026 23:30 IST | Instagram API queue (route B), 20 Oct 2026 18:30 IST; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/7-two-noses-*) |
+| `roll-tongue`: "Can You ROLL Your Tongue? (It's Not Just Genes) 👅" | 32 s (short arm) | https://youtube.com/shorts/id7jJEKKNtI · 18 Oct 2026 11:30 IST | Instagram API queue (route B), 20 Oct 2026 21:00 IST, but both Meta APIs answered "API access blocked" (code 200) on 18 Oct: it goes out only if access is restored; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/8-roll-tongue-*) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1633,3 +1634,38 @@ Your Brain Is Weird; Instagram queued by the API for 20 Oct 18:30 IST):
   by API) is the path once dominant-eye's API Reel is seen going out on 18 Oct 21:00. Pending: blind-spot (19 Oct 21:00)
   and two-noses (20 Oct 18:30), files in `~/Desktop/instagram-pending/`.
 
+**roll-tongue** (18 Oct 2026, the nightly routine: started 00:03 IST, YouTube scheduled by 01:07; short arm, 74 words →
+32.20 s; hook formula: The Question as the viewer's test ("Can you roll your tongue? Try it right now."), the answer a
+Contrarian Flip ("Can't? Don't blame your parents.", 3.43 s); YouTube id7jJEKKNtI, 18 Oct 11:30 IST, playlist Why Does
+Your Body Do That?; the first Short picked as the KIN OF A HIT: ring-finger had 16.2K views in 2.5 days, about six times
+the middle, so the "can you?" tests went first and the foot-switch test moved up to next):
+- **The tongue, front view** (new `tongue.js`): `tongueFront(c, T, t)` in the mirror hero's head units (it leaves his
+  lips at y 51): `kL` / `kR` curl each edge on its own (a light ridge along the edge, a darker channel between, a dark
+  hole at the tip once both curl: it reads as a tube even at thumbnail size), `flop` (a wide sad droop), `sway`,
+  `xray` (dark see-through, `fib: {L, X, V}` lengthways / across / up-down fibres, `noBone` a dashed bone), `glowEdges`;
+  `tongueSlice` (a slice going flat → U → tube; `bare` for a panel), `miniFace` (a little face with its tongue out, for
+  photos and a family tree). New `props.js`: `framedPhoto`, `parentsPhoto`, `famPhoto`, `schoolBook` (a family tree
+  with a gene bead running down, a ONE GENE stamp), `sciPhoto` (an old sepia print of a 1940s scientist who blushes,
+  steams and hides behind a GENETICS book), `mailWindow` (an email typed letter by letter, SEND → SENT, it flies off).
+- **The face's own mouth showed above the drawn tongue and read as a moustache.** Any mouth type drawFace does not know
+  draws nothing: tongue-out faces use `mouth: 'none'`, and a shut face switches back to 'flat' when the tongue is in.
+- **A U-shaped band with two glowing dots at its ends, in a round window, is a smiley face**, and over his face it was a
+  creepy one. The slice went into a split-screen panel beside a small tongue with a dashed cut line, and its edges are
+  lit along the band, not as dots.
+- **His own failure next to the diagram's success carries the lesson**: under "both edges up at ONCE" the panel's slice
+  rolls into a tube (TUBE!) while his real tongue's edges seesaw (`wobble(..., lag = π)`) and flop with a red cross.
+- **Gags measured** (`qc_gags.py`, from eye-rub-stars, re-pointed): every one at −15…−25 dB in its gap.
+- One QA round, every item 8+; the rebuild from the cached takes was byte-identical. About 3.9 minutes a render.
+- **The render gate was held shut by a hung process**: a wojak-story `remotion still` at 0 % CPU for five hours.
+  render-gate.sh now passes when every match used no CPU in 20 s (it names them, never stops them).
+- **Meta, 18 Oct 00:05–01:09 IST: both APIs refuse everything with "API access blocked" (code 200)** (`ig.mjs whoami`,
+  `fb.mjs whoami`, `fb.mjs reel` twice). That is a permission problem for the user (the app or the business account is
+  restricted). The Reel was still queued (`ig.mjs queue` is local; the Mac job publishes it if access is back by the
+  20:40 run) and its files went to `~/Desktop/instagram-pending/8-roll-tongue-*`. The three Instagram Reels already in
+  the API queue (dominant-eye 19 Oct 18:30, blind-spot 19 Oct 21:00, two-noses 20 Oct 18:30) fail the same way unless
+  it is fixed. Business Suite's Page copies of those three are in its Scheduled list (natively scheduled on 17 Oct).
+- **Business Suite's upload loops for Instagram-only now too** (dominant-eye, 18 Oct 00:15): 37 → 91 → 11 → 95 → 40 %,
+  and only OPTIONS pre-flights to rupload. So it is not the Page-only composer. Also: **Create reel opens as a full page
+  load**: a collector input and click hook set up before it are gone. Set them up inside the composer page.
+- 48-hour check (Business Suite → Published): funny bone 17 Oct 21:01, ring finger 17 Oct 18:31 (Instagram) and on the
+  Page, doorknob 16 Oct 18:31: all out.
