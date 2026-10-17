@@ -52,5 +52,11 @@
     "coverTime": 1,
     "shareToFeed": true,
     "queued": true
+  },
+  "facebook": {
+    "videoId": "2181418382439445",
+    "publishAt": "2026-10-20T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-17T02:59:01.441Z"
   }
 }
