@@ -198,8 +198,10 @@
       "title": "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️",
       "publishAt": "2026-10-17T06:00:00.000Z",
       "question": "Did it vanish? 👁️",
-      "status": "queued",
-      "queued": "2026-10-16T19:22:51.224Z"
+      "status": "posted",
+      "queued": "2026-10-16T19:22:51.224Z",
+      "commentId": "UgwLlD9PGuoTtLotXpt4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "vW0AeAfgNe0",
@@ -207,8 +209,10 @@
       "title": "Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞",
       "publishAt": "2026-10-17T18:00:00.000Z",
       "question": "One nose or two? 👃",
-      "status": "queued",
-      "queued": "2026-10-17T01:30:52.751Z"
+      "status": "posted",
+      "queued": "2026-10-17T01:30:52.751Z",
+      "commentId": "UgxevTuvXWDhTn6GcVd4AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }
