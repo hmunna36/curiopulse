@@ -47,7 +47,7 @@
 //                                      ~/.config/cp/youtube-client.json, if present, wins.
 //   ~/.config/cp/youtube-token.json    the CurioPulse refresh token from `auth` (chmod 600)
 //   In the cloud (the "Next up" comment routine, user, 17 Oct 2026) the same two come from the environment instead:
-//   CP_YT_CLIENT_JSON (the client JSON, or just {"client_id", "client_secret"}) and CP_YT_REFRESH_TOKEN; they win.
+//   CP_YT_CLIENT_ID + CP_YT_CLIENT_SECRET (or CP_YT_CLIENT_JSON, the client JSON) and CP_YT_REFRESH_TOKEN; they win.
 //
 // publish.json (videos/<slug>/publish.json; paths relative to that folder):
 // { "slug": "…", "file": "<slug>-short.mp4", "title": "…", "description": "…", "tags": ["…"],
@@ -69,7 +69,9 @@ import {fileURLToPath} from 'node:url';
 const CONF = path.join(os.homedir(), '.config/cp');
 const CLIENT_FILE = [path.join(CONF, 'youtube-client.json'), path.join(os.homedir(), '.config/va/youtube-client.json')].find((f) => fs.existsSync(f)) ?? path.join(CONF, 'youtube-client.json');
 const TOKEN_FILE = path.join(CONF, 'youtube-token.json');
-const ENV_CLIENT = process.env.CP_YT_CLIENT_JSON;
+const ENV_CLIENT = process.env.CP_YT_CLIENT_ID && process.env.CP_YT_CLIENT_SECRET
+  ? JSON.stringify({client_id: process.env.CP_YT_CLIENT_ID, client_secret: process.env.CP_YT_CLIENT_SECRET})
+  : process.env.CP_YT_CLIENT_JSON;
 const ENV_REFRESH = process.env.CP_YT_REFRESH_TOKEN;
 const hasToken = () => Boolean(ENV_REFRESH) || fs.existsSync(TOKEN_FILE);
 const IG_QUEUE = path.join(CONF, 'ig-queue.json');

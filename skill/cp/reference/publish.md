@@ -116,7 +116,8 @@ Instagram is back:
     every day."
   - Since 17 Oct 2026 (user) the comment is posted from a CLOUD routine at 11:40 and 23:40 IST, not from this Mac.
     `publish-short.sh` copies the queue into the repo (`state/comment-queue.json`) with every commit, and the cloud
-    routine reads it there, signing in with the CP_YT_CLIENT_JSON and CP_YT_REFRESH_TOKEN secrets of its environment.
+    routine reads it there, signing in with the CP_YT_CLIENT_ID, CP_YT_CLIENT_SECRET and CP_YT_REFRESH_TOKEN secrets of
+    its environment ("curiopulse").
     So the second publish-short.sh after the upload (step 4, "Commit the ids") must land before the Short's release.
     The cloud routine does not push the queue back; posting is idempotent (a Short the channel has commented on is
     skipped), and a `/cp` run's own `comments-due` keeps the Mac's copy up to date.
