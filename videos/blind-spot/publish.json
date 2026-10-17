@@ -1,64 +1,65 @@
 {
- "slug": "blind-spot",
- "file": "blind-spot-short.mp4",
- "title": "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️",
- "description": "Close your left eye, stare at the X with your right eye, and slowly bring your phone closer. At about 15 to 20 cm the red dot vanishes. Every eye has a blind spot: the patch at the back of the eye where the cable to your brain (the optic nerve) plugs in has no light sensors at all, so light that lands there is seen by nobody. You never notice the hole, because your brain paints over it with whatever is around it. Did it vanish?\n\nAn octopus's eye is wired from behind, so the cable never has to come through the wall: no blind spot at all.\n\nSubscribe for a new strange question every day.\n\nNext up: why you can feel TWO noses.\n\n#Shorts #Science #BlindSpot #Eyes #HumanBody #FunFacts",
- "look": "cine",
- "length": {
-  "arm": "short",
-  "min": 30,
-  "max": 35,
-  "slot": "2026-10-17T11:30:00+05:30"
- },
- "pinnedComment": "Next up: why you can feel TWO noses 👃 Subscribe so you don't miss it!\nDid it vanish? 👁️",
- "tags": [
-  "blind spot",
-  "blind spot test",
-  "find your blind spot",
-  "why does the dot disappear",
-  "optic nerve",
-  "optic disc",
-  "eye test",
-  "vision",
-  "how your eyes work",
-  "brain fills in",
-  "octopus eye",
-  "eyes",
-  "human body",
-  "science shorts",
-  "fun facts",
-  "curiopulse"
- ],
- "cover": "cover.jpg",
- "captions": "blind-spot.srt",
- "youtube": {
-  "publishAt": "2026-10-17T11:30:00+05:30",
-  "privacy": "private",
-  "categoryId": "27",
-  "language": "en",
-  "madeForKids": false,
-  "syntheticMedia": false,
-  "notifySubscribers": true,
-  "playlist": "Your Brain Is Weird",
-  "id": "wn5ow9UxzoI",
-  "url": "https://youtube.com/shorts/wn5ow9UxzoI",
-  "uploaded": "2026-10-16T19:22:40.114Z",
-  "thumbnailSet": true,
-  "captionsSet": true,
-  "playlistSet": true
- },
- "instagram": {
-  "publishAt": "2026-10-19T21:00:00+05:30",
-  "caption": "Close your left eye, stare at the X... and bring your phone closer. 👁️ The red dot VANISHES.\nYour eye has a hole: where the cable to your brain plugs in, there are no light sensors. Your brain just paints over the gap.\nDid it vanish?\nFollow @curio_pulse_tv for the next one: why you can feel TWO noses 🔔\n#science #humanbody #eyes #brain #funfacts #reels",
-  "coverTime": 1,
-  "shareToFeed": true,
-  "queued": true,
-  "scheduledVia": "api",
-  "note": "Queued 17 Oct 2026 01:00 IST with ig.mjs queue (route B, the Instagram API): the launchd job publishes it at 2026-10-19 21:00 IST."
- },
- "facebook": {
-  "status": "pending",
-  "publishAt": "2026-10-19T21:00:00+05:30",
-  "note": "Not posted. 17 Oct 2026 ~01:00 IST: Business Suite Create reel (Post to: CurioPulse only, Instagram unticked) took the file and the typed caption, but the upload kept restarting (95% -> 76% -> 47% -> 12% -> 90%) and Next never enabled; Cancel and Back did nothing while it looped, so the tab was left open. Files for a manual post: ~/Desktop/instagram-pending/6-blind-spot-*."
- }
+  "slug": "blind-spot",
+  "file": "blind-spot-short.mp4",
+  "title": "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️",
+  "description": "Close your left eye, stare at the X with your right eye, and slowly bring your phone closer. At about 15 to 20 cm the red dot vanishes. Every eye has a blind spot: the patch at the back of the eye where the cable to your brain (the optic nerve) plugs in has no light sensors at all, so light that lands there is seen by nobody. You never notice the hole, because your brain paints over it with whatever is around it. Did it vanish?\n\nAn octopus's eye is wired from behind, so the cable never has to come through the wall: no blind spot at all.\n\nSubscribe for a new strange question every day.\n\nNext up: why you can feel TWO noses.\n\n#Shorts #Science #BlindSpot #Eyes #HumanBody #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-17T11:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why you can feel TWO noses 👃 Subscribe so you don't miss it!\nDid it vanish? 👁️",
+  "tags": [
+    "blind spot",
+    "blind spot test",
+    "find your blind spot",
+    "why does the dot disappear",
+    "optic nerve",
+    "optic disc",
+    "eye test",
+    "vision",
+    "how your eyes work",
+    "brain fills in",
+    "octopus eye",
+    "eyes",
+    "human body",
+    "science shorts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "blind-spot.srt",
+  "youtube": {
+    "publishAt": "2026-10-17T11:30:00+05:30",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Your Brain Is Weird",
+    "id": "wn5ow9UxzoI",
+    "url": "https://youtube.com/shorts/wn5ow9UxzoI",
+    "uploaded": "2026-10-16T19:22:40.114Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
+  },
+  "instagram": {
+    "publishAt": "2026-10-19T21:00:00+05:30",
+    "caption": "Close your left eye, stare at the X... and bring your phone closer. 👁️ The red dot VANISHES.\nYour eye has a hole: where the cable to your brain plugs in, there are no light sensors. Your brain just paints over the gap.\nDid it vanish?\nFollow @curio_pulse_tv for the next one: why you can feel TWO noses 🔔\n#science #humanbody #eyes #brain #funfacts #reels",
+    "coverTime": 1,
+    "shareToFeed": true,
+    "queued": true,
+    "scheduledVia": "api",
+    "note": "Queued 17 Oct 2026 01:00 IST with ig.mjs queue (route B, the Instagram API): the launchd job publishes it at 2026-10-19 21:00 IST."
+  },
+  "facebook": {
+    "videoId": "1129727210014784",
+    "publishAt": "2026-10-19T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-17T02:58:42.312Z"
+  }
 }
