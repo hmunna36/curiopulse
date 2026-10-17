@@ -36,6 +36,8 @@
 | `doorknob-shock`: "Why Does a Doorknob SHOCK You? ⚡" | 33 s (short arm) | https://youtube.com/shorts/Vf-6HscC28w · 15 Oct 2026 23:30 IST | Business Suite, 16 Oct 2026 18:30 IST, Instagram only |
 | `ring-finger`: "Why Can't You Lift Your RING FINGER? 💍" | 31 s (short arm) | https://youtube.com/shorts/jmFlKDR_P-8 · 16 Oct 2026 11:30 IST | Business Suite, 17 Oct 2026 18:30 IST, Instagram only (caught up by the 16 Oct 06:00 run; at risk: the account was suspended on 16 Oct evening, see dominant-eye) |
 | `dominant-eye`: "Why Does Your Finger JUMP When You Close One Eye? 👁️" | 32 s (short arm) | https://youtube.com/shorts/8QjXeZNUq9Y · 16 Oct 2026 23:30 IST | PENDING for 18 Oct 2026 18:30 IST: @curio_pulse_tv showed as SUSPENDED (appeal submitted 16 Oct) when the run reached Instagram at 20:20 IST; files in ~/Desktop/instagram-pending/5-dominant-eye-* |
+| `blind-spot`: "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️" | 31 s (short arm) | https://youtube.com/shorts/wn5ow9UxzoI · 17 Oct 2026 11:30 IST | Instagram API queue (route B), 19 Oct 2026 21:00 IST; the Facebook Page copy still to post (Business Suite's upload looped twice) |
+| `two-noses`: "Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞" | 34 s (short arm) | https://youtube.com/shorts/vW0AeAfgNe0 · 17 Oct 2026 23:30 IST | Instagram API queue (route B), 20 Oct 2026 18:30 IST; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/7-two-noses-*) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1591,3 +1593,43 @@ HOLE in it."; YouTube wn5ow9UxzoI, 17 Oct 11:30 IST, playlist Your Brain Is Weir
 - Studio: the custom thumbnail showed grey; cover.jpg went in through the file input. A hidden "Uploading..." text
   stays in the DOM after the upload: check the picture, not the text. A `querySelectorAll('*')` loop in the
   JavaScript tool froze Business Suite's renderer for 45 s: query the one element instead.
+
+**two-noses** (17 Oct 2026, the second routine of the day: started 06:04 IST, YouTube scheduled by 07:00; short arm, 74 words →
+34.17 s; hook formula: The Impossible Claim, "You've got two noses.", proved by the test, "Cross your fingers and rub your
+nose in the gap." (the last three Shorts had all used The Direct Address); YouTube vW0AeAfgNe0, 17 Oct 23:30 IST, playlist
+Your Brain Is Weird; Instagram queued by the API for 20 Oct 18:30 IST):
+- **Aristotle's illusion, built on blocked-nostril's mirror world** (`mirror.js` borrowed as it was; `mirNose` takes
+  `nostK` now: full nostrils plus a flat mouth read as a pig's snout once the hand is off his nose or the shot is wider).
+  New `fingers.js`: his right hand at his nose in head units, back of the hand to us, thumb outside (`xHand`, `xHandPts`,
+  `XF`): index and middle as tapered capsules with nails and creases, `cross` 0..1 (side by side .. crossed), `edges`
+  (the two OUTSIDE edges glow), `tape` (the six-month volunteers), `lift` (up beside his cheek, for luck); `feltNose`
+  (a see-through copy of his nose with a dashed yellow outline: the second nose he feels). `xHero` in scenes.js puts the
+  arm where the hand needs it (the wrist from the hand's own points through `mirHeadLocal`). New `fingermap.js`: the
+  brain's room in room space under a view (`fmView`), a screen YOUR FINGERS with the hand the brain believes in
+  (`fmScreen`: cross, edges, marbles, noses, a stamp), `erBrain`, `fmBulb`, `fmZzz`.
+- **The X has to read on frame 0.** With the knuckles side by side the index's lower half merged into the back of the
+  hand (same colour, no edge to the light) and the hand read as two fingers pinching the nose. Knuckles spread (the
+  crossing mid-finger), a thin outline on each finger (paint) and the index a shade darker fixed it.
+- **A window drawn over the hero needs an opaque disc first, outside the clip.** Drawing inside `clip()` is left out
+  of the light's shape map, so the map under the window still said "his head": the light shaded the window's picture
+  with his head's outline (a visible arc across the brain room). One plain `fill` of the disc before clipping fixed it.
+- **`T.W()` / `T.find()` ignore case and punctuation:** `W("TWO.")` found the claim's "two" at 0.48 s (the ghost nose
+  showed for 20 s) and `W("Your fingers")` the hook's "your fingers". Give repeated words `s=` (the index of their line)
+  and assert their order.
+- **A short claim with a tag runs slow:** `[mischievously] You've got TWO noses.` took 2.3-3.0 s on four takes; the
+  untagged "You've got two noses." took 1.4 s with the widest pitch range (164-374 Hz). That brought the answer from
+  5.66 s to 4.75 s. Audition 3-5 wordings with `voice.synth` before settling a two-part hook.
+- **Gags against the words, measured the house way:** mix RMS over the words ≈ −16 dB; the gags −18 to −23 dB in their
+  gaps. The pause after "counts TWO." was too short for boing-boing (it ran into "Volunteers"): the weird block's gap
+  went 0.44 → 0.72 s (free), the Short 33.9 → 34.2 s.
+- Voice: 434 characters for the first takes + about 290 for auditions (claim ×5, payoff ×2); 80,472 before.
+- Two QA rounds, every item 8+ in round 2 (round 1: retention 7.5, the viewer's test out of sight for 4 s in the brain's
+  room; look 7.5, the snout and a too-small "caught on" window). About 5.4 minutes a render. Rebuild check:
+  timeline.json, mix.wav and the MP4 byte-identical.
+- **Facebook Page, second loop:** Business Suite (Post to: CurioPulse only, read back) took the blind-spot file
+  (SHA-256 checked, tab visible, animation frames firing), but the upload bar ran 66 → 20 → 95 → 89 → 50 % and the
+  only requests to rupload.facebook.com were OPTIONS pre-flights (200). Cancel → Discard Changes worked this time and the
+  tab closed. Same as 17 Oct 01:00, so it is not the hidden-window stall: the POSTs never leave. `fb.mjs reel` (the Page
+  by API) is the path once dominant-eye's API Reel is seen going out on 18 Oct 21:00. Pending: blind-spot (19 Oct 21:00)
+  and two-noses (20 Oct 18:30), files in `~/Desktop/instagram-pending/`.
+

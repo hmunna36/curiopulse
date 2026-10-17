@@ -42,6 +42,9 @@ one number both sides use.
 - Name every beat as a cue, e.g. `cues["bam"] = W("BAM")` or `cues["final_jolt"] = E("Probably") + 0.95`.
 - Schedules (heartbeats, window jolts) are cue lists computed once in make_timeline.py.
 - Never type a time into scenes.js or audio.py.
+- `T.W()` / `T.E()` / `T.find()` ignore case and punctuation: `W("TWO.")` finds the first "two" of the Short, and
+  `W("Your fingers")` an earlier "your fingers" (two-noses, 17 Oct 2026: a ghost nose stayed up for 20 s). Give a
+  repeated word `s=` (the index of its line from `find`) and assert the cues' order.
 
 ## Writing shots
 
@@ -191,6 +194,9 @@ shade stroke where it fights the drawn shadow (visual.md, "The light").
 | `videos/dizzy-spin/src/web/brain.js` | time-flies' brain as `dzBrain` with 'dizzy' (spiral eyes, wobbly mouth) and 'smug' faces, `dzStars` (stars going round a head), `dzMegaphone`, a hair cell with a megaphone (`dzCellGuy`), an eyeball with legs and a megaphone (`dzEyeGuy`) |
 | `videos/dizzy-spin/src/web/stage.js` | a ballet stage (`stBack`, `stCurtains`, `stSpot`: a cone and a pool of light), the hero in a pink leotard and a tutu (`TUTUPAL`, `stTutu`), a pirouette as a paper-doll turn (his layer squeezed by cos of the turn in `pre`; his back as hair over the face; `stHero`), a SPIN SIGNAL dial (`stDial`) |
 | `videos/dizzy-spin/src/web/scenes.js` (helpers) | `hookA(tt)` / `hookCam(tt)` / `hookDraw` (valid at negative time), `spinW` / `ghostW` / `roomAng` (the turn, and the slower turn the other way the ears report after a stop), `nys(u)` (nystagmus on the pupils), `organKeys` (an organ-unit camera), `ampFlow` / `ampBend`, `stageTurn`, a light function whose back light goes round him with the room, `SC.loop`, `SC.cover` |
+| `videos/two-noses/src/web/fingers.js` | his right hand at his nose in head units, back of the hand to us (`xHand`, `xHandPts`, `XF`): index and middle as tapered capsules with nails, creases and an outline each, `cross` 0..1 (side by side .. crossed, the X mid-finger), `edges` (the two outside edges glow), `tape` (a strip round both fingers), `lift` (up beside his cheek: fingers crossed for luck), `dx`/`dy`; `feltNose` (a see-through copy of his nose with a dashed yellow outline). Uses blocked-nostril's `mirror.js` (whose `mirNose` takes `nostK` there) |
+| `videos/two-noses/src/web/fingermap.js` | the brain's purple room in room space under a view (`fmView`, `fmRoom`, `fmDesk`), a screen YOUR FINGERS with a drawing of two fingers (`fmScreen`: cross, edges, two marbles or two noses at the outside edges, badges at two heights, a stamp), `fmFinger`, `fmMarble`, `fmNose`, `erBrain` (thumb, pointing), `fmBulb` (an idea, lit), `fmZzz` |
+| `videos/two-noses/src/web/scenes.js` (helpers) | `xHero` (the mirror hero with the crossed hand: it puts the arm where the hand needs it), `rubAt` (a rub on a clock that loops), `roomWindow` (a room seen through a round window on his forehead, with the opaque disc first), the dive into it, `seatBadges` (two name badges that swap places with leaders to the fingertips), `curvedArrow`, `rubTicks`, `twoNoseFace` (his face with two noses, for a thought bubble), `wallCal` (a tear-off MONTH calendar), `SC.loop`, `SC.cover` |
 | `videos/lightning-full/src/web/*` | storm, hill, strike, x-ray body, heart, nerves (much of it now in env.js and kit.js) |
 
 Rules for borrowing:

@@ -78,6 +78,9 @@
   - **Write a hook that must end by 4 s in one breath** (spicy-food, 7 Oct 2026): no "..." and no capitals but the
     last word. Four takes of an 11-word hook with a pause ran 5.0–6.2 s; `[panicked]` + the same thought in 12 words
     with no pause came in at 4.0 s. Audition two or three wordings with `voice.synth` before building on a slow one.
+  - **A tag slows a short claim** (two-noses, 17 Oct 2026): `[mischievously] You've got TWO noses.` ran 2.3-3.0 s on four
+    takes; the untagged "You've got two noses." ran 1.4 s with the widest pitch range of the five. With a claim block
+    before the test (The Impossible Claim), audition it bare first.
   - **Two short sentences can be faster than one with commas** (cats-purr, 10 Oct 2026). A 12-word hook with three
     commas ran 4.3–4.5 s on five takes and three wordings; "You scratch your cat and she purrs. Happy cat, RIGHT?"
     ran 3.56 s, and the 0.7 s pause after its full stop (capped with `tighten=0.42`) is where the sound the line names

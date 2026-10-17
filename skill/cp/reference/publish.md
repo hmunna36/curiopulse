@@ -359,6 +359,11 @@ with Post to = **CurioPulse only** (untick curio_pulse_tv and read the field bac
 the Reel twice. Don't run `ig.mjs busy` for it (the API queue already holds the slot). On 17 Oct that composer's upload
 looped and the Page copy was left pending in `~/Desktop/instagram-pending/` (`videos.md`, blind-spot); `fb.mjs reel`
 is the next path once its first Reel is seen going out.
+**Second loop, 17 Oct 2026 07:05 (two-noses run):** the same composer (Post to: CurioPulse only, tab visible, animation
+frames firing, SHA-256 checked) looped again (66 → 20 → 95 → 89 → 50 %) and the only requests to rupload were OPTIONS
+pre-flights: the chunk POSTs never leave, so it is not the hidden-window stall. Don't spend a run's one upload on it
+again; leave Page copies in `~/Desktop/instagram-pending/` until `fb.mjs` is cleared (its test Reel, dominant-eye, is
+due on the Page on 18 Oct 21:00 IST). Cancel → Discard Changes closes the stuck composer cleanly.
 
 `ig.mjs queue videos/<slug>/publish.json` books the Reel for `instagram.publishAt` and keeps a spool copy in
 `~/.cache/cp/ig-spool/`. Then the launchd job `com.curiopulse.ig-publish`, installed by `ig.mjs token`, takes over:

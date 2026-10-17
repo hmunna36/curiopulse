@@ -86,6 +86,10 @@ as drawn. Captions, the subscribe cue and the watermark are drawn afterwards and
   canvas before him it is set: dim, and out of focus in a close shot (why-we-cry, 10 Oct 2026).
 - Shapes of the same colour drawn straight after each other are one thing (the two segments of a limb, the puffs
   of a cloud): the light puts no line between them. To part two things of one colour, draw something between them.
+- **A window drawn over the hero needs one opaque fill of its shape first, outside any clip** (two-noses, 17 Oct 2026).
+  Drawing inside `clip()` is left out of the shape map, so under a round window into his head the map still says "his
+  head" and the light shades the window's picture with his head's outline. `ctx.arc(...); ctx.fill()` of the disc, then
+  the clip and the picture.
 - A cached image (`drawImage` of a canvas built in an `init…()`) is flat and unlit, and it hides what is under it. Walls,
   far backgrounds and desks may be cached. Anything that should catch the light (a character, a prop in his hand, the
   thing the Short is about) is drawn with shapes every frame.
