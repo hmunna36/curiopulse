@@ -30,19 +30,32 @@
   "cover": "cover.jpg",
   "captions": "roll-tongue.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-18T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "id7jJEKKNtI",
+    "url": "https://youtube.com/shorts/id7jJEKKNtI",
+    "uploaded": "2026-10-17T19:36:46.249Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-20T21:00:00+05:30",
     "caption": "Can you roll your tongue? Try it right now... 👅\nCan't? Don't blame your parents: identical twins have the same genes, and one can while the other can't. It was never one gene.\nYes or no?\nFollow @curio_pulse_tv for the next one: why your foot switches direction 🔔\n#science #humanbody #genetics #tongue #funfacts #reels",
     "coverTime": 1,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true,
+    "apiNote": "18 Oct 2026 00:05-01:09 IST: the Instagram and Page APIs both answer 'API access blocked' (code 200). Queued anyway (local queue): it goes out at the slot only if API access works again by the 20:40 job. Business Suite's upload looped this run (only OPTIONS pre-flights reached rupload). Reel-spec copy, caption and cover in ~/Desktop/instagram-pending/8-roll-tongue-*"
+  },
+  "facebook": {
+    "pending": true,
+    "publishAt": "2026-10-20T21:00:00+05:30",
+    "note": "fb.mjs reel failed twice: POST video_reels -> 400 API access blocked (code 200), 18 Oct 2026 01:08 and 01:09 IST. Files in ~/Desktop/instagram-pending/8-roll-tongue-* (the caption file has the Page version)."
   }
 }
