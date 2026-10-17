@@ -39,6 +39,7 @@
 | `blind-spot`: "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️" | 31 s (short arm) | https://youtube.com/shorts/wn5ow9UxzoI · 17 Oct 2026 11:30 IST | Instagram API queue (route B), 19 Oct 2026 21:00 IST; the Facebook Page copy still to post (Business Suite's upload looped twice) |
 | `two-noses`: "Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞" | 34 s (short arm) | https://youtube.com/shorts/vW0AeAfgNe0 · 17 Oct 2026 23:30 IST | Instagram API queue (route B), 20 Oct 2026 18:30 IST; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/7-two-noses-*) |
 | `roll-tongue`: "Can You ROLL Your Tongue? (It's Not Just Genes) 👅" | 32 s (short arm) | https://youtube.com/shorts/id7jJEKKNtI · 18 Oct 2026 11:30 IST | Instagram API queue (route B), 20 Oct 2026 21:00 IST, but both Meta APIs answered "API access blocked" (code 200) on 18 Oct: it goes out only if access is restored; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/8-roll-tongue-*) |
+| `foot-switch`: "Why Does Your Foot FLIP When You Draw a 6? 🦶" | 33 s (short arm) | https://youtube.com/shorts/5sYH3lRmDDk · 18 Oct 2026 23:30 IST | Instagram API queue (route B), 21 Oct 2026 18:30 IST, but both Meta APIs still answered "API access blocked" (code 200) at 03:04 IST: it goes out only if access is restored; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/9-foot-switch-*) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1669,3 +1670,34 @@ the middle, so the "can you?" tests went first and the foot-switch test moved up
   load**: a collector input and click hook set up before it are gone. Set them up inside the composer page.
 - 48-hour check (Business Suite → Published): funny bone 17 Oct 21:01, ring finger 17 Oct 18:31 (Instagram) and on the
   Page, doorknob 16 Oct 18:31: all out.
+
+**foot-switch** (18 Oct 2026, the second Short of the day, 02:05–03:10 IST; the kin of the ring-finger hit):
+- **The picture is the viewer's mirror** when the test has a side and a direction: his RIGHT hand and foot on the
+  screen's right (the rig's 'R' side), so "clockwise" and the 6 read on screen exactly as the viewer does them. A 6
+  drawn in the air in front of you is not mirrored in a mirror (only front-back flips), so the on-screen 6 is a plain 6.
+- **A two-sentence instruction ran long**: "Circle your right foot clockwise. Now draw a six with your right hand." ran
+  4.9–5.4 s on three takes (v3 gives the full stop its half second) and pushed the answer past 5 s; the same words as
+  ONE sentence with "and" ran 4.4 s (seed 5), 4.1 s at tempo 1.06. Audition the hook before building on it.
+- **A brain half drawn from the front reads as a yellow block when it is big**; time-flies' side-view brain (`tfBrain`,
+  copied as `bossBrain` with a tie on its stem, wrapped in `actor`) read at once as "the boss". In the glass head the
+  two halves stay front-view and small, pink, each with its own little face.
+- **Two wheels on one belt** said "the brain wants them going the same way" without a word of science: the belt drawn
+  light and IN FRONT of the wheels, its dashes moving; the HAND wheel cranked the 6's way drags the held FOOT wheel.
+- New `foot.js`: `fsHero` (the office hero with his right leg raised toward us and the shoe seen toe-first circling
+  round the ankle: `legUp`, `ph`, `shake`; arms by elbow and wrist from a fingertip target, `fsArmFor`), the 6 as a path
+  (`sixTail`, `sixLoop`, `sixState`: the stroke, then the loop counter-clockwise; `sixTrail` draws what is done, with a
+  comet), `footPhaseHook` (clockwise, a stutter, then the 6's way; valid at negative time), `footRing` (a fading ring
+  with an arrowhead, any colour), `fsShoe` (laces, tread, `cat` ears / whiskers / a face, `meow`), the glass head
+  (`glassHead`, `hemiPath`, `hemiFace`: two halves lit one by one), `cordPts` + `cord` (from a half of the brain,
+  crossing in the neck, to a hand or a foot, beads running down), `towRope`, `fsBurst`. New `boss.js`: the brain's
+  office wall, `bossBrain`, `bossWheel`, `bossBelt`, `wheelArrow`, `bossMonitor` (LIVE: YOUR FOOT).
+- **`T.find` ignores punctuation**: `E("it.", s=...)` found the "it" of "fumbled it" and put a gag on "just"; search
+  from the line's last phrase (`find("IMAGINING it.") + 1`) and assert the order.
+- **Whisper heard "study" as "steady" in the whole-file transcript only**; the line played on its own transcribed right
+  from the voice, the mix and the MP4. Check the isolated segment before moving sounds or re-voicing.
+- **A gag's picture and its sound land together**: YOINK! first popped at "drags" while its slide whistle played after
+  "along."; it moved to the pause.
+- Two QA rounds, every item 8+; the from-scratch rebuild (`WORK=<fresh> src/build.sh`) was byte-identical. About 3.8
+  minutes a render. The Studio thumbnail slot was grey: cover.jpg uploaded there ("Changes saved").
+- **Meta, 18 Oct 03:04 IST: still "API access blocked" (code 200)** on both APIs; the Reel queued locally, files in
+  `~/Desktop/instagram-pending/9-foot-switch-*`; Business Suite not tried (it looped at 00:15).
