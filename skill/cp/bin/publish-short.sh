@@ -33,7 +33,14 @@ if grep -rIlE 'sk_[a-f0-9]{30,}|IG[A-Za-z0-9_-]{100,}|EAA[A-Za-z0-9]{60,}|ya29\.
 fi
 BIG=$(find "$DEST" -path "$DEST/.work" -prune -o -type f -size +95M -print)
 [ -z "$BIG" ] || { echo "refusing: over 95 MB (GitHub rejects files over 100 MB): $BIG"; exit 1; }
+# the "Next up" comment queue rides along: the cloud comment routine reads state/comment-queue.json (user, 17 Oct 2026)
+QUEUE="$HOME/.config/cp/comment-queue.json"
+if [ -f "$QUEUE" ]; then
+  if [ "$(git config core.sparseCheckout)" = "true" ]; then git sparse-checkout add state; fi
+  mkdir -p state && cp "$QUEUE" state/comment-queue.json
+fi
 git add -- "videos/$SLUG" README.md
+[ -f state/comment-queue.json ] && git add -- state/comment-queue.json
 if git diff --cached --quiet; then echo "nothing new to commit in videos/$SLUG"; else git commit -q -F "$MSG"; fi
 # another routine may have pushed while this one built (the weekly film does, from the cloud): go on top of it
 git fetch -q origin

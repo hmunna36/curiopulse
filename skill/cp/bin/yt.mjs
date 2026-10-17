@@ -46,6 +46,8 @@
 //                                      YouTube's lock-to-private rule for unaudited API clients). A
 //                                      ~/.config/cp/youtube-client.json, if present, wins.
 //   ~/.config/cp/youtube-token.json    the CurioPulse refresh token from `auth` (chmod 600)
+//   In the cloud (the "Next up" comment routine, user, 17 Oct 2026) the same two come from the environment instead:
+//   CP_YT_CLIENT_JSON (the client JSON, or just {"client_id", "client_secret"}) and CP_YT_REFRESH_TOKEN; they win.
 //
 // publish.json (videos/<slug>/publish.json; paths relative to that folder):
 // { "slug": "…", "file": "<slug>-short.mp4", "title": "…", "description": "…", "tags": ["…"],
@@ -67,8 +69,11 @@ import {fileURLToPath} from 'node:url';
 const CONF = path.join(os.homedir(), '.config/cp');
 const CLIENT_FILE = [path.join(CONF, 'youtube-client.json'), path.join(os.homedir(), '.config/va/youtube-client.json')].find((f) => fs.existsSync(f)) ?? path.join(CONF, 'youtube-client.json');
 const TOKEN_FILE = path.join(CONF, 'youtube-token.json');
+const ENV_CLIENT = process.env.CP_YT_CLIENT_JSON;
+const ENV_REFRESH = process.env.CP_YT_REFRESH_TOKEN;
+const hasToken = () => Boolean(ENV_REFRESH) || fs.existsSync(TOKEN_FILE);
 const IG_QUEUE = path.join(CONF, 'ig-queue.json');
-const COMMENT_QUEUE = process.env.CP_COMMENT_QUEUE ?? path.join(CONF, 'comment-queue.json');   // the env var is for dry runs
+const COMMENT_QUEUE = process.env.CP_COMMENT_QUEUE ?? path.join(CONF, 'comment-queue.json');   // the env var: dry runs, and the cloud routine (the repo's state/comment-queue.json)
 const CHANNEL = 'CurioPulse';
 const SCOPE = 'https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/yt-analytics.readonly'; // upload, thumbnails, captions + read-only analytics
 const API = 'https://www.googleapis.com/youtube/v3';
@@ -101,6 +106,17 @@ const die = (msg) => {
   process.exit(1);
 };
 const client = () => {
+  if (ENV_CLIENT) {
+    let j;
+    try {
+      j = JSON.parse(ENV_CLIENT);
+    } catch {
+      die('CP_YT_CLIENT_JSON is not valid JSON');
+    }
+    const c = j.installed ?? j.web ?? j;
+    if (!c.client_id || !c.client_secret) die('CP_YT_CLIENT_JSON has no client_id/client_secret');
+    return c;
+  }
   if (!fs.existsSync(CLIENT_FILE)) die(`missing ${CLIENT_FILE} (the Desktop OAuth client JSON from Google Cloud)`);
   const j = JSON.parse(fs.readFileSync(CLIENT_FILE, 'utf8'));
   const c = j.installed ?? j.web ?? j;
@@ -156,9 +172,9 @@ async function auth() {
 let cached = null;
 async function accessToken() {
   if (cached && cached.exp > Date.now() + 60_000) return cached.token;
-  if (!fs.existsSync(TOKEN_FILE)) die(`no token yet: run \`node ${process.argv[1]} auth\` and pick the ${CHANNEL} channel`);
+  if (!hasToken()) die(`no token yet: run \`node ${process.argv[1]} auth\` and pick the ${CHANNEL} channel`);
   const c = client();
-  const {refresh_token} = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8'));
+  const refresh_token = ENV_REFRESH || JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8')).refresh_token;
   const r = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -384,7 +400,7 @@ async function upload(specPath, dryRun, autoSchedule = false) {
   if (!spec.file) problems.push('no "file"');
   if (spec.cover && fs.existsSync(path.resolve(base, spec.cover)) && fs.statSync(path.resolve(base, spec.cover)).size > 2e6) problems.push('cover over 2 MB (YouTube thumbnail limit)');
   if (problems.length) die(`fix publish.json first:\n  ${problems.join('\n  ')}`);
-  if (!y.id && (autoSchedule || y.publishAt === 'auto') && dryRun && !fs.existsSync(TOKEN_FILE)) {
+  if (!y.id && (autoSchedule || y.publishAt === 'auto') && dryRun && !hasToken()) {
     console.log('schedule: auto (the day is picked at upload time; it needs the YouTube token)');
   } else if (!y.id && (autoSchedule || y.publishAt === 'auto')) {
     const slot = await nextFreeYouTubeSlot();
@@ -478,7 +494,7 @@ const readCommentQueue = () => {
   }
 };
 const writeCommentQueue = (q) => {
-  fs.mkdirSync(CONF, {recursive: true});
+  fs.mkdirSync(path.dirname(COMMENT_QUEUE), {recursive: true});
   q.posts = q.posts.slice(-60);
   fs.writeFileSync(COMMENT_QUEUE, JSON.stringify(q, null, 2) + '\n');
 };

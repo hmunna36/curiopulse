@@ -114,7 +114,13 @@ Instagram is back:
     next scheduled video> Subscribe so you don't miss it!"), so a tease is never stale when the queue is reordered,
     and keeps line 2 as drafted. With nothing scheduled after it, line 1 is "Subscribe for a new strange question
     every day."
-  - It runs in every run's preflight, and from the routine `curiopulse-next-up-comment` at 11:40 and 23:40 IST, ten
+  - Since 17 Oct 2026 (user) the comment is posted from a CLOUD routine at 11:40 and 23:40 IST, not from this Mac.
+    `publish-short.sh` copies the queue into the repo (`state/comment-queue.json`) with every commit, and the cloud
+    routine reads it there, signing in with the CP_YT_CLIENT_JSON and CP_YT_REFRESH_TOKEN secrets of its environment.
+    So the second publish-short.sh after the upload (step 4, "Commit the ids") must land before the Short's release.
+    The cloud routine does not push the queue back; posting is idempotent (a Short the channel has commented on is
+    skipped), and a `/cp` run's own `comments-due` keeps the Mac's copy up to date.
+  - It runs in every run's preflight, and from the cloud routine "CurioPulse — Next up comment" at 11:40 and 23:40 IST, ten
     minutes after each release.
   - That one comment is everything the pipeline does with comments: it never replies, likes, pins, hides or deletes
     (the user's rule: only the comment actions they named). Pinning is the user's tap in the YouTube app; the API
