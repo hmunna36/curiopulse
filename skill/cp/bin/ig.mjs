@@ -37,6 +37,23 @@
 //      it needs no hosting);
 //   2. video_url = the MP4's public raw.githubusercontent.com URL (the curiopulse repo is public).
 // The route that worked is recorded as "method".
+//
+// C. THE CLOUD (user, 18 Oct 2026: publish without the Mac). The GitHub Actions workflow .github/workflows/ig-publish.yml
+//    in the curiopulse repo runs `run-due` at 17:47 and 20:17 IST, sleeps until the slot and publishes by video_url.
+//    It sets CP_IG_CLOUD=1 and reads everything from the repo's state/ folder:
+//      state/ig-queue.json   the Mac's queue (publish-short.sh copies it in with every commit; the cloud never writes it)
+//      state/ig-results.json what the cloud did with each Reel (status, permalink…); only the cloud writes it
+//      state/ig-token.enc    the token, AES-256-GCM; the key is the repo secret IG_TOKEN_KEY (and ~/.config/cp/ig-cloud-key).
+//                            Instagram hands out a NEW token string on every refresh, so the cloud refreshes it weekly
+//                            and commits the re-encrypted file; nothing else may refresh it then.
+//      state/ig-cloud.json   {"enabled": true}: until then scheduled runs only look (no double posts with the Mac's job)
+//   node ig.mjs cloud-setup               Mac: make the key (once) and encrypt the current token into state/ig-token.enc
+//   node ig.mjs cloud-enable              Mac: hand publishing to the cloud (writes state/ig-cloud.json, removes the launchd job)
+//   node ig.mjs pull-results              Mac: copy the cloud's results into ~/.config/cp/ig-queue.json
+//   node ig.mjs refresh-weekly            cloud: refresh the token if it is a week old
+// Before every upload and every publish the account's last 25 posts are checked for the same caption, so a Reel
+// that is already live is recorded, never posted twice.
+import crypto from 'node:crypto';
 import {execFileSync, spawnSync} from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -46,7 +63,7 @@ import readline from 'node:readline';
 const HOME = os.homedir();
 const CONF = path.join(HOME, '.config/cp');
 const TOKEN_FILE = path.join(CONF, 'instagram.json');
-const QUEUE_FILE = path.join(CONF, 'ig-queue.json');
+const QUEUE_FILE = process.env.CP_IG_CLOUD === '1' ? path.resolve(process.env.CP_IG_STATE ?? 'state', 'ig-queue.json') : path.join(CONF, 'ig-queue.json');
 const SPOOL = path.join(HOME, '.cache/cp/ig-spool');
 const LOG_FILE = path.join(HOME, 'Library/Logs/curiopulse-ig.log');
 const FFMPEG = path.join(HOME, '.cache/cp/bin/ffmpeg');
@@ -55,7 +72,17 @@ const V = 'v25.0';
 const G = `https://graph.instagram.com/${V}`;
 const SLOTS = ['18:30', '21:00']; // IST: two Reels a day (user, 15 Oct 2026; one a day at 21:00 on 16 Oct while Instagram was suspended)
 const LEGACY_SLOT = '18:30'; // what a bare date in "busy" stands for (every Reel booked before 4 Oct 2026)
-const LEAD_MIN = 25; // start preparing a Reel this many minutes before its release
+const LEAD_MIN = Number(process.env.CP_IG_LEAD_MIN ?? 25); // start preparing a Reel this many minutes before its release
+// route C (see the header): CLOUD is the GitHub Actions job; MAC_CLOUD is this Mac once publishing has moved there
+const CLOUD = process.env.CP_IG_CLOUD === '1';
+const STATE = path.resolve(process.env.CP_IG_STATE ?? (CLOUD ? 'state' : path.join(process.env.CP_REPO ?? path.join(HOME, 'Desktop/curiopulse'), 'state')));
+const RESULTS_FILE = path.join(STATE, 'ig-results.json');
+const TOKEN_ENC = path.join(STATE, 'ig-token.enc');
+const KEY_FILE = path.join(CONF, 'ig-cloud-key');
+const CLOUD_FLAG = path.join(CONF, 'ig-cloud.json');
+const MAC_CLOUD = !CLOUD && fs.existsSync(CLOUD_FLAG) && JSON.parse(fs.readFileSync(CLOUD_FLAG, 'utf8')).enabled === true;
+const RESULT_FIELDS = ['status', 'attempts', 'containerId', 'method', 'containerAt', 'mediaId', 'permalink', 'publishedAt', 'error'];
+const ACTIONS_URL = 'https://github.com/hmunna36/curiopulse/actions/workflows/ig-publish.yml';
 const JOB_TIMES = SLOTS.map((hm) => {
   const m = Number(hm.slice(0, 2)) * 60 + Number(hm.slice(3)) - 20; // the launchd job starts 20 minutes before each slot
   return {h: Math.floor(m / 60), m: m % 60, label: `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`};
@@ -71,6 +98,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 function log(msg) {
   const line = `${new Date().toISOString()} ${msg}`;
   console.log(msg);
+  if (CLOUD) return; // the Actions log is the log
   try {
     fs.mkdirSync(path.dirname(LOG_FILE), {recursive: true});
     fs.appendFileSync(LOG_FILE, line + '\n');
@@ -90,13 +118,73 @@ const writeJSON = (f, obj, mode) => {
   fs.writeFileSync(f, JSON.stringify(obj, null, 2) + '\n', mode ? {mode} : undefined);
   if (mode) fs.chmodSync(f, mode);
 };
-const loadQueue = () => readJSON(QUEUE_FILE, {busy: [], posts: []});
-const saveQueue = (q) => writeJSON(QUEUE_FILE, q);
+// A result belongs to one booking: a Reel queued again (new queuedAt) starts clean.
+function applyResults(q, results) {
+  for (const p of q.posts) {
+    const r = results[p.slug];
+    if (r && r.queuedAt === p.queuedAt) for (const k of RESULT_FIELDS) if (k in r) p[k] = r[k];
+  }
+  return q;
+}
+// In the cloud the queue is read-only (the Mac owns it) and everything the cloud learns goes to ig-results.json.
+const loadQueue = () => {
+  const q = readJSON(QUEUE_FILE, {busy: [], posts: []});
+  return CLOUD ? applyResults(q, readJSON(RESULTS_FILE, {})) : q;
+};
+const saveQueue = (q) => {
+  if (!CLOUD) return writeJSON(QUEUE_FILE, q);
+  const results = readJSON(RESULTS_FILE, {});
+  for (const p of q.posts) {
+    if (p.status === 'queued' && !p.attempts) continue;
+    results[p.slug] = {queuedAt: p.queuedAt, ...Object.fromEntries(RESULT_FIELDS.filter((k) => p[k] != null).map((k) => [k, p[k]]))};
+  }
+  writeJSON(RESULTS_FILE, results);
+};
 
 // ---- token ------------------------------------------------------------------------------------------------------
+// Route C keeps the token encrypted in the public repo: AES-256-GCM, 32-byte key (base64) outside the repo.
+function seal(obj, keyB64) {
+  const key = Buffer.from(keyB64, 'base64');
+  if (key.length !== 32) throw new Error('the token key must be 32 bytes, base64');
+  const iv = crypto.randomBytes(12);
+  const c = crypto.createCipheriv('aes-256-gcm', key, iv);
+  const data = Buffer.concat([c.update(JSON.stringify(obj), 'utf8'), c.final()]);
+  return {v: 1, alg: 'aes-256-gcm', iv: iv.toString('base64'), tag: c.getAuthTag().toString('base64'), data: data.toString('base64')};
+}
+function unseal(blob, keyB64) {
+  const d = crypto.createDecipheriv('aes-256-gcm', Buffer.from(keyB64, 'base64'), Buffer.from(blob.iv, 'base64'));
+  d.setAuthTag(Buffer.from(blob.tag, 'base64'));
+  return JSON.parse(Buffer.concat([d.update(Buffer.from(blob.data, 'base64')), d.final()]).toString('utf8'));
+}
+const tokenKey = () => (CLOUD ? process.env.CP_IG_TOKEN_KEY : fs.existsSync(KEY_FILE) ? fs.readFileSync(KEY_FILE, 'utf8').trim() : null);
+let cloudToken = null; // filled by initToken() in the cloud, and on the Mac once publishing has moved there
+async function initToken() {
+  if (!CLOUD && !MAC_CLOUD) return;
+  const key = tokenKey();
+  if (!key) die(CLOUD ? 'no IG_TOKEN_KEY secret in this repository (Settings → Secrets and variables → Actions)' : `no ${KEY_FILE}: run \`ig.mjs cloud-setup\``);
+  let blob;
+  if (CLOUD) blob = readJSON(TOKEN_ENC, null);
+  else {
+    // the cloud refreshes the token, so the Mac reads the committed copy, not its own old one
+    const r = await fetch(`${REPO_RAW}/state/ig-token.enc?t=${Date.now()}`).catch(() => null);
+    blob = r?.ok ? await r.json() : null;
+  }
+  if (!blob) die(`no encrypted token at ${CLOUD ? TOKEN_ENC : `${REPO_RAW}/state/ig-token.enc`}: run \`ig.mjs cloud-setup\` on the Mac and push`);
+  try {
+    cloudToken = unseal(blob, key);
+  } catch {
+    die('the token key does not open state/ig-token.enc (wrong IG_TOKEN_KEY?)');
+  }
+}
 function tokenData() {
+  if (CLOUD || MAC_CLOUD) return cloudToken ?? die('internal: initToken() was not called');
   if (!fs.existsSync(TOKEN_FILE)) die(`no Instagram token yet: run \`node ${process.argv[1]} token\` (see the cp skill's reference/publish.md)`);
   return readJSON(TOKEN_FILE);
+}
+function saveToken(t) {
+  if (CLOUD) return writeJSON(TOKEN_ENC, seal(t, tokenKey()));
+  if (MAC_CLOUD) die('the GitHub Actions job owns the token now; a refresh here would invalidate its copy');
+  writeJSON(TOKEN_FILE, t, 0o600);
 }
 async function graph(method, url, params = {}, {token} = {}) {
   const tok = token ?? tokenData().access_token;
@@ -167,7 +255,7 @@ async function whoami() {
   const who = await me();
   const days = Math.floor((Date.parse(t.expires_at) - Date.now()) / 86400000);
   console.log(`account: @${who.username} (${who.account_type ?? '?'}), user_id ${who.user_id ?? t.user_id}, ${who.media_count ?? '?'} posts`);
-  console.log(`token: ~${days} days left (refreshed ${t.refreshed?.slice(0, 10)}); run-due refreshes it weekly`);
+  console.log(`token: ~${days} days left (refreshed ${t.refreshed?.slice(0, 10)}); ${CLOUD || MAC_CLOUD ? 'the GitHub Actions job' : 'run-due'} refreshes it weekly`);
   try {
     const lim = await graph('GET', `${G}/${t.user_id}/content_publishing_limit`, {fields: 'config,quota_usage'});
     const d = lim.data?.[0];
@@ -177,6 +265,7 @@ async function whoami() {
   }
 }
 async function refresh(force = false) {
+  if (MAC_CLOUD) die('the GitHub Actions job owns the token now and refreshes it weekly; a refresh here would invalidate its copy');
   const t = tokenData();
   const age = Date.now() - Date.parse(t.refreshed ?? t.obtained);
   if (!force && age < 7 * 86400000) return false;
@@ -193,7 +282,7 @@ async function refresh(force = false) {
   t.access_token = j.access_token;
   t.refreshed = new Date().toISOString();
   t.expires_at = new Date(Date.now() + (j.expires_in ?? 60 * 86400) * 1000).toISOString();
-  writeJSON(TOKEN_FILE, t, 0o600);
+  saveToken(t);
   log(`token refreshed; valid until ${t.expires_at.slice(0, 10)}`);
   return true;
 }
@@ -282,8 +371,9 @@ async function queue(specPath, at) {
   ig.queued = true;
   fs.writeFileSync(specFile, JSON.stringify(spec, null, 2) + '\n');
   log(`queued ${slug} for ${istTime(t)} (spool ${(fs.statSync(post.spool).size / 1e6).toFixed(1)} MB)`);
-  if (!fs.existsSync(PLIST)) console.log('note: the publishing job is not installed yet — run `ig.mjs install-job`');
-  if (!fs.existsSync(TOKEN_FILE)) console.log('note: no Instagram token yet — run `ig.mjs token` before the release time');
+  if (MAC_CLOUD) console.log('note: GitHub Actions publishes it: commit with publish-short.sh before the release so state/ig-queue.json carries it');
+  else if (!fs.existsSync(PLIST)) console.log('note: the publishing job is not installed yet — run `ig.mjs install-job`');
+  if (!MAC_CLOUD && !fs.existsSync(TOKEN_FILE)) console.log('note: no Instagram token yet — run `ig.mjs token` before the release time');
 }
 
 // ---- publishing -------------------------------------------------------------------------------------------------
@@ -367,9 +457,24 @@ async function publishContainer(post) {
   const m = await graph('GET', `${G}/${res.id}`, {fields: 'id,permalink,shortcode,timestamp'});
   return m;
 }
+// The Reel's caption among the account's last 25 posts (since a day before it was queued): it is already live.
+async function alreadyLive(post) {
+  const t = tokenData();
+  const r = await graph('GET', `${G}/${t.user_id}/media`, {fields: 'id,caption,permalink,timestamp', limit: '25'});
+  const since = Date.parse(post.queuedAt ?? '') - 86400000 || 0;
+  return (r.data ?? []).find((m) => (m.caption ?? '').slice(0, 60) === post.caption.slice(0, 60) && Date.parse(m.timestamp) >= since) ?? null;
+}
+function recordLive(q, post, m) {
+  Object.assign(post, {status: 'published', mediaId: m.id, permalink: m.permalink, publishedAt: m.timestamp ?? new Date().toISOString()});
+  delete post.error;
+  saveQueue(q);
+  log(`${post.slug}: already live, recorded (${m.permalink})`);
+}
 async function prepareAndPublish(q, post, {now = false} = {}) {
   const save = () => saveQueue(q);
   try {
+    const live = await alreadyLive(post);
+    if (live) return recordLive(q, post, live);
     if (!post.containerId || post.status === 'failed') {
       post.status = 'uploading';
       post.attempts = (post.attempts ?? 0) + 1;
@@ -388,6 +493,8 @@ async function prepareAndPublish(q, post, {now = false} = {}) {
         log(`${post.slug}: processed; publishing at ${istTime(Date.parse(post.publishAt))}`);
         await sleep(wait);
       }
+      const liveNow = await alreadyLive(post); // another run may have published it while this one slept
+      if (liveNow) return recordLive(q, post, liveNow);
     }
     const m = await publishContainer(post);
     Object.assign(post, {status: 'published', mediaId: m.id, permalink: m.permalink, publishedAt: m.timestamp ?? new Date().toISOString()});
@@ -408,6 +515,9 @@ async function prepareAndPublish(q, post, {now = false} = {}) {
   }
 }
 async function runDue(dryRun) {
+  if (MAC_CLOUD) return console.log(`publishing runs in GitHub Actions now (${ACTIONS_URL}); nothing to do on the Mac`);
+  const enabled = !CLOUD || readJSON(path.join(STATE, 'ig-cloud.json'), {}).enabled === true;
+  if (!enabled && !dryRun) return console.log('cloud publishing is not enabled yet (state/ig-cloud.json): the Mac\'s job still publishes; looking only');
   const q = loadQueue();
   const soon = Date.now() + LEAD_MIN * 60000;
   const due = q.posts.filter((p) => ['queued', 'uploading', 'ready', 'failed'].includes(p.status) && Date.parse(p.publishAt) <= soon && (p.attempts ?? 0) < 4);
@@ -420,14 +530,17 @@ async function runDue(dryRun) {
     for (const p of due) console.log(`would publish ${p.slug} at ${istTime(Date.parse(p.publishAt))} (${p.status})`);
     return;
   }
-  if (!fs.existsSync(TOKEN_FILE)) {
+  if (!CLOUD && !fs.existsSync(TOKEN_FILE)) {
     notify('CurioPulse Reel NOT published', 'No Instagram token: run ig.mjs token');
     die('no Instagram token: run `ig.mjs token`');
   }
-  try {
-    await refresh();
-  } catch (e) {
-    log(`warning: ${e.message}`);
+  if (!CLOUD) {
+    // in the cloud the workflow's refresh-weekly step does this, and commits the new token before anything else
+    try {
+      await refresh();
+    } catch (e) {
+      log(`warning: ${e.message}`);
+    }
   }
   let failed = 0;
   for (const p of due.sort((a, b) => Date.parse(a.publishAt) - Date.parse(b.publishAt))) {
@@ -547,6 +660,11 @@ function upcoming() {
     .sort();
   if (busy.length) console.log(`booked outside the API: ${busy.join(', ')}`);
   console.log(`next free Instagram slot: ${istTime(Date.parse(nextFreeIgSlot(q)))} (slots ${SLOTS.join(' and ')} IST; yt.mjs also keeps a Reel from going before its Short's YouTube release)`);
+  if (CLOUD || MAC_CLOUD) {
+    console.log(`publishing: GitHub Actions, ${ACTIONS_URL}`);
+    if (cloudToken) console.log(`token: @${cloudToken.username}, ~${Math.floor((Date.parse(cloudToken.expires_at) - Date.now()) / 86400000)} days left (refreshed ${cloudToken.refreshed?.slice(0, 10)} by the cloud)`);
+    return;
+  }
   jobStatus();
   if (fs.existsSync(TOKEN_FILE)) {
     const t = readJSON(TOKEN_FILE);
@@ -582,9 +700,11 @@ function cancel(slug) {
   log(`${slug}: cancelled`);
 }
 async function testContainer(file) {
-  if (!file || !fs.existsSync(file)) die('usage: ig.mjs test-container <file.mp4>');
   const slug = `test-${Date.now()}`;
-  const post = {slug, caption: 'test container (never published)', shareToFeed: true, spool: spoolCopy(path.resolve(file), slug), videoUrl: null, size: fs.statSync(file).size};
+  let post;
+  if (/^https:\/\//.test(file ?? '')) post = {slug, caption: 'test container (never published)', shareToFeed: true, videoUrl: file}; // the cloud's route
+  else if (file && fs.existsSync(file)) post = {slug, caption: 'test container (never published)', shareToFeed: true, spool: spoolCopy(path.resolve(file), slug), videoUrl: null, size: fs.statSync(file).size};
+  else die('usage: ig.mjs test-container <file.mp4 | https URL of an MP4>');
   try {
     const c = await createContainer(post);
     log(`test: container ${c.id} via ${c.method}; waiting for processing…`);
@@ -592,13 +712,47 @@ async function testContainer(file) {
     log(`test: container ${c.id} FINISHED via ${c.method}. It was NOT published and expires unused in 24 h.`);
   } finally {
     try {
-      fs.unlinkSync(post.spool);
+      if (post.spool) fs.unlinkSync(post.spool);
     } catch {}
   }
 }
 
+// ---- route C: the cloud ---------------------------------------------------------------------------------------
+function cloudSetup(force) {
+  // after cloud-enable only a brand-new token (`ig.mjs token`) may replace the cloud's copy
+  if (MAC_CLOUD && !force) die('publishing is already in the cloud and it owns the token; for a new token from `ig.mjs token` run `cloud-setup --force`');
+  const t = readJSON(TOKEN_FILE, null) ?? die('no Instagram token on this Mac: run `ig.mjs token` first');
+  if (!fs.existsSync(KEY_FILE)) {
+    fs.mkdirSync(CONF, {recursive: true, mode: 0o700});
+    fs.writeFileSync(KEY_FILE, crypto.randomBytes(32).toString('base64') + '\n', {mode: 0o600});
+    log(`made the token key ${KEY_FILE}`);
+  }
+  writeJSON(TOKEN_ENC, seal(t, tokenKey()));
+  log(`encrypted the token for @${t.username} into ${TOKEN_ENC} (commit and push it)`);
+  console.log(`the repository secret IG_TOKEN_KEY must hold the key: \`pbcopy < ${KEY_FILE}\`, then paste it at https://github.com/hmunna36/curiopulse/settings/secrets/actions/new`);
+}
+function cloudEnable() {
+  if (!fs.existsSync(KEY_FILE)) die('run `ig.mjs cloud-setup` first');
+  if (MAC_CLOUD) die('publishing is already in the cloud');
+  cloudSetup(); // seal the Mac's token as it is now: it may have been refreshed since cloud-setup
+  const since = new Date().toISOString();
+  writeJSON(path.join(STATE, 'ig-cloud.json'), {enabled: true, since});
+  writeJSON(CLOUD_FLAG, {enabled: true, since});
+  if (fs.existsSync(PLIST)) uninstallJob();
+  log(`publishing handed to GitHub Actions; commit and push ${path.join(STATE, 'ig-cloud.json')} so its scheduled runs publish`);
+}
+async function pullResults() {
+  const r = await fetch(`${REPO_RAW}/state/ig-results.json?t=${Date.now()}`).catch(() => null);
+  if (!r?.ok) return console.log('no cloud results yet');
+  const q = applyResults(readJSON(QUEUE_FILE, {busy: [], posts: []}), await r.json());
+  writeJSON(QUEUE_FILE, q);
+  console.log(`merged the cloud's results into ${QUEUE_FILE}`);
+}
+
 const [cmd, ...args] = process.argv.slice(2);
 try {
+  if (['whoami', 'refresh', 'refresh-weekly', 'run-due', 'publish-now', 'test-container', 'upcoming'].includes(cmd) && !(cmd === 'run-due' && MAC_CLOUD)) await initToken();
+  if (cmd === 'upcoming' && MAC_CLOUD) await pullResults().catch(() => {});
   if (cmd === 'prepare') await prepare(args.find((a) => !a.startsWith('--')) ?? die('usage: ig.mjs prepare <publish.json> [--out DIR]'), args.includes('--out') ? args[args.indexOf('--out') + 1] : undefined);
   else if (cmd === 'route') console.log(fs.existsSync(TOKEN_FILE) ? 'api' : 'business-suite');
   else if (cmd === 'token') await setToken(args.includes('--clipboard'));
@@ -618,7 +772,15 @@ try {
   else if (cmd === 'install-job') installJob();
   else if (cmd === 'uninstall-job') uninstallJob();
   else if (cmd === 'job-status') jobStatus();
-  else console.log('usage: ig.mjs prepare <publish.json> [--out DIR] | route | token [--clipboard] | whoami | refresh | queue <publish.json> [--at ISO] | upcoming | run-due [--dry-run] | publish-now <slug> | cancel <slug> | busy <YYYY-MM-DDTHH:MM>... | test-container <mp4> | install-job | uninstall-job | job-status');
+  else if (cmd === 'cloud-setup') cloudSetup(args.includes('--force'));
+  else if (cmd === 'cloud-enable') cloudEnable();
+  else if (cmd === 'pull-results') await pullResults();
+  else if (cmd === 'refresh-weekly') {
+    // not before cloud-enable: a refresh hands out a new token, and the Mac still publishes with the old one until then
+    if (CLOUD && readJSON(path.join(STATE, 'ig-cloud.json'), {}).enabled !== true) console.log('not refreshing: cloud publishing is not enabled yet');
+    else console.log((await refresh(false)) ? 'refreshed' : 'not due');
+  }
+  else console.log('usage: ig.mjs prepare <publish.json> [--out DIR] | route | token [--clipboard] | whoami | refresh | queue <publish.json> [--at ISO] | upcoming | run-due [--dry-run] | publish-now <slug> | cancel <slug> | busy <YYYY-MM-DDTHH:MM>... | test-container <mp4|url> | install-job | uninstall-job | job-status | cloud-setup | cloud-enable | pull-results | refresh-weekly');
 } catch (e) {
   die(e.message);
 }

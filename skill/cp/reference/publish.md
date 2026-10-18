@@ -21,6 +21,18 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   BE ON AND AWAKE at 18:10 / 20:40. The API cannot schedule; `ig.mjs upcoming` lists the queue and the last results.
   First proof: dominant-eye (19 Oct 18:30), blind-spot (19 Oct 21:00), two-noses (20 Oct 18:30). The morning runs of 17 Oct already queued
   blind-spot and two-noses this way (the route flipped to `api` when the token was saved).
+- **Instagram from the cloud (route C; the user, 18 Oct 2026: "publish without the Mac").** The GitHub Actions workflow
+  `.github/workflows/ig-publish.yml` in the curiopulse repo runs `ig.mjs run-due` at 17:47 and 20:17 IST (≈45 min before each slot;
+  GitHub's cron can start late), uploads by video_url, sleeps to the slot and publishes. It reads `state/ig-queue.json`, which
+  `publish-short.sh` copies from the Mac with every commit, so **the step-17 commit must land before the Reel's slot**. It writes
+  `state/ig-results.json` (the Mac merges it with `ig.mjs pull-results`; `upcoming` does that itself). The token lives in
+  `state/ig-token.enc` (AES-256-GCM; key = repo secret `IG_TOKEN_KEY` = `~/.config/cp/ig-cloud-key`). Instagram issues a NEW token
+  string on every refresh, so once the cloud is enabled ONLY the cloud refreshes it (weekly, committed at once); `ig.mjs refresh` on the
+  Mac then refuses. Before each upload and each publish the last 25 posts are checked for the caption, so a Reel is never posted twice.
+  Switching over: `ig.mjs cloud-setup` (key + encrypted token) → the user adds the secret → test with the workflow's "Run workflow"
+  (whoami, test-container) → `ig.mjs cloud-enable` (writes `state/ig-cloud.json`, removes the launchd job) → commit and push. Until
+  `state/ig-cloud.json` says enabled, scheduled runs only look and the Mac's job publishes. A new token from `ig.mjs token` after the
+  switch: `ig.mjs cloud-setup --force`, then commit and push `state/ig-token.enc`.
 - **Facebook Page:** `fb.mjs reel <publish.json>` uploads and schedules natively for `instagram.publishAt` (no Mac needed at the time);
   `fb.mjs status <id>` must say `scheduled` / `ready`. Scheduled so far: ring-finger (Business Suite, 17 Oct 21:00), dominant-eye
   (API, 18 Oct 21:00, status ready/scheduled), blind-spot (API, 19 Oct 21:00), two-noses (API, 20 Oct 18:30).

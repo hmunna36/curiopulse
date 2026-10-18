@@ -218,8 +218,10 @@ Read each reference file when you reach its phase. They are short; don't skip th
     for instagram and fb"; the tokens were set up on 16 Oct; `reference/publish.md`, "META BY API"). Every Short gets a Reel on
     both, in the slot from `instagram.publishAt` (18:30 or 21:00 IST), unless publish.json says `"skip": true`.** The Short's
     folder must already be pushed (step 14): both APIs fetch the MP4 from its public GitHub address.
-    1. **Instagram:** `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json`. It books the Reel in the queue and
-       the Mac's launchd job (18:10 and 20:40) uploads and publishes it at the slot (the Mac must be on and awake then).
+    1. **Instagram:** `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json`. It books the Reel in the queue. Once
+       `ig.mjs upcoming` says "publishing: GitHub Actions" (route C, 18 Oct 2026), the cloud publishes it at the slot from the
+       repo's `state/ig-queue.json`, so step 17's commit (publish-short.sh copies the queue in) must land before the slot; until
+       then the Mac's launchd job (18:10 and 20:40) does it and the Mac must be awake (`reference/publish.md`, "META BY API").
        Check `ig.mjs upcoming` shows it, and `ig.mjs whoami` is happy.
     2. **Facebook Page:** `node ~/.claude/skills/cp/bin/fb.mjs reel videos/<slug>/publish.json`. It uploads and SCHEDULES the
        Reel natively on Facebook for the same time (the caption's Follow line becomes "Follow CurioPulse…"), and writes
@@ -366,7 +368,7 @@ own level, which in a routine run is medium. So:
   dates and the arm since are the constants `LENGTH_ARMS`, `LENGTH_TEST` and `HOUSE_ARM` at its top.
 - `bin/fb.mjs`: the Facebook Page by API: token --system · whoami · reel <publish.json> · status <video_id> (native scheduling; ~/.config/cp/facebook.json)
 - `bin/ig.mjs`: Instagram. Route A (fallback): prepare · busy · route. Route B, the API (the normal route): token · whoami · refresh · queue · upcoming · run-due · publish-now · cancel ·
-  test-container · install-job)
+  test-container · install-job). Route C, the cloud (GitHub Actions `ig-publish.yml`): cloud-setup · cloud-enable · pull-results · refresh-weekly
 - `bin/quota.mjs`: ElevenLabs characters left per account (exit 2 = not enough for a Short)
 
 ## Two Shorts a day (the user's decision via Claude, 2 Oct 2026: a 14-day test, review 17 Oct)

@@ -14,7 +14,8 @@ if [ "$2" = "--free" ]; then
   if [ -n "$(git status --porcelain -- "videos/$SLUG")" ] || [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
     echo "not freeing: videos/$SLUG has unpushed changes"; exit 1
   fi
-  if [ -f "$HOME/.config/cp/ig-queue.json" ] && node -e '
+  # (once GitHub Actions publishes, route C, it uses the public MP4 and the spool copy no longer matters)
+  if [ -f "$HOME/.config/cp/ig-queue.json" ] && [ ! -f "$HOME/.config/cp/ig-cloud.json" ] && node -e '
 const q = require(process.argv[1]), s = process.argv[2];
 const p = (q.posts || []).find((x) => x.slug === s && !["published", "cancelled"].includes(x.status));
 process.exit(p && !require("fs").existsSync(p.spool) ? 0 : 1)' "$HOME/.config/cp/ig-queue.json" "$SLUG"; then
@@ -39,8 +40,17 @@ if [ -f "$QUEUE" ]; then
   if [ "$(git config core.sparseCheckout)" = "true" ]; then git sparse-checkout add state; fi
   mkdir -p state && cp "$QUEUE" state/comment-queue.json
 fi
+# so does the Instagram queue: GitHub Actions publishes from state/ig-queue.json (route C, user, 18 Oct 2026).
+# The cloud's own results (state/ig-results.json) are merged into the Mac's copy first, so it never looks stale.
+IGQ="$HOME/.config/cp/ig-queue.json"
+if [ -f "$IGQ" ]; then
+  if [ "$(git config core.sparseCheckout)" = "true" ]; then git sparse-checkout add state; fi
+  node "$BIN/ig.mjs" pull-results >/dev/null 2>&1 || true
+  mkdir -p state && cp "$IGQ" state/ig-queue.json
+fi
 git add -- "videos/$SLUG" README.md
 [ -f state/comment-queue.json ] && git add -- state/comment-queue.json
+[ -f state/ig-queue.json ] && git add -- state/ig-queue.json
 if git diff --cached --quiet; then echo "nothing new to commit in videos/$SLUG"; else git commit -q -F "$MSG"; fi
 # another routine may have pushed while this one built (the weekly film does, from the cloud): go on top of it
 git fetch -q origin
