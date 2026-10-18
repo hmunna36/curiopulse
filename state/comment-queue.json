@@ -220,8 +220,10 @@
       "title": "Can You ROLL Your Tongue? (It's Not Just Genes) 👅",
       "publishAt": "2026-10-18T06:00:00.000Z",
       "question": "Can you roll it? Yes or no? 👅",
-      "status": "queued",
-      "queued": "2026-10-17T19:36:54.425Z"
+      "status": "posted",
+      "queued": "2026-10-17T19:36:54.425Z",
+      "commentId": "UgzKqtZaHIrICI2fCw54AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "5sYH3lRmDDk",
@@ -229,8 +231,10 @@
       "title": "Why Does Your Foot FLIP When You Draw a 6? 🦶",
       "publishAt": "2026-10-18T18:00:00.000Z",
       "question": "Did your foot flip? Yes or no? 🦶",
-      "status": "queued",
-      "queued": "2026-10-17T21:32:40.372Z"
+      "status": "posted",
+      "queued": "2026-10-17T21:32:40.372Z",
+      "commentId": "Ugzo0jyaiEuarKq_ciB4AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }
