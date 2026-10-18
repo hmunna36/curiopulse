@@ -46,8 +46,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 | Platform | Link | Release |
 |---|---|---|
 | YouTube Shorts | https://youtube.com/shorts/id7jJEKKNtI | 18 Oct 2026 11:30 IST (scheduled; thumbnail set again in Studio) |
-| Instagram Reels | — | 20 Oct 2026 21:00 IST, queued by the Instagram API (route B); the API answered "API access blocked" on 18 Oct, so it goes out only if access is restored by then |
-| Facebook Page | — | still to post (the Page API answered "API access blocked"); planned for 20 Oct 2026 21:00 IST |
+| Instagram Reels | — | 20 Oct 2026 21:00 IST (queued by the Instagram API, route B; access restored 18 Oct after the developer account was confirmed) |
+| Facebook Page | — | 20 Oct 2026 21:00 IST, scheduled by the Page API on 18 Oct (video 1664784798511231) |
 
 **Title:** Can You ROLL Your Tongue? (It's Not Just Genes) 👅
 

@@ -71,7 +71,7 @@ runs 1.4 s with the widest pitch range of five. The payoff's take is an audition
 |---|---|---|
 | YouTube Shorts | https://youtube.com/shorts/vW0AeAfgNe0 | 17 Oct 2026 23:30 IST (scheduled by the Data API; custom thumbnail checked in Studio; playlist Your Brain Is Weird) |
 | Instagram Reels | (the publishing job writes the link when it goes out) | 20 Oct 2026 18:30 IST (queued by the Instagram API, route B) |
-| Facebook Page CurioPulse | still to post | 20 Oct 2026 18:30 IST planned: Business Suite's upload looped again on 17 Oct (only pre-flight requests reached the upload server); files in `~/Desktop/instagram-pending/7-two-noses-*` |
+| Facebook Page CurioPulse | – | 20 Oct 2026 18:30 IST, scheduled by the Page API on 17 Oct (video 2181418382439445) |
 
 **Title:** Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞
 

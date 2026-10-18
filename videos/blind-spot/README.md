@@ -63,7 +63,7 @@ kept); the button on four seeds (whisper heard "Love." on the first take; seed 3
 |---|---|---|
 | YouTube Shorts | https://youtube.com/shorts/wn5ow9UxzoI | 17 Oct 2026 11:30 IST (scheduled; thumbnail set in Studio) |
 | Instagram Reels | (link after it goes out) | 19 Oct 2026 21:00 IST (queued by the Instagram API, route B) |
-| Facebook Page | – | still to post: the Business Suite composer's upload kept restarting (17 Oct 2026); files in ~/Desktop/instagram-pending/6-blind-spot-* |
+| Facebook Page | – | 19 Oct 2026 21:00 IST, scheduled by the Page API on 17 Oct (video 1129727210014784) |
 
 **Title:** Why Does This Dot VANISH? (Find Your Blind Spot) 👁️
 

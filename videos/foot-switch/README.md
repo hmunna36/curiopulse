@@ -60,8 +60,8 @@ and pushed the answer past 5 s; one sentence with "and" (seed 5) ran 4.4 s, 4.1 
 | Platform | Link | Release |
 |---|---|---|
 | YouTube Shorts | https://youtube.com/shorts/5sYH3lRmDDk | 18 Oct 2026 23:30 IST (scheduled; the cover set again in Studio, "Changes saved") |
-| Instagram Reels | — | 21 Oct 2026 18:30 IST, queued by the Instagram API (route B); the API answers "API access blocked" since 18 Oct, so it goes out only if access is restored by then |
-| Facebook Page | — | still to post (the Page API answered "API access blocked"); planned for 21 Oct 2026 18:30 IST |
+| Instagram Reels | — | 21 Oct 2026 18:30 IST (queued by the Instagram API, route B; access restored 18 Oct after the developer account was confirmed) |
+| Facebook Page | — | 21 Oct 2026 18:30 IST, scheduled by the Page API on 18 Oct (video 1432745112369506) |
 
 **Title:** Why Does Your Foot FLIP When You Draw a 6? 🦶
 
