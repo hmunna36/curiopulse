@@ -54,8 +54,9 @@
     "apiNote": "18 Oct 2026 00:05-01:09 IST: the Instagram and Page APIs both answer 'API access blocked' (code 200). Queued anyway (local queue): it goes out at the slot only if API access works again by the 20:40 job. Business Suite's upload looped this run (only OPTIONS pre-flights reached rupload). Reel-spec copy, caption and cover in ~/Desktop/instagram-pending/8-roll-tongue-*"
   },
   "facebook": {
-    "pending": true,
+    "videoId": "1664784798511231",
     "publishAt": "2026-10-20T21:00:00+05:30",
-    "note": "fb.mjs reel failed twice: POST video_reels -> 400 API access blocked (code 200), 18 Oct 2026 01:08 and 01:09 IST. Files in ~/Desktop/instagram-pending/8-roll-tongue-* (the caption file has the Page version)."
+    "via": "api",
+    "scheduledAt": "2026-10-18T01:53:00.821Z"
   }
 }
