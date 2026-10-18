@@ -1,0 +1,29 @@
+# Narration for "Why Can't You Breathe and SWALLOW at the Same Time?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses. tempo speeds a take up without changing pitch.
+# The rules of 15 Oct 2026: the hook is the viewer's test (a DRY swallow while trying to breathe in; never with a
+# drink), the answer starts by 5.0 s, every mechanism line points back to the test in everyday words, nobody says
+# "subscribe", no pill, the button runs into the hook when the Short loops. 66-76 words (short arm).
+
+## hook gap=0.10 tempo=1.00
+Can you swallow and breathe in at the same time? Try it.
+
+## answer gap=0.40 tighten=0 tempo=1.00
+Can't, right? Your spit just cut in line.
+
+## tunnel gap=0.35 tempo=1.04
+One tunnel. Feel your throat jump? That's your voice box, hopping up under a lid.
+
+## lid gap=0.15 tempo=1.03
+Your brain hits PAUSE on breathing, and the lid slams SHUT.
+
+## wrong gap=0.50 tempo=1.00
+Ever had water go down the wrong pipe? The lid was LATE.
+
+## weird gap=0.50 tempo=1.03
+You stop breathing like this HUNDREDS of times a day... without thinking.
+
+## button gap=0.60 tighten=0 tempo=1.00
+Now you're thinking about it. Sorry.
