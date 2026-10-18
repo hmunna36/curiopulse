@@ -31,19 +31,32 @@
   "cover": "cover.jpg",
   "captions": "hum-nose-pinched.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-19T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "7A4VxK8d5Z8",
+    "url": "https://youtube.com/shorts/7A4VxK8d5Z8",
+    "uploaded": "2026-10-18T19:24:47.659Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-21T21:00:00+05:30",
     "caption": "Hum along... then pinch your nose shut. 🤐\nYour hum dies, right? A hum is air leaving through your nose with your lips shut. Pinch it and the air piles up until it pushes back as hard as your lungs: no flow, no buzz.\nDid your hum stop? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't breathe and swallow at the same time 🔔\n#science #humanbody #humming #funfacts #reels",
     "coverTime": 4.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true
+  },
+  "facebook": {
+    "videoId": "29435760659364124",
+    "publishAt": "2026-10-21T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-18T19:26:33.642Z"
   }
 }

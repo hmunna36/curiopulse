@@ -59,8 +59,9 @@ whole second ("mmmmmmm", a 222 → 150 Hz glide) and still runs only 3.9 s was k
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 19 Oct 2026 11:30 IST |
-| Instagram Reels | (filled in after the queue) | 18:30 or 21:00 IST |
+| YouTube Shorts | https://youtube.com/shorts/7A4VxK8d5Z8 | 19 Oct 2026 11:30 IST (scheduled by the Data API; playlist Why Does Your Body Do That?; cover set in Studio too) |
+| Instagram Reels | queued by the Instagram API (`ig.mjs queue`; the GitHub Actions job publishes it) | 21 Oct 2026 21:00 IST |
+| Facebook Page (CurioPulse) | video 29435760659364124, scheduled natively by `fb.mjs reel` (status: ready, scheduled) | 21 Oct 2026 21:00 IST |
 
 **Title:** Why Can't You HUM With Your Nose Pinched? 🤐
 
