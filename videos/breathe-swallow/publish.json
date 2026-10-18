@@ -31,19 +31,32 @@
   "cover": "cover.jpg",
   "captions": "breathe-swallow.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-19T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "pJIc92uQLiU",
+    "url": "https://youtube.com/shorts/pJIc92uQLiU",
+    "uploaded": "2026-10-18T21:19:40.000Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-22T18:30:00+05:30",
     "caption": "Swallow... and breathe in at the SAME time. 🫁\nAir and spit share ONE tunnel: on every swallow your brain pauses your breathing and a little lid slams over your windpipe.\nCould you?\nFollow @curio_pulse_tv for the next one: why the Vulcan salute is so hard 🖖\n#science #humanbody #throat #breathing #funfacts #reels",
     "coverTime": 1.8,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true
+  },
+  "facebook": {
+    "videoId": "1121689396895408",
+    "publishAt": "2026-10-22T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-18T21:20:34.168Z"
   }
 }

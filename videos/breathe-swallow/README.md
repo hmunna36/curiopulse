@@ -43,9 +43,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 19 Oct 2026 23:30 IST |
-| Instagram Reels | queued by the API (GitHub Actions publishes it) | (filled in after the upload) |
-| Facebook Page | scheduled by `fb.mjs reel` | (filled in after the upload) |
+| YouTube Shorts | https://youtube.com/shorts/pJIc92uQLiU | 19 Oct 2026 23:30 IST (scheduled; cover.jpg set in Studio) |
+| Instagram Reels | queued by the API (`ig.mjs queue`; GitHub Actions publishes it) | 22 Oct 2026 18:30 IST |
+| Facebook Page | scheduled natively by `fb.mjs reel` (video 1121689396895408, `scheduled`, `ready`) | 22 Oct 2026 18:30 IST |
 
 **Title:** Why Can't You Breathe and SWALLOW at the Same Time? 🫁
 
