@@ -904,6 +904,13 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     else if (cmd === 'next-slot') await nextSlot(args.includes('--json'));
     else if (cmd === 'numbers') await numbers();
     else if (cmd === 'reschedule') await reschedule(args[0], args[1]);
+    else if (cmd === 'thumbnail') { // thumbnail <videoId> <image.jpg|png>: replace a live or scheduled video's thumbnail (17 Oct 2026)
+      if (!args[0] || !args[1] || !fs.existsSync(args[1])) throw new Error('usage: yt.mjs thumbnail <videoId> <image.jpg|png>');
+      const img = fs.readFileSync(args[1]);
+      if (img.length > 2e6) throw new Error(`the image is ${(img.length / 1e6).toFixed(1)} MB; YouTube's limit is 2 MB`);
+      await api('POST', `${UPLOAD}/thumbnails/set?videoId=${args[0]}&uploadType=media`, {body: img, headers: {'Content-Type': args[1].toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg'}});
+      console.log(`thumbnail set on ${args[0]} from ${args[1]}`);
+    }
     else if (cmd === 'status') await status(args);
     else if (cmd === 'thumbnail') {   // yt.mjs thumbnail <videoId> <image.jpg|png>: replace one video's thumbnail (under 2 MB)
       const [vid, img] = args;
@@ -930,7 +937,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
       const n = Number(args.find((a, i) => /^\d+$/.test(a) && (ci < 0 || i !== ci + 1)) ?? 10);
       await analytics(Math.max(1, Math.min(200, n)), args.includes('--json'), ci >= 0 ? args[ci + 1] : null);
     }
-    else console.log('usage: yt.mjs auth | whoami | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | comments-due [--dry-run] | queue-comment <publish.json> | channel-info | playlists | playlist-create | playlist-add | channel-set | section-add | numbers');
+    else console.log('usage: yt.mjs auth | whoami | thumbnail <videoId> <image> | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | comments-due [--dry-run] | queue-comment <publish.json> | channel-info | playlists | playlist-create | playlist-add | channel-set | section-add | numbers');
   } catch (e) {
     die(e.message);
   }
