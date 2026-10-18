@@ -1738,3 +1738,39 @@ That?; Instagram queued and the Page Reel scheduled for 21 Oct 21:00 IST):
   The 48-hour check on Instagram came from the public grid (instagram.com/curio_pulse_tv/reels/, read only): eye-rub stars
   and the chalkboard Reel (both due 18 Oct) on top. Business Suite was not opened this run (the session's permission guard
   refused it after a scratch script tried to read the encrypted token: never decrypt tokens outside ig.mjs).
+
+**breathe-swallow** (19 Oct 2026, the second Short of the day: started 02:05 IST, YouTube scheduled by 02:51; short arm, 76 words →
+32.70 s; hook formula: The Question as the viewer's test, "Can you swallow and breathe in at the same time? Try it."; answer "Can't,
+right? Your spit just cut in line." at 3.85 s; YouTube pJIc92uQLiU, 19 Oct 23:30 IST, playlist Why Does Your Body Do That?;
+Instagram queued and the Page Reel scheduled for 22 Oct 18:30 IST; the hit rule was already served: ring-finger's kin went out
+as roll-tongue and foot-switch, so the queue's order stood):
+- **A breath has no direction on a face seen from the front.** Cyan streaks curving into his nostrils read as whiskers on the
+  stills; two little air puffs with faces flying in from the sides and BONKING off his nose (stars, an "oof" face, then flying
+  away) read at once as "the breath can't get in". Keep them small (0.62 × his scale, smaller on a tighter camera) and let them
+  stop beside the nose: at 1.6 s they sit on his cheeks for a beat, which is the most they should.
+- **A hand on his own throat:** trail.js's trHero takes `armLew: {e, w}` (armAt with the elbow down by his side, the wrist under
+  his chin); `IK` to the wrist put the elbow above his head (he looked like he was scratching it). The fingers lie along the side
+  of the neck with their tips on a small bump (`bsThroat`) that rides up with each swallow; his chin goes up 16 units so the
+  rig's short neck shows.
+- New `throat.js`: his head and throat from the side as glass (hair, eye and ear so it is him), the air's road (nostril, over the
+  roof of the mouth, down) and the spit's road (over the tongue, down) as dense polylines that light up and merge into ONE TUNNEL,
+  then part into the windpipe (front, rings, the voice box with two little doors at its top) and the food pipe (behind); the
+  soft palate that swings up; the lid (epiglottis) as a pink leaf with a face, hinged at the root of the tongue, standing up
+  open and folded down shut; characters `swPuff` (calm / wait / hey / frozen / oof / happy), `swSpit` (grin / smug / whee),
+  `swDrop` (sneak / oops); `swBrain` with a red PAUSE button; `swAt(road, u)`.
+- **The window on his throat must grow with the push** (R × the camera's zoom factor), or the dive shows a giant blurred face
+  with a small window at the bottom (round 1, 4.5 s).
+- **The score can do the joke:** the music STOPS when the brain hits PAUSE (only a low dread under "and the lid slams"), the
+  SLAM lands in the 0.38 s before "SHUT.", and the groove comes back with the air (WHOOSH).
+- **qa.py failed a word the aligner had put 0.1 s early** ("Feel" at 8.42: its window held only the "f", 0.3 dB). Traced on
+  narration.wav (the vowel 8.50-8.66, "your" 8.66-8.80, "throat" 8.86-9.07) and set in make_timeline.py with an assert; 18/18 after.
+- **Turning the loud gags down 3 dB moved nothing** (the effects bus is normalised to its loudest sound); `levels={"sfx": -8.0}`
+  (house -5) put them at -16…-22 dB against a voice at -16.2.
+- Studio's thumbnail slot showed an automatic frame (the KOFF frame): cover.jpg uploaded there, Save, the slot and the sidebar
+  preview then showed it.
+- Two QA rounds; the final MP4 is build.sh's, from the cached takes (18/18, WER 0.0 %, SNR mean 19.5 dB). About 3.3 minutes a
+  render.
+- Voice: the hook and the answer were picked from five auditions (273 characters; the two winners installed as the takes), two
+  more of the lid line (118, not used), 345 for the other takes; quota.mjs read 55,788 before and 55,463 after.
+- **Meta by API, both first time:** `ig.mjs queue` (22 Oct 18:30, GitHub Actions) and `fb.mjs reel` (video 1121689396895408:
+  `ready`, `scheduled` for 13:00 UTC). The 48-hour check had been done by the 00:00 run at 00:05 (nothing was due between).
