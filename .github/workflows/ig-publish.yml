@@ -1,0 +1,76 @@
+# Publishes the queued Instagram Reels without the Mac (route C in skill/cp/bin/ig.mjs; user, 18 Oct 2026).
+# Each run starts ~45 minutes before a slot (18:30 / 21:00 IST), uploads the Reel from its public MP4, sleeps until
+# the exact release time and publishes. It reads state/ig-queue.json (the Mac's queue) and writes state/ig-results.json
+# and, once a week, the refreshed token in state/ig-token.enc. Needs the repository secret IG_TOKEN_KEY.
+# Scheduled runs only publish once state/ig-cloud.json says {"enabled": true} (`ig.mjs cloud-enable` on the Mac).
+name: Instagram Reels
+
+on:
+  schedule:
+    - cron: '17 12 * * *' # 17:47 IST, for the 18:30 slot
+    - cron: '47 14 * * *' # 20:17 IST, for the 21:00 slot
+  workflow_dispatch:
+    inputs:
+      command:
+        description: What to run
+        type: choice
+        default: run-due --dry-run
+        options:
+          - run-due --dry-run
+          - whoami
+          - upcoming
+          - test-container
+          - run-due
+
+concurrency:
+  group: ig-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      CP_IG_CLOUD: '1'
+      CP_IG_TOKEN_KEY: ${{ secrets.IG_TOKEN_KEY }}
+      CP_IG_LEAD_MIN: '80'
+      CMD: ${{ inputs.command || 'run-due' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            skill/cp/bin
+            state
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Git identity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Refresh the token (weekly) and commit it first
+        run: |
+          node skill/cp/bin/ig.mjs refresh-weekly
+          if [ -n "$(git status --porcelain -- state/ig-token.enc)" ]; then
+            git add state/ig-token.enc
+            git commit -q -m 'Refresh the Instagram token (cloud)'
+            for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep $((i * 5)); done
+          fi
+      - name: ${{ env.CMD }}
+        run: |
+          case "$CMD" in
+            test-container) node skill/cp/bin/ig.mjs test-container https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/blind-spot/blind-spot-short.mp4 ;;
+            *) node skill/cp/bin/ig.mjs $CMD ;;
+          esac
+      - name: Record the results
+        if: always()
+        run: |
+          for f in state/ig-results.json state/ig-token.enc; do [ -f "$f" ] && git add "$f"; done
+          if ! git diff --cached --quiet; then
+            git commit -q -m 'Record Instagram publishing results (cloud)'
+            for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q origin HEAD:main && break; sleep $((i * 5)); done
+          fi
