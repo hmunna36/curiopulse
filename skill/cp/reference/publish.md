@@ -38,7 +38,11 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   (API, 18 Oct 21:00, status ready/scheduled), blind-spot (API, 19 Oct 21:00), two-noses (API, 20 Oct 18:30).
 - **Checking that Reels really went out:** Instagram `ig.mjs upcoming` (results) and instagram.com only if needed; the Page `fb.mjs status <videoId>`
   (`publish_status: published`) or the Page's Content → Published list. A miss is reported first.
+  For Reels scheduled in Business Suite, the public grid instagram.com/curio_pulse_tv/reels/ (read only, nothing clicked)
+  shows the newest Reels in order (19 Oct 2026). Never read or decrypt a token outside ig.mjs / fb.mjs to check.
 - **Fallback:** Business Suite (Route A, below) when an API fails twice. Tokens/permissions errors are for the user.
+- **19 Oct 2026 00:05 IST: both APIs answer again** (`whoami` works on both; the Page Reels scheduled by API are `scheduled`,
+  dominant-eye's published on time). The note below is kept for the record.
 - **18 Oct 2026: both APIs answer "API access blocked" (code 200)** to every call (`ig.mjs whoami`, `fb.mjs whoami`,
   `fb.mjs reel`): the app or the business is restricted, a permission problem for the user (Meta for Developers / the
   business's support home). Until `whoami` works again: still `ig.mjs queue` the Reel (it is local; the Mac's job posts

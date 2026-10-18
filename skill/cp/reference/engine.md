@@ -68,6 +68,9 @@ SC.burst = (lt, t, shot) => {              // lt = time in the shot, t = video t
   `skinPaths`, `worldPaths`, `bodyArcs`, `flowCurrent`). Reuse them for anatomy.
 - `const` and `let` names must be unique across all loaded scripts (a duplicate `const` is a SyntaxError that shows
   up as `[pageerror]`). Function declarations may override earlier ones.
+  A `const` that takes the name of an engine FUNCTION (hum-nose-pinched, 19 Oct 2026: `const toScreen`, fx.js has
+  `function toScreen`) printed no `[pageerror]`: render.js just timed out (`page.waitForFunction: Timeout 60000ms`).
+  Prefix a video's own helpers (`hm…`, `fs…`) and grep the engine for a name before using it.
 
 ## The light in code (the cinematic look, 8 Oct 2026)
 

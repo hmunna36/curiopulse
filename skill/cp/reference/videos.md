@@ -40,6 +40,7 @@
 | `two-noses`: "Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞" | 34 s (short arm) | https://youtube.com/shorts/vW0AeAfgNe0 · 17 Oct 2026 23:30 IST | Instagram API queue (route B), 20 Oct 2026 18:30 IST; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/7-two-noses-*) |
 | `roll-tongue`: "Can You ROLL Your Tongue? (It's Not Just Genes) 👅" | 32 s (short arm) | https://youtube.com/shorts/id7jJEKKNtI · 18 Oct 2026 11:30 IST | Instagram API queue (route B), 20 Oct 2026 21:00 IST, but both Meta APIs answered "API access blocked" (code 200) on 18 Oct: it goes out only if access is restored; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/8-roll-tongue-*) |
 | `foot-switch`: "Why Does Your Foot FLIP When You Draw a 6? 🦶" | 33 s (short arm) | https://youtube.com/shorts/5sYH3lRmDDk · 18 Oct 2026 23:30 IST | Instagram API queue (route B), 21 Oct 2026 18:30 IST, but both Meta APIs still answered "API access blocked" (code 200) at 03:04 IST: it goes out only if access is restored; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/9-foot-switch-*) |
+| `hum-nose-pinched`: "Why Can't You HUM With Your Nose Pinched? 🤐" | 31 s (short arm) | https://youtube.com/shorts/7A4VxK8d5Z8 · 19 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 21 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel`, same slot (video 29435760659364124, scheduled) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1701,3 +1702,39 @@ the middle, so the "can you?" tests went first and the foot-switch test moved up
   minutes a render. The Studio thumbnail slot was grey: cover.jpg uploaded there ("Changes saved").
 - **Meta, 18 Oct 03:04 IST: still "API access blocked" (code 200)** on both APIs; the Reel queued locally, files in
   `~/Desktop/instagram-pending/9-foot-switch-*`; Business Suite not tried (it looped at 00:15).
+
+**hum-nose-pinched** (19 Oct 2026, the nightly routine: started 00:04 IST, YouTube scheduled by 01:00; short arm, 73 words →
+30.83 s; hook formula: The Direct Address, the instruction itself, with the narrator humming along; answer "Gone? You just
+locked your voice in a room with no door." at 4.68 s; YouTube 7A4VxK8d5Z8, 19 Oct 11:30 IST, playlist Why Does Your Body Do
+That?; Instagram queued and the Page Reel scheduled for 21 Oct 21:00 IST):
+- **The narrator can do the test with the viewer.** "Hum along with me... mmmmmmm... and pinch your nose." made Jessica hum
+  for 1.1 s (a voiced glide 222 → 150 Hz) and the take still ran only 3.86 s; a wording with the hum as its own sentence
+  ("Hum with me... Mmmmmm. Now pinch your nose.") hummed 2.2 s and ran 5.9 s. Whisper hears "Mmm" (WER 2.7 %), the caption
+  shows MMMMMM (`DISPLAY`). Audition with `voice.synth` and measure the hum's voiced frames, not only the length.
+- **His hum is the instrument, split by the pause mask** (`hum_span` in audio.py): a closed-mouth hum on the groove's
+  tonic, whole in the narration's pauses and only under 250 Hz under her words; `dark` turns it dull and straining when the
+  nose is pinched; a choke (mmMP!) in the gap after "nose.". The loop: the encore hum runs to the last sample, and frame 0's
+  hum must start at the same level (round 1 had a 9 dB drop at the restart: −16.8 → −25.4; the first word comes 0.19 s in,
+  and the pause mask's 0.12 s tail leaves only 0.07 s of full hum there).
+- **A glass head in two passes** (`hum.js`): pass 1 under his hand (the glass, the face on it, the hidden caves), pass 2 over
+  it (the throat, the voice box, the air beads, the arrows, the lips and a zipper), so the pinching hand never hides the
+  airway. One outline round head + neck + puffed cheeks: stroke every subpath, then fill them all (round 1 drew an
+  outline per circle). The glass is an opaque fill (lit like a thing, with a rim); everything inside it is paint.
+- **A pinch that reads:** a fist below and to the right of the nose, the thumb up the right wing, the index finger
+  diagonal under the nose to the left wing, both wings squeezed in (7 head units) with squeeze marks for 0.4 s. A V of two
+  fingers from straight below read as a peace sign; a horizontal index under the nose read as a moustache.
+- **The middle sinus (between the eyes) read as a third eye**: two big cheek caves only. The dust bunny (1.45×) asleep in
+  the left cave, a rewind (VHS 0.45, ◀◀) to bring the fog back for "Breathing? Barely touches them.", and the encore
+  blowing it out of his nose carried the weird fact and the button.
+- **A const named like an fx.js function stalls the page with no [pageerror]**: `const toScreen` (fx.js has `function
+  toScreen`) made render.js time out (`page.waitForFunction: Timeout 60000ms`). Check top-level names across every loaded
+  script (`grep -oE "^(const|let|function) name"`).
+- Voice: 383 characters for the takes + about 260 for auditions (three hooks, two answers); account 2 read 56,027 before the run and 55,788 after it.
+- Two QA rounds: round 1 sound 7.5 (the loop's level drop) and the zipper hidden under the mouth drawing; round 2 every item
+  8+. The final MP4 is the one build.sh made from the cached takes. About 4.3 minutes a render.
+- **Meta, 19 Oct 00:05 IST: both APIs answer again** (`ig.mjs whoami`: 31 posts; `fb.mjs whoami`: the Page). `fb.mjs status`
+  showed dominant-eye's Page Reel published 18 Oct 21:00 IST (the first API Page Reel seen going out) and the Page copies of
+  blind-spot, two-noses, roll-tongue and foot-switch all scheduled (19 Oct 21:00, 20 Oct 18:30 and 21:00, 21 Oct 18:30).
+  The 48-hour check on Instagram came from the public grid (instagram.com/curio_pulse_tv/reels/, read only): eye-rub stars
+  and the chalkboard Reel (both due 18 Oct) on top. Business Suite was not opened this run (the session's permission guard
+  refused it after a scratch script tried to read the encrypted token: never decrypt tokens outside ig.mjs).
