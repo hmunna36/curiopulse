@@ -31,19 +31,32 @@
   "cover": "cover.jpg",
   "captions": "finger-sausage.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-20T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "L08J-VnxDlg",
+    "url": "https://youtube.com/shorts/L08J-VnxDlg",
+    "uploaded": "2026-10-19T21:24:12.581Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-24T18:30:00+05:30",
     "caption": "Touch your fingertips together near your eyes... now look PAST them. 🌭\nThat floating sausage? You're seeing double: each eye sees your fingers from its own side, and your brain stacks the two pictures anyway.\nDid you see it?\nFollow @curio_pulse_tv for the next one: why you can't tickle yourself 🤭\n#science #opticalillusion #brain #eyes #funfacts #reels",
     "coverTime": 0.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true
+  },
+  "facebook": {
+    "videoId": "4739773696346145",
+    "publishAt": "2026-10-24T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-19T21:25:08.872Z"
   }
 }

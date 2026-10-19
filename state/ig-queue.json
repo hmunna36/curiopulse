@@ -153,6 +153,21 @@
       "size": 26587801,
       "status": "queued",
       "queuedAt": "2026-10-19T19:33:08.322Z"
+    },
+    {
+      "slug": "finger-sausage",
+      "title": "Why Is There a SAUSAGE Between Your Fingers? 🌭",
+      "publishAt": "2026-10-24T13:00:00.000Z",
+      "caption": "Touch your fingertips together near your eyes... now look PAST them. 🌭\nThat floating sausage? You're seeing double: each eye sees your fingers from its own side, and your brain stacks the two pictures anyway.\nDid you see it?\nFollow @curio_pulse_tv for the next one: why you can't tickle yourself 🤭\n#science #opticalillusion #brain #eyes #funfacts #reels",
+      "shareToFeed": true,
+      "aiLabel": false,
+      "thumbOffsetMs": 500,
+      "coverUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/finger-sausage/cover.jpg",
+      "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/finger-sausage/finger-sausage-short.mp4",
+      "spool": "/Users/harshad/.cache/cp/ig-spool/finger-sausage.mp4",
+      "size": 35599432,
+      "status": "queued",
+      "queuedAt": "2026-10-19T21:24:39.097Z"
     }
   ]
 }

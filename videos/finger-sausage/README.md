@@ -47,9 +47,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 2026-10-20 23:30 IST |
-| Instagram Reels | queued by the API | the next free 18:30 / 21:00 IST slot after the YouTube release |
-| Facebook Page | scheduled by `fb.mjs reel` | the same slot as Instagram |
+| YouTube Shorts | https://youtube.com/shorts/L08J-VnxDlg | 2026-10-20 23:30 IST (playlist Your Brain Is Weird) |
+| Instagram Reels | queued by the API (GitHub Actions publishes it) | 2026-10-24 18:30 IST |
+| Facebook Page | scheduled by `fb.mjs reel` (video 4739773696346145) | 2026-10-24 18:30 IST |
 
 **Title:** Why Is There a SAUSAGE Between Your Fingers? 🌭
 
