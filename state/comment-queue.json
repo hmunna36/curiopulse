@@ -242,8 +242,10 @@
       "title": "Why Can't You HUM With Your Nose Pinched? 🤐",
       "publishAt": "2026-10-19T06:00:00.000Z",
       "question": "Did your hum stop? Yes or no? 🤐",
-      "status": "queued",
-      "queued": "2026-10-18T19:24:55.526Z"
+      "status": "posted",
+      "queued": "2026-10-18T19:24:55.526Z",
+      "commentId": "UgzHtUVRlypSPCfaNXl4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "pJIc92uQLiU",
@@ -251,8 +253,10 @@
       "title": "Why Can't You Breathe and SWALLOW at the Same Time? 🫁",
       "publishAt": "2026-10-19T18:00:00.000Z",
       "question": "Could you? 🫁",
-      "status": "queued",
-      "queued": "2026-10-18T21:19:48.845Z"
+      "status": "posted",
+      "queued": "2026-10-18T21:19:48.845Z",
+      "commentId": "Ugx0JZPcNV5f9nmNuv54AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }
