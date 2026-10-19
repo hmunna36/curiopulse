@@ -41,6 +41,8 @@
 | `roll-tongue`: "Can You ROLL Your Tongue? (It's Not Just Genes) 👅" | 32 s (short arm) | https://youtube.com/shorts/id7jJEKKNtI · 18 Oct 2026 11:30 IST | Instagram API queue (route B), 20 Oct 2026 21:00 IST, but both Meta APIs answered "API access blocked" (code 200) on 18 Oct: it goes out only if access is restored; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/8-roll-tongue-*) |
 | `foot-switch`: "Why Does Your Foot FLIP When You Draw a 6? 🦶" | 33 s (short arm) | https://youtube.com/shorts/5sYH3lRmDDk · 18 Oct 2026 23:30 IST | Instagram API queue (route B), 21 Oct 2026 18:30 IST, but both Meta APIs still answered "API access blocked" (code 200) at 03:04 IST: it goes out only if access is restored; the Facebook Page copy still to post (files in ~/Desktop/instagram-pending/9-foot-switch-*) |
 | `hum-nose-pinched`: "Why Can't You HUM With Your Nose Pinched? 🤐" | 31 s (short arm) | https://youtube.com/shorts/7A4VxK8d5Z8 · 19 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 21 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel`, same slot (video 29435760659364124, scheduled) |
+| `breathe-swallow`: "Why Can't You Breathe and SWALLOW at the Same Time? 🫁" | 33 s (short arm) | https://youtube.com/shorts/pJIc92uQLiU · 19 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 22 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot |
+| `vulcan-salute`: "Why Is the Vulcan Salute So HARD? 🖖" | 31 s (short arm) | https://youtube.com/shorts/w5b_ru8URMQ · 20 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 23 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1858462768513102) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1774,3 +1776,43 @@ as roll-tongue and foot-switch, so the queue's order stood):
   more of the lid line (118, not used), 345 for the other takes; quota.mjs read 55,788 before and 55,463 after.
 - **Meta by API, both first time:** `ig.mjs queue` (22 Oct 18:30, GitHub Actions) and `fb.mjs reel` (video 1121689396895408:
   `ready`, `scheduled` for 13:00 UTC). The 48-hour check had been done by the 00:00 run at 00:05 (nothing was due between).
+
+**vulcan-salute** (20 Oct 2026, nightly /cp next, 00:00-01:40 IST; short arm, 75 words → 31.43 s; hook formula: The Direct
+Address, the instruction itself, "Try the Vulcan salute: split your fingers, two and TWO."; answer "Can't? Your middle and ring
+fingers are holding hands... under your skin." at 4.55 s; YouTube w5b_ru8URMQ, 20 Oct 11:30 IST, playlist Why Does Your Body Do
+That?; Instagram queued and the Page Reel scheduled for 23 Oct 21:00 IST; the ring-finger hit's closest kin, by the queue's order):
+- **FIRST: the cloud publisher missed a whole day.** GitHub Actions' scheduled runs of `ig-publish.yml` did not fire at all on
+  19 Oct (on 18 Oct they ran 2.75-3.5 h late), so dominant-eye (19 Oct 18:30) and blind-spot (19 Oct 21:00) never went out on
+  Instagram (the Page copies did: Facebook schedules natively). How it showed: `ig.mjs upcoming` still listed both as
+  `queued` with "no cloud results yet", `ig.mjs whoami` said "publishing quota: 0 of 100 used in the last 24 h", and the
+  public Actions API (`api.github.com/repos/hmunna36/curiopulse/actions/workflows/ig-publish.yml/runs`) had no run after 18 Oct
+  17:33 UTC. Fix this run: both folders back with `git sparse-checkout add`, `ig.mjs queue <publish.json> --at` the next free
+  slots (dominant-eye 22 Oct 21:00, blind-spot 23 Oct 18:30), and pushed AT ONCE, so a late cron run would not post the two
+  overdue Reels back to back. Every later Reel moved a day; the user should decide on a backup trigger (the report says).
+- **A raised hand, flat to the camera, in 2D** (`hand.js`): canonical = the back of the hand (little finger left, thumb right);
+  the palm is the same drawing mirrored; turning it over is a squeeze through zero width with the details swapped at the edge.
+  Finger angles carry the test: `split` (the salute: index+middle one way, ring+little the other), `wrong` (the little finger
+  alone), `stuck` (the ring finger follows the middle: 3 + 1), `spread`, `tremble`, `lean`. Glass from the knuckles down shows the
+  cords (orange middle, yellow ring), the strap between them as two little clasped hands, faces on the nails, X eyes (`deadR`),
+  a sensor glove; `vsHelper` is the other hand gripping two fingers, and `room.js`'s `vsSt` puts that arm's wrist where the grip
+  is (elbow low in front, wrist BELOW the grip, or the forearm crosses his mouth in a close-up).
+- **Every subpath of a see-through union must turn the same way.** The palm outline went clockwise and the fingers
+  anticlockwise: nonzero filling left holes where they overlap (skin showed through the glass at the knuckles).
+- **Glass in rosy violet (#93507C with a light centre) reads as see-through skin; deep violet (#5E2F63) read as a rubber glove.**
+- **`screenSpace()` already halves the glow layer:** a sparkle drawn into `gctx` with coordinates × 0.5 landed at half its
+  position (top left). Only scale by hand after `gctx.setTransform(1, 0, 0, 1, 0, 0)`.
+- **Panels below y 1000 stop at x 870:** the lab's ranking rows ran to x 936 and crossed into the buttons' column (the mask
+  caught it); rows of 330 px centred at x 696, medals at +128.
+- **A melody in the speech band cannot sit under dense narration:** a theremin (440-590 Hz) in the studio masked six words even
+  ducked; dropped. `silence(mus, ...)` also silences `bwomp()` (it is on the music bus): end the groove before it instead.
+- **A stamp that repeats the caption adds nothing:** DEAD LAST as a stamp sat under the DEAD LAST caption; an X-eyed ring finger
+  and a little tombstone (RIP) on its row made the pun visual.
+- Studio's video page answered "Oops, something went wrong" twice for the new upload (Chrome connected, direct URL), so the
+  Studio thumbnail check is pending for the user (the API set cover.jpg; the vertical slot is unchecked). Possibly Studio is on
+  another channel now (a new brand channel was made on 19 Oct); the channel switcher was not touched.
+- Voice: 391 + 71 characters for the takes, 333 for auditions (three seeds each of the answer and the button, picked by how loud
+  their last words are in the speech band: "skin." −7 dB, "you?" −3 dB against the take's median; two installed); quota.mjs read
+  55,463 before and 55,114 after (it counted 349 of the 795 sent).
+- One QA round, every item 8+ (look 8: the studio is plain, the lab has no hero); the final MP4 is build.sh's (timeline.json and
+  mix.wav byte-identical, the MP4 26,587,801 bytes both times; 18/18, WER 0.0 %, voice SNR mean 25.9 dB). 3.2 minutes a render.
+

@@ -40,6 +40,13 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   (`publish_status: published`) or the Page's Content → Published list. A miss is reported first.
   For Reels scheduled in Business Suite, the public grid instagram.com/curio_pulse_tv/reels/ (read only, nothing clicked)
   shows the newest Reels in order (19 Oct 2026). Never read or decrypt a token outside ig.mjs / fb.mjs to check.
+- **The cloud can miss a day (20 Oct 2026):** GitHub's cron is best-effort. `ig-publish.yml` ran 3 h late on 18 Oct and not at
+  all on 19 Oct, so dominant-eye and blind-spot never went out on Instagram. The 48-hour check reads three signals: a past
+  slot still `queued` in `ig.mjs upcoming` ("no cloud results yet"), `ig.mjs whoami`'s "publishing quota: 0 of N used in the
+  last 24 h", and the public runs list `api.github.com/repos/hmunna36/curiopulse/actions/workflows/ig-publish.yml/runs` (no `gh`
+  on this Mac). A missed Reel is RE-QUEUED, not published now: `git sparse-checkout add videos/<slug>`, `ig.mjs queue
+  videos/<slug>/publish.json --at <next free slot>`, a `missedNote` in its publish.json, and push at once (publish-short.sh
+  copies the queue), so a late cron run does not post the overdue Reels back to back. A backup trigger is the user's call.
 - **Fallback:** Business Suite (Route A, below) when an API fails twice. Tokens/permissions errors are for the user.
 - **19 Oct 2026 00:05 IST: both APIs answer again** (`whoami` works on both; the Page Reels scheduled by API are `scheduled`,
   dominant-eye's published on time). The note below is kept for the record.
