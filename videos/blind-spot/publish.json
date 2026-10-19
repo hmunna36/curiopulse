@@ -48,13 +48,14 @@
     "playlistSet": true
   },
   "instagram": {
-    "publishAt": "2026-10-19T21:00:00+05:30",
+    "publishAt": "2026-10-23T18:30:00+05:30",
     "caption": "Close your left eye, stare at the X... and bring your phone closer. 👁️ The red dot VANISHES.\nYour eye has a hole: where the cable to your brain plugs in, there are no light sensors. Your brain just paints over the gap.\nDid it vanish?\nFollow @curio_pulse_tv for the next one: why you can feel TWO noses 🔔\n#science #humanbody #eyes #brain #funfacts #reels",
     "coverTime": 1,
     "shareToFeed": true,
     "queued": true,
     "scheduledVia": "api",
-    "note": "Queued 17 Oct 2026 01:00 IST with ig.mjs queue (route B, the Instagram API): the launchd job publishes it at 2026-10-19 21:00 IST."
+    "note": "Queued 17 Oct 2026 01:00 IST with ig.mjs queue (route B, the Instagram API): the launchd job publishes it at 2026-10-19 21:00 IST.",
+    "missedNote": "Due 19 Oct 2026 on Instagram, NOT published: GitHub Actions' scheduled runs did not fire on 19 Oct (none at all; on 18 Oct they ran 3 h late) and the API showed 0 posts in the last 24 h. Re-queued for 23 Oct 18:30 IST by the 20 Oct 00:00 IST run."
   },
   "facebook": {
     "videoId": "1129727210014784",
