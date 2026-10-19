@@ -43,6 +43,7 @@
 | `hum-nose-pinched`: "Why Can't You HUM With Your Nose Pinched? 🤐" | 31 s (short arm) | https://youtube.com/shorts/7A4VxK8d5Z8 · 19 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 21 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel`, same slot (video 29435760659364124, scheduled) |
 | `breathe-swallow`: "Why Can't You Breathe and SWALLOW at the Same Time? 🫁" | 33 s (short arm) | https://youtube.com/shorts/pJIc92uQLiU · 19 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 22 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot |
 | `vulcan-salute`: "Why Is the Vulcan Salute So HARD? 🖖" | 31 s (short arm) | https://youtube.com/shorts/w5b_ru8URMQ · 20 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 23 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1858462768513102) |
+| `finger-sausage`: "Why Is There a SAUSAGE Between Your Fingers? 🌭" | 34 s (short arm) | https://youtube.com/shorts/L08J-VnxDlg · 20 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 24 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 4739773696346145) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1816,3 +1817,41 @@ That?; Instagram queued and the Page Reel scheduled for 23 Oct 21:00 IST; the ri
 - One QA round, every item 8+ (look 8: the studio is plain, the lab has no hero); the final MP4 is build.sh's (timeline.json and
   mix.wav byte-identical, the MP4 26,587,801 bytes both times; 18/18, WER 0.0 %, voice SNR mean 25.9 dB). 3.2 minutes a render.
 
+**finger-sausage** (20 Oct 2026, the second Short of the day: started 02:04 IST, YouTube scheduled by 02:58; short arm, 74 words →
+34.17 s; hook formula: The Direct Address, the instruction itself, "Touch your fingertips together near your eyes, and look PAST
+them." (picked from 6 takes of 4 wordings: 3.96 s); answer "That floating sausage? Congrats... you are seeing double." at 4.25 s;
+YouTube L08J-VnxDlg, 20 Oct 23:30 IST, playlist Your Brain Is Weird; Instagram queued and the Page Reel scheduled for 24 Oct
+18:30 IST):
+- **An illusion drawn the way it happens**: each eye's copy of his hands goes onto its own canvas (`fspov.js`: the left eye's
+  shifted right by d/2, the right eye's left: crossed double images), both drawn at 46 % and their intersection
+  (`destination-in`) drawn solid on top. With the tips' gap g smaller than d, the sausage appears by itself exactly where
+  it should (the right eye's right fingertip to the left eye's left fingertip), with one-eye ghost gaps on either side.
+  The ghost gaps belong to the LEFT eye on the left and the RIGHT eye on the right (round 1 had the tags reversed).
+- **Put the illusion over something dark and plain**: over the passengers' bodies the doubled fingers read as a mushy
+  band; moved up over the night windows (tip line at y 690 in pov space), the sausage reads at once. Hands that come up
+  from the bottom corners read as "my hands"; hands coming in level from the sides read as a bar. Tint only the fingers'
+  band (`fsTintCanvas(..., band)`): tinting the whole copies turned the passengers behind the ghost arms green.
+- **Front view of fingertips touching**: under the chin, not across the face (a finger under the nose is a moustache,
+  across the eyes it hides them); the eyes crossed and down at the tips, then up to the camera on "look PAST".
+- **The brain's room as a machine**: two monitors (LEFT EYE / RIGHT EYE) hang on a rail; "stacks them anyway" is a STACK
+  button and the monitors running together into one BOTH EYES screen (CLUNK), which aligns the backgrounds and doubles the
+  fingers. A push into the stacked screen must clear the brain from under the captions: a fast, deep push (0.6×, 0.45 s).
+- **A static stretch gets a beat**: the phone shot's last seconds now snap the doubled bus back to one picture on "shh"
+  (the brain hushing it), with a handheld bob; the drawer gag has the brain cover the sausages with both arms, look at us,
+  then shove it shut.
+- **The bus world borrowed and lit**: yawning-contagious's `bus.js` with the passengers as `actor`s and their faces as
+  `paint` (`passFace`, a sideways glance `side`, a lean away); its window glows scaled down (`glowA`) in close-ups so
+  nothing blooms through his head.
+- **`find()` ignores case and punctuation, again**: `iS = find("Look past them,")` found the hook's "look PAST them" and
+  `E("eye...")` the "eye" of "Each eye" (the granny slid away 12 s early). Search from the line's own start and assert.
+- **A caption that straddles a cut flashes**: "and look / PAST them." started 0.08 s before the cut to the POV (qa.py
+  warned). Cutting on "and" instead fixed it; re-chunking left an orphan "AND" squeezed into the line.
+- Studio: the video page answered "Oops, something went wrong" again (direct URL, no switcher touched), so the Studio
+  thumbnail check is pending for the user, as for vulcan-salute; the API set cover.jpg.
+- Voice: 332 characters for the six other takes + about 570 for the auditions; quota.mjs read 55,114 before.
+- Two QA rounds: round 1 retention 7.5 (two static stretches) and a caption flash; round 2 every item 8+. The final MP4
+  is build.sh's from the cached takes. About 3.8 minutes a render.
+- **The cloud publisher ran very late rather than not at all** (most likely): two scheduled runs of `ig-publish.yml` started
+  at 00:12 and 01:43 IST on 20 Oct, after the 00:00 run had looked (probably 19 Oct's 17:47 and 20:17 runs, 5-6 h late),
+  and posted nothing (the overdue pair had been re-queued). So a Reel due at 18:30 can go out after midnight; a backup
+  trigger is still the user's call.
