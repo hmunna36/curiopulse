@@ -53,9 +53,9 @@ band ("skin." and "you?" held up best); the team block was re-taken once (the fi
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 20 Oct 2026 11:30 IST |
-| Instagram Reels | (the API queue: GitHub Actions publishes it) | (filled in after the upload) |
-| Facebook Page | (`fb.mjs reel`) | the same slot as Instagram |
+| YouTube Shorts | https://youtube.com/shorts/w5b_ru8URMQ | 20 Oct 2026 11:30 IST (thumbnail, captions, playlist set by the API; the Studio thumbnail check is pending: Studio answered "Oops, something went wrong" for this video) |
+| Instagram Reels | queued (route C: GitHub Actions publishes it from `state/ig-queue.json`) | 23 Oct 2026 21:00 IST |
+| Facebook Page | video 1858462768513102 (`fb.mjs reel`: ready, scheduled) | 23 Oct 2026 21:00 IST |
 
 **Title:** Why Is the Vulcan Salute So HARD? 🖖
 

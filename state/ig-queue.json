@@ -138,6 +138,21 @@
       "size": 41273401,
       "status": "queued",
       "queuedAt": "2026-10-18T21:20:10.170Z"
+    },
+    {
+      "slug": "vulcan-salute",
+      "title": "Why Is the Vulcan Salute So HARD? 🖖",
+      "publishAt": "2026-10-23T15:30:00.000Z",
+      "caption": "Try the Vulcan salute: split your fingers, two and two. 🖖\nYour middle and ring fingers are holding hands under your skin: their cords are strapped together, and your brain moves them as a team.\nCan you split your fingers?\nFollow @curio_pulse_tv for the next one: the floating finger sausage 🌭\n#science #humanbody #hands #vulcansalute #funfacts #reels",
+      "shareToFeed": true,
+      "aiLabel": false,
+      "thumbOffsetMs": 500,
+      "coverUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/vulcan-salute/cover.jpg",
+      "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/vulcan-salute/vulcan-salute-short.mp4",
+      "spool": "/Users/harshad/.cache/cp/ig-spool/vulcan-salute.mp4",
+      "size": 26587801,
+      "status": "queued",
+      "queuedAt": "2026-10-19T19:33:08.322Z"
     }
   ]
 }

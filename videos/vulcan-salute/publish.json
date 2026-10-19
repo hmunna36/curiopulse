@@ -31,19 +31,32 @@
   "cover": "cover.jpg",
   "captions": "vulcan-salute.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-20T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "w5b_ru8URMQ",
+    "url": "https://youtube.com/shorts/w5b_ru8URMQ",
+    "uploaded": "2026-10-19T19:32:28.047Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-23T21:00:00+05:30",
     "caption": "Try the Vulcan salute: split your fingers, two and two. 🖖\nYour middle and ring fingers are holding hands under your skin: their cords are strapped together, and your brain moves them as a team.\nCan you split your fingers?\nFollow @curio_pulse_tv for the next one: the floating finger sausage 🌭\n#science #humanbody #hands #vulcansalute #funfacts #reels",
     "coverTime": 0.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true
+  },
+  "facebook": {
+    "videoId": "1858462768513102",
+    "publishAt": "2026-10-23T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-19T19:33:51.587Z"
   }
 }
