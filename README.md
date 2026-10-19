@@ -49,6 +49,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Does Your Foot Flip When You Draw a 6? | 33 s | [`videos/foot-switch`](videos/foot-switch) | [18 Oct 2026](https://youtube.com/shorts/5sYH3lRmDDk) |
 | Why Can't You Hum With Your Nose Pinched? | 31 s | [`videos/hum-nose-pinched`](videos/hum-nose-pinched) | [19 Oct 2026](https://youtube.com/shorts/7A4VxK8d5Z8) |
 | Why Can't You Breathe and Swallow at the Same Time? | 33 s | [`videos/breathe-swallow`](videos/breathe-swallow) | [19 Oct 2026](https://youtube.com/shorts/pJIc92uQLiU) |
+| Why Is the Vulcan Salute So Hard? | 31 s | [`videos/vulcan-salute`](videos/vulcan-salute) | 20 Oct 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;
