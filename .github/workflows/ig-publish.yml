@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: '17 12 * * *' # 17:47 IST, for the 18:30 slot
     - cron: '47 14 * * *' # 20:17 IST, for the 21:00 slot
+    # GitHub starts scheduled runs late on this repo (3-4 h on 18 Oct 2026, 5-6 h on 19 Oct, when both Reels missed
+    # their day), so extra runs every 30 minutes from 10:53 to 20:23 IST give it many chances to start in time.
+    # A run that finds nothing due within CP_IG_LEAD_MIN exits in seconds; the concurrency group keeps them one at a
+    # time and each reads the results the last one pushed, so a Reel is never published twice.
+    - cron: '23,53 5-14 * * *'
   workflow_dispatch:
     inputs:
       command:
