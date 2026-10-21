@@ -47,6 +47,7 @@
 | `tickle-yourself`: "Why Can't You TICKLE Yourself? (Try It Now) 🤭" | 32 s (short arm) | https://youtube.com/shorts/VtqzIWIHoRY · 21 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 24 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1668530424884522) |
 | `wrist-tendon`: "Why Do Some People Have NO Wrist Tendon? 🖐️" | 32 s (short arm) | https://youtube.com/shorts/qU0s1Isj7BA · 22 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 25 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 2359669521519458) |
 | `one-eyebrow`: "Why Can't You Raise Just ONE Eyebrow? 🤨" | 31 s (short arm) | https://youtube.com/shorts/mkp42FARp0c · 22 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 25 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1105708358723963) |
+| `wiggle-ears`: "Why Can't Most People WIGGLE Their Ears? 👂" | 31 s (short arm) | https://youtube.com/shorts/2cczUGi_viI · 23 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 26 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 2550794872062500) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1959,3 +1960,36 @@ Page Reel scheduled for 25 Oct 21:00 IST; the first topic of the Queue and a kin
 - Two QA rounds (round 1: look 7.5 for the empty glass); the final MP4 is build.sh's from the cached takes (timeline.json and
   mix.wav byte-identical; 18/18, WER 0.0 %, voice mean 22.5 dB). About 4.1 minutes a render.
 
+**wiggle-ears** (22 Oct 2026, the second Short of the day: the 02:00 routine, 02:04-03:00 IST; short arm, 72 words -> 30.83 s; hook formula:
+The Statistic, "One in five of you can wiggle your ears. No eyebrows!" (after Direct Address, The Question, Direct Address); answer
+"Nope? Your brain lost the remote for your ears... about twenty-five million years ago." at 4.37 s; YouTube 2cczUGi_viI, 23 Oct 11:30 IST,
+playlist Why Does Your Body Do That?; Instagram queued and the Page Reel scheduled for 26 Oct 18:30 IST; the first topic of the Queue and
+a kin of the Vulcan-salute hit (37K views, 5x the middle of the Shorts since 16 Oct by this run's reading)):
+- **A see-through patch over an ear reads as HEADPHONES.** A dark-blue glass oval over each ear (the one-eyebrow forehead dome's
+  colours) looked like earmuffs on the first sheet, worst with both ears at once. The skin stays skin: the side of the head frosts
+  over (a soft radial wash of pale blue, clipped to the head), the ear goes pale and see-through (the back muscle shows through it),
+  and the muscles sit on top with a faint red halo (`wgGlass` in `ears.js`).
+- **Muscles as characters:** wide fans with fibres along them and a face in the middle read as muscles; narrow capsules with a dark
+  outline read as batteries. Asleep (shut eyes, z z z), awake, a jolt, a tug (shorter, fatter) and a flex (a bulge, gritted teeth,
+  a frown, a glow at half strength: full glow blew the shape out).
+- **A dive into a window on his forehead lands at 1:1:** the room is drawn inside the window at scale `(r / 1144)^0.6` (r = the
+  window's radius on screen), centred on it; the camera zooms exponentially (4.75 -> 54) centred on the window, so the room grows into
+  place and is at 1:1 when the window covers the frame, and the next shot draws the same room at 1:1. The camera and the hero must
+  use the SAME rig state (`wgSt`): at zoom 54 a 1.4 px breathing bob is 76 px on screen.
+- **time-flies' brain draws its arms behind its body:** a prop it holds in front of itself is hidden by it (the FACE remote under its
+  chin lost its BROWS button). Put the prop to its side (a FACE CONTROLS desk to its right) and reach there; a label on a button a
+  hand presses goes on the desk's face below it, not on the button.
+- **A sticker line wider than its sticker spills under the next character drawn** ("25 MILLION YEARS AGO" lost its "25" under the
+  brain): two lines.
+- **The ambience bus is normalised to its peak** (mixlib `master`): turning the loud party down only turned the rest of the bed up.
+  Lower `levels["amb"]` instead (here 3 dB).
+- **Gag sounds at -17/-18 in `sfx.add` landed at -27 to -30 dB in this mix** (slides, boings, a stretch): -10.5 to -12 put them at
+  -21.5 to -24.4 dB, the house range. Measure them in mix.wav every time.
+- New in `ears.js`: `wgHeadBase` (his head again with big ears that twitch, `wgEarXf`), a gold party headband with two springy stars
+  (`wgBoppers`), a gritted grin in head units (`wgGrit`), `wgConsole`, `wgPoster` (MISSING, with a sticker), `wgBalloon` + `wgPop`,
+  party chatter bubbles (`wgChatter`).
+- Studio's vertical thumbnail slot was grey: cover.jpg uploaded there, "Changes saved" (direct URL, no switcher touched).
+- Voice: eight blocks in one pass, no retakes (386 characters; quota.mjs read 53,670 before). "No" was aligned into the silence before
+  it (2.42 s; said at 2.68 s): moved with `first_loud` in make_timeline.py.
+- Two QA rounds (round 1: sound 7.5 for the quiet gags); the final MP4 is build.sh's from a fresh work folder (timeline.json and mix.wav
+  byte-identical; 18/18, WER 2.7 %, voice mean 19.8 dB). About 3.3 minutes a render.
