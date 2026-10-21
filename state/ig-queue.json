@@ -120,8 +120,15 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/foot-switch/foot-switch-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/foot-switch.mp4",
       "size": 31942702,
-      "status": "queued",
-      "queuedAt": "2026-10-17T21:34:15.833Z"
+      "status": "published",
+      "queuedAt": "2026-10-17T21:34:15.833Z",
+      "attempts": 1,
+      "containerId": "18118482154961675",
+      "method": "video_url",
+      "containerAt": "2026-10-21T15:22:03.848Z",
+      "mediaId": "17967387666197167",
+      "permalink": "https://www.instagram.com/reel/DewuBJ-iuNd/",
+      "publishedAt": "2026-10-21T15:22:45+0000"
     },
     {
       "slug": "hum-nose-pinched",
@@ -135,8 +142,15 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/hum-nose-pinched/hum-nose-pinched-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/hum-nose-pinched.mp4",
       "size": 57619571,
-      "status": "queued",
-      "queuedAt": "2026-10-18T19:26:10.461Z"
+      "status": "published",
+      "queuedAt": "2026-10-18T19:26:10.461Z",
+      "attempts": 1,
+      "containerId": "18118482355961675",
+      "method": "video_url",
+      "containerAt": "2026-10-21T15:22:54.896Z",
+      "mediaId": "18119160913769507",
+      "permalink": "https://www.instagram.com/reel/DewuHgnii21/",
+      "publishedAt": "2026-10-21T15:30:01+0000"
     },
     {
       "slug": "breathe-swallow",
