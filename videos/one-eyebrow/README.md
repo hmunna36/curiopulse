@@ -65,7 +65,40 @@ can hear was kept.
 
 ## Publishing
 
-(filled in after the upload)
+| Platform | Link | Release |
+|---|---|---|
+| YouTube Shorts | https://youtube.com/shorts/mkp42FARp0c | 22 Oct 2026, 23:30 IST (scheduled; private until then) |
+| Instagram Reels | @curio_pulse_tv (the link comes when it publishes) | 25 Oct 2026, 21:00 IST: queued by the API, published by GitHub Actions (route C) |
+| Facebook Page | CurioPulse, video 1105708358723963 | 25 Oct 2026, 21:00 IST: scheduled by `fb.mjs reel` (status ready, scheduled) |
+
+**Title:** Why Can't You Raise Just ONE Eyebrow? 🤨
+
+**Description:**
+Try to raise just one of your eyebrows: for most people both go up. Each half of your brain sends its "lift" signal to the
+muscles above BOTH brows, so the two tend to rise as a pair, while your mouth gets a separate line to each side, which is why
+half a smile is easy. That double wiring is so reliable that after a stroke on one side of the brain, the forehead usually
+still lifts on both sides, and doctors check for exactly that. Some people can lift one brow anyway, and nobody is quite sure
+why; holding the other one down with a finger is the classic way to practise. Could you raise just one? Yes or no?
+
+Subscribe for a new strange question every day.
+
+**Hashtags:** #Shorts #Science #Eyebrows #Brain #FunFacts
+**Tags:** raise one eyebrow, why can't i raise one eyebrow, how to raise one eyebrow, raise one eyebrow test, can you raise one
+eyebrow, one eyebrow up, eyebrow raise, forehead muscles, brain wiring, facial nerve, forehead sparing, body test, human body
+facts, science shorts, curiopulse
+**Reels caption:** Raise just ONE of your eyebrows. 🤨 / Both went up, right? Each half of your brain pulls a string tied to BOTH
+brows, but your mouth gets one string per side: that's why half a smile is easy. / Could you raise just one? Yes or no? /
+Follow @curio_pulse_tv for the next one: why most people can't wiggle their ears 🔔 / #science #humanbody #brain #funfacts #reels
+**"Next up" comment (posted by the pipeline once the Short is public; pinning is the user's tap):** Next up: why most people
+can't wiggle their ears 👂 Subscribe so you don't miss it! / Could you raise just one? Yes or no? 🤨
+**Playlist:** Your Brain Is Weird
+**Length arm:** short (30–35 s), from `yt.mjs next-slot`: the 22 Oct 2026 23:30 IST slot
+**The viewer's test (rules of 15 Oct 2026):** raise just one of your eyebrows; both go up.
+**Answer line (spoken, starts at 4.43 s):** "Relax, your eyebrows are on one puppet string."
+**The loop:** "Still can't? Hold one down. Nobody has to know." runs into "Raise just one of your eyebrows."; no Subscribe pill,
+nobody says "subscribe"
+**Cover:** [`cover.jpg`](cover.jpg), a frame of its own (`SC.cover`): both brows up on the strings, RAISE JUST / ONE?; set by the
+API and in Studio's vertical thumbnail slot (it showed an automatic frame; "Changes saved").
 
 ## Story and shots
 

@@ -31,19 +31,32 @@
   "cover": "cover.jpg",
   "captions": "one-eyebrow.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-22T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "mkp42FARp0c",
+    "url": "https://youtube.com/shorts/mkp42FARp0c",
+    "uploaded": "2026-10-21T19:24:27.984Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-25T21:00:00+05:30",
     "caption": "Raise just ONE of your eyebrows. 🤨\nBoth went up, right? Each half of your brain pulls a string tied to BOTH brows, but your mouth gets one string per side: that's why half a smile is easy.\nCould you raise just one? Yes or no?\nFollow @curio_pulse_tv for the next one: why most people can't wiggle their ears 🔔\n#science #humanbody #brain #funfacts #reels",
     "coverTime": 2.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true
+  },
+  "facebook": {
+    "videoId": "1105708358723963",
+    "publishAt": "2026-10-25T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-21T19:25:10.852Z"
   }
 }
