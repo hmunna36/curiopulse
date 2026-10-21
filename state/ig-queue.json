@@ -182,6 +182,21 @@
       "size": 35599432,
       "status": "queued",
       "queuedAt": "2026-10-19T21:24:39.097Z"
+    },
+    {
+      "slug": "tickle-yourself",
+      "title": "Why Can't You TICKLE Yourself? (Try It Now) 🤭",
+      "publishAt": "2026-10-24T15:30:00.000Z",
+      "caption": "Try to tickle your own palm. Right now. 🤭\nNothing? Your brain read the spoiler: it keeps a copy of every move you make, so it knows exactly where your finger lands and turns the feeling down. Someone else's finger comes with no warning.\nDid it tickle?\nFollow @curio_pulse_tv for the next one: why your voice sounds deeper with your fingers in your ears 👂\n#science #brain #tickle #humanbody #funfacts #reels",
+      "shareToFeed": true,
+      "aiLabel": false,
+      "thumbOffsetMs": 500,
+      "coverUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/tickle-yourself/cover.jpg",
+      "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/tickle-yourself/tickle-yourself-short.mp4",
+      "spool": "/Users/harshad/.cache/cp/ig-spool/tickle-yourself.mp4",
+      "size": 31158913,
+      "status": "queued",
+      "queuedAt": "2026-10-21T07:16:53.503Z"
     }
   ]
 }

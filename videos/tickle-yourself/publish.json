@@ -31,19 +31,32 @@
   "cover": "cover.jpg",
   "captions": "tickle-yourself.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-21T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "VtqzIWIHoRY",
+    "url": "https://youtube.com/shorts/VtqzIWIHoRY",
+    "uploaded": "2026-10-21T07:16:28.038Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-24T21:00:00+05:30",
     "caption": "Try to tickle your own palm. Right now. 🤭\nNothing? Your brain read the spoiler: it keeps a copy of every move you make, so it knows exactly where your finger lands and turns the feeling down. Someone else's finger comes with no warning.\nDid it tickle?\nFollow @curio_pulse_tv for the next one: why your voice sounds deeper with your fingers in your ears 👂\n#science #brain #tickle #humanbody #funfacts #reels",
     "coverTime": 0.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true
+  },
+  "facebook": {
+    "videoId": "1668530424884522",
+    "publishAt": "2026-10-24T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-21T07:17:18.749Z"
   }
 }
