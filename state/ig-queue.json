@@ -76,8 +76,15 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/two-noses/two-noses-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/two-noses.mp4",
       "size": 49453754,
-      "status": "queued",
-      "queuedAt": "2026-10-17T01:31:04.173Z"
+      "status": "published",
+      "queuedAt": "2026-10-17T01:31:04.173Z",
+      "attempts": 1,
+      "containerId": "18118262095961675",
+      "method": "video_url",
+      "containerAt": "2026-10-20T15:11:16.529Z",
+      "mediaId": "18136885204639783",
+      "permalink": "https://www.instagram.com/reel/DeuH-2zGBMy/",
+      "publishedAt": "2026-10-20T15:11:58+0000"
     },
     {
       "slug": "roll-tongue",
@@ -91,8 +98,15 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/roll-tongue/roll-tongue-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/roll-tongue.mp4",
       "size": 41318806,
-      "status": "queued",
-      "queuedAt": "2026-10-17T19:38:50.247Z"
+      "status": "published",
+      "queuedAt": "2026-10-17T19:38:50.247Z",
+      "attempts": 1,
+      "containerId": "18118262512961675",
+      "method": "video_url",
+      "containerAt": "2026-10-20T15:12:07.378Z",
+      "mediaId": "18148663456559547",
+      "permalink": "https://www.instagram.com/reel/DeuIFDdjfS4/",
+      "publishedAt": "2026-10-20T15:30:01+0000"
     },
     {
       "slug": "foot-switch",

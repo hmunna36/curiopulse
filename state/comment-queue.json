@@ -264,8 +264,10 @@
       "title": "Why Is the Vulcan Salute So HARD? 🖖",
       "publishAt": "2026-10-20T06:00:00.000Z",
       "question": "Can you split your fingers? 🖖",
-      "status": "queued",
-      "queued": "2026-10-19T19:32:36.542Z"
+      "status": "posted",
+      "queued": "2026-10-19T19:32:36.542Z",
+      "commentId": "UgxB3IsWKW1DaiIiUVh4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "L08J-VnxDlg",
@@ -273,8 +275,10 @@
       "title": "Why Is There a SAUSAGE Between Your Fingers? 🌭",
       "publishAt": "2026-10-20T18:00:00.000Z",
       "question": "Did you see it? 🌭",
-      "status": "queued",
-      "queued": "2026-10-19T21:24:21.979Z"
+      "status": "posted",
+      "queued": "2026-10-19T21:24:21.979Z",
+      "commentId": "UgxIM0CddvIlhQxDWFF4AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }

@@ -1,0 +1,44 @@
+# Narration for "Why Can't You TICKLE Yourself?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   may cut when the story needs it (the 9 Oct "no cut before 7 s" rule was dropped on 15 Oct 2026).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block, and no Subscribe pill since 16 Oct 2026.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 66-76, 30-35 s (every Short since 16 Oct 2026; `yt.mjs next-slot` says "short").
+# Hook formula: The Direct Address, the instruction itself (reference/hooks.md; the third in a row, the most allowed).
+# The test: tickle your own palm, right now; nothing happens. The hook and the answer were picked from auditions
+# (hook: 2 wordings x 2 seeds, the widest pitch range won; answer: 2 seeds). The button runs straight back into
+# the hook when the Short loops ("No robot? ...Good luck." / "Try to tickle your own palm. Right now.").
+
+## hook gap=0.08 tighten=0.30 tempo=1.00
+Try to tickle your own palm. Right now.
+
+## answer gap=0.55 tighten=0.42 tempo=1.00
+Nothing, right? Your brain read the spoiler.
+
+## copy gap=0.40 tempo=1.03
+Your brain keeps a copy of every move... so it knows exactly where your finger lands.
+
+## down gap=0.28 tighten=0.42 tempo=1.02
+No surprise? It turns the feeling down.
+
+## payoff gap=0.45 tighten=0.42 tempo=1.00
+But someone ELSE's finger? No warning... and you fall apart.
+
+## weird gap=0.55 tighten=0.42 tempo=1.03
+Scientists had a robot copy your own tickle... a fifth of a second late. And suddenly... it TICKLED!
+
+## button gap=0.70 tighten=0.45 tempo=1.00
+No robot? ...Good luck.
