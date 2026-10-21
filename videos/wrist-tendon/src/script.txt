@@ -1,0 +1,41 @@
+# Narration for "Why Do Some People Have NO Wrist Tendon?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The Subscribe pill plays silently over the last 3.4 s.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+#   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
+
+## hook gap=0.10 tighten=0.40 tempo=1.00
+Got this tendon? Touch your thumb to your pinky and bend your wrist.
+
+## answer gap=0.55 tighten=0.35 tempo=1.00
+That cord's a muscle your body forgot to delete.
+
+## deleted gap=0.55 tighten=0.55 tempo=1.00
+One in seven of us? Already deleted... sometimes in just one arm.
+
+## climb gap=0.55 tempo=1.00
+It probably helped our tree-climbing ancestors hang on.
+
+## grip gap=0.55 tempo=1.00
+Today? You grip just as hard without it.
+
+## weird gap=0.65 tighten=0.55 tempo=1.00
+So surgeons take it out... and use it to rebuild baseball pitchers' elbows.
+
+## button gap=0.80 tighten=0 tempo=1.00
+No cord? Check your other arm. Or ask a baseball PITCHER.

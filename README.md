@@ -52,6 +52,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Is the Vulcan Salute So Hard? | 31 s | [`videos/vulcan-salute`](videos/vulcan-salute) | [20 Oct 2026](https://youtube.com/shorts/w5b_ru8URMQ) |
 | Why Is There a Sausage Between Your Fingers? | 34 s | [`videos/finger-sausage`](videos/finger-sausage) | [20 Oct 2026](https://youtube.com/shorts/L08J-VnxDlg) |
 | Why Can't You Tickle Yourself? (Try It Now) | 32 s | [`videos/tickle-yourself`](videos/tickle-yourself) | [21 Oct 2026](https://youtube.com/shorts/VtqzIWIHoRY) |
+| Why Do Some People Have NO Wrist Tendon? | 32 s | [`videos/wrist-tendon`](videos/wrist-tendon) | 22 Oct 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;
