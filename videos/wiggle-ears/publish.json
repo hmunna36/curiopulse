@@ -30,19 +30,32 @@
   "cover": "cover.jpg",
   "captions": "wiggle-ears.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-23T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "2cczUGi_viI",
+    "url": "https://youtube.com/shorts/2cczUGi_viI",
+    "uploaded": "2026-10-21T21:23:45.671Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-26T18:30:00+05:30",
     "caption": "Wiggle your ears. No eyebrows! 👂\nNope? Your brain lost the remote for them about 25 million years ago, so it mashes your eyebrows instead. But the 3 tiny muscles on each ear still twitch when a sound comes from one side.\nCould you wiggle them? Yes or no?\nFollow @curio_pulse_tv for the next one: why your voice booms with your fingers in your ears 🔔\n#science #humanbody #ears #funfacts #reels",
     "coverTime": 2.2,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "queued": true
+  },
+  "facebook": {
+    "videoId": "2550794872062500",
+    "publishAt": "2026-10-26T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-21T21:24:32.643Z"
   }
 }

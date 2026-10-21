@@ -52,9 +52,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (set after the upload) | 23 Oct 2026 11:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/2cczUGi_viI | 23 Oct 2026 11:30 IST (scheduled; Studio thumbnail set to cover.jpg) |
 | Instagram Reels | queued by the API (GitHub Actions publishes it) | 26 Oct 2026 18:30 IST |
-| Facebook Page | scheduled by `fb.mjs reel` | 26 Oct 2026 18:30 IST |
+| Facebook Page | scheduled by `fb.mjs reel` (video 2550794872062500, `ready` / `scheduled`) | 26 Oct 2026 18:30 IST |
 
 **Title:** Why Can't Most People WIGGLE Their Ears? 👂
 

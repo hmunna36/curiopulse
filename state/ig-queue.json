@@ -241,6 +241,21 @@
       "size": 49926885,
       "status": "queued",
       "queuedAt": "2026-10-21T19:24:49.168Z"
+    },
+    {
+      "slug": "wiggle-ears",
+      "title": "Why Can't Most People WIGGLE Their Ears? 👂",
+      "publishAt": "2026-10-26T13:00:00.000Z",
+      "caption": "Wiggle your ears. No eyebrows! 👂\nNope? Your brain lost the remote for them about 25 million years ago, so it mashes your eyebrows instead. But the 3 tiny muscles on each ear still twitch when a sound comes from one side.\nCould you wiggle them? Yes or no?\nFollow @curio_pulse_tv for the next one: why your voice booms with your fingers in your ears 🔔\n#science #humanbody #ears #funfacts #reels",
+      "shareToFeed": true,
+      "aiLabel": false,
+      "thumbOffsetMs": 2200,
+      "coverUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/wiggle-ears/cover.jpg",
+      "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/wiggle-ears/wiggle-ears-short.mp4",
+      "spool": "/Users/harshad/.cache/cp/ig-spool/wiggle-ears.mp4",
+      "size": 33040779,
+      "status": "queued",
+      "queuedAt": "2026-10-21T21:24:14.131Z"
     }
   ]
 }

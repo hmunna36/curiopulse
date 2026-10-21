@@ -54,7 +54,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Can't You Tickle Yourself? (Try It Now) | 32 s | [`videos/tickle-yourself`](videos/tickle-yourself) | [21 Oct 2026](https://youtube.com/shorts/VtqzIWIHoRY) |
 | Why Do Some People Have NO Wrist Tendon? | 32 s | [`videos/wrist-tendon`](videos/wrist-tendon) | [22 Oct 2026](https://youtube.com/shorts/qU0s1Isj7BA) |
 | Why Can't You Raise Just ONE Eyebrow? | 31 s | [`videos/one-eyebrow`](videos/one-eyebrow) | [22 Oct 2026](https://youtube.com/shorts/mkp42FARp0c) |
-| Why Can't Most People WIGGLE Their Ears? | 31 s | [`videos/wiggle-ears`](videos/wiggle-ears) | 23 Oct 2026 |
+| Why Can't Most People WIGGLE Their Ears? | 31 s | [`videos/wiggle-ears`](videos/wiggle-ears) | [23 Oct 2026](https://youtube.com/shorts/2cczUGi_viI) |
 
 Each folder has:
 - the finished MP4;
