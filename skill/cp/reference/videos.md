@@ -44,6 +44,7 @@
 | `breathe-swallow`: "Why Can't You Breathe and SWALLOW at the Same Time? 🫁" | 33 s (short arm) | https://youtube.com/shorts/pJIc92uQLiU · 19 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 22 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot |
 | `vulcan-salute`: "Why Is the Vulcan Salute So HARD? 🖖" | 31 s (short arm) | https://youtube.com/shorts/w5b_ru8URMQ · 20 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 23 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1858462768513102) |
 | `finger-sausage`: "Why Is There a SAUSAGE Between Your Fingers? 🌭" | 34 s (short arm) | https://youtube.com/shorts/L08J-VnxDlg · 20 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 24 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 4739773696346145) |
+| `tickle-yourself`: "Why Can't You TICKLE Yourself? (Try It Now) 🤭" | 32 s (short arm) | https://youtube.com/shorts/VtqzIWIHoRY · 21 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 24 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1668530424884522) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1855,3 +1856,38 @@ YouTube L08J-VnxDlg, 20 Oct 23:30 IST, playlist Your Brain Is Weird; Instagram q
   at 00:12 and 01:43 IST on 20 Oct, after the 00:00 run had looked (probably 19 Oct's 17:47 and 20:17 runs, 5-6 h late),
   and posted nothing (the overdue pair had been re-queued). So a Reel due at 18:30 can go out after midnight; a backup
   trigger is still the user's call.
+
+**tickle-yourself** (21 Oct 2026, nightly /cp next, which fired at 11:51 IST; short arm, 70 words -> 32.17 s; hook formula: The
+Direct Address, the instruction itself, "Try to tickle your own palm. Right now." (the third Direct Address in a row, the most
+allowed); answer "Nothing, right? Your brain read the spoiler." at 3.36 s; YouTube VtqzIWIHoRY, 21 Oct 23:30 IST, playlist Your
+Brain Is Weird; Instagram queued and the Page Reel scheduled for 24 Oct 21:00 IST; no hit to follow: vulcan-salute's 16K views
+were 3x the middle of the Shorts since 16 Oct, not 5x):
+- **A finger tickling a palm, skin on skin, vanishes**: the first draw (the other hand's fist over the heel of the palm, the
+  finger the same colour as the palm) read as nothing on the stills. A long index finger with a dark edge under its skin
+  (19 vs 15 units), the fist outside the palm and the scratch marks (short yellow strokes with a dark edge) made it read.
+- **The answer as a book**: a round window on his forehead opens on "Your brain" and the camera pushes into it; inside, the
+  brain hides behind a paperback THE TICKLE and SPOILERS slaps onto the cover (a slap and a bwomp in the pause). The window
+  needs its own room point (`tkWindow(..., F)`), and the captions move under it while it is open: at y 1330 they covered its
+  lower half, sticker and all.
+- **"Turns the feeling down" as one picture**: a FEELING knob whose ticks are the meter, the brain's hand on its pointer, and
+  sparks round the fingertip on the screen's palm that shrink with the knob. A separate bar meter beside it was one thing too
+  many and sat in the button column.
+- **A stamp that sits in the pause before its word**: v3 stamped "It" at 13.50 s; the voice says it at 14.00 s, right where the
+  stamp says it ends (a short word before "turns"). The caption led by half a second and qa.py measured the word on silence
+  (6.7 dB). The first-loud fix in make_timeline.py must also move the word's end when the onset is at or past it; min SNR then
+  14.7 dB.
+- **A lag shown, not only numbered**: DELAY 0.2 s alone left 1.4 s where nothing new happened; a dashed ghost of the foam where
+  it would be in step with the handle, the real foam trailing it, made the delay visible.
+- **A screen title in a room the camera moves through**: the "YOUR PALM" title rode under the app's top bar in two camera
+  moves and onto the watermark's corner in one; it hides in those moves (the safe-area mask on stills of every camera key).
+- **A pizzicato tiptoe under a soft line masks it**: "someone" 2.7 dB over the tiptoe; low-passed under 320 Hz with a tick above
+  5 kHz on each step it still sneaks, and the word cleared the mix. New atoms in the template's sfxkit: `nail_scratch`,
+  `copier`, `servo`.
+- Studio's vertical thumbnail slot showed an automatic frame (Pip's lean-in): cover.jpg uploaded there, Save, "Changes saved".
+  The video page loaded this time (direct URL, no switcher touched).
+- Voice: the hook from four auditions (two wordings x two seeds; the widest pitch range won), the answer from two, the "down"
+  line from three (by its last word in the speech band); quota.mjs read 54,717 before and 54,437 after (it counted 280 of
+  about 640 sent).
+- Two QA rounds; the final MP4 is build.sh's (timeline.json and mix.wav byte-identical; 18/18, WER 0.0 %, voice mean 28.6 dB).
+  About 3.6 minutes a render.
+

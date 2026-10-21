@@ -1731,3 +1731,49 @@ def harpsi(freq, dur=0.3, seed=0):
     t = ar(n)
     y = sum(np.sin(2 * np.pi * freq * k * t * (1 + 0.0003 * k * k)) / k ** 0.8 for k in range(1, 12) if freq * k < 9000)
     return fade(y * np.exp(-t / (dur * 0.34)) * np.minimum(1, t / 0.002), 0.0005, 0.03) / 3.2
+
+
+# ================================================================= a tickle, a copier, a robot arm (tickle-yourself, 21 Oct 2026)
+def nail_scratch(dur, seed=0, rate=7.3, edges=False):
+    """fingernails scribbling on skin (a tickle): short dry strokes of filtered noise, `rate` a second (two strokes for each
+    turn of a wiggle). edges=True keeps what is above 5.2 kHz, so it can run under a line; whole, it goes in the pauses"""
+    n = int(dur * SR)
+    y = np.zeros(n)
+    k, t0 = 0, 0.0
+    rng = np.random.default_rng(seed)
+    while t0 < dur - 0.02:
+        m = int((0.05 + 0.03 * rng.random()) * SR)
+        s = filt(white(m, seed + k), "bandpass", [2600 + 600 * (k % 2), 8200]) * attack_decay(m, 0.008, 0.03)
+        s *= 0.7 + 0.3 * rng.random()
+        i = int(t0 * SR)
+        y[i:i + m] += s[: max(0, min(m, n - i))]
+        t0 += 1.0 / rate * (0.85 + 0.3 * rng.random())
+        k += 1
+    if edges:
+        y = filt(y, "highpass", 5200)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.01, 0.03)
+
+
+def copier(dur, seed=0):
+    """an office copier printing: a motor hum under 280 Hz and the paper running out on top (above 5.6 kHz): it can run
+    under a line"""
+    n = int(dur * SR)
+    t = ar(n)
+    hum = filt(np.sign(np.sin(2 * np.pi * 96 * t)) * 0.5 + np.sin(2 * np.pi * 48 * t), "lowpass", 280) * (0.75 + 0.25 * np.sin(2 * np.pi * 9 * t))
+    paper = filt(white(n, seed), "highpass", 5600) * (0.4 + 0.6 * np.clip(np.sin(2 * np.pi * 2.2 * t), 0, 1))
+    y = 0.8 * hum + 0.35 * paper
+    return fade(y / (np.abs(y).max() + 1e-9), 0.04, 0.08)
+
+
+def servo(dur, f0=240.0, f1=420.0, seed=0, edges=False):
+    """a robot arm's servo: a buzzy whine that glides from f0 to f1 (speech band: whole in a pause; edges=True keeps what
+    is under 260 Hz and above 5.2 kHz, for under a line)"""
+    n = int(dur * SR)
+    t = ar(n)
+    f = f0 + (f1 - f0) * np.clip(t / dur, 0, 1) ** 0.7
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = sum(np.sin(j * ph) / j for j in range(1, 18)) + 0.25 * filt(white(n, seed), "highpass", 6000)
+    if edges:
+        y = filt(y, "lowpass", 260) + filt(y, "highpass", 5200)
+    y *= np.clip(t / 0.05, 0, 1) * np.clip((dur - t) / 0.08, 0, 1)
+    return y / (np.abs(y).max() + 1e-9)
