@@ -275,9 +275,11 @@ function drawFace(c, f, pal) {
         c.restore();
       }
     }
-    // brow (a wink pulls that side's brow down)
-    const by = -30 - f.browY * 8 + 7 * wk;
-    line(c, s * 11, by - f.browTilt * 7, s * 37, by + f.browTilt * 3, 7.5, pal.hair);
+    // brow (a wink pulls that side's brow down). One brow can move on its own (one-eyebrow, 22 Oct 2026): f.browR = his
+    // right brow (screen-left), f.browL = his left (screen-right), added to f.browY; f.noBrows leaves them out (a Short that
+    // draws its own, larger brows in head units)
+    const by = -30 - (f.browY + ((s < 0 ? f.browR : f.browL) || 0)) * 8 + 7 * wk;
+    if (!f.noBrows) line(c, s * 11, by - f.browTilt * 7, s * 37, by + f.browTilt * 3, 7.5, pal.hair);
   }
   // a squeezed-shut yawn: creases at the outer eye corners, and a tear
   const sq = f.squeeze || 0;

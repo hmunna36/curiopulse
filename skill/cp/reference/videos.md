@@ -46,6 +46,7 @@
 | `finger-sausage`: "Why Is There a SAUSAGE Between Your Fingers? 🌭" | 34 s (short arm) | https://youtube.com/shorts/L08J-VnxDlg · 20 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 24 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 4739773696346145) |
 | `tickle-yourself`: "Why Can't You TICKLE Yourself? (Try It Now) 🤭" | 32 s (short arm) | https://youtube.com/shorts/VtqzIWIHoRY · 21 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 24 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1668530424884522) |
 | `wrist-tendon`: "Why Do Some People Have NO Wrist Tendon? 🖐️" | 32 s (short arm) | https://youtube.com/shorts/qU0s1Isj7BA · 22 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 25 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 2359669521519458) |
+| `one-eyebrow`: "Why Can't You Raise Just ONE Eyebrow? 🤨" | 31 s (short arm) | https://youtube.com/shorts/mkp42FARp0c · 22 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 25 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1105708358723963) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1925,3 +1926,36 @@ Reel scheduled for 25 Oct 18:30 IST):
   quota.mjs read 54,437 before; about 1,100 characters this run.
 - Two QA rounds; the final MP4 is build.sh's from a fresh work folder (timeline.json and mix.wav byte-identical, the MP4 within
   839 bytes; 18/18, WER 2.7 %, voice mean 22.8 dB). About 3.7 minutes a render.
+
+**one-eyebrow** (22 Oct 2026, nightly /cp next, 00:00-01:05 IST; short arm, 69 words -> 31.00 s; hook formula: The Direct Address,
+the instruction itself, "Raise just one of your eyebrows." (after The Question on wrist-tendon); answer "Relax, your eyebrows are
+on one puppet string." at 4.43 s; YouTube mkp42FARp0c, 22 Oct 23:30 IST, playlist Your Brain Is Weird; Instagram queued and the
+Page Reel scheduled for 25 Oct 21:00 IST; the first topic of the Queue and a kin of the Vulcan-salute hit (move one part alone)):
+- **A part of his face that MOVES needs room to move.** The rig's brows sit at its hairline (y -30 against a hairline at -32..-42
+  in head units): there is no forehead to lift them into, and dark brows on dark hair vanish. `brows.js` draws his head again over
+  the rig's in head units: the same skin ellipse and gradient, the hair pushed back under a pink spa headband (an outfit item:
+  the hair and the face are the rig's), the rig's own face through `drawFace` with `noBrows` and mouth 'none', then larger brows
+  (10 units thick at the inner end) that lift 14 units one at a time, forehead lines that come with a lift, and a mouth with a
+  corner each (a smirk, a droop). New in the template's character.js: `f.browL` / `f.browR` (one brow at a time) and `f.noBrows`.
+- **Strings from the brain to the brows: hold them up high.** The first glass forehead had the brain's halves in the middle of
+  the dome with their fists under them: strings 3-12 units long, gone when the brows rose, and the halves poked out of the glass.
+  Fists at the dome's top (each half reaching up like a puppeteer) give strings of 30+ units that fork down to both brows, and a
+  dive to zoom 6 for "Each half of your brain... BOTH brows" made it read; the camera pulls back to 4.6 for the mouth's strings.
+- **A glass that pops on and off must carry what is inside it.** The halves drawn with their own pop left an empty navy cap on
+  the way in and out for a quarter second: it read as a beanie. Scale the contents with the glass (one transform) and draw the
+  strings only once the glass is whole.
+- **A soft light for the cover.** On the cover's wider still, the drawn shadow on his far cheek and chin read as a brown smudge;
+  `COVER_LIGHT = {...MORN_LIGHT, form: 0.45, cast: 0.45, ao: 0.1}` for `SC.cover` only. The video at zoom 4+ was fine.
+- **The stroke beat, kept gentle:** one half goes grey with its eyes shut (no joke, no sound gag: a soft low power-down), its
+  mouth string goes slack and that corner droops, and the other half still lifts BOTH brows; DOCTOR'S CHECK, a tick by each brow,
+  BOTH. The narration hedges with "usually"; the 30-40 % "can raise one" figure (BBC Science Focus) was left out: untraced.
+- Voice: the hook with a capitalised ONE mid-sentence ran 2.55 s; without capitals 1.97 s (the spicy-food rule again). The
+  button's "Nobody has to know." was lost by whisper on the first take (-7 dB in the speech band); a second seed held (-4 dB).
+  About 790 characters sent (auditions included); quota.mjs read 54,018 before and 53,670 after.
+- Mix: the gags measured -12 to -16 dB against words at -16; the effects bus at -13.5 put them at -19 to -24, the house range.
+  "Nobody has to know." is said in silence; the hook's groove comes back after it, into the loop.
+- Studio's video page loaded (direct URL, no switcher touched); its vertical thumbnail slot showed an automatic frame: cover.jpg
+  uploaded there, "Changes saved".
+- Two QA rounds (round 1: look 7.5 for the empty glass); the final MP4 is build.sh's from the cached takes (timeline.json and
+  mix.wav byte-identical; 18/18, WER 0.0 %, voice mean 22.5 dB). About 4.1 minutes a render.
+

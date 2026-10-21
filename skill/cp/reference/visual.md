@@ -161,6 +161,10 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 - **When the topic is a part of his face, draw that part again, larger, in head units** (the nose: `mirNose` in
   blocked-nostril's `mirror.js`, drawn in `post` over the rig's own; wings that squash, nostrils that plug, flare or go
   red), and frame him tighter than usual (his head 600 px on frame 0, 760 px a third of a second later).
+  If that part has to MOVE, give it room (one-eyebrow, 22 Oct 2026): the rig's brows sit right at its hairline, so a raised
+  brow lands in the hair and vanishes. That Short drew his head again over the rig's (`ebHeadBase` in its brows.js: the same skin,
+  the hair pushed back under a spa headband, the rig's face through `drawFace` with `noBrows`) and brows of its own that lift
+  14 head units one at a time; `f.browL` / `f.browR` move the rig's own brows one at a time when that is enough.
 - **One hand's shape** (funny-bone, 12 Oct 2026): `pose.handL` / `pose.handR` override `pose.hand` for that side, so one
   hand can be spread (zapped, reaching) while the other stays as it was.
 - Acting sells the joke. Examples:
