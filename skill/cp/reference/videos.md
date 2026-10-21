@@ -45,6 +45,7 @@
 | `vulcan-salute`: "Why Is the Vulcan Salute So HARD? 🖖" | 31 s (short arm) | https://youtube.com/shorts/w5b_ru8URMQ · 20 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 23 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1858462768513102) |
 | `finger-sausage`: "Why Is There a SAUSAGE Between Your Fingers? 🌭" | 34 s (short arm) | https://youtube.com/shorts/L08J-VnxDlg · 20 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 24 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 4739773696346145) |
 | `tickle-yourself`: "Why Can't You TICKLE Yourself? (Try It Now) 🤭" | 32 s (short arm) | https://youtube.com/shorts/VtqzIWIHoRY · 21 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 24 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1668530424884522) |
+| `wrist-tendon`: "Why Do Some People Have NO Wrist Tendon? 🖐️" | 32 s (short arm) | https://youtube.com/shorts/qU0s1Isj7BA · 22 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 25 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 2359669521519458) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1891,3 +1892,36 @@ were 3x the middle of the Shorts since 16 Oct, not 5x):
 - Two QA rounds; the final MP4 is build.sh's (timeline.json and mix.wav byte-identical; 18/18, WER 0.0 %, voice mean 28.6 dB).
   About 3.6 minutes a render.
 
+**wrist-tendon** (21 Oct 2026, the second Short of the day: the 02:00 routine fired at 11:51 IST with the 00:00 one and waited
+for its lock until 12:51; short arm, 74 words -> 31.90 s; hook formula: The Question, "Got this tendon? Touch your thumb to your
+pinky and bend your wrist." (three Direct Addresses in a row before it); answer "That cord's a muscle your body forgot to
+delete." at 4.53 s; YouTube qU0s1Isj7BA, 22 Oct 11:30 IST, playlist Why Does Your Body Do That?; Instagram queued and the Page
+Reel scheduled for 25 Oct 18:30 IST):
+- **The hit rule read two ways the same morning.** The 00:00 run measured vulcan-salute (16,025 views a day after release)
+  against the middle of the Shorts since 16 Oct (about 5,400: 3x, no hit); this run against the middle of all 41 Shorts in
+  `numbers.md` (2,301: 7x, a hit) and took its closest kin from the Queue (this one), moving the eyebrow and ear-wiggle tests
+  up behind it. `story.md` §4 does not say which middle: the user's call (asked in the report).
+- **A hand doing a test with the thumb and the pinky:** vulcan-salute's hand.js drew straight fingers only; the bent pinky and
+  the opposed thumb are jointed strokes (`wtStroke` in `wrist.js`): the pinky's outline first, then the palm over its base,
+  then its fill; the thumb's outline starts halfway up its first bone so its base melts into the heel of the hand. The first
+  draw (one straight thumb across the palm) read as a strip of tape.
+- **A whole forearm in a close-up needs a smaller hand:** vulcan's hand scale (1.18) with a forearm under it made a paddle one
+  and a half times his head; 0.8 (the hand about his head's size) with the forearm 1.3x the hand reads. Round the elbow end of
+  the forearm so it covers the upper arm's cap (a flat end left a stump).
+- **A tendon that stands up is a ridge, not a glow:** a lit stripe, its shadow band on the far side, a dark edge, a fine bright
+  crest, the skin dipping on the near side, the wrist creases bending over it (paint). A glow streak on the pop read as a
+  blade; small white marks either side of the cord carry the pop instead.
+- **The palm is drawn mirrored:** anything drawn inside wtHand in canonical units flips with it (the noodle went toward his
+  face while the glove, drawn outside, pulled the other way); flip x for things that must meet.
+- **"Or ask a pitcher" was heard as "ask a picture"** (whisper on the voice alone; the two words are one /k/ apart). "Or ask a
+  baseball PITCHER" (a callback to the line before) is heard right on its own and with the sentence before; whisper's whole-file
+  pass over narration.wav still wrote "picture" (its long-context decoding), the MP4's qa.py pass wrote "pitcher". And the hook's
+  groove had come back under that punchline: the punchline is now said in silence and the groove follows it into the loop.
+- **A stamp after its word, right before a cut, is not seen:** DELETED landed 0.37 s before the cut; on the word ("deleted"),
+  with its sound above 5.2 kHz, it stays 0.8 s.
+- **An Anton "=" with its outline read as an 8 on a phone:** two fat rounded bars instead.
+- Studio's vertical thumbnail slot was grey: cover.jpg uploaded there, Save, "Changes saved" (direct URL, no switcher touched).
+- Voice: hook and answer from five auditions, the button from five more over two wordings (picked by whisper on its own);
+  quota.mjs read 54,437 before; about 1,100 characters this run.
+- Two QA rounds; the final MP4 is build.sh's from a fresh work folder (timeline.json and mix.wav byte-identical, the MP4 within
+  839 bytes; 18/18, WER 2.7 %, voice mean 22.8 dB). About 3.7 minutes a render.
