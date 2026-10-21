@@ -31,19 +31,32 @@
   "cover": "cover.jpg",
   "captions": "wrist-tendon.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-22T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "qU0s1Isj7BA",
+    "url": "https://youtube.com/shorts/qU0s1Isj7BA",
+    "uploaded": "2026-10-21T08:13:57.053Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-25T18:30:00+05:30",
     "caption": "Touch your thumb to your pinky... and bend your wrist. 🖐️\nSee a cord pop up? That's a muscle your body forgot to delete. About 1 in 7 people don't have it, sometimes in just one arm, and they grip just as hard. Surgeons even use it to rebuild baseball pitchers' elbows.\nDid a cord pop up? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't raise just one eyebrow 🔔\n#science #humanbody #evolution #funfacts #reels",
-    "coverTime": 1.0,
-    "shareToFeed": true
+    "coverTime": 1,
+    "shareToFeed": true,
+    "queued": true
+  },
+  "facebook": {
+    "videoId": "2359669521519458",
+    "publishAt": "2026-10-25T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-21T08:14:49.521Z"
   }
 }

@@ -71,9 +71,9 @@ whole-file pass still writes "picture" (its long-context decoding; the caption a
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | PENDING | 22 Oct 2026 11:30 IST |
-| Instagram Reels | PENDING | — |
-| Facebook Page (CurioPulse) | PENDING | — |
+| YouTube Shorts | https://youtube.com/shorts/qU0s1Isj7BA | 22 Oct 2026 11:30 IST (scheduled by the Data API; playlist Why Does Your Body Do That?; cover.jpg set by the API and in Studio's thumbnail slot too, "Changes saved") |
+| Instagram Reels | queued by the Instagram API (`ig.mjs queue`; GitHub Actions publishes it from `state/ig-queue.json`) | 25 Oct 2026 18:30 IST |
+| Facebook Page (CurioPulse) | video 2359669521519458, scheduled natively by `fb.mjs reel` (status: ready, scheduled) | 25 Oct 2026 18:30 IST |
 
 **Title:** Why Do Some People Have NO Wrist Tendon? 🖐️
 
