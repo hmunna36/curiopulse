@@ -1,4 +1,4 @@
-# Publishes the queued Instagram Reels without the Mac (route C in skill/cp/bin/ig.mjs; user, 18 Oct 2026).
+# WAS: publishes the queued Instagram Reels without the Mac (scheduled publishing OFF since 22 Oct 2026, see `schedule`) (route C in skill/cp/bin/ig.mjs; user, 18 Oct 2026).
 # Each run starts ~45 minutes before a slot (18:30 / 21:00 IST), uploads the Reel from its public MP4, sleeps until
 # the exact release time and publishes. It reads state/ig-queue.json (the Mac's queue) and writes state/ig-results.json
 # and, once a week, the refreshed token in state/ig-token.enc. Needs the repository secret IG_TOKEN_KEY.
@@ -7,13 +7,10 @@ name: Instagram Reels
 
 on:
   schedule:
-    - cron: '17 12 * * *' # 17:47 IST, for the 18:30 slot
-    - cron: '47 14 * * *' # 20:17 IST, for the 21:00 slot
-    # GitHub starts scheduled runs late on this repo (3-4 h on 18 Oct 2026, 5-6 h on 19 Oct, when both Reels missed
-    # their day), so extra runs every 30 minutes from 10:53 to 20:23 IST give it many chances to start in time.
-    # A run that finds nothing due within CP_IG_LEAD_MIN exits in seconds; the concurrency group keeps them one at a
-    # time and each reads the results the last one pushed, so a Reel is never published twice.
-    - cron: '23,53 5-14 * * *'
+    # Publishing from here is OFF since 22 Oct 2026 (user: "github is not working properly": GitHub started these runs
+    # hours late or not at all, so Reels went out late or never). Reels are scheduled in Meta Business Suite instead.
+    # This one weekly run only keeps the Instagram token fresh (refresh-weekly) and runs whoami; it never publishes.
+    - cron: '30 4 * * 1' # Monday 10:00 IST
   workflow_dispatch:
     inputs:
       command:
@@ -42,7 +39,7 @@ jobs:
       CP_IG_CLOUD: '1'
       CP_IG_TOKEN_KEY: ${{ secrets.IG_TOKEN_KEY }}
       CP_IG_LEAD_MIN: '80'
-      CMD: ${{ inputs.command || 'run-due' }}
+      CMD: ${{ inputs.command || 'whoami' }}
     steps:
       - uses: actions/checkout@v4
         with:
