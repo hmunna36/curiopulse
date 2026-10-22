@@ -49,6 +49,7 @@
 | `one-eyebrow`: "Why Can't You Raise Just ONE Eyebrow? 🤨" | 31 s (short arm) | https://youtube.com/shorts/mkp42FARp0c · 22 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 25 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1105708358723963) |
 | `wiggle-ears`: "Why Can't Most People WIGGLE Their Ears? 👂" | 31 s (short arm) | https://youtube.com/shorts/2cczUGi_viI · 23 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 26 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 2550794872062500) |
 | `voice-deeper`: "Why Does Your Voice Go DEEP With Fingers in Your Ears? 👂" | 33 s (short arm) | https://youtube.com/shorts/sFx9o5nAFXE · 23 Oct 2026 23:30 IST | Business Suite, Instagram only, 26 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1182658574352853) |
+| `circle-line`: "Why Can't You Draw a Circle and a Line at the SAME Time? ⭕" | 32 s (short arm) | https://youtube.com/shorts/XCPq2xvL02w · 24 Oct 2026 11:30 IST | Business Suite, Instagram only, 27 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1683671889986244) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -2029,4 +2030,42 @@ kin rule was already served by wrist-tendon, one-eyebrow and wiggle-ears):
   quota.mjs read 44,718 before). Firecrawl was out of credits: research went through WebSearch/WebFetch.
 - Two QA rounds (round 1: look 7.5 for the mug sliver, packaging 7.5 for a 61-character title); the final MP4 is build.sh's from a fresh
   work folder (timeline.json and mix.wav byte-identical; 18/18, WER 4.2 % (spellings only), voice mean 25.2 dB). About 4.1 minutes a render.
+
+**circle-line** (23 Oct 2026, the second Short of the day: the 02:00 routine, 02:04-03:35 IST; short arm, 76 words -> 31.83 s; hook formula:
+The Direct Address, the instruction itself, "Draw a circle with your left hand and a straight line with your right." (after Direct Address,
+Statistic, Direct Address); answer "Bent, right? Your hands are copying each other's homework." at 4.29 s; YouTube XCPq2xvL02w, 24 Oct 11:30
+IST, playlist Your Brain Is Weird; Instagram (Business Suite, Instagram only) and the Facebook Page (fb.mjs) 27 Oct 18:30 IST; the first
+topic of the Queue, put there by the 00:00 run as the kin of the foot-switch hit):
+- **A test that needs both hands:** the phone goes in the lap. The first line says which hand does which ("your left hand", "your right"),
+  which also put "your" into the first eight words (the first wordings, "with one finger... the other", had none; qa.py warns).
+- **Research check that changed a line:** the split-brain study usually quoted for this (Franz, Eliassen, Ivry & Gazzaniga 1996) did NOT
+  test circles and lines: Experiment 1 was lines in the same or orthogonal directions (one patient), Experiment 2 three-sided rectangles,
+  and the "50 figures" set (lines, curves, circles, squares) was judged better-drawn by two patients than by the controls on 63 % of
+  trials. So the line says "drew both shapes... better than YOU", not "drew a perfect circle and line". The phantom-arm fact rests on
+  Franz & Ramachandran 1998 (amputees who can move their phantom) and Osumi et al. 2015 (phantom circles made the real hand's vertical
+  lines oval); only people who can MOVE the phantom show it, so the line keeps "circling a GHOST hand". Full texts: the Ivry lab PDF;
+  Ramachandran & Hirstein's 1998 Brain review (rctn.org handout) describes the phantom experiment. Firecrawl was out of credits; WebSearch
+  and pdftotext on WebFetch's saved PDF did the job.
+- **Two trails that tell the story:** each fingertip leaves a glowing trail of its last cycle (`clTrail` in `clhands.js`: newest end
+  brightest, a white comet at the tip), drawn from the paths themselves (`clTips(tt, b)`: b = how far the circle has leaked into the line);
+  the line's bend is a function of time, so the trail history bends with it and the loop at negative time is a straight line again.
+  A dashed straight guide beside the oval on "Bent," shows what he meant.
+- **The brain's halves pulled apart with a bridge:** foot.js's halves (HEMI, hemiPath) moved out by 15 head units with a wooden footbridge
+  between them, a plan on each half (a circle, a line that bends), chat bubbles, a ring that rolls over the bridge, scissors that cut it.
+  **A face on a half: drop the middle folds.** The fold curves at y -8 and +8 crossed the mouths and every smile read as a frown; with a
+  face only two short folds down the outer edge.
+- **"Missing an arm" with the rig:** new `st.hideArm` ('L' | 'R', template character.js) skips one arm; the arm vanished in a puff and a
+  ghost arm came back. A ghost drawn as a translucent white body bloomed into a blob; as one union outline it folded into a confusing
+  shape; what read: each part (upper arm, forearm, hand) outlined and filled in turn with a dark see-through body, so the forearm sits in
+  front of the upper arm (`clGhostArm`).
+- **A dive into the head with the hands in a window:** at zoom 5 his drawing hands poke in at the frame's edges; they keep drawing during
+  the 0.5 s dive and rest on the armrests (off frame) once inside, while a YOUR HANDS window shows the two drawings live; in the payoff
+  the same window becomes 2 PATIENTS, 1996 with clean shapes and ticks.
+- Mix: a held chord in the halves shot masked "gets" and "of" (music −27 dB against a voice at −22): down 11 dB. The music stops under
+  "Two patients with that bridge cut". Gags −19.4 … −24.4 dB.
+- Studio's thumbnail section already showed cover.jpg (the API's thumbnails.set took): nothing to upload (direct URL, no switcher).
+- Voice: the hook in three wordings and three takes (pitch range by autocorrelation picked the liveliest), the payoff and the weird line
+  three takes each by their last words; quota.mjs read 44,168 before and 43,699 after.
+- Two QA rounds (round 1: look 7.5 for the frowning halves; the bend moved earlier to land by ~3 s); the final MP4 is build.sh's from a
+  fresh work folder (byte-identical; 18/18, WER 0.0 %, voice mean 27.3 dB). About 4.4 minutes a render.
 
