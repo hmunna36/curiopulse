@@ -46,7 +46,7 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/dominant-eye/dominant-eye-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/dominant-eye.mp4",
       "size": 24189968,
-      "status": "queued",
+      "status": "cancelled",
       "queuedAt": "2026-10-19T18:36:21.143Z"
     },
     {
@@ -61,7 +61,7 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/blind-spot/blind-spot-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/blind-spot.mp4",
       "size": 34209024,
-      "status": "queued",
+      "status": "cancelled",
       "queuedAt": "2026-10-19T18:36:23.169Z"
     },
     {
@@ -164,7 +164,7 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/breathe-swallow/breathe-swallow-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/breathe-swallow.mp4",
       "size": 41273401,
-      "status": "queued",
+      "status": "cancelled",
       "queuedAt": "2026-10-18T21:20:10.170Z"
     },
     {
@@ -179,8 +179,15 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/vulcan-salute/vulcan-salute-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/vulcan-salute.mp4",
       "size": 26587801,
-      "status": "queued",
-      "queuedAt": "2026-10-19T19:33:08.322Z"
+      "status": "published",
+      "queuedAt": "2026-10-19T19:33:08.322Z",
+      "attempts": 1,
+      "containerId": "18118685998961675",
+      "method": "video_url",
+      "containerAt": "2026-10-22T14:30:08.234Z",
+      "mediaId": "17931945654163554",
+      "permalink": "https://www.instagram.com/reel/DezM3TJgEmy/",
+      "publishedAt": "2026-10-22T14:30:51+0000"
     },
     {
       "slug": "finger-sausage",
@@ -194,7 +201,7 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/finger-sausage/finger-sausage-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/finger-sausage.mp4",
       "size": 35599432,
-      "status": "queued",
+      "status": "cancelled",
       "queuedAt": "2026-10-19T21:24:39.097Z"
     },
     {
@@ -209,7 +216,7 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/tickle-yourself/tickle-yourself-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/tickle-yourself.mp4",
       "size": 31158913,
-      "status": "queued",
+      "status": "cancelled",
       "queuedAt": "2026-10-21T07:16:53.503Z"
     },
     {
@@ -224,7 +231,7 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/wrist-tendon/wrist-tendon-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/wrist-tendon.mp4",
       "size": 28702478,
-      "status": "queued",
+      "status": "cancelled",
       "queuedAt": "2026-10-21T08:14:29.276Z"
     },
     {
@@ -239,7 +246,7 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/one-eyebrow/one-eyebrow-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/one-eyebrow.mp4",
       "size": 49926885,
-      "status": "queued",
+      "status": "cancelled",
       "queuedAt": "2026-10-21T19:24:49.168Z"
     },
     {
@@ -254,7 +261,7 @@
       "videoUrl": "https://raw.githubusercontent.com/hmunna36/curiopulse/main/videos/wiggle-ears/wiggle-ears-short.mp4",
       "spool": "/Users/harshad/.cache/cp/ig-spool/wiggle-ears.mp4",
       "size": 33040779,
-      "status": "queued",
+      "status": "cancelled",
       "queuedAt": "2026-10-21T21:24:14.131Z"
     }
   ]
