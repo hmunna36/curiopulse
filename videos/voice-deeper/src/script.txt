@@ -1,0 +1,32 @@
+# Narration for "Why Does Your Voice Sound DEEPER With Fingers in Your Ears? 👂"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses (jokes and reveals). tempo speeds a take up without changing pitch.
+# Rules of 15 Oct 2026: the hook is the viewer's test; the answer starts by 5.0 s; nobody says "subscribe";
+# the button runs into the hook when the Short loops; 66-76 words (the short arm, every Short since 16 Oct).
+# `hello` is the narrator testing her own plugged ears: audio.py puts it through the "inside the head" sound.
+
+## hook gap=0.10 tighten=0.35 tempo=1.00
+Stick your fingers in your ears... and talk.
+
+## hello gap=0.15 tighten=0 tempo=1.00
+[curious] Hellooo?
+
+## answer gap=0.40 tighten=0.40 tempo=1.00
+Deep, right? That's your skull... singing bass.
+
+## hum gap=0.35 tempo=1.04
+Every word you say makes your bones hum. Normally, that low hum leaks out your ears.
+
+## trap gap=0.30 tempo=1.03
+Fingers in? It's trapped... so it booms right into your eardrum.
+
+## earbuds gap=0.40 tempo=1.02
+Same reason your voice sounds boomy with earbuds in.
+
+## rumble gap=0.45 tighten=0.40 tempo=1.02
+Now press harder. That faint rumble? Your own muscles... buzzing twenty-five times a second.
+
+## button gap=0.55 tighten=0 tempo=1.00
+[deadpan] You're basically a walking subwoofer.

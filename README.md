@@ -55,6 +55,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do Some People Have NO Wrist Tendon? | 32 s | [`videos/wrist-tendon`](videos/wrist-tendon) | [22 Oct 2026](https://youtube.com/shorts/qU0s1Isj7BA) |
 | Why Can't You Raise Just ONE Eyebrow? | 31 s | [`videos/one-eyebrow`](videos/one-eyebrow) | [22 Oct 2026](https://youtube.com/shorts/mkp42FARp0c) |
 | Why Can't Most People WIGGLE Their Ears? | 31 s | [`videos/wiggle-ears`](videos/wiggle-ears) | [23 Oct 2026](https://youtube.com/shorts/2cczUGi_viI) |
+| Why Does Your Voice Go DEEP With Fingers in Your Ears? | 33 s | [`videos/voice-deeper`](videos/voice-deeper) | 23 Oct 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;
