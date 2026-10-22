@@ -1,0 +1,27 @@
+# Narration for "Why Can't You Draw a Circle and a Line at the SAME Time?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there.
+# The rules of 15 Oct 2026: the hook is the viewer's test; the answer starts by 5.0 s; the lesson points back to the
+# test in everyday words; nobody says "subscribe"; the button runs into the hook when the Short loops.
+# 76 words (the short arm: 66-76).
+
+## hook gap=0.10 tighten=0.30 tempo=1.04
+Draw a circle with your left hand and a straight line with your right.
+
+## answer gap=0.50 tighten=0.45 tempo=1.00
+Bent, right? Your hands are copying each other's homework.
+
+## halves gap=0.35 tighten=0.40 tempo=1.04
+Each hand gets its own half of your brain.
+
+## leak gap=0.25 tighten=0.40 tempo=1.04
+But the halves chat over a bridge... and your circle leaks across.
+
+## payoff gap=0.35 tighten=0.45 tempo=1.02
+Proof? Two patients with that bridge cut drew both shapes... better than YOU.
+
+## weird gap=0.40 tighten=0.40 tempo=1.02
+Weirder? People missing an arm still bend the line... circling a GHOST hand.
+
+## button gap=0.45 tighten=0 tempo=1.00
+Your hands aren't clumsy. They're cheating.
