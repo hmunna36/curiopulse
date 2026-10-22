@@ -136,10 +136,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
      folder lives on GitHub only: bring it back with
      `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>` before `ig.mjs prepare`. The cleanup at the end
      of the run removes it again.
-   - Instagram route: `node ~/.claude/skills/cp/bin/ig.mjs route`.
-     - `business-suite` is the normal case: the user's Facebook account is blocked, so no API token can exist.
-       This route needs Claude in Chrome connected at ship time.
-     - `api` means a token exists.
+   - Instagram route: Business Suite in Claude in Chrome, always (user, 22 Oct 2026; `ig.mjs route` may still print
+     `api`: ignore it, the token is only used for checks like `ig.mjs whoami`). It needs Chrome connected at ship time.
    - Skim `reference/videos.md` for what's been done and learned.
 2. **Research + story** (`reference/story.md`):
    - sources and a claims table;
@@ -214,31 +212,39 @@ Read each reference file when you reach its phase. They are short; don't skip th
     next free one at 18:30 or 21:00 IST that is not before the YouTube release) into `instagram.publishAt`. Confirm with
     `yt.mjs status <id>`, then check the Short's own thumbnail in Studio and upload cover.jpg there if the slot shows
     anything else (`reference/publish.md`, step 2).
-16. **Meta: Instagram AND the Facebook Page, both by API (the user, 17 Oct 2026: "update all pipelines to upload via API
-    for instagram and fb"; the tokens were set up on 16 Oct; `reference/publish.md`, "META BY API"). Every Short gets a Reel on
-    both, in the slot from `instagram.publishAt` (18:30 or 21:00 IST), unless publish.json says `"skip": true`.** The Short's
-    folder must already be pushed (step 14): both APIs fetch the MP4 from its public GitHub address.
-    1. **Instagram:** `node ~/.claude/skills/cp/bin/ig.mjs queue videos/<slug>/publish.json`. It books the Reel in the queue. Once
-       `ig.mjs upcoming` says "publishing: GitHub Actions" (route C, 18 Oct 2026), the cloud publishes it at the slot from the
-       repo's `state/ig-queue.json`, so step 17's commit (publish-short.sh copies the queue in) must land before the slot; until
-       then the Mac's launchd job (18:10 and 20:40) does it and the Mac must be awake (`reference/publish.md`, "META BY API").
-       Check `ig.mjs upcoming` shows it, and `ig.mjs whoami` is happy.
+16. **Meta: Instagram by Business Suite, the Facebook Page by API (the user, 22 Oct 2026: "github is not working properly",
+    after the GitHub publisher posted the 18:30 Reels 2+ hours late and missed whole days; route C is OFF). Every Short gets a
+    Reel on both, in the slot from `instagram.publishAt` (18:30 or 21:00 IST), unless publish.json says `"skip": true`.** The
+    Short's folder must already be pushed (step 14): the Page API fetches the MP4 from its public GitHub address.
+    1. **Instagram: schedule it in Meta Business Suite (Claude in Chrome), Instagram ONLY.** Never `ig.mjs queue` (nothing
+       publishes that queue any more).
+       1. `node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <scratchpad>/ig-<slug>` builds the
+          Reel-spec copy and splits it into parts of <= 9 MB. Its suggested slot can be wrong; use `instagram.publishAt`.
+       2. In Claude in Chrome open `https://business.facebook.com/latest/home`, `find` "Create Reel" and click it BY REF.
+       3. **Post to:** click the drop-down by ref, untick "CurioPulse" (the Page; fb.mjs posts it), click empty space, and
+          zoom to read back `curio_pulse_tv` alone.
+       4. Build the collector input, `file_upload` ONE part per call, reassemble, check size and SHA-256 inside the page, arm
+          the click hook, click Add video (`reference/publish.md`, Route A, step 3).
+       5. TYPE the caption a line at a time (Return between lines), click the "Reel details" heading, read it back from JS.
+          Wait for the upload bar to say 100 %.
+       6. **THE SHARE TRAP (22 Oct 2026: dominant-eye went out at once instead of the next day).** In this composer ONE
+          "Next" goes straight to the Share step, and its "Share" button (publishes NOW) sits exactly where "Next" was.
+          So: `find` "Next" and click it ONCE by ref; then `find` the "Schedule" option inside "Scheduling options" and
+          click it by ref; check the bottom button now reads "Schedule". Never click Next/Share/Schedule by coordinates
+          (the viewport flips between 685 and 746 px high).
+       7. Date: coordinate-click the date field, screenshot the calendar, click the day. Time: `find` the hours and minutes
+          spinbuttons, type them by ref, Tab, screenshot to read date and time back. Then `find` the bottom "Schedule"
+          button and click it by ref. The dialog must say "scheduled to publish on <day>".
+       8. `node ~/.claude/skills/cp/bin/ig.mjs busy <YYYY-MM-DD>T<HH:MM>` records the slot (yt.mjs counts it), and put
+          `instagram.scheduledVia: "business-suite"` in publish.json.
+       9. Content → Scheduled must list the row with the Instagram badge and the caption as its title.
+       - If Chrome isn't connected, the window is hidden (`requestAnimationFrame` never fires) or Business Suite wants a
+         password: don't guess. Report "Instagram still to schedule" with the prepared sheet; YouTube goes ahead.
     2. **Facebook Page:** `node ~/.claude/skills/cp/bin/fb.mjs reel videos/<slug>/publish.json`. It uploads and SCHEDULES the
        Reel natively on Facebook for the same time (the caption's Follow line becomes "Follow CurioPulse…"), and writes
        `facebook.videoId` into publish.json. Then `fb.mjs status <videoId>`: `publish_status` must read `scheduled` (processing
-       may take a few minutes; wait for `ready`).
-    3. **If either API fails** (an error, a token problem, `status` shows an error): do NOT retry in a loop. One retry after
-       a minute, then fall back to Route A below for that platform and say so in the report. A token or permission error
-       (code 190, 10, 200) needs the user: report it, do not try to fix it.
-    4. **Route A (Business Suite in Chrome) is the FALLBACK only:**
-       1. `node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <scratchpad>/ig-<slug>` builds the
-          Reel-spec copy and splits it into parts of ≤ 9 MB.
-       2. In Claude in Chrome: open Business Suite, upload the parts into a collector input, reassemble, check the SHA-256.
-       3. Create Reel → Add video (with the click hook) → the caption, TYPED → Schedule at the sheet's `date` and `time`.
-          Post to: Instagram and the Page ticked as needed (`reference/publish.md`). Read the row back in Content → Scheduled.
-       4. Record the slot with the sheet's `afterScheduling` command (`ig.mjs busy <date>T<HH:MM>`).
-       - If Chrome isn't connected, or Business Suite wants a password, don't guess: report "still to schedule" with the
-         prepared sheet. Business Suite's upload loops when the window is hidden: after one stall, hand the files over.
+       may take a few minutes; wait for `ready`). If it fails twice (a minute apart), tick the Page in step 1.3 instead and say
+       so; a token or permission error (code 190, 10, 200) needs the user: report it, do not try to fix it.
     5. **Be gentle with both accounts** (they were suspended once, 16 Oct 2026): one upload per run, never bulk edits,
        never edit the Instagram profile (link, bio, name), never create or change Meta apps, users or tokens.
 17. **Record:**
@@ -288,7 +294,7 @@ user's request).
    - `yt.mjs whoami` says CurioPulse;
    - `yt.mjs numbers`, then `yt.mjs next-slot` (the length arm; never build without knowing it), then
      `yt.mjs comments-due` (the "Next up" comment on Shorts that have gone public);
-   - Instagram: `ig.mjs route` says `business-suite` and Claude in Chrome is connected (or it says `api` and `ig.mjs whoami` works). If neither holds, build and schedule YouTube anyway, and report Instagram as pending.
+   - Instagram: Claude in Chrome is connected (Business Suite schedules every Reel since 22 Oct 2026). If not, build and schedule YouTube anyway, and report Instagram as pending.
 3. Run A → B → C exactly as for `/cp <topic>`, including the cleanup (step 20).
 4. Close out: in step 19, mark the line `[x]` with its links and release day and move it under Done (the skill backup
    carries it). The lock is released after the cleanup.
@@ -299,8 +305,9 @@ user's request).
 
 - **Move a release:**
   - YouTube: `yt.mjs reschedule <id> 2026-10-05T23:30:00+05:30`.
-  - Instagram: in Business Suite, Content → Scheduled → ⋯ → Reschedule (route B: `ig.mjs cancel <slug>` + `ig.mjs queue … --at …`).
-- **Publish a Reel right now:** Business Suite → Share now (route B: `ig.mjs publish-now <slug>`).
+  - Instagram: in Business Suite, Content → Scheduled → ⋯ → Reschedule.
+- **Publish a Reel right now (only when the user asks for that Reel):** `ig.mjs publish-now <slug>` if it is in the queue,
+  else Business Suite → Share now.
 - **Revisit an old Short:** `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>`, then `src/build.sh`
   (the toolchain in `~/.cache/cp` is picked up automatically). When you're done, push any change, then run
   `bin/cleanup.sh`.

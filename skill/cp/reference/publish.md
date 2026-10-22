@@ -1,5 +1,11 @@
 # Publishing: GitHub, YouTube 11:30 AM + 11:30 PM IST, Meta: Facebook-only, one Reel a day at 21:00 IST while Instagram is suspended (normally Instagram 18:30 + 21:00)
 
+> **22 Oct 2026, the current rule (user: "github is not working properly"): Instagram Reels are scheduled in Meta
+> Business Suite (Route A below, Instagram ONLY, the Share-trap rules in SKILL.md step 16.1); the Facebook Page stays on
+> `fb.mjs`. Route C (GitHub Actions) no longer publishes: `ig-publish.yml` runs once a week (Mon 10:00 IST) only to
+> refresh the token. Do not `ig.mjs queue` new Reels. Why: GitHub started the scheduled runs 2-6 hours late or not at all
+> (18-22 Oct), so 18:30 Reels went out after 20:40 and whole days were lost. The sections below are kept for the record.**
+
 The user's schedule: **two Shorts a day, each on both platforms. YouTube takes the next free of two daily slots,
 11:30 AM and 11:30 PM IST (user, 2 Oct 2026: the 11:30 AM releases brought subscribers). Instagram takes the next
 free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after the nostril Reel's views ran fastest
