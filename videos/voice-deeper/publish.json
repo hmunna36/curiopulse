@@ -30,19 +30,33 @@
   "cover": "cover.jpg",
   "captions": "voice-deeper.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-23T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "sFx9o5nAFXE",
+    "url": "https://youtube.com/shorts/sFx9o5nAFXE",
+    "uploaded": "2026-10-22T19:29:26.585Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-26T21:00:00+05:30",
     "caption": "Stick your fingers in your ears... and talk. 👂\nDeep, right? That's your skull singing bass: every word makes your bones hum, and with your ears plugged that hum can't leak out, so it booms into your eardrums.\nDid your voice go deeper? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't see your own eyes move in a mirror 👀\n#science #humanbody #ears #funfacts #reels",
     "coverTime": 3.5,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only, 26 Oct 2026 21:00 IST, cover.jpg as the cover (scheduled 23 Oct ~01:15 IST by the nightly run)"
+  },
+  "facebook": {
+    "videoId": "1182658574352853",
+    "publishAt": "2026-10-26T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-22T19:35:12.987Z"
   }
 }

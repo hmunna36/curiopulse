@@ -53,9 +53,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 23 Oct 2026, 23:30 IST |
-| Instagram Reels | @curio_pulse_tv | (after scheduling) |
-| Facebook Page | CurioPulse | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/sFx9o5nAFXE | 23 Oct 2026, 23:30 IST (scheduled; thumbnail, captions, playlist "Why Does Your Body Do That?"; cover.jpg also set in Studio's vertical slot) |
+| Instagram Reels | @curio_pulse_tv | 26 Oct 2026, 21:00 IST (scheduled in Meta Business Suite, Instagram only, cover.jpg as the cover) |
+| Facebook Page | CurioPulse | 26 Oct 2026, 21:00 IST (scheduled by `fb.mjs reel`, video 1182658574352853: ready, scheduled) |
 
 **Title:** Why Does Your Voice Go DEEP With Fingers in Your Ears? 👂 (56 characters; the scaffold's longer title was 61)
 
