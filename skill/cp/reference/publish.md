@@ -42,6 +42,15 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
 - **Facebook Page:** `fb.mjs reel <publish.json>` uploads and schedules natively for `instagram.publishAt` (no Mac needed at the time);
   `fb.mjs status <id>` must say `scheduled` / `ready`. Scheduled so far: ring-finger (Business Suite, 17 Oct 21:00), dominant-eye
   (API, 18 Oct 21:00, status ready/scheduled), blind-spot (API, 19 Oct 21:00), two-noses (API, 20 Oct 18:30).
+- **A Business Suite schedule can vanish too (23 Oct 2026):** breathe-swallow's Instagram Reel, scheduled in Business Suite for 22 Oct
+  21:00 and confirmed in Scheduled that evening, was gone from Published, Scheduled, Drafts and Expired by midnight. Check Content ->
+  Published by typing a caption word into its search box: each platform has its own row with its badge, so a missing Instagram row
+  shows at once; then the public grid instagram.com/curio_pulse_tv/reels/ (read only). Reschedule a missing Reel in the next free slot
+  (Instagram only when its Page copy went out) and lead the report with it. A Reel that went out and is now gone was probably deleted
+  by the user: never repost it without their word.
+- **The Reel composer's Thumbnail section works again (23 Oct 2026):** Choose suggested / Choose frame / Upload image. cover.jpg in a
+  collector input, the click hook armed with it (`window.__pendingFile`), the "Upload image" tab, then the "Upload Image" link: the cover
+  shows with a tick and becomes the Scheduled row's thumbnail.
 - **Checking that Reels really went out:** Instagram `ig.mjs upcoming` (results) and instagram.com only if needed; the Page `fb.mjs status <videoId>`
   (`publish_status: published`) or the Page's Content → Published list. A miss is reported first.
   For Reels scheduled in Business Suite, the public grid instagram.com/curio_pulse_tv/reels/ (read only, nothing clicked)

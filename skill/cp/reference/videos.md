@@ -48,6 +48,7 @@
 | `wrist-tendon`: "Why Do Some People Have NO Wrist Tendon? 🖐️" | 32 s (short arm) | https://youtube.com/shorts/qU0s1Isj7BA · 22 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 25 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 2359669521519458) |
 | `one-eyebrow`: "Why Can't You Raise Just ONE Eyebrow? 🤨" | 31 s (short arm) | https://youtube.com/shorts/mkp42FARp0c · 22 Oct 2026 23:30 IST | Instagram API queue (route C, GitHub Actions), 25 Oct 2026 21:00 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 1105708358723963) |
 | `wiggle-ears`: "Why Can't Most People WIGGLE Their Ears? 👂" | 31 s (short arm) | https://youtube.com/shorts/2cczUGi_viI · 23 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 26 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 2550794872062500) |
+| `voice-deeper`: "Why Does Your Voice Go DEEP With Fingers in Your Ears? 👂" | 33 s (short arm) | https://youtube.com/shorts/sFx9o5nAFXE · 23 Oct 2026 23:30 IST | Business Suite, Instagram only, 26 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1182658574352853) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -1993,3 +1994,39 @@ a kin of the Vulcan-salute hit (37K views, 5x the middle of the Shorts since 16 
   it (2.42 s; said at 2.68 s): moved with `first_loud` in make_timeline.py.
 - Two QA rounds (round 1: sound 7.5 for the quiet gags); the final MP4 is build.sh's from a fresh work folder (timeline.json and mix.wav
   byte-identical; 18/18, WER 2.7 %, voice mean 19.8 dB). About 3.3 minutes a render.
+
+**voice-deeper** (23 Oct 2026, nightly /cp next, 00:00-01:20 IST; short arm, 71 words -> 33.40 s; hook formula: The Direct Address,
+the instruction itself, "Stick your fingers in your ears... and talk." (after The Statistic, Direct Address, The Question); answer
+"Deep, right? That's your skull... singing bass." at 4.49 s; YouTube sFx9o5nAFXE, 23 Oct 23:30 IST, playlist Why Does Your Body Do That?;
+Instagram (Business Suite, Instagram only) and the Facebook Page (fb.mjs) 26 Oct 21:00 IST; the first topic of the Queue; the Vulcan
+kin rule was already served by wrist-tendon, one-eyebrow and wiggle-ears):
+- **The 48-hour check found a Business Suite schedule gone without a trace.** breathe-swallow's Reel, scheduled in Business Suite for 22 Oct
+  21:00 and confirmed in Content -> Scheduled that evening, was in neither Published, Scheduled, Drafts nor Expired at 00:10 and not on the
+  public grid; its Page copy (fb.mjs) had gone out. Rescheduled for 23 Oct 18:30 (the slot dominant-eye had held: dominant-eye went out by
+  mistake on 22 Oct and is no longer on the grid either, most likely deleted on purpose: NOT reposted, left to the user). Search Content ->
+  Published by a caption word ("Swallow"): the Page and the Instagram rows show their badges, so a missing Instagram row is quick to see.
+- **Business Suite's Reel composer shows a Thumbnail section again (23 Oct 2026):** Choose suggested / Choose frame / Upload image. A
+  collector input for cover.jpg, the click hook armed with it, "Upload image" tab, then the "Upload Image" link: the cover showed with a
+  tick, and the Scheduled row's thumbnail is the cover.
+- **A glass head on the rig: no ear patches, no neck patch.** Dark ear glass (and voicehead.js's dark inner-ear pockets) read as headphones
+  again (wiggle-ears' lesson); a glass rectangle over the collar with the voice box in it read as a bib. The hum shows better as thick
+  orange arcs climbing from the jaw inside the skull, with the bone route clipped to the head (`vdGlass` in ears.js).
+- **Check the frame's edges on wide shots for slivers of far props:** the desk's mug (world x 795) showed as a red line at the right edge at
+  zoom 2.4-2.8 (29.97 s on). Removed.
+- **The sound heard through his ears:** a PLUG envelope over the Short (1 = fingers in, 0.55 = earbuds, 0 = out) crossfades the score and the
+  room with a low-passed copy (`muffle` in audio.py: 650-700 Hz, 18-25 % kept open), so the one stretch with the fingers out opens up. The
+  narrator's own "Hellooo?" through `deep_voice` (120-450 Hz x2.4, low-pass 1.6 kHz, a 12 ms room): whisper still wrote "hello".
+- **A test with a second, smaller test inside it** ("Now press harder. That faint rumble?"): the rumble line first had "hear" at -10 dB in the
+  speech band; rewritten without it. Muscle sound: 25 +/- 2.5 Hz (Oster & Jaffe 1980), louder with tension; Wollaston 1810 heard it with a
+  thumb in his ear (20-30 a second).
+- New in `ears.js`: `vdPlugHand` (a fist with the index finger in the ear: `k` how far in, `press`, `tremble` at 25 Hz), `vdBud` (a white
+  earbud), `vdNote`, `vdGlass` (the head as glass in head units: skull, jaw, notes, trapped rings, orange hum arcs, bone route), `vdMuscle`
+  (a forearm as glass with a red muscle that grits its teeth and buzzes), `vdWoofer` (a subwoofer on his chest), `vdEarRings` (violet rings
+  that leak out of an ear or bounce off the fingertip), `vdBoomRings`, `vdRumble`, `vdHero` (eye-rub-stars' dkHero with all of these);
+  `canal.js`: `vdCanal` (the canal in section, a fingertip pushed in between the outer ear's two halves, the bone humming, the hum as a wave
+  that leaks out or stands trapped and booms on the drum), `vdFingertip`.
+- Voice: hook, trap and rumble picked from 2-4 auditions each by the speech-band level of their key words (453 + ~640 characters;
+  quota.mjs read 44,718 before). Firecrawl was out of credits: research went through WebSearch/WebFetch.
+- Two QA rounds (round 1: look 7.5 for the mug sliver, packaging 7.5 for a 61-character title); the final MP4 is build.sh's from a fresh
+  work folder (timeline.json and mix.wav byte-identical; 18/18, WER 4.2 % (spellings only), voice mean 25.2 dB). About 4.1 minutes a render.
+
