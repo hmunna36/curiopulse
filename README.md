@@ -56,7 +56,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Can't You Raise Just ONE Eyebrow? | 31 s | [`videos/one-eyebrow`](videos/one-eyebrow) | [22 Oct 2026](https://youtube.com/shorts/mkp42FARp0c) |
 | Why Can't Most People WIGGLE Their Ears? | 31 s | [`videos/wiggle-ears`](videos/wiggle-ears) | [23 Oct 2026](https://youtube.com/shorts/2cczUGi_viI) |
 | Why Does Your Voice Go DEEP With Fingers in Your Ears? | 33 s | [`videos/voice-deeper`](videos/voice-deeper) | [23 Oct 2026](https://youtube.com/shorts/sFx9o5nAFXE) |
-| Why Can't You Draw a Circle and a Line at the SAME Time? | 32 s | [`videos/circle-line`](videos/circle-line) | 24 Oct 2026 (scheduled) |
+| Why Can't You Draw a Circle and a Line at the SAME Time? | 32 s | [`videos/circle-line`](videos/circle-line) | [24 Oct 2026](https://youtube.com/shorts/XCPq2xvL02w) |
 
 Each folder has:
 - the finished MP4;

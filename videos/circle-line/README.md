@@ -63,9 +63,9 @@ the speech band ("YOU.", "hand.").
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after the upload) | 24 Oct 2026 11:30 IST |
-| Instagram Reels | — | (after scheduling) |
-| Facebook Page | — | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/XCPq2xvL02w | 24 Oct 2026 11:30 IST (scheduled; the cover showed as its thumbnail in Studio) |
+| Instagram Reels | — | 27 Oct 2026 18:30 IST, scheduled in Business Suite (Instagram only, cover.jpg as the cover) |
+| Facebook Page | — | 27 Oct 2026 18:30 IST, scheduled by the Page API (video 1683671889986244, `scheduled`, `ready`) |
 
 **Title:** Why Can't You Draw a Circle and a Line at the SAME Time? ⭕
 

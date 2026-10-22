@@ -30,20 +30,34 @@
   "cover": "cover.jpg",
   "captions": "circle-line.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-24T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "XCPq2xvL02w",
+    "url": "https://youtube.com/shorts/XCPq2xvL02w",
+    "uploaded": "2026-10-22T21:26:18.048Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-27T18:30:00+05:30",
     "caption": "Draw a circle with your left hand... and a straight line with your right. ⭕\nBent, right? Your hands are copying each other's homework: each one is run by a different half of your brain, and the halves chat over a bridge, so the circle leaks into the line.\nDid your line bend? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't see your own eyes move in a mirror 👀\n#science #brain #humanbody #funfacts #reels",
     "coverTime": 4.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only, 27 Oct 2026 18:30 IST, cover.jpg as the cover (scheduled 23 Oct ~03:05 IST by the second-Short run)"
   },
-  "coverTime": 4.4
+  "coverTime": 4.4,
+  "facebook": {
+    "videoId": "1683671889986244",
+    "publishAt": "2026-10-27T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-22T21:33:00.716Z"
+  }
 }
