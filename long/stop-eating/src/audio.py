@@ -432,7 +432,7 @@ sfx.add(pan_st(whoosh(0.25, 700, 2600, 630, 0.8), 0), c["angus"] - 0.3, db(-27))
 sfx.add(pan_st(whoosh(0.2, 400, 2200, 631, 0.8), 0), c["kilos200"] - 0.2, db(-27))
 sfx.add(pan_st(creak(0.9, 160, 50, 100), -0.3), c["kilos200"] + 0.1, db(-22))
 sfx.add(pan_st(cork_pop(632, 900.0), -0.5), c["flashBulb"] - 0.02, db(-20))
-sfx.add(pan_st(norm(filt(white(int(0.5 * SR), 633), "highpass", 5000)) * np.exp(-np.linspace(0, 8, int(0.5 * SR))), -0.5), c["flashBulb"], db(-31))
+sfx.add(pan_st(norm(filt(white(int(0.25 * SR), 633), "highpass", 5000)) * np.exp(-np.linspace(0, 10, int(0.25 * SR))), -0.5), c["flashBulb"], db(-34))
 sfx.add(pan_st(springs(161, 0.6), -0.3), c["kilos200"] + 0.3, db(-26))
 sfx.add(pan_st(page_flip(162), -0.4), c["doctors"] + 0.05, db(-22))
 sfx.add(pan_st(cork_pop(163, 540.0), 0.2), c["vitamins"] + 0.3, db(-22))
@@ -467,7 +467,7 @@ for k in range(2):
 # ================================================================= DAY SEVEN: the rescue
 # the wind cuts out on the sun; a bright swell; the helicopter comes in
 sfx.add(pan_st(chime(1568, 1.2), 0), c["sunUp"] + 0.05, db(-22))
-sfx.add(pan_st(rotor(END["rescue"] - c["sunUp"] + 1.2, 240), 0.3), c["sunUp"] + 0.2, db(-19))
+sfx.add(pan_st(rotor(END["rescue"] - c["sunUp"] - 0.35, 240), 0.3), c["sunUp"] + 0.2, db(-19))
 sfx.add(pan_st(whoosh(0.8, 300, 1600, 241), 0), c["breaks"] - 0.15, db(-21))
 # the soup: the door, the mug set down, the steam; the taps again; his mouth: a drip
 sfx.add(pan_st(creak(0.5, 242, 90, 200), 0.4), SHOT["soup"] - 0.55, db(-26))
