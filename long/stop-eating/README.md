@@ -129,25 +129,178 @@ first timeline; the final ones are in "Story and shots".)
 | 36 | 4:22.5 | HOME | The final image: the two of them, each with half, the clear mountain in the window and the fox in the snow with the empty bag; the theme comes home | — | home | — | 5 | **4:22.6 the resolve** | the teaser |
 | 37 | 4:24.5 | HOME | Subscribe: NEXT WEEK, a tooth with a worried face, a crossed-out toothbrush; "Subscribe... and go eat something" | — | the pill, the bell | — | 2 | — | — |
 
-## Narration (N words, performed)
+## Narration (625 words, performed)
 
-NARRATION
+Directed in [`src/script.txt`](src/script.txt), one take per block (38 blocks, about 3,418 characters in the final
+takes; the first pass cost 3,365 characters and the fact-check rewrites of eight blocks 822 more). The joke timing
+sits in the gaps between blocks: 1.6 s before "All he had left... was a lemon.", 2.4 s for the unwrapping at midnight
+before "...and wraps it back up.", 2.2 s for the snap before "She gives him the bigger half.", and a 6-second silence
+after "go." while the viewer counts their pulse. The hook's pauses are capped at 0.22 s so the viewer is biting their
+lemon by 0:07. The fact-check changed: "dreamed about food" to "daydreamed" (food dreams at night were rare), "About
+thirty-five" to "About thirty-seven" (Keys' average), "your brain lives on the stash in your liver... about one day's
+worth" to "Your brain gets its sugar from your liver... and the liver's stash lasts a day or two", "almost gone" to
+"running low", "makes some" to "makes more" (the body is making sugar from the first hours), "his breath is" to "his
+breath might", "And he went to the toilet" to "And by the end, he went to the toilet" (the paper says "latterly"), and
+"His first meal?" to "His first meal, the papers said?". The words are re-timed with whisper (`src/realign.py`) in the
+blocks where ElevenLabs' alignment had put words in silence.
 
 ## Publishing
 
-PUBLISHING
+| Platform | Link | Release |
+|---|---|---|
+| YouTube | YOUTUBE_LINK | RELEASE_TIME |
+
+**Title:** What Happens If You Stop Eating? (Day by Day) (45 characters)
+**Description, chapters, sources, tags:** [`publish.json`](publish.json). The description opens with the title's
+question and ends its first paragraph on the viewer's test ("How many beats did you count in six seconds?").
+Chapters, named after the clock: 0:00 Stop eating: bite a lemon · 0:41 Hour 4: the growl · 0:53 Hour 6: hunger's alarm
+clock · 1:26 Day 1 to day 3: the switch · 2:08 1944: the Minnesota men · 2:40 Day 5: your pulse, and the edge · 3:14
+382 days: Angus Barbieri · 3:41 Day 6 and day 7. Hashtags #Science #HumanBody #Fasting.
+**Pinned comment (suggestion, for the user to pin):** Next week: what happens if you stop brushing your teeth.
+Subscribe so you don't miss it! How many beats did you count in six seconds?
+**Subscribe line (spoken, 88 characters):** Next week: what happens if you stop brushing your teeth. Subscribe... and go eat
+something.
+**Thumbnail:** [`cover.jpg`](cover.jpg): his face, big, on a deep violet field, beanie and stubble of day six, eyes wide
+and mouth open over the PEAK bar he holds peeled under his chin, glowing gold; "382 / DAYS" in yellow and white
+(variant 1 of 3, picked by the shelf test at 320×180 against six of the videos that rank for the question; the
+others were the same face on blue with DAY 6 / NO FOOD, and the lemon bite on yellow). The film's first frames are
+the same promise in action: his face, close, the bar on the table, the 382 page at 0:03.
+**Still to do by hand in YouTube Studio:** the end screen over the last 8 s (the kitchen under the NEXT WEEK card),
+a card to the stomach-growl Short at the growl (0:42), and pinning the suggested comment.
 
 ## Story and shots
 
-SHOTS
+58 shots in seven worlds (the hut, the mountain outside, his body as a diagram, 1944 Minnesota, 1965 Dundee, the graphics stage, Pip's kitchen). Each line is a `SC.<id>` in `src/web/scenes*.js`; every beat is a cue in `src/make_timeline.py`.
+
+| Time | Act | Shot | Picture |
+|---|---|---|---|
+| 0:00–0:02 | Hook | `hook` | his face, close, mid-bite into a lemon |
+| 0:02–0:06 | Hook | `p382` | a flash-forward on old film: one man, a calendar racing to 382; a red NO FOOD stamp |
+| 0:06–0:09 | Hook | `bite` | closer: the lemon at his mouth; the badge; he bites on "Now" |
+| 0:09–0:11 | Hook | `water` | the mouth's taps in a window on his cheek |
+| 0:11–0:14 | Hook | `ready` | the see-through body: the stomach lights up, READY |
+| 0:14–0:17 | Hook | `never` | pull back: the hut, the storm, HOUR 0 |
+| 0:17–0:23 | Setup | `want` | the summit shop in the sun; the bar held high; Pip's note |
+| 0:23–0:25 | Setup | `storm` | night, the storm: he trudges toward the hut |
+| 0:25–0:27 | Setup | `door` | the door: he goes in, his food bag left in the snow |
+| 0:27–0:29 | Setup | `foxsnout` | low and close: the bag by the door, a fox's snout creeps in |
+| 0:29–0:31 | Setup | `stolen` | wide: the fox runs off with the bag; STOLEN! |
+| 0:31–0:34 | Setup | `lemon` | the lemon in his hand; deadpan |
+| 0:34–0:41 | Setup | `radio` | the radio: A WEEK?!; Pip's question |
+| 0:41–0:43 | Act 1 | `growl` | his belly growls; the fox's ears |
+| 0:43–0:46 | Act 1 | `clean` | the stomach sweeping itself |
+| 0:46–0:50 | Act 1 | `clean2` | the whole gut: the squeeze rolls through, a clock spins two hours |
+| 0:50–0:52 | Act 1 | `echo` | the growl echoes round the hut |
+| 0:52–0:58 | Act 1 | `alarm` | lunchtime: the alarm clock rings on his stomach |
+| 0:58–1:04 | Act 1 | `clock` | the gauge crossed out, the alarm clock, the meal times |
+| 1:04–1:08 | Act 1 | `snooze` | the alarm dozes... 19:00 |
+| 1:08–1:11 | Act 1 | `fist` | the viewer's fist; his |
+| 1:11–1:19 | Act 1 | `pantry` | the muscle's own sugar; the liver's pantry; ONE DAY |
+| 1:19–1:25 | Act 1 | `hangry` | the pantry nearly empty; he loses an argument with the fox |
+| 1:25–1:30 | Turn | `easy` | outside, wide: the hut tiny in the storm |
+| 1:30–1:36 | Act 2 | `borrow` | colder; the body borrows from muscle |
+| 1:36–1:39 | Act 2 | `borrow2` | his fist: BORROWED |
+| 1:39–1:41 | Act 2 | `lever` | a big lever: SUGAR -> FAT, clunk |
+| 1:41–1:47 | Act 2 | `switch` | fat to new fuel; the brain goes half green |
+| 1:47–1:52 | Act 2 | `lunch` | the hut: a window on his belly full of lunchboxes |
+| 1:52–1:55 | Act 2 | `ruler` | ONE DAY OF FUEL as a battery: the bar hops in and fills a tenth |
+| 1:55–2:02 | Act 2 | `breath` | the viewer's breath; the fox faints |
+| 2:02–2:05 | Act 2 | `quiet` | the hunger knob turns down |
+| 2:05–2:07 | Act 2 | `quiet2` | his face, the hunger quiet: a small, surprised calm |
+| 2:07–2:14 | Act 2 | `minnesota` | old film: the dining hall; then the half plate; then the calendar, six months |
+| 2:14–2:17 | Act 2 | `minnesota2` | the scale's needle sinks; TO FEED EUROPE |
+| 2:17–2:25 | Act 2 | `obsessed` | cookbooks, dreams, gum |
+| 2:25–2:32 | Act 2 | `day5` | the wrapper read to the fox |
+| 2:32–2:35 | Act 2 | `pip2` | Pip's question again |
+| 2:35–2:40 | Turn | `edge` | the ladder of days; DO NOT TRY THIS |
+| 2:40–2:51 | Act 3 | `pulse` | the viewer's pulse: NECK or WRIST, then six seconds |
+| 2:51–2:56 | Act 3 | `zero` | x10; 60-100 |
+| 2:56–3:04 | Act 3 | `heart` | 35; the heart shrinks |
+| 3:04–3:08 | Act 3 | `limit` | one to two months |
+| 3:08–3:14 | Act 3 | `limit2` | inside: the fat goes, the muscle burns, the heart cracks |
+| 3:14–3:21 | Act 3 | `barbieri` | 1965: one man; a snap zoom on his face; a smash zoom on the scale: 207 KG |
+| 3:21–3:27 | Act 3 | `barbieri2` | doctors (a flash bulb), a vitamin pill, the calendar racing to 382 |
+| 3:27–3:36 | Act 3 | `toilet` | -125 KG; he walks to the calendar and holds up a toilet roll: once every forty days |
+| 3:36–3:41 | Act 3 | `egg` | one boiled egg |
+| 3:41–3:50 | His turn | `day6` | midnight: the candle, the window shaking, he unwraps the bar (the wordless beat) |
+| 3:50–3:52 | His turn | `wrap` | ...and wraps it back up; pats it |
+| 3:52–3:56 | His turn | `rescue` | daylight; the helicopter |
+| 3:56–4:02 | His turn | `soup` | the rescuer with a cup of soup; the mouth waters again |
+| 4:02–4:07 | His turn | `slow` | start small |
+| 4:07–4:12 | Button | `home` | Pip's kitchen: the bar handed over |
+| 4:12–4:18 | Button | `reveal` | her question was about him |
+| 4:18–4:22 | Button | `half` | SNAP; the bigger half |
+| 4:22–4:24 | Button | `final` | the final image |
+| 4:24–4:32 | Subscribe | `sub` | the final image holds: a small NEXT WEEK card, the pill; they both take a bite |
 
 ## Sound design
 
-SOUND
+All synthesized in [`src/audio.py`](src/audio.py) (sfxkit atoms plus a few made for this film: the storm's wind,
+the stove's crackle, a fox's yip, snow underfoot, radio static, a page flip, a helicopter's rotor, a toilet's flush);
+the narration is the only recorded sound.
+
+- **Beds:** the storm against the hut (a low roar with gusts under 450 Hz and a thin whistle above the voice band) that
+  grows a little each day, and the stove's crackle that fades as the fire burns low; the full storm outside; a low hum
+  inside his body; a projector's whirr under 1944 and 1965; birds after the storm breaks and outside Pip's kitchen.
+- **Hits:** every beat has its sound: the lemon's crunch and squelch and its drips; the 382 page's slap; the taps in
+  his mouth (a squeak and running water); the fox's paws, its grab, its yip, STOLEN!; the growl and its echo round the
+  hut (four growls, each quieter and duller); the alarm clock ringing in the pause after "right on time"; the X on the
+  fuel gauge; a snore and one ring at "Until dinner"; the fist's creak and a knuckle pop; the padlock; the jars
+  clinking; the straw slurping air; a wah-wah when he loses to the fox; thunder for "the easy part"; the lever of the
+  switch and green sparkles; lunchboxes clicking on; the breath, the sniff, the bottle's pop, the fox's fall (a slide
+  and a thud); the hunger knob's ratchet; the months flipping in 1944; gum chewed; the wrapper's crinkle; six soft
+  ticks while the viewer counts their pulse (no beat, so it never fights theirs) and a bell when the six seconds are
+  up; a slow monitor at 37 a minute; the heart deflating; the calendar's pages flipping faster and faster to 382; the
+  toilet's flush; the egg's ta-da; the wrapper unwrapped and wrapped back up over his heartbeat; the rotor; the mug set
+  down; the SNAP of the bar and its crumbs. A tick on every new hour or day the clock shows, a knife scratching each
+  day's tally mark, and a quiet whoosh into every cut.
+- **Score:** one theme, five notes that ask and do not answer (C D E G, hanging on F): a music box in the hook, cut off
+  by the bite; bouncy pizzicato for "that morning"; a dark pulse for the storm and a cymbal on the grab; nothing for the
+  lemon (the deadpan); Pip's music box, an octave up, on her question; a marimba groove for the first day (a key lift
+  for the alarm clock, half time for the snooze, a ticking arp for the fist and the pantry, a cranky pizzicato for the
+  fox); a low drone for "the easy part"; a cold minor pulse for day two; a rising arpeggio for the switch and a key
+  lift into the packed lunch; an old upright piano and a ragtime for 1944 and 1965 (it speeds up with the calendar);
+  glass and a low drone for the heart and the edge; a soft pad with no beat while the viewer counts; at midnight on day
+  six only the wind and his heartbeat; warm strings when the storm breaks; the theme slow on piano at home; silence
+  for "so was he" and for the snap; then the theme finally comes home (F E D C) on the final image.
+- **The reward rhythm:** every `pay_*` and `big_*` cue in make_timeline.py gets a short riser into it and a bright
+  bell (small) or a held breath of silence and a low hit (big); a payoff that falls on a word lands at the end of the
+  word instead.
+- **Mix:** voice first (leveler, gentle compression), effects duck under speech, −14 LUFS, true peak ≤ −1 dBTP after
+  AAC (pedalboard's studio chain). `src/qc_audio.py` lists the words the background comes close to; the fixes moved
+  every sound that sat on a word into the pause after it.
 
 ## Science notes
 
-SCIENCE
+Every claim in the script, how sure science is, and where it comes from. Hedged lines are said as hedges. The
+fact-check (a research pass over the primary sources before the voice was final) changed five lines: the Minnesota men
+*daydreamed* about food (night dreams of food were rare: 0–3 of about 35 men per survey), their pulse fell to about
+37 (not 35), the liver's stash lasts "a day or two" (not one), his acetone breath "might" smell (it is usually faint),
+and Barbieri's boiled egg is "what the papers said" (it is in the press reports, not the medical paper).
+
+| Claim (as said) | Status | Numbers, and what was compared | Source |
+|---|---|---|---|
+| Imagining a lemon makes your mouth water; the body gets ready for food from a thought | established (the cephalic phase; the insulin part is debated) | watching someone bite a lemon raised saliva (n = 49); talking about tasty food for 30 min raised stomach acid from 4 to 13 mmol/h | Hagenmuller et al. 2014 (PubMed 24953424); Feldman & Richardson 1986, Gastroenterology (PubMed 3940915) |
+| An empty stomach growls because it is cleaning: every couple of hours it squeezes the leftovers out | the wave is established; that it is what you hear is the leading idea | the migrating motor complex repeats every 90–120 min between meals and stops when you eat | Takahashi 2013, J Smooth Muscle Res (PMC5137267); Tack et al. 2016 (PubMed 25539673) |
+| Hunger is an alarm clock: it rings at your usual mealtimes, and if you ignore it, it goes quiet until the next one | leading idea (small studies) | ghrelin nearly doubles before meals and falls within an hour of eating (n = 10); in a 24-h fast it still rose and fell at the usual mealtimes (n = 6) | Cummings et al. 2001, Diabetes 50:1714; Natalucci et al. 2005, Eur J Endocrinol 152:845 |
+| Your muscles keep sugar for themselves; your brain gets its sugar from your liver, and the liver's stash lasts a day or two | established | liver glycogen about 70–100 g (280–400 kcal), 83 % gone by 64 h of fasting; muscle glycogen 300–700 g, used by the muscle itself | Murray & Rosenbloom 2018, Nutr Rev (PMC6019055); Rothman et al. 1991, Science 254:573 |
+| Day two: the body makes more sugar from protein, borrowing from muscle | established (it starts within hours; it is the main source by day 2–3) | new glucose is 64 % of the liver's output in the first 22 h and 96 % by day 2–3; about 75 g of protein a day early in a fast | Rothman 1991; Cahill & Aoki 1971 (PubMed 4934018) |
+| Day three: the liver turns fat into a new fuel and the brain starts running on it (KETONES on screen) | established | ketones are about a quarter of the brain's energy at day 3.5 (n = 9) and about 60 % after 5–6 weeks; the switch spares muscle protein | Hasselbalch et al. 1994 (PubMed 8263048); Owen et al. 1967, J Clin Invest 46:1589 |
+| Your body packed a lunch: weeks of it, as fat; the chocolate bar is about a tenth of one day | established | about 15 kg of fat ≈ 141,000 kcal in a normal-weight 70-kg man; a 43 g milk-chocolate bar is about 210 kcal, a tenth of 2,000–2,500 kcal a day | Cahill & Owen 1968 (PubMed 5667163); NHS daily intake guidance |
+| Breath may smell like nail polish remover by day three | established that acetone rises; the smell is usually faint (hedged: "might") | breath acetone about 1 ppm normally, rising over days 2–3, about 170 ppm after weeks | Anderson 2015, Obesity (PMC4737348); MedlinePlus "Breath odor" |
+| For a lot of people, the hunger gets quieter | leading idea (weak evidence; hedged) | 93 % of 1,422 people on a supervised 200–250 kcal/day fast reported no hunger, in a study run by the clinic | Wilhelmi de Toledo et al. 2019, PLoS One |
+| 1944: thirty-six volunteers in Minnesota ate half their usual food for six months, so doctors could learn to feed a starving Europe | established | 36 started (32 finished); about 1,570 kcal a day against 3,468 in the control period, for 24 weeks; weight from 69.4 to 52.6 kg (−24 %) | Keys et al. 1950, "The Biology of Human Starvation"; Kalm & Semba 2005, J Nutr 135:1347 |
+| They read cookbooks like novels, daydreamed about food and chewed gum by the pack | established | 19 of 34 read cookbooks or collected recipes; one chewed up to 40 packs of gum a day, so gum was capped at 2 packs | Keys et al. 1950 |
+| Most people's pulse is 60 to 100; the Minnesota men's, by the end, about 37; the heart is a muscle and shrank | established | average resting pulse 55.2 → 37.3 beats a minute; heart volume −17 % | Keys et al. 1950 (Table 433); MedlinePlus "Pulse" |
+| With water, most healthy people would last one to two months; then the body eats its own protein, and in the end the heart | established range (hedged "most") | the 1981 hunger strikers died after 46–73 days; deaths come from infection or heart-rhythm failure once about a third of body protein is gone | CAIN, Ulster University (hunger strike chronology); Cahill 1998; Leiter & Marliss 1982, JAMA (PubMed 7131684) |
+| Angus Barbieri, over two hundred kilos, lived on water and vitamins with doctors watching for 382 days, lost 125 kg, and by the end went to the toilet about once every forty days | established (the medical paper) | aged 27; 456 → 180 lb (207 → 82 kg); vitamins and yeast, non-caloric drinks, brief potassium and salt; mostly an outpatient under supervision; "37–48 days between stools latterly" | Stewart & Fleming 1973, Postgrad Med J 49:203 |
+| His first meal, the papers said: one boiled egg | press reports (said as such) | not in the medical paper | press reports collected on Wikipedia's "Angus Barbieri's fast" |
+| After days without food, the first meals start small | established | NICE counts more than 5 days of little or no food as a risk for refeeding syndrome; feeding restarts at no more than half of energy needs | Mehanna, Moledina & Travis 2008, BMJ 336:1495; NICE CG32 |
+
+What the film does **not** say, on purpose: it never presents fasting as advice (DO NOT TRY THIS is on screen, and
+Barbieri's fast was supervised and he was very heavy); it does not say autophagy "cleans your body" (unproven in
+people); it does not use the "three weeks without food" rule (a folk heuristic); and the hiker's week ends with a
+cup of soup, not a feast.
 
 ## Ship review
 

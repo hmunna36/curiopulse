@@ -186,9 +186,41 @@ def heart_lub(seed=0):
     return heartbeat(seed, 1.0)
 
 
+def ffdrone(mus, t0, t1, notes, cutoff=500, gain=-24.0, seed=0, swell=0.3):
+    """sfxkit's drone (a detuned saw chord, low-passed) made fast: a naive saw per voice instead of additive
+    synthesis (the low-pass removes what would alias); the same sound, a hundred times quicker for long low notes"""
+    dur = t1 - t0
+    n = int(dur * SR)
+    t = ar(n)
+    y = np.zeros(n)
+    for i, m in enumerate(notes):
+        for v, d in enumerate((-0.006, 0.006)):
+            ph = np.random.default_rng(seed + i * 7 + v).random()
+            y += 2 * ((mtof(m) * (1 + d) * t + ph) % 1.0) - 1
+    y = filt(y / (2 * len(notes)), "lowpass", cutoff)
+    y = fade(y * attack_decay(n, swell, 9) * 0.6, 0.001, min(0.05, dur / 3))
+    mus.add(pan_st(fade(y, 0.05, 0.08), 0), t0, db(gain))
+
+
+def fdrone(mus, t0, t1, notes, cutoff=500, gain=-24.0, seed=0, swell=0.3):
+    """sfxkit's drone (a detuned saw chord, low-passed) made fast: a naive saw per voice instead of additive
+    synthesis (the low-pass removes what would alias); the same sound, a hundred times quicker for long low notes"""
+    dur = t1 - t0
+    n = int(dur * SR)
+    t = ar(n)
+    y = np.zeros(n)
+    for i, m in enumerate(notes):
+        for v, d in enumerate((-0.006, 0.006)):
+            ph = np.random.default_rng(seed + i * 7 + v).random()
+            y += 2 * ((mtof(m) * (1 + d) * t + ph) % 1.0) - 1
+    y = filt(y / (2 * len(notes)), "lowpass", cutoff)
+    y = fade(y * attack_decay(n, swell, 9) * 0.6, 0.001, min(0.05, dur / 3))
+    mus.add(pan_st(fade(y, 0.05, 0.08), 0), t0, db(gain))
+
+
 # ================================================================= ambience (one bed per world)
 HUT = ["hook", "bite", "water", "never", "lemon", "radio", "growl", "echo", "alarm", "fist", "hangry", "borrow", "borrow2", "breath",
-       "day5", "pip2", "pulse", "day6", "wrap", "rescue"]
+       "day5", "pip2", "pulse", "day6", "wrap", "rescue", "lunch", "quiet2"]
 HUT_SPANS = shots(*HUT)
 storm_end = c["sunUp"]
 # the hangry shot opens on the diagram; the hut part starts at the argument; the rescue's hut part ends at the sun
@@ -198,12 +230,12 @@ storm_k = np.ones(N)
 for k_, t_ in enumerate((c["d1"], c["d2"], c["d3"], c["d5"], c["d6"])):   # the storm grows, day by day
     storm_k += 0.12 * (tt >= t_)
 amb.x += wind(N, 11, 0.7) * in_hut * 0.55 * storm_k
-amb.x += wind(N, 13, 1.0) * gate(N, shots("storm", "easy"), smooth=0.2) * 1.1
+amb.x += wind(N, 13, 1.0) * gate(N, shots("storm", "door", "foxsnout", "stolen", "easy"), smooth=0.2) * 1.1
 amb.x += fire(N, 15) * in_hut * 0.45 * np.interp(tt, [0, c["d2"], c["d5"], c["d6"], DUR], [1.0, 0.8, 0.55, 0.35, 0.35])
 # inside the body: a low hum
-amb.x += pan_st(norm(filt(brown(N, 17), "lowpass", 160) + 0.3 * np.sin(2 * np.pi * 48 * tt)), 0) * gate(N, shots("ready", "clean", "pantry", "borrow", "switch", "lunch", "heart")) * 0.5
+amb.x += pan_st(norm(filt(brown(N, 17), "lowpass", 160) + 0.3 * np.sin(2 * np.pi * 48 * tt)), 0) * gate(N, shots("ready", "clean", "clean2", "pantry", "borrow", "lever", "switch", "ruler", "heart", "limit2")) * 0.5
 # old film: a projector whirr under 1944 and 1965
-amb.x += pan_st(projector(N, 19), 0) * gate(N, shots("minnesota", "minnesota2", "obsessed", "barbieri", "barbieri2", "toilet", "egg") + [(SHOT["heart"], c["isMuscle"] - 0.1)]) * 0.45
+amb.x += pan_st(projector(N, 19), 0) * gate(N, shots("p382", "minnesota", "minnesota2", "obsessed", "barbieri", "barbieri2", "toilet", "egg") + [(SHOT["heart"], c["isMuscle"] - 0.1)]) * 0.45
 # day seven: the wind drops away; birds; Pip's kitchen: a warm room and birds outside the window
 day_spans = [(storm_end, DUR)]
 for t in np.arange(storm_end + 1.2, DUR - 1.0, 2.3):
@@ -214,8 +246,14 @@ sfx.add(pan_st(chomp(1), 0), 0.02, db(-15))
 sfx.add(pan_st(squelch(0.35, 2), 0.1), 0.08, db(-20))
 for k in range(3):
     sfx.add(pan_st(drip(3 + k, 1800 + 300 * k), 0.3), 0.25 + 0.12 * k, db(-27))
-sfx.add(pan_st(thump(0.3, 300, 90, 0.06, 4), 0.4), c["n382"] - 0.02, db(-16))
-sfx.add(pan_st(page_flip(5), 0.4), c["n382"] - 0.4, db(-24))
+_t, _k = SHOT["p382"] + 0.15, 0
+while _t < c["n382end"] - 0.05:
+    u = (_t - SHOT["p382"]) / max(0.1, c["n382end"] - SHOT["p382"])
+    sfx.add(pan_st(page_flip(500 + _k), 0.4), _t, db(-33))
+    _t += 0.3 * (1 - 0.8 * u) + 0.05
+    _k += 1
+sfx.add(pan_st(thump(0.3, 300, 90, 0.06, 4), 0.3), c["d382hook"] + 0.06, db(-14))     # NO FOOD: the rubber stamp
+sfx.add(pan_st(crack(0.05, 5, 0.01, 1600), 0.3), c["d382hook"] + 0.06, db(-24))
 sfx.add(pan_st(blip(800, 1400, 0.09, 6, 0.03), 0.6), c["bite"] - 0.05, db(-21))
 sfx.add(pan_st(chomp(7), 0), c["now"] + 0.02, db(-13))
 sfx.add(pan_st(squelch(0.4, 8), 0), word_end("Now.", c["now"]) + 0.02, db(-18))
@@ -246,7 +284,7 @@ for k in range(4):
 sfx.add(pan_st(whoosh(1.0, 200, 1500, 18, 0.5), 0), SHOT["storm"] - 0.1, db(-17))
 for k, t in enumerate(np.arange(SHOT["storm"] + 0.3, c["hut"] + 1.0, 0.42)):
     bed.add(pan_st(crunch(20 + k), -0.2), t, db(-27))
-sfx.add(pan_st(creak(0.7, 21, 90, 200), 0.3), c["hut"] + 0.55, db(-24))
+sfx.add(pan_st(creak(0.7, 21, 90, 200), 0.3), SHOT["door"] + 0.1, db(-26))
 sfx.add(pan_st(thump(0.3, 220, 70, 0.07, 22), 0.3), c["hut"] + 1.55, db(-17))
 for k, t in enumerate(np.arange(c["foxW"] - 0.4, c["grab"], 0.09)):
     bed.add(pan_st(soft_tick(30 + k, 0.7), 0.5), t, db(-31))
@@ -270,6 +308,8 @@ sfx.add(pan_st(squeak(0.1, 1800, 2400), 0.6), c["growls"] + 0.7, db(-26))
 sfx.add(pan_st(squelch(0.5, 41), 0), word_end("cleaning.", c["cleaning"]) + 0.03, db(-22))
 sfx.add(pan_st(whoosh(0.9, 300, 1200, 42, 0.6), 0.2), c["every"] + 0.1, db(-24))
 pops(list(np.arange(c["squeezes"], c["squeezes"] + 1.0, 0.16)), bed, db(-30), seed=43)
+for k, t in enumerate(np.arange(SHOT["clean2"] + 0.1, c["squeezes"] - 0.1, 0.11)):
+    bed.add(pan_st(soft_tick(600 + k, 0.8), -0.4), t, db(-34))
 for k, (dl, g) in enumerate(((0.0, -15), (0.38, -21), (0.76, -26), (1.14, -31))):
     sfx.add(filt(stomach_growl(1.1, 44 + k), "lowpass", 900 - 150 * k), word_end("echoes.", c["echoes"]) + 0.05 + dl, db(g), pan=0.4 * (-1) ** k)
 # lunchtime: a clock tick, the alarm clock rings in the pause after "right on time."
@@ -312,15 +352,19 @@ sfx.add(pan_st(bell(1046.5, 0.6, 0.25), 0.4), c["borrowing"] + 0.24, db(-27))
 sfx.add(pan_st(thump(0.2, 400, 150, 0.04, 72), 0), c["bigSwitch"] + 0.05, db(-15))
 sfx.add(pan_st(key_click(73), 0), c["bigSwitch"] + 0.08, db(-17))
 sfx.add(pan_st(riser(1.4, 74, 300, 2400), 0), c["fatW"] + 0.2, db(-27))
+sfx.add(pan_st(bloop(760, 380, 0.12), -0.3), word_end("fuel...", c["newFuel"]) + 0.05, db(-22))   # the first drop of new fuel
+sfx.add(pan_st(blip(900, 1600, 0.1, 621, 0.03), 0.3), word_end("it.", c["running"]) + 0.04, db(-23))     # the brain goes green
 for k in range(6):
     sfx.add(pan_st(bell(2093 + 196 * k, 0.4, 0.2), -0.5 + 0.2 * k), c["running"] + 0.3 + 0.07 * k, db(-30))
 # the packed lunch: lunchboxes clicking on, one after another; the ruler; 1/10: a tiny ding and a deflating slide
 pops(list(np.arange(c["packed"] + 0.1, c["packed"] + 1.1, 0.08)), bed, db(-28), seed=75)
 sfx.add(pan_st(chime(1568.0, 0.9), 0), c["weeks"] + 0.1, db(-25))
 sfx.add(pan_st(whoosh(0.6, 600, 2000, 76), 0), c["chocBarW"] - 0.1, db(-22))
+sfx.add(pan_st(blip(500, 900, 0.1, 620, 0.03), 0), c["chocBarW"] - 0.25, db(-27))
+bed.add(pan_st(bloop(520, 260, 0.14), -0.4), c["tenth"] + 0.02, db(-29))
 sfx.add(pan_st(slide_whistle(0.5, 1200, 500), 0.2), word_end("day.", c["tenth"]) + 0.08, db(-23))
 # the breath: a breath out into the hand, a sniff; the nail polish bottle pops; the fox faints: a boing and a thud
-sfx.add(pan_st(breath(0.4, 77, exhale=True), 0), word_end("hand.", c["breatheHand"]) + 0.02, db(-22))
+sfx.add(pan_st(breath(0.4, 77, exhale=True), 0), word_end("hand.", c["breatheHand"]) + 0.12, db(-23))
 sfx.add(pan_st(hiss(0.25, 78, 0.06), 0), word_end("it.", c["smell"]) + 0.03, db(-21))
 sfx.add(pan_st(cork_pop(79, 620.0), 0.5), word_end("remover?", c["polish"]) + 0.03, db(-19))
 sfx.add(pan_st(squeak(0.12, 2200, 1400), 0.5), c["hisBreath"] + 0.9, db(-23))
@@ -335,6 +379,7 @@ for k in range(3):
 for k in range(6):
     sfx.add(pan_st(page_flip(95 + k), 0.2), c["sixMonths"] - 0.3 + 0.27 * k, db(-26))
 sfx.add(pan_st(creak(1.2, 101, 60, 120), 0.4), SHOT["minnesota2"] + 0.2, db(-25))
+sfx.add(pan_st(bell(1760, 0.25, 0.06), 0.2), c["halfFood"] - 0.12, db(-30))
 sfx.add(pan_st(thump(0.3, 240, 80, 0.06, 102), 0), c["europe"] + 0.05, db(-16))
 # their minds: pages turning, a thought bubble pops, gum chewed, packs piling up
 sfx.add(pan_st(page_flip(103), -0.3), c["cookbooks"] + 0.1, db(-22))
@@ -359,6 +404,7 @@ sfx.add(pan_st(thump(0.4, 200, 60, 0.1, 130), 0), c["nobody"] + 0.3, db(-14))
 sfx.add(pan_st(crack(0.15, 131, 0.04, 900), 0), c["nobody"] + 0.3, db(-22))
 # the pulse: the badge; six soft ticks while the viewer counts (no beat, so it never fights their own); a ding at the end
 sfx.add(pan_st(blip(800, 1400, 0.09, 132, 0.03), 0.6), c["findPulse"] - 0.05, db(-21))
+sfx.add(pan_st(blip(600, 1100, 0.08, 133, 0.03), 0.5), c["findPulse"] + 0.9, db(-28))
 for k in range(6):
     sfx.add(pan_st(soft_tick(133 + k, 0.7), 0.4), c["go"] + 0.4 + k * 1.0, db(-34))
 sfx.add(pan_st(bell(1568, 0.8, 0.3), 0.4), c["go"] + 6.05, db(-24))
@@ -371,16 +417,22 @@ for k, t in enumerate(np.arange(SHOT["heart"] + 0.3, c["isMuscle"] - 0.2, 60 / 3
 sfx.add(pan_st(thump(0.3, 240, 80, 0.06, 142), 0.3), c["t35"] + 0.05, db(-16))
 for k, t in enumerate(np.arange(c["isMuscle"], END["heart"], 60 / 40)):
     bed.add(pan_st(heart_lub(143 + k), 0), t, db(-23))
-sfx.add(pan_st(balloon_inflate(0.6, 150)[::-1].copy(), 0), c["eatsMuscle"] - 0.1, db(-25))
+sfx.add(pan_st(balloon_inflate(0.6, 150)[::-1].copy(), 0), word_end("muscle.", c["eatsMuscle"]) + 0.05, db(-25))
 # the limit: the ruler draws, the band pops, fat and protein, the heart cracks
 sfx.add(pan_st(whoosh(0.7, 300, 1500, 151), 0), SHOT["limit"] + 0.05, db(-23))
 sfx.add(pan_st(chime(1046.5, 0.8), 0), word_end("months.", c["months"]) + 0.03, db(-26))
 sfx.add(pan_st(blip(700, 1100, 0.09, 152, 0.03), -0.4), c["fatRuns"] + 0.05, db(-22))
+for k in range(6):
+    bed.add(pan_st(bloop(700 - 50 * k, 300, 0.1), -0.3 + 0.12 * k), c["fatRuns"] + 0.3 + 0.22 * k, db(-32))
 sfx.add(pan_st(blip(500, 800, 0.09, 153, 0.03), 0.4), c["ownProtein"] + 0.05, db(-22))
 sfx.add(pan_st(crack(0.2, 154, 0.05, 700), 0.4), c["theHeart"] + 0.35, db(-19))
 sfx.add(pan_st(thump(0.6, 120, 40, 0.2, 155), 0), c["theHeart"] + 0.4, db(-16))
 # 1965: the scale groans under him; the clipboard; the calendar's pages, faster and faster; 382 lands
+sfx.add(pan_st(whoosh(0.25, 700, 2600, 630, 0.8), 0), c["angus"] - 0.3, db(-27))
+sfx.add(pan_st(whoosh(0.2, 400, 2200, 631, 0.8), 0), c["kilos200"] - 0.2, db(-27))
 sfx.add(pan_st(creak(0.9, 160, 50, 100), -0.3), c["kilos200"] + 0.1, db(-22))
+sfx.add(pan_st(cork_pop(632, 900.0), -0.5), c["flashBulb"] - 0.02, db(-20))
+sfx.add(pan_st(norm(filt(white(int(0.5 * SR), 633), "highpass", 5000)) * np.exp(-np.linspace(0, 8, int(0.5 * SR))), -0.5), c["flashBulb"], db(-31))
 sfx.add(pan_st(springs(161, 0.6), -0.3), c["kilos200"] + 0.3, db(-26))
 sfx.add(pan_st(page_flip(162), -0.4), c["doctors"] + 0.05, db(-22))
 sfx.add(pan_st(cork_pop(163, 540.0), 0.2), c["vitamins"] + 0.3, db(-22))
@@ -397,7 +449,7 @@ sfx.add(pan_st(slide_whistle(0.5, 1100, 350), -0.3), word_end("kilos.", c["lost"
 sfx.add(pan_st(bell(1568, 0.6, 0.25), -0.3), c["lost"] + 1.05, db(-25))
 sfx.add(pan_st(flush(1.1, 200), 0.3), word_end("days.", c["forty"]) + 0.06, db(-17))
 # the egg: a ta-da on the bells, the cup's clink
-sfx.add(pan_st(bell(2637, 0.3, 0.1), 0.3), c["eggW"] + 0.05, db(-25))
+sfx.add(pan_st(bell(2637, 0.3, 0.1), 0.3), c["papers"] - 0.25, db(-27))
 for k, m in enumerate((72, 76, 79, 84)):
     sfx.add(pan_st(bell(mtof(m + 12), 0.6, 0.3), 0.3), word_end("egg.", c["eggW"]) + 0.05 + 0.08 * k, db(-25))
 
@@ -444,7 +496,10 @@ for k, t in enumerate(np.arange(c["final"] + 0.3, DUR - 0.5, 0.45)):
 # the subscribe cue: pop, click, bell (quiet: it sits under the words)
 sfx.add(pan_st(blip(700, 1500, 0.09, 260, 0.03), 0), c["sub_in"], db(-26))
 sfx.add(pan_st(snap(3), 0), c["sub_tap"], db(-22))
-sfx.add(pan_st(bell(1760, 1.2, 0.5), 0), c["sub_tap"] + 0.08, db(-28))
+sfx.add(pan_st(bell(1760, 0.45, 0.15), 0), c["sub_tap"] + 0.08, db(-33))
+sfx.add(pan_st(chomp(300), -0.4), c["eatW"] + 0.06, db(-16))
+pops([c["eatW"] + 0.12 + 0.05 * k for k in range(4)], bed, db(-31), seed=301)
+sfx.add(pan_st(chomp(302), 0.3), c["eatW"] + 0.43, db(-18))
 
 # a whoosh into every cut (ending on the cut), quiet, in the pause before the phrase
 for i_, s_ in enumerate(TL["shots"][1:]):
@@ -468,10 +523,10 @@ for k_ in ("d1", "d2", "d3", "d5", "d6", "d7"):          # each new day: a knife
 # ================================================================= the score, section by section
 S = SHOT
 # 0: the hook: the theme on a music box over the storm, hanging on its F; it stops for the bite
-theme(0.25, ASK, bpm=112, name="box", gain=-21, upto=c["now"] - 0.4, seed=1)
+theme(word_end("eating?") + 0.08, ASK, bpm=112, name="box", gain=-24, upto=c["now"] - 0.4, seed=1)
 # 1: the mouth and the body getting ready: a curious marimba; then the pull-back into the storm (a low drone)
 groove(mus, on_beat(c["watered"] + 0.1), c["imagine"] - 0.05, BPM, ["C", "Am", "F", "G"], gain=-11, seed=2, kick_on=False, snaps=True, arp=True, half=True, cutoff=1300)
-drone(mus, c["imagine"], S["want"] - 0.1, [41, 48, 53], cutoff=380, gain=-21, seed=3)
+fdrone(mus, c["imagine"], S["want"] - 0.1, [41, 48, 53], cutoff=380, gain=-21, seed=3)
 # 2: that morning: bright and bouncy (the theme on pizzicato), cut by the storm
 theme(S["want"] + 0.4, ASK + [(79, 1), (81, 1), (79, 2)], bpm=150, name="pizz", gain=-15, upto=S["storm"] - 0.2, seed=4)
 groove(mus, on_beat(S["want"] + 0.3), S["storm"] - 0.15, 132, ["F", "C", "G", "C"], gain=-13, seed=5, kick_on=True, snaps=True, arp=False, padv=False)
@@ -492,7 +547,7 @@ groove(mus, on_beat(c["squeeze"] + 0.6), S["hangry"] - 0.1, 116, ["Am", "F", "C"
 # 9: hour eighteen: a cranky pizzicato for the argument (stopped for the punchline)
 groove(mus, on_beat(S["hangry"] + 0.2), c["withFox"] - 0.1, 104, ["Dm", "Dm", "A", "Dm"], gain=-12, seed=14, kick_on=False, snaps=False, arp=False, padv=False)
 # 10: day one, the easy part: a low drone and the storm
-drone(mus, S["easy"], S["borrow"] + 0.3, [38, 45, 50], cutoff=360, gain=-19, seed=15)
+fdrone(mus, S["easy"], S["borrow"] + 0.3, [38, 45, 50], cutoff=360, gain=-19, seed=15)
 # 11: day two: colder, a minor pulse, half time
 groove(mus, on_beat(S["borrow"] + 0.3), S["switch"] - 0.1, 100, ["Am", "Am", "F", "E"], gain=-12, seed=16, kick_on=True, snaps=False, arp=True, half=True, cutoff=900)
 # 12: day three, the switch: wonder (a rising arpeggio, a key lift into the packed lunch)
@@ -509,17 +564,17 @@ rag(mus, on_beat(c["gum"] - 0.2), S["day5"] - 0.1, bpm=126, gain=-6, seed=23)
 theme(S["day5"] + 0.3, ASK, bpm=80, name="glass", gain=-21, upto=S["pip2"], seed=24)
 theme(word_end("radio:", c["pip2"]) + 0.05, ASK, bpm=120, name="box", gain=-21, tr=12, upto=S["edge"] - 0.1, seed=25)
 # 16: the edge: a low drone; the pulse: only a soft pad, no beat (they are counting)
-drone(mus, S["edge"], S["pulse"] + 0.5, [36, 43, 48], cutoff=330, gain=-18, seed=26)
+fdrone(mus, S["edge"], S["pulse"] + 0.5, [36, 43, 48], cutoff=330, gain=-18, seed=26)
 mus.add(pad([mtof(50), mtof(57), mtof(62)], S["zero"] - S["pulse"], 1.5, 700, 27), S["pulse"] + 0.3, db(-22))
 # 17: x10 and 37: the old trace; the heart and the limit: a slow dark drone, the theme low on glass
 theme(S["zero"] + 0.3, [(72, 1), (74, 1), (76, 2)], bpm=110, name="marimba", gain=-17, upto=S["heart"], seed=28)
-drone(mus, S["heart"], S["barbieri"], [36, 43, 48, 51], cutoff=420, gain=-19, seed=29)
+fdrone(mus, S["heart"], S["barbieri"], [36, 43, 48, 51], cutoff=420, gain=-19, seed=29)
 theme(S["heart"] + 0.4, ASK, bpm=54, name="glass", gain=-23, tr=-12, upto=S["barbieri"], seed=30)
 # 18: 1965: piano, then a rag that speeds up with the calendar; the toilet: a bwomp; the egg: ta-da
 theme(S["barbieri"] + 0.3, ASK, bpm=96, name="piano", gain=-15, upto=S["barbieri2"], seed=31)
 rag(mus, on_beat(S["barbieri2"] + 0.1), c["d382end"] + 0.2, bpm=144, gain=-6, seed=32)
 groove(mus, on_beat(S["toilet"] + 0.3), c["forty"] - 0.1, 120, ["C", "G", "C", "G"], gain=-13, seed=33, kick_on=False, snaps=True, arp=False, padv=False)
-theme(c["eggW"] + 0.5, [(72, 1), (76, 1), (79, 1), (84, 3)], bpm=150, name="box", gain=-17, upto=S["day6"], seed=34)
+theme(word_end("egg.", c["eggW"]) + 0.12, [(72, 1), (76, 1), (79, 1), (84, 3)], bpm=150, name="box", gain=-17, upto=S["day6"], seed=34)
 # 19: midnight, day six: only a held note under the wind; nothing at all in the wordless beat (above: the heartbeat)
 mus.add(pad([mtof(45), mtof(52)], c["unwraps"] + 0.4 - S["day6"], 1.0, 500, 35), S["day6"] + 0.2, db(-23))
 # the wrap: the theme, alone, very quiet, on the music box, still hanging
@@ -535,7 +590,7 @@ mus.add(pad([mtof(53), mtof(60), mtof(65), mtof(69)], c["snap"] - 0.3 - S["revea
 theme(c["because"], ASK, bpm=72, name="strings", gain=-21, upto=c["soWas"] - 0.15, seed=42)
 # 23: the snap in silence; the bigger half; the final image: the theme finally comes home (F E D C)
 HOME2 = [(72, 1), (74, 1), (76, 1), (79, 1), (77, 1), (76, 1), (74, 1), (72, 3)]
-theme(c["bigger"] + 0.6, HOME2, bpm=108, name="box", gain=-16, seed=43)
+theme(c["bigger"] + 0.6, HOME2, bpm=108, name="box", gain=-18, seed=43)
 theme(c["bigger"] + 0.6, HOME2, bpm=108, name="piano", gain=-21, tr=-12, seed=44)
 mus.add(pad([mtof(48), mtof(55), mtof(60), mtof(64)], DUR - c["bigger"] - 0.6, 1.2, 1300, 45), c["bigger"] + 0.6, db(-20))
 
@@ -563,12 +618,13 @@ for t_, k_ in PAY:
 # the music drops out: before each big payoff (held breath) and for the punchlines
 punch = [(c["now"] - 0.4, c["now"] + 0.5), (word_end("lemon.", c["lemonW"]) - 0.6, S["radio"] + 0.2),
          (c["withFox"] - 0.1, S["easy"]), (c["tenth"] - 0.1, S["breath"] + 0.2), (c["hisBreath"] - 0.1, S["quiet"] + 0.1),
-         (c["toFox"] - 0.1, S["pip2"]), (c["forty"] + 0.1, word_end("days.", c["forty"]) + 1.15), (c["papers"] - 0.1, c["eggW"] + 0.45),
+         (c["toFox"] - 0.1, S["pip2"]), (c["forty"] + 0.1, word_end("days.", c["forty"]) + 1.15), (c["papers"] - 0.1, word_end("egg.", c["eggW"]) + 0.1),
          (c["unwraps"] + 0.4, c["wrapsBack"] + 0.9), (c["snap"] - 0.3, c["bigger"] + 0.6), (c["dinner"] - 0.1, S["fist"]), (c["soWas"] - 0.15, c["snap"] - 0.3)]
 silence(mus, held + punch)
 for t_, k_ in PAY:   # the hits go in AFTER the silences, so they are never muted
     if k_.startswith("big_") and k_ not in ("big_unwrap", "big_wrap", "big_snap", "big_final", "big_soWas"):
         mus.add(pan_st(thump(0.8, 90, 38, 0.3, seed=int(t_)), 0), t_, db(-17))
+mus.x *= (1 - (1 - db(-8)) * gate(N, [(c["sub"] - 0.2, DUR + 1)], smooth=0.3))[None, :]
 # midnight: the effects bus quiet in the wordless beat except the paper and the heartbeat (bed); the wind stays
 silence(amb, [(c["sunUp"] - 0.05, c["sunUp"] + 0.4)])
 

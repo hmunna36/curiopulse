@@ -80,11 +80,32 @@ SC.hook = (lt, t, shot) => {
   hutNow(cam, t, { lemon: null, hero: { face: lerpFace(FACES.calm, FACES.sour, sour), L: HUT_ARMS.rest.L, R: HUT_ARMS.lemon.R, lemon: { k: 1, bite: 0.35 }, headRot: -0.05 * sour, headDY: -2 * bite1 } });
   const hp = toScreen(cam, ...hutHead({}));
   lemonSpray(hp[0] + 40, hp[1] + 70, cam.zoom * 0.5, ramp(lt, 0, 0.6), 3);
-  screenSpace();
-  // the calendar page: 382 DAYS
-  const pg = pk(t, c.n382 - 0.05, 0.35);
-  if (pg > 0.01) { ctx.save(); ctx.translate(1440, 430); ctx.rotate(0.08); ctx.scale(pg, pg); bbCalendar(0, 0, 0.95, 382, 0, t, { top: 'NO FOOD FOR', red: true }); ctx.restore(); }
   return hutPost({ zblur: 0.05 * (1 - ramp(lt, 0, 0.4)) });
+};
+// "One man lasted three hundred and eighty-two days." a flash-forward on old film (the promise): a hospital room in
+// 1965, a big man in silhouette by the window, a wall calendar whose pages flip faster and faster and slam on 382; NO
+// FOOD FOR 382 DAYS stamps across
+SC.p382 = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const cam = mixCam({ x: 1060, y: 430, zoom: 1.45, rot: 0 }, { x: 1120, y: 400, zoom: 1.65, rot: 0 }, ramp(lt, 0, D, E.inOutSine));
+  applyCam(shakeCam(cam, t, 5 * kick(t, c.n382end, 5) + 12 * kick(t, c.d382hook + 0.06, 6)));
+  bbRoom(t);
+  hsPerson(t, HS_PALS[2], { x: 760, y: 880, s: 0.8, sx: 1.5, belly: 1, pose: POSES.stand, face: t > c.n382end ? FACES.smug : FACES.calm, seed: 8 });
+  const u = ramp(t, shot.start + 0.1, c.n382end, (x) => x);
+  const n = Math.max(1, Math.round(382 * Math.pow(u, 2.0)));
+  bbCalendar(1250, 340, 0.85, n, n < 382 ? ((t * 10) % 1) : 0, t, { top: 'DAY' });
+  hsSepia(0.5); hsFilm(t, 0.8);
+  screenSpace();
+  // a red rubber stamp slams onto the page: NO FOOD
+  const sk = ramp(t, c.d382hook - 0.06, c.d382hook + 0.06, E.inCubic);
+  if (sk > 0.01) {
+    const [sx, sy] = toScreen(cam, 1250, 430);
+    ctx.save(); ctx.translate(sx, sy); ctx.rotate(-0.16); ctx.scale(lerp(1.9, 1, sk), lerp(1.9, 1, sk)); ctx.globalAlpha = Math.min(1, sk * 1.5);
+    rrect(ctx, -235, -78, 470, 156, 22); ctx.lineWidth = 14; ctx.strokeStyle = '#E8343E'; ctx.stroke();
+    ctx.font = '400 124px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#E8343E'; ctx.fillText('NO FOOD', 0, 6);
+    ctx.restore();
+  }
+  return hutPost({ glow: 0.5, vhs: 0.6 * (1 - ramp(lt, 0, 0.3)), flash: 0.15 * kick(t, c.n382end, 8) + 0.25 * kick(t, c.d382hook + 0.06, 8) });
 };
 // "But first... bite a lemon. In your head. Now." a cut in closer: the lemon at his lips; the badge asks the viewer to do
 // it in their head; on "Now" he bites hard, puckers, the juice sprays and the camera kicks
@@ -201,34 +222,66 @@ SC.want = (lt, t, shot) => {
   tagPill('THAT MORNING', 960, 120, pk(t, shot.start + 0.15) * (1 - ramp(t, shot.start + 1.8, shot.start + 2.1)), '#FFFFFF', 46);
   return hutPost({ glow: 0.7, vhs: 0.7 * (1 - ramp(lt, 0, 0.35)) });
 };
-// "On the way down, a storm hit. He made it to an empty hut... and a fox made it to his food bag." Night, the storm; he
-// trudges to the hut and goes in, his food bag left by the door; the fox darts in, grabs it and runs (the wordless beat)
+// "On the way down, a storm hit." night, the storm, wide: he trudges into the wind toward the lit hut, his green food
+// bag on his back
 SC.storm = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = mixCam({ x: 900, y: 520, zoom: 1.0, rot: 0 }, { x: 1080, y: 600, zoom: 1.35, rot: 0 }, ramp(lt, 0, D, E.inOutSine));
-  mtScene(shakeCam(cam, t, 3), t, { day: 0, storm: 1, hut: { door: ramp(t, c.hut + 0.6, c.hut + 0.9) * (1 - ramp(t, c.hut + 1.5, c.hut + 1.8)) }, after: () => {
-    // him, walking into the wind to the door, then gone inside
-    const wk = ramp(t, shot.start, c.hut + 1.2, E.inOutSine);
-    if (t < c.hut + 1.4) {
-      const st = { x: lerp(560, MT.doorX - 10, wk), y: MT.snowY + 12, s: 0.5, face: FACES.worried, pose: Object.assign(walkPose(t), { lean: 0.12 }), seed: 4 };
-      ctx.save(); ctx.globalAlpha = 1 - ramp(t, c.hut + 1.0, c.hut + 1.4);
-      drawCharacter(ctx, st, t, HUTPAL);
-      // the green food bag on his back, then dropped by the door
-      if (t < c.hut + 0.9) { rrect(ctx, st.x - 70 * st.s * 1.4, st.y - 300 * st.s, 50, 70, 14); ctx.fillStyle = '#3E8A4A'; ctx.fill(); }
-      ctx.restore();
+  const cam = mixCam({ x: 900, y: 520, zoom: 1.0, rot: 0 }, { x: 980, y: 560, zoom: 1.15, rot: 0 }, ramp(lt, 0, D, E.inOutSine));
+  mtScene(shakeCam(cam, t, 3), t, { day: 0, storm: 1, after: () => {
+    const st = { x: lerp(520, 760, ramp(lt, 0, D)), y: MT.snowY + 12, s: 0.5, face: FACES.worried, pose: Object.assign(walkPose(t), { lean: 0.12 }), seed: 4 };
+    drawCharacter(ctx, st, t, HUTPAL);
+    rrect(ctx, st.x - 98, st.y - 300 * st.s, 50, 70, 14); ctx.fillStyle = '#3E8A4A'; ctx.fill();
+  } });
+  return hutPost({ glow: 0.8 });
+};
+// "He made it to an empty hut..." closer, at the door: he drops his food bag by the step and goes in; the door bangs
+SC.door = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const cam = driftCam({ x: MT.doorX - 60, y: MT.snowY - 170, zoom: 1.9, rot: 0 }, lt);
+  const inK = ramp(t, shot.start + 0.5, shot.end - 0.3, E.inOutSine);
+  mtScene(shakeCam(cam, t, 2 + 6 * kick(t, shot.end - 0.25, 7)), t, { day: 0, storm: 1, hut: { door: ramp(t, shot.start + 0.2, shot.start + 0.5) * (1 - ramp(t, shot.end - 0.35, shot.end - 0.2)) }, after: () => {
+    if (inK < 0.98) {
+      const st = { x: lerp(MT.doorX - 160, MT.doorX, inK), y: MT.snowY + 12, s: 0.5, face: FACES.tired, pose: walkPose(t * 0.8), seed: 4 };
+      ctx.save(); ctx.globalAlpha = 1 - ramp(inK, 0.7, 0.98); drawCharacter(ctx, st, t, HUTPAL); ctx.restore();
     }
-    const bagOnGround = t >= c.hut + 0.9 && t < c.grab;
-    if (bagOnGround) { ctx.save(); ctx.translate(MT.doorX - 110, MT.snowY + 2); rrect(ctx, -26, -60, 52, 60, 14); ctx.fillStyle = '#3E8A4A'; ctx.fill(); ctx.font = '900 14px Montserrat'; ctx.textAlign = 'center'; ctx.fillStyle = '#FFFFFF'; ctx.fillText('FOOD', 0, -24); ctx.restore(); }
-    // the fox: creeps in from the right, grabs, runs off left
-    if (t > c.foxW - 0.6) {
-      const inK = ramp(t, c.foxW - 0.6, c.grab, E.outCubic), out = ramp(t, c.grab + 0.15, c.grab + 1.4, E.inCubic);
-      const fx = t < c.grab + 0.15 ? lerp(1900, MT.doorX - 60, inK) : lerp(MT.doorX - 60, 300, out);
-      foxRun(ctx, fx, MT.snowY + 18, 0.85, t, { dir: t < c.grab + 0.15 ? -1 : -1, bag: t >= c.grab ? 1 : 0, speed: t < c.grab ? 9 : 16 });
-    }
+    hutBagOnSnow(MT.doorX - 120, MT.snowY + 4, 1);
+  } });
+  return hutPost({ glow: 0.8 });
+};
+// the food bag sitting in the snow by the door (world coords)
+function hutBagOnSnow(x, y, s) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  ctx.beginPath(); ctx.moveTo(-28, 0); ctx.quadraticCurveTo(-34, -60, 0, -66); ctx.quadraticCurveTo(34, -60, 28, 0); ctx.closePath(); ctx.fillStyle = '#3E8A4A'; ctx.fill();
+  line(ctx, -16, -48, 16, -50, 5, '#2E6A38');
+  ctx.font = '900 16px Montserrat'; ctx.textAlign = 'center'; ctx.fillStyle = '#FFFFFF'; ctx.fillText('FOOD', 0, -22);
+  ctx.restore();
+}
+// "...and a fox made it to his food bag." low and close on the bag in the snow by the door: a fox's nose slides in
+// from the right, sniffs, its eyes narrow, and it bites the bag's knot (the wordless beat lands at the grab)
+SC.foxsnout = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const cam = driftCam({ x: MT.doorX - 40, y: MT.snowY - 70, zoom: 2.7, rot: 0 }, lt, 0.6);
+  mtScene(cam, t, { day: 0, storm: 0.8, after: () => {
+    const got = t >= c.grab;
+    if (!got) hutBagOnSnow(MT.doorX - 120, MT.snowY + 4, 1);
+    const k = ramp(t, shot.start, c.grab, E.outCubic);
+    const fx = lerp(MT.doorX + 300, MT.doorX - 30, k) + (got ? -40 * ramp(t, c.grab, shot.end) : 0);
+    foxRun(ctx, fx, MT.snowY + 14, 0.75, t, { dir: -1, bag: got ? 1 : 0, speed: got ? 6 : 2.5 });
   } });
   screenSpace();
-  stampWord('STOLEN!', 640, 300, 140, '#FF5A6E', pk(t, c.grab + 0.3) * (1 - ramp(t, shot.end - 0.3, shot.end)), -0.1);
-  return hutPost({ glow: 0.8, blur: [12 * kick(t, c.grab + 0.15, 4), 0] });
+  stampWord('SNIFF', 1450, 320, 90, '#FFD447', pk(t, c.bagW - 0.1) * (1 - ramp(t, c.grab - 0.2, c.grab)), 0.12);
+  return hutPost({ glow: 0.8 });
+};
+// wide again: the fox races off across the snow with his food bag; STOLEN! (the wordless beat's payoff)
+SC.stolen = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const cam = driftCam({ x: 900, y: 560, zoom: 1.15, rot: 0 }, lt);
+  mtScene(cam, t, { day: 0, storm: 1, after: () => {
+    foxRun(ctx, lerp(MT.doorX - 150, 300, ramp(lt, 0, D, E.inCubic)), MT.snowY + 18, 0.85, t, { dir: -1, bag: 1, speed: 16 });
+  } });
+  screenSpace();
+  stampWord('STOLEN!', 760, 300, 150, '#FF5A6E', pk(t, shot.start + 0.05), -0.1);
+  return hutPost({ glow: 0.8, blur: [14 * (1 - ramp(lt, 0, 0.5)), 0] });
 };
 // "All he had left... was a lemon." inside: the lemon, close, in his hand; he looks at it; his deadpan; the clock ticks
 SC.lemon = (lt, t, shot) => {
@@ -280,8 +333,21 @@ SC.clean = (lt, t, shot) => {
   screenSpace();
   tagPill('NOT HUNGRY...', 560, 230, pk(t, c.notAsking) * (1 - ramp(t, c.cleaning - 0.1, c.cleaning + 0.1)), '#FF86A6', 50);
   tagPill('CLEANING!', 560, 230, pk(t, c.cleaning), '#4DFFB4', 58);
-  tagPill('EVERY ~2 HOURS', 1400, 860, pk(t, c.every), '#FFD447', 46);
   return bodyPost();
+};
+// "Every couple of hours, an empty stomach squeezes out the leftovers." pulled back: the whole belly; the squeeze rolls
+// through the stomach again and again, the crumbs flying ahead of it; a clock in the corner spins two hours a loop
+SC.clean2 = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  darkBg('#0A1A3A', '#02040C'); screenSpace();
+  const V = ibMix(ibView([60, -20], [1000, 560], 1.55), ibView([70, -40], [1020, 540], 1.75), ramp(lt, 0, D, E.inOutSine));
+  const wv = ((t - shot.start) * 0.8) % 1;
+  ibBody(V, t, { flex: 0, stomach: { wave: wv, glow: 0.15 }, liver: { fill: 0.95 }, straw: { flow: 0.5 }, brain: { mood: 'calm' } });
+  screenSpace();
+  ibAlarm(t, 400, 360, 1.3, { ring: 0, hour: 12 + 2 * (((t - shot.start) * 0.8) % 1) * 1 + 2 * Math.floor((t - shot.start) * 0.8) });
+  tagPill('EVERY ~2 HOURS', 400, 600, pk(t, shot.start + 0.1), '#FFD447', 46);
+  tagPill('LEFTOVERS OUT!', 1480, 690, pk(t, c.squeezes + 0.3), '#FF9A3C', 50);
+  return bodyPost({ push: { k: 1 + 0.04 * lt / D, cx: 1000, cy: 520 } });
 };
 // "With nothing in there... it echoes." back in the hut, wide: the growl rings bounce round the log walls, the kettle
 // rattles; the fox, outside, tilts its head

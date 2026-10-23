@@ -55,17 +55,22 @@ final = E("half.", s=find("She gives")) + 0.45                        # the fina
 sunUp = E("seven.") + 0.12                       # the storm breaks: daylight floods the window
 
 SHOTS = [
-    ("hook", None),                              # his face, close, mid-bite into a lemon; 382 DAYS
-    ("bite", "But first..."),                    # closer: the lemon at his mouth; the badge; he bites on "Now"
+    ("hook", None),                              # his face, close, mid-bite into a lemon
+    ("p382", "One man lasted"),                  # a flash-forward on old film: one man, a calendar racing to 382; a red NO FOOD stamp
+    ("bite", "bite a lemon."),                   # closer: the lemon at his mouth; the badge; he bites on "Now"
     ("water", "Your mouth just watered"),        # the mouth's taps in a window on his cheek
     ("ready", "That's your body"),               # the see-through body: the stomach lights up, READY
     ("never", "Now imagine"),                    # pull back: the hut, the storm, HOUR 0
     ("want", "He climbed"),                      # the summit shop in the sun; the bar held high; Pip's note
-    ("storm", "On the way down"),                # night, the storm; the hut; the fox takes the food bag
+    ("storm", "On the way down"),                # night, the storm: he trudges toward the hut
+    ("door", "He made it"),                      # the door: he goes in, his food bag left in the snow
+    ("foxsnout", "and a fox"),                   # low and close: the bag by the door, a fox's snout creeps in
+    ("stolen", None),                            # wide: the fox runs off with the bag; STOLEN!
     ("lemon", "All he had left"),                # the lemon in his hand; deadpan
     ("radio", "The radio says"),                 # the radio: A WEEK?!; Pip's question
     ("growl", "Hour four."),                     # his belly growls; the fox's ears
     ("clean", "It's not asking"),                # the stomach sweeping itself
+    ("clean2", "Every couple of hours"),         # the whole gut: the squeeze rolls through, a clock spins two hours
     ("echo", "With nothing in there"),           # the growl echoes round the hut
     ("alarm", "Hour six."),                      # lunchtime: the alarm clock rings on his stomach
     ("clock", "It's not a fuel gauge"),          # the gauge crossed out, the alarm clock, the meal times
@@ -76,37 +81,40 @@ SHOTS = [
     ("easy", "Day one."),                        # outside, wide: the hut tiny in the storm
     ("borrow", "Day two."),                      # colder; the body borrows from muscle
     ("borrow2", "Remember your fist?"),          # his fist: BORROWED
-    ("switch", "Day three:"),                    # fat to new fuel; the brain goes green
-    ("lunch", "Turns out, your body"),           # the packed lunch; the bar is a tenth of a day
+    ("lever", "Day three:"),                     # a big lever: SUGAR -> FAT, clunk
+    ("switch", "The liver starts"),              # fat to new fuel; the brain goes half green
+    ("lunch", "Turns out, your body"),           # the hut: a window on his belly full of lunchboxes
+    ("ruler", "That chocolate bar?"),            # ONE DAY OF FUEL as a battery: the bar hops in and fills a tenth
     ("breath", "Breathe on your hand."),         # the viewer's breath; the fox faints
     ("quiet", "And the weirdest part?"),         # the hunger knob turns down
-    ("minnesota", "In 1944,"),                   # old film: the dining hall
+    ("quiet2", None),                            # his face, the hunger quiet: a small, surprised calm
+    ("minnesota", "In 1944,"),                   # old film: the dining hall; then the half plate; then the calendar, six months
     ("minnesota2", "so doctors could learn"),   # the scale's needle sinks; TO FEED EUROPE
     ("obsessed", "Their minds"),                 # cookbooks, dreams, gum
     ("day5", "Day five."),                       # the wrapper read to the fox
     ("pip2", "Pip, on the radio"),               # Pip's question again
     ("edge", "So how long"),                     # the ladder of days; DO NOT TRY THIS
-    ("pulse", "Find your pulse"),                # the viewer's pulse: six seconds
+    ("pulse", "Find your pulse"),                # the viewer's pulse: NECK or WRIST, then six seconds
     ("zero", "Add a zero."),                     # x10; 60-100
     ("heart", "The Minnesota men"),              # 35; the heart shrinks
     ("limit", "With water,"),                    # one to two months
-    ("limit2", "After the fat runs out"),        # fat, then protein, then the heart
-    ("barbieri", "Except one man."),             # 1965: 207 KG
-    ("barbieri2", "With doctors watching"),      # the vitamins; the calendar flips to 382
-    ("toilet", "He lost a hundred"),             # -125 KG; once every forty days
+    ("limit2", "After the fat runs out"),        # inside: the fat goes, the muscle burns, the heart cracks
+    ("barbieri", "Except one man."),             # 1965: one man; a snap zoom on his face; a smash zoom on the scale: 207 KG
+    ("barbieri2", "With doctors watching"),      # doctors (a flash bulb), a vitamin pill, the calendar racing to 382
+    ("toilet", "He lost a hundred"),             # -125 KG; he walks to the calendar and holds up a toilet roll: once every forty days
     ("egg", "His first meal,"),                  # one boiled egg
-    ("day6", "Day six."),                        # midnight: he unwraps the bar (the wordless beat)
+    ("day6", "Day six."),                        # midnight: the candle, the window shaking, he unwraps the bar (the wordless beat)
     ("wrap", "and wraps it back up"),            # ...and wraps it back up; pats it
     ("rescue", "Day seven."),                    # daylight; the helicopter
-    ("soup", "The rescuers"),                    # the cup of soup; the mouth waters again
+    ("soup", "The rescuers"),                    # the rescuer with a cup of soup; the mouth waters again
     ("slow", "Just a cup"),                      # start small
     ("home", "At home,"),                        # Pip's kitchen: the bar handed over
     ("reveal", "Every night,"),                  # her question was about him
     ("half", None),                              # SNAP; the bigger half
     ("final", None),                             # the final image
-    ("sub", "Next week:"),                       # NEXT WEEK: the tooth; the subscribe pill
+    ("sub", "Next week:"),                       # the final image holds: a small NEXT WEEK card, the pill; they both take a bite
 ]
-special = {"half": snap - 0.55, "final": final - 0.1}
+special = {"half": snap - 0.55, "final": final - 0.1, "stolen": grab + 0.35, "quiet2": W("the hunger", s=find("For a lot")) - 0.07}
 
 CHUNKS = [
     "What happens if you", "stop eating?", "One man lasted", "three hundred and eighty-two days.", "But first...", "bite a lemon.", "In your head.", "Now.",
@@ -193,7 +201,7 @@ caps = T.captions(CHUNKS, COLOR, shots, DISPLAY)
 
 cues = {
     # ---- the hook
-    "n382": W("three hundred", s=find("One man")), "bite": W("bite a lemon"), "now": W("Now.", s=find("In your head")),
+    "n382": W("three hundred", s=find("One man")), "d382hook": E("days.", s=find("One man")), "n382end": E("eighty-two", s=find("One man")) + 0.05, "bite": W("bite a lemon"), "now": W("Now.", s=find("In your head")),
     "watered": W("Your mouth just watered"), "ready": W("That's your body"), "thought": W("from a thought"), "imagine": W("Now imagine"), "never": W("never comes"), "h0": h0,
     "climbed": W("He climbed"), "pipsFav": W("Pip's favourite"), "shop": W("from the shop"),
     "storm": W("a storm hit"), "hut": W("He made it"), "foxW": W("and a fox"), "bagW": W("his food bag"), "grab": grab,
@@ -228,7 +236,7 @@ cues = {
     "mnMen": W("The Minnesota men"), "t35": W("About thirty-seven."), "isMuscle": W("A heart is a muscle"), "eatsMuscle": W("eats muscle."),
     "withWater": W("With water,"), "months": W("one to two months"), "fatRuns": W("After the fat runs out"), "ownProtein": W("its own protein"), "theHeart": W("and in the end"),
     "except": W("Except one man."), "y1965": W("In 1965,"), "angus": W("Angus Barbieri"), "kilos200": W("two hundred kilos"),
-    "doctors": W("With doctors watching"), "vitamins": W("water and vitamins"), "d382": W("for three hundred", s=S_VIT), "d382end": E("days.", s=S_VIT),
+    "doctors": W("With doctors watching"), "flashBulb": E("watching,", s=find("With doctors")) + 0.05, "vitamins": W("water and vitamins"), "d382": W("for three hundred", s=S_VIT), "d382end": E("days.", s=S_VIT),
     "lost": W("He lost"), "byEnd": W("And by the end"), "toiletW": W("to the toilet"), "forty": W("every forty days"),
     "firstMeal": W("His first meal,"), "papers": W("the papers said"), "eggW": W("One boiled egg"),
     "d6": W("Day six."), "midnight": W("Midnight."), "worst": W("The worst of the storm"), "unwraps": W("He unwraps"), "wrapsBack": W("and wraps it back up"),
@@ -238,7 +246,7 @@ cues = {
     "atHome": W("At home,"), "hands": W("he hands Pip"), "notOne": W("Not one bite"),
     "everyNight": W("Every night,"), "because": W("Because if"), "soWas": W("so was he"),
     "snap": snap, "bigger": W("the bigger half"), "final": final,
-    "sub": W("Next week:"), "teeth": W("brushing your teeth"),
+    "sub": W("Next week:"), "teeth": W("brushing your teeth"), "eatW": E("something.") + 0.12,
 }
 
 

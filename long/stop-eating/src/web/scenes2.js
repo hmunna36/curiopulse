@@ -31,9 +31,36 @@ SC.borrow2 = (lt, t, shot) => {
   stampWord('BORROWED', 1380, 420, 120, '#FF5A6E', pk(t, c.borrowing + 0.2), 0.12);
   return hutPost();
 };
-// "Day three: the big switch. The liver starts turning fat into a new fuel... and the brain starts running on it." the
-// diagram: the fat bubbles stream to the liver, the liver's little still drips green, the straw turns green, the brain
-// lights up green and grins: NEW FUEL
+// "Day three: the big switch." a big lever on a panel, SUGAR on the left (gold, its lamp going out) and FAT on the right
+// (green); on "switch" it slams across with sparks and a clunk; SWITCH!
+SC.lever = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  darkBg('#102028', '#020608'); screenSpace();
+  const fl = ramp(t, c.bigSwitch + 0.05, c.bigSwitch + 0.3, E.outBack);
+  const x = 960, y = 600, kk = kick(t, c.bigSwitch + 0.3, 7);
+  ctx.save(); ctx.translate(x + shake(t, 10 * kk)[0], y + shake(t, 10 * kk)[1]);
+  rrect(ctx, -520, -300, 1040, 520, 40); ctx.fillStyle = '#2A3440'; ctx.fill(); ctx.lineWidth = 10; ctx.strokeStyle = '#4A5868'; ctx.stroke();
+  for (const [sx, lab, col, on] of [[-300, 'SUGAR', '#FFD447', 1 - fl], [300, 'FAT', '#4DFFB4', fl]]) {
+    rrect(ctx, sx - 170, -250, 340, 120, 24); ctx.fillStyle = '#121820'; ctx.fill();
+    ctx.font = '400 92px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = mixHex('#3A4450', col, clamp(on)); ctx.fillText(lab, sx, -188);
+    circle(ctx, sx, -40, 46, '#121820'); circle(ctx, sx, -40, 36, mixHex('#3A4450', col, clamp(on)));
+    if (on > 0.05) softDot(gctx, sx, -40, 120, col, 0.6 * on);
+  }
+  // the lever: a pivot at the bottom middle, the arm swings from left to right
+  const ang = lerp(-0.75, 0.75, clamp(fl));
+  ctx.save(); ctx.translate(0, 150); ctx.rotate(ang);
+  rrect(ctx, -22, -330, 44, 330, 20); ctx.fillStyle = '#C8CCD8'; ctx.fill();
+  circle(ctx, 0, -340, 56, '#E8343E'); circle(ctx, -14, -356, 16, 'rgba(255,255,255,0.5)');
+  ctx.restore();
+  circle(ctx, 0, 150, 60, '#1A2028'); circle(ctx, 0, 150, 30, '#4A5868');
+  ctx.restore();
+  sparks(31, x + 120, y - 160, c.bigSwitch + 0.3, t, 18);
+  stampWord('SWITCH!', 960, 200, 140, '#4DFFB4', pk(t, c.bigSwitch + 0.3), -0.06);
+  return bodyPost({ flash: 0.2 * kick(t, c.bigSwitch + 0.3, 9), push: { k: 1 + 0.05 * lt / D, cx: 960, cy: 560 } });
+};
+// "The liver starts turning fat into a new fuel... and the brain starts running on it." the diagram: the fat bubbles
+// stream to the liver, the liver's little still drips green, the straw carries both fuels, the brain lights up half
+// green and smiles: NEW FUEL
 SC.switch = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   darkBg('#061A22', '#010608'); screenSpace();
@@ -42,34 +69,68 @@ SC.switch = (lt, t, shot) => {
   const gr = ramp(t, c.running - 0.2, c.running + 0.4);
   ibBody(V, t, { flex: 0, fat: { glow: 0.5 * k1, flow: k1, shrink: 0.2 * k1 }, liver: { fill: 0.06, cook: k1, glow: 1 }, straw: { flow: 1, green: 0.55 * gr }, brain: { mood: gr > 0.5 ? 'happy' : 'calm', green: 0.6 * gr, lit: 1 } });
   screenSpace();
-  stampWord('SWITCH!', 960, 190, 130, '#4DFFB4', pk(t, c.bigSwitch) * (1 - ramp(t, c.fatW - 0.2, c.fatW)), -0.06);
   tagPill('FAT → NEW FUEL', 1420, 240, pk(t, c.newFuel - 0.1) * (1 - ramp(t, c.running - 0.4, c.running - 0.1)), '#4DFFB4', 52);
   tagPill('KETONES', 1420, 330, pk(t, c.newFuel + 0.3) * (1 - ramp(t, c.running - 0.4, c.running - 0.1)), '#7FE9FF', 40);
   return bodyPost({ flash: 0.25 * kick(t, c.running + 0.1, 7) });
 };
-// "Turns out, your body packed a lunch: weeks of it, as fat. That chocolate bar? About a tenth of one day." the fat
-// bubbles each show a little lunchbox: WEEKS OF FUEL; then a ruler of days where the bar is a sliver
+// "Turns out, your body packed a lunch: weeks of it, as fat." the hut: him, his hands on his belly; a round window opens
+// on it and inside, the fat as a stack of lunchboxes, glowing; WEEKS OF FUEL
 SC.lunch = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  if (t < c.chocBarW - 0.15) {
-    darkBg('#061A22', '#010608'); screenSpace();
-    const V = ibView([0, 120], [960, 470], 1.9 + 0.15 * ramp(lt, 0, 3));
-    ibBody(V, t, { flex: 0, fat: { glow: 1, lunch: ramp(t, c.packed, c.packed + 1.0) }, liver: { fill: 0.06, cook: 0.6 }, straw: { flow: 1, green: 0.55 }, brain: { mood: 'happy', green: 0.6 } });
-    screenSpace();
-    tagPill('WEEKS OF FUEL', 960, 160, pk(t, c.weeks), '#FFD447', 64);
-    return bodyPost();
+  const cam = driftCam(mixCam(hutHeadCam(1.9, 760, 380), hutHeadCam(2.1, 760, 360), ramp(lt, 0, D, E.inOutSine)), lt);
+  hutNow(cam, t, { hero: { face: lerpFace(FACES.calm, FACES.wonder, ramp(t, c.packed, c.packed + 0.4)), L: [-40, -60], R: [40, -60] } });
+  const bp = toScreen(cam, ...hutPt([0, -90]));
+  const wk = pk(t, c.packed - 0.1, 0.35);
+  if (wk > 0.01) {
+    const x = 1300, y = 480, R = 260 * wk;
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.setLineDash([12, 12]); line(ctx, bp[0] + 60, bp[1], x - R * 0.85, y + R * 0.3, 4, 'rgba(255,255,255,0.7)'); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.arc(x, y, R, 0, 7); ctx.fillStyle = '#2A1A10'; ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.arc(x, y, R, 0, 7); ctx.clip();
+    const n = Math.min(14, Math.floor(ramp(t, c.packed, c.weeks + 0.4, (q) => q) * 14 + 0.999));
+    for (let i = 0; i < n; i++) {
+      const row = Math.floor(i / 4), col = i % 4, bx = x - 210 + col * 110 + (row % 2) * 40, by = y + 150 - row * 80;
+      const pop = E.outBack(clamp((t - (c.packed + i * 0.08)) / 0.2), 2);
+      ctx.save(); ctx.translate(bx, by); ctx.scale(pop, pop);
+      rrect(ctx, -46, -30, 92, 60, 10); ctx.fillStyle = ['#3FA7FF', '#FFD447', '#FF86A6', '#4DFFB4'][i % 4]; ctx.fill();
+      rrect(ctx, -46, -30, 92, 16, 8); ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fill();
+      line(ctx, -16, -38, 16, -38, 6, '#2A2A3A');
+      ctx.restore();
+    }
+    ctx.restore();
+    ctx.beginPath(); ctx.arc(x, y, R, 0, 7); ctx.lineWidth = 8; ctx.strokeStyle = '#FFFFFF'; ctx.stroke();
+    softDot(gctx, x, y, R * 1.1, '#FFD447', 0.25 * wk);
+    ctx.restore();
   }
-  // the ruler of days: one day's fuel as a long bar; the chocolate bar's share is a tenth of it
+  screenSpace();
+  tagPill('WEEKS OF FUEL', 1300, 820, pk(t, c.weeks), '#FFD447', 58);
+  return hutPost();
+};
+// "That chocolate bar? About a tenth of one day." the ruler of one day's fuel: the bar's share is a tenth of it
+SC.ruler = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
   darkBg('#1A1030', '#05030C'); screenSpace();
-  const k = ramp(t, c.chocBarW - 0.1, c.chocBarW + 0.5, E.inOutCubic), tk = ramp(t, c.tenth - 0.2, c.tenth + 0.5, E.inOutCubic);
-  const x0 = 360, x1 = 1560, y = 560;
-  rrect(ctx, x0, y - 40, (x1 - x0) * k, 80, 20); ctx.fillStyle = '#3A3058'; ctx.fill();
-  ctx.font = '900 46px Montserrat'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = `rgba(255,255,255,${k})`; ctx.fillText('ONE DAY OF FUEL', x0, y - 90);
-  rrect(ctx, x0, y - 40, (x1 - x0) * 0.1 * tk, 80, 20); ctx.fillStyle = '#6A2A9A'; ctx.fill();
-  chocBar(ctx, x0 + 60, y + 160, 0.6 + 0.1 * kick(t, c.tenth, 5), t, { rot: -0.1, glow: tk });
-  if (tk > 0.01) { ctx.setLineDash([10, 10]); line(ctx, x0 + 60, y + 110, x0 + 60, y + 45, 4, `rgba(255,212,71,${tk})`); ctx.setLineDash([]); }
-  tagPill('1/10', x0 + 260, y + 170, pk(t, c.tenth + 0.2), '#FFD447', 70);
-  return bodyPost({ push: { k: 1 + 0.04 * lt / D, cx: 960, cy: 540 } });
+  const k = E.outBack(clamp(pk(t, c.chocBarW - 0.25, 0.35)), 1.6), tk = ramp(t, c.tenth - 0.15, c.tenth + 0.35, E.inOutCubic);
+  const x0 = 330, x1 = 1530, y = 470, h = 230;
+  // one day of fuel as a battery: ten faint cells; the bar flies in and fills one of them
+  ctx.save(); ctx.translate(930, y); ctx.scale(k, k); ctx.translate(-930, -y);
+  rrect(ctx, x0, y - h / 2, x1 - x0, h, 40); ctx.fillStyle = 'rgba(58,48,88,0.55)'; ctx.fill(); ctx.lineWidth = 14; ctx.strokeStyle = '#E8E4FF'; ctx.stroke();
+  rrect(ctx, x1 + 8, y - 55, 50, 110, 14); ctx.fillStyle = '#E8E4FF'; ctx.fill();
+  for (let i = 1; i < 10; i++) line(ctx, x0 + i * (x1 - x0) / 10, y - h / 2 + 22, x0 + i * (x1 - x0) / 10, y + h / 2 - 22, 4, 'rgba(232,228,255,0.18)');
+  ctx.font = '400 84px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#FFFFFF'; ctx.fillText('ONE DAY OF FUEL', 930, y - h / 2 - 80);
+  if (tk > 0.01) {
+    rrect(ctx, x0 + 14, y - h / 2 + 14, ((x1 - x0) / 10 - 14) * tk, h - 28, 28); ctx.fillStyle = '#FFC24A'; ctx.fill();
+    softDot(gctx, x0 + 70, y, 220, '#FFD447', 0.5 * tk * (0.6 + 0.4 * kick(t, c.tenth + 0.2, 5)));
+  }
+  ctx.restore();
+  // the bar: up from the bottom, then a hop into the first cell
+  const fly = ramp(t, c.tenth - 0.45, c.tenth, E.inOutCubic);
+  const bx = lerp(930, x0 + 64, fly), by = lerp(y + 330, y, fly) - 160 * Math.sin(Math.PI * fly) + 300 * (1 - pk(t, shot.start, 0.45));
+  if (tk < 0.95) chocBar(ctx, bx, by, lerp(0.75, 0.32, fly), t, { rot: lerp(-0.1, 0, fly), glow: 0.4 });
+  sparks(5, x0 + 70, y, c.tenth, t, 22, { cols: ['#FFD447', '#FFFFFF', '#FFC24A'] });
+  stampWord('1/10', x0 + 110, y + 230, 120, '#FFD447', pk(t, c.tenth + 0.25), -0.08);
+  tagPill('THE REST: EMPTY', 1080, y + 230, pk(t, c.tenth + 0.7) * 0.95, '#C8B8FF', 46);
+  return bodyPost({ push: { k: 1 + 0.05 * lt / D, cx: 600, cy: 520 } });
 };
 // "Breathe on your hand. Smell it. Nail polish remover? No? By day three... his breath is." him, close, breathing into
 // his cupped hand, sniffing; a bottle of nail polish remover pops; then the window: the fox gets a whiff, its eyes go
@@ -115,14 +176,48 @@ SC.quiet = (lt, t, shot) => {
   const a = lerp(0.8, -2.2, q); line(ctx, kx, ky, kx + Math.sin(a) * 100, ky - Math.cos(a) * 100, 14, '#FFD447');
   for (let i = 0; i <= 8; i++) { const b = -2.4 + 4.8 * i / 8; line(ctx, kx + Math.sin(b) * 160, ky - Math.cos(b) * 160, kx + Math.sin(b) * 180, ky - Math.cos(b) * 180, 6, i / 8 < (1 - q) * 0.66 + 0.34 * 0 ? '#FFD447' : '#3A4460'); }
   ctx.font = '900 40px Montserrat'; ctx.textAlign = 'center'; ctx.fillStyle = '#FFFFFF'; ctx.fillText('HUNGER', kx, ky + 230);
-  tagPill('QUIETER', 960, 860, pk(t, c.quieter + 0.1), '#7FE9FF', 60);
   return bodyPost({ push: { k: 1 + 0.05 * lt / D, cx: 960, cy: 480 } });
+};
+// "...the hunger... gets quieter." the hut: his face, close; his hand on his belly; his eyes half close, a small,
+// surprised calm; a tiny alarm clock beside him dozes off (z z z)
+SC.quiet2 = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const cam = driftCam(hutHeadCam(2.5 + 0.2 * ramp(lt, 0, D), 820, 470), lt);
+  hutNow(cam, t, { hero: { face: lerpFace(FACES.tired, FACES.soft, ramp(t, c.quieter - 0.1, c.quieter + 0.5)), L: [-30, -70], R: [40, -70] } });
+  screenSpace();
+  ibAlarm(t, 1430, 420, 1.2 * pk(t, shot.start, 0.3), { ring: 0.3 * (1 - ramp(t, shot.start, c.quieter + 0.3)), hour: 12, sleep: ramp(t, c.quieter, c.quieter + 0.5) });
+  tagPill('QUIETER', 1430, 660, pk(t, c.quieter + 0.1), '#7FE9FF', 56);
+  return hutPost();
 };
 // "In 1944, thirty-six volunteers in Minnesota ate half their usual food for six months, so doctors could learn to feed a
 // starving Europe." old film: the dining hall, the camera tracking along the table; the calendar's months flip; their
 // plates are small; a scale needle sinks; TO FEED EUROPE
 SC.minnesota = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
+  if (t >= c.halfFood - 0.07 && t < c.sixMonths - 0.07) {   // close: a plate, and a hand sliding half of it away
+    applyCam(driftCam({ x: 960, y: 560, zoom: 2.6, rot: 0 }, lt));
+    mnRoom(t, { month: 'NOVEMBER', crossed: 4 });
+    ctx.fillStyle = '#E8DCC0'; ctx.fillRect(500, 560, 920, 400);
+    const sl = ramp(t, c.halfFood + 0.1, c.halfFood + 0.7, E.inOutCubic);
+    ellipse(ctx, 960, 640, 230, 52, '#A8A090'); ellipse(ctx, 960, 632, 220, 48, '#F8F4EA');
+    ellipse(ctx, 900, 616, 60, 34, '#D8B870'); ellipse(ctx, 990, 622, 46, 18, '#7A8A4A');
+    ctx.save(); ctx.translate(-260 * sl, 0); ellipse(ctx, 1040, 614, 56, 32, '#D8B870'); ellipse(ctx, 1080, 626, 40, 14, '#7A8A4A'); ctx.restore();
+    line(ctx, 1500 - 300 * sl, 600, 1180 - 260 * sl, 620, 40, '#8A9A7A'); circle(ctx, 1170 - 260 * sl, 622, 26, '#F2B892');
+    hsSepia(0.8); hsFilm(t);
+    screenSpace();
+    tagPill('HALF THE FOOD', 960, 230, pk(t, c.halfFood + 0.1), '#FFE6B0', 58);
+    return hutPost({ glow: 0.5 });
+  }
+  if (t >= c.sixMonths - 0.07) {   // close on the calendar, its months flipping
+    applyCam(driftCam({ x: 960, y: 300, zoom: 2.4, rot: 0 }, lt));
+    const months = ['NOVEMBER', 'DECEMBER', 'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY'];
+    const mi = Math.min(6, Math.floor(7 * ramp(t, c.sixMonths, shot.end - 0.2, (x) => x)));
+    mnRoom(t, { month: months[mi], crossed: (mi * 3) % 20 });
+    hsSepia(0.8); hsFilm(t);
+    screenSpace();
+    tagPill('6 MONTHS', 960, 820, pk(t, c.sixMonths + 0.1), '#FFE6B0', 64);
+    return hutPost({ glow: 0.5, flash: 0.12 * kick(t, c.sixMonths, 9) });
+  }
   const cam = mixCam({ x: 760, y: 500, zoom: 1.35, rot: 0 }, { x: 1180, y: 520, zoom: 1.2, rot: 0 }, ramp(lt, 0, D, E.inOutSine));
   applyCam(cam);
   const months = ['NOVEMBER', 'DECEMBER', 'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY'];
@@ -133,7 +228,7 @@ SC.minnesota = (lt, t, shot) => {
   hsSepia(0.8); hsFilm(t);
   screenSpace();
   stampWord('1944', 330, 330, 150, '#FFE6B0', pk(t, c.y1944), -0.08);
-  tagPill('36 VOLUNTEERS', 960, 150, pk(t, c.thirtysix) * (1 - ramp(t, c.halfFood - 0.2, c.halfFood)), '#FFE6B0', 52);
+  tagPill('36 VOLUNTEERS', 1350, 250, pk(t, c.thirtysix) * (1 - ramp(t, c.halfFood - 0.2, c.halfFood)), '#FFE6B0', 52);
   tagPill('HALF THE FOOD', 960, 150, pk(t, c.halfFood) * (1 - ramp(t, c.sixMonths - 0.2, c.sixMonths)), '#FFE6B0', 52);
   tagPill('6 MONTHS', 960, 150, pk(t, c.sixMonths), '#FFE6B0', 58);
   return hutPost({ glow: 0.5 });

@@ -25,6 +25,7 @@ FACES.shout = { eyeOpen: 1.1, pupil: 0.8, lookX: 0.9, lookY: 0, browY: -0.3, bro
 FACES.tired = { eyeOpen: 0.85, pupil: 1, lookX: 0.3, lookY: 0.3, browY: 0.2, browTilt: 0.6, mouth: 'flat', mouthOpen: 0.1, blink: 0.5, cross: 0 };
 FACES.wonder = { eyeOpen: 1.25, pupil: 1.15, lookX: 0, lookY: -0.6, browY: 1.1, browTilt: 0.4, mouth: 'o', mouthOpen: 0.4, blink: 0, cross: 0 };
 FACES.happy = { eyeOpen: 1, pupil: 1.05, lookX: 0.3, lookY: 0, browY: 0.6, browTilt: -0.2, mouth: 'grin', mouthOpen: 0.6, blink: 0.2, cross: 0 };
+FACES.yum = { eyeOpen: 1, pupil: 1, lookX: 0, lookY: 0, browY: 0.9, browTilt: -0.3, mouth: 'flat', mouthOpen: 0.25, blink: 0.9, cross: 0 };
 FACES.soft = { eyeOpen: 1, pupil: 1.12, lookX: 0.5, lookY: -0.2, browY: 0.6, browTilt: 0.5, mouth: 'grin', mouthOpen: 0.25, blink: 0.15, cross: 0 };
 FACES.count = { eyeOpen: 0.95, pupil: 1, lookX: -0.2, lookY: -0.7, browY: 0.5, browTilt: 0.3, mouth: 'flat', mouthOpen: 0.15, blink: 0.1, cross: 0 };
 FACES.proud = { eyeOpen: 1.05, pupil: 0.95, lookX: 0.4, lookY: -0.3, browY: 0.5, browTilt: -0.5, mouth: 'grin', mouthOpen: 0.45, blink: 0.25, cross: 0 };
@@ -254,7 +255,7 @@ function chocBar(c, x, y, s, t, o = {}) {
   c.fillStyle = '#4E1C78'; c.fillRect(-w / 2 - 8, h / 2 - 22, w + 16, 30);
   c.beginPath(); c.moveTo(-110, 34); c.lineTo(-62, -30); c.lineTo(-40, -6); c.lineTo(-18, -38); c.lineTo(34, 34); c.closePath(); c.fillStyle = '#FFFFFF'; c.fill();
   c.beginPath(); c.moveTo(-62, -30); c.lineTo(-52, -16); c.lineTo(-70, -18); c.closePath(); c.fillStyle = '#C8D8FF'; c.fill();
-  c.font = '400 54px Anton'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillStyle = '#FFD447'; c.fillText('PEAK', 18, -2);
+  c.font = '400 50px Anton'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillStyle = '#E8C8FF'; c.fillText('PEAK', 18, -2);
   c.font = '900 15px Montserrat'; c.fillStyle = '#FFFFFF'; c.fillText('MOUNTAIN CHOCOLATE', 20, 30);
   c.restore();
   if (open > 0.02 && open < 0.98) {   // the peeled edge of the paper, curled
@@ -265,9 +266,17 @@ function chocBar(c, x, y, s, t, o = {}) {
   if (glow > 0.01) { softDot(gctx, x, y - (o.lift || 0), 230 * s, '#FFD447', 0.55 * glow); }
 }
 // one half of the bar after it is broken (side -1 left half, +1 right half), drawn in its own frame
-function chocHalf(c, x, y, s, side, rot = 0) {
+function chocHalf(c, x, y, s, side, rot = 0, bite = 0) {
   c.save(); c.translate(x, y); c.rotate(rot); c.scale(s, s);
   const w = 150, h = 110;
+  // bite 0..1: a bite out of the broken end's top corner (two tooth arcs, clipped away)
+  if (bite > 0.01) {
+    const bx = side < 0 ? w / 2 : -w / 2, r = 34 * Math.min(1, bite);
+    c.beginPath(); c.rect(-400, -400, 800, 800);
+    c.moveTo(bx + r, -h / 2 + 4); c.arc(bx, -h / 2 + 4, r, 0, Math.PI * 2);
+    c.moveTo(bx - side * 30 + r * 0.8, -h / 2 - 2); c.arc(bx - side * 30, -h / 2 - 2, r * 0.8, 0, Math.PI * 2);
+    c.clip('evenodd');
+  }
   c.beginPath(); c.moveTo(-w / 2, -h / 2);
   if (side < 0) { c.lineTo(w / 2, -h / 2); for (let k = 0; k <= 6; k++) c.lineTo(w / 2 + (k % 2 ? 8 : -6), -h / 2 + k * h / 6); c.lineTo(-w / 2, h / 2); }
   else { for (let k = 0; k <= 6; k++) c.lineTo(-w / 2 + (k % 2 ? 8 : -6), -h / 2 + k * h / 6); c.lineTo(w / 2, h / 2); c.lineTo(w / 2, -h / 2); }
