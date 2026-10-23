@@ -242,17 +242,17 @@ the narration is the only recorded sound.
 - **Beds:** the storm against the hut (a low roar with gusts under 450 Hz and a thin whistle above the voice band) that
   grows a little each day, and the stove's crackle that fades as the fire burns low; the full storm outside; a low hum
   inside his body; a projector's whirr under 1944 and 1965; birds after the storm breaks and outside Pip's kitchen.
-- **Hits:** every beat has its sound: the lemon's crunch and squelch and its drips; the 382 page's slap; the taps in
-  his mouth (a squeak and running water); the fox's paws, its grab, its yip, STOLEN!; the growl and its echo round the
+- **Hits:** every beat has its sound: the lemon's crunch and squelch and its drips; the 382 calendar's pages racing and the NO FOOD stamp landing after "days"; the taps in
+  his mouth (a squeak and running water); the door's creak and bang; the fox's paws, its grab, its yip, STOLEN!; the growl and its echo round the
   hut (four growls, each quieter and duller); the alarm clock ringing in the pause after "right on time"; the X on the
   fuel gauge; a snore and one ring at "Until dinner"; the fist's creak and a knuckle pop; the padlock; the jars
   clinking; the straw slurping air; a wah-wah when he loses to the fox; thunder for "the easy part"; the lever of the
-  switch and green sparkles; lunchboxes clicking on; the breath, the sniff, the bottle's pop, the fox's fall (a slide
+  switch and green sparkles; the first drop of new fuel (a bloop); lunchboxes clicking on; the battery's cell filling; the breath, the sniff, the bottle's pop, the fox's fall (a slide
   and a thud); the hunger knob's ratchet; the months flipping in 1944; gum chewed; the wrapper's crinkle; six soft
   ticks while the viewer counts their pulse (no beat, so it never fights theirs) and a bell when the six seconds are
-  up; a slow monitor at 37 a minute; the heart deflating; the calendar's pages flipping faster and faster to 382; the
-  toilet's flush; the egg's ta-da; the wrapper unwrapped and wrapped back up over his heartbeat; the rotor; the mug set
-  down; the SNAP of the bar and its crumbs. A tick on every new hour or day the clock shows, a knife scratching each
+  up; a slow monitor at 37 a minute; the heart deflating; a whoosh into each 1965 snap zoom; a press camera's flash bulb; the calendar's pages flipping faster and faster to
+  382; the toilet's flush; the egg's ta-da; the wrapper unwrapped and wrapped back up over his heartbeat; the rotor; the mug set
+  down; the SNAP of the bar and its crumbs; and, after the last word, two bites of chocolate. A tick on every new hour or day the clock shows, a knife scratching each
   day's tally mark, and a quiet whoosh into every cut.
 - **Score:** one theme, five notes that ask and do not answer (C D E G, hanging on F): a music box in the hook, cut off
   by the bite; bouncy pizzicato for "that morning"; a dark pulse for the storm and a cymbal on the grab; nothing for the
@@ -262,7 +262,7 @@ the narration is the only recorded sound.
   lift into the packed lunch; an old upright piano and a ragtime for 1944 and 1965 (it speeds up with the calendar);
   glass and a low drone for the heart and the edge; a soft pad with no beat while the viewer counts; at midnight on day
   six only the wind and his heartbeat; warm strings when the storm breaks; the theme slow on piano at home; silence
-  for "so was he" and for the snap; then the theme finally comes home (F E D C) on the final image.
+  for "so was he" and for the snap; then the theme finally comes home (F E D C) on the final image, and steps back 8 dB under the teaser.
 - **The reward rhythm:** every `pay_*` and `big_*` cue in make_timeline.py gets a short riser into it and a bright
   bell (small) or a held breath of silence and a low hit (big); a payoff that falls on a word lands at the end of the
   word instead.
