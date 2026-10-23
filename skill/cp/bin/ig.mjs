@@ -749,11 +749,53 @@ async function pullResults() {
   console.log(`merged the cloud's results into ${QUEUE_FILE}`);
 }
 
+// ---- insights (read-only; the user, 23 Oct 2026: "pull analytics from yt and instagram") ------------------------
+// ig.mjs insights [n] [--json]: the account's followers and 28-day reach/views, then each of the last n posts with
+// views, reach, likes, comments, shares, saves and (Reels) the average watch time. Reads only; posts nothing.
+async function insights(n, asJson) {
+  const t = tokenData();
+  const acct = await graph('GET', `${G}/me`, {fields: 'user_id,username,followers_count,follows_count,media_count'}).then((j) => j.data?.[0] ?? j);
+  const out = {account: acct, days28: {}, posts: []};
+  const until = Math.floor(Date.now() / 1000), since = until - 28 * 86400;
+  for (const metric of ['reach', 'views', 'accounts_engaged', 'total_interactions', 'follows_and_unfollows']) {
+    try {
+      const j = await graph('GET', `${G}/${t.user_id}/insights`, {metric, period: 'day', metric_type: 'total_value', since: String(since), until: String(until)});
+      const d = j.data?.[0];
+      out.days28[metric] = d?.total_value?.value ?? d?.total_value?.breakdowns?.[0]?.results ?? null;
+    } catch (e) {
+      out.days28[metric] = `n/a (${e.message.slice(0, 80)})`;
+    }
+  }
+  const media = await graph('GET', `${G}/${t.user_id}/media`, {fields: 'id,caption,timestamp,media_product_type,like_count,comments_count,permalink', limit: String(n)});
+  for (const m of media.data ?? []) {
+    const row = {id: m.id, at: m.timestamp, type: m.media_product_type, likes: m.like_count, comments: m.comments_count, caption: (m.caption ?? '').split('\n')[0].slice(0, 60), permalink: m.permalink};
+    for (const metrics of ['views,reach,saved,shares,total_interactions,ig_reels_avg_watch_time', 'views,reach,saved,shares,total_interactions', 'reach,saved']) {
+      try {
+        const j = await graph('GET', `${G}/${m.id}/insights`, {metric: metrics});
+        for (const d of j.data ?? []) row[d.name] = d.values?.[0]?.value ?? d.total_value?.value;
+        break;
+      } catch (e) {
+        row.error = e.message.slice(0, 80);
+      }
+    }
+    out.posts.push(row);
+  }
+  if (asJson) return console.log(JSON.stringify(out, null, 2));
+  console.log(`@${acct.username}: ${acct.followers_count} followers, follows ${acct.follows_count}, ${acct.media_count} posts`);
+  console.log(`last 28 days: ${Object.entries(out.days28).map(([k, v]) => `${k} ${typeof v === 'object' && v ? JSON.stringify(v) : v}`).join(' · ')}`);
+  console.log('posted (IST)          views   reach  likes comm shares saves  avg-watch  caption');
+  for (const r of out.posts) {
+    const w = r.ig_reels_avg_watch_time != null ? `${(r.ig_reels_avg_watch_time / 1000).toFixed(1)} s` : '-';
+    console.log(`${istTime(Date.parse(r.at))}  ${String(r.views ?? '-').padStart(6)}  ${String(r.reach ?? '-').padStart(6)}  ${String(r.likes ?? '-').padStart(5)} ${String(r.comments ?? '-').padStart(4)} ${String(r.shares ?? '-').padStart(6)} ${String(r.saved ?? '-').padStart(5)}  ${w.padStart(9)}  ${r.caption}${r.error && r.views == null ? `  [${r.error}]` : ''}`);
+  }
+}
+
 const [cmd, ...args] = process.argv.slice(2);
 try {
-  if (['whoami', 'refresh', 'refresh-weekly', 'run-due', 'publish-now', 'test-container', 'upcoming'].includes(cmd) && !(cmd === 'run-due' && MAC_CLOUD)) await initToken();
+  if (['whoami', 'refresh', 'refresh-weekly', 'run-due', 'publish-now', 'test-container', 'upcoming', 'insights'].includes(cmd) && !(cmd === 'run-due' && MAC_CLOUD)) await initToken();
   if (cmd === 'upcoming' && MAC_CLOUD) await pullResults().catch(() => {});
-  if (cmd === 'prepare') await prepare(args.find((a) => !a.startsWith('--')) ?? die('usage: ig.mjs prepare <publish.json> [--out DIR]'), args.includes('--out') ? args[args.indexOf('--out') + 1] : undefined);
+  if (cmd === 'insights') await insights(Number(args.find((a) => /^\d+$/.test(a)) ?? 20), args.includes('--json'));
+  else if (cmd === 'prepare') await prepare(args.find((a) => !a.startsWith('--')) ?? die('usage: ig.mjs prepare <publish.json> [--out DIR]'), args.includes('--out') ? args[args.indexOf('--out') + 1] : undefined);
   else if (cmd === 'route') console.log(fs.existsSync(TOKEN_FILE) ? 'api' : 'business-suite');
   else if (cmd === 'token') await setToken(args.includes('--clipboard'));
   else if (cmd === 'whoami') await whoami();
@@ -780,7 +822,7 @@ try {
     if (CLOUD && readJSON(path.join(STATE, 'ig-cloud.json'), {}).enabled !== true) console.log('not refreshing: cloud publishing is not enabled yet');
     else console.log((await refresh(false)) ? 'refreshed' : 'not due');
   }
-  else console.log('usage: ig.mjs prepare <publish.json> [--out DIR] | route | token [--clipboard] | whoami | refresh | queue <publish.json> [--at ISO] | upcoming | run-due [--dry-run] | publish-now <slug> | cancel <slug> | busy <YYYY-MM-DDTHH:MM>... | test-container <mp4|url> | install-job | uninstall-job | job-status | cloud-setup | cloud-enable | pull-results | refresh-weekly');
+  else console.log('usage: ig.mjs prepare <publish.json> [--out DIR] | route | token [--clipboard] | whoami | refresh | queue <publish.json> [--at ISO] | upcoming | run-due [--dry-run] | publish-now <slug> | cancel <slug> | busy <YYYY-MM-DDTHH:MM>... | test-container <mp4|url> | install-job | uninstall-job | job-status | cloud-setup | cloud-enable | pull-results | refresh-weekly | insights [n] [--json]');
 } catch (e) {
   die(e.message);
 }
