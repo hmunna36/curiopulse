@@ -184,6 +184,8 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 - **A burst that marks a hit is drawn BEHIND him**, between what he hit and his body, so the part of him that hit it
   stays visible on top of it. Its word sits clear of his sleeve, inside the key zone.
 - **Nothing crosses his face in the first second**: what flies up (washing, popcorn, water) leaves to one side.
+- **A prop that IS the viewer's test goes in front of him** (mirror-eyes, 24 Oct 2026): a wall clock drawn before the hero counts
+  as set, so the lens's depth of field softens it and the light pool dims it. Draw it after him (beside him, not over him): sharp.
 - **Several shapes as one outlined thing** (a see-through limb, a silhouette): stroke them all, then fill them all,
   with every subpath turning the same way; one outline, no seams.
 

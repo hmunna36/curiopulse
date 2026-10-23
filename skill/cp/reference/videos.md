@@ -51,6 +51,7 @@
 | `voice-deeper`: "Why Does Your Voice Go DEEP With Fingers in Your Ears? 👂" | 33 s (short arm) | https://youtube.com/shorts/sFx9o5nAFXE · 23 Oct 2026 23:30 IST | Business Suite, Instagram only, 26 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1182658574352853) |
 | `circle-line`: "Why Can't You Draw a Circle and a Line at the SAME Time? ⭕" | 32 s (short arm) | https://youtube.com/shorts/XCPq2xvL02w · 24 Oct 2026 11:30 IST | Business Suite, Instagram only, 27 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1683671889986244) |
 | `tongue-nose`: "Why Can't Your Tongue Touch Your NOSE? 👅" | 32 s (short arm) | https://youtube.com/shorts/N1vgcsMvZjI · 24 Oct 2026 23:30 IST | Business Suite, Instagram only, 27 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1408682721153792) |
+| `mirror-eyes`: "Why Can't You See Your Own EYES Move in a Mirror? 👀" | 31 s (short arm) | https://youtube.com/shorts/VgHmLADdE7w · 25 Oct 2026 11:30 IST | Business Suite, Instagram only, 28 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1650532966470898) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -2106,3 +2107,28 @@ Instagram (Business Suite, Instagram only) and the Facebook Page (fb.mjs) 27 Oct
 - Two QA rounds (round 1: retention 7.5 for the caption cut); the final MP4 is byte-identical to build.sh's from a fresh work folder
   (18/18, WER 0.0 %, voice mean 26.3 dB). About 3.8 minutes a render.
 
+**mirror-eyes** (24 Oct 2026, the 02:00 second Short; 02:05-03:10 IST): "Look at your eyes in a mirror. Left, right. See them move?" /
+"Nope. Your brain cuts out every jump, like a sneaky film editor." (4.83 s); hook formula The Direct Address.
+- **The eyes, drawn again in head units (`eyes.js` `meEyes`)**, bigger than the rig's, over them: an iris, a pupil, lids, a squint, and
+  a `smear` (a streak of irises between two looks). In the mirror the look JUMPS from one frame to the next (never travels): that is the
+  test told in pictures; on the phone it SLIDES with streaks (the late camera). A dark socket ring plus a heavy outline read as GLASSES,
+  and a lash flick at the outer corner as eyeliner: a thin outline and a lash line on the top lid only. mirror.js got `A.under` (drawn
+  before the nose) and `A.noseK` (a smaller nose when the Short is not about the nose).
+- **Inside his head as an editing room (`edRoom`, room space so it sits in the forehead window and then fills the frame):** a light table,
+  a film strip of his own eyes, blind-spot's `erBrain` (`brain.js`) in a green visor with scissors in BOTH hands; the smeared frames
+  cut out and dropped, the hole patched with copies of the next frame (1 1 1 2) to explain the stopped-clock illusion, and the window
+  again in the button with the brain snipping three times a second (a callback that replaced loose snip badges round his face).
+- **A prop that is the viewer's own test goes IN FRONT of him:** the wall clock drawn before the hero was set, so the lens's depth of
+  field softened it and the pool light dimmed it; drawn after him (no overlap) it is sharp.
+- **The sfx bus is peak-normalised, so a transient cannot be made louder by gain:** the SNIP stayed at -26 dB in its gap at any gain;
+  soft-clipped (`tanh(3.2 x)`), the same peak read -19.9. Measure gag windows that start AFTER the word's tail (the left snip's
+  window was the narrator's "so").
+- **v3's alignment early again:** "See" (after "Left, right.") and "like" sat 0.1-0.15 s early: qa.py round 1 failed them at -16.7 and
+  -3.6 dB. `_onto_burst()` in make_timeline.py moves a word onto the take's first speech-band burst after its aligned start.
+- Business Suite: Instagram only (the Page untick by ref, read back), parts + SHA-256 in the page, cover via Upload image, Next ONCE by
+  ref, then the Schedule option by ref (the footer then reads Schedule), 28 Oct 18:30 typed into the spinbuttons; "Reel scheduled ... 28
+  Oct 2026"; Content -> Scheduled shows the Instagram row with the caption and the Page row from fb.mjs. The JS tool masked the
+  collector's file names as "[BLOCKED: JWT token]": check sizes, not names. Studio's vertical thumbnail was an automatic frame (the
+  phone): cover.jpg uploaded there and saved.
+- The hook was re-voiced once (the first wording ran 5.0 s and put the answer at 5.55 s); 460 characters in all. Two QA rounds; the
+  final MP4 is byte-identical to build.sh's. Queue refilled by a helper agent (10 sourced tests, 15 queued). About 3.8 minutes a render.

@@ -82,6 +82,9 @@ New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's
   moment, exactly as it does the music bus. Turning the loudest gag down 5 dB brought every other gag up 3 to 4 dB.
   Move the whole bus with `levels={"sfx": ...}`, set the gags against each other, and re-run `qc_gags.py` after
   every change.
+- **A short transient cannot be made louder by gain on a peak-normalised bus** (mirror-eyes, 24 Oct 2026): the scissors' SNIP sat at
+  -26 dB in its gap whatever its gain, because it was the bus's peak. Soft-clip such a sound (`np.tanh(3.2 * y) / np.tanh(3.2)` after
+  normalising): the same peak, much more body (-19.9 dB). Start a gag's window after the word's tail, or it measures the narrator.
 - **The room-tone bus is scaled to its loudest bed as well** (eye-rub-stars, 13 Oct 2026): turning one world's bed down
   (a station's hum) brought every other room tone UP 4.5 dB. Set the beds against each other with their own factors,
   then move the bus with `levels={"amb": ...}` (the house level is -17).
