@@ -63,9 +63,9 @@ of speech-band energy, and "One" of "One more try." the same way.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 24 Oct 2026 23:30 IST |
-| Instagram Reels | — | 27 Oct 2026 21:00 IST (Business Suite, Instagram only) |
-| Facebook Page | — | 27 Oct 2026 21:00 IST (`fb.mjs reel`) |
+| YouTube Shorts | https://youtube.com/shorts/N1vgcsMvZjI | 24 Oct 2026 23:30 IST (scheduled; cover.jpg set again in Studio's vertical slot) |
+| Instagram Reels | — | 27 Oct 2026 21:00 IST (scheduled in Business Suite, Instagram only, cover.jpg as the cover; read back in Content → Scheduled) |
+| Facebook Page | — | 27 Oct 2026 21:00 IST, scheduled by the Page API (`fb.mjs reel`, video 1408682721153792: ready, scheduled) |
 
 **Title:** Why Can't Your Tongue Touch Your NOSE? 👅
 

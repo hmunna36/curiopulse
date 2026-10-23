@@ -31,20 +31,34 @@
   "cover": "cover.jpg",
   "captions": "tongue-nose.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-24T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "N1vgcsMvZjI",
+    "url": "https://youtube.com/shorts/N1vgcsMvZjI",
+    "uploaded": "2026-10-23T19:30:28.194Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-27T21:00:00+05:30",
     "caption": "Can you touch your nose with your tongue? Try it right now. 👅\nClose, right? Your tongue is on a leash: tied down at the front and the back. Only about 1 in 10 people make it.\nDid your tongue reach? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't see your own eyes move in a mirror 👀\n#science #humanbody #tongue #funfacts #reels",
     "coverTime": 3.2,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only, 27 Oct 2026 21:00 IST, cover.jpg as the cover (scheduled 24 Oct ~01:08 IST by the nightly run)"
   },
-  "coverTime": 3.2
+  "coverTime": 3.2,
+  "facebook": {
+    "videoId": "1408682721153792",
+    "publishAt": "2026-10-27T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-23T19:35:57.146Z"
+  }
 }
