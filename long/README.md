@@ -12,3 +12,4 @@ The finished MP4s are not kept in git (they are on YouTube; `src/build.sh` in ea
 | What Happens If You NEVER Sleep? (Day by Day) | 4:29 | [`never-sleep`](never-sleep) | [11 Oct 2026, 17:30 IST](https://youtu.be/GvZX6Yq81P4) |
 | What If You Hold Your Breath TOO Long? (Second by Second) | 4:23 | [`hold-your-breath`](hold-your-breath) | [18 Oct 2026, 17:30 IST](https://youtu.be/BhkHz6gpbrk) |
 | What If You Went to Space WITHOUT a Suit? (Second by Second) | 4:33 | [`space-without-suit`](space-without-suit) | [25 Oct 2026, 17:30 IST](https://youtu.be/KpftORrT9_A) |
+| What Happens If You Stop Eating? (Day by Day) | 4:32 | [`stop-eating`](stop-eating) | [1 Nov 2026, 17:30 IST](https://youtu.be/rPzNcr3Is98) |

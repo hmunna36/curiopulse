@@ -39,6 +39,25 @@ This file and `topics.md` are the only memory a cloud run has: write down anythi
 
 ## Videos
 
+- **stop-eating**: "What Happens If You Stop Eating? (Day by Day)" · 4:32 · https://youtu.be/rPzNcr3Is98 · scheduled Sunday 1 Nov 2026 17:30 IST (made 23 Oct 2026)
+  - Story: a fox steals his food bag in a storm and he is stuck in a hut for a week with a lemon and the chocolate bar
+    he promised his niece Pip; hour by hour and day by day: the stomach cleaning itself, hunger as an alarm clock, the
+    liver's stash, borrowing from muscle, the big switch to fat, the bar is a tenth of a day; 1944 Minnesota, the
+    viewer's pulse ×10, the heart as a muscle; Angus Barbieri's 382 days; at midnight on day six he unwraps the bar and
+    wraps it back; rescued with a cup of soup; at home Pip snaps it and gives him the bigger half.
+  - Demand: "what happens if you stop eating" median 1,757,419, 5 of 8 at a million (re-checked 23 Oct). The teeth
+    line (promised by the space film) passes 3 of 8 but not the routine's median rule, so this film was made instead
+    and its subscribe line promises teeth again. Queue refill: "sit all day" (median 583,977, 3 of 8), "stop eating
+    sugar" (median 791,030, 3 of 8).
+  - Two QA rounds. Round 1: one FAIL (words masked by hits and the final theme) and seven alike runs on the skim test.
+    Round 2: every dead stretch split into 2–3 framings (a sepia 382 flash-forward, three storm framings, a lever, a
+    battery, 1944 close-ups, a NECK/WRIST card, the body at the edge, snap zooms and a flash bulb in 1965, a toilet roll),
+    the end card shrunk so the final image holds, the score ducked 8 dB under the teaser; 19/19, every item 8+.
+  - Lessons: qa.py's visual events need a big whole-frame change (a cut, a flash, a snap zoom); a tag popping in does
+    not count, so give long explainer shots a flash or a snap zoom on the beat. A brand logo in caption style near the
+    caption line reads as part of the caption: tone it down. Any helicopter/rotor bed must end before the next line.
+    A full render of 4:32 (8,160 frames) took 33 min with audio.py running alongside (audio.py alone ~5 min; both at
+    once ~35 min for the mix): run the mix first or accept the slowdown and remux.
 - **space-without-suit**: "What If You Went to Space WITHOUT a Suit? (Second by Second)" · 4:33 · https://youtu.be/KpftORrT9_A · scheduled Sunday 25 Oct 2026 17:30 IST (made 16 Oct 2026)
   - Story: he wants one selfie with the Earth for his niece Pip without the helmet she calls a goldfish bowl, and
     presses DEPRESS thinking it means "take the picture"; the viewer breathes out with him as the clock starts at

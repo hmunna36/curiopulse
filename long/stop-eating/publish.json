@@ -25,12 +25,17 @@
   "cover": "cover.jpg",
   "captions": "stop-eating.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-01T17:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
-    "notifySubscribers": true
+    "notifySubscribers": true,
+    "id": "rPzNcr3Is98",
+    "url": "https://youtu.be/rPzNcr3Is98",
+    "uploaded": "2026-10-23T18:48:10.219Z",
+    "thumbnailSet": true,
+    "captionsSet": true
   }
 }

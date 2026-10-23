@@ -1,7 +1,7 @@
-# What Happens If You Stop Eating? (Day by Day) — long-form (N:NN)
+# What Happens If You Stop Eating? (Day by Day) — long-form (4:32)
 
 **Final file:** `stop-eating.mp4` (not kept in git: it is on YouTube, and `src/build.sh` rebuilds it from this folder)
-MP4 · H.264 High · 1920×1080 (16:9) · 30 fps · AAC 48 kHz stereo · N:NN · −14 LUFS integrated, ≤ −1 dBTP.
+MP4 · H.264 High · 1920×1080 (16:9) · 30 fps · AAC 48 kHz stereo · 4:32 · −14 LUFS integrated, ≤ −1 dBTP.
 Captions for YouTube: [`stop-eating.srt`](stop-eating.srt). Thumbnail: [`cover.jpg`](cover.jpg) (1280×720).
 
 A short animated film in the CurioPulse look. A mountain hut in a blizzard (log walls, an iron stove, a candle that
@@ -148,7 +148,7 @@ blocks where ElevenLabs' alignment had put words in silence.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube | YOUTUBE_LINK | RELEASE_TIME |
+| YouTube | https://youtu.be/rPzNcr3Is98 | scheduled Sunday 1 Nov 2026, 17:30 IST (private until then) |
 
 **Title:** What Happens If You Stop Eating? (Day by Day) (45 characters)
 **Description, chapters, sources, tags:** [`publish.json`](publish.json). The description opens with the title's
@@ -304,7 +304,82 @@ cup of soup, not a feast.
 
 ## Ship review
 
-REVIEW
+Two rounds. The full log (qa.py's numbers, the skim test, the audits, every score with its evidence):
+
+## Round 1 (first full render, 4:32.0)
+
+qa.py: 18/19 pass, 1 FAIL: voice clear of the mix (min −0.6 dB on "week:" at 4:24.8 under the final theme; under 6 dB:
+"Next", "eats", "eating?", "three", "egg.", "something.", "hand."). WARN: visual-event gaps 8.1 s from 0:23.3 (the
+storm), 6.8 s from 3:14.4 and 6.6 s from 3:21.2 (1965), 6.6 s from 2:07.7 (1944), 6.0 s at 3:41 and 2:45.7 (planned:
+midnight and the pulse count); sound gaps 8.3 s from 3:40.3 (planned: midnight), 6.8 s from 1:40.3 (the switch); 3
+still seconds (1:51, 4:27, 4:31); shots over 8 s: pulse 11.6, day6 9.4, toilet 9.1 (pulse and day6 are the planned
+beats). WER 5.2 %. Loudness −14.02 LUFS, −1.70 dBTP.
+
+Skim test (one frame a second): alike runs at 0:00–0:09 (one face, two framings), 0:24–0:31 (the storm in one
+framing), 0:44–0:50 (the stomach close-up), 1:40–1:52 (thirteen frames of the blue diagram), 2:08–2:14 (the 1944 hall
+in one framing), 3:05–3:14 (ten frames of the ruler), 3:42–3:47 (the hut wide at midnight before the unwrap).
+
+| # | Item | Score | Evidence |
+|---|---|---|---|
+| 0 | Film | 7 | want clear at 0:18–0:20 (Pip's chocolate); arc worried → tempted → loved; wordless beats: the grab 0:29.6, the lemon gap, the unwrap 3:47–3:50, the helicopter, the snap 4:19; motif: the bar; but the final image holds only 2 s before the NEXT WEEK card covers it, and the rescue's arm reads as a red bar |
+| 1 | Hook | 8 | The Question; "What happens if you stop eating?" at 0:00 over him biting the lemon; 382 at 0:03.6; the test by 0:07; but nine seconds on one face |
+| 2 | Retention | 6 | the alike runs above; visual gaps 8.1, 6.8, 6.6, 6.6 s |
+| 3 | Story | 8 | three acts on the clock (hour 0 → day 1 → day 5 → day 7); the weirdest fact (once every forty days) and the highest stakes (midnight, the rescue, so was he) in the last 75 s; the button calls back (the mouth waters again) |
+| 4 | Show, don't tell | 8 | every line has its picture; the camera travels to each organ as it is named |
+| 5 | Narration | 8 | performed; deadpan "All he had left... was a lemon."; WER 5.2 % (numerals) |
+| 6 | Comedy | 8 | 11 beats: the fox's grab, the lemon, "Is my chocolate okay?", the echo, "Until dinner.", losing to a fox, the fox fainting, reading the wrapper to the fox, once every forty days, the egg, the bigger half |
+| 7 | Look | 7 | the rescuer's arm; the ruler and the zero graphics sparse; the final image covered |
+| 8 | Sound | 6 | the FAIL above |
+| 9 | Science | 9 | fact-checked; the five corrections in the README |
+| 10 | Packaging | 8 | median 1.76M; title 45 chars; the thumbnail won the shelf test; chapters, tags written |
+| 11 | Subscribe hook | 8 | "Next week: what happens if you stop brushing your teeth. Subscribe..."; pill on screen 3.2 s |
+| 12 | Length | 9 | 4:32 |
+| 13 | Every scene holds | 7 | scene table complete; clock always on; promises every 30 s; the alike runs fail the skim test |
+| 14 | The viewer takes part | 9 | four tests (lemon 0:07, fist 1:09, breath 1:55, pulse 2:40), each paid; description and pinned comment end on the pulse count |
+| 15 | Every second | 6 | the gaps above; three still seconds |
+
+Changes for round 2: the 382 promise becomes its own insert (a sepia flash-forward of the 1965 calendar); the storm
+gets three framings (the walk, the door, the fox's snout at the bag); the stomach gets a second framing at "every
+couple of hours"; the switch opens on a big lever (SUGAR → FAT) and the packed lunch moves into the hut (a window on
+his belly full of lunchboxes); the hunger going quiet ends on his face; 1944 gets a close-up of the half plate and of
+the calendar; the pulse gets a NECK / WRIST card; the edge's second half moves into the body (the fat bubbles going,
+the muscle and the heart going red); midnight gets three framings before the unwrap; the rescuer becomes a person in a
+red jacket and helmet; the NEXT WEEK card shrinks to a corner so the final image holds; the masked words get their
+sounds moved.
+
+## Round 2 (second full render, 4:32.0; then a re-mix re-muxed)
+
+qa.py: 19/19 pass. Voice: mean 22.7 dB, 1 % under 6 dB, min 3.2 dB ("three" at 0:03.3). WARN only: visual-event gaps
+5.9 s from 2:45.8 (the six-second pulse count, planned), 5.6 s, 5.2 s, 5.1 s; sound gaps 8.3 s from 3:40.3 (midnight,
+the planned silence) and 5.2 s; shots over 8 s: pulse 11.6, day6 9.4 (three framings inside), toilet 9.1 (a walk and
+the roll), obsessed 8.4, pantry 8.2, heart 8.0. WER 5.4 % (numerals). −14.02 LUFS, −1.78 dBTP.
+
+Skim test: no eight alike frames except the planned ones: the pulse count 2:41–2:51 (the NECK/WRIST card, then a
+countdown ring that changes every second) and the final image 4:21–4:32, held on purpose (the film bar), with an event
+every 1–2 s (the card, the X, the pill, the click, the two bites). 5-second audit: a payoff in every window outside
+midnight. Leave test: the 382 promise at 0:03, Pip's question at 0:39 and 2:33, "how long could he last" at 2:35,
+midnight at 3:41: a reason to stay at every jump.
+
+| # | Item | Score | Evidence |
+|---|---|---|---|
+| 0 | Film | 8 | want (Pip's bar), arc, five wordless beats, motif the bar; the final image now holds 9 s under a small card and ends on both of them biting their halves |
+| 1 | Hook | 8 | the question at 0:00 over the lemon; a sepia flash-forward with the calendar racing to 382 and a NO FOOD stamp; the test by 0:07 |
+| 2 | Retention | 8 | the round-1 dead stretches are cut into two or three framings each; visual gaps ≤ 5.9 s (one planned) |
+| 3 | Story | 8 | unchanged: three acts on the clock, weirdest fact and highest stakes in the last 75 s, the button calls back |
+| 4 | Show, don't tell | 8 | the lever, the battery, the half plate, the neck/wrist card, the fat going inside the body |
+| 5 | Narration | 8 | unchanged takes; WER 5.4 % |
+| 6 | Comedy | 8 | added: the smug 382 man, the flash bulb, the toilet roll held up, the two bites on "go eat something" |
+| 7 | Look | 8 | the rescuer is a person; the end card no longer covers the final image; tags clear of captions; the wrapper's logo no longer reads as a caption |
+| 8 | Sound | 8 | qa clean; the stamp after "days", the hits moved off words, the score ducks under the teaser |
+| 9 | Science | 9 | unchanged |
+| 10 | Packaging | 8 | unchanged |
+| 11 | Subscribe hook | 8 | teaser + pill + click + bell, audible |
+| 12 | Length | 9 | 4:32 |
+| 13 | Every scene holds | 8 | scene table, clock always on, promise every 30 s, skim test passes |
+| 14 | Viewer takes part | 9 | four tests, each paid |
+| 15 | Every second | 8 | no still or dead second; events every 1–5 s except the planned count and midnight |
+
+Satisfied: ship.
 
 ## Rebuild
 
