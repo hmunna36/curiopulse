@@ -58,7 +58,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Does Your Voice Go DEEP With Fingers in Your Ears? | 33 s | [`videos/voice-deeper`](videos/voice-deeper) | [23 Oct 2026](https://youtube.com/shorts/sFx9o5nAFXE) |
 | Why Can't You Draw a Circle and a Line at the SAME Time? | 32 s | [`videos/circle-line`](videos/circle-line) | [24 Oct 2026](https://youtube.com/shorts/XCPq2xvL02w) |
 | Why Can't Your Tongue Touch Your NOSE? | 32 s | [`videos/tongue-nose`](videos/tongue-nose) | [24 Oct 2026](https://youtube.com/shorts/N1vgcsMvZjI) |
-| Why Can't You See Your Own EYES Move in a Mirror? | 31 s | [`videos/mirror-eyes`](videos/mirror-eyes) | (scheduled) |
+| Why Can't You See Your Own EYES Move in a Mirror? | 31 s | [`videos/mirror-eyes`](videos/mirror-eyes) | [25 Oct 2026](https://youtube.com/shorts/VgHmLADdE7w) |
 
 Each folder has:
 - the finished MP4;

@@ -32,19 +32,34 @@
   "cover": "cover.jpg",
   "captions": "mirror-eyes.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-25T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "VgHmLADdE7w",
+    "url": "https://youtube.com/shorts/VgHmLADdE7w",
+    "uploaded": "2026-10-23T21:27:42.403Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-28T18:30:00+05:30",
     "caption": "Look at your eyes in a mirror. Left eye, right eye. See them move? 👀\nNope. Your brain cuts out every jump, like a sneaky film editor. A selfie camera runs a hair late, so there you can catch them.\nDid you catch them move? Yes or no?\nFollow @curio_pulse_tv for the next one: why some people can make their ears rumble 👂\n#science #brain #eyes #funfacts #reels",
-    "coverTime": 2.0,
-    "shareToFeed": true
+    "coverTime": 2,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-24T03:05:00+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)"
+  },
+  "facebook": {
+    "videoId": "1650532966470898",
+    "publishAt": "2026-10-28T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-23T21:28:45.114Z"
   }
 }

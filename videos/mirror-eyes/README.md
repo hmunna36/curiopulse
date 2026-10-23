@@ -63,24 +63,33 @@ and put the answer at 5.55 s; "Left, right. See them move?" put it at 4.83 s). 4
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | https://www.instagram.com/reel/… | … 06:30 or 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/VgHmLADdE7w | 25 Oct 2026, 11:30 IST (scheduled; cover.jpg also set in Studio's vertical slot) |
+| Instagram Reels | @curio_pulse_tv | 28 Oct 2026, 18:30 IST (Business Suite, Instagram only, cover.jpg as the cover) |
+| Facebook Page | CurioPulse (video 1650532966470898) | 28 Oct 2026, 18:30 IST (`fb.mjs reel`, scheduled natively) |
 
-**Title:** …
+**Title:** Why Can't You See Your Own EYES Move in a Mirror? 👀
 
 **Description:**
-…
+Try it: look at your eyes in a mirror, left eye, right eye. You never see them move (anyone watching you can). Every time your eyes jump, the picture would be one big blurry smear, so your brain cuts that moment out, like a sneaky film editor. Your phone's selfie camera shows its picture a hair late, so on most phones it shows the jump after the cut: there they go. Then your brain probably patches the gap with the next picture, which is why the first tick of a clock you glance at can seem to last too long (the stopped-clock illusion). Your eyes jump about three times a second. Did you catch them move? Yes or no?
 
-**Hashtags:** #Shorts #Science #…
-**Tags:** …
-**Reels caption:** the hook line (the test) … the one-word question about the test … then the Follow line
-**"Next up" comment (posted by the pipeline once the Short is public; pinning is the user's tap):** Next up: … Subscribe so you don't miss it! / the one-word question about the test (the caption's)
-**Playlist:** Why Does Your Body Do That? · Your Brain Is Weird · Strange Nature (one of them)
-**Length arm:** short (30–35 s, every Short since 16 Oct 2026), from `yt.mjs next-slot`: …
-**The viewer's test (rules of 15 Oct 2026):** what the first line tells them to do, and what they feel: …
-**Answer line (spoken, starts by 5 s):** …
-**The loop:** the button line … runs into the hook; no Subscribe pill, nobody says "subscribe"
-**Cover:** [`cover.jpg`](cover.jpg), the … frame at N s.
+Subscribe for a new strange question every day.
+
+#Shorts #Science #Eyes #Brain #BodyTest #FunFacts
+
+**Tags:** see your own eyes move in a mirror, why cant you see your eyes move in a mirror, saccadic masking, saccade, chronostasis, stopped clock illusion, eye movement, brain facts, mirror test, selfie camera eyes, optical illusion, body test, weird body facts, science shorts, try this, curiopulse
+**Reels caption:**
+Look at your eyes in a mirror. Left eye, right eye. See them move? 👀
+Nope. Your brain cuts out every jump, like a sneaky film editor. A selfie camera runs a hair late, so there you can catch them.
+Did you catch them move? Yes or no?
+Follow @curio_pulse_tv for the next one: why some people can make their ears rumble 👂
+#science #brain #eyes #funfacts #reels
+**"Next up" comment (posted by the pipeline once the Short is public; pinning is the user's tap):** Next up: why some people can make their ears rumble 👂 Subscribe so you don't miss it! / Did you catch your eyes move? Yes or no? 👀
+**Playlist:** Your Brain Is Weird
+**Length arm:** short (30–35 s, every Short since 16 Oct 2026), from `yt.mjs next-slot`: the 25 Oct 2026 11:30 IST slot.
+**The viewer's test (rules of 15 Oct 2026):** look from your left eye to your right eye in a mirror: you never see them move (then the selfie camera shows the jump, late); and on screen, snap your eyes to the clock: the first tick hangs.
+**Answer line (spoken, starts at 4.83 s):** "Nope. Your brain cuts out every jump, like a sneaky film editor."
+**The loop:** "It does this three times a second. Not convinced?" runs into "Look at your eyes in a mirror."; no Subscribe pill, nobody says "subscribe".
+**Cover:** [`cover.jpg`](cover.jpg), `SC.cover`: his eyes mid-jump in the mirror, YOU'VE NEVER SEEN / YOUR EYES MOVE.
 
 ## Story and shots
 
