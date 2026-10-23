@@ -769,10 +769,11 @@ async function insights(n, asJson) {
   const media = await graph('GET', `${G}/${t.user_id}/media`, {fields: 'id,caption,timestamp,media_product_type,like_count,comments_count,permalink', limit: String(n)});
   for (const m of media.data ?? []) {
     const row = {id: m.id, at: m.timestamp, type: m.media_product_type, likes: m.like_count, comments: m.comments_count, caption: (m.caption ?? '').split('\n')[0].slice(0, 60), permalink: m.permalink};
-    for (const metrics of ['views,reach,saved,shares,total_interactions,ig_reels_avg_watch_time', 'views,reach,saved,shares,total_interactions', 'reach,saved']) {
+    for (const metrics of ['views,reach,saved,shares,total_interactions,ig_reels_avg_watch_time,ig_reels_video_view_total_time,reels_skip_rate', 'views,reach,saved,shares,total_interactions,ig_reels_avg_watch_time,ig_reels_video_view_total_time', 'views,reach,saved,shares,total_interactions,ig_reels_avg_watch_time', 'views,reach,saved,shares,total_interactions', 'reach,saved']) {
       try {
         const j = await graph('GET', `${G}/${m.id}/insights`, {metric: metrics});
         for (const d of j.data ?? []) row[d.name] = d.values?.[0]?.value ?? d.total_value?.value;
+        delete row.error;
         break;
       } catch (e) {
         row.error = e.message.slice(0, 80);
