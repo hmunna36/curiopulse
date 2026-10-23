@@ -238,6 +238,9 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
   - V violet `#C8A8FF` (the object of the joke: raisins)
   - B blue `#8FB8FF`, S ice `#BFF0FF`, P pink `#FF86A6`
 - `post.noCaptions` for a title card that is itself the caption; `post.capY` to move them.
+- **A cut ends the caption on screen** (timeline_lib ends a chunk at the next shot's start). A cut a moment after a chunk's first
+  word makes it flash and leaves the rest of the line uncaptioned (tongue-nose, 24 Oct 2026: 1.3 s with no caption; qa.py warns
+  "flash by"). Start a shot just before the first word of a chunk (`special = {"side": T.ws[i] - 0.06}`), not after it.
 
 ## The ending: no subscribe cue since 16 Oct 2026 (the Short loops)
 

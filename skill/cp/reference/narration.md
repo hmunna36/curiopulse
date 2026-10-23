@@ -157,6 +157,11 @@ so its caption and cut land late. `T.first_loud(T.block(id)["start"])` (timeline
 word's start there in make_timeline.py when the alignment is more than ~0.1 s later (not after `[chuckles]`/`[sighs]`,
 which make a real sound first). voice.py already stops a word from ending after its own take.
 
+**A whole phrase can be aligned early** (tongue-nose, 24 Oct 2026): after a pause that voice.py tightened, v3 put "It's tied down,
+front and back." up to 0.6 s before the voice (qc_inband read the words at -45 dB: their windows were silence). Compare with the
+speech-band envelope or whisper's word times, then in make_timeline.py `T.retime("It's tied down front and back", t0, t1)` moves the
+words onto the take's own bursts of speech-band energy (one per word, or it leaves them and says so).
+
 Check the answer line and every reveal in the speech band too (time-flies, 9 Oct 2026): `$PYTHON qc_inband.py ../.work`
 lists the words that sit more than 7 dB under the narration's median between 300 Hz and 4 kHz. Jessica's deadpan
 sentence endings drop into her chest: "…in new memories." read −18…−23 dB full band and −33…−35 dB in that band, where a

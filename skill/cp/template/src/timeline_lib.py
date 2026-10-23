@@ -105,6 +105,45 @@ class Timeline:
             t += hop
         return t0
 
+    def bursts(self, t0, t1, thr=-34.0, hop=0.01, gap=0.02, min_len=0.03):
+        """runs of speech-band energy (300-4000 Hz above thr dB) between t0 and t1: [[start, end], ...]. One run per
+        word when the words are separated by stops or breaths (tongue-nose, 24 Oct 2026)."""
+        from scipy.signal import butter, sosfilt
+        x = self.audio.mean(1) if self.audio.ndim > 1 else self.audio
+        y = sosfilt(butter(4, [300, 4000], btype="band", fs=self.sr, output="sos"), x)
+        runs, cur, t = [], None, t0
+        while t < t1:
+            seg = y[int(t * self.sr):int((t + hop) * self.sr)]
+            loud = len(seg) and 20 * np.log10(np.sqrt((seg ** 2).mean()) + 1e-12) > thr
+            if loud:
+                cur = [t, t + hop] if cur is None else [cur[0], t + hop]
+            elif cur is not None:
+                runs.append(cur); cur = None
+            t += hop
+        if cur is not None:
+            runs.append(cur)
+        merged = []
+        for r in runs:
+            if merged and r[0] - merged[-1][1] < gap:
+                merged[-1][1] = r[1]
+            else:
+                merged.append(list(r))
+        return [r for r in merged if r[1] - r[0] >= min_len]
+
+    def retime(self, phrase, t0, t1, **kw):
+        """v3's alignment can run up to 0.6 s early inside a block after a tightened pause (tongue-nose, 24 Oct 2026:
+        "It's tied down, front and back."). If the bursts between t0 and t1 are exactly one per word of `phrase`,
+        move those words onto them (start 0.04 s before each burst, for the consonant) and return True."""
+        i, n = self.find(phrase), len(phrase.split())
+        b = self.bursts(t0, t1, **kw)
+        if len(b) != n:
+            print(f"retime {phrase!r}: {len(b)} bursts for {n} words, left as it was")
+            return False
+        for k, (a, e) in enumerate(b):
+            self.ws[i + k] = self.words[i + k]["start"] = round(a - 0.04, 3)
+            self.we[i + k] = self.words[i + k]["end"] = round(e, 3)
+        return True
+
     @property
     def duration(self):
         return fr(self.we[-1] + self.tail)

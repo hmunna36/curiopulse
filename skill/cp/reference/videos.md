@@ -50,6 +50,7 @@
 | `wiggle-ears`: "Why Can't Most People WIGGLE Their Ears? 👂" | 31 s (short arm) | https://youtube.com/shorts/2cczUGi_viI · 23 Oct 2026 11:30 IST | Instagram API queue (route C, GitHub Actions), 26 Oct 2026 18:30 IST; the Facebook Page by `fb.mjs reel` for the same slot (video 2550794872062500) |
 | `voice-deeper`: "Why Does Your Voice Go DEEP With Fingers in Your Ears? 👂" | 33 s (short arm) | https://youtube.com/shorts/sFx9o5nAFXE · 23 Oct 2026 23:30 IST | Business Suite, Instagram only, 26 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1182658574352853) |
 | `circle-line`: "Why Can't You Draw a Circle and a Line at the SAME Time? ⭕" | 32 s (short arm) | https://youtube.com/shorts/XCPq2xvL02w · 24 Oct 2026 11:30 IST | Business Suite, Instagram only, 27 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1683671889986244) |
+| `tongue-nose`: "Why Can't Your Tongue Touch Your NOSE? 👅" | 32 s (short arm) | https://youtube.com/shorts/N1vgcsMvZjI · 24 Oct 2026 23:30 IST | Business Suite, Instagram only, 27 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1408682721153792) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -2068,4 +2069,40 @@ topic of the Queue, put there by the 00:00 run as the kin of the foot-switch hit
   three takes each by their last words; quota.mjs read 44,168 before and 43,699 after.
 - Two QA rounds (round 1: look 7.5 for the frowning halves; the bend moved earlier to land by ~3 s); the final MP4 is build.sh's from a
   fresh work folder (byte-identical; 18/18, WER 0.0 %, voice mean 27.3 dB). About 4.4 minutes a render.
+
+**tongue-nose** (24 Oct 2026, nightly /cp next, 00:00-01:25 IST; short arm, 72 words -> 32.17 s; hook formula: The Question, the
+search question as the test, "Can you touch your nose with your tongue? Try it." (after Direct Address, Direct Address, Statistic);
+answer "Close, right? Your tongue's on a LEASH." at 3.13 s; YouTube N1vgcsMvZjI, 24 Oct 23:30 IST, playlist Why Does Your Body Do That?;
+Instagram (Business Suite, Instagram only) and the Facebook Page (fb.mjs) 27 Oct 21:00 IST):
+- **A hit read on Instagram:** the Vulcan-salute Reel had 823,921 views by 24 Oct 00:05 (Business Suite → Published; the Reels round it
+  1.6K-3.1K), so the tongue test (the same "can you make this part of you do it?" kind) was taken ahead of the Queue's first line.
+  **Mind the teaser already promised:** circle-line's Reel caption says "the next one: why you can't see your own eyes move in a mirror",
+  so that topic was kept straight after this one (one Reel late rather than three).
+- **A tongue reaching UP, seen from the front (new `reach.js`, `tnTongueUp`):** the first version (tip under the nose, inside the open
+  mouth) read as a pink blob in the mouth. What reads: the rig's jaw dropped (`face.jaw` 0.45 with the mouth open), the tongue WIDER than
+  the mouth opening so it covers the upper lip, its underside (two blue veins, the fold, the strap to the floor of the mouth), a dark
+  edge, darker where it leaves the lips and lighter at the tip (coming at us), a little summit flag on the nose tip as the target.
+  Strain marks beside the mouth read as cat whiskers: a sweat drop running down the temple instead.
+- **The side view as glass (new `side.js`, `sdSection`):** the head in profile in section units placed by `SDW`, the tongue as a middle
+  line with a thickness profile (`sdTongueLine`, `sdAt` gives point, normal, half-thickness), the jaw and the throat bone, ties drawn as
+  curves that straighten when `taut`, rings that squeeze it thinner and longer, a dashed bone struck out. Show the whole head first
+  (zoom ~1.4), then travel to the strap, the throat bone, the tip. **Light the parts by where they anchor:** the fan from the inside of
+  the chin is a FRONT tie, only the cords to the throat bone are BACK.
+- **v3's alignment ran 0.6 s early** inside a block after a tightened pause ("It's tied down, front and back."): qc_inband read
+  "tied" at -45 dB in its window; the speech-band envelope and whisper put the words later. make_timeline.py now re-times such words
+  from the take's own bursts (`_bursts`: runs above -34 dB in 300-4000 Hz, 10 ms hops, gaps under 20 ms merged).
+- **A cut inside a caption chunk cuts the caption short:** timeline_lib ends a chunk at a cut, so a cut 0.12 s after "IT'S TIED" made it
+  flash and left 1.3 s uncaptioned (qa.py's "flash by" warning; round 1). Put a cut just before the chunk's first word.
+- **The effects bus is peak-normalised, beds included:** a continuous strain rumble on the bed bus (x0.5) was the bus's peak and pushed
+  every gag down to -27...-30 dB; at x0.06 they sat at -18...-25.
+- **The glow layer in screen space already has the 0.5 scale** (`screenSpace()` sets it): pass full-resolution coordinates to
+  `softDot(gctx, ...)`; halving them put the glows in the wrong place.
+- **The crowd of ten (`tnMini`):** a miss and a reach look the same at 170 px unless the misses fall clearly short (reach 0.4-0.65) and
+  a winner overlaps the nose with a small spark.
+- Studio's vertical thumbnail slot showed an automatic frame (the side view): cover.jpg uploaded there, saved (direct URL, no switcher).
+- Voice: one take per block, no retakes (419 characters; quota.mjs read 41,856 before). Research through WebSearch/WebFetch (Firecrawl
+  not used); the 8-10 % / 50 % figures trace to Letourneau 2001 via Kaurani 2014 and BMJ 2014; De Felice 2001 (no strap in EDS) left out
+  as disputed.
+- Two QA rounds (round 1: retention 7.5 for the caption cut); the final MP4 is byte-identical to build.sh's from a fresh work folder
+  (18/18, WER 0.0 %, voice mean 26.3 dB). About 3.8 minutes a render.
 
