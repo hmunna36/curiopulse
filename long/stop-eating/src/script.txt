@@ -1,0 +1,129 @@
+# Narration for "What Happens If You Stop Eating? (Day by Day)" (long-form: 4:00-5:00, never over 5:15)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there, not in
+# the take. [tags] are v3 performance directions; they are not spoken and never captioned. tighten=0 keeps the
+# take's own pauses (jokes and reveals). tempo: explanations 1.03-1.06, jokes and reveals 1.00.
+# The film: on the way down from the summit shop with Pip's favourite chocolate, the hiker is snowed into an empty hut,
+# and a fox steals his food bag. His last meal is a lemon (the viewer bites one in their head: the first test). The
+# radio says the storm could last a week; every night Pip asks one thing: "Is my chocolate okay?" The clock counts the
+# hours, then the days since his last meal: the growl (the stomach cleaning), hunger as an alarm clock that goes quiet,
+# the liver's one-day pantry (the viewer's fist), the switch to fat on day three (the viewer's breath), the Minnesota
+# men of 1944, the viewer's pulse and the heart that shrinks, the edge (a month or two), Angus Barbieri's 382 days.
+# On day six he unwraps the chocolate at midnight... and wraps it back up. Day seven: the storm breaks, a cup of soup
+# (the viewer's mouth waters again), and at home Pip's question turns out to have been about him. She gives him the
+# bigger half. Wordless beats: the fox takes the bag (after `storm`), the chocolate unwrapped and wrapped again (in the
+# gap before `wrap`), the helicopter's light (before `rescue`), Pip breaking the bar (before `half`), the final image.
+
+## hook gap=0.10 tighten=0.22 tempo=1.04
+What happens if you stop eating? One man lasted three hundred and eighty-two days. But first... bite a lemon. In your head. Now.
+
+## water gap=0.55 tempo=1.03
+Your mouth just watered, right? That's your body getting ready for food... from a thought. Now imagine the food never comes.
+
+## want gap=0.45 tempo=1.04
+He climbed the mountain for one thing: Pip's favourite chocolate, from the shop at the top.
+
+## storm gap=0.35 tempo=1.03
+On the way down, a storm hit. He made it to an empty hut... and a fox made it to his food bag.
+
+## lemon gap=1.60 tighten=0 tempo=1.00
+[deadpan] All he had left... was a lemon.
+
+## radio gap=0.50 tempo=1.03
+The radio says the storm could last a week. And Pip has one question: "Is my chocolate okay?"
+
+## growl gap=0.70 tempo=1.03
+Hour four. His stomach growls. It's not asking for food... it's cleaning. Every couple of hours, an empty stomach squeezes out the leftovers. With nothing in there... it echoes.
+
+## alarm gap=0.55 tempo=1.03
+Hour six. Lunchtime... and here comes the hunger, right on time. It's not a fuel gauge. It's an alarm clock: your body learned when you eat.
+
+## snooze gap=0.40 tighten=0 tempo=1.00
+Ignore it... and it goes quiet. Until dinner.
+
+## fist gap=0.60 tempo=1.03
+Make a fist. Squeeze. Your muscles keep sugar for themselves. Your brain lives on the stash in your liver... about one day's worth.
+
+## hangry gap=0.55 tempo=1.02
+Hour eighteen. The stash is almost gone, and he just lost an argument... with a fox.
+
+## easy gap=0.80 tighten=0.5 tempo=1.00
+Day one. And this... is the easy part.
+
+## borrow gap=0.70 tempo=1.03
+Day two. The brain still needs sugar, so the body makes some... from protein. Remember your fist? It's borrowing from muscle.
+
+## switch gap=0.55 tempo=1.04
+Day three: the big switch. The liver starts turning fat into a new fuel... and the brain starts running on it.
+
+## lunch gap=0.45 tempo=1.03
+Turns out, your body packed a lunch: weeks of it, as fat. That chocolate bar? About a tenth of one day.
+
+## breath gap=0.65 tempo=1.02
+Breathe on your hand. Smell it. Nail polish remover? No? By day three... his breath is.
+
+## quiet gap=0.80 tempo=1.03
+And the weirdest part? For a lot of people, the hunger... gets quieter.
+
+## minnesota gap=0.55 tempo=1.04
+In 1944, thirty-six volunteers in Minnesota ate half their usual food for six months, so doctors could learn to feed a starving Europe.
+
+## obsessed gap=0.40 tempo=1.03
+Their minds changed most. They read cookbooks like novels, dreamed about food... and chewed gum by the pack.
+
+## day5 gap=0.60 tempo=1.02
+Day five. He's read the chocolate wrapper eleven times. Now he reads it... to the fox.
+
+## pip2 gap=0.55 tempo=1.03
+Pip, on the radio: "Is my chocolate okay?"
+
+## edge gap=0.65 tempo=1.03
+So how long could he last? Nobody's allowed to find out. Here's why.
+
+## pulse gap=0.55 tempo=1.03
+Find your pulse, on your neck or wrist. Count the beats for six seconds... go.
+
+## zero gap=6.00 tempo=1.03
+Add a zero. That's your heart rate: most people get sixty to a hundred.
+
+## heart gap=0.50 tempo=1.03
+The Minnesota men, by the end? About thirty-five. A heart is a muscle... and a starving body eats muscle.
+
+## limit gap=0.55 tempo=1.04
+With water, most healthy people would last one to two months. After the fat runs out, the body eats its own protein... and in the end, the heart.
+
+## barbieri gap=0.65 tempo=1.04
+Except one man. In 1965, Angus Barbieri weighed over two hundred kilos. With doctors watching, he lived on water and vitamins... for three hundred and eighty-two days.
+
+## toilet gap=0.45 tempo=1.02
+He lost a hundred and twenty-five kilos. And he went to the toilet... about once every forty days.
+
+## egg gap=0.70 tempo=1.02
+His first meal? One boiled egg.
+
+## day6 gap=0.80 tighten=0 tempo=1.00
+Day six. Midnight. The worst of the storm. He unwraps the chocolate...
+
+## wrap gap=2.40 tighten=0 tempo=1.00
+...and wraps it back up.
+
+## rescue gap=1.20 tempo=1.02
+Day seven. The storm breaks.
+
+## soup gap=1.60 tempo=1.03
+The rescuers hand him a cup of soup. Your mouth just watered again, didn't it? So did his.
+
+## slow gap=0.40 tempo=1.04
+Just a cup: after days without food, the first meals start small.
+
+## home gap=0.70 tempo=1.02
+At home, he hands Pip her chocolate. Not one bite missing.
+
+## reveal gap=0.70 tighten=0 tempo=1.00
+Every night, she'd asked about the chocolate. Because if the chocolate was okay... so was he.
+
+## half gap=2.20 tighten=0 tempo=1.00
+She gives him the bigger half.
+
+## sub gap=2.40 tempo=1.03
+Next week: what happens if you stop brushing your teeth. Subscribe... and go eat something.

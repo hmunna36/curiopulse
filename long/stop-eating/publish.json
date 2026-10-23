@@ -1,0 +1,20 @@
+{
+  "slug": "stop-eating",
+  "kind": "long",
+  "file": "stop-eating.mp4",
+  "title": "",
+  "description": "",
+  "pinnedComment": "Next week: <teaser from topics.md> Subscribe so you do not miss it!\n<the one-word or one-number question about the viewer's test, e.g. How many seconds did you last?> (suggestion for the user to pin; never posted by the pipeline)",
+  "tags": [],
+  "cover": "cover.jpg",
+  "captions": "stop-eating.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true
+  }
+}
