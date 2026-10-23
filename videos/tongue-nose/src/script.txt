@@ -1,0 +1,44 @@
+# Narration for "Why Can't Your Tongue Touch Your NOSE? 👅"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The Subscribe pill plays silently over the last 3.4 s.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+#   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
+
+## hook gap=0.10 tempo=1.00
+Can you touch your nose with your tongue? Try it.
+
+## answer gap=0.50 tighten=0.5 tempo=1.00
+Close, right? Your tongue's on a LEASH.
+
+## leash gap=0.35 tempo=1.04
+Lift your tongue... feel that tug underneath? It's tied down, front and back.
+
+## squeeze gap=0.30 tempo=1.04
+No bones inside, so it stretches by squeezing itself skinny. That's why yours went POINTY.
+
+## payoff gap=0.35 tempo=1.02
+Only long, stretchy tongues make it... about one in ten.
+
+## weird gap=0.35 tempo=1.02
+[excited] Doctors even named it! Half of people born super-bendy can.
+
+## showoff gap=0.50 tighten=0.45 tempo=1.00
+Made it? Show-off.
+
+## button gap=0.40 tighten=0.45 tempo=1.00
+Didn't? One more try.
