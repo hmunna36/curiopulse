@@ -43,7 +43,7 @@ drawFace = function (c, f, pal) {
       const a = Math.PI * (0.12 + 0.76 * rng()), rr = 46 + 20 * rng();
       const x = Math.cos(a) * rr * 0.95, y = Math.sin(a) * rr * 0.8 + 12;
       if (y < 30 || Math.abs(x) < 18 && y < 52) continue;
-      circle(c, x, y, 1.6, `rgba(60,36,28,${0.5 * st})`);
+      circle(c, x, y, 1.25, `rgba(70,44,34,${0.38 * st})`);
     }
   }
   const bg = f.bags || 0;
@@ -492,12 +492,12 @@ function hutHero(cam, t, h = {}) {
   const wr = r.wrR, d = r.armDirR;
   if (h.lemon && h.lemon.k > 0.01) {   // the hand with the lemon in front of his mouth
     const L = h.lemon, hx = wr[0] + d[0] * 16, hy = wr[1] + d[1] * 16;
-    lemonHalf(lctx, hx - 6, hy - 22, 0.62, t, { bite: L.bite || 0, rind: L.rind || 0, rot: -0.5 });
-    hutFist(lctx, hx, hy, 1.0, -0.4);
+    lemonHalf(lctx, hx - 10, hy - 34, 0.95, t, { bite: L.bite || 0, rind: L.rind || 0, rot: -0.5 });
+    hutFist(lctx, hx + 4, hy + 4, 1.1, -0.4);
   }
   if ((h.fist || 0) > 0.01) {          // his right fist, squeezing (it shakes a little and the knuckles whiten)
     const sq = h.fist, hx = wr[0] + d[0] * 18, hy = wr[1] + d[1] * 18;
-    hutFist(lctx, hx + sq * 1.5 * Math.sin(t * 40), hy, 1.5, -1.5, sq);
+    hutFist(lctx, hx + sq * 1.5 * Math.sin(t * 40), hy, 2.0, -1.5, sq);
   }
   if ((h.pulse || 0) > 0.01) {         // two fingers pressed on his neck
     const hx = wr[0] + d[0] * 6, hy = wr[1] + d[1] * 6, k = clamp(h.pulse);

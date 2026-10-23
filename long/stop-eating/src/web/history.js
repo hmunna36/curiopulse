@@ -32,7 +32,16 @@ function hsPerson(t, pal, o) {
     headDX: o.headDX || 0, headDY: o.headDY || 0, headRot: o.headRot || 0 };
   ctx.save();
   if (o.sx && o.sx !== 1) { ctx.translate(o.x, 0); ctx.scale(o.sx, 1); ctx.translate(-o.x, 0); }
+  if ((o.belly || 0) > 0.01) {   // a big round belly that shows past the sides of the coat (a heavy man)
+    const bk = o.belly, by = o.y + (st.pose.hipY - 60) * st.s;
+    ellipse(ctx, o.x, by, 120 * bk * st.s, 125 * bk * st.s, pal.coatSh); ellipse(ctx, o.x - 6 * st.s, by - 4 * st.s, 112 * bk * st.s, 118 * bk * st.s, pal.coat);
+  }
   const r = drawCharacter(ctx, st, t, pal);
+  if ((o.belly || 0) > 0.01) {   // the belly's front over the coat, between the arms
+    const bk = o.belly, by = o.y + (st.pose.hipY - 50) * st.s;
+    ellipse(ctx, o.x, by, 70 * bk * st.s, 80 * bk * st.s, pal.coat);
+    for (let i = 0; i < 3; i++) circle(ctx, o.x + 8 * st.s, by - 50 * bk * st.s + i * 40 * bk * st.s, 5 * st.s, pal.coatDk);
+  }
   if (o.post) { ctx.save(); ctx.translate(st.x, st.y); ctx.scale(st.s, st.s); o.post(ctx, r, st); ctx.restore(); }
   ctx.restore();
   return r;
@@ -192,6 +201,6 @@ function bbEgg(x, y, s, k, t) {
   ellipse(ctx, -14, -50, 10, 18, 'rgba(255,255,255,0.9)', -0.3);
   ctx.beginPath(); ctx.moveTo(-30, -82); ctx.lineTo(-30, -112); ctx.lineTo(-15, -96); ctx.lineTo(0, -118); ctx.lineTo(15, -96); ctx.lineTo(30, -112); ctx.lineTo(30, -82); ctx.closePath(); ctx.fillStyle = '#FFD447'; ctx.fill();
   ctx.restore();
-  softDot(gctx, x, y - 40 * s, 160 * s * kk, '#FFE6A0', 0.5 * kk);
+  softDot(gctx, x, y - 40 * s, 90 * s * kk, '#FFE6A0', 0.12 * kk);
   for (let i = 0; i < 5; i++) { const a = t * 0.8 + i * 1.256, r = 110 * s; const sx = x + Math.cos(a) * r, sy = y - 40 * s + Math.sin(a) * r * 0.6; line(ctx, sx - 8, sy, sx + 8, sy, 3, `rgba(255,240,180,${kk})`); line(ctx, sx, sy - 8, sx, sy + 8, 3, `rgba(255,240,180,${kk})`); }
 }

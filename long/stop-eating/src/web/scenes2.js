@@ -16,7 +16,7 @@ SC.borrow = (lt, t, shot) => {
   const k = ramp(t, c.makes - 0.3, c.makes + 0.6, E.inOutCubic);
   const V = ibMix(ibView([0, -380], [960, 470], 1.9), ibView([-170, -150], [960, 520], 1.7), k);
   const fl = ramp(t, c.makes, c.makes + 0.5);
-  ibBody(V, t, { flex: 1, liver: { fill: 0.04 + 0.3 * fl, glow: 1 }, arm: { flow: fl }, muscle: { lit: 0.4 * fl, shrink: 0.4 * ramp(t, c.makes, shot.end + 4) }, straw: { flow: 0.3 + 0.7 * fl }, brain: { mood: fl > 0.5 ? 'sip' : 'worry' } });
+  ibBody(V, t, { flex: 1, liver: { fill: 0.08 + 0.25 * fl, glow: 1 }, arm: { flow: fl }, muscle: { lit: 0.4 * fl, shrink: 0.4 * ramp(t, c.makes, shot.end + 4) }, straw: { flow: 0.3 + 0.7 * fl }, brain: { mood: fl > 0.5 ? 'sip' : 'worry' } });
   screenSpace();
   tagPill('STILL NEEDS SUGAR', 1380, 220, pk(t, c.stillNeeds) * (1 - ramp(t, c.makes - 0.2, c.makes)), '#FF86A6', 48);
   tagPill('PROTEIN → SUGAR', 1380, 220, pk(t, c.protein - 0.1), '#FF8A9A', 52);
@@ -40,7 +40,7 @@ SC.switch = (lt, t, shot) => {
   const k1 = ramp(t, c.fatW - 0.3, c.fatW + 0.5, E.inOutCubic), k2 = ramp(t, c.running - 0.5, c.running + 0.3, E.inOutCubic);
   const V = ibMix(ibMix(ibView([0, -60], [960, 540], 1.05), ibView([-50, 60], [960, 480], 1.7), k1), ibView([0, -330], [960, 470], 1.6), k2);
   const gr = ramp(t, c.running - 0.2, c.running + 0.4);
-  ibBody(V, t, { flex: 0, fat: { glow: 0.5 * k1, flow: k1, shrink: 0.2 * k1 }, liver: { fill: 0.02, cook: k1, glow: 1 }, straw: { flow: 1, green: gr }, brain: { mood: gr > 0.5 ? 'happy' : 'calm', green: gr, lit: 1 } });
+  ibBody(V, t, { flex: 0, fat: { glow: 0.5 * k1, flow: k1, shrink: 0.2 * k1 }, liver: { fill: 0.06, cook: k1, glow: 1 }, straw: { flow: 1, green: 0.55 * gr }, brain: { mood: gr > 0.5 ? 'happy' : 'calm', green: 0.6 * gr, lit: 1 } });
   screenSpace();
   stampWord('SWITCH!', 960, 190, 130, '#4DFFB4', pk(t, c.bigSwitch) * (1 - ramp(t, c.fatW - 0.2, c.fatW)), -0.06);
   tagPill('FAT → NEW FUEL', 1420, 240, pk(t, c.newFuel - 0.1) * (1 - ramp(t, c.running - 0.4, c.running - 0.1)), '#4DFFB4', 52);
@@ -54,7 +54,7 @@ SC.lunch = (lt, t, shot) => {
   if (t < c.chocBarW - 0.15) {
     darkBg('#061A22', '#010608'); screenSpace();
     const V = ibView([0, 120], [960, 470], 1.9 + 0.15 * ramp(lt, 0, 3));
-    ibBody(V, t, { flex: 0, fat: { glow: 1, lunch: ramp(t, c.packed, c.packed + 1.0) }, liver: { fill: 0.02, cook: 0.6 }, straw: { flow: 1, green: 1 }, brain: { mood: 'happy', green: 1 } });
+    ibBody(V, t, { flex: 0, fat: { glow: 1, lunch: ramp(t, c.packed, c.packed + 1.0) }, liver: { fill: 0.06, cook: 0.6 }, straw: { flow: 1, green: 0.55 }, brain: { mood: 'happy', green: 0.6 } });
     screenSpace();
     tagPill('WEEKS OF FUEL', 960, 160, pk(t, c.weeks), '#FFD447', 64);
     return bodyPost();
@@ -95,7 +95,7 @@ SC.breath = (lt, t, shot) => {
   }
   // the fox gets a whiff
   const cam = driftCam(ptCam([HUT.winX + HUT.winW * 0.55, HUT.winY + HUT.winH * 0.62], 2.1, 1060, 560), lt);
-  const wh = ramp(t, c.hisBreath + 0.1, c.hisBreath + 0.4), drop = ramp(t, c.hisBreath + 0.9, c.hisBreath + 1.4, E.inCubic);
+  const wh = ramp(t, c.hisBreath + 0.1, c.hisBreath + 0.35), drop = ramp(t, c.hisBreath + 0.65, c.hisBreath + 1.05, E.inCubic);
   hutNow(cam, t, { fox: { face: drop > 0.3 ? 'faint' : wh > 0.3 ? 'shock' : 'sly', dy: 260 * drop, tilt: 0.6 * drop, ears: 1 }, hero: { face: FACES.sniff, sniff: 1, L: HUT_ARMS.rest.L, R: HUT_ARMS.sniff.R } });
   // a green whiff drifting to the window
   const hp = toScreen(cam, ...hutHead({}));
@@ -132,11 +132,24 @@ SC.minnesota = (lt, t, shot) => {
   mnTable(); for (let i = 0; i < 4; i++) mnPlate(300 + i * 420, MN.tableY + 18, 1);
   hsSepia(0.8); hsFilm(t);
   screenSpace();
-  stampWord('1944', 300, 200, 150, '#FFE6B0', pk(t, c.y1944), -0.08);
+  stampWord('1944', 330, 330, 150, '#FFE6B0', pk(t, c.y1944), -0.08);
   tagPill('36 VOLUNTEERS', 960, 150, pk(t, c.thirtysix) * (1 - ramp(t, c.halfFood - 0.2, c.halfFood)), '#FFE6B0', 52);
   tagPill('HALF THE FOOD', 960, 150, pk(t, c.halfFood) * (1 - ramp(t, c.sixMonths - 0.2, c.sixMonths)), '#FFE6B0', 52);
   tagPill('6 MONTHS', 960, 150, pk(t, c.sixMonths), '#FFE6B0', 58);
-  stampWord('TO FEED EUROPE', 1300, 330, 90, '#FF9A3C', pk(t, c.europe) * (1 - ramp(t, shot.end - 0.2, shot.end)), 0.06);
+  return hutPost({ glow: 0.5 });
+};
+// "...so doctors could learn to feed a starving Europe." closer: the scale under one of them, its needle sinking a
+// quarter of the way down; TO FEED EUROPE stamps across
+SC.minnesota2 = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  applyCam(driftCam({ x: 1240, y: 540, zoom: 1.8 + 0.1 * ramp(lt, 0, D), rot: 0 }, lt));
+  mnRoom(t, { month: 'MAY', crossed: 20 });
+  hsPerson(t, HS_PALS[1], { x: 1120, y: 860, s: 0.72, pose: POSES.stand, face: FACES.tired, seed: 4 });
+  hsScale(1380, 880, 0.8, lerp(70, 52, ramp(lt, 0, D, E.inOutSine)), t, { lo: 0, hi: 100 });
+  hsSepia(0.8); hsFilm(t);
+  screenSpace();
+  tagPill('−25%', 1450, 330, pk(t, shot.start + 0.6), '#FF9A3C', 64);
+  stampWord('TO FEED EUROPE', 640, 420, 100, '#FF9A3C', pk(t, c.europe), 0.06);
   return hutPost({ glow: 0.5 });
 };
 // "Their minds changed most. They read cookbooks like novels, dreamed about food... and chewed gum by the pack." close
@@ -183,6 +196,6 @@ SC.pip2 = (lt, t, shot) => {
   const rp = toScreen(cam, HUT.radioX - 34, HUT.tableY - 30);
   radioWaves(rp[0], rp[1], cam.zoom * 0.9, t, ramp(t, c.pip2, c.pip2 + 0.2));
   screenSpace();
-  pipCall(1400, 280, pk(t, c.chocOK2 - 0.3), t, 'IS MY CHOCOLATE OK?', { face: FACES.worried });
+  pipCall(1560, 280, pk(t, c.chocOK2 - 0.3), t, 'IS MY CHOCOLATE OK?', { face: FACES.worried, left: true });
   return hutPost();
 };

@@ -57,9 +57,10 @@ function pipCall(x, y, k, t, txt, o = {}) {
   pipDisc(x, y, 92, t, o.face || FACES.happy);
   if (txt) {
     ctx.font = '900 52px Montserrat';
-    const w = ctx.measureText(txt).width + 70, bx = x + 130, by = y - 60;
+    const w = ctx.measureText(txt).width + 70, bx = o.left ? x - 130 - w : x + 130, by = y - 60;
     rrect(ctx, bx, by - 52, w, 104, 40); ctx.fillStyle = '#FFFFFF'; ctx.fill();
-    ctx.beginPath(); ctx.moveTo(bx + 20, by + 30); ctx.lineTo(bx - 30, by + 70); ctx.lineTo(bx + 60, by + 40); ctx.closePath(); ctx.fill();
+    if (o.left) { ctx.beginPath(); ctx.moveTo(bx + w - 20, by + 30); ctx.lineTo(bx + w + 30, by + 70); ctx.lineTo(bx + w - 60, by + 40); ctx.closePath(); ctx.fill(); }
+    else { ctx.beginPath(); ctx.moveTo(bx + 20, by + 30); ctx.lineTo(bx - 30, by + 70); ctx.lineTo(bx + 60, by + 40); ctx.closePath(); ctx.fill(); }
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#C8346A'; ctx.fillText(txt, bx + 35, by + 2);
   }
   ctx.restore();
@@ -71,21 +72,33 @@ function pipCall(x, y, k, t, txt, o = {}) {
 // again, puckers hard, juice sprays; the badge asks the viewer to do it in their head.
 SC.hook = (lt, t, shot) => {
   const c = cu();
-  const bite1 = ramp(lt, 0, 0.25), bite2 = ramp(t, c.now - 0.15, c.now + 0.1);
-  const sour = Math.max(0.6 + 0.4 * kick(t, 0.05, 2), ramp(t, c.now, c.now + 0.25));
-  const push = 2.9 + 0.25 * ramp(lt, 0, shot.end - shot.start, E.inOutSine) + 0.35 * kick(t, c.now, 4);
+  const bite1 = ramp(lt, 0, 0.25);
+  const sour = clamp(0.55 + 0.45 * kick(t, 0.05, 1.5));
+  const push = 2.9 + 0.3 * ramp(lt, 0, shot.end - shot.start, E.inOutSine);
   let cam = hutHeadCam(push, 760, 470);
-  cam = shakeCam(cam, t, 3 + 10 * kick(t, c.now, 5) + 8 * kick(t, c.n382, 5));
-  hutNow(cam, t, { lemon: null, hero: { face: lerpFace(FACES.calm, FACES.sour, clamp(sour)), L: HUT_ARMS.rest.L, R: HUT_ARMS.lemon.R, lemon: { k: 1, bite: 0.35 + 0.5 * bite2 }, headRot: -0.05 * sour, headDY: -2 * bite1 } });
+  cam = shakeCam(cam, t, 3 + 8 * kick(t, c.n382, 5));
+  hutNow(cam, t, { lemon: null, hero: { face: lerpFace(FACES.calm, FACES.sour, sour), L: HUT_ARMS.rest.L, R: HUT_ARMS.lemon.R, lemon: { k: 1, bite: 0.35 }, headRot: -0.05 * sour, headDY: -2 * bite1 } });
   const hp = toScreen(cam, ...hutHead({}));
   lemonSpray(hp[0] + 40, hp[1] + 70, cam.zoom * 0.5, ramp(lt, 0, 0.6), 3);
-  lemonSpray(hp[0] + 40, hp[1] + 70, cam.zoom * 0.6, ramp(t, c.now, c.now + 0.7), 5);
   screenSpace();
   // the calendar page: 382 DAYS
-  const pg = pk(t, c.n382 - 0.05, 0.35) * (1 - ramp(t, c.bite - 0.3, c.bite));
+  const pg = pk(t, c.n382 - 0.05, 0.35);
   if (pg > 0.01) { ctx.save(); ctx.translate(1440, 430); ctx.rotate(0.08); ctx.scale(pg, pg); bbCalendar(0, 0, 0.95, 382, 0, t, { top: 'NO FOOD FOR', red: true }); ctx.restore(); }
+  return hutPost({ zblur: 0.05 * (1 - ramp(lt, 0, 0.4)) });
+};
+// "But first... bite a lemon. In your head. Now." a cut in closer: the lemon at his lips; the badge asks the viewer to do
+// it in their head; on "Now" he bites hard, puckers, the juice sprays and the camera kicks
+SC.bite = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const bite2 = ramp(t, c.now - 0.15, c.now + 0.1), sour = Math.max(0.35, ramp(t, c.now, c.now + 0.25));
+  let cam = ptCam(hutPt([20, -250]), 4.0 + 0.3 * ramp(lt, 0, D, E.inOutSine) + 0.4 * kick(t, c.now, 4), 900, 470);
+  cam = shakeCam(cam, t, 3 + 12 * kick(t, c.now, 5));
+  hutNow(cam, t, { lemon: null, hero: { face: lerpFace(FACES.hungry, FACES.sour, clamp(sour)), L: HUT_ARMS.rest.L, R: HUT_ARMS.lemon.R, lemon: { k: 1, bite: 0.5 + 0.35 * bite2 }, headRot: -0.05 * sour } });
+  const hp = toScreen(cam, ...hutHead({}));
+  lemonSpray(hp[0] + 40, hp[1] + 70, cam.zoom * 0.6, ramp(t, c.now, c.now + 0.7), 5);
+  screenSpace();
   testBadge(['TRY IT', 'BITE A LEMON', 'IN YOUR HEAD'], ramp(t, c.bite - 0.1, c.bite + 0.25) * (1 - ramp(t, shot.end - 0.25, shot.end)));
-  return hutPost({ zblur: 0.05 * (1 - ramp(lt, 0, 0.4)) + 0.04 * kick(t, c.now, 6), flash: 0.18 * kick(t, c.now, 8) });
+  return hutPost({ zblur: 0.04 * kick(t, c.now, 6), flash: 0.18 * kick(t, c.now, 8) });
 };
 // "Your mouth just watered, right?" a round window opens on his cheek: inside, two little taps turn on and spit pours;
 // his mouth waters (a drool drop); a tick: the viewer's own result
@@ -131,7 +144,7 @@ function mouthTaps(x, y, R, t, flow, hp) {
 SC.ready = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   darkBg('#0A1A3A', '#02040C'); screenSpace();
-  const V = ibMix(ibView([30, -200], [960, 560], 1.25), ibView([60, -150], [960, 520], 1.4), ramp(lt, 0, D, E.inOutSine));
+  const V = ibMix(ibView([30, -230], [900, 600], 1.1), ibView([60, -190], [900, 590], 1.25), ramp(lt, 0, D, E.inOutSine));
   const rd = ramp(t, c.ready + 0.2, c.ready + 0.6);
   ibBody(V, t, { flex: 0, stomach: { glow: rd, wave: -1 }, liver: { fill: 1 }, straw: { flow: 0.6 }, brain: { mood: lt < 0.6 ? 'calm' : 'happy' }, heart: { beat: kick((t * 1.2) % 1, 0, 8) } });
   screenSpace();
@@ -139,7 +152,7 @@ SC.ready = (lt, t, shot) => {
   // the thought: a lemon over his head
   const tk = pk(t, c.thought - 0.1, 0.3);
   if (tk > 0.01) {
-    const bp = ibPt(V, [150, -560]);
+    const bp = ibPt(V, [260, -470]);
     ctx.save(); ctx.translate(bp[0], bp[1]); ctx.scale(tk, tk);
     circle(ctx, -110, 110, 12, '#FFFFFF'); circle(ctx, -80, 74, 18, '#FFFFFF'); ellipse(ctx, 0, 0, 110, 76, '#FFFFFF');
     lemonHalf(ctx, 0, 0, 0.9, t, {});
@@ -162,11 +175,11 @@ SC.never = (lt, t, shot) => {
 // sun; he comes out of the door holding the bar up like a trophy; Pip's note slides in: BRING THE BIG ONE!
 SC.want = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = mixCam({ x: 1060, y: 520, zoom: 1.15, rot: 0 }, { x: 1160, y: 560, zoom: 1.45, rot: 0 }, ramp(lt, 0, D, E.inOutSine));
+  const cam = mixCam({ x: 1100, y: 500, zoom: 1.1, rot: 0 }, { x: 1080, y: 540, zoom: 1.4, rot: 0 }, ramp(lt, 0, D, E.inOutSine));
   mtScene(cam, t, { day: 1, storm: 0, hut: false, after: () => {
-    summitShop(ctx, 1260, MT.snowY, t);
+    summitShop(ctx, 1330, MT.snowY, t);
     const up = ramp(t, c.pipsFav - 0.4, c.pipsFav + 0.1, E.outBack);
-    const st = { x: 1160 + 120 * ramp(lt, 0, 0.8), y: MT.snowY + 10, s: 0.62, face: lerpFace(FACES.calm, FACES.proud, up),
+    const st = { x: 900 + 90 * ramp(lt, 0, 0.8), y: MT.snowY + 10, s: 0.62, face: lerpFace(FACES.calm, FACES.proud, up),
       pose: lerpPose(walkPose(t * 0.8), Object.assign({}, POSES.stand, { armR: { a: 2.6, b: 0.4 }, armL: { a: 0.3, b: 0.2 } }), up), seed: 4 };
     const r = drawCharacter(ctx, st, t, HUTPAL);
     const wr = toWorld(st, r.wrR);
@@ -185,7 +198,8 @@ SC.want = (lt, t, shot) => {
     heartIcon(-130, 90, 0.5);
     ctx.restore();
   }
-  return hutPost({ glow: 0.7 });
+  tagPill('THAT MORNING', 960, 120, pk(t, shot.start + 0.15) * (1 - ramp(t, shot.start + 1.8, shot.start + 2.1)), '#FFFFFF', 46);
+  return hutPost({ glow: 0.7, vhs: 0.7 * (1 - ramp(lt, 0, 0.35)) });
 };
 // "On the way down, a storm hit. He made it to an empty hut... and a fox made it to his food bag." Night, the storm; he
 // trudges to the hut and goes in, his food bag left by the door; the fox darts in, grabs it and runs (the wordless beat)
@@ -262,7 +276,7 @@ SC.clean = (lt, t, shot) => {
   darkBg('#0A1A3A', '#02040C'); screenSpace();
   const V = ibMix(ibView(IB.stomach, [960, 520], 2.6), ibView([IB.stomach[0] - 10, IB.stomach[1] + 10], [960, 500], 3.1), ramp(lt, 0, D, E.inOutSine));
   const wv = ((t - c.cleaning) * 0.55) % 1;
-  ibBody(V, t, { flex: 0, stomach: { wave: t > c.cleaning - 0.3 ? Math.max(0, wv) : -1, glow: 0.4 }, liver: { fill: 0.95 }, straw: { flow: 0.6 }, brain: { mood: 'calm' } });
+  ibBody(V, t, { flex: 0, stomach: { wave: t > c.cleaning - 0.3 ? Math.max(0, wv) : -1, glow: 0.15 }, liver: { fill: 0.95 }, straw: { flow: 0.6 }, brain: { mood: 'calm' } });
   screenSpace();
   tagPill('NOT HUNGRY...', 560, 230, pk(t, c.notAsking) * (1 - ramp(t, c.cleaning - 0.1, c.cleaning + 0.1)), '#FF86A6', 50);
   tagPill('CLEANING!', 560, 230, pk(t, c.cleaning), '#4DFFB4', 58);
@@ -303,7 +317,7 @@ SC.alarm = (lt, t, shot) => {
     ctx.save(); ctx.translate(1450, 420); ctx.scale(rk, rk);
     ctx.beginPath(); ctx.arc(0, 0, 230, 0, 7); ctx.fillStyle = '#0A1A3A'; ctx.fill();
     ctx.save(); ctx.beginPath(); ctx.arc(0, 0, 230, 0, 7); ctx.clip();
-    ibBody(ibView([IB.stomach[0] + 30, IB.stomach[1] - 80], [1450, 430], 1.5), t, { flex: 0, stomach: { glow: 0.6 }, alarm: { ring: ramp(t, c.hunger - 0.1, c.hunger + 0.1), hour: 12 } });
+    ibBody(ibView([IB.stomach[0] + 40, IB.stomach[1] - 120], [1450, 400], 2.3), t, { flex: 0, stomach: { glow: 0.2 }, alarm: { ring: ramp(t, c.hunger - 0.1, c.hunger + 0.1), hour: 12 } });
     ctx.restore();
     ctx.beginPath(); ctx.arc(0, 0, 230, 0, 7); ctx.lineWidth = 9; ctx.strokeStyle = '#FFFFFF'; ctx.stroke();
     ctx.restore();
@@ -327,7 +341,7 @@ SC.clock = (lt, t, shot) => {
     const a = Math.PI * (1.15 + 0.05 * Math.sin(t * 3)); line(ctx, 0, 0, Math.cos(a) * 140, Math.sin(a) * 140, 10, '#FF9A3C'); circle(ctx, 0, 0, 16, '#FFFFFF');
     ctx.font = '900 34px Montserrat'; ctx.fillStyle = '#FFFFFF'; ctx.fillText('FUEL GAUGE', 0, 90);
     ctx.restore();
-    bigX(x1, y1 - 40, 230 * gk, ramp(t, c.gauge + 0.4, c.gauge + 0.8));
+    bigX(x1, y1 - 40, 0.95 * gk, ramp(t, c.gaugeEnd + 0.05, c.gaugeEnd + 0.35));
   }
   // the alarm clock (right), ringing
   const ak = pk(t, c.alarmW - 0.05, 0.35);
@@ -363,8 +377,8 @@ SC.snooze = (lt, t, shot) => {
 SC.fist = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   const sq = ramp(t, c.squeeze - 0.05, c.squeeze + 0.2);
-  const cam = driftCam(hutHeadCam(2.2 + 0.15 * sq, 800, 520), lt);
-  hutNow(shakeCam(cam, t, 2 * sq), t, { hero: { face: lerpFace(FACES.calm, FACES.strain || FACES.nervous, 0.6 * sq), fist: 0.3 + 0.7 * sq, L: HUT_ARMS.rest.L, R: hutMixArms(HUT_ARMS.rest, HUT_ARMS.fist, ramp(lt, 0, 0.4)).R } });
+  const cam = driftCam(hutHeadCam(2.6 + 0.2 * sq, 760, 560), lt);
+  hutNow(shakeCam(cam, t, 2 * sq), t, { hero: { face: lerpFace(FACES.calm, FACES.nervous, 0.6 * sq), fist: 0.3 + 0.7 * sq, L: HUT_ARMS.rest.L, R: hutMixArms(HUT_ARMS.rest, HUT_ARMS.fist, ramp(lt, 0, 0.4)).R } });
   screenSpace();
   testBadge(['TRY IT', 'MAKE A FIST', 'SQUEEZE'], ramp(t, c.fistW - 0.1, c.fistW + 0.3) * (1 - ramp(t, shot.end - 0.25, shot.end)));
   return hutPost();
@@ -381,7 +395,7 @@ SC.pantry = (lt, t, shot) => {
   screenSpace();
   tagPill('FOR MUSCLES ONLY', 1380, 300, pk(t, c.muscles + 0.4) * (1 - k1), '#FF86A6', 48);
   ibTag(V, 'THE LIVER\'S STASH', 1300, 820, IB.liver, pk(t, c.liverW) * (1 - ramp(t, c.oneDay - 0.6, c.oneDay - 0.3)), '#FFD447', 48);
-  tagPill('≈ 1 DAY', 1380, 380, pk(t, c.oneDay), '#FFD447', 70);
+  tagPill('1–2 DAYS', 1380, 380, pk(t, c.oneDay), '#FFD447', 70);
   return bodyPost();
 };
 // "Hour eighteen. The stash is almost gone, and he just lost an argument... with a fox." the pantry, one jar left, the
@@ -392,9 +406,9 @@ SC.hangry = (lt, t, shot) => {
   if (t < c.argument - 0.15) {
     darkBg('#0A1A3A', '#02040C'); screenSpace();
     const V = ibView([-40, -200], [960, 520], 1.6 + 0.15 * ramp(lt, 0, 2));
-    ibBody(V, t, { flex: 0, liver: { fill: 0.12, glow: 1 }, straw: { flow: 0.2, empty: ramp(t, c.almost, c.almost + 0.3) }, brain: { mood: t > c.almost ? 'slurp' : 'worry' } });
+    ibBody(V, t, { flex: 0, liver: { fill: 0.3, glow: 1 }, straw: { flow: 0.2, empty: ramp(t, c.almost, c.almost + 0.3) }, brain: { mood: t > c.almost ? 'slurp' : 'worry' } });
     screenSpace();
-    tagPill('ALMOST EMPTY', 1350, 820, pk(t, c.almost), '#FF5A6E', 52);
+    tagPill('RUNNING LOW', 1350, 820, pk(t, c.almost), '#FF5A6E', 52);
     return bodyPost();
   }
   const a0 = c.argument - 0.15;

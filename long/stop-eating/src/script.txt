@@ -42,16 +42,16 @@ Hour six. Lunchtime... and here comes the hunger, right on time. It's not a fuel
 Ignore it... and it goes quiet. Until dinner.
 
 ## fist gap=0.60 tempo=1.03
-Make a fist. Squeeze. Your muscles keep sugar for themselves. Your brain lives on the stash in your liver... about one day's worth.
+Make a fist. Squeeze. Your muscles keep sugar for themselves. Your brain gets its sugar from your liver... and the liver's stash lasts a day or two.
 
 ## hangry gap=0.55 tempo=1.02
-Hour eighteen. The stash is almost gone, and he just lost an argument... with a fox.
+Hour eighteen. The stash is running low, and he just lost an argument... with a fox.
 
 ## easy gap=0.80 tighten=0.5 tempo=1.00
 Day one. And this... is the easy part.
 
 ## borrow gap=0.70 tempo=1.03
-Day two. The brain still needs sugar, so the body makes some... from protein. Remember your fist? It's borrowing from muscle.
+Day two. The brain still needs sugar, so the body makes more... from protein. Remember your fist? It's borrowing from muscle.
 
 ## switch gap=0.55 tempo=1.04
 Day three: the big switch. The liver starts turning fat into a new fuel... and the brain starts running on it.
@@ -60,7 +60,7 @@ Day three: the big switch. The liver starts turning fat into a new fuel... and t
 Turns out, your body packed a lunch: weeks of it, as fat. That chocolate bar? About a tenth of one day.
 
 ## breath gap=0.65 tempo=1.02
-Breathe on your hand. Smell it. Nail polish remover? No? By day three... his breath is.
+Breathe on your hand. Smell it. Nail polish remover? No? By day three... his breath might.
 
 ## quiet gap=0.80 tempo=1.03
 And the weirdest part? For a lot of people, the hunger... gets quieter.
@@ -69,7 +69,7 @@ And the weirdest part? For a lot of people, the hunger... gets quieter.
 In 1944, thirty-six volunteers in Minnesota ate half their usual food for six months, so doctors could learn to feed a starving Europe.
 
 ## obsessed gap=0.40 tempo=1.03
-Their minds changed most. They read cookbooks like novels, dreamed about food... and chewed gum by the pack.
+Their minds changed most. They read cookbooks like novels, daydreamed about food... and chewed gum by the pack.
 
 ## day5 gap=0.60 tempo=1.02
 Day five. He's read the chocolate wrapper eleven times. Now he reads it... to the fox.
@@ -87,7 +87,7 @@ Find your pulse, on your neck or wrist. Count the beats for six seconds... go.
 Add a zero. That's your heart rate: most people get sixty to a hundred.
 
 ## heart gap=0.50 tempo=1.03
-The Minnesota men, by the end? About thirty-five. A heart is a muscle... and a starving body eats muscle.
+The Minnesota men, by the end? About thirty-seven. A heart is a muscle... and a starving body eats muscle.
 
 ## limit gap=0.55 tempo=1.04
 With water, most healthy people would last one to two months. After the fat runs out, the body eats its own protein... and in the end, the heart.
@@ -96,10 +96,10 @@ With water, most healthy people would last one to two months. After the fat runs
 Except one man. In 1965, Angus Barbieri weighed over two hundred kilos. With doctors watching, he lived on water and vitamins... for three hundred and eighty-two days.
 
 ## toilet gap=0.45 tempo=1.02
-He lost a hundred and twenty-five kilos. And he went to the toilet... about once every forty days.
+He lost a hundred and twenty-five kilos. And by the end, he went to the toilet... about once every forty days.
 
 ## egg gap=0.70 tempo=1.02
-His first meal? One boiled egg.
+His first meal, the papers said? One boiled egg.
 
 ## day6 gap=0.80 tighten=0 tempo=1.00
 Day six. Midnight. The worst of the storm. He unwraps the chocolate...

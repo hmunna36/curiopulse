@@ -59,7 +59,12 @@ SC.zero = (lt, t, shot) => {
   ctx.font = '400 56px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   for (const v of [20, 40, 60, 80, 100, 120]) { ctx.fillStyle = 'rgba(255,255,255,0.7)'; ctx.fillText(String(v), X(v), y + 80); }
   tagPill('MOST PEOPLE', (X(60) + X(100)) / 2, y - 90, pk(t, c.range + 0.1), '#4DFFB4', 50);
-  heartIcon(1600, 300, 1.4 * (1 + 0.15 * Math.exp(-((t * 70 / 60) % 1) * 9)));
+  // YOU: a marker that slides along the band and settles near the middle (the viewer's own number lives there)
+  const yk = pk(t, c.heartRate, 0.4);
+  if (yk > 0.01) { const yx = X(lerp(40, 74, ramp(t, c.heartRate, c.heartRate + 1.2, E.outBack))); ctx.save(); ctx.translate(yx, y - 40); ctx.scale(yk, yk); ctx.beginPath(); ctx.moveTo(0, 20); ctx.lineTo(-22, -16); ctx.lineTo(22, -16); ctx.closePath(); ctx.fillStyle = '#FFD447'; ctx.fill(); ctx.restore(); tagPill('YOU?', yx, y - 150, yk, '#FFD447', 44); }
+  const hb = Math.exp(-((t * 70 / 60) % 1) * 9);
+  heartIcon(1560, 330, 2.6 * (1 + 0.12 * hb));
+  softDot(gctx, 1560, 330, 180, '#FF5A6E', 0.3 + 0.4 * hb);
   return bodyPost();
 };
 // "The Minnesota men, by the end? About thirty-five." old film: a 1940s heart trace, slow, 35 ON THE MONITOR, against the
@@ -76,14 +81,14 @@ SC.heart = (lt, t, shot) => {
     const drawn = ramp(t, shot.start, c.isMuscle, (x) => x);
     ctx.beginPath();
     for (let x = x0; x <= x0 + (x1 - x0) * drawn; x += 4) {
-      const ph = ((x - x0) / 400) % 1;   // one beat every 400 px
+      const ph = ((x - x0) / 400) % 1;   // one slow beat every 400 px (37 a minute)
       const v = ph < 0.05 ? -150 * Math.sin(ph / 0.05 * Math.PI) : ph < 0.09 ? 60 * Math.sin((ph - 0.05) / 0.04 * Math.PI) : 6 * Math.sin(ph * 20);
       if (x === x0) ctx.moveTo(x, y + v); else ctx.lineTo(x, y + v);
     }
     ctx.lineWidth = 6; ctx.strokeStyle = '#3A2A1A'; ctx.stroke();
     hsSepia(0.6); hsFilm(t, 0.8);
     screenSpace();
-    stampWord('35', 1420, 230, 200, '#FF5A6E', pk(t, c.t35), -0.08);
+    stampWord('37', 1420, 230, 200, '#FF5A6E', pk(t, c.t35), -0.08);
     tagPill('BEATS A MINUTE', 1420, 400, pk(t, c.t35 + 0.2), '#FFE6B0', 46);
     return hutPost({ glow: 0.5 });
   }
@@ -98,11 +103,23 @@ SC.heart = (lt, t, shot) => {
 // "With water, most healthy people would last one to two months. After the fat runs out, the body eats its own
 // protein... and in the end, the heart." a ruler of days to 70: a gold fuel bar burns down to DAY 30-60; red after it;
 // a heart icon at the end that cracks
-SC.limit = (lt, t, shot) => {
+SC.limit = (lt, t, shot) => limitDraw(lt, t, shot, 1 + 0.03 * (t - SHOT_START('limit')) / 10, 960, 520);
+// "After the fat runs out, the body eats its own protein... and in the end, the heart." the same ruler, closer on its end
+SC.limit2 = (lt, t, shot) => limitDraw(lt, t, shot, 1.18 + 0.05 * lt / (shot.end - shot.start), 1300, 420);
+const SHOT_START = (id) => TLd.shots.find((s) => s.id === id).start;
+function limitDraw(lt, t, shot, pushK, pcx, pcy) {
   const c = cu(), D = shot.end - shot.start;
   darkBg('#14081A', '#030105'); screenSpace();
   const x0 = 260, x1 = 1660, y = 520, X = (d) => lerp(x0, x1, d / 70);
-  const rk = ramp(lt, 0, 0.6, E.inOutCubic);
+  const rk = ramp(t, SHOT_START('limit'), SHOT_START('limit') + 0.6, E.inOutCubic);
+  const wk = pk(t, c.withWater - 0.05, 0.35) * (1 - ramp(t, c.fatRuns - 0.3, c.fatRuns));
+  if (wk > 0.01) {   // a glass of water over day 0: WITH WATER
+    ctx.save(); ctx.translate(x0 + 300, y - 190); ctx.scale(wk, wk);
+    ctx.beginPath(); ctx.moveTo(-60, -90); ctx.lineTo(60, -90); ctx.lineTo(46, 90); ctx.lineTo(-46, 90); ctx.closePath(); ctx.fillStyle = 'rgba(200,230,255,0.25)'; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = '#BFF0FF'; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-54, -30 + 4 * Math.sin(t * 3)); ctx.lineTo(54, -30 - 4 * Math.sin(t * 3)); ctx.lineTo(46, 90); ctx.lineTo(-46, 90); ctx.closePath(); ctx.fillStyle = 'rgba(127,233,255,0.6)'; ctx.fill();
+    ctx.restore();
+    tagPill('WITH WATER', x0 + 300, y - 330, wk, '#7FE9FF', 46);
+  }
   rrect(ctx, x0, y - 30, (x1 - x0) * rk, 60, 20); ctx.fillStyle = '#2A2A40'; ctx.fill();
   ctx.font = '400 48px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   for (const d of [0, 10, 20, 30, 40, 50, 60, 70]) { ctx.fillStyle = `rgba(255,255,255,${0.7 * rk})`; ctx.fillText(String(d), X(d), y + 80); }
@@ -121,31 +138,47 @@ SC.limit = (lt, t, shot) => {
     const cr = ramp(t, c.theHeart + 0.3, c.theHeart + 0.6);
     if (cr > 0.01) poly(ctx, [[X(66) - 10, y - 290], [X(66) + 12, y - 250], [X(66) - 8, y - 225], [X(66) + 10, y - 190]].slice(0, 1 + Math.round(3 * cr)), 8, '#14081A');
   }
-  return bodyPost({ push: { k: 1 + 0.03 * lt / D, cx: 960, cy: 500 } });
-};
+  return bodyPost({ push: { k: pushK, cx: pcx, cy: pcy } });
+}
 // "Except one man. In 1965, Angus Barbieri weighed over two hundred kilos. With doctors watching, he lived on water and
 // vitamins... for three hundred and eighty-two days." old film, the hospital room in Dundee: a big man on the scale
 // (207 KG); a doctor's clipboard; his vitamins; the big calendar flips its days faster and faster to 382
 SC.barbieri = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const k1 = ramp(t, c.d382 - 0.6, c.d382 + 0.2, E.inOutCubic);
-  const cam = mixCam({ x: 860, y: 520, zoom: 1.3, rot: 0 }, { x: 1180, y: 430, zoom: 1.5, rot: 0 }, k1);
+  const cam = mixCam({ x: 860, y: 520, zoom: 1.3, rot: 0 }, { x: 760, y: 560, zoom: 1.5, rot: 0 }, ramp(lt, 0, D, E.inOutSine));
   applyCam(driftCam(cam, lt));
   bbRoom(t);
-  hsPerson(t, HS_PALS[2], { x: 760, y: 880, s: 0.8, sx: 1.5, pose: POSES.stand, face: FACES.calm, seed: 8 });
+  hsPerson(t, HS_PALS[2], { x: 760, y: 880, s: 0.8, sx: 1.5, belly: 1, pose: POSES.stand, face: FACES.calm, seed: 8 });
   hsScale(560, 900, 0.85, 207, t, { lo: 0, hi: 220 });
   bbVitamins(ctx, 980, 700, 1.2);
-  const n = Math.max(1, Math.round(382 * Math.pow(ramp(t, c.vitamins - 0.2, c.d382 + 0.5, (x) => x), 2.2)));
-  const fl = ((t * 9) % 1);
-  bbCalendar(1250, 340, 0.85, n, n < 382 ? fl : 0, t, {});
+  bbCalendar(1250, 340, 0.85, 1, 0, t, {});
   hsSepia(0.45); hsFilm(t, 0.7);
   screenSpace();
-  stampWord('1965', 300, 200, 150, '#FFE6B0', pk(t, c.y1965), -0.08);
-  tagPill('207 KG', 560, 700, pk(t, c.kilos200) * (1 - k1), '#FFE6B0', 56);
+  stampWord('1965', 330, 330, 150, '#FFE6B0', pk(t, c.y1965), -0.08);
+  tagPill('ANGUS BARBIERI', 960, 160, pk(t, c.angus), '#FFE6B0', 50);
+  tagPill('207 KG', 560, 700, pk(t, c.kilos200), '#FFE6B0', 60);
+  return hutPost({ glow: 0.5 });
+};
+// "With doctors watching, he lived on water and vitamins... for three hundred and eighty-two days." closer on the wall:
+// a doctor's clipboard, the vitamin bottle, and the big calendar flipping its pages faster and faster to 382
+SC.barbieri2 = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const k1 = ramp(t, c.d382 - 0.4, c.d382end, E.inOutCubic);
+  applyCam(driftCam(mixCam({ x: 1180, y: 470, zoom: 1.35, rot: 0 }, { x: 1250, y: 420, zoom: 1.75, rot: 0 }, k1), lt));
+  bbRoom(t);
+  hsPerson(t, HS_PALS[2], { x: 760, y: 880, s: 0.8, sx: 1.4, belly: 0.9, pose: POSES.stand, face: FACES.calm, seed: 8 });
+  bbVitamins(ctx, 980, 700, 1.2 + 0.15 * kick(t, c.vitamins + 0.3, 5));
+  // a doctor's clipboard held in from the left
+  const dk = ramp(t, c.doctors - 0.1, c.doctors + 0.3, E.outBack);
+  if (dk > 0.01) { ctx.save(); ctx.translate(lerp(520, 700, dk), 430); ctx.rotate(-0.12); rrect(ctx, -70, -100, 140, 190, 10); ctx.fillStyle = '#B8865A'; ctx.fill(); rrect(ctx, -58, -80, 116, 160, 6); ctx.fillStyle = '#FFFFFF'; ctx.fill(); for (let i = 0; i < 5; i++) line(ctx, -44, -50 + i * 28, 44, -50 + i * 28, 4, 'rgba(60,60,80,0.5)'); line(ctx, -200, 60, -70, 40, 50, '#F4F0E8'); ctx.restore(); }
+  const n = Math.max(1, Math.round(382 * Math.pow(ramp(t, c.vitamins - 0.2, c.d382end, (x) => x), 2.2)));
+  bbCalendar(1250, 340, 0.85, n, n < 382 ? ((t * 9) % 1) : 0, t, {});
+  hsSepia(0.45); hsFilm(t, 0.7);
+  screenSpace();
   tagPill('WITH DOCTORS', 960, 160, pk(t, c.doctors) * (1 - ramp(t, c.vitamins - 0.2, c.vitamins)), '#7FE9FF', 50);
   tagPill('WATER + VITAMINS', 960, 160, pk(t, c.vitamins), '#7FE9FF', 50);
-  stampWord('382 DAYS', 1250, 760, 130, '#FFD447', pk(t, c.d382 + 0.6), -0.06);
-  return hutPost({ glow: 0.5, flash: 0.2 * kick(t, c.d382 + 0.6, 8) });
+  stampWord('382 DAYS', 1250, 780, 130, '#FFD447', pk(t, c.d382end + 0.25), -0.06);
+  return hutPost({ glow: 0.5, flash: 0.2 * kick(t, c.d382end + 0.25, 8) });
 };
 // "He lost a hundred and twenty-five kilos. And he went to the toilet... about once every forty days." the scale's
 // needle swings down, he slims to 82 KG; the calendar shows DAY 40 with a toilet in its corner: ONCE EVERY 40 DAYS
@@ -155,13 +188,14 @@ SC.toilet = (lt, t, shot) => {
   const cam = mixCam({ x: 760, y: 560, zoom: 1.3, rot: 0 }, { x: 1250, y: 400, zoom: 1.7, rot: 0 }, tk);
   applyCam(driftCam(cam, lt));
   bbRoom(t);
-  hsPerson(t, HS_PALS[2], { x: 760, y: 880, s: 0.8, sx: lerp(1.5, 1.0, sl), pose: POSES.stand, face: lerpFace(FACES.calm, FACES.proud, sl), seed: 8 });
+  hsPerson(t, HS_PALS[2], { x: 760, y: 880, s: 0.8, sx: lerp(1.5, 1.0, sl), belly: 1 - sl, pose: POSES.stand, face: lerpFace(FACES.calm, FACES.proud, sl), seed: 8 });
   hsScale(560, 900, 0.85, lerp(207, 82, sl), t, { lo: 0, hi: 220 });
   bbCalendar(1250, 340, 0.85, 40, 0, t, { icon: 'toilet', top: 'DAY' });
   hsSepia(0.45); hsFilm(t, 0.7);
   screenSpace();
   tagPill('−125 KG', 560, 690, pk(t, c.lost + 1.0) * (1 - tk), '#4DFFB4', 60);
-  stampWord('ONCE EVERY 40 DAYS', 1060, 820, 96, '#FFD447', pk(t, c.forty + 0.3), -0.05);
+  tagPill('BY THE END', 1250, 120, pk(t, c.byEnd) * (1 - ramp(t, c.forty + 0.2, c.forty + 0.4)), '#FFE6B0', 46);
+  stampWord('ONCE EVERY 40 DAYS!', 900, 560, 96, '#FFD447', pk(t, c.forty + 0.3), -0.05);
   return hutPost({ glow: 0.5 });
 };
 // "His first meal? One boiled egg." the egg in its cup pops onto the table with a little crown and sparkles; his grin
@@ -174,7 +208,19 @@ SC.egg = (lt, t, shot) => {
   bbEgg(1060, 640, 1.1, pk(t, c.eggW - 0.05, 0.35), t);
   hsSepia(0.35); hsFilm(t, 0.6);
   screenSpace();
-  stampWord('1 EGG', 1450, 300, 150, '#FFD447', pk(t, c.eggW + 0.3), 0.08);
+  stampWord('1 EGG', 1450, 230, 150, '#FFD447', pk(t, c.eggW + 0.3), 0.08);
+  const nk = pk(t, c.papers - 0.1, 0.35);
+  if (nk > 0.01) {   // the newspaper: FAST ENDS
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.translate(1450, 520); ctx.rotate(0.06); ctx.scale(nk, nk);
+    ctx.fillStyle = '#F4EEDC'; ctx.fillRect(-230, -170, 460, 340);
+    ctx.fillStyle = '#2A2A2A'; ctx.font = '400 30px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('THE MORNING PAPER · 1966', 0, -140);
+    line(ctx, -210, -118, 210, -118, 3, '#2A2A2A');
+    ctx.font = '400 74px Anton'; ctx.fillText('FAST ENDS', 0, -66);
+    ctx.font = '900 30px Montserrat'; ctx.fillText('382 DAYS. FIRST MEAL:', 0, -6);
+    ctx.font = '400 50px Anton'; ctx.fillText('A BOILED EGG', 0, 44);
+    for (let i = 0; i < 4; i++) line(ctx, -200, 90 + i * 20, 200, 90 + i * 20, 5, 'rgba(60,60,60,0.35)');
+    ctx.restore();
+  }
   return hutPost({ glow: 0.6 });
 };
 
@@ -184,13 +230,23 @@ SC.egg = (lt, t, shot) => {
 // candle); the wordless beat: he stares at it... and wraps it back up; sets it down and pats it
 SC.day6 = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const un = ramp(t, c.unwraps, c.unwraps + 2.2, E.inOutSine), re = ramp(t, c.wrapsBack - 0.4, c.wrapsBack + 0.9, E.inOutSine);
-  const open = 0.75 * un * (1 - re);
+  const un = ramp(t, c.unwraps, c.unwraps + 2.2, E.inOutSine), re = 0;
+  const open = 0.75 * un;
   const cl = ramp(t, c.unwraps - 0.3, c.unwraps + 1.2, E.inOutCubic);
   const cam = driftCam(mixCam({ x: 1000, y: 470, zoom: 1.25, rot: 0 }, hutHeadCam(2.1, 900, 470), cl), lt, 0.6);
   hutNow(shakeCam(cam, t, 2), t, { choc: null, hero: { face: lerpFace(lerpFace(FACES.tired, FACES.longing, un), FACES.soft, re), choc: { k: 1, open, rot: -0.04 }, L: [-50, -120], R: [50, -120], blanket: 1, shiver: 0.4 * (1 - re) } });
   // the foil's glow on his face
   if (open > 0.05) { const hp = toScreen(cam, ...hutHead({})); softDot(gctx, hp[0], hp[1] + 120 * cam.zoom * 0.3, 260, '#FFD447', 0.4 * open); }
+  return hutPost({ glow: 0.9 });
+};
+// "...and wraps it back up." a cut to his hands, close: the paper folds back over the foil; he sets the bar down on the
+// table, pats it twice, and his face softens (a small smile in the candlelight)
+SC.wrap = (lt, t, shot) => {
+  const c = cu(), D = shot.end - shot.start;
+  const re = ramp(t, c.wrapsBack - 0.2, c.wrapsBack + 0.9, E.inOutSine), down = ramp(t, c.wrapsBack + 0.9, c.wrapsBack + 1.5, E.inOutCubic);
+  const cam = driftCam(mixCam(ptCam(hutPt([0, -110]), 2.8, 960, 560), hutHeadCam(2.2, 900, 470), ramp(t, c.wrapsBack + 1.2, shot.end, E.inOutCubic)), lt, 0.5);
+  const pat = down > 0.9 ? Math.abs(Math.sin((t - c.wrapsBack - 1.5) * 9)) * (1 - ramp(t, c.wrapsBack + 2.0, c.wrapsBack + 2.2)) : 0;
+  hutNow(cam, t, { choc: down > 0.95 ? { glow: 0.3 } : null, hero: { face: lerpFace(FACES.longing, FACES.soft, re), choc: down > 0.95 ? null : { k: 1, open: 0.75 * (1 - re), rot: -0.04 }, L: [-50, lerp(-120, -40, down)], R: [50, lerp(-120, -40 - 20 * pat, down)], blanket: 1 } });
   return hutPost({ glow: 0.9 });
 };
 
@@ -226,7 +282,11 @@ SC.soup = (lt, t, shot) => {
     after: () => {
       // the rescuer's arm from the right and the mug
       const mx = lerp(1300, HUT.heroX + 40, give), my = HUT.tableY - 120;
-      line(ctx, 2100, my - 80, mx + 60, my + 4, 64, '#E8343E'); circle(ctx, mx + 60, my + 4, 34, '#B8202A');
+      ctx.save(); ctx.translate(mx + 70, my + 10); ctx.rotate(-0.12);
+      rrect(ctx, 30, -40, 520, 80, 34); ctx.fillStyle = '#E8343E'; ctx.fill(); rrect(ctx, 30, -40, 520, 24, 12); ctx.fillStyle = '#FF6A60'; ctx.fill();
+      rrect(ctx, 20, -46, 40, 92, 14); ctx.fillStyle = '#2A2A34'; ctx.fill(); line(ctx, 160, -40, 160, 40, 10, '#FFD447');
+      ellipse(ctx, -6, 0, 46, 40, '#F4F4F8'); for (let i = 0; i < 3; i++) ellipse(ctx, -44, -20 + i * 18, 16, 9, '#E4E4EC');
+      ctx.restore();
       tinMug(ctx, mx, my + 40, 0.75, t, 1.4);
       for (let i = 0; i < 3; i++) { const u = ((t * 0.5 + i / 3) % 1); softDot(ctx, mx + 10 * Math.sin(t * 2 + i), my - 60 - 120 * u, 20 + 26 * u, '#FFFFFF', 0.25 * (1 - u)); }
     } });
@@ -246,7 +306,7 @@ SC.slow = (lt, t, shot) => {
     rrect(ctx, 40, -60, 200, 140, 20); ctx.fillStyle = '#F4C8D8'; ctx.fill(); rrect(ctx, 40, -76, 200, 30, 14); ctx.fillStyle = '#FFFFFF'; ctx.fill();
     for (let i = 0; i < 4; i++) ellipse(ctx, 290 + 30 * (i % 2), 40 - 34 * i, 60, 28, '#E8B060');
     ctx.restore();
-    bigX(960, 470, 330 * fk, ramp(t, c.justCup + 0.2, c.justCup + 0.6));
+    bigX(960, 470, 0.85 * fk, ramp(t, c.justCup + 0.5, c.justCup + 0.8));
   }
   const sk = ramp(t, c.startSmall - 0.3, c.startSmall + 0.2);
   if (sk > 0.01) {
@@ -260,7 +320,7 @@ SC.slow = (lt, t, shot) => {
       ctx.restore();
       if (i < 2) { line(ctx, x + 110, 560, x + 230, 560, 8, `rgba(255,212,71,${k})`); line(ctx, x + 210, 540, x + 232, 560, 8, `rgba(255,212,71,${k})`); line(ctx, x + 210, 580, x + 232, 560, 8, `rgba(255,212,71,${k})`); }
     });
-    tagPill('START SMALL', 960, 820, pk(t, c.startSmall + 0.4), '#4DFFB4', 56);
+    tagPill('CUP → BOWL → PLATE', 960, 300, pk(t, c.startSmall + 0.4), '#4DFFB4', 56);
   }
   return bodyPost({ push: { k: 1 + 0.04 * lt / D, cx: 960, cy: 520 } });
 };
@@ -268,7 +328,7 @@ SC.slow = (lt, t, shot) => {
 // ================================================================= HOME
 // the bar's place in the kitchen shots: in his hand (from), over the table, in hers (to)
 function kitBar(t, k, o = {}) {
-  const a = kitPt('hero', [140, -150]), b = kitPt('pip', [-40, -170]);
+  const a = kitPt('hero', [140, -150]), b = kitPt('pip', [-20, -100]);
   const x = lerp(a[0], b[0], E.inOutCubic(k)), y = lerp(a[1], b[1], E.inOutCubic(k)) - 50 * Math.sin(Math.PI * k);
   chocBar(ctx, x, y, 0.62, t, { rot: -0.1 + 0.2 * k, glow: o.glow || 0 });
   return [x, y];
@@ -277,7 +337,7 @@ function kitBar(t, k, o = {}) {
 // across the table, she takes it with both hands, her eyes wide; a tick: NOT ONE BITE MISSING
 SC.home = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = driftCam(mixCam({ x: 960, y: 520, zoom: 1.1, rot: 0 }, { x: 1000, y: 540, zoom: 1.45, rot: 0 }, ramp(lt, 0, D, E.inOutSine)), lt);
+  const cam = driftCam(mixCam({ x: 950, y: 590, zoom: 1.45, rot: 0 }, { x: 990, y: 600, zoom: 1.65, rot: 0 }, ramp(lt, 0, D, E.inOutSine)), lt);
   const hand = ramp(t, c.hands - 0.2, c.hands + 0.8);
   kitScene(cam, t, { party: false, noCake: true, lamp: 0.7,
     hero: { hat: null, face: FACES.soft, R: hand < 0.6 ? [150, -160] : [110, -60], L: [-70, -60] },
@@ -293,9 +353,9 @@ SC.home = (lt, t, shot) => {
 SC.reveal = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   const pp = kitHead('pip', {});
-  const cam = driftCam(mixCam(ptCam(pp, 2.4, 700, 500), ptCam(pp, 2.8, 760, 470), ramp(lt, 0, D, E.inOutSine)), lt);
-  kitScene(cam, t, { party: false, noCake: true, lamp: 0.7, hero: { hat: null, face: FACES.soft }, pip: { hat: null, whistle: false, face: lerpFace(FACES.soft, FACES.happy, ramp(t, c.soWas, c.soWas + 0.4)), L: [-60, -150], R: [20, -150], headRot: -0.12 * ramp(t, c.soWas, c.soWas + 0.4) },
-    after: () => { chocBar(ctx, KIT.pipX - 20, KIT.pipY - 150 * KIT.ps - 40, 0.55, t, {}); } });
+  const cam = driftCam(mixCam(ptCam(pp, 3.0, 640, 520), ptCam(pp, 3.5, 680, 500), ramp(lt, 0, D, E.inOutSine)), lt);
+  kitScene(cam, t, { party: false, noCake: true, lamp: 0.7, hero: { hat: null, face: FACES.soft }, pip: { hat: null, whistle: false, face: lerpFace(FACES.soft, FACES.happy, ramp(t, c.soWas, c.soWas + 0.4)), L: [-60, -120], R: [60, -120], headRot: -0.12 * ramp(t, c.soWas, c.soWas + 0.4) },
+    after: () => { const bp = kitPt('pip', [0, -120]); chocBar(ctx, bp[0], bp[1], 0.5, t, {}); } });
   screenSpace();
   // the memory: Pip at night by the radio
   const mk = pk(t, c.everyNight - 0.1, 0.4) * (1 - ramp(t, c.soWas - 0.3, c.soWas + 0.3));
@@ -320,17 +380,17 @@ SC.reveal = (lt, t, shot) => {
 SC.half = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
   const snap = ramp(t, c.snap - 0.05, c.snap + 0.1), give = ramp(t, c.snap + 0.9, c.snap + 1.7, E.inOutCubic);
-  const cam = driftCam(mixCam({ x: 1060, y: 500, zoom: 1.7, rot: 0 }, { x: 960, y: 520, zoom: 1.45, rot: 0 }, give), lt);
+  const cam = driftCam(mixCam(ptCam(kitPt('pip', [0, -170]), 2.5, 1000, 520), { x: 950, y: 590, zoom: 1.5, rot: 0 }, give), lt);
   kitScene(shakeCam(cam, t, 6 * kick(t, c.snap, 8)), t, { party: false, noCake: true, lamp: 0.7, hero: { hat: null, face: lerpFace(FACES.soft, FACES.wonder, give), R: give > 0.5 ? [150, -150] : [110, -60], L: [-70, -60] },
-    pip: { hat: null, whistle: false, face: give > 0.3 ? FACES.happy : FACES.calm, L: [-70, -170], R: [50, -170] },
+    pip: { hat: null, whistle: false, face: give > 0.3 ? FACES.happy : snap > 0.5 ? FACES.wonder : FACES.calm, L: [-70, -120], R: [lerp(60, -150, give), lerp(-120, -150, give)] },
     after: () => {
-      const px = KIT.pipX - 20, py = KIT.pipY - 150 * KIT.ps - 40;
-      if (snap < 0.5) chocBar(ctx, px, py, 0.55, t, {});
+      const pc = kitPt('pip', [0, -120]), px = pc[0], py = pc[1];
+      if (snap < 0.5) chocBar(ctx, px, py, 0.5, t, {});
       else {
         const sep = 40 * snap;
-        const big = [lerp(px - sep - 20, kitPt('hero', [150, -150])[0] + 40, give), lerp(py, kitPt('hero', [150, -150])[1], give) - 40 * Math.sin(Math.PI * give)];
-        chocHalf(ctx, big[0], big[1], 0.7, -1, -0.1);
-        chocHalf(ctx, px + sep + 30, py + 6, 0.5, 1, 0.1);
+        const big = [lerp(px - sep - 30, kitPt('hero', [150, -150])[0] + 60, give), lerp(py, kitPt('hero', [150, -150])[1], give) - 50 * Math.sin(Math.PI * give)];
+        chocHalf(ctx, big[0], big[1], 0.62, -1, -0.1);
+        chocHalf(ctx, px + sep + 34, py + 6, 0.42, 1, 0.1);
         if (snap < 1) for (let i = 0; i < 8; i++) circle(ctx, px + 10 * (hash(i) - 0.5) * 6, py + 20 + 60 * snap * hash(i + 2), 4, '#5A3218');
       }
     } });
@@ -342,7 +402,7 @@ SC.half = (lt, t, shot) => {
 // the fox sitting in the snow with the empty food bag; the camera drifts back; the theme resolves
 SC.final = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = mixCam({ x: 1000, y: 500, zoom: 1.3, rot: 0 }, { x: 980, y: 520, zoom: 1.05, rot: 0 }, ramp(lt, 0, Math.min(D, 4), E.inOutSine));
+  const cam = mixCam({ x: 1000, y: 600, zoom: 1.7, rot: 0 }, { x: 1150, y: 560, zoom: 1.4, rot: 0 }, ramp(lt, 0, Math.min(D, 4), E.inOutSine));
   kitScene(cam, t, { party: false, noCake: true, lamp: 0.6, dusk: 0.25 * ramp(lt, 0, D),
     hero: { hat: null, face: FACES.happy, R: [100, -230], L: [-70, -60], post: (lc, r) => { chocHalf(lc, r.wrR[0] + 6, r.wrR[1] - 30, 0.8, -1, -1.2); } },
     pip: { hat: null, whistle: false, face: FACES.happy, L: [-60, -60], R: [-10, -230], post: (lc, r) => { chocHalf(lc, r.wrR[0], r.wrR[1] - 30, 0.8, 1, 1.0); } },
@@ -363,7 +423,7 @@ function kitWindowFox(t) {
 // NEXT WEEK card slides in (a tooth with a worried face), the subscribe pill below (subscribe.js)
 SC.sub = (lt, t, shot) => {
   const c = cu(), D = shot.end - shot.start;
-  const cam = { x: 980, y: 520, zoom: 1.05, rot: 0 };
+  const cam = { x: 1150, y: 560, zoom: 1.4, rot: 0 };
   kitScene(cam, t, { party: false, noCake: true, lamp: 0.6, dusk: 0.25,
     hero: { hat: null, face: FACES.happy, R: [100, -230], L: [-70, -60], post: (lc, r) => { chocHalf(lc, r.wrR[0] + 6, r.wrR[1] - 30, 0.8, -1, -1.2); } },
     pip: { hat: null, whistle: false, face: FACES.happy, L: [-60, -60], R: [-10, -230], post: (lc, r) => { chocHalf(lc, r.wrR[0], r.wrR[1] - 30, 0.8, 1, 1.0); } },
@@ -384,36 +444,46 @@ SC.sub = (lt, t, shot) => {
     for (const s of [-1, 1]) { ellipse(ctx, s * 28, -60, 10, 13, '#2A1A1A'); line(ctx, s * 16, -86, s * 40, -80, 5, '#2A1A1A'); }
     ctx.beginPath(); ctx.moveTo(-18, -18); ctx.quadraticCurveTo(0, -32, 18, -18); ctx.lineWidth = 5; ctx.strokeStyle = '#2A1A1A'; ctx.stroke();
     ctx.save(); ctx.translate(200, 10); ctx.rotate(0.6); rrect(ctx, -12, -110, 24, 200, 10); ctx.fillStyle = '#3FA7FF'; ctx.fill(); rrect(ctx, -18, -140, 36, 50, 8); ctx.fillStyle = '#FFFFFF'; ctx.fill(); ctx.restore();
-    bigX(200, 10, 90, ramp(t, c.teeth, c.teeth + 0.3));
+    const xk = ramp(t, c.teeth, c.teeth + 0.3);
+    if (xk > 0.01) { ctx.save(); ctx.translate(200, 10); ctx.globalAlpha = xk; ctx.lineCap = 'round'; ctx.lineWidth = 22; ctx.strokeStyle = '#FF3A4A'; ctx.beginPath(); ctx.moveTo(-80, -80); ctx.lineTo(80, 80); ctx.moveTo(80, -80); ctx.lineTo(-80, 80); ctx.stroke(); ctx.restore(); }
     ctx.restore();
   }
   return hutPost({ glow: 0.8 });
 };
 
 // ================================================================= THE THUMBNAIL (make_cover.js; not in the timeline)
-// Three candidates (COVER_VARIANT): 1 his face close, mid-bite into the lemon, 382 DAYS; 2 his face hungry and lit gold by
-// the bar he holds, DAY 6; 3 the x-ray body with the green brain, 382 DAYS?
-let COVER_VARIANT = 1;
-SC.cover = (lt, t, shot) => {
-  const v = COVER_VARIANT;
-  if (v === 3) {
-    darkBg('#061A22', '#010608'); screenSpace();
-    const V = ibView([0, -260], [1300, 560], 1.25);
-    ibBody(V, 1.3, { flex: 1, fat: { glow: 1, flow: 1 }, liver: { fill: 0.02, cook: 1 }, straw: { flow: 1, green: 1 }, brain: { mood: 'wow', green: 1 }, muscle: { lit: 1 } });
-    screenSpace();
-    bigWord('382', 470, 380, 330, '#FFD447', 1, -0.05); bigWord('DAYS?', 470, 640, 190, '#FFFFFF', 1, -0.05);
-    return { glow: 1, noCaptions: true, noSubscribe: true, noHud: true, grain: 0 };
-  }
-  const S0 = { x: 0, y: 0 };
-  const cam = hutHeadCam(v === 1 ? 3.3 : 3.0, 1260, 520);
-  if (v === 1) hutScene(cam, 1.2, { day: 0, candle: 1, fire: 1, storm: 1, frost: 0.2, choc: null, lemon: null, fox: null,
-    hero: { face: FACES.sour, L: HUT_ARMS.rest.L, R: HUT_ARMS.lemon.R, lemon: { k: 1, bite: 0.5 } } });
-  else hutScene(cam, 1.2, { day: 6, candle: 0.3, fire: 0.3, storm: 1, frost: 0.7, cold: 0.6, choc: null,
-    hero: { face: FACES.hungry, choc: { k: 1, open: 0.6 }, L: [-50, -120], R: [50, -120], blanket: 1, beanie: 1, stubble: 0.8, bags: 0.7, hollow: 0.6, drool: 1 } });
+// Three candidates (cues.coverVariant), each one face on a saturated field, one object, one glow, 1-2 fat words (the
+// bottom-right corner kept clear for the duration badge): 1 day six: his tired, hungry face (beanie, stubble) over the
+// peeled chocolate bar glowing gold under his chin, on deep violet: 382 DAYS; 2 the same face on cold blue: DAY 6;
+// 3 his face mid-bite into the lemon, puckering, on hot yellow: 382 DAYS
+function coverBg(c1, c2, cx = 1300, cy = 520) {
   screenSpace();
-  if (v === 1) { lemonSpray(1260 + 120, 560, 1.5, 0.35, 3); bigWord('382', 500, 360, 340, '#FFD447', 1, -0.05); bigWord('DAYS', 500, 640, 230, '#FFFFFF', 1, -0.05); }
-  else { softDot(gctx, 1250, 760, 320, '#FFD447', 0.6); bigWord('DAY 6', 500, 420, 300, '#FFD447', 1, -0.05); }
-  return { glow: 0.95, noCaptions: true, noSubscribe: true, noHud: true, grain: 0 };
+  const g = ctx.createRadialGradient(cx, cy, 60, cx, cy, 1300);
+  g.addColorStop(0, c1); g.addColorStop(1, c2);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+}
+SC.cover = (lt, t, shot) => {
+  const v = TLd.cues.coverVariant || 1;
+  const hungry = { face: Object.assign({}, FACES.hungry, { lookX: 0.1, lookY: 1.0, pupil: 1.35, eyeOpen: 1.3, mouth: 'o', mouthOpen: 0.5 }), choc: { k: 1, open: 0.65 }, L: [-80, -128], R: [80, -128], beanie: 1, stubble: 0.75, bags: 0.6, hollow: 0.5, drool: 1, cold: 0, sun: 0.0 };
+  if (v === 1 || v === 2) {
+    coverBg(v === 1 ? '#5A2A9A' : '#2A6AD8', v === 1 ? '#12051E' : '#06142E');
+    const cam = hutHeadCam(3.9, 1290, 360);
+    const bp = toScreen(cam, ...hutPt([0, -140]));
+    softDot(ctx, bp[0], bp[1], 520, '#FFC24A', 0.55);
+    hutHero(cam, 1.2, hungry);
+    softDot(gctx, bp[0], bp[1], 260, '#FFD447', 0.55);
+    screenSpace();
+    if (v === 1) { bigWord('382', 470, 330, 330, '#FFD447', 1, -0.05); bigWord('DAYS', 470, 610, 210, '#FFFFFF', 1, -0.05); }
+    else { bigWord('DAY 6', 480, 380, 300, '#FFD447', 1, -0.05); bigWord('NO FOOD', 480, 620, 130, '#FFFFFF', 1, -0.05); }
+  } else {
+    coverBg('#FFE45A', '#E87A10');
+    const cam = hutHeadCam(4.4, 1300, 470);
+    hutHero(cam, 1.2, { face: FACES.sour, L: HUT_ARMS.rest.L, R: HUT_ARMS.lemon.R, lemon: { k: 1, bite: 0.5 }, cold: 0, sun: 0 });
+    screenSpace();
+    lemonSpray(1300 + 190, 470 + 140, 2.2, 0.3, 3);
+    bigWord('382', 460, 330, 330, '#FFFFFF', 1, -0.05); bigWord('DAYS', 460, 610, 210, '#2A1A0A', 1, -0.05);
+  }
+  return { glow: 0.8, noCaptions: true, noSubscribe: true, noHud: true, grain: 0 };
 };
 
-function initScenes2() { initHut(); initOutside(); initKitchen(); }
+function initScenes2() { KIT.ps = 0.64; KIT.pipX = 1250; KIT.pipY = 806; initHut(); initOutside(); initKitchen(); }
