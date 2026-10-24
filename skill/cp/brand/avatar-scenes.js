@@ -42,3 +42,5 @@ SC.b = () => { bgRadial('#FFC163', '#FF7A3C', '#B8361E'); rays('#FFF2C4', 0.1); 
 SC.c = () => { bgRadial('#2C5BD8', '#122A78', '#060B26'); screenSpace(); softDot(ctx, 300, 760, 380, '#FF9A3C', 0.45); softDot(ctx, 820, 1400, 420, '#3FA8FF', 0.4); hero(WOW, NATPAL, { hat: true, s: 4.1, dy: 150 }); qmark(838, 820, 170, '#FF9A3C', 0.22); return { glow: 0.8, noCaptions: true }; };
 setLights({ a: LIGHTS.day, b: LIGHTS.day, c: LIGHTS.lanterns });
 function initScenes2() {}
+// the banner's hiker: the same face as the picture, no "?" (the banner draws its own), a plain background to feather away
+SC.h = () => { bgRadial('#FFB257', '#FF8A3E', '#F06A32'); hero(CURIOUS, PAL, { s: 4.3, dy: 90, rot: -0.08 }); return { glow: 0.8, noCaptions: true }; };
