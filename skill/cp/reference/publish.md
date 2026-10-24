@@ -23,7 +23,7 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
 ## Comments: the "Next up" comment AND replies to viewers, every 2 hours (the user, 24 Oct 2026: "run a scheduler every 2 hours on curiopulse to check and reply the comments on curio pulse youtube channel", "update the comment scheduler to also reply comments on youtube")
 - The cloud routine "CurioPulse — Comments: Next up + replies" (trig_01EYLp2sfdiRyNseJp12Jao8, cron `10 */2 * * *` UTC = 05:40, 07:40 ... 23:40 IST)
   runs `yt.mjs comments-due` (the "Next up" comment, at 11:40 and 23:40 IST as before), then `comments-inbox --json` and writes up to
-  5 replies a run (about 60 a day) with `comment-reply <id> --file <text>`.
+  10 replies a run (about 120 a day; 5 until the user, 24 Oct: "raise it to 10 replies per run") with `comment-reply <id> --file <text>`.
 - The code reaches the run as the routine's SOURCE (github.com/hmunna36/curiopulse, sparse: `skill/cp/bin` and `state`, ~0.2 MB of
   a 2.4 GB repo), checked out before the run starts. Never `git clone` it inside the run: on 24 Oct the cloud's safety check
   began blocking `node yt.mjs` run from a clone the run had made itself ("Code from External"; circle-line's Next-up comment
@@ -37,7 +37,7 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   complete.! 💪"). `comment-reply` re-reads the thread and posts nothing when the channel has answered already; it refuses links,
   over 300 characters, the channel's own comments, and other channels' videos.
 - Quota: uploads have their own bucket; a reply costs 50 of the 10,000 units a day that CurioPulse SHARES with Visual Algo and Inner
-  Devil Films (one Google project, "My First Project"; thumbnails 50, captions 400, playlists 50). Hence the cap of 5 a run; on
+  Devil Films (one Google project, "My First Project"; thumbnails 50, captions 400, playlists 50). Hence the cap (10 a run since 24 Oct, ~6,000 units a day at most); on
   `quotaExceeded` the routine stops at once. Raise the cap only with the user's word.
 
 ## META BY API (the user, 17 Oct 2026: "update all pipelines to upload via API for instagram and fb") — the normal route
