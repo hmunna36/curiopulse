@@ -31,7 +31,8 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   with every commit, so an edit to `~/.config/cp/comment-queue.json` reaches the cloud only when it is copied and pushed.
 - `comments-inbox [--hours 72] [--json]`: viewers' top-level comments the channel has not answered, and viewers' replies inside the
   channel's own threads with no channel reply after them (`kind: reply-in-our-thread`, id `<thread>.<reply>`, the routine's reply
-  gets the viewer's @handle); `repliesLast24h` counts every channel reply (the user's own by hand too). `comments-mine [--hours 24]`:
+  gets the viewer's @handle); `repliesLast24h` counts every channel reply (the user's own by hand too); `videos` maps each video to
+  its title and `explains` (its description's first paragraph), so an answer agrees with the video. `comments-mine [--hours 24]`:
   the channel's recent replies, the house style (the user's by hand on 24 Oct: short, playful, "Ear wiggle club.!", "Training arc
   complete.! 💪"). `comment-reply` re-reads the thread and posts nothing when the channel has answered already; it refuses links,
   over 300 characters, the channel's own comments, and other channels' videos.

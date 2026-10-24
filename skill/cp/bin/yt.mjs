@@ -658,14 +658,18 @@ async function commentsInbox(hours, asJson) {
     if (replies.some((c) => c.snippet.authorChannelId?.value === ch.id)) { answered++; continue; }
     inbox.push({id: t.id, kind: 'comment', videoId: t.snippet.videoId, author: top.authorDisplayName, text: top.textOriginal ?? top.textDisplay, publishedAt: top.publishedAt, likeCount: top.likeCount ?? 0, replies: t.snippet.totalReplyCount ?? 0});
   }
-  const ids = [...new Set(inbox.map((c) => c.videoId))], titles = {};
+  const ids = [...new Set(inbox.map((c) => c.videoId))], titles = {}, videos = {};
   for (let i = 0; i < ids.length; i += 50) {
     const r = await (await api('GET', `${API}/videos?part=snippet&id=${ids.slice(i, i + 50).join(',')}`)).json();
-    for (const v of r.items ?? []) titles[v.id] = v.snippet.title;
+    for (const v of r.items ?? []) {
+      titles[v.id] = v.snippet.title;
+      // the description's first paragraph is what the video explains: the routine answers questions in line with it
+      videos[v.id] = {title: v.snippet.title, explains: (v.snippet.description ?? '').split(/\n\s*\n/)[0].trim().slice(0, 900)};
+    }
   }
   for (const c of inbox) c.videoTitle = titles[c.videoId] ?? '?';
   inbox.sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt));
-  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, inbox};
+  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, videos, inbox};
   if (asJson) return console.log(JSON.stringify(out, null, 1));
   console.log(`${CHANNEL}: ${inbox.length} viewer comments unanswered in the last ${hours} h (${answered} answered already); the channel replied ${repliesLast24h} times in the last 24 h`);
   for (const c of inbox) console.log(`  ${c.id}  ${istTime(Date.parse(c.publishedAt))}  ${c.author} on "${c.videoTitle}": ${c.text.replace(/\s+/g, ' ').slice(0, 140)}`);
