@@ -2132,3 +2132,42 @@ Instagram (Business Suite, Instagram only) and the Facebook Page (fb.mjs) 27 Oct
   phone): cover.jpg uploaded there and saved.
 - The hook was re-voiced once (the first wording ran 5.0 s and put the answer at 5.55 s); 460 characters in all. Two QA rounds; the
   final MP4 is byte-identical to build.sh's. Queue refilled by a helper agent (10 sourced tests, 15 queued). About 3.8 minutes a render.
+
+**lake-natron** (24 Oct 2026, a live session, 09:28-11:25 IST: the user asked "do 1 animated short now so that i will see it. it
+should feel like a visual upgrade"; THE FIRST CURIOUS SHORT of the topic test `kind-2026-10`; short arm, 70 words -> 32.07 s; pill arm;
+hook formula The Impossible Claim, said to "you": "You see that bird? This lake turned it to STONE."; answer "Not stone, actually...
+it's a MUMMY." at 4.19 s; YouTube HYIP2vEE1Gc, 25 Oct 23:30 IST, playlist Strange Nature; Instagram (Business Suite, Instagram only,
+cover uploaded) and the Page (fb.mjs, video 1439678644800221) 28 Oct 21:00 IST; title changed twice at the user's word: "mention lake
+natron in title or comment" -> "Why Does Lake Natron Turn Animals to STONE?", then "but it does not turn into literal stone right?" /
+"statue based alternative is good" -> "Why Does Lake Natron Turn Animals Into STATUES? 🦩", cover TURNED INTO / STATUES?!, caption
+"...into statues. Not stone, though"):
+- **A world built for the topic, in 4 new files (borrow them):** `natron.js` (a far plate painted once and drawn with parallax
+  `NT.pFar`, sharp and a blurred copy for close-ups; the water as a 2.5D ground plane `ntPlane(cam, tilt)` / `ntAt(P, wx, u)`: u 0 =
+  horizon at the plate's parallax, u 1 = the near line in world space, scale = zoom x u, x converging to a vanishing point; the
+  plate mirrored in the water in 5 px rippled strips with a fresnel fade; soda-crust rafts, a glitter path, ripples, steaming springs,
+  heat shimmer `ntShimmer`, warm motes, out-of-focus foreground crust; `ntLife`: wading groups, mid-lake snags with stone birds;
+  `tilt` raises the horizon = a crane up), `canoe.js` (the hero seated in a canoe whose far rail is on his own layer `pre` and near
+  side in `post`, so the boat is lit and sharp with him; `NATPAL` teal shirt; a pith helmet; a paddle that can crust; `tipR`: aim a
+  pointing FINGERTIP at a world point by solving for the wrist; `dy`/`roll` bob the whole boat), `birds.js` (the lesser flamingo
+  `nbFlamingo`: live or a chalk-white statue with crust; `nod` tips the beak DOWN; `nbBeakTip`, `nbNeckAt`; sprites for crowds
+  `nbSmall` with reflections; `nbGroup`, `nbFlock`/`nbFlyer`; the swallow `nbSwallow` with `dry` and `crust` dials, `nbDrops`; dead
+  branches `nbBranch`; `nbWaterOver`, `nbReflect`), `cast.js` (a mummy = the rig in `MUMPAL` with bandage lines and round
+  sunglasses, a NATRON jar, a dust poof, a mud-cone nest, a fluff-ball chick, white salt islands on the plane, a spotted hyena).
+- **The user watched the stills and steered while it was built:** "can we make the world more engaging?" (-> groups, snags,
+  flocks across the sun, shimmer, motes, the boat's bob), "why is it red?" (salt-loving microbes; kept: it is the lake's real
+  colour), "the flamingo head is awkward" (the beak was drawn pointing UP: a positive rotate turns a left-facing beak's tip
+  upward; the eye was a big ring: now a deep bent beak with a black tip, a small golden eye, a blank pale one on the statue).
+- **Never clip to hide what is under water:** a clipped shape is left out of the light's shape map, so the stage lit the wading
+  flamingo as the canoe behind it and it looked see-through. Draw the whole thing, then a soft-edged patch of the water's own
+  colour over the submerged part (`nbWaterOver`: a cached gradient image, unlit by design) and a faint mirrored copy (`nbReflect`).
+- **Keep the sun off the subject:** with the sun behind the white statue's head, bloom ate it. The sun went up into the corner,
+  its glow layer halved, the stage's `beams` 0.18 -> 0.08.
+- **Hold no face before 12 s, even in the curious kind:** round 1 had him give us a flat look for 1.6 s on "Not stone,
+  actually...". Round 2 gave the line an action that SHOWS the answer: he scratches the statue's neck, crust flakes fall, pink
+  feathers show under it.
+- **Fact framing:** the viral claim ("turns animals to stone") is not literal (Cerling: coated with sodium carbonate, dried, not
+  calcified): the Short corrects itself in its answer line, and the title says STATUES.
+- Render time: ~11 min (650-700 ms a frame in the wide shot with ~1,700 sprites + reflections); the final MP4 is byte-identical
+  to build.sh's from a fresh work folder; qa.py 18/18 (voice mean 22.3 dB, WER 1.4 %). Gags measured in their gaps after
+  round 2: knocks -23.8/-20.7, yank + eww -25.5, peep -23.2, honk -18.4, gurgle -18.0, yip -18.1 (narrator -16.7). Voice: one take
+  per block (400 characters; quota.mjs read 41,137 before).

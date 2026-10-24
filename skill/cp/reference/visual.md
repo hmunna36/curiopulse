@@ -186,6 +186,11 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 - **Nothing crosses his face in the first second**: what flies up (washing, popcorn, water) leaves to one side.
 - **A prop that IS the viewer's test goes in front of him** (mirror-eyes, 24 Oct 2026): a wall clock drawn before the hero counts
   as set, so the lens's depth of field softens it and the light pool dims it. Draw it after him (beside him, not over him): sharp.
+- **Never clip to hide what is under water or behind a surface** (lake-natron, 24 Oct 2026): a clipped shape is left out of the
+  shape map, so the light shades it as whatever is behind it, and it looks see-through. Draw it whole, then a soft patch of the
+  surface's own colour over the hidden part (`nbWaterOver` in lake-natron's birds.js) and, on water, a faint mirrored copy.
+- **Keep the sun (or any bright source) off the subject's silhouette:** bloom eats a white subject in front of it (lake-natron's
+  statue): put the source in a corner of the frame and keep the glow layer's sun modest.
 - **Several shapes as one outlined thing** (a see-through limb, a silhouette): stroke them all, then fill them all,
   with every subpath turning the same way; one outline, no seams.
 
