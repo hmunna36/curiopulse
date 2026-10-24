@@ -1,0 +1,36 @@
+# Narration for "Why Does This Lake Turn Animals to STONE? 🦩"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# THE CURIOUS KIND (the topic test, 25 Oct-8 Nov 2026; reference/story.md §6): no viewer test; the hook is an
+# impossible-sounding true thing, said to "you", with the picture already on frame 1. Hook formula: The Impossible
+# Claim. 70 words (three gag pauses: keep it near 70).
+# - nobody says "subscribe" (qa.py fails it), and nothing asks, teases or winds up. The last block is the button; it
+#   runs into the hook when the Short loops ("...don't." -> "You see that bird?").
+
+## hook gap=0.10 tempo=1.00
+You see that bird? This lake turned it to STONE.
+
+## answer gap=0.45 tighten=0.45 tempo=1.00
+Not stone, actually... it's a MUMMY.
+
+## soda gap=0.35 tempo=1.04
+This water's like hot washing soda. It BURNS.
+
+## crust gap=0.30 tempo=1.04
+Whatever falls in gets dried out... and crusted over.
+
+## payoff gap=0.35 tempo=1.02
+Egyptians made mummies with the same salt.
+
+## weird gap=0.40 tempo=1.02
+And flamingos? They LOVE it. Most of the world's lesser flamingos hatch right here...
+
+## why gap=0.15 tempo=1.03
+because nothing dares wade in after them.
+
+## button gap=0.45 tighten=0.45 tempo=1.00
+So if a flamingo says the water's lovely... don't.

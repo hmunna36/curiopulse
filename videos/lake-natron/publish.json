@@ -1,0 +1,58 @@
+{
+  "slug": "lake-natron",
+  "file": "lake-natron-short.mp4",
+  "title": "Why Does Lake Natron Turn Animals Into STATUES? 🦩",
+  "description": "This lake turns animals into statues. Not stone, though. Lake Natron in northern Tanzania is so full of natron (soda: washing soda and baking soda) that its water is like hot washing soda: up to pH 10.5, nearly as strong as ammonia, and up to 60 °C. It can burn your skin. Anything that dies in it gets dried out and coated in a white crust, so the bodies stay perfectly preserved: basically mummies (photographer Nick Brandt found birds and bats like that on its shore and posed them on branches). Ancient Egyptians made their mummies with the very same salt: natron. And yet flamingos LOVE it: up to three in four of the world's lesser flamingos hatch here, because the burning water keeps predators away from their nests. Would you touch it? Yes or no?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #LakeNatron #Flamingos #StrangeNature #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-25T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "pill",
+    "test": "pill-2026-10",
+    "slot": "2026-10-25T23:30:00+05:30"
+  },
+  "pinnedComment": "📍 This is Lake Natron, in northern Tanzania 🇹🇿\nNext up: a day on Venus is longer than its year ☀️ Subscribe so you don't miss it!\nWould you touch it? Yes or no? 🦩",
+  "tags": [
+    "lake natron",
+    "lake that turns animals to stone",
+    "lake that turns animals into statues",
+    "lake natron flamingos",
+    "calcified animals",
+    "natron",
+    "mummy salt",
+    "lesser flamingo",
+    "tanzania lake",
+    "strange nature",
+    "weird lakes",
+    "science shorts",
+    "flamingo facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "lake-natron.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "This lake turns animals into statues. 🦩\nNot stone, though: Lake Natron's water (Tanzania) is like hot washing soda, so anything that dies in it dries out and crusts over. A mummy, made by a lake. And flamingos LOVE it.\nWould you touch it? Yes or no?\nFollow @curio_pulse_tv for the next one: a day on Venus is longer than its year ☀️\n#science #nature #flamingo #lakenatron #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-10-25T23:30:00+05:30"
+  }
+}

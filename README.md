@@ -59,6 +59,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Can't You Draw a Circle and a Line at the SAME Time? | 32 s | [`videos/circle-line`](videos/circle-line) | [24 Oct 2026](https://youtube.com/shorts/XCPq2xvL02w) |
 | Why Can't Your Tongue Touch Your NOSE? | 32 s | [`videos/tongue-nose`](videos/tongue-nose) | [24 Oct 2026](https://youtube.com/shorts/N1vgcsMvZjI) |
 | Why Can't You See Your Own EYES Move in a Mirror? | 31 s | [`videos/mirror-eyes`](videos/mirror-eyes) | [25 Oct 2026](https://youtube.com/shorts/VgHmLADdE7w) |
+| Why Does Lake Natron Turn Animals Into STATUES? | 32 s | [`videos/lake-natron`](videos/lake-natron) | 25 Oct 2026 |
 
 Each folder has:
 - the finished MP4;
