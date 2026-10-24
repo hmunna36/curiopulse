@@ -49,6 +49,13 @@ built like them (details in `reference/story.md`; it opens with the list):
    Short is watched again; the target is a curve starting at 150 %+ (`story.md` §2–§3).
    A test Short that passes 5,000 YouTube views goes into the playlist "Try These Tests On Yourself" (the top
    row of the Home tab): `yt.mjs playlist-add "Try These Tests On Yourself" <videoId>` (`analytics.md`, 24 Oct).
+9. **The topic test (25 Oct 23:30 to 8 Nov 23:30 IST; user, 24 Oct 2026: "this que for 1 slot and in another slot
+   some other extremely curious topic not only about human body", then "yes", and "the animation should be of top
+   most quality with extremely timed comedy").** Each day has one TEST Short (rules 1–2 as above) and one CURIOUS
+   Short: an impossible-sounding true thing about space, animals, Earth, physics or history, told to "you", from
+   `topics.md`'s Curious queue, made by `story.md` §6. The kind alternates by day across the two slots so it never
+   lines up with the pill test (`KIND_TEST` in `bin/yt.mjs`; `next-slot` prints it; `new-short.sh` writes publish.json
+   "kind"). Rules 3–8 hold for both kinds. Read on about 11 Nov with the pill test (`analytics.md`, the topic test).
 
 ## Deliverables
 
@@ -300,8 +307,9 @@ user's request).
 - Each build is somewhat slower while both run. That's fine; don't start a third heavy job.
 - To change what gets made, edit `topics.md`, not the routine.
 
-1. Take the first `[~]` line of `~/.claude/skills/cp/topics.md` and resume it, or else the first `[ ]` line under
-   `## Queue` (never one under `## Held`: those have no test the viewer can do yet). Mark it
+1. Take the first `[~]` line of `~/.claude/skills/cp/topics.md` and resume it, or else run `yt.mjs next-slot` and take
+   the first `[ ]` line under `## Queue` when it prints "topic kind: TEST", or under `## Curious queue` when it prints
+   "CURIOUS" (rule 9; never one under `## Held`: those have no test the viewer can do yet). Mark it
    in progress: `- [~] Why do onions make you cry? — onion-tears — started 2026-10-01`. If the queue is empty, report
    that and stop.
 2. Gates before building anything; if one fails, report the fix and stop, and a new topic goes back to `[ ]`:
@@ -418,7 +426,8 @@ own level, which in a routine run is medium. So:
 - **Queue refill:** if fewer than 7 `[ ]` topics remain in the Queue, research and append 10 new ones first: each a
   test the viewer can do on themselves while watching, safely, in a few seconds (`reference/story.md` §4), with a
   sourced mechanism, a weird true fact and a one-word answer the caption can ask for; no repeats of done topics. Then
-  take the next one.
+  take the next one. The Curious queue the same way when fewer than 4 are left: 8 new impossible-sounding true
+  things (`story.md` §6).
 - **Review on 17 Oct:** compare views per Short and subscribers (AM vs PM, run 1 vs run 2). If the average views per
   Short over the last 7 days drop below ~800, or quality slips, go back to one Short a day and say so. From 6 to
   16 Oct the two slots also differed in length (the length test below), so read AM vs PM with `numbers.md`'s

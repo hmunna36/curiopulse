@@ -228,3 +228,36 @@ queue. Prefer topics where the hiker can be the one it happens to.
    - list what must be built new.
 9. The cover frame: which moment, what text.
 10. The caption's closing question: one word to answer, about the test ("Left or right?", "Could you lift it?").
+
+## 6. The CURIOUS kind (the topic test, 25 Oct–8 Nov 2026; `SKILL.md` rule 9)
+
+**User, 24 Oct 2026: "some other extremely curious topic not only about human body", "the animation should be of top
+most quality with extremely timed comedy".** Half the Shorts in the test. Everything in §2–§5 holds except what
+depends on the viewer's own body; the replacements:
+
+- **The topic:** a true thing that sounds impossible, one sentence a stranger would stop for and repeat to a friend
+  ("There's a lake that turns animals to stone."). Space, animals, Earth, physics, history. Never a "why is the sky
+  blue" textbook question: those never broke out. It must have ONE spectacular picture.
+- **The hook (0–3 s):** the claim, said to the viewer, while frame 1 already shows it (the stone flamingo staring
+  at the hiker). Put the viewer in it: "you" or "your" in the first line ("If you fell into Jupiter, you'd never hit
+  the ground."). If a two-second guess fits, ask it ("Guess which is older: sharks or trees?") and answer by 5 s.
+- **The hero goes there.** The hiker visits the place or meets the creature: he paddles the red lake, parachutes
+  into Jupiter, runs a bath for Saturn. He is the viewer's stand-in, and his reactions are the comedy.
+- **The 8–13 s rule, adapted:** the hiker stays inside the phenomenon while the reason lands, and the reason is ONE
+  picture (the soda water crusting the flamingo's feathers), never a sentence about chemistry.
+- **Top-most animation:** a new world built for the topic at the top of the house style: real depth (three or
+  more parallax layers), its own light (`setLights`) and atmosphere (haze, particles, weather), a camera that moves
+  with intent, and one "how did they animate that" shot at the payoff. Budget the time: the world is built before the
+  shots, and a Short whose world is not spectacular is not finished (ship bar 7).
+- **Comedy timed to the frame:** two laugh beats at least (the answer line and the button) plus a visual gag every
+  5–7 s. The jokes come from the hiker's situation and from timing: a hold of 6–10 frames before the reaction, the
+  cut on the beat, the sound hit in the gap, deadpan narration over a disaster. Mark each joke's beat in the plan
+  (frame numbers), and check them in the contact sheet and at full speed.
+- **The button** reframes or undercuts and runs into the hook ("...so maybe don't swim there. Or do: there's a
+  lake that turns animals to stone."), and the last shot returns to frame 1.
+- **Caption question:** one word or a pick ("Would you touch it?", "Stars or trees?").
+- **Science:** these claims travel; each number is checked against two sources, and anything disputed is hedged in
+  the words ("up to", "scientists think").
+- **Voice:** Jessica, as for the tests, so the only difference between the kinds is the topic and its world (a
+  second voice would make the test unreadable; try it after 8 Nov if the curious kind wins).
+

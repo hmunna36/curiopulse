@@ -109,6 +109,19 @@ export const PILL_TEST = {name: 'pill-2026-10', start: '2026-10-25T23:30:00+05:3
 const inPillTest = (ms) => Boolean(PILL_TEST) && ms >= Date.parse(PILL_TEST.start) && ms < Date.parse(PILL_TEST.end);
 const pillOfSlot = (ms) => (inPillTest(ms) ? PILL_TEST.slots[istHM(ms)] ?? 'none' : 'none');
 const PILL_GROUPS = {pill: 'PILL TEST · pill (23:30)', none: 'PILL TEST · no pill (11:30)'};
+// The topic test (user, 24 Oct 2026: "this que for 1 slot and in another slot some other extremely curious topic not
+// only about human body", then "yes"): over the same two weeks as the pill test, each day has one TEST Short (topics.md
+// Queue: a test the viewer does on themselves) and one CURIOUS Short (topics.md Curious queue: an impossible-sounding
+// true thing about space, animals, Earth, physics...). The kind alternates by day so that it never lines up with the
+// pill's slot: on even days from day0 the 23:30 slot is curious and 11:30 a test; on odd days the other way round.
+// 7 of each kind in each slot. `next-slot` prints the kind; the run picks its topic from the matching queue.
+export const KIND_TEST = {name: 'kind-2026-10', start: '2026-10-25T23:30:00+05:30', end: '2026-11-08T23:30:00+05:30', day0: '2026-10-25'};
+const inKindTest = (ms) => Boolean(KIND_TEST) && ms >= Date.parse(KIND_TEST.start) && ms < Date.parse(KIND_TEST.end);
+const kindOfSlot = (ms) => {
+  if (!inKindTest(ms)) return 'test';
+  const d = Math.round((Date.parse(istDate(ms)) - Date.parse(KIND_TEST.day0)) / 86400000);
+  return istHM(ms) === (d % 2 === 0 ? '23:30' : '11:30') ? 'curious' : 'test';
+};
 const SKILL_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const istTime = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 16).replace('T', ' ') + ' IST';
 
@@ -324,11 +337,14 @@ async function nextSlot(asJson) {
   const length = {arm, min: a.min, max: a.max, ...(test ? {test: LENGTH_TEST.name} : {}), slot: iso};
   const pt = inPillTest(Date.parse(iso));
   const subscribe = {arm: pillOfSlot(Date.parse(iso)), ...(pt ? {test: PILL_TEST.name} : {}), slot: iso};
-  if (asJson) return console.log(JSON.stringify({slot: iso, length, subscribe}));
+  const kt = inKindTest(Date.parse(iso));
+  const kind = {kind: kindOfSlot(Date.parse(iso)), ...(kt ? {test: KIND_TEST.name} : {}), slot: iso};
+  if (asJson) return console.log(JSON.stringify({slot: iso, length, subscribe, kind}));
   console.log(`next free YouTube slot: ${istTime(Date.parse(iso))}`);
   console.log(`length arm: ${arm.toUpperCase()} = ${a.min}-${a.max} s, ${a.words} words in all (about ${a.chars} characters)${test ? ` · length test "${LENGTH_TEST.name}": 23:30 slots are short, 11:30 slots are standard` : ' · every Short is 30-35 s since 16 Oct 2026 (the length test is over)'}`);
   console.log(`subscribe arm: ${subscribe.arm === 'pill' ? 'PILL = the short silent Subscribe pill over the last 2.2 s (timeline_lib.py sets it; nobody says "subscribe")' : 'NONE = no pill, the Short ends on the button and loops'}${pt ? ` · pill test "${PILL_TEST.name}" until ${istTime(Date.parse(PILL_TEST.end))}: 23:30 slots get the pill, 11:30 slots none` : ''}`);
-  console.log(`put into publish.json → "length": ${JSON.stringify(length)}, "subscribe": ${JSON.stringify(subscribe)}`);
+  console.log(`topic kind: ${kind.kind === 'curious' ? 'CURIOUS = take the topic from topics.md "Curious queue" (story.md §6)' : 'TEST = take the topic from topics.md "Queue" (a test the viewer does on themselves)'}${kt ? ` · topic test "${KIND_TEST.name}" until ${istTime(Date.parse(KIND_TEST.end))}: the kind alternates by day` : ''}`);
+  console.log(`put into publish.json → "length": ${JSON.stringify(length)}, "subscribe": ${JSON.stringify(subscribe)}, "kind": ${JSON.stringify(kind)}`);
 }
 async function reschedule(id, when) {
   const t = Date.parse(when);
@@ -884,6 +900,17 @@ async function numbers(outDir = SKILL_DIR) {
       md.push(rowOf(`${hm} · before (16 Oct to the test, no pill)`, shorts.filter((v) => v.slot === hm && v.when >= testEnd && v.when < pillStart), true));
       md.push(rowOf(`${hm} · the test (${PILL_TEST.slots[hm] === 'pill' ? 'pill' : 'no pill'})`, shorts.filter((v) => v.slot === hm && v.when >= pillStart && v.when < pillEnd), true));
     }
+    md.push('');
+  }
+  if (KIND_TEST && Date.now() >= Date.parse(KIND_TEST.start)) {
+    // the topic test (24 Oct 2026): the kind alternates by day across both slots, so each kind is read straight
+    const ks = Date.parse(KIND_TEST.start), ke = Date.parse(KIND_TEST.end);
+    const shorts = vids.filter((v) => v.live && v.seconds && v.seconds <= 90 && v.when >= ks && v.when < ke);
+    md.push(`### The topic test (${KIND_TEST.name}): test Shorts against curious Shorts`, '');
+    md.push('Each day has one of each, alternating slots, so the two rows face the same audiences and the same pill split. Read views per Short (middle), stayed to watch and the end of the curve together; subscribers per 1,000 last (`reference/analytics.md`, the topic test).', '');
+    md.push('| Kind | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views | Middle views per Short | Middle subs per 1,000 |', '|---|---|---|---|---|---|---|---|---|');
+    md.push(rowOf('test (body, mind, screen)', shorts.filter((v) => kindOfSlot(v.when) === 'test'), true));
+    md.push(rowOf('curious (the world)', shorts.filter((v) => kindOfSlot(v.when) === 'curious'), true));
     md.push('');
   }
   md.push('## Every upload (newest first)', '');

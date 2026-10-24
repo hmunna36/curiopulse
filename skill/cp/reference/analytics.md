@@ -327,3 +327,20 @@ the pill itself matters.
   Shorts views in 90 days (only views where the viewer stayed count); the lower tier, 500 subscribers and 3 million.
   Third-party guides say that from 1 Feb 2027 new applicants need 20 million (not confirmed on YouTube's own page).
   Views, not subscribers, are the bottleneck: about 11K a day now, against about 110K a day needed.
+
+## The topic test (`kind-2026-10`, 25 Oct 23:30 to 8 Nov 23:30 IST)
+
+**User, 24 Oct 2026: "i am thinking this que for 1 slot and in another slot some other extremely curious topic not
+only about human body", then "yes".** Each day one TEST Short (a test the viewer does on themselves) and one CURIOUS
+Short (`story.md` §6). The kind alternates by day (even days from 25 Oct: 23:30 curious, 11:30 test; odd days the
+other way), so over the two weeks each slot carries 7 of each and the kind never lines up with the pill test's slot.
+`numbers.md` has a table "The topic test" (one row per kind, read by the release slot).
+
+- **Reading it (with the pill test, about 11 Nov):** views per Short (middle), stayed to watch, the share at 13 s and
+  at the end of the curve, Instagram views and skip rate per Reel, then subscribers per 1,000 views (pooled, leaving
+  out Shorts over 20,000 counted views, as for the pill test). Count breakouts per kind (7K+ YouTube, 100K+ Instagram).
+- **Curious wins** if its middle views per Short are at least about 30 % above the tests' on BOTH platforms without a
+  worse "stayed"; **tests win** the same way the other round; anything between is too close: the user decides the mix.
+- A Short that slips to a later slot is read by the slot it was released in (rare; its publish.json "kind" says what
+  it really was: check the per-upload table against it).
+

@@ -54,9 +54,11 @@ const spec = JSON.parse(fs.readFileSync(f, "utf8"));
 const ns = JSON.parse(j);
 spec.length = ns.length;
 spec.subscribe = ns.subscribe || {arm: "none"};
+spec.kind = ns.kind || {kind: "test"};
 fs.writeFileSync(f, JSON.stringify(spec, null, 2) + "\n");
 console.log(`length arm: ${spec.length.arm.toUpperCase()} (${spec.length.min}-${spec.length.max} s) for the YouTube slot ${spec.length.slot}, written to publish.json`);
-console.log(`subscribe arm: ${spec.subscribe.arm.toUpperCase()}${spec.subscribe.test ? ` (pill test ${spec.subscribe.test})` : ""}, written to publish.json`);' "$DEST/publish.json" "$LEN"
+console.log(`subscribe arm: ${spec.subscribe.arm.toUpperCase()}${spec.subscribe.test ? ` (pill test ${spec.subscribe.test})` : ""}, written to publish.json`);
+console.log(`topic kind: ${spec.kind.kind.toUpperCase()}${spec.kind.test ? ` (topic test ${spec.kind.test})` : ""}, written to publish.json`);' "$DEST/publish.json" "$LEN"
 else
   echo 'note: could not read the next YouTube slot, so publish.json still says length arm "short" and subscribe arm "none" (the template defaults): run yt.mjs next-slot and put its "length" and "subscribe" objects there before writing the script'
 fi
