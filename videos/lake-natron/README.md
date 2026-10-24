@@ -32,8 +32,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (not uploaded yet: the user watches it first) | 25 Oct 2026 23:30 IST (the next free slot; the pill arm) |
-| Instagram Reels | (not scheduled yet) | the next free 18:30/21:00 slot after the YouTube release |
+| YouTube Shorts | https://youtube.com/shorts/HYIP2vEE1Gc | 25 Oct 2026 23:30 IST (scheduled; the pill arm; playlist Strange Nature; cover set in Studio's vertical slot) |
+| Instagram Reels | @curio_pulse_tv | 28 Oct 2026 21:00 IST (scheduled in Business Suite, Instagram only, cover uploaded) |
+| Facebook Page | CurioPulse (video 1439678644800221) | 28 Oct 2026 21:00 IST (`fb.mjs reel`: publish_status scheduled, copyright clean) |
 
 **Title:** Why Does Lake Natron Turn Animals Into STATUES? 🦩 (the user, 24 Oct 2026: "mention lake natron in title or comment", then "statue based alternative is good": the animals are not literally stone)
 
@@ -95,7 +96,15 @@ frame 1 ("You see that bird?"). The silent pill plays over the last 2.4 s (the p
 
 ## Ship review
 
-QA rounds, the scores against the ship bar, and what changed each round (from `.work/qa/ship-review.md`).
+Two QA rounds (`.work/qa/ship-review.md`). Round 1 (qa.py 18/18): retention 7.5 (a held flat look at us at 4.2-5.8 s)
+and sound 7.5 (the first knock, the yank + "eww" and the chick's peep too quiet); the rest 8-8.5. Round 2: on "Not stone,"
+he scratches the statue's neck, crust flakes fall and pink feathers show (the answer shown before it is said); the stone
+knocks soft-clipped and three gags raised (knock -23.8, peep -23.2, yank + eww -25.5 dB against a narrator at -16.7).
+qa.py 18/18 (32.07 s, -14.02 LUFS, -1.88 dBTP, voice mean 22.3 dB, WER 1.4 %: "wade" heard as "weight"); every item 8+.
+Before round 1, from the user's notes while it was built: the world made livelier, the flamingo's head redrawn (the
+beak had been drawn pointing up), the sun moved off the statue's head, no clips at the waterline (a soft water patch).
+The final MP4 is byte-identical to `src/build.sh`'s from a fresh work folder. About 11 minutes a render (the wide shot's
+thousands of flamingo sprites take ~0.7 s a frame).
 
 ## Rebuild
 

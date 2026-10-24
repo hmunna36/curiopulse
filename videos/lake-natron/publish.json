@@ -35,24 +35,37 @@
   "cover": "cover.jpg",
   "captions": "lake-natron.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-25T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "HYIP2vEE1Gc",
+    "url": "https://youtube.com/shorts/HYIP2vEE1Gc",
+    "uploaded": "2026-10-24T05:32:20.661Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-28T21:00:00+05:30",
     "caption": "This lake turns animals into statues. 🦩\nNot stone, though: Lake Natron's water (Tanzania) is like hot washing soda, so anything that dies in it dries out and crusts over. A mummy, made by a lake. And flamingos LOVE it.\nWould you touch it? Yes or no?\nFollow @curio_pulse_tv for the next one: a day on Venus is longer than its year ☀️\n#science #nature #flamingo #lakenatron #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-10-25T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1439678644800221",
+    "publishAt": "2026-10-28T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-24T05:33:09.070Z"
   }
 }
