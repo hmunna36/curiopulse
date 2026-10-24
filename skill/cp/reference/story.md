@@ -13,6 +13,8 @@ nostril is the only Short that never fell below YouTube's typical retention. Eve
    short silent one** (§3, `visual.md`; publish.json "subscribe" says the arm).
 6. **The caption ends with a one-word question about the test** (`brief.md`, `publish.md`).
 7. **No missed day, and a hit is followed by its kin** (§4, `SKILL.md`).
+8. **The test stays in their hands through 13 s, the mechanism is one picture, and the button sends them back to the
+   test** (24 Oct 2026; §2 "The 8–13 s rule", §3).
 
 ## 1. Research first (15–20 minutes; it prevents re-voicing)
 
@@ -109,6 +111,19 @@ is in `analytics.md`). qa.py checks the timings and "you" in the first line; the
     later only as a throwaway;
   - while we are inside the body, the viewer's test stays in sight: him still doing it in a window, or the inside
     view laid over his face or hand.
+- **The 8–13 s rule (24 Oct 2026, from the curves of 41 Shorts to 22 Oct; `analytics.md`).** Hits and flops keep the
+  same share at the start; the gap opens at 8–13 s, where the Short turns from the test to the explanation (non-hits
+  lose about 5 % of viewers a second there, hits about 4), and halfway the hits hold 94 % against 69 %. The steepest
+  single drops were technical lines: "no room for light sensors" (blind spot), "one narrow band of pitch"
+  (chalkboard), "each eye sees your fingers from its own side" (finger sausage). So:
+  - up to 13 s the viewer is still doing the test, or is told to do it again a new way ("now bend the middle one
+    too"); the hiker does it with them in shot;
+  - the mechanism arrives as ONE picture on the viewer's own body part (a cord tying two fingers together; a door
+    that shuts one nostril), and the words only point at it ("See that cord?");
+  - no sentence before 13 s explains in words what a picture can show; write the line after the picture is designed,
+    not before;
+  - in the plan, mark each line from 5 s to 13 s with what the viewer's hand (nose, eyes) is doing at that moment;
+    a line where it is doing nothing is rewritten.
 - **No naming beat.** Never spend spoken seconds on what the thing is called ("Doctors call it… sphenopalatine
   ganglioneuralgia.", "It's called… borborygmi.", "That's a hypnic jerk."). Brain freeze fell from 93 % to 51 % of its
   viewers across the stretch that held the name.
@@ -137,10 +152,10 @@ platforms, and both breakouts were 31–33 s. `yt.mjs next-slot` says "short" fo
 |---|---|---|---|
 | Hook: the test | `hook` | 0–3 s | the viewer is told to do something to their own body (or is doing it), and the strange thing happens to them |
 | Answer | `answer` | starts by 5.0 s | the plain, surprising claim or metaphor; the first laugh |
-| Mechanism, shown | 2–3 blocks | to ≈ 17 s | ONE mechanism, step by step, pointing back to the test; the camera travels to each thing as it is named |
+| Mechanism, shown | 2–3 blocks | to ≈ 17 s | ONE mechanism, step by step, pointing back to the test; the camera travels to each thing as it is named; up to 13 s the viewer is still doing (or re-doing) the test and the mechanism is ONE picture on their body part (the 8–13 s rule) |
 | Payoff | `payoff` | ≈ 17–20 s | the moment it clicks: the proof, or "that's why…" |
 | The weirdest true fact | 1 block | to ≈ 29 s | stranger than everything before it; hedged when science isn't sure |
-| Button and loop | `button` | to 30–35 s | the line that reframes or undercuts, written to run straight into the hook when the Short loops; the picture cuts back to frame 1; the pill only in the pill test's pill arm (over its last 2.4 s) |
+| Button and loop | `button` | to 30–35 s | best: a line that sends the viewer back to the test a new way ("now try the other hand", "now slower"), so they replay; otherwise the line that reframes or undercuts, written to run straight into the hook when the Short loops; the picture cuts back to frame 1; the pill only in the pill test's pill arm (over its last 2.4 s) |
 
 - One idea per block and one visual per idea. Every 3–5 s there is a new question or reveal. A question that leads
   into a beat ("How do we know?", "And the weirdest part?") is folded into the line that answers it; it is never a
@@ -195,7 +210,8 @@ queue. Prefer topics where the hiker can be the one it happens to.
    the hook when the Short loops).
 3. The claims table (science notes).
 4. The beat list, with a time estimate each (≈ 2.15 words/s at Jessica's pace including the gaps): the answer must
-   start by 5.0 s; every mechanism line points back to the test; no science word spoken in the first 15 s.
+   start by 5.0 s; every mechanism line points back to the test; no science word spoken in the first 15 s; each line
+   from 5 to 13 s says what the viewer's hand (nose, eyes) is doing then (the 8–13 s rule).
 5. For every beat:
    - the picture (world, camera move, what changes);
    - the sound (hit, bed, music state);

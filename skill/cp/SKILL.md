@@ -40,6 +40,15 @@ built like them (details in `reference/story.md`; it opens with the list):
 6. **The caption and the description end with a one-word question about the test** ("Left or right?").
 7. **No missed day** (step 1 checks the last Reels really went out) **and a hit is followed by its kin**
    (`story.md` §4).
+8. **The 8–13 s rule (24 Oct 2026; user: "you do whatever you want i need more subscribers and views").** The test
+   stays on screen and in the viewer's hands through 13 s: the switch to the explanation is where non-hits leak
+   (about 5 % of viewers a second; hits about 4), and the steepest drops all land on a technical sentence. So up to
+   13 s the viewer is still doing (or re-doing) the test, the mechanism is ONE picture they can see on their own body
+   (a cord tying two fingers together, not "a shared tendon"), and no line before 13 s explains in words what a
+   picture can show. The button sends them back to the test ("now try it with the other hand", "now slower"), so the
+   Short is watched again; the target is a curve starting at 150 %+ (`story.md` §2–§3).
+   A test Short that passes 5,000 YouTube views goes into the playlist "Try These Tests On Yourself" (the top
+   row of the Home tab): `yt.mjs playlist-add "Try These Tests On Yourself" <videoId>` (`analytics.md`, 24 Oct).
 
 ## Deliverables
 

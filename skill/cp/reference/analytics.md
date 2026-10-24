@@ -300,6 +300,10 @@ the pill itself matters.
   pill test against the same slots before it". The slots differ by themselves, so the pill's effect is how much the
   23:30 rows gain on their own "before" row, minus how much the 11:30 rows gain on theirs, read on the **middle subs
   per 1,000** (one hit cannot swing it) and the pooled figure.
+  - **Added 24 Oct 2026:** the pooled figure is computed with every Short over 20,000 counted views left out (a typical
+    Short gains only 3–4 subscribers, so per-Short rates are noisy; a breakout's strangers would decide it alone). That
+    pooled-without-breakouts figure is the main reading; the middle is the check; if they point different ways, it is
+    too close to call.
   - **The pill wins** if that difference is at least +0.4 subscribers per 1,000 on the middle and goes the same way on
     the pooled figure, while the pill arm's middle views per Short and stayed-to-watch are not clearly worse against
     their own slot (views within about 15 %, stayed within 3 points), and its last 4 s (`--curve`) lose no more than
@@ -309,3 +313,17 @@ the pill itself matters.
   - **Too close to call** (a gain under +0.4, or two Shorts with fewer than 200 counted views in an arm): say so, and
     suggest another week before deciding. Never extend or end the test without the user.
 
+
+## 24 Oct 2026: channel changes and the 8–13 s rule (user: "you do whatever you want i need more subscribers and views. i should monetise fast")
+
+- **YouTube channel:** the trailer for people who have not subscribed is now the Vulcan salute (w5b_ru8URMQ, was
+  eJ8T5p0OEwk); the description now promises a test on your own body every day; a public playlist "Try These Tests On
+  Yourself" (PLfeShIjxCFfg, 12 Shorts, Vulcan first) is the TOP row of the Home tab (`yt.mjs section-add … --first`).
+  Every run: a test Short that passes 5,000 views goes into that playlist (`yt.mjs playlist-add "Try These Tests On Yourself" <id>`).
+- **The 8–13 s rule** (SKILL.md rule 8, `story.md` §2–§3, ship bar 2 and 3). Read it with the pill test's Shorts
+  (both arms get it, so the split stays fair): the median share at 13 s and at halfway against 16–24 Oct
+  (non-hits: halfway 69 %), and the share at the start (target 150 %+).
+- **Monetisation (as read 24 Oct 2026):** full YouTube ad revenue needs 1,000 subscribers and 10 million engaged
+  Shorts views in 90 days (only views where the viewer stayed count); the lower tier, 500 subscribers and 3 million.
+  Third-party guides say that from 1 Feb 2027 new applicants need 20 million (not confirmed on YouTube's own page).
+  Views, not subscribers, are the bottleneck: about 11K a day now, against about 110K a day needed.

@@ -658,12 +658,12 @@ async function channelSet(args) {
   const r = await (await api('PUT', `${API}/channels?part=brandingSettings`, {json: {id: ch.id, brandingSettings: b}})).json();
   console.log(`saved. trailer now ${r.brandingSettings?.channel?.unsubscribedTrailer ?? '(none)'}; banner ${r.brandingSettings?.image?.bannerExternalUrl ? 'still there' : 'MISSING: set it again in Studio'}`);
 }
-async function sectionAdd(titleOrId, dryRun) {
+async function sectionAdd(titleOrId, dryRun, first = false) { // --first: put the row at the top of the Home tab (24 Oct 2026)
   if (!titleOrId) die('usage: yt.mjs section-add "<playlist title or id>" [--dry-run]');
   const pl = await findPlaylist(titleOrId);
   const sections = (await (await api('GET', `${API}/channelSections?part=snippet,contentDetails&mine=true`)).json()).items ?? [];
   if (sections.some((s) => (s.contentDetails?.playlists ?? []).includes(pl.id))) return console.log(`"${pl.snippet.title}" has a Home row already`);
-  const position = sections.reduce((m, s) => Math.max(m, (s.snippet.position ?? -1) + 1), 0);
+  const position = first ? 0 : sections.reduce((m, s) => Math.max(m, (s.snippet.position ?? -1) + 1), 0);
   if (dryRun) return console.log(`dry run: would add a Home row for "${pl.snippet.title}" at position ${position}`);
   await api('POST', `${API}/channelSections?part=snippet,contentDetails`, {json: {snippet: {type: 'singlePlaylist', position}, contentDetails: {playlists: [pl.id]}}});
   console.log(`Home row added for "${pl.snippet.title}" at position ${position}`);
@@ -964,7 +964,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     else if (cmd === 'playlist-create') await playlistCreate(args.filter((a) => !a.startsWith('--'))[0], args.filter((a) => !a.startsWith('--'))[1], args.includes('--dry-run'));
     else if (cmd === 'playlist-add') await playlistAdd(args.filter((a) => !a.startsWith('--'))[0], args.filter((a) => !a.startsWith('--')).slice(1), args.includes('--dry-run'));
     else if (cmd === 'channel-set') await channelSet(args);
-    else if (cmd === 'section-add') await sectionAdd(args.filter((a) => !a.startsWith('--'))[0], args.includes('--dry-run'));
+    else if (cmd === 'section-add') await sectionAdd(args.filter((a) => !a.startsWith('--'))[0], args.includes('--dry-run'), args.includes('--first'));
     else if (cmd === 'stats') await stats(Math.max(1, Math.min(200, Number(args.find((a) => /^\d+$/.test(a)) ?? 10))), args.includes('--json'));
     else if (cmd === 'analytics') {
       const ci = args.indexOf('--curve');
