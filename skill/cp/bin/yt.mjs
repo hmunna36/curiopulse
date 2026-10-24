@@ -56,8 +56,9 @@
 //                "madeForKids": false, "syntheticMedia": false, "notifySubscribers": true },
 //   "instagram": { "publishAt": "auto", "caption": "…", "coverTime": 5.2, "shareToFeed": true } }
 //   "youtube.playlist": "<title of one of the channel's playlists>" adds the Short to it after the upload (optional).
-//   "pinnedComment": "Next up: … Subscribe…\n<a question for the viewer>": `upload` queues its second line (the
-//   question) for `comments-due`; the "Next up" line itself is written from the channel's schedule when it is posted.
+//   "pinnedComment": "Next up: … Subscribe…\n<a question for the viewer>": `upload` queues every line but the "Next up"
+//   one (the question, and a "📍 This is …" line if there is one) for `comments-due`; the "Next up" line itself is
+//   written from the channel's schedule when it is posted.
 // Progress is written back (youtube.id, url, thumbnailSet, captionsSet, playlistSet), so a re-run resumes.
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -538,7 +539,8 @@ function queueComment(spec) {
   const q = readCommentQueue();
   if (q.posts.some((p) => p.videoId === y.id)) return false;
   const draft = String(spec.pinnedComment ?? '').replace(/\s*\(suggestion[^)]*\)\s*$/i, '').trim();
-  let question = draft.split('\n').slice(1).join(' ').trim();       // line 1 is the drafted "Next up": rewritten when posted
+  // every line but the drafted "Next up" (rewritten from the schedule when posted); a line above it ("📍 This is …") stays
+  let question = draft.split('\n').map((l) => l.trim()).filter((l) => l && !/^next up\b/i.test(l)).join('\n');
   if (/REPLACE|<[a-z ]+>/i.test(question)) question = '';              // a template line that was never filled in is not posted
   q.posts.push({videoId: y.id, slug: spec.slug, title: spec.title, publishAt: y.publishAt && y.publishAt !== 'auto' ? new Date(y.publishAt).toISOString() : new Date().toISOString(), question, status: 'queued', queued: new Date().toISOString()});
   writeCommentQueue(q);

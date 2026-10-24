@@ -24,6 +24,11 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
 - The cloud routine "CurioPulse — Comments: Next up + replies" (trig_01EYLp2sfdiRyNseJp12Jao8, cron `10 */2 * * *` UTC = 05:40, 07:40 ... 23:40 IST)
   runs `yt.mjs comments-due` (the "Next up" comment, at 11:40 and 23:40 IST as before), then `comments-inbox --json` and writes up to
   5 replies a run (about 60 a day) with `comment-reply <id> --file <text>`.
+- The code reaches the run as the routine's SOURCE (github.com/hmunna36/curiopulse, sparse: `skill/cp/bin` and `state`, ~0.2 MB of
+  a 2.4 GB repo), checked out before the run starts. Never `git clone` it inside the run: on 24 Oct the cloud's safety check
+  began blocking `node yt.mjs` run from a clone the run had made itself ("Code from External"; circle-line's Next-up comment
+  was posted from the Mac instead). The queue it reads is `state/comment-queue.json`: `publish-short.sh` copies it
+  with every commit, so an edit to `~/.config/cp/comment-queue.json` reaches the cloud only when it is copied and pushed.
 - `comments-inbox [--hours 72] [--json]`: viewers' top-level comments the channel has not answered, and viewers' replies inside the
   channel's own threads with no channel reply after them (`kind: reply-in-our-thread`, id `<thread>.<reply>`, the routine's reply
   gets the viewer's @handle); `repliesLast24h` counts every channel reply (the user's own by hand too). `comments-mine [--hours 24]`:
