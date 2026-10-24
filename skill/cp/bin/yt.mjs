@@ -787,8 +787,8 @@ async function playlistAdd(titleOrId, videoIds, dryRun) {
 // whole brandingSettings part, so everything YouTube returned is sent back with only these two fields changed.
 async function channelSet(args) {
   const val = (k) => (args.includes(k) ? args[args.indexOf(k) + 1] : null);
-  const trailer = val('--trailer'), descFile = val('--description-file'), kwFile = val('--keywords-file'), dryRun = args.includes('--dry-run');
-  if (!trailer && !descFile && !kwFile) die('usage: yt.mjs channel-set [--trailer <videoId>] [--description-file <file>] [--keywords-file <file>] [--dry-run]');
+  const trailer = val('--trailer'), descFile = val('--description-file'), kwFile = val('--keywords-file'), country = val('--country'), dryRun = args.includes('--dry-run');
+  if (!trailer && !descFile && !kwFile && !country) die('usage: yt.mjs channel-set [--trailer <videoId>] [--description-file <file>] [--keywords-file <file>] [--country XX] [--dry-run]');
   const ch = (await (await api('GET', `${API}/channels?part=brandingSettings,snippet&mine=true`)).json()).items?.[0];
   if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
   const b = structuredClone(ch.brandingSettings ?? {});
@@ -801,7 +801,8 @@ async function channelSet(args) {
   console.log(`trailer: ${before.trailer ?? '(none)'} → ${b.channel.unsubscribedTrailer ?? '(none)'}`);
   if (descFile) console.log(`description: ${before.description.length} → ${b.channel.description.length} characters`);
   if (kwFile) console.log(`keywords: ${kwBefore.length} → ${b.channel.keywords.length} characters`);
-  console.log(`kept as they are: ${Object.keys(b.channel).filter((k) => !['unsubscribedTrailer', 'description', 'keywords'].includes(k)).join(', ') || '(nothing else)'}; banner ${b.image?.bannerExternalUrl ? 'kept' : '(none set)'}`);
+  if (country) { console.log(`country: ${b.channel.country ?? '(none)'} → ${country}`); b.channel.country = country; }   // the country of residence (24 Oct 2026: US -> IN, the user's word)
+  console.log(`kept as they are: ${Object.keys(b.channel).filter((k) => !['unsubscribedTrailer', 'description', 'keywords', 'country'].includes(k)).join(', ') || '(nothing else)'}; banner ${b.image?.bannerExternalUrl ? 'kept' : '(none set)'}`);
   if (dryRun) return console.log('dry run: nothing sent');
   const r = await (await api('PUT', `${API}/channels?part=brandingSettings`, {json: {id: ch.id, brandingSettings: b}})).json();
   console.log(`saved. trailer now ${r.brandingSettings?.channel?.unsubscribedTrailer ?? '(none)'}; banner ${r.brandingSettings?.image?.bannerExternalUrl ? 'still there' : 'MISSING: set it again in Studio'}`);
