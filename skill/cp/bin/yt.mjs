@@ -600,6 +600,129 @@ async function commentsDue(dryRun) {
   if (!dryRun) writeCommentQueue(q);
 }
 
+// ---- replies to viewers' comments (the user, 24 Oct 2026: "update the comment scheduler to also reply comments on youtube") --
+// comments-inbox: the viewers' top-level comments on the channel's videos that the channel has not answered yet, from the
+// last --hours (default 72), oldest first, as JSON for the routine that writes the replies; plus how many replies the channel
+// posted in the last 24 h (the routine's daily cap). Read only (1 quota unit a page).
+// comment-reply <commentId> (--file <text file> | <text...>) [--dry-run]: ONE reply, from the channel, under one viewer's
+// top-level comment. It re-reads the thread first and refuses when the channel has replied there already (a second run never
+// answers twice), when the comment is the channel's own or not on a CurioPulse video, and when the text has a link or runs
+// over 300 characters (50 quota units a reply).
+const URL_RE = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|net|org|io|ly|me|gg|xyz|link|shop|app)\b)/i;
+async function threadReplies(t) {
+  const shown = t.replies?.comments ?? [];
+  if ((t.snippet?.totalReplyCount ?? 0) <= shown.length) return shown;
+  const out = [];
+  let page = '';
+  do {
+    const r = await (await api('GET', `${API}/comments?part=snippet&parentId=${t.id}&maxResults=100&textFormat=plainText${page ? `&pageToken=${page}` : ''}`)).json();
+    out.push(...(r.items ?? []));
+    page = r.nextPageToken;
+  } while (page && out.length < 500);
+  return out;
+}
+async function commentsInbox(hours, asJson) {
+  const ch = await myChannel();
+  if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
+  const since = Date.now() - hours * 3600 * 1000, day = Date.now() - 24 * 3600 * 1000;
+  const threads = [];
+  let page = '';
+  for (let n = 0; n < 8; n++) {                          // newest first; stop once a whole page is older than the window
+    const r = await (await api('GET', `${API}/commentThreads?part=snippet,replies&allThreadsRelatedToChannelId=${ch.id}&maxResults=100&order=time&textFormat=plainText${page ? `&pageToken=${page}` : ''}`)).json();
+    const items = r.items ?? [];
+    threads.push(...items);
+    page = r.nextPageToken;
+    if (!page || !items.length || items.every((t) => Date.parse(t.snippet.topLevelComment.snippet.publishedAt) < since)) break;
+  }
+  const inbox = [];
+  let answered = 0, ours = 0, repliesLast24h = 0, viewerRepliesToUs = 0;
+  for (const t of threads) {
+    const top = t.snippet.topLevelComment.snippet, when = Date.parse(top.publishedAt);
+    const replies = (t.snippet.totalReplyCount ?? 0) > 0 ? await threadReplies(t) : [];
+    repliesLast24h += replies.filter((c) => c.snippet.authorChannelId?.value === ch.id && Date.parse(c.snippet.publishedAt) > day).length;
+    if (when < since) continue;
+    if (top.authorChannelId?.value === ch.id) {                // the channel's own comment (the "Next up"): viewers answer it there
+      ours++;
+      const lastOurs = Math.max(0, ...replies.filter((c) => c.snippet.authorChannelId?.value === ch.id).map((c) => Date.parse(c.snippet.publishedAt)));
+      for (const r of replies) {                                // a viewer's reply with no reply from the channel after it
+        const w = Date.parse(r.snippet.publishedAt);
+        if (r.snippet.authorChannelId?.value === ch.id || w < since) continue;
+        viewerRepliesToUs++;
+        if (w < lastOurs) { answered++; continue; }
+        inbox.push({id: r.id, kind: 'reply-in-our-thread', threadId: t.id, context: (top.textOriginal ?? '').replace(/\s+/g, ' ').slice(0, 200), videoId: t.snippet.videoId, author: r.snippet.authorDisplayName, text: r.snippet.textOriginal ?? r.snippet.textDisplay, publishedAt: r.snippet.publishedAt, likeCount: r.snippet.likeCount ?? 0});
+      }
+      continue;
+    }
+    if (replies.some((c) => c.snippet.authorChannelId?.value === ch.id)) { answered++; continue; }
+    inbox.push({id: t.id, kind: 'comment', videoId: t.snippet.videoId, author: top.authorDisplayName, text: top.textOriginal ?? top.textDisplay, publishedAt: top.publishedAt, likeCount: top.likeCount ?? 0, replies: t.snippet.totalReplyCount ?? 0});
+  }
+  const ids = [...new Set(inbox.map((c) => c.videoId))], titles = {};
+  for (let i = 0; i < ids.length; i += 50) {
+    const r = await (await api('GET', `${API}/videos?part=snippet&id=${ids.slice(i, i + 50).join(',')}`)).json();
+    for (const v of r.items ?? []) titles[v.id] = v.snippet.title;
+  }
+  for (const c of inbox) c.videoTitle = titles[c.videoId] ?? '?';
+  inbox.sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt));
+  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, inbox};
+  if (asJson) return console.log(JSON.stringify(out, null, 1));
+  console.log(`${CHANNEL}: ${inbox.length} viewer comments unanswered in the last ${hours} h (${answered} answered already); the channel replied ${repliesLast24h} times in the last 24 h`);
+  for (const c of inbox) console.log(`  ${c.id}  ${istTime(Date.parse(c.publishedAt))}  ${c.author} on "${c.videoTitle}": ${c.text.replace(/\s+/g, ' ').slice(0, 140)}`);
+}
+// comments-mine [--hours N]: the channel's own replies in the last N hours (default 24), newest first: read only. The routine
+// reads it so its replies do not all sound the same.
+async function commentsMine(hours) {
+  const ch = await myChannel();
+  if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
+  const since = Date.now() - hours * 3600 * 1000, out = [];
+  let page = '';
+  for (let n = 0; n < 8; n++) {
+    const r = await (await api('GET', `${API}/commentThreads?part=snippet,replies&allThreadsRelatedToChannelId=${ch.id}&maxResults=100&order=time&textFormat=plainText${page ? `&pageToken=${page}` : ''}`)).json();
+    for (const t of r.items ?? []) {
+      const replies = (t.snippet.totalReplyCount ?? 0) > 0 ? await threadReplies(t) : [];
+      for (const c of replies) if (c.snippet.authorChannelId?.value === ch.id && Date.parse(c.snippet.publishedAt) > since)
+        out.push({at: c.snippet.publishedAt, to: t.snippet.topLevelComment.snippet.authorDisplayName, comment: (t.snippet.topLevelComment.snippet.textOriginal ?? '').slice(0, 100), reply: c.snippet.textOriginal ?? c.snippet.textDisplay});
+    }
+    page = r.nextPageToken;
+    if (!page) break;
+  }
+  out.sort((a, b) => Date.parse(b.at) - Date.parse(a.at));
+  console.log(`${CHANNEL}: ${out.length} replies from the channel in the last ${hours} h`);
+  for (const x of out) console.log(`  ${istTime(Date.parse(x.at))}  to ${x.to} ("${x.comment.replace(/\s+/g, ' ')}"): ${x.reply.replace(/\s+/g, ' ')}`);
+}
+async function commentReply(id, text, dryRun) {
+  if (!id || !text) die('usage: yt.mjs comment-reply <commentId> (--file <text file> | <text...>) [--dry-run]');
+  text = text.trim();
+  if (text.length < 2 || text.length > 300) die(`the reply is ${text.length} characters: keep it between 2 and 300`);
+  if (URL_RE.test(text)) die('the reply has a link in it: replies never carry links');
+  const ch = await myChannel();
+  if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
+  // a top-level comment's id, or a reply's id ("<thread id>.<reply id>": a viewer answering the channel in its own thread)
+  const threadId = id.split('.')[0], inThread = id.includes('.');
+  const t = (await (await api('GET', `${API}/commentThreads?part=snippet,replies&id=${encodeURIComponent(threadId)}&textFormat=plainText`)).json()).items?.[0];
+  if (!t) die(`no comment thread ${threadId} (deleted, held for review, or not a top-level comment)`);
+  if (t.snippet.channelId && t.snippet.channelId !== ch.id) die(`comment ${id} is not on a ${CHANNEL} video`);
+  const top = t.snippet.topLevelComment.snippet;
+  const replies = (t.snippet.totalReplyCount ?? 0) > 0 ? await threadReplies(t) : [];
+  let who = top.authorDisplayName, said = top.textOriginal ?? '';
+  if (inThread) {
+    if (top.authorChannelId?.value !== ch.id) die(`${id} is a reply in a viewer's thread: answer the thread (${threadId}) instead`);
+    const target = replies.find((c) => c.id === id);
+    if (!target) die(`no reply ${id} in that thread (deleted or held for review)`);
+    if (target.snippet.authorChannelId?.value === ch.id) die(`${id} is the channel's own reply: not answered`);
+    const w = Date.parse(target.snippet.publishedAt);
+    if (replies.some((c) => c.snippet.authorChannelId?.value === ch.id && Date.parse(c.snippet.publishedAt) > w)) return console.log(`reply: ${id}: the channel has answered after it already; nothing posted`);
+    who = target.snippet.authorDisplayName; said = target.snippet.textOriginal ?? '';
+    if (who && !text.startsWith(who)) text = `${who} ${text}`;   // in a thread, the @handle tells the viewer it is for them
+    if (text.length > 300) die(`with the @handle the reply is ${text.length} characters: keep it under 300`);
+  } else {
+    if (top.authorChannelId?.value === ch.id) die(`comment ${id} is the channel's own: not answered`);
+    if (replies.some((c) => c.snippet.authorChannelId?.value === ch.id)) return console.log(`reply: ${id}: the channel has replied there already; nothing posted`);
+  }
+  if (dryRun) return console.log(`reply: ${id}: would reply to ${who} ("${said.replace(/\s+/g, ' ').slice(0, 80)}"):\n    | ${text.split('\n').join('\n    | ')}`);
+  const r = await (await api('POST', `${API}/comments?part=snippet`, {json: {snippet: {parentId: threadId, textOriginal: text}}})).json();
+  console.log(`reply: ${id}: posted (${r.id}) to ${who} on video ${t.snippet.videoId}`);
+}
+
 // ---- playlists and the channel page -----------------------------------------------------------------------------
 async function myPlaylists() {
   const out = [];
@@ -982,6 +1105,14 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     }
     else if (cmd === 'channel-info') await channelInfo(args.includes('--json'));
     else if (cmd === 'comments-due') await commentsDue(args.includes('--dry-run'));
+    else if (cmd === 'comments-inbox') await commentsInbox(Math.max(1, Math.min(720, Number(args[args.indexOf('--hours') + 1]) || 72)), args.includes('--json'));
+    else if (cmd === 'comments-mine') await commentsMine(Math.max(1, Math.min(720, Number(args[args.indexOf('--hours') + 1]) || 24)));
+    else if (cmd === 'comment-reply') {
+      const fi = args.indexOf('--file');
+      const rest = args.filter((a, i) => a !== '--dry-run' && i !== fi && i !== fi + 1);
+      const text = fi >= 0 ? fs.readFileSync(args[fi + 1], 'utf8') : rest.slice(1).join(' ');
+      await commentReply(rest[0], text, args.includes('--dry-run'));
+    }
     else if (cmd === 'queue-comment') {
       const spec = JSON.parse(fs.readFileSync(path.resolve(args[0] ?? die('usage: yt.mjs queue-comment <publish.json>')), 'utf8'));
       if (!spec.youtube?.id) die('this publish.json has no youtube.id: upload the Short first');
@@ -998,7 +1129,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
       const n = Number(args.find((a, i) => /^\d+$/.test(a) && (ci < 0 || i !== ci + 1)) ?? 10);
       await analytics(Math.max(1, Math.min(200, n)), args.includes('--json'), ci >= 0 ? args[ci + 1] : null);
     }
-    else console.log('usage: yt.mjs auth | whoami | thumbnail <videoId> <image> | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | comments-due [--dry-run] | queue-comment <publish.json> | channel-info | playlists | playlist-create | playlist-add | channel-set | section-add | numbers');
+    else console.log('usage: yt.mjs auth | whoami | thumbnail <videoId> <image> | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | comments-due [--dry-run] | queue-comment <publish.json> | comments-inbox [--hours N] [--json] | comments-mine [--hours N] | comment-reply <commentId> (--file f | text) [--dry-run] | channel-info | playlists | playlist-create | playlist-add | channel-set | section-add | numbers');
   } catch (e) {
     die(e.message);
   }

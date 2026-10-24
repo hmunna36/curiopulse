@@ -20,6 +20,20 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
     NEW Page (below). Never open, create or suggest any other account.
   - If the user ever has a token, route B takes over automatically. `ig.mjs route` tells which route is live.
 
+## Comments: the "Next up" comment AND replies to viewers, every 2 hours (the user, 24 Oct 2026: "run a scheduler every 2 hours on curiopulse to check and reply the comments on curio pulse youtube channel", "update the comment scheduler to also reply comments on youtube")
+- The cloud routine "CurioPulse — Comments: Next up + replies" (trig_01EYLp2sfdiRyNseJp12Jao8, cron `10 */2 * * *` UTC = 05:40, 07:40 ... 23:40 IST)
+  runs `yt.mjs comments-due` (the "Next up" comment, at 11:40 and 23:40 IST as before), then `comments-inbox --json` and writes up to
+  5 replies a run (about 60 a day) with `comment-reply <id> --file <text>`.
+- `comments-inbox [--hours 72] [--json]`: viewers' top-level comments the channel has not answered, and viewers' replies inside the
+  channel's own threads with no channel reply after them (`kind: reply-in-our-thread`, id `<thread>.<reply>`, the routine's reply
+  gets the viewer's @handle); `repliesLast24h` counts every channel reply (the user's own by hand too). `comments-mine [--hours 24]`:
+  the channel's recent replies, the house style (the user's by hand on 24 Oct: short, playful, "Ear wiggle club.!", "Training arc
+  complete.! 💪"). `comment-reply` re-reads the thread and posts nothing when the channel has answered already; it refuses links,
+  over 300 characters, the channel's own comments, and other channels' videos.
+- Quota: uploads have their own bucket; a reply costs 50 of the 10,000 units a day that CurioPulse SHARES with Visual Algo and Inner
+  Devil Films (one Google project, "My First Project"; thumbnails 50, captions 400, playlists 50). Hence the cap of 5 a run; on
+  `quotaExceeded` the routine stops at once. Raise the cap only with the user's word.
+
 ## META BY API (the user, 17 Oct 2026: "update all pipelines to upload via API for instagram and fb") — the normal route
 - **Instagram:** `ig.mjs queue <publish.json>` (token in ~/.config/cp/instagram.json; ~59 days, the job refreshes it weekly). The launchd
   job `com.curiopulse.ig-publish` runs `ig.mjs run-due` at 18:10 and 20:40 IST (and at login): it uploads the MP4 from its public GitHub
