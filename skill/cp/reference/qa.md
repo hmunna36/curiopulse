@@ -4,7 +4,8 @@
 
 - **After voice.py and make_timeline.py:** do the listening pass (narration.md), and read what make_timeline.py
   prints: the duration (30–35 s), where the `answer` line starts (5.0 s or earlier), the first words (the test, with
-  "you"/"your" in them) and the subscribe line (it must read "no pill, nothing said"). Fix the words, the delivery and
+  "you"/"your" in them) and the subscribe line ("nothing said", with the arm publish.json gives: the pill arm or no
+  pill), and timeline_lib.py's "subscribe arm" line (the pill's three times in the pill arm). Fix the words, the delivery and
   those before any picture exists; it is free now and a re-render later.
 - **The first picture, before any other shot is built:** render frames 0, 15 and 30 of the hook and Read them next to
   `reference/openings.jpg`. Frame 0 must belong in its top row: a tight shot of him already doing the test the first
@@ -21,8 +22,10 @@
   - then render the shot's frame range to a short MP4 without audio (`render.js tl.json /tmp/shot.mp4 "A-B"`)
     when the motion matters.
 - **After audio.py:** `qc_audio.py`. Masked words get fixed now, not after the render.
-- **No subscribe cue (since 16 Oct 2026):** a still 2 s before the end must show no pill and no bell; the captions sit
-  at y 1330 to the end.
+- **The subscribe arm (the pill test, 25 Oct–8 Nov 2026; publish.json "subscribe"):** no-pill arm: a still 2 s before
+  the end shows no pill and no bell, and the captions sit at y 1330 to the end. Pill arm: the stills of `visual.md`
+  (the pill popping in, the click, SUBSCRIBED, gone 0.6 s before the end), with the hero's face, the key action and
+  the captions clear of it.
 - **The loop:** a still of the last frame next to frame 0: the same picture, or close enough that the restart reads
   as one move.
 - **Before the full render**, sweep the whole timeline: stills every 1 s on one or two sheets. Look for:
@@ -61,7 +64,7 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 | Streams | H.264 High 1080×1920 30 fps yuv420p, AAC 48 kHz stereo, moov first |
 | Length / size | the band of the Short's length arm (`"length"` in publish.json, from `yt.mjs next-slot`; "short" for every Short since 16 Oct 2026): SHORT passes at 30–35 s and fails above 37 s; anything else warns (the old STANDARD arm: 43–50 s) · under 95 MB |
 | Opening | "you"/"your" in the first eight words: the test (warning only; 15 Oct 2026) · the `answer` block starts by 5.0 s (warns to 6.0 s; fails later, or when there is no `answer` block). The 9 Oct "first cut at 7 s" check is gone (15 Oct 2026) |
-| Subscribe | nobody says "subscribe" (fails when the word is spoken anywhere) · no Subscribe pill: the timeline has no `sub_in` / `sub_tap` / `sub_out` cue (fails when it has one; since 16 Oct 2026) |
+| Subscribe | nobody says "subscribe" (fails when the word is spoken anywhere) · the pill as publish.json "subscribe" says (the pill test, 25 Oct–8 Nov 2026): "pill" needs `sub_in` / `sub_tap` / `sub_out` at 2.4 / 1.7 / 0.85 s before the end (± 0.1 s; fails otherwise); "none" or no arm fails when the timeline has any of them |
 | Loudness | −14 ± 0.5 LUFS integrated, true peak ≤ −1.0 dBTP (decoded from the AAC) |
 | Picture | the first frame isn't black · it moves in the first 0.5 s · no frozen stretch over 1.5 s |
 | Look | the MP4 was rendered in the look the timeline asks for (render.js writes `.work/look.txt`); a warning when cine was asked for and it fell back to classic: ship it and say so |
@@ -79,7 +82,7 @@ A FAIL blocks the upload.
   2.8 %, and 64 s. Run on ears-pop (4 Oct 2026, the old shape), today's gate fails exactly the three new checks: no
   `answer` block, "subscribe" at 94 % of the runtime, a 70-character line. Its "Your ear just burped." starts at 4.37 s.
   (That was the gate of 5 Oct. From 9 to 15 Oct the subscribe checks were: not spoken, and the pill in the last seconds;
-  since 16 Oct: not spoken, and no pill.)
+  from 16 Oct: not spoken, and no pill; in the pill test from 25 Oct: not spoken, and the pill as the arm says.)
 - A length WARN is not a pass: bring the Short into its band with `gap`, `tighten` and `tempo` (free), or cut a
   sentence, before shipping. Ship on a length warning only when the fix would hurt the comedy, and say so.
 
@@ -101,7 +104,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |
 | 10 | **Packaging** | title ≤ 60 characters with a curiosity gap; the cover reads at thumbnail size; description, hashtags and IG caption written, and the caption and the description end their story part with a one-word question about the test ("Left or right?") |
-| 11 | **The loop** | nobody says "subscribe", and nothing spoken asks, teases or winds up; no Subscribe pill (qa.py); the last frame matches frame 0 closely enough that the restart reads as one move; the button line and then the hook, read aloud, run on as one thought |
+| 11 | **The loop** | nobody says "subscribe", and nothing spoken asks, teases or winds up; the pill only in the pill arm, short, gone 0.6 s before the end, never over the face or the key action (qa.py checks the cues); the last frame matches frame 0 closely enough that the restart reads as one move; the button line and then the hook, read aloud, run on as one thought |
 
 - **Satisfied** means: qa.py has no FAIL, every ship-bar item scores 8 or more, and nothing in the review would make
   the user wince.

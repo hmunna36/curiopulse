@@ -44,17 +44,21 @@ for (const f of walk(dir).filter((f) => /\.(md|json|py|sh|txt|js|html)$/.test(f)
 }' "$DEST" "$SLUG" "$TITLE"
 mv "$DEST/src/build.sh" "$DEST/src/build.sh.tmp" && mv "$DEST/src/build.sh.tmp" "$DEST/src/build.sh" && chmod +x "$DEST/src/build.sh"
 
-# 2b. the length arm for the YouTube slot this Short will take (the length test; reference/analytics.md): qa.py reads it
+# 2b. the length arm and the subscribe arm (the pill test, 24 Oct 2026) for the YouTube slot this Short will take
+#     (reference/analytics.md): timeline_lib.py and qa.py read them
 if LEN=$(node "$SKILL/bin/yt.mjs" next-slot --json 2>/dev/null) && [ -n "$LEN" ]; then
   node -e '
 const fs = require("fs");
 const [f, j] = process.argv.slice(1);
 const spec = JSON.parse(fs.readFileSync(f, "utf8"));
-spec.length = JSON.parse(j).length;
+const ns = JSON.parse(j);
+spec.length = ns.length;
+spec.subscribe = ns.subscribe || {arm: "none"};
 fs.writeFileSync(f, JSON.stringify(spec, null, 2) + "\n");
-console.log(`length arm: ${spec.length.arm.toUpperCase()} (${spec.length.min}-${spec.length.max} s) for the YouTube slot ${spec.length.slot}, written to publish.json`);' "$DEST/publish.json" "$LEN"
+console.log(`length arm: ${spec.length.arm.toUpperCase()} (${spec.length.min}-${spec.length.max} s) for the YouTube slot ${spec.length.slot}, written to publish.json`);
+console.log(`subscribe arm: ${spec.subscribe.arm.toUpperCase()}${spec.subscribe.test ? ` (pill test ${spec.subscribe.test})` : ""}, written to publish.json`);' "$DEST/publish.json" "$LEN"
 else
-  echo 'note: could not read the next YouTube slot, so publish.json still says length arm "short" (the template default since 16 Oct 2026): run yt.mjs next-slot and put its "length" object there before writing the script'
+  echo 'note: could not read the next YouTube slot, so publish.json still says length arm "short" and subscribe arm "none" (the template defaults): run yt.mjs next-slot and put its "length" and "subscribe" objects there before writing the script'
 fi
 mkdir -p "$DEST/.work" "$DEST/src/fonts"
 cp "$CACHE/fonts/"*.ttf "$DEST/src/fonts/" 2>/dev/null || echo "note: no cached fonts; build.sh downloads them"

@@ -9,7 +9,8 @@ nostril is the only Short that never fell below YouTube's typical retention. Eve
    lands while they try it (§2).
 3. **30–35 s, every Short** (§3; the length test is over).
 4. **The lesson stays on their body, in everyday words** (§2): viewers leave when the explanation starts.
-5. **No Subscribe pill; the Short loops** (§3, `visual.md`).
+5. **The Short loops; no Subscribe pill, except the pill test's 23:30 Shorts (25 Oct–8 Nov 2026), which end with a
+   short silent one** (§3, `visual.md`; publish.json "subscribe" says the arm).
 6. **The caption ends with a one-word question about the test** (`brief.md`, `publish.md`).
 7. **No missed day, and a hit is followed by its kin** (§4, `SKILL.md`).
 
@@ -139,7 +140,7 @@ platforms, and both breakouts were 31–33 s. `yt.mjs next-slot` says "short" fo
 | Mechanism, shown | 2–3 blocks | to ≈ 17 s | ONE mechanism, step by step, pointing back to the test; the camera travels to each thing as it is named |
 | Payoff | `payoff` | ≈ 17–20 s | the moment it clicks: the proof, or "that's why…" |
 | The weirdest true fact | 1 block | to ≈ 29 s | stranger than everything before it; hedged when science isn't sure |
-| Button and loop | `button` | to 30–35 s | the line that reframes or undercuts, written to run straight into the hook when the Short loops; the picture cuts back to frame 1; no Subscribe pill |
+| Button and loop | `button` | to 30–35 s | the line that reframes or undercuts, written to run straight into the hook when the Short loops; the picture cuts back to frame 1; the pill only in the pill test's pill arm (over its last 2.4 s) |
 
 - One idea per block and one visual per idea. Every 3–5 s there is a new question or reveal. A question that leads
   into a beat ("How do we know?", "And the weirdest part?") is folded into the line that answers it; it is never a
@@ -153,8 +154,8 @@ platforms, and both breakouts were 31–33 s. `yt.mjs next-slot` says "short" fo
   Two laugh beats: the answer line and the button.
 - **The ending is the button and the loop.** A last line that reframes the whole thing ("that's just your body putting
   on snow tires") or undercuts it ("Probably."), a final visual gag, and the last shot ends on the picture of frame 1
-  so the Short restarts cleanly. No ask, no "Next up", no outro, and since 16 Oct 2026 no Subscribe pill: an ending
-  that announces itself is the viewer's cue to swipe (the silent pill still lost about a quarter of the viewers in the
+  so the Short restarts cleanly. No ask, no "Next up", no outro, and from 16 Oct 2026 no Subscribe pill (the pill test, 25 Oct–8 Nov, brings
+  a shorter one back on the 23:30 Shorts only, to measure it; `analytics.md`): an ending that announces itself is the viewer's cue to swipe (the silent pill still lost about a quarter of the viewers in the
   last 4 s, against 13 % with nothing there), while a Short that loops gets watched again, which is what carried the
   nostril Short (it started at 142 %: replays). Write the button so that it runs into the first line: the viewer
   should be halfway into the test again before they notice it restarted.
@@ -199,7 +200,8 @@ queue. Prefer topics where the hiker can be the one it happens to.
    - the picture (world, camera move, what changes);
    - the sound (hit, bed, music state);
    - the caption emphasis.
-6. No Subscribe pill: the button shot ends clean (`visual.md`).
+6. The subscribe arm (publish.json): no pill, the button shot ends clean; or the pill arm, the face and the key
+   action above y ≈ 1050 for the last 2.5 s (`visual.md`).
 7. How the last shot gets back to the picture of frame 1.
 8. The world files needed:
    - reuse from past videos where possible (`engine.md`, "Borrowing from past videos");

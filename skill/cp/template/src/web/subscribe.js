@@ -3,14 +3,15 @@
 // seconds of the Short, on top of the button line: nobody says "subscribe". Wherever the word was spoken (the last
 // line until 5 Oct, a mid-video aside from 5 to 9 Oct) a quarter to a half of the viewers still watching left within
 // three seconds of it (reference/analytics.md).
-// SINCE 16 OCT 2026 IT IS OFF (user, 15 Oct 2026: "yes"; reference/analytics.md, the rules of 15 Oct): the silent pill
-// still made about a quarter of the viewers leave in the last 4 s (13 % with nothing there) and added no subscribers,
-// so the Short ends on the button line and loops. The file stays in the template: it draws only when a timeline sets
-// cues.sub_in, and make_timeline.py no longer does (qa.py fails a Short that still has the cue).
-// Timeline cues (when the pill is wanted again, make_timeline.py sets them from the duration; never type a time here):
-//   sub_in  = when the pill pops in (3.4 s before the end)
-//   sub_tap = when the cursor clicks; defaults to sub_in + 1.25
-//   sub_out = when the pill starts to pop out; defaults to sub_tap + 1.3 (gone 0.6 s before the end, for the loop)
+// From 16 Oct 2026 it was off (user, 15 Oct 2026: "yes"; reference/analytics.md, the rules of 15 Oct): the silent pill
+// still made about a quarter of the viewers leave in the last 4 s (13 % with nothing there) and added no subscribers.
+// THE PILL TEST (user, 24 Oct 2026: "yes let's test it for 2 weeks"): a Short in a 23:30 slot from 25 Oct to 8 Nov 2026
+// gets a SHORTER pill (about 1.8 s on screen instead of 2.8 s, and no sound), one in an 11:30 slot none. It draws only when the
+// timeline has cues.sub_in, and only timeline_lib.py sets it, for publish.json "subscribe": {"arm": "pill"}.
+// Timeline cues (timeline_lib.py PILL_IN / PILL_TAP / PILL_OUT, from the duration; never type a time here):
+//   sub_in  = when the pill pops in (2.4 s before the end)
+//   sub_tap = when the cursor clicks (1.7 s before the end); the cursor swoops in after the pill has popped in
+//   sub_out = when the pill starts to pop out (0.85 s before the end; gone 0.6 s before it, for the loop)
 // Placement: inside the Shorts key-content zone measured 30 Sep 2026 (x 100-870 for y 1000-1640; the like/comment
 // column starts at x ≈ 880 from y ≈ 1050, the Related chip and channel row at y ≈ 1680): pill + bell centred on
 // x = 540 (pill x ≈ 221-701, bell x ≈ 727-859), y = 1420 (y ≈ 1354-1486). Every caption chunk that shares the screen
@@ -183,7 +184,7 @@ function drawSubscribe(t) {
   }
 
   // ---- the cursor: swoops in from the upper right, presses, drifts off
-  const cIn = tap - 0.85, cq = inv(cIn, tap, t);
+  const cIn = Math.max(tin + 0.1, tap - 0.85), cq = inv(cIn, tap, t);   // never before the pill is there
   if (t >= cIn && sinceTap < 0.9) {
     const tipX = pillCx + 70, tipY = SUB_Y + 18;
     const e = E.inOutCubic(cq);

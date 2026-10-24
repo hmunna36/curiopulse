@@ -52,6 +52,27 @@ def video_look(work):
     return look if look in ("cine", "classic") else "cine"
 
 
+def video_subscribe(work):
+    """The Short's subscribe arm from its publish.json "subscribe" (`yt.mjs next-slot`, written by new-short.sh): 'pill'
+    for a 23:30 slot of the pill test (25 Oct-8 Nov 2026; reference/analytics.md, the pill test), else 'none' (no
+    pill, the Short ends on the button and loops, as since 16 Oct 2026)."""
+    try:
+        arm = (json.load(open(os.path.join(os.path.dirname(os.path.abspath(work)), "publish.json"))).get("subscribe") or {}).get("arm")
+    except (OSError, ValueError):
+        arm = None
+    return "pill" if arm == "pill" else "none"
+
+
+# the pill of the pill test, timed from the end (seconds before the end of the Short): it pops in 2.4 s before the
+# end, the cursor clicks 0.7 s later, it pops out 0.85 s before the end and has gone 0.6 s before it, so the cut back
+# to frame 1 is clean. About 1.8 s on screen (the pill of 9-15 Oct: 2.8 s from 3.4 s before the end).
+PILL_IN, PILL_TAP, PILL_OUT = 2.4, 1.7, 0.85
+
+
+def pill_cues(dur):
+    return {"sub_in": fr(dur - PILL_IN), "sub_tap": fr(dur - PILL_TAP), "sub_out": fr(dur - PILL_OUT)}
+
+
 class Timeline:
     def __init__(self, work, tail=1.5):
         self.work = work
@@ -211,13 +232,19 @@ class Timeline:
     # ---- output
     def write(self, shots, caps, cues, **extra):
         dur = self.duration
+        # the subscribe arm decides the pill, never make_timeline.py: the pill arm gets its cues here, the other arm none
+        sub = video_subscribe(self.work)
+        cues = {k: v for k, v in cues.items() if k not in ("sub_in", "sub_tap", "sub_out")}
+        if sub == "pill":
+            cues.update(pill_cues(dur))
         n = int(dur * self.sr)
         voice = np.pad(self.audio, (0, max(0, n - len(self.audio))))[:n]
         sf.write(f"{self.work}/voice.wav", voice, self.sr, subtype="FLOAT")
         tl = {"fps": FPS, "duration": dur, "shots": shots, "captions": caps, "cues": cues, "words": self.words,
-              "events": self.events, "look": video_look(self.work), **extra}
+              "events": self.events, "look": video_look(self.work), "subscribe": sub, **extra}
         json.dump(tl, open(f"{self.work}/timeline.json", "w"), indent=1)
         for s in shots:
             print(f'{s["id"]:10s} {s["start"]:6.2f} -> {s["end"]:6.2f}  ({s["end"] - s["start"]:.2f}s)')
         print(f"duration {dur:.2f}s, {len(caps)} caption chunks, {len(self.words)} words")
+        print(f"subscribe arm: {sub}" + (f' (the pill: in {cues["sub_in"]:.2f} s, click {cues["sub_tap"]:.2f} s, out {cues["sub_out"]:.2f} s)' if sub == "pill" else " (no pill; the Short loops)"))
         return tl

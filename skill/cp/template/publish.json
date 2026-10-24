@@ -5,6 +5,7 @@
   "description": "",
   "look": "cine",
   "length": {"arm": "short", "note": "new-short.sh replaces this object with the one `yt.mjs next-slot` prints; qa.py reads the arm"},
+  "subscribe": {"arm": "none", "note": "new-short.sh replaces this object with the one `yt.mjs next-slot` prints: \"pill\" (the pill test's 23:30 slots, 25 Oct-8 Nov 2026) or \"none\"; timeline_lib.py and qa.py read it"},
   "pinnedComment": "Next up: REPLACE with the teaser from topics.md. Subscribe so you don't miss it!\nREPLACE with the one-word question about the test (the same as the caption's)",
   "tags": [],
   "cover": "cover.jpg",

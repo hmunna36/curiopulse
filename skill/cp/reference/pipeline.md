@@ -50,8 +50,9 @@ rebuild and to prove the folder rebuilds.
 - Before `voice.py --synth`: the hook is the test ("you"/"your" in the first eight words), the script has an
   `## answer` block (it must start by 5.0 s) and NO `sub` block: nobody says "subscribe". Count the whole script's
   words (66–76) and its characters against `quota.mjs` (narration.md).
-- `make_timeline.py` prints the length, where the answer starts, the first words and "no pill, nothing said". It sets
-  no subscribe cue (since 16 Oct 2026; qa.py fails one). Fix a miss now, not after the render.
+- `make_timeline.py` prints the length, where the answer starts, the first words and the subscribe line ("nothing
+  said", and the arm). It sets no subscribe cue itself: timeline_lib.py sets the pill for publish.json's pill arm (the
+  pill test, 25 Oct–8 Nov 2026) and drops it otherwise; qa.py checks it. Fix a miss now, not after the render.
 - Stills of the last 3 s and of the loop (last frame next to frame 0) before the full render (qa.md).
 - Skill-only change: new Shorts copy the template from `~/.claude/skills/cp/template/`, so no push to the repo is
   needed for the nightly routine. `bin/backup-skill.sh` mirrors it to `skill/cp/` on GitHub.

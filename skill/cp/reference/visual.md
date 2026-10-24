@@ -244,35 +244,42 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
   word makes it flash and leaves the rest of the line uncaptioned (tongue-nose, 24 Oct 2026: 1.3 s with no caption; qa.py warns
   "flash by"). Start a shot just before the first word of a chunk (`special = {"side": T.ws[i] - 0.06}`), not after it.
 
-## The ending: no subscribe cue since 16 Oct 2026 (the Short loops)
+## The ending: the Short loops; the pill test's 23:30 Shorts end with a short pill (25 Oct–8 Nov 2026)
 
 **User, 15 Oct 2026: "yes" (`analytics.md`, the rules of 15 Oct).** From 9 to 15 Oct the silent Subscribe pill below
 played over the last 3.4 s; the Shorts lost a middle 24 % of their viewers in those last 4 s, against 13 % for the
-Shorts that ended with nothing there, and subscribers per 1,000 views did not move (1.6–1.9 with or without it).
-Replays carried the breakout instead. So the button shot ends clean and cuts back to frame 1:
-- make_timeline.py sets no `sub_in` / `sub_tap` / `sub_out` cue; `subscribe.js` stays in the template and draws
-  nothing without `sub_in`; qa.py FAILS a Short whose timeline still has the cue. Captions stay at y 1330 throughout.
-- The button shot needs nothing kept clear for a pill: the picture may use the lower third again (inside the safe
-  area, as always).
-- The subscribe ask lives in the Reel caption, the YouTube description and the comments (`publish.md`).
-- What follows is how the pill worked, kept for the record and for a return on the user's word.
+Shorts that ended with nothing there, and subscribers per 1,000 views did not move (1.6–1.9 with or without it). So
+from 16 Oct the button shot ended clean and cut back to frame 1. **User, 24 Oct 2026: "yes let's test it for 2
+weeks"** (`analytics.md`, the pill test): subscribers per 1,000 views had fallen to 0.8 since. From 25 Oct 23:30 to
+8 Nov 23:30 the arm in publish.json `"subscribe"` decides:
+- **"none" (the 11:30 slots, and every slot outside the test):** no `sub_in` / `sub_tap` / `sub_out` cue (timeline_lib.py
+  drops any), and qa.py FAILS a Short whose timeline has one. Captions stay at y 1330 throughout; the button shot
+  needs nothing kept clear for a pill (the picture may use the lower third, inside the safe area).
+- **"pill" (the 23:30 slots of the test):** timeline_lib.py sets the cues from the duration (in 2.4 s before the end,
+  the click at 1.7 s, out at 0.85 s, gone 0.6 s before the end; about 1.8 s on screen); qa.py FAILS a Short without
+  them or with other times. Plan the button shot for it as below (the face and the key action above y ≈ 1050 for the
+  last 2.5 s, nothing busy in the lower third), and review the stills listed below.
+- Either way the subscribe ask also lives in the Reel caption, the YouTube description and the comments
+  (`publish.md`), and nobody says "subscribe".
 
-### How the pill worked (9–15 Oct 2026)
+### How the pill works (9–15 Oct 2026, and the pill test's 23:30 Shorts from 25 Oct)
 
 - `web/subscribe.js` is an engine file, loaded by scene.html, drawn by main.js above the captions. It needs no shot
-  code and no spoken line: make_timeline.py set its three cues from the duration, so that it played over the last
-  3.4 s of the Short, on top of the button line. Nobody says "subscribe" (`narration.md`, `analytics.md`).
-  - `cues.sub_in` (3.40 s before the end): the red SUBSCRIBE pill and the bell pop in (outBack, small tilt, bloom
+  code and no spoken line: its three cues come from the duration (make_timeline.py set them in 9–15 Oct, over the
+  last 3.4 s; timeline_lib.py sets them in the pill test, over the last 2.4 s), on top of the end of the button line.
+  Nobody says "subscribe" (`narration.md`, `analytics.md`). The times below are the 9–15 Oct ones; the pill test's
+  are in brackets.
+  - `cues.sub_in` (3.40 s before the end; test 2.4 s): the red SUBSCRIBE pill and the bell pop in (outBack, small tilt, bloom
     glow under it).
-  - `cues.sub_tap` (1.25 s later): a cursor swoops in, presses (pill dips, ripple), the pill flips to a grey
+  - `cues.sub_tap` (1.25 s later; test 0.7 s): a cursor swoops in (never before the pill is there), presses (pill dips, ripple), the pill flips to a grey
     SUBSCRIBED with a green check, the bell turns yellow, rings and sparkles, confetti bursts.
-  - `cues.sub_out` (1.3 s after the tap): the pill and the bell pop out in 0.24 s. About 2.8 s on screen in all; the
-    last 0.6 s of the Short are clean, for the loop.
+  - `cues.sub_out` (1.3 s after the tap; test 0.85 s before the end): the pill and the bell pop out in 0.24 s. About
+    2.8 s on screen in all (test about 1.8 s); the last 0.6 s of the Short are clean, for the loop.
   - Until 15 Oct, with no `sub_in` it fell back to the same last seconds; since 16 Oct no `sub_in` means no pill.
   - `SUB_LINE` at the top of subscribe.js draws one line of text under the pill. It is empty (the pill alone) unless
     the user has asked for a line; never fill it in for one Short.
 - **It plays over the button shot, while the last line is spoken.** Plan that shot for it (`story.md` §5): for about
-  3 s the pill owns y 1354–1486 and the captions sit at y 1150, so the hero's face and the key action stay above
+  3 s (test: 2.5 s) the pill owns y 1354–1486 and the captions sit at y 1150, so the hero's face and the key action stay above
   y ≈ 1050, and nothing important sits in the lower third. A busy sting (BUCKLE!, a title card) never shares those
   seconds with the pill. Don't use `noSubscribe: true` on that shot. The picture may play with the pill (he glances
   down at it, the click makes him jump); the words never mention it.
@@ -283,12 +290,12 @@ Replays carried the breakout instead. So the button shot ends clean and cuts bac
   key-content zone (x 100–870 below y 1000), clear of the button column (x ≥ 880 from y ≈ 1050) and of the bottom rows
   (Related chip from y ≈ 1680; the zone ends at 1640). Only the cursor's first 0.15 s (it swoops in from the upper
   right) and the ring marks after the tap cross x 870; both are decoration.
-- Sound: audio.py adds a soft pop, a click and a bell ding, cue-locked and very quiet (−21…−32 dB): they sit under
-  the button's words, and nothing may mask them (qa.py lists weak words).
+- Sound: none in the pill test (the pill is silent, so both arms sound the same; audio.py adds nothing for it). In
+  9–15 Oct audio.py added a soft pop, a click and a bell ding, very quiet (−21…−32 dB), under the button's words.
 - Review with stills: render frames at `sub_in − 0.5`, `sub_in + 0.3`, `sub_tap − 0.3`, `sub_tap + 0.3`,
   `sub_tap + 1.0`, `sub_out + 0.1` and `sub_out + 0.5`; Read the sheet. It must show the pill popping in, the click,
   SUBSCRIBED, the pill gone, and the hero and captions clear of it throughout.
-- **The last shot ends on the picture of frame 1 (the loop; still the rule with no pill):** bring the camera, the
+- **The last shot ends on the picture of frame 1 (the loop; the rule in both arms):** bring the camera, the
   hero's pose and the props back to where the hook starts (him mid-test), in the last 0.3–0.5 s. Ambient motion in that world (lights that
   blink, things that sway) runs on `loopW(w)` (fx.js), so it is in the same place on the last frame as on the first.
 

@@ -34,7 +34,9 @@ built like them (details in `reference/story.md`; it opens with the list):
 3. **30–35 s, 66–76 words, every Short** (the length test is over; `yt.mjs next-slot` says "short").
 4. **The lesson keeps pointing back to the viewer's test, in everyday words**; no science word spoken in the first
    15 s. The 9 Oct "one continuous shot, no cut before 7 s" rule is gone (it failed its own test).
-5. **No Subscribe pill: the button runs into the hook and the Short loops** (qa.py fails a pill).
+5. **The button runs into the hook and the Short loops. The pill test (25 Oct–8 Nov 2026): a Short for a 23:30 slot
+   ends with a short silent Subscribe pill, one for an 11:30 slot with none** (`yt.mjs next-slot` says the arm;
+   timeline_lib.py sets the pill; qa.py checks it).
 6. **The caption and the description end with a one-word question about the test** ("Left or right?").
 7. **No missed day** (step 1 checks the last Reels really went out) **and a hit is followed by its kin**
    (`story.md` §4).
@@ -80,14 +82,20 @@ Short's YouTube release (Business Suite).
   `yt.mjs next-slot` says "short". Cut, don't rush: one mechanism, one payoff, the weirdest fact, the button.
 - **Funny and curious:** 2 laugh beats (the answer line and the button); the story escalates to the weirdest true
   fact; the button line reframes or undercuts, and runs into the hook when the Short loops.
-- **No subscribe cue in the video; the Short loops** (user, 15 Oct 2026: "yes"; `reference/analytics.md`).
-  Subscriber conversion is still the goal (user, 30 Sep 2026), but the ask moved into text:
+- **No spoken subscribe cue; the Short loops** (user, 15 Oct 2026: "yes"; `reference/analytics.md`). **The pill test
+  (user, 24 Oct 2026: "yes let's test it for 2 weeks"): from 25 Oct 23:30 to 8 Nov 2026 a Short released at 23:30
+  ends with a short silent pill, one at 11:30 with none.** Subscriber conversion is still the goal (user, 30 Sep
+  2026), and the ask lives in text:
   - nobody says "subscribe" (since 9 Oct 2026: in all ten Shorts that spoke the word, a quarter to a half of the
     viewers still watching left within three seconds of it); the script has no `sub` block and nothing that asks,
     teases or winds up. qa.py fails a spoken "subscribe";
-  - no Subscribe pill since 16 Oct 2026 (the silent pill of 9–15 Oct still lost a middle 24 % in the last 4 s, against
-    13 % with nothing there, and subscribers per 1,000 views did not move). make_timeline.py sets no cue; qa.py fails
-    one;
+  - the pill: none from 16 Oct 2026 (the silent pill of 9–15 Oct still lost a middle 24 % in the last 4 s, against
+    13 % with nothing there, and subscribers per 1,000 views did not move); the pill test brings back a shorter one
+    (about 1.8 s on screen instead of 2.8, gone 0.6 s before the loop, no sound at all) on the pill arm only. publish.json
+    `"subscribe"` (from `yt.mjs next-slot`, written by new-short.sh) says the arm; timeline_lib.py sets the cues for
+    the pill arm and drops them otherwise, so make_timeline.py never sets one; qa.py fails a pill in the no-pill arm
+    and a missing or mistimed one in the pill arm. Keep the button line's picture readable around it (the pill sits
+    at y 1354–1486; captions lift to y 1150 while it is up);
   - the Short ends on the button line and loops back to frame 1. The ask and the next topic live in text: the Reel
     caption and the description end on a one-word question about the test, then the follow / subscribe line; the
     "Next up" comment asks the same question.
@@ -117,9 +125,11 @@ Read each reference file when you reach its phase. They are short; don't skip th
      the newest rows. **A hit:** if a Short released in the last 3 days has five times the middle views per Short or
      more, take its closest kin from the Queue first (`reference/story.md` §4) and say so in the report. If Analytics
      fails, the report says so: carry on, and put the reason in the final report (it needs the user).
-   - **Length arm:** `node ~/.claude/skills/cp/bin/yt.mjs next-slot` prints the YouTube slot this Short will take and
-     the length it must be built to: SHORT (30–35 s, 66–76 words) for every slot since 16 Oct 2026. The word budget,
-     `publish.json`'s `length` and qa.py's length band all follow it.
+   - **Length arm and subscribe arm:** `node ~/.claude/skills/cp/bin/yt.mjs next-slot` prints the YouTube slot this
+     Short will take, the length it must be built to (SHORT, 30–35 s, 66–76 words, for every slot since 16 Oct 2026)
+     and, during the pill test (25 Oct–8 Nov 2026), whether it gets the pill (23:30 slots) or none (11:30 slots). The
+     word budget, `publish.json`'s `length` and `subscribe`, the pill and qa.py's checks all follow it. Upload takes
+     the next free slot of the Short's own arm, so a pill Short never lands in an 11:30 slot.
    - **The "Next up" comment** (`reference/publish.md`): `node ~/.claude/skills/cp/bin/yt.mjs comments-due` posts the
      queued comment on every Short that has gone public since it was uploaded: one comment per Short, and nothing
      else is ever done with comments. Put what it prints into the final report. If it fails, carry on.
@@ -151,8 +161,9 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - the cover moment.
 3. **Scaffold:** `~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"` creates
    `~/Desktop/curiopulse/videos/<slug>` from `template/`. Put the plan and the claims table into its README
-   first. The script writes the length arm into its `publish.json` (`"length"`, from `yt.mjs next-slot`) and prints
-   it: check it is the arm the preflight gave. If it says it could not, put the object there by hand.
+   first. The script writes the length arm and the subscribe arm into its `publish.json` (`"length"` and
+   `"subscribe"`, from `yt.mjs next-slot`) and prints them: check they are the arms the preflight gave. If it says it
+   could not, put the objects there by hand.
 4. **Narration** (`reference/narration.md`):
    - write `src/script.txt` (the block id `answer` is required; there is no `sub` block; 66–76 words);
    - run `$PYTHON voice.py ../.work --synth`;
@@ -292,7 +303,8 @@ user's request).
    - disk ≥ 8 GB free;
    - `quota.mjs` exits 0;
    - `yt.mjs whoami` says CurioPulse;
-   - `yt.mjs numbers`, then `yt.mjs next-slot` (the length arm; never build without knowing it), then
+   - `yt.mjs numbers`, then `yt.mjs next-slot` (the length arm and the subscribe arm; never build without knowing
+     them), then
      `yt.mjs comments-due` (the "Next up" comment on Shorts that have gone public);
    - Instagram: Claude in Chrome is connected (Business Suite schedules every Reel since 22 Oct 2026). If not, build and schedule YouTube anyway, and report Instagram as pending.
 3. Run A → B → C exactly as for `/cp <topic>`, including the cleanup (step 20).
@@ -409,10 +421,12 @@ What the numbers showed, the rules that came out of them and how they are read: 
 - **Opening:** the viewer's test (15 Oct), "you"/"your" in the first line; the answer starts by 5 s; no spoken jargon
   beat. The 9 Oct "one continuous shot, no cut before 7 s" rule was dropped on 15 Oct (it failed its own test); no
   shot of his frozen face before 12 s and no title card in the first 15 s stay (`reference/story.md`).
-- **Subscribe:** nobody says the word (9 Oct); the silent pill of 9–15 Oct is gone since 16 Oct; the Short ends on
-  the button and loops (`reference/narration.md`, `reference/visual.md`).
+- **Subscribe:** nobody says the word (9 Oct); the silent pill of 9–15 Oct was gone from 16 Oct; the Short ends on
+  the button and loops (`reference/narration.md`, `reference/visual.md`). **Pill test `pill-2026-10`, 25 Oct 23:30 to
+  8 Nov 23:30:** 23:30 slots get a shorter silent pill, 11:30 slots none, 14 Shorts an arm; `yt.mjs` carries it as
+  `PILL_TEST`, `numbers` keeps a row for each arm, the verdict is read about 11 Nov (`reference/analytics.md`).
 - **Length test `length-2026-10`, 6 Oct 23:30 to 16 Oct 11:30:** a Short for a 23:30 slot was 30–35 s, one for an
   11:30 slot 45–50 s. Its readings (14 and 15 Oct) favoured 30–35 s; the user chose it for every slot. `yt.mjs`
   carries it as `LENGTH_TEST.end` and `HOUSE_ARM`; `numbers` keeps the test's rows and adds "since 16 Oct".
 - qa.py checks it on the delivered MP4: the length band (30–35 s), the answer by 5 s, "you" in the first line (a
-  warning), no spoken "subscribe", no pill.
+  warning), no spoken "subscribe", the pill as the subscribe arm says.

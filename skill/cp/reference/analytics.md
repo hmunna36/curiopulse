@@ -101,7 +101,7 @@ tries each one on a small batch); these build every Short the way the two breako
 | The hook is that test, told to the viewer; frame 1 is him doing it | `story.md` §2, `narration.md`, `hooks.md` | qa.py: "you"/"your" in the first eight words (warning); ship bar 1 | Views per Short of the "since 16 Oct" row in `numbers.md` against the test's short arm (6,075 mean, 2,940 middle) |
 | 30–35 s, every Short (the length test is over) | `bin/yt.mjs` (`LENGTH_TEST.end`, `HOUSE_ARM`), `narration.md` | qa.py: the short arm's band | The same row; share reaching the end (short arm: middle 35 %) |
 | The lesson points back to the viewer's test, in everyday words; no science word spoken in the first 15 s; the one-shot opening rule is gone | `story.md` §2, `narration.md` | ship bar item 2 | The leave rate in the 3 s after the lesson starts against the 3 s before (3.8 → 5.3 % a second on 14 Shorts); the lowest relative retention between seconds 8 and 28 (0.13–0.44 so far) |
-| No Subscribe pill; the button runs into the hook and the Short loops | `visual.md`, `make_timeline.py`, `subscribe.js` | qa.py fails a pill; ship bar 11 (the loop) | The last 4 s (target: the 13 % of the endings with nothing there, against 24 % with the pill); replays at the start (the nostril 142 %); subscribers per 1,000 views (1.6–1.9 now): under about 1.2 over ten Shorts, tell the user |
+| The button runs into the hook and the Short loops; no pill, except the pill arm of the pill test (25 Oct–8 Nov 2026: 23:30 slots get a shorter silent pill, 11:30 slots none) | `visual.md`, `timeline_lib.py`, `subscribe.js`, `bin/yt.mjs` (`PILL_TEST`) | qa.py: the pill as publish.json "subscribe" says; ship bar 11 (the loop) | The pill test below. The last 4 s (13 % of the endings with nothing there, 24 % with the old pill); replays at the start (the nostril 142 %); subscribers per 1,000 views: under about 1.2 over ten Shorts, tell the user (it was 0.8 over the 8 Shorts of 16–24 Oct with data; told 24 Oct, and the user chose the pill test) |
 | The caption and the description end with a one-word question about the test | `publish.md`, `brief.md` | ship bar 10 | Comments per Reel and per Short (the nostril 162; no other Reel more than 9) |
 | No missed day (each run checks the last 48 h of Reels went out) and a hit is followed by its kin | `SKILL.md` step 1, `story.md` §4 | the run's report | Every scheduled Reel shows in Business Suite → Published; after a hit, the kin's views against the middle |
 
@@ -159,8 +159,9 @@ against the script:
   it should flatten.
 - **second 5 → second 12:** the stretch after the hook. The first 14 Shorts lost 17–41 % of their viewers here
   (median 27 %); the one-shot opening of 9 Oct is judged by this number (`--curve <id> --json` gives 100 points).
-- **the last 4 s:** the silent Subscribe pill. A step down there that is steeper than the slope before it means the
-  pill alone reads as an ending (the spoken word took 43–57 % of those still watching).
+- **the last 4 s:** where the silent Subscribe pill sat (9–15 Oct) and sits again in the pill test's 23:30 Shorts. A
+  step down there that is steeper than the slope before it means the pill alone reads as an ending (the spoken word
+  took 43–57 % of those still watching).
 - **90 % → 100 %:** the ending. A button that loops holds; an ending that announces itself drops.
 
 ## Readings
@@ -277,3 +278,34 @@ against the script:
   - **Decision (user, 15 Oct 2026, on seven suggestions drawn from this reading: "yes. let's do this.")**: the rules
     of 15 Oct above. The length test ended (every Short 30–35 s from 16 Oct 11:30), the one-shot opening rule was
     dropped, and the silent pill gave way to no pill, so its reading at 14 Shorts is no longer due.
+
+## The pill test (`pill-2026-10`, 25 Oct 23:30 to 8 Nov 23:30 IST)
+
+**User, 24 Oct 2026: "do you think silent subscribe button at last helps?", then "yes let's test it for 2 weeks".**
+Why it was worth testing: within 9–15 Oct the pill made no difference to subscribers per 1,000 views (1.6–1.9 with
+or without it), but after it came off on 16 Oct the figure fell to 0.8 over the next 8 Shorts with data (the 23:30
+Shorts' middle 0.7, the 11:30 Shorts' 1.0), under the 1.2 tripwire. Other things changed on 16 Oct too (every Short
+30–35 s, the viewer's test, a 100K-view hit that brought viewers who rarely subscribe), so only a split says whether
+the pill itself matters.
+
+- **The arms:** a Short released in a 23:30 slot ends with a shorter silent Subscribe pill: in 2.4 s before the end,
+  the cursor's click 0.7 s later, out 0.85 s before the end, gone 0.6 s before it (about 1.8 s on screen; the old one
+  was 2.8 s), no sound at all, nobody says "subscribe". A Short released at 11:30 ends with none, as
+  since 16 Oct. 14 Shorts an arm. Everything else is built the same way.
+- **The machinery:** `PILL_TEST` in `bin/yt.mjs`; `next-slot` prints the arm, `new-short.sh` writes it into
+  publish.json `"subscribe"`, `timeline_lib.py` sets (or drops) the cues from it, `qa.py` checks it, the upload takes
+  the next free slot of the Short's own arm, and `numbers` has a row for each arm plus a table against the same slots
+  before the test. From `PILL_TEST.end` every slot is "none" again until the user decides.
+- **Reading it (about 11 Nov 2026, when the last Shorts have two days of Analytics):** `numbers.md`, the table "The
+  pill test against the same slots before it". The slots differ by themselves, so the pill's effect is how much the
+  23:30 rows gain on their own "before" row, minus how much the 11:30 rows gain on theirs, read on the **middle subs
+  per 1,000** (one hit cannot swing it) and the pooled figure.
+  - **The pill wins** if that difference is at least +0.4 subscribers per 1,000 on the middle and goes the same way on
+    the pooled figure, while the pill arm's middle views per Short and stayed-to-watch are not clearly worse against
+    their own slot (views within about 15 %, stayed within 3 points), and its last 4 s (`--curve`) lose no more than
+    about 20 %. Then say so to the user and suggest the pill on every Short; the user decides.
+  - **No pill** if subscribers per 1,000 do not clearly gain, or views or the loop suffer. Then the Shorts stay as
+    they are (no pill), and look for the conversion drop elsewhere (the topics, the end card, the description).
+  - **Too close to call** (a gain under +0.4, or two Shorts with fewer than 200 counted views in an arm): say so, and
+    suggest another week before deciding. Never extend or end the test without the user.
+

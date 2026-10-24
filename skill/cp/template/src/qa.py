@@ -14,8 +14,10 @@ Checks (FAIL blocks the upload; WARN is for the review):
   fails later or when there is no such block); the first line talks to the viewer about their own body, "you"/"your"
   in the first eight words (the test the viewer tries; a warning only). The 9 Oct "no cut before 7 s" check is gone
   (it failed its own test, 15 Oct 2026).
-- Subscribe (9 and 15 Oct 2026): nobody says "subscribe" (fails when it is spoken), and there is no Subscribe pill:
-  the timeline has no sub_in / sub_tap / sub_out cue (fails when it has one; the Short loops instead).
+- Subscribe (9 Oct, 15 Oct and 24 Oct 2026): nobody says "subscribe" (fails when it is spoken). The pill follows the
+  subscribe arm in ../publish.json "subscribe" (the pill test, 25 Oct-8 Nov 2026): "pill" needs all three cues, timed
+  as timeline_lib.py sets them (in 2.4 s before the end, the click 0.7 s later, out 0.85 s before the end; fails
+  otherwise); "none" (or no arm) fails when the timeline has any sub_in / sub_tap / sub_out cue.
 - Delivered audio: integrated -14 +/- 0.5 LUFS; true peak <= -1.0 dBTP after AAC.
 - Picture:
   - the first frame is not black;
@@ -296,15 +298,27 @@ if ans:
 else:
     check(False, "the answer starts by 5 s", "script.txt has no `## answer` block (the answer line, started by 5.0 s)")
 # nobody says "subscribe" (9 Oct 2026: wherever the word was spoken, a quarter to a half of the viewers still watching
-# left within three seconds of it), and since 16 Oct 2026 there is no Subscribe pill either (15 Oct: the silent pill
-# still lost about a quarter in the last 4 s and added no subscribers): the Short ends on the button and loops
+# left within three seconds of it). The pill: none from 16 Oct 2026 (15 Oct: the silent pill still lost about a quarter
+# in the last 4 s and added no subscribers); from 25 Oct to 8 Nov the pill test gives the 23:30 Shorts a shorter one
 spoken = [w for w in words if "subscrib" in w["word"].lower()]
 check(not spoken, 'nobody says "subscribe"',
       "not spoken" if not spoken else f'spoken at {spoken[0]["start"]:.2f} s ("{said(spoken)}"): take it out of script.txt')
 cue = tl.get("cues", {})
 has_pill = [k_ for k_ in ("sub_in", "sub_tap", "sub_out") if isinstance(cue.get(k_), (int, float))]
-check(not has_pill, "no Subscribe pill (the Short ends on the button and loops)",
-      "none in the timeline" if not has_pill else f'the timeline sets {", ".join(has_pill)}: take them out of make_timeline.py')
+try:   # the pill test (24 Oct 2026): the arm this Short was built for, next to the MP4
+    sub_arm = (json.load(open(os.path.join(os.path.dirname(os.path.abspath(MP4)), "publish.json"))).get("subscribe") or {}).get("arm")
+except Exception:
+    sub_arm = None
+if sub_arm == "pill":
+    tdur = tl["duration"]
+    ok_ = len(has_pill) == 3 and abs(tdur - cue["sub_in"] - 2.4) <= 0.1 and abs(tdur - cue["sub_tap"] - 1.7) <= 0.1 \
+        and abs(tdur - cue["sub_out"] - 0.85) <= 0.1
+    check(ok_, "the Subscribe pill (pill arm): in 2.4 s before the end, click 1.7 s, out 0.85 s, gone 0.6 s before it",
+          (f'in {tdur - cue["sub_in"]:.2f} s, click {tdur - cue["sub_tap"]:.2f} s, out {tdur - cue["sub_out"]:.2f} s before the end'
+           if len(has_pill) == 3 else f'the timeline has {", ".join(has_pill) or "no pill cue"}: rerun make_timeline.py (timeline_lib.py sets the pill from publish.json)'))
+else:
+    check(not has_pill, "no Subscribe pill (no-pill arm: the Short ends on the button and loops)",
+          "none in the timeline" if not has_pill else f'the timeline sets {", ".join(has_pill)}, but publish.json "subscribe" is not the pill arm: rerun make_timeline.py')
 
 # ---------------------------------------------------------------- captions
 caps = tl["captions"]

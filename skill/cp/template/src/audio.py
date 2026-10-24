@@ -39,16 +39,9 @@ sfx.add(pan_st(whoosh(0.28, 300, 2400, 20, 0.9), 0), 0.0, db(-12))
 for i, s in enumerate(TL["shots"][1:]):
     sfx.add(pan_st(whoosh(0.28, 400 + 150 * (i % 4), 2400, 500 + i), 0), s["start"] - 0.2, db(-18))
 
-# ================================================================= subscribe cue (pill pop, cursor click, bell ding)
-# OFF since 16 Oct 2026: make_timeline.py sets no sub_in cue (no pill; the Short loops), so nothing below plays.
-# very quiet on purpose: the cue is silent (nobody says "subscribe", 9 Oct 2026) and plays under the button line, so
-# these three sounds sit under spoken words. Nothing here may mask one (qa.py lists weak words).
-if "sub_in" in c:
-    sfx.add(pan_st(blip(700, 1500, 0.09, 71, 0.03), 0), c["sub_in"], db(-25))
-    sfx.add(pan_st(blip(900, 2000, 0.08, 72, 0.03), 0), c["sub_in"] + 0.12, db(-27))
-    if "sub_tap" in c:
-        sfx.add(pan_st(snap(3), 0), c["sub_tap"], db(-21))
-        sfx.add(pan_st(bell(1760, 0.8, 0.5), 0), c["sub_tap"] + 0.08, db(-32))
+# ================================================================= subscribe cue: no sound
+# The pill of the pill test (25 Oct-8 Nov 2026, the 23:30 slots; timeline_lib.py sets its cues) is SILENT: no pop, no
+# click, no bell, and nobody says "subscribe" (user, 24 Oct 2026: "silent subscribe button"). Both arms sound the same.
 
 # ================================================================= score (drops out for every punchline)
 BPM = 112

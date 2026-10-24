@@ -48,7 +48,8 @@ EXPERIENCE the explanation, not be told it.
   new person per scene.
 - **Endings:** a memorable last line plus a visual button, and the last shot ends on the picture of frame 1 so the
   Short loops (finger-wrinkles dives back into the water; voice-recording cuts back to his thumb on PLAY). Since
-  5 Oct 2026 nothing else is said at the end: no ask, no "Next up", no outro; since 16 Oct 2026 no pill either. The
+  5 Oct 2026 nothing else is said at the end: no ask, no "Next up", no outro; from 16 Oct 2026 no pill either (the pill test, 25 Oct–8 Nov, gives the
+  23:30 Shorts a short silent one; `analytics.md`). The
   button is written to run into the hook when the Short loops.
 - **Subscribe cue (2026-09-30, the user's explicit request; overrides the earlier "no call to action" and "no like and
   subscribe" rules).** The channel has almost no organic subscribers (lightning: 1,221 views, almost no subs), so every
@@ -91,7 +92,7 @@ EXPERIENCE the explanation, not be told it.
   | to ≈ 17 s | the mechanism, shown, pointing back to the test |
   | ≈ 17–21 s | payoff |
   | to ≈ 29 s | the weirdest true fact |
-  | to the end | button (it runs into the hook), and the cut back to frame 1; no pill |
+  | to the end | button (it runs into the hook), and the cut back to frame 1; no pill (pill test: the 23:30 Shorts' short pill) |
 
 - **Never static.** Something meaningful changes every 1–3 s (camera, character, particles, light, process, text).
   But no random motion: every movement supports the story.

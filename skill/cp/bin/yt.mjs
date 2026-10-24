@@ -100,6 +100,15 @@ export const HOUSE_ARM = 'short'; // every slot from LENGTH_TEST.end on (user, 1
 const SINCE_GROUP = 'since 16 Oct · 30-35 s, the test'; // the numbers report's row for the Shorts made to the rules of 15 Oct
 const inTest = (ms) => Boolean(LENGTH_TEST) && ms >= Date.parse(LENGTH_TEST.start) && ms < Date.parse(LENGTH_TEST.end);
 const armOfSlot = (ms) => (inTest(ms) ? LENGTH_TEST.slots[istHM(ms)] ?? 'standard' : !LENGTH_TEST || ms >= Date.parse(LENGTH_TEST.end) ? HOUSE_ARM : 'standard');
+// The pill test (user, 24 Oct 2026: "yes let's test it for 2 weeks"): a Short released in a 23:30 YouTube slot from
+// PILL_TEST.start to PILL_TEST.end ends with a short silent Subscribe pill (on screen 1.6 s, gone 0.6 s before the
+// loop), one in an 11:30 slot ends with none, as every Short has since 16 Oct. 14 Shorts an arm. `next-slot` tells a
+// run its arm, timeline_lib.py sets the pill's cues from publish.json "subscribe", qa.py checks the arm, and `numbers`
+// keeps a row for each. The verdict (reference/analytics.md, the pill test) is read about 11 Nov 2026.
+export const PILL_TEST = {name: 'pill-2026-10', start: '2026-10-25T23:30:00+05:30', end: '2026-11-08T23:30:00+05:30', slots: {'23:30': 'pill', '11:30': 'none'}};
+const inPillTest = (ms) => Boolean(PILL_TEST) && ms >= Date.parse(PILL_TEST.start) && ms < Date.parse(PILL_TEST.end);
+const pillOfSlot = (ms) => (inPillTest(ms) ? PILL_TEST.slots[istHM(ms)] ?? 'none' : 'none');
+const PILL_GROUPS = {pill: 'PILL TEST · pill (23:30)', none: 'PILL TEST · no pill (11:30)'};
 const SKILL_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const istTime = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 16).replace('T', ' ') + ' IST';
 
@@ -263,7 +272,9 @@ function igTaken() {
 // YouTube has TWO slots a day, 11:30 and 23:30 IST (the user, 2 Oct 2026, after the 11:30 AM releases brought
 // subscribers). Each run takes the next free slot: a slot is free when no video of the channel is public or
 // scheduled within 3 hours of it, and it is at least 2 hours away (upload + processing).
-async function nextFreeYouTubeSlot() {
+// `pill`: during the pill test, skip the slots of the other arm (a Short built with the pill only takes a 23:30 slot,
+// one built without it only an 11:30 slot; the skipped slot is the next run's)
+async function nextFreeYouTubeSlot(pill) {
   const taken = (await channelVideos()).filter((v) => v.when).map((v) => Date.parse(v.when));
   for (let d = 0; d < 60; d++) {
     const date = istDate(Date.now() + d * 86400000);
@@ -271,6 +282,7 @@ async function nextFreeYouTubeSlot() {
       const iso = `${date}T${hm}:00+05:30`;
       const t = Date.parse(iso);
       if (t < Date.now() + 2 * 3600 * 1000) continue;
+      if (pill && inPillTest(t) && pillOfSlot(t) !== pill) continue;
       if (!taken.some((w) => Math.abs(w - t) < 3 * 3600 * 1000)) return iso;
     }
   }
@@ -310,10 +322,13 @@ async function nextSlot(asJson) {
   const a = LENGTH_ARMS[arm];
   const test = inTest(Date.parse(iso));
   const length = {arm, min: a.min, max: a.max, ...(test ? {test: LENGTH_TEST.name} : {}), slot: iso};
-  if (asJson) return console.log(JSON.stringify({slot: iso, length}));
+  const pt = inPillTest(Date.parse(iso));
+  const subscribe = {arm: pillOfSlot(Date.parse(iso)), ...(pt ? {test: PILL_TEST.name} : {}), slot: iso};
+  if (asJson) return console.log(JSON.stringify({slot: iso, length, subscribe}));
   console.log(`next free YouTube slot: ${istTime(Date.parse(iso))}`);
   console.log(`length arm: ${arm.toUpperCase()} = ${a.min}-${a.max} s, ${a.words} words in all (about ${a.chars} characters)${test ? ` · length test "${LENGTH_TEST.name}": 23:30 slots are short, 11:30 slots are standard` : ' · every Short is 30-35 s since 16 Oct 2026 (the length test is over)'}`);
-  console.log(`put into publish.json → "length": ${JSON.stringify(length)}`);
+  console.log(`subscribe arm: ${subscribe.arm === 'pill' ? 'PILL = the short silent Subscribe pill over the last 2.2 s (timeline_lib.py sets it; nobody says "subscribe")' : 'NONE = no pill, the Short ends on the button and loops'}${pt ? ` · pill test "${PILL_TEST.name}" until ${istTime(Date.parse(PILL_TEST.end))}: 23:30 slots get the pill, 11:30 slots none` : ''}`);
+  console.log(`put into publish.json → "length": ${JSON.stringify(length)}, "subscribe": ${JSON.stringify(subscribe)}`);
 }
 async function reschedule(id, when) {
   const t = Date.parse(when);
@@ -405,13 +420,14 @@ async function upload(specPath, dryRun, autoSchedule = false) {
   if (!y.id && (autoSchedule || y.publishAt === 'auto') && dryRun && !hasToken()) {
     console.log('schedule: auto (the day is picked at upload time; it needs the YouTube token)');
   } else if (!y.id && (autoSchedule || y.publishAt === 'auto')) {
-    const slot = await nextFreeYouTubeSlot();
+    const slot = await nextFreeYouTubeSlot(spec.subscribe?.arm);
     y.privacy = 'private';
     y.publishAt = slot;
     if (!ig.skip && !ig.id && (!ig.publishAt || ig.publishAt === 'auto' || autoSchedule)) ig.publishAt = nextFreeIgSlot(Date.parse(slot));
     if (!dryRun) save();
     console.log(`schedule: YouTube ${istTime(Date.parse(slot))}, Instagram ${ig.publishAt ? istTime(Date.parse(ig.publishAt)) : 'unchanged'}`);
     const built = spec.length?.arm;
+    if (spec.subscribe?.slot && spec.subscribe.slot !== slot) console.log(`note: built for ${istTime(Date.parse(spec.subscribe.slot))}, but it takes ${istTime(Date.parse(slot))}: the next free slot of its own pill-test arm (${spec.subscribe.arm})`);
     if (LENGTH_ARMS[built] && built !== armOfSlot(Date.parse(slot))) console.log(`note: built to the ${built} length arm, but ${istTime(Date.parse(slot))} is a ${armOfSlot(Date.parse(slot))} slot (the numbers report lists the length and the slot of every Short)`);
   }
   const file = path.resolve(base, spec.file);
@@ -806,11 +822,14 @@ async function numbers(outDir = SKILL_DIR) {
   }
   const testStart = LENGTH_TEST ? Date.parse(LENGTH_TEST.start) : Infinity;
   const testEnd = LENGTH_TEST?.end ? Date.parse(LENGTH_TEST.end) : Infinity;
+  const pillStart = PILL_TEST ? Date.parse(PILL_TEST.start) : Infinity, pillEnd = PILL_TEST ? Date.parse(PILL_TEST.end) : Infinity;
   for (const v of vids) {
     v.live = v.privacy === 'public' && v.when <= now;
     v.hours = v.live ? (now - v.when) / 3600000 : 0;
     v.slot = istHM(v.when);
     v.group = v.seconds > 90 ? 'long-form' // the weekly film; a CurioPulse Short has never run past 75 s
+      : v.when >= pillEnd ? 'after the pill test'
+      : v.when >= pillStart ? PILL_GROUPS[pillOfSlot(v.when)] // the pill test (24 Oct 2026): the slot says the arm
       : v.when >= testEnd ? SINCE_GROUP // the rules of 15 Oct 2026: every Short 30-35 s, a test the viewer tries, no pill
       : v.when >= testStart ? (v.seconds && v.seconds <= 37 ? 'TEST · short arm (30-35 s)' : v.seconds >= 43 ? 'TEST · standard arm (45-50 s)' : 'TEST · between the arms')
       : v.seconds > 55 ? 'before · 64-75 s' : `before · 46-50 s · ${v.slot} slot`;
@@ -833,8 +852,8 @@ async function numbers(outDir = SKILL_DIR) {
   // the report
   const mean = (xs) => (xs.length ? xs.reduce((p, q) => p + q, 0) / xs.length : null);
   const f = (x, d = 0, unit = '') => (x === null || x === undefined || Number.isNaN(x) ? '–' : `${x.toFixed(d)}${unit}`);
-  const order = [SINCE_GROUP, 'TEST · short arm (30-35 s)', 'TEST · standard arm (45-50 s)', 'TEST · between the arms', 'before · 46-50 s · 23:30 slot', 'before · 46-50 s · 11:30 slot', 'before · 64-75 s'];
-  const groups = [...order.filter((g) => g.startsWith('TEST') && !g.includes('between') || vids.some((v) => v.group === g)), ...new Set(vids.map((v) => v.group).filter((g) => g !== 'long-form' && !order.includes(g)))];
+  const order = ['after the pill test', PILL_GROUPS.pill, PILL_GROUPS.none, SINCE_GROUP, 'TEST · short arm (30-35 s)', 'TEST · standard arm (45-50 s)', 'TEST · between the arms', 'before · 46-50 s · 23:30 slot', 'before · 46-50 s · 11:30 slot', 'before · 64-75 s'];
+  const groups = [...order.filter((g) => g.startsWith('TEST') && !g.includes('between') || g.startsWith('PILL') && Date.now() >= pillStart || vids.some((v) => v.group === g)), ...new Set(vids.map((v) => v.group).filter((g) => g !== 'long-form' && !order.includes(g)))];
   const md = [];
   md.push('# CurioPulse numbers', '');
   md.push(`Written by \`yt.mjs numbers\` on ${istTime(now)}. Do not edit: every /cp run rewrites it. How to read it: \`reference/analytics.md\`.`, '');
@@ -842,16 +861,31 @@ async function numbers(outDir = SKILL_DIR) {
   md.push(`Views and likes are the public counters, live. Stayed, viewed and subscribers come from YouTube Analytics, which runs about two days behind: a dash means YouTube has not processed that day yet.${note ? ` **Analytics failed: ${note}.**` : ''}`, '');
   md.push(`## The length test${LENGTH_TEST ? ` (${LENGTH_TEST.name}, ${istTime(testStart)} to ${LENGTH_TEST.end ? istTime(testEnd) : 'now'})` : ' (ended)'}, and the Shorts since`, '');
   md.push(`During the test a Short in a 23:30 slot was built to 30-35 s, one in an 11:30 slot to 45-50 s. The verdict was **views per Short** and **subscribers per 1,000 views**; a shorter video scores a higher average % viewed by construction, so that column is not the verdict. The "before" rows are the same slots before the test. **"${SINCE_GROUP}"** are the Shorts made to the rules of 15 Oct 2026 (every Short 30-35 s, a test the viewer tries, no Subscribe pill: \`reference/analytics.md\`); read them against the short arm.`, '');
+  if (PILL_TEST) md.push(`**The pill test** (${PILL_TEST.name}, ${istTime(pillStart)} to ${istTime(pillEnd)}; user, 24 Oct 2026): a Short in a 23:30 slot ends with a short silent Subscribe pill, one in an 11:30 slot with none. The verdict is **subscribers per 1,000 views** (the pill must win it clearly) with **views per Short** and **stayed to watch** about the same; how to read it: \`reference/analytics.md\`, the pill test.`, '');
   md.push('| Group | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views |', '|---|---|---|---|---|---|---|');
-  for (const g of groups) {
-    const all = vids.filter((v) => v.group === g && v.live);
+  const median = (xs) => { const q = [...xs].sort((p, r) => p - r); return q.length ? (q.length % 2 ? q[(q.length - 1) / 2] : (q[q.length / 2 - 1] + q[q.length / 2]) / 2) : null; };
+  const rowOf = (g, all, withMedian) => {
     const settled = all.filter((v) => v.hours >= 48);
     const withA = all.filter((v) => v.a && v.a.views >= 200);
     const aViews = withA.reduce((p, v) => p + v.a.views, 0);
     const eng = withA.every((v) => v.a.engaged !== null) && aViews ? (100 * withA.reduce((p, v) => p + v.a.engaged, 0)) / aViews : null;
-    md.push(`| ${g} | ${all.length} | ${settled.length ? `${f(mean(settled.map((v) => v.views)))} (${settled.length})` : '–'} | ${withA.length ? f(eng, 1, ' %') : '–'} | ${f(mean(withA.map((v) => v.a.avgPct)), 1, ' %')} | ${f(mean(withA.map((v) => v.a.avgSec)), 0, ' s')} | ${aViews ? `${f((1000 * withA.reduce((p, v) => p + v.a.subs, 0)) / aViews, 1)} (${withA.length})` : '–'} |`);
-  }
+    const base = `| ${g} | ${all.length} | ${settled.length ? `${f(mean(settled.map((v) => v.views)))} (${settled.length})` : '–'} | ${withA.length ? f(eng, 1, ' %') : '–'} | ${f(mean(withA.map((v) => v.a.avgPct)), 1, ' %')} | ${f(mean(withA.map((v) => v.a.avgSec)), 0, ' s')} | ${aViews ? `${f((1000 * withA.reduce((p, v) => p + v.a.subs, 0)) / aViews, 1)} (${withA.length})` : '–'} |`;
+    return withMedian ? `${base} ${settled.length ? f(median(settled.map((v) => v.views))) : '–'} | ${withA.length ? f(median(withA.map((v) => (1000 * v.a.subs) / v.a.views)), 1) : '–'} |` : base;
+  };
+  for (const g of groups) md.push(rowOf(g, vids.filter((v) => v.group === g && v.live)));
   md.push('', 'In brackets: how many Shorts the figure rests on. Analytics figures count a Short once YouTube has processed 200 of its views.', '');
+  if (PILL_TEST && Date.now() >= pillStart) {
+    // the two slots have different audiences, so each arm is read against the same slot's Shorts just before the test
+    md.push(`### The pill test against the same slots before it`, '');
+    md.push(`Each arm sits in one slot, and the slots differ by themselves, so read each arm against the Shorts of the same slot from ${istTime(testEnd)} to the test's start (no pill in either slot then). The pill helps only if the 23:30 row gains on its "before" row clearly more than the 11:30 row gains on its own (\`reference/analytics.md\`, the pill test). The last two columns are middles per Short, which one hit cannot swing.`, '');
+    md.push('| Slot | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views | Middle views per Short | Middle subs per 1,000 |', '|---|---|---|---|---|---|---|---|---|');
+    const shorts = vids.filter((v) => v.live && v.seconds && v.seconds <= 90);
+    for (const hm of ['23:30', '11:30']) {
+      md.push(rowOf(`${hm} · before (16 Oct to the test, no pill)`, shorts.filter((v) => v.slot === hm && v.when >= testEnd && v.when < pillStart), true));
+      md.push(rowOf(`${hm} · the test (${PILL_TEST.slots[hm] === 'pill' ? 'pill' : 'no pill'})`, shorts.filter((v) => v.slot === hm && v.when >= pillStart && v.when < pillEnd), true));
+    }
+    md.push('');
+  }
   md.push('## Every upload (newest first)', '');
   md.push('"Counted" is how many of the views Analytics has processed so far; the columns after it rest on those views only, and stay blank under 200.', '');
   md.push('| Released (IST) | Length | Group | Views | Likes | Counted | Stayed | Avg % viewed | Avg s | Subs | Per 1,000 | Title |', '|---|---|---|---|---|---|---|---|---|---|---|---|');

@@ -171,8 +171,9 @@ Instagram is back:
     cannot pin.
   - `"comment": false` in `youtube` keeps a Short out of the queue.
 - Since 5 Oct 2026 the "Next up" comment, the description and the Reel caption are the ONLY places the next topic is
-  teased. Since 9 Oct 2026 nothing spoken asks or teases at all, and since 16 Oct there is no Subscribe pill either
-  (`narration.md`, `visual.md`): the text is the only place the subscribe ask lives.
+  teased. Since 9 Oct 2026 nothing spoken asks or teases at all, and from 16 Oct there was no Subscribe pill either
+  (`narration.md`, `visual.md`; the pill test, 25 Oct–8 Nov 2026, gives the 23:30 Shorts a short silent one): the text
+  is where the subscribe ask lives.
 - **The one-word question (since 15 Oct 2026; user: "yes"; `analytics.md`).** The Reel caption and the description
   end their story part with ONE question about the viewer's test that they can answer in a word: "Left or right?",
   "Could you lift it?", "One nose or two?". The nostril Reel's caption asked which nostril was working right now and

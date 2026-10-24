@@ -105,10 +105,11 @@ reading is in `analytics.md`.
 
 - **The script has no `sub` block** and no line that asks, teases or winds up: no "subscribe", no "Next up…", no
   "Tomorrow…", no "like and…", no "thanks for watching", no "see you…". qa.py fails a spoken "subscribe";
-  make_timeline.py says so first.
-- **No cue at all since 16 Oct 2026** (user, 15 Oct: "yes"; `analytics.md`): from 9 to 15 Oct a silent Subscribe pill
+  make_timeline.py says so first. This holds in both arms of the pill test (25 Oct–8 Nov 2026).
+- **No spoken cue at all** (user, 15 Oct: "yes"; `analytics.md`): from 9 to 15 Oct a silent Subscribe pill
   played over the last 3.4 s; it still made about a quarter of the viewers leave in the last 4 s and added no
-  subscribers, so it is gone and the Short loops. The subscribe ask lives in the caption, the description and the
+  subscribers, so from 16 Oct it was gone and the Short loops. The pill test (25 Oct–8 Nov 2026) brings back a
+  shorter silent pill on the 23:30 Shorts only; the script is the same in both arms (nothing in it refers to a pill). The subscribe ask lives in the caption, the description and the
   comments (`publish.md`).
 - **The last block is the button, written to loop.** Nothing comes after it but the tail (1.0 s) and the cut back to
   frame 1. Read the button and then the hook aloud as one sentence: the viewer should slide straight back into the
