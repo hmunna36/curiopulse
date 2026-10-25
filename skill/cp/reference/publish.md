@@ -21,9 +21,17 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   - If the user ever has a token, route B takes over automatically. `ig.mjs route` tells which route is live.
 
 ## Comments: the "Next up" comment AND replies to viewers, every 2 hours (the user, 24 Oct 2026: "run a scheduler every 2 hours on curiopulse to check and reply the comments on curio pulse youtube channel", "update the comment scheduler to also reply comments on youtube")
-- The cloud routine "CurioPulse — Comments: Next up + replies" (trig_01EYLp2sfdiRyNseJp12Jao8, cron `10 */2 * * *` UTC = 05:40, 07:40 ... 23:40 IST)
+- The cloud routine "CurioPulse — Comments: Next up + chosen replies" (trig_01EYLp2sfdiRyNseJp12Jao8, cron `10 */2 * * *` UTC = 05:40, 07:40 ... 23:40 IST)
   runs `yt.mjs comments-due` (the "Next up" comment, at 11:40 and 23:40 IST as before), then `comments-inbox --json` and writes up to
-  10 replies a run (about 120 a day; 5 until the user, 24 Oct: "raise it to 10 replies per run") with `comment-reply <id> --file <text>`.
+  10 replies a run (5 until the user, 24 Oct: "raise it to 10 replies per run") with `comment-reply <id> --file <text>`.
+- **Replies are CHOSEN, not given to everyone (the user, 25 Oct 2026: "select the comments and reply instead of replying all
+  comments").** On 25 Oct the inbox held 118 unanswered comments, mostly "easy" / "I can do it" on the Vulcan salute, and the
+  routine was answering them in order (79 channel replies in 24 h). Now a comment gets a reply only if it clears the bar: a real
+  question; a correction or doubt; a viewer answering the channel's own comment; a result or story that adds something (about 6+
+  words of their own: a twist, an injury, a tongue-tie, a method); a topic idea; 5+ likes; and at most ONE of the many short
+  reactions per video per run (the best one, and only if the channel has not answered one like it there in 24 h). Everything
+  else gets no reply, ever. At most 3 replies on one video a run; 0 replies in a run is fine. The report lists each reply with
+  why it cleared the bar, and how many comments were passed over.
 - The code reaches the run as the routine's SOURCE (github.com/hmunna36/curiopulse, sparse: `skill/cp/bin` and `state`, ~0.2 MB of
   a 2.4 GB repo), checked out before the run starts. Never `git clone` it inside the run: on 24 Oct the cloud's safety check
   began blocking `node yt.mjs` run from a clone the run had made itself ("Code from External"; circle-line's Next-up comment
