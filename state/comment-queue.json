@@ -377,6 +377,15 @@
       "question": "📍 This is Lake Natron, in northern Tanzania 🇹🇿\nWould you touch it? Yes or no? 🦩",
       "status": "queued",
       "queued": "2026-10-24T05:32:31.874Z"
+    },
+    {
+      "videoId": "zdmZmB1AJBQ",
+      "slug": "venus-day",
+      "title": "Why Is a Day on Venus LONGER Than Its Year? 🎂",
+      "publishAt": "2026-10-26T06:00:00.000Z",
+      "question": "☀️ Bonus: Venus spins backwards, so sunrise to sunrise there is about 117 Earth days.\nWould you want a 243-day Monday? Yes or no? 🎂",
+      "status": "queued",
+      "queued": "2026-10-25T11:52:10.358Z"
     }
   ]
 }

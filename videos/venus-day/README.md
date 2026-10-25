@@ -36,9 +36,9 @@ line, so the Short keeps one idea.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … |
-| Instagram Reels | @curio_pulse_tv | … |
-| Facebook Page | CurioPulse | … |
+| YouTube Shorts | https://youtube.com/shorts/zdmZmB1AJBQ | 26 Oct 2026 11:30 IST (scheduled; the no-pill arm; playlist Strange Nature; thumbnail set by the API, Studio's vertical slot not checked: Studio's edit page errored for this video in Chrome) |
+| Instagram Reels | @curio_pulse_tv | 29 Oct 2026 18:30 IST (scheduled in Business Suite, Instagram only, cover uploaded) |
+| Facebook Page | CurioPulse (video 1394191682703946) | 29 Oct 2026 18:30 IST (`fb.mjs reel`: scheduled, video ready, copyright clean) |
 
 **Title:** Why Is a Day on Venus LONGER Than Its Year? 🎂
 

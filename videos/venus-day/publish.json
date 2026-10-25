@@ -35,24 +35,37 @@
   "cover": "cover.jpg",
   "captions": "venus-day.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-26T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "zdmZmB1AJBQ",
+    "url": "https://youtube.com/shorts/zdmZmB1AJBQ",
+    "uploaded": "2026-10-25T11:52:01.444Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-29T18:30:00+05:30",
     "caption": "On Venus, one day lasts longer than a whole year. 🎂\nVenus takes 225 Earth days to go round the Sun, but 243 to turn around once. And it spins backwards, so the Sun comes up in the west.\nWould you want a 243-day Monday? Yes or no?\nFollow @curio_pulse_tv for the next one: can you make your eyes SHAKE on purpose? 👀\n#science #space #venus #planets #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-10-26T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1394191682703946",
+    "publishAt": "2026-10-29T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-25T11:53:21.652Z"
   }
 }
