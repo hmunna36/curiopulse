@@ -37,24 +37,39 @@
   "cover": "cover.jpg",
   "captions": "eyes-shake.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-26T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "6Y0ZurlxUio",
+    "url": "https://youtube.com/shorts/6Y0ZurlxUio",
+    "uploaded": "2026-10-25T13:50:39.345Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-29T21:00:00+05:30",
     "caption": "Can you SHAKE your eyes? Try it, side to side 👀\nCan't? Your eyes have a parking brake: they move in jumps, and it holds them still in between. About 1 in 12 people can let it go... and their eyes buzz back and forth, about 15 times a second.\nCould you shake them? Yes or no?\nFollow @curio_pulse_tv for the next one: can you raise just ONE finger? 🖐️\n#science #brain #eyes #funfacts #reels",
     "coverTime": 1,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-25T19:26:00+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-10-26T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2056122628400137",
+    "publishAt": "2026-10-29T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-25T13:58:24.033Z"
   }
 }

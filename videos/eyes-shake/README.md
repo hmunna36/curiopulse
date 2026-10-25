@@ -71,9 +71,9 @@ speech-band bursts in `make_timeline.py` ("and try again", "in jumps", "in betwe
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 26 Oct 2026 23:30 IST |
-| Instagram Reels | (Business Suite) | (the slot `yt.mjs` picks: 18:30 or 21:00 IST, never before the YouTube release) |
-| Facebook Page | (fb.mjs) | the same slot as the Reel |
+| YouTube Shorts | https://youtube.com/shorts/6Y0ZurlxUio | 26 Oct 2026 23:30 IST (scheduled; cover set in Studio's vertical slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover uploaded) | 29 Oct 2026 21:00 IST (scheduled 25 Oct 19:26 IST; Content → Scheduled lists it with the caption) |
+| Facebook Page | CurioPulse (fb.mjs, video 2056122628400137) | 29 Oct 2026 21:00 IST (publish_status: scheduled) |
 
 **Title:** Can You Make Your Eyes SHAKE on Purpose? 👀
 
