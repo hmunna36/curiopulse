@@ -1,0 +1,46 @@
+# Narration for "Why Can't You Raise Just ONE Finger? ☝️"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; the rules of 15 Oct 2026 and the 8–13 s rule of 24 Oct):
+# - `hook`: the viewer's test, told to them ("you"/"your" in the first eight words); the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor. It STARTS by 5.0 s.
+# - up to 13 s the viewer is still doing the test (here: "now try just your ring finger"); the mechanism is ONE
+#   picture on their own hand (the cords on the back of it, the ring finger's handcuffed to both neighbours), and
+#   the words only point at it.
+# - nobody says "subscribe" (qa.py fails it), and nothing asks, teases or winds up. There is no `sub` block. This
+#   Short is in the no-pill arm of the pill test (an 11:30 slot): it ends clean on the button and loops.
+# - the last block is the button; the Short ends on it and loops into the hook ("...just don't point it at anyone."
+#   "Make a fist. Can you raise ONLY your middle finger?").
+# - a viewer's request (@Neptune_8thPlan3t): the "perfect middle finger". The gesture's slang name is never said.
+# - words in all: 66-76 (every Short is 30-35 s since 16 Oct 2026).
+
+## hook gap=0.10 tighten=0.3 tempo=1.03
+Make a fist. Can you raise ONLY your middle finger?
+
+## answer gap=0.38 tighten=0.45 tempo=1.00
+Ring finger came too? They're... handcuffed.
+
+## again gap=0.35 tighten=0.4 tempo=1.02
+Now try just your RING finger.
+
+## cuffs gap=0.35 tighten=0.4 tempo=1.02
+Stuck? It's cuffed on BOTH sides.
+
+## practice gap=0.40 tighten=0.22 tempo=1.02
+A perfect one takes PRACTICE.
+
+## gadget gap=0.35 tempo=1.04
+Composer Robert Schumann trained his middle finger with a gadget...
+
+## stiff gap=0.35 tighten=0.45 tempo=1.00
+and it went stiff. Piano career: over.
+
+## blame gap=0.45 tighten=0.4 tempo=1.03
+The gadget's fault? Historians still argue.
+
+## button gap=0.50 tighten=0.45 tempo=1.00
+Now try the OTHER hand... just don't point it at anyone.
