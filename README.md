@@ -61,6 +61,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Can't You See Your Own EYES Move in a Mirror? | 31 s | [`videos/mirror-eyes`](videos/mirror-eyes) | [25 Oct 2026](https://youtube.com/shorts/VgHmLADdE7w) |
 | Why Does Lake Natron Turn Animals Into STATUES? | 32 s | [`videos/lake-natron`](videos/lake-natron) | [25 Oct 2026](https://youtube.com/shorts/HYIP2vEE1Gc) |
 | Why Is a Day on Venus LONGER Than Its Year? | 32 s | [`videos/venus-day`](videos/venus-day) | [26 Oct 2026](https://youtube.com/shorts/zdmZmB1AJBQ) |
+| Can You Make Your Eyes SHAKE on Purpose? | 33 s | [`videos/eyes-shake`](videos/eyes-shake) | 26 Oct 2026 |
 
 Each folder has:
 - the finished MP4;
