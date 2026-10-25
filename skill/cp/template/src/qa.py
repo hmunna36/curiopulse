@@ -237,7 +237,33 @@ SPELL = {"chili": "chilli", "chilis": "chillies", "chilies": "chillies", "chiles
          "1": "one", "2": "two", "3": "three", "4": "four", "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine",
          "10": "ten", "11": "eleven", "12": "twelve", "20": "twenty", "30": "thirty", "40": "forty", "50": "fifty",
          "100": "hundred", "1000": "thousand", "smelier": "smellier"}
-_spell = lambda ws: [SPELL.get(w, w) for w in ws]  # noqa: E731
+
+
+def _num_words(n):
+    """a whole number as the words a narrator says ("225" -> "two hundred and twenty five"; British "and")"""
+    ones = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
+    tens = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
+    if n < 20:
+        return ones[n]
+    if n < 100:
+        return tens[n // 10] + ("" if n % 10 == 0 else " " + ones[n % 10])
+    if n < 1000:
+        return ones[n // 100] + " hundred" + ("" if n % 100 == 0 else " and " + _num_words(n % 100))
+    return _num_words(n // 1000) + " thousand" + ("" if n % 1000 == 0 else (" and " if n % 1000 < 100 else " ") + _num_words(n % 1000))
+
+
+# whisper writes a spoken number as digits ("two hundred and twenty-five" -> "225"; venus-day, 25 Oct 2026: two numbers
+# cost 14 % WER for words it heard right): a number SPELL does not know is compared as the words it stands for
+def _spell(ws):
+    out = []
+    for w in ws:
+        if w in SPELL:
+            out.append(SPELL[w])
+        elif w.isdigit() and len(w) <= 4:
+            out.extend(_num_words(int(w)).split())
+        else:
+            out.append(w)
+    return out
 ref = _spell(norm(" ".join(w["word"] for w in words)).split())
 whisper = shutil.which("whisper-cli")
 if TRANSCRIBE and whisper and os.path.exists(MODEL):

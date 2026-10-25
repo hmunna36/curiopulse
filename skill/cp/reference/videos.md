@@ -2171,3 +2171,41 @@ natron in title or comment" -> "Why Does Lake Natron Turn Animals to STONE?", th
   to build.sh's from a fresh work folder; qa.py 18/18 (voice mean 22.3 dB, WER 1.4 %). Gags measured in their gaps after
   round 2: knocks -23.8/-20.7, yank + eww -25.5, peep -23.2, honk -18.4, gurgle -18.0, yip -18.1 (narrator -16.7). Voice: one take
   per block (400 characters; quota.mjs read 41,137 before).
+
+**venus-day** (25 Oct 2026, the nightly run, 13:22-18:10 IST (the routine fired late); THE SECOND CURIOUS SHORT of the topic test
+`kind-2026-10`, promised by lake-natron's "Next up" comment; short arm, 68 words -> 31.73 s; no-pill arm (11:30 slot); hook formula
+The Impossible Claim, said to "you": "On Venus, one day lasts longer than your whole YEAR."; answer "Venus is the laziest planet...
+it barely spins." at 4.76 s; button "Happy birthday. It's still... Monday." into the hook; YouTube zdmZmB1AJBQ, 26 Oct 11:30 IST,
+playlist Strange Nature; Instagram (Business Suite, Instagram only, cover uploaded) and the Page (fb.mjs, video 1394191682703946)
+29 Oct 18:30 IST; two QA rounds; byte-identical rebuild):
+- **Two worlds, built for the topic (borrow them):** `venus.js` (Venus's surface: a far plate under a lid of cloud with rolls, a soft
+  brightening where the Sun is, broad shield volcanoes, one with a vent that breathes red and a plume, drawn with parallax; a 2.5D
+  ground of basalt slabs (`vnPlane`, `vnAt`, `vnSlab`), dust, heat shimmer, motes, out-of-focus foreground slabs; a dawn that rises
+  behind the hero (`dawn`, `dawnX`); props: `vnRock`, a desk calendar whose month flap flips like a split-flap and whose MONDAY page
+  tears off onto another MONDAY (`vnCalendar`: `month`, `rip`), `vnBunting`, a cake with a "1" candle whose flame is a BULB
+  (`vnCake`, `vnBulb`), `vnPopper`, a deck chair (`vnChairBack`/`vnChairFront`), `vnMug`; the hero in a silver heat suit `VNPAL`
+  with a glass helmet that fogs when he blows (`vnHelmet` fog), a party hat on the helmet (`vnHat`), shades worn OVER the glass that
+  flip up (`vnShades`), puffed cheeks, a cake held at the plate's rim by IK, a walk on the spot, and `rot`: the whole of him turned
+  about his feet (a camera rotated about his feet, `camR`), for standing on a little planet) and `space.js` (stars and a galaxy
+  band, the Sun with a corona, the dashed orbit and the lap so far as a gold arc, Venus from above its pole (a spiral of clouds round
+  the polar vortex, a night side away from the Sun, a lit limb) that turns BACKWARDS while it goes round counterclockwise
+  (`spOrbitAng`, `spPos`, `spHeroAng`: the real 224.7 / 243.0 days), the START line and the turn so far as a dial (`spStart`,
+  `spDial`), the EARTH DAYS counter, label pills, and little Earth/Venus globes turning opposite ways (`spMiniGlobe`)).
+- **qa.py now compares a spoken number as words:** whisper writes "two hundred and twenty-five" as "225"; with two numbers the
+  transcript check failed at 14.3 % for words it heard right. `_num_words` (template too) expands a number of up to four digits.
+- **Ragged brown patches on his cheeks (look 7 in round 1):** the cine look's drawn shadow ("form") has a ragged edge on a big head
+  (300+ px) under a key light from almost straight above (`key [0.22, -0.86, 0.5]`), tinted brown by a warm `shadowTint`.
+  `CP_LOOK=classic` was clean, `form: 0` was clean, `cast: 0` / `ao: 0` changed nothing. Fixed with a more frontal key
+  (`[0.34, -0.6, 0.72]`), `toonAt: 0.3`, `form: 0.8`, `cast: 0.4`: a soft shade on the far cheek. Crop his face at full size in
+  every close shot; the contact sheets are too small to show it.
+- **Make the claim exact in the words:** "a day on Venus is longer than its year" is true for one TURN (243 days), not sunrise to
+  sunrise (117 days, because the spin is backwards). The answer and the number lines say "to turn around ONCE"; the 117-day fact
+  went into the pinned comment and the description (and invites comments) instead of a second idea in 31 s.
+- **Gags measured in their gaps after the first mix:** the planet's creak -33 dB, the toot -28, the snore -27, the dawn "aah" -25
+  (too quiet), the CLINK and the bwomp on the word "Oh". After: every gag -17.7 ... -25.2 dB (narrator -16.2); the CLINK moved to
+  the pause after "Oh," (cue `oh_end`), and the pause before "Oh, and" grew 0.25 s (free) so the rip and the bwomp end before it.
+  A music box playing the start of "Happy Birthday" (public domain) is a gag on the sfx bus that must end 0.1 s before "It's".
+- **Studio's edit page said "Oops, something went wrong" for the new video** (twice, before and after processing): this Chrome's
+  Studio is probably on another of the user's channels. The rule holds (never the channel switcher): the vertical thumbnail slot is
+  reported as pending; the API's thumbnail is set.
+- Voice: one take per block, 370 characters (40,962 left on account 2 before). About 6.5-7 minutes a render.
