@@ -1,0 +1,58 @@
+{
+  "slug": "venus-day",
+  "file": "venus-day-short.mp4",
+  "title": "Why Is a Day on Venus LONGER Than Its Year? 🎂",
+  "description": "On Venus, one day lasts longer than a whole year. Venus is the slowest-spinning planet of all: it goes once round the Sun in about 225 Earth days, but it takes 243 Earth days to turn around once on its own axis. So you'd have a birthday before Venus had turned around even once. And it spins backwards (the opposite way to Earth), so the Sun comes up in the west. Bonus: because of that backwards spin, sunrise to sunrise is \"only\" about 117 Earth days. Would you want a 243-day Monday? Yes or no?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Venus #Space #SolarSystem #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-26T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-10-26T11:30:00+05:30"
+  },
+  "pinnedComment": "☀️ Bonus: Venus spins backwards, so sunrise to sunrise there is about 117 Earth days.\nNext up: can you make your eyes SHAKE on purpose? 👀 Subscribe so you don't miss it!\nWould you want a 243-day Monday? Yes or no? 🎂",
+  "tags": [
+    "venus",
+    "day on venus",
+    "a day on venus is longer than a year",
+    "venus day longer than year",
+    "venus spins backwards",
+    "sun rises in the west on venus",
+    "venus rotation",
+    "slowest spinning planet",
+    "space facts",
+    "solar system facts",
+    "planets",
+    "science shorts",
+    "space shorts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "venus-day.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "On Venus, one day lasts longer than a whole year. 🎂\nVenus takes 225 Earth days to go round the Sun, but 243 to turn around once. And it spins backwards, so the Sun comes up in the west.\nWould you want a 243-day Monday? Yes or no?\nFollow @curio_pulse_tv for the next one: can you make your eyes SHAKE on purpose? 👀\n#science #space #venus #planets #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-10-26T11:30:00+05:30"
+  }
+}
