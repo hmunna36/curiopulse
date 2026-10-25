@@ -54,11 +54,55 @@
 | `mirror-eyes`: "Why Can't You See Your Own EYES Move in a Mirror? 👀" | 31 s (short arm) | https://youtube.com/shorts/VgHmLADdE7w · 25 Oct 2026 11:30 IST | Business Suite, Instagram only, 28 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1650532966470898) |
 | `eyes-shake`: "Can You Make Your Eyes SHAKE on Purpose? 👀" | 33 s (short arm) | https://youtube.com/shorts/6Y0ZurlxUio · 26 Oct 2026 23:30 IST | Business Suite, Instagram only, 29 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2056122628400137) |
 | `one-finger`: "Why Can't You Raise Just ONE Finger? ☝️" | 33 s (short arm) | https://youtube.com/shorts/I4272g9UqZE · 27 Oct 2026 11:30 IST | Business Suite, Instagram only, 30 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1132678476177994) |
+| `jupiter-no-ground`: "If You Fell Into JUPITER, You'd Never Hit the Ground 🪐" | 34 s (short arm) | https://youtube.com/shorts/lVK_uraLavc · 27 Oct 2026 23:30 IST | Business Suite, Instagram only, 30 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1763128764800387) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**jupiter-no-ground** (26 Oct 2026, the 02:00 second Short, 02:04-03:45 IST; THE THIRD CURIOUS SHORT of the topic test
+`kind-2026-10`; pill arm (23:30 slot); short arm, 68 words -> 34.43 s; hook formula The Impossible Claim, said to "you": "If you
+fell into Jupiter, you'd never hit the GROUND." (the title, word for word); answer "Jupiter has no floor. Just sky... and more
+sky." at 4.30 s; button "Still want to jump?" into the hook; YouTube lVK_uraLavc, 27 Oct 23:30 IST, playlist Strange Nature;
+Instagram (Business Suite, Instagram only, cover uploaded) and the Page (fb.mjs, video 1763128764800387) 30 Oct 21:00 IST; two QA rounds; the render of record is build.sh's own):
+- **A world built for the topic, in 3 new files (borrow them):** `jupiter.js` (Jupiter painted once pixel by pixel,
+  `jpPaintDisc`: eighteen belts/zones from a table `JP_BANDS` whose edges ripple with value-noise turbulence stretched
+  east-west, festoons, the Great Red Spot `JP_GRS` with swirls and a collar, white ovals, a lit side, terminator, limb
+  darkening and a bluish limb haze; 2,400 px in ~1 s of init; `jpPlanet(cx, cy, R, {soft})` draws it at any size with a
+  black occluder in the glow layer; `jpSpaceBg` stars + Sun; and THE FALL: `jpDeckWorld(cam, t, {mid, holes})`, three
+  cloud decks (`DECKS`: ammonia, ammonium hydrosulfide, water; top/bottom altitude, colours, wind) drawn in perspective
+  (`x = 540 + F (X - cx)/Z`, `y = yH + F (camY - Y)/Z`) as fields of ~1,100 puffs on a jittered grid whose cell grows with
+  Z, sprites pre-fogged at 7 depths, a far sea to the horizon, zonal winds sliding each deck its own way, cut open at
+  `JP_CUT` (a wall of puffs on the cut face, drawn in front of the hero: he sinks through a deck and the camera never goes
+  into it), `jpHole` (his spread-eagle silhouette glowing in a deck's underside, with a dim shaft), `jpSkyDecor` (cirrus,
+  a Sun, cumulonimbus towers with anvils, pre-hazed sprites); the medium `jpMedBg(m)` (0 gas, 1 soup, 2 syrup, 3 a hot
+  dark ocean glowing from below with silvery ripples) and its 3D drifting bits), `jpprops.js` (NASA's Galileo probe under a
+  striped parachute with `crush`, a brilliant-cut diamond `jpGem` + `jpGlint`, noodles, carrots, peas, pasta letters,
+  pancakes, bubbles, the gauge AIR/SOUP/SYRUP/OCEAN `jpGauge`, `jpPill`, `jpBurst`, gradient speed lines, `jpFlash`
+  lightning, `jpManPath` his silhouette), `jphero.js` (the rig in a blue spacesuit `JPPAL` with venus-day's helmet as
+  `jpHelmet`: sweat, a noodle that drapes and slides off, heat glow, diamond eyes; a scarf tail that streams up when he
+  falls fast and floats in the soup `jpScarfTail`; a selfie stick with the phone's back `jpSelfie`; a pinch of two fingers
+  on the glass in front of his nose; poses dive / land / float / brace and `jpSwim(ph)`).
+- **The camera falls WITH him; the hero stays put on screen** (FEET, HS, ZH = 6): `deckCam(yFeet, yH)` gives the camera's
+  altitude from his, so his landing on a deck is exact (his feet at the deck's top at Z = 6). The fall is one key list
+  (`fallY`) that both scenes.js and audio.py read (the wind's loudness follows the same keys).
+- **The rule of three works as staging:** lands on deck 1 (shock), tries to land on deck 2 (hopeful), crosses his arms for
+  deck 3 (unimpressed); POOF, POOF, a small pf. Each poof in its own pause.
+- **A colour helper trap:** lib.js's `mixHex` returns `rgb(...)`, not a hex string; `rgba(mixHex(...), a)` parses it as hex and
+  gives black (the far cloud sea came out as a black band). Use fx.js's `mixH` for anything that goes on to `rgba`.
+- **A selfie reads when the phone's BACK is in the frame** (top left, on its stick, inside the key zone), not when the stick
+  leaves the frame toward the camera.
+- **A brown diagonal band across his cheek on a 420 px close-up** (frame 0): the drawn shadow (`form`) on the head along the
+  raised arm behind it. venus-day's frontal key was not enough here; `form: 0.3` (with `toonAt 0.3`, `cast 0.4`) in the
+  close-up's light made the face clean. Crop the face at full size on frame 0 and the cover.
+- **Round 2 (retention 7 -> 8): a hypothesis can be SHOWN without a word.** 27-30.5 s ("Oh, and deeper down? Some scientists
+  think it might rain...") had him floating in one pose; each lightning flash now sheds dark soot specks that fall and sparkle
+  into tiny diamonds (`sootSpecks`), his eyes and head follow them, he drifts, and the push into the deep is 12 %.
+- Studio's edit page said "Oops, something went wrong" again (as on 20, 25 and 26 Oct): the vertical thumbnail is unchecked (the
+  API set cover.jpg); the channel switcher was not touched.
+- Render time ~1 s a frame in the deck shots (two decks of ~1,100 sprites + walls); ~18 min for 1,033 frames.
+- Voice: one take per block, 385 characters (39,963 left on account 2 before).
 
 **one-finger** (26 Oct 2026, nightly /cp next, 00:00 IST; a TEST Short, the no-pill arm (11:30 slot); a VIEWER REQUEST from
 @Neptune_8thPlan3t ("the perfect middle finger", promised in the channel's reply of 24 Oct), credited in the description and
