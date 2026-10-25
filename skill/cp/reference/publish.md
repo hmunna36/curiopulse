@@ -32,6 +32,19 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   reactions per video per run (the best one, and only if the channel has not answered one like it there in 24 h). Everything
   else gets no reply, ever. At most 3 replies on one video a run; 0 replies in a run is fine. The report lists each reply with
   why it cleared the bar, and how many comments were passed over.
+- **Hiding abusive commenters (the owner, 25 Oct 2026, example @Cookie-t03's "ai slop plus i can do that" on w5b_ru8URMQ: "hide the user from the
+  channel").** This OVERRIDES the old "never hides" rule for the replies routine, in this one case. A comment that insults the
+  content (calls it "AI slop" and the like) or is a plain insult or hate gets `yt.mjs comment-hide <id>` instead of being skipped.
+  Plain disagreement, doubt, criticism with a reason, or a viewer saying "I can do that" with no insult is NOT hidden (it is judged
+  by the reply bar above). Limits: at most 3 hides a run; ALWAYS `comment-hide <id> --dry-run` first and only run the real one if
+  the dry run names the author and says the token has youtube.force-ssl. `comment-hide` calls `comments.setModerationStatus`
+  (rejected + banAuthor=true, 50 units): the comment disappears AND the author is banned from commenting on the channel. That is
+  a public moderation action and hard to undo (the owner unbans in YouTube Studio > Settings > Community > Hidden users), so
+  when unsure, do not hide. It refuses the channel's own comments and other channels' videos. If the token lacks the scope it
+  says so and stops: a run NEVER tries to authorize (the owner re-runs `yt.mjs auth` by hand); report it and go on with replies.
+  The run report lists every hide: id, author handle, video, the comment text, and why. The routine's prompt text in the cloud
+  (trig_01EYLp2sfdiRyNseJp12Jao8) needs this paragraph added by the owner or with their sign-off; until it is, the routine still
+  forbids hiding.
 - The code reaches the run as the routine's SOURCE (github.com/hmunna36/curiopulse, sparse: `skill/cp/bin` and `state`, ~0.2 MB of
   a 2.4 GB repo), checked out before the run starts. Never `git clone` it inside the run: on 24 Oct the cloud's safety check
   began blocking `node yt.mjs` run from a clone the run had made itself ("Code from External"; circle-line's Next-up comment
@@ -195,7 +208,7 @@ Instagram is back:
   - It runs in every run's preflight, and from the cloud routine "CurioPulse — Next up comment" at 11:40 and 23:40 IST, ten
     minutes after each release.
   - That one comment is everything the pipeline does with comments: it never replies, likes, pins, hides or deletes
-    (the user's rule: only the comment actions they named). Pinning is the user's tap in the YouTube app; the API
+    (the user's rule: only the comment actions they named; the replies routine's `comment-hide` is the owner's separate rule below). Pinning is the user's tap in the YouTube app; the API
     cannot pin.
   - `"comment": false` in `youtube` keeps a Short out of the queue.
 - Since 5 Oct 2026 the "Next up" comment, the description and the Reel caption are the ONLY places the next topic is
