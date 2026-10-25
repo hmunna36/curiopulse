@@ -52,11 +52,42 @@
 | `circle-line`: "Why Can't You Draw a Circle and a Line at the SAME Time? ⭕" | 32 s (short arm) | https://youtube.com/shorts/XCPq2xvL02w · 24 Oct 2026 11:30 IST | Business Suite, Instagram only, 27 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1683671889986244) |
 | `tongue-nose`: "Why Can't Your Tongue Touch Your NOSE? 👅" | 32 s (short arm) | https://youtube.com/shorts/N1vgcsMvZjI · 24 Oct 2026 23:30 IST | Business Suite, Instagram only, 27 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1408682721153792) |
 | `mirror-eyes`: "Why Can't You See Your Own EYES Move in a Mirror? 👀" | 31 s (short arm) | https://youtube.com/shorts/VgHmLADdE7w · 25 Oct 2026 11:30 IST | Business Suite, Instagram only, 28 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1650532966470898) |
+| `eyes-shake`: "Can You Make Your Eyes SHAKE on Purpose? 👀" | 33 s (short arm) | https://youtube.com/shorts/6Y0ZurlxUio · 26 Oct 2026 23:30 IST | Business Suite, Instagram only, 29 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2056122628400137) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**eyes-shake** (25 Oct 2026, the 02:00 second Short, which fired at 13:22 and was cut off at the cleanup; a late nightly run made
+venus-day meanwhile, and the user's "continue" at 18:25 resumed this run, which then made this Short 18:25-19:40 IST; a TEST Short,
+pill arm (23:30 slot); a VIEWER REQUEST from @Neptune_8thPlan3t, credited in the description and the queued "Next up" comment;
+short arm, 74 words -> 32.90 s; hook formula The Question: "Can you SHAKE your eyes? Try it, side to side."; answer "Can't? Your
+eyes have a parking BRAKE." at 4.25 s; button "Still can't? Blame your parents." into the hook; YouTube 6Y0ZurlxUio, 26 Oct
+23:30 IST, playlist Why Does Your Body Do That?; Instagram (Business Suite, Instagram only, cover uploaded) and the Page (fb.mjs,
+video 2056122628400137) 29 Oct 21:00 IST; two QA rounds; byte-identical rebuild):
+- **Worlds (borrow them):** mosquito-bites' `camp.js` (the campsite at night) copied with `campFriend` taking `eyes` (big eyes
+  under his glasses), `photo` ({k, at, drawAt}: a framed photo held up in both hands, in place of the mug), `noMug`, `headPost`,
+  and `friendHat` moved in from mlab.js; `eyes.js`: `esEyes` (mirror-eyes' big eyes in head units, plus `cross`, a conjugate
+  `buzz` that jumps every frame (`esBuzz`: a 15 Hz shake cannot be a sine at 30 fps, it aliases to zero) with `ghost` irises
+  across its span, a `smear` for a hop, and a red brake caliper on each iris: `brake`, `brakeOpen`, `off` (flies off, spinning)),
+  `esLamp` (the red (P) parking-brake lamp on a forehead), `esLever` (a car's handbrake lever: boot, ratchet quadrant, chrome rod,
+  grip, red button; `ang` 0..1, slides in from the right), `esHummer` (a hovering hummingbird whose wings flip every frame),
+  `esPhoto` (a framed family photo: 'shakers' (gran, mum, a kid, all buzzing, shake marks) or 'parents' (calipers and lamps)),
+  `esScope` (a stethoscope round his neck), `comicBurst`, `tagPill`, `okTick`, `sparkle`.
+- **A held deadpan under the answer line is a held reaction before 12 s** (round 1, retention 7): "Can't? Your eyes have a parking
+  BRAKE." ran over 2.7 s of his still, deadpan face. Round 2 gave every half second an action: a head shake on "Can't?", a look down
+  at his own eyes on "Your eyes have a", a handbrake lever that slides in and ratchets up in four clicks on "parking" (he stares at
+  it), the clamp and a punch-in on "BRAKE". The lever became one of the best gags: a metaphor in the answer line wants its object.
+- **The rig's brows vanish under his hair above browY ~0.6** (the hairline sits at -36..-42 head units; the brow is drawn at
+  -30 - 8 x browY): an eyebrow-wiggle gag needs browY 0.15 +- 0.5. The contact sheet hid it: crop the face at full size.
+- **A prop drawn in screen space does not follow the camera:** the lever crossed his eye when the camera punched in. Slide it out
+  before the punch.
+- **A 1-in-12 figure reads as two rows of six faces with one lit**, not as a row of twelve (too small at 56 px each).
+- **The friend's reveal needs a push-in:** at 2.35x his calipers were specks; the camera goes to 4.6x on "let go" so they read
+  springing off, with a SPROING burst; the BZZZ waits for the sound in the pause after "go...".
+- Voice: one take per block, 395 characters (40,284 left after). Three phrases aligned early by v3 were moved onto their speech-band
+  bursts ("and try again", "in jumps", "in between"). Renders 4-7.5 minutes.
 
 **lightning-strike / lightning-full** (27–28 Sep 2026, made before this skill):
 - They established the visual language: the storm world, the hiker rig, x-ray anatomy, bloom, and per-word
