@@ -61,8 +61,9 @@ the button: seed 22 of three, picked for its clearest last words). The joke timi
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 27 Oct 2026 11:30 IST |
-| Instagram Reels | (Business Suite) | (the slot `yt.mjs` writes into publish.json) |
+| YouTube Shorts | https://youtube.com/shorts/I4272g9UqZE | 27 Oct 2026 11:30 IST (playlist Why Does Your Body Do That?) |
+| Instagram Reels | @curio_pulse_tv, scheduled in Business Suite (Instagram only, cover.jpg as the cover) | 30 Oct 2026 18:30 IST |
+| Facebook Page | CurioPulse, scheduled by `fb.mjs reel` (video 1132678476177994) | 30 Oct 2026 18:30 IST |
 
 **Title:** Why Can't You Raise Just ONE Finger? ☝️
 

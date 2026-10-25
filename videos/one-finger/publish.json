@@ -37,24 +37,39 @@
   "cover": "cover.jpg",
   "captions": "one-finger.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-27T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "I4272g9UqZE",
+    "url": "https://youtube.com/shorts/I4272g9UqZE",
+    "uploaded": "2026-10-25T19:42:14.776Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-30T18:30:00+05:30",
     "caption": "Make a fist. Can you raise ONLY your middle finger? ☝️\nRing finger came too? They're handcuffed: the cords that lift your fingers are tied together on the back of your hand, and the ring finger's is cuffed on BOTH sides.\nDid your ring finger rise? Yes or no?\nFollow @curio_pulse_tv for the next one: why you'd never hit the ground on Jupiter 🪐\n#science #humanbody #hands #funfacts #reels",
     "coverTime": 7.7,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-26T01:21:00+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-10-27T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1132678476177994",
+    "publishAt": "2026-10-30T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-25T19:49:25.716Z"
   }
 }
