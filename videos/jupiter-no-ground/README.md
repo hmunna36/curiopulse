@@ -45,9 +45,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | … | … |
-| Instagram Reels | @curio_pulse_tv | … |
-| Facebook Page | CurioPulse | … |
+| YouTube Shorts | https://youtube.com/shorts/lVK_uraLavc | 27 Oct 2026 23:30 IST (scheduled; the pill arm; playlist Strange Nature; thumbnail and captions set by the API; Studio's vertical thumbnail slot not checked: Studio's edit page said "Oops, something went wrong" for this video in Chrome) |
+| Instagram Reels | @curio_pulse_tv | 30 Oct 2026 21:00 IST (scheduled in Business Suite, Instagram only, cover.jpg as the cover; Content → Scheduled lists it with the caption as its title) |
+| Facebook Page | CurioPulse (video 1763128764800387) | 30 Oct 2026 21:00 IST (`fb.mjs reel`: scheduled for 15:30 UTC; the caption's Follow line reads "Follow CurioPulse") |
 
 **Title:** If You Fell Into JUPITER, You'd Never Hit the Ground 🪐
 

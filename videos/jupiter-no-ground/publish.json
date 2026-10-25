@@ -36,24 +36,37 @@
   "cover": "cover.jpg",
   "captions": "jupiter-no-ground.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-27T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "lVK_uraLavc",
+    "url": "https://youtube.com/shorts/lVK_uraLavc",
+    "uploaded": "2026-10-25T22:01:11.778Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-30T21:00:00+05:30",
     "caption": "If you fell into Jupiter, you'd never hit the ground. 🪐\nJupiter has no solid surface: the gas just gets thicker, like soup, then syrup, then a hot dark ocean. NASA dropped a probe in, back in 1995: it lasted 58 minutes.\nWould you jump? Yes or no?\nFollow @curio_pulse_tv for the next one: sharks are older than trees 🦈\n#science #space #jupiter #planets #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-10-27T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1763128764800387",
+    "publishAt": "2026-10-30T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-25T22:09:34.134Z"
   }
 }
