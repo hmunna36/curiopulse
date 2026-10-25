@@ -1777,3 +1777,46 @@ def servo(dur, f0=240.0, f1=420.0, seed=0, edges=False):
         y = filt(y, "lowpass", 260) + filt(y, "highpass", 5200)
     y *= np.clip(t / 0.05, 0, 1) * np.clip((dur - t) / 0.08, 0, 1)
     return y / (np.abs(y).max() + 1e-9)
+
+
+# ---------------------------------------------------------------- one-finger (26 Oct 2026): wings, a chain, a piano lid
+def flutter(dur=0.32, seed=0, edges=False):
+    """little wings beating: a fast train of soft feathery puffs (mono). edges=True keeps only what is above 5.2 kHz,
+    so a bird can fly in under a line; the whole sound goes in a pause."""
+    n = int(dur * SR)
+    t = ar(n)
+    y = filt(white(n, seed), "bandpass", (1800, 9000)) * (0.5 + 0.5 * np.sin(2 * np.pi * 22 * t)) ** 3
+    if edges:
+        y = filt(y, "highpass", 5200)
+    y = y * np.sin(np.pi * np.linspace(0, 1, n)) ** 0.6
+    return fade(y / (np.abs(y).max() + 1e-9), 0.005, 0.03)
+
+
+def chain_jingle(dur=0.22, seed=0, edges=True):
+    """a short chain settling (handcuffs, a padlock's chain): a few bright metal ticks (mono; edges: only above 5.2 kHz)"""
+    n = int(dur * SR)
+    r = np.random.default_rng(seed)
+    y = np.zeros(n)
+    for i in range(6):
+        j = int(r.uniform(0, dur * 0.8) * SR)
+        m = min(n - j, int(0.03 * SR))
+        f = r.uniform(4200, 7800)
+        y[j:j + m] += np.sin(2 * np.pi * f * ar(m)) * expdecay(m, 0.006) * r.uniform(0.5, 1)
+    if edges:
+        y = filt(y, "highpass", 5200)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.001, 0.02)
+
+
+def piano_slam(seed=0):
+    """a grand piano's lid slamming: a low body thump, a sharp crack, the strings inside going BONG, soft-clipped so it
+    reads at a sane peak (mono, 0.38 s; for a pause: its tail is cut short so the next word is clear)"""
+    n = int(0.38 * SR)
+    y = np.zeros(n)
+    th = L.thump(0.38, 140, 48, 0.09, seed)
+    y[:len(th)] += 1.2 * th[:n]
+    cr = crack(0.08, seed + 1, tau=0.02, hp=700)
+    y[:len(cr)] += 0.9 * cr[:n]
+    st = sum(piano(f, 0.36, seed + 2 + i, 0.6) for i, f in enumerate((65.4, 98.0, 130.8, 155.6, 196.0)))
+    y[:len(st)] += 0.55 * st[:n] / (np.abs(st).max() + 1e-9)
+    y = y / (np.abs(y).max() + 1e-9)
+    return fade(np.tanh(2.4 * y) / np.tanh(2.4), 0.0008, 0.06)

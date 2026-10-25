@@ -207,7 +207,7 @@ async function accessToken() {
   });
   const t = await r.json();
   if (!t.access_token) die(`token refresh failed: ${t.error ?? r.status} ${t.error_description ?? ''} (re-run auth if the access was revoked)`);
-  cached = {token: t.access_token, exp: Date.now() + (t.expires_in ?? 3600) * 1000, scope: t.scope ?? ''};
+  cached = {token: t.access_token, exp: Date.now() + (t.expires_in ?? 3600) * 1000};
   return cached.token;
 }
 async function api(method, url, {json, body, headers = {}, ok = [200]} = {}) {
@@ -729,34 +729,6 @@ async function commentReply(id, text, dryRun) {
   console.log(`reply: ${id}: posted (${r.id}) to ${who} on video ${t.snippet.videoId}`);
 }
 
-// comment-hide <commentId> [--dry-run]: the owner's rule (25 Oct 2026): a viewer whose comment insults the content ("AI slop") or
-// is a plain insult or hate is rejected AND banned from the channel (comments.setModerationStatus, moderationStatus=rejected,
-// banAuthor=true; 50 quota units). It is PUBLIC to the viewer and hard to undo: the owner has to unban them in YouTube Studio
-// (Settings > Community > Hidden users). So: run --dry-run first; it names the author and checks the token's scope without
-// changing anything. Refuses the channel's own comments, comments not on a CurioPulse video, and a token without youtube.force-ssl
-// (re-run `auth` by hand: a routine never authorizes anything).
-async function commentHide(id, dryRun) {
-  if (!id) die('usage: yt.mjs comment-hide <commentId> [--dry-run]');
-  const ch = await myChannel();
-  if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
-  await accessToken();
-  const scopes = (cached?.scope ?? '').split(/\s+/).filter(Boolean);
-  const hasScope = scopes.includes('https://www.googleapis.com/auth/youtube.force-ssl');
-  console.log(`hide: token scope ${hasScope ? 'has' : 'LACKS'} youtube.force-ssl (granted: ${scopes.join(' ') || 'not reported'})`);
-  const c = (await (await api('GET', `${API}/comments?part=snippet&id=${encodeURIComponent(id)}&textFormat=plainText`)).json()).items?.[0];
-  if (!c) die(`no comment ${id} (deleted, already held for review, or not a comment id)`);
-  const sn = c.snippet, threadId = sn.parentId ?? c.id;
-  const t = (await (await api('GET', `${API}/commentThreads?part=snippet&id=${encodeURIComponent(threadId)}`)).json()).items?.[0];
-  if (!t || t.snippet.channelId !== ch.id) die(`comment ${id} is not on a ${CHANNEL} video`);
-  if (sn.authorChannelId?.value === ch.id) die(`comment ${id} is the channel's own: never hidden`);
-  const author = sn.authorDisplayName, authorId = sn.authorChannelId?.value;
-  console.log(`hide: ${id} by ${author} (channel ${authorId}) on video ${t.snippet.videoId}: "${(sn.textOriginal ?? '').replace(/\s+/g, ' ').slice(0, 140)}"`);
-  if (!hasScope) die('the stored token lacks the youtube.force-ssl scope, so it cannot moderate. The owner must run `yt.mjs auth` by hand and allow it; nothing was changed.');
-  if (dryRun) return console.log(`hide: dry run: would reject this comment and ban ${author} from the channel (public, hard to undo; the owner unbans in YouTube Studio). Nothing sent.`);
-  await api('POST', `${API}/comments/setModerationStatus?id=${encodeURIComponent(id)}&moderationStatus=rejected&banAuthor=true`, {ok: [204]});
-  console.log(`hide: ${id}: rejected, and ${author} banned from the channel`);
-}
-
 // ---- playlists and the channel page -----------------------------------------------------------------------------
 async function myPlaylists() {
   const out = [];
@@ -1151,7 +1123,6 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
       const text = fi >= 0 ? fs.readFileSync(args[fi + 1], 'utf8') : rest.slice(1).join(' ');
       await commentReply(rest[0], text, args.includes('--dry-run'));
     }
-    else if (cmd === 'comment-hide') await commentHide(args.find((a) => !a.startsWith('--')), args.includes('--dry-run'));
     else if (cmd === 'queue-comment') {
       const spec = JSON.parse(fs.readFileSync(path.resolve(args[0] ?? die('usage: yt.mjs queue-comment <publish.json>')), 'utf8'));
       if (!spec.youtube?.id) die('this publish.json has no youtube.id: upload the Short first');
@@ -1168,7 +1139,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
       const n = Number(args.find((a, i) => /^\d+$/.test(a) && (ci < 0 || i !== ci + 1)) ?? 10);
       await analytics(Math.max(1, Math.min(200, n)), args.includes('--json'), ci >= 0 ? args[ci + 1] : null);
     }
-    else console.log('usage: yt.mjs auth | whoami | thumbnail <videoId> <image> | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | comments-due [--dry-run] | queue-comment <publish.json> | comments-inbox [--hours N] [--json] | comments-mine [--hours N] | comment-reply <commentId> (--file f | text) [--dry-run] | comment-hide <commentId> [--dry-run] | channel-info | playlists | playlist-create | playlist-add | channel-set | section-add | numbers');
+    else console.log('usage: yt.mjs auth | whoami | thumbnail <videoId> <image> | upcoming | next-free | reschedule <id> <time> | upload <publish.json> [--dry-run] [--schedule=auto] | status <videoId>... | stats [n] [--json] | analytics [n] [--curve <videoId>] [--json] | next-slot [--json] | comments-due [--dry-run] | queue-comment <publish.json> | comments-inbox [--hours N] [--json] | comments-mine [--hours N] | comment-reply <commentId> (--file f | text) [--dry-run] | channel-info | playlists | playlist-create | playlist-add | channel-set | section-add | numbers');
   } catch (e) {
     die(e.message);
   }

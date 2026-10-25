@@ -53,11 +53,54 @@
 | `tongue-nose`: "Why Can't Your Tongue Touch Your NOSE? 👅" | 32 s (short arm) | https://youtube.com/shorts/N1vgcsMvZjI · 24 Oct 2026 23:30 IST | Business Suite, Instagram only, 27 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1408682721153792) |
 | `mirror-eyes`: "Why Can't You See Your Own EYES Move in a Mirror? 👀" | 31 s (short arm) | https://youtube.com/shorts/VgHmLADdE7w · 25 Oct 2026 11:30 IST | Business Suite, Instagram only, 28 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1650532966470898) |
 | `eyes-shake`: "Can You Make Your Eyes SHAKE on Purpose? 👀" | 33 s (short arm) | https://youtube.com/shorts/6Y0ZurlxUio · 26 Oct 2026 23:30 IST | Business Suite, Instagram only, 29 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2056122628400137) |
+| `one-finger`: "Why Can't You Raise Just ONE Finger? ☝️" | 33 s (short arm) | https://youtube.com/shorts/I4272g9UqZE · 27 Oct 2026 11:30 IST | Business Suite, Instagram only, 30 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1132678476177994) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**one-finger** (26 Oct 2026, nightly /cp next, 00:00 IST; a TEST Short, the no-pill arm (11:30 slot); a VIEWER REQUEST from
+@Neptune_8thPlan3t ("the perfect middle finger", promised in the channel's reply of 24 Oct), credited in the description and
+the queued "Next up" comment; short arm, 67 words -> 33.17 s; hook formula The Question: "Make a fist. Can you raise ONLY your middle
+finger?"; answer "Ring finger came too? They're... handcuffed." at 3.97 s; button "Now try the OTHER
+hand... just don't point it at anyone." into the hook; YouTube I4272g9UqZE, 27 Oct 11:30 IST, playlist Why Does Your Body Do
+That?; Instagram (Business Suite, Instagram only, cover uploaded) and the Page (fb.mjs, video 1132678476177994) 30 Oct 18:30 IST;
+two QA rounds; byte-identical rebuild):
+- **A fist as a 3D rig (`fist3d.js`, new):** hand-local centimetres (+y to the fingers, +x to the thumb, +z out of the palm),
+  each finger three tapered capsules whose joints bend from a fist (`FK_FIST`) as `lift` goes 0 -> 1 (knuckle first, the
+  others a little later), `creep` (a lift at the knuckle only), `squeeze`, `tremble`; the palm is the convex hull of a point
+  cloud (`fkPalmPts`); every part is a depth-sorted item (painter's order), so the same rig shows a fist from the palm side,
+  the side or the back; an orbiting camera (`fkCam`: yaw, pitch, distance, roll, `rotX` to turn the hand palm-down, `mirror`
+  for the left hand; `fkKeys`). Handcuffs round two fingers (`fkCuffItems`: back half behind the bone, front half and lock box
+  in front), the hand as rosy glass (`fkGlass`), the cords on the back of the hand with cuffs between them (`fkInside`,
+  `fkCordCuffs`), a forearm for the over-the-shoulder view (`fkPovArm`: a 3D forearm pointing at the camera became a huge disc).
+- **The raised middle finger, kept monetization-safe:** palm toward the camera (aimed at no one), on screen only for moments,
+  a robin landing on its tip (`robin.js`: `ofBird`, perch, flap, moods, a whistle and a sweatband for the coach gag), and a
+  close-up at "handcuffed" that puts the fingertip above the frame. The gesture's slang name is never said or written.
+- **A creeping ring finger has to rise, not curl:** a knuckle-only creep pointed the ring finger's middle bone at the camera,
+  so its own fingertip hid the cuff round its base and the handcuffs read as a grey "C". A half lift (all three joints,
+  `liftR` 0.58) stands it up beside the middle finger: two fingers side by side, cuffed at the base, read at once (and
+  "Ring finger came too?" reads better too). The cuffs need the camera square-on to the palm (yaw ~0): from the little-finger
+  side the ring finger hid the middle finger's cuff.
+- **A fist seen from the side reads as flat hook shapes** (yaw -0.9 .. -1.5 tried): the palm side (yaw ~-0.5) is the one
+  that reads as a fist, and it is the viewer's own view of their fist.
+- **A finger straight out from a palm-down hand looks like it points UP from the player's eyes:** the keyboard shot is from
+  the little-finger side (yaw ~-2.0), where the stiff finger points sideways and the gadget's arm and cord read in profile.
+- **A black piano on a dark sepia wall disappears:** mahogany, a warm rim along the lid and case top, a lamp glow behind.
+- **`speech()`'s colour argument is the TEXT colour** (white text in a white bubble showed empty bubbles): `ofSpeech` has dark
+  text and a tail toward the speaker.
+- Worlds borrowed: sky-blue's `trail.js`, ring-finger's `parlour.js`; new `piano.js` (a keyboard and the gadget in 3D through
+  fist3d's camera, a side-view grand piano whose lid slams, `PN_ROOM` = the parlour without its piano, the museum, marble
+  busts that argue, a glass dome).
+- **Put the instruction before the question when the test takes two steps** (round 1 -> 2): "Can you raise just one finger? Make a
+  fist. Now only the MIDDLE one." put the finger up at 3.8 s and the answer at 4.96 s; "Make a fist. Can you raise ONLY your middle
+  finger?" (seed 32 of three) put it up at 2.7 s and the answer at 3.97 s. A groove whose first beat sat on "Can" put that word at
+  2.2 dB SNR: start it on the next word. A strong zoom blur on the punchline's click blurred the very picture of the joke: 0.025.
+- Studio's video page answered "Oops, something went wrong" three times for the new upload (as on 20 and 25 Oct): the vertical
+  thumbnail is unchecked (the API set cover.jpg); the channel switcher was not touched.
+- Voice: 408 + 168 (button auditions) + 147 (hook auditions) characters; quota.mjs read 40,284 before. Renders about 4 minutes.
+  The 48-hour check (the public grid, Instagram shortcodes decoded to times) found all four Reels of 24-25 Oct out on time.
 
 **eyes-shake** (25 Oct 2026, the 02:00 second Short, which fired at 13:22 and was cut off at the cleanup; a late nightly run made
 venus-day meanwhile, and the user's "continue" at 18:25 resumed this run, which then made this Short 18:25-19:40 IST; a TEST Short,
