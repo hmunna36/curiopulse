@@ -1,0 +1,22 @@
+voice.py: account 1: free plan (no commercial licence), skipped
+voice.py: account 3: free plan (no commercial licence), skipped
+  synthesized hook (53 chars)
+  synthesized answer (47 chars)
+  synthesized thick (47 chars)
+  synthesized ladder (67 chars)
+  synthesized probe (33 chars)
+  synthesized minutes (50 chars)
+  synthesized weird (69 chars)
+  synthesized button (19 chars)
+ElevenLabs characters spent this run: 385
+block      start    end  wpm  rms   f0  cut
+hook        0.10   3.82  161 -18.7  190 0.23
+answer      4.27   8.81  119 -20.1  167 0.66
+thick       9.16  12.32  171 -20.7  174 0.20
+ladder     12.47  18.84  113 -22.6  175 1.72
+probe      19.39  21.84  147 -18.4  180 0.00
+minutes    21.96  26.02  103 -20.3  202 0.57
+weird      26.62  31.70  130 -21.4  171 0.81
+button     32.25  33.33  223 -20.2  185 0.00
+narration 33.33s, 68 words, events: 
+EXIT 0

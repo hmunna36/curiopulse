@@ -63,6 +63,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Is a Day on Venus LONGER Than Its Year? | 32 s | [`videos/venus-day`](videos/venus-day) | [26 Oct 2026](https://youtube.com/shorts/zdmZmB1AJBQ) |
 | Can You Make Your Eyes SHAKE on Purpose? | 33 s | [`videos/eyes-shake`](videos/eyes-shake) | [26 Oct 2026](https://youtube.com/shorts/6Y0ZurlxUio) |
 | Why Can't You Raise Just ONE Finger? | 33 s | [`videos/one-finger`](videos/one-finger) | [27 Oct 2026](https://youtube.com/shorts/I4272g9UqZE) |
+| If You Fell Into JUPITER, You'd Never Hit the Ground | 34 s | [`videos/jupiter-no-ground`](videos/jupiter-no-ground) | 27 Oct 2026 (to be filled after the upload) |
 
 Each folder has:
 - the finished MP4;

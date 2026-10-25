@@ -1,0 +1,59 @@
+{
+  "slug": "jupiter-no-ground",
+  "file": "jupiter-no-ground-short.mp4",
+  "title": "If You Fell Into JUPITER, You'd Never Hit the Ground 🪐",
+  "description": "If you fell into Jupiter, you'd never hit the ground. Jupiter is a gas giant: it has no solid surface at all. Fall in, and the gas around you just keeps getting thicker and hotter as the pressure builds, until the hydrogen is squeezed into a hot liquid, with no surface to splash into. NASA really did drop a probe into Jupiter in 1995 (the Galileo probe): it sent back data for about 58 minutes before the heat and the pressure destroyed it. And deep inside, some scientists think it might even rain diamonds (an idea from 2013; nobody has seen it yet). Would you jump? Yes or no?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Jupiter #Space #SolarSystem #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-27T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "pill",
+    "test": "pill-2026-10",
+    "slot": "2026-10-27T23:30:00+05:30"
+  },
+  "pinnedComment": "☄️ Bonus: NASA's probe hit Jupiter's air at about 47 km per SECOND (170,000 km/h) and slowed to a gentle drift in under 2 minutes.\nNext up: SHARKS are older than TREES 🦈 Subscribe so you don't miss it!\nWould you jump? Yes or no? 🪐",
+  "tags": [
+    "jupiter",
+    "falling into jupiter",
+    "what if you fell into jupiter",
+    "jupiter has no surface",
+    "jupiter has no ground",
+    "gas giant",
+    "galileo probe",
+    "diamond rain",
+    "jupiter facts",
+    "space facts",
+    "solar system facts",
+    "planets",
+    "science shorts",
+    "space shorts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "jupiter-no-ground.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "If you fell into Jupiter, you'd never hit the ground. 🪐\nJupiter has no solid surface: the gas just gets thicker, like soup, then syrup, then a hot dark ocean. NASA dropped a probe in, back in 1995: it lasted 58 minutes.\nWould you jump? Yes or no?\nFollow @curio_pulse_tv for the next one: sharks are older than trees 🦈\n#science #space #jupiter #planets #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-10-27T23:30:00+05:30"
+  }
+}
