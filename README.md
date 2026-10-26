@@ -64,7 +64,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Make Your Eyes SHAKE on Purpose? | 33 s | [`videos/eyes-shake`](videos/eyes-shake) | [26 Oct 2026](https://youtube.com/shorts/6Y0ZurlxUio) |
 | Why Can't You Raise Just ONE Finger? | 33 s | [`videos/one-finger`](videos/one-finger) | [27 Oct 2026](https://youtube.com/shorts/I4272g9UqZE) |
 | If You Fell Into JUPITER, You'd Never Hit the Ground | 34 s | [`videos/jupiter-no-ground`](videos/jupiter-no-ground) | [27 Oct 2026](https://youtube.com/shorts/lVK_uraLavc) |
-| Sharks Are Older Than TREES | 34 s | [`videos/sharks-older-than-trees`](videos/sharks-older-than-trees) | 28 Oct 2026 |
+| Sharks Are Older Than TREES | 34 s | [`videos/sharks-older-than-trees`](videos/sharks-older-than-trees) | [28 Oct 2026](https://youtube.com/shorts/ax-W5RVgnJg) |
 
 Each folder has:
 - the finished MP4;

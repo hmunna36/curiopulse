@@ -36,24 +36,37 @@
   "cover": "cover.jpg",
   "captions": "sharks-older-than-trees.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-28T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "ax-W5RVgnJg",
+    "url": "https://youtube.com/shorts/ax-W5RVgnJg",
+    "uploaded": "2026-10-26T19:35:57.794Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-31T18:30:00+05:30",
     "caption": "Sharks are older than trees. 🦈🌳\n450 million years ago there wasn't a single tree on land, just moss up to your ankle. The sea already had sharks. Trees showed up about 60 million years later.\nWhat did you guess: sharks or trees?\nFollow @curio_pulse_tv for the next one: can you pat your head and rub your tummy? 🤚\n#science #sharks #evolution #nature #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-10-28T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1783193542942287",
+    "publishAt": "2026-10-31T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-26T19:43:08.594Z"
   }
 }

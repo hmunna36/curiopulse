@@ -33,9 +33,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 28 Oct 2026 11:30 IST |
-| Instagram Reels | @curio_pulse_tv | (filled in after scheduling) |
-| Facebook Page | CurioPulse | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/ax-W5RVgnJg | 28 Oct 2026 11:30 IST (scheduled; the no-pill arm; playlist Strange Nature; thumbnail set by the API and cover.jpg saved in Studio's own slot) |
+| Instagram Reels | @curio_pulse_tv | 31 Oct 2026 18:30 IST (scheduled in Business Suite, Instagram only, cover uploaded; the Planner lists it with its caption) |
+| Facebook Page | CurioPulse (video 1783193542942287) | 31 Oct 2026 18:30 IST (`fb.mjs reel`: scheduled, video ready, copyright clean) |
 
 **Title:** Sharks Are Older Than TREES 🦈
 
