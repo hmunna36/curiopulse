@@ -56,11 +56,45 @@
 | `one-finger`: "Why Can't You Raise Just ONE Finger? ☝️" | 33 s (short arm) | https://youtube.com/shorts/I4272g9UqZE · 27 Oct 2026 11:30 IST | Business Suite, Instagram only, 30 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1132678476177994) |
 | `jupiter-no-ground`: "If You Fell Into JUPITER, You'd Never Hit the Ground 🪐" | 34 s (short arm) | https://youtube.com/shorts/lVK_uraLavc · 27 Oct 2026 23:30 IST | Business Suite, Instagram only, 30 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1763128764800387) |
 | `sharks-older-than-trees`: "Sharks Are Older Than TREES 🦈" | 34 s (short arm) | https://youtube.com/shorts/ax-W5RVgnJg · 28 Oct 2026 11:30 IST | Business Suite, Instagram only, 31 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1783193542942287) |
+| `pat-head-rub-tummy`: "Why Can't You Pat Your Head and Rub Your TUMMY? 🤚" | 34 s (short arm; pill arm) | https://youtube.com/shorts/27B-0yL0PkI · 28 Oct 2026 23:30 IST | Business Suite, Instagram only, 31 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1141168658385930) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**pat-head-rub-tummy** (27 Oct 2026, the 02:00 second Short, 02:04-03:10 IST; a TEST Short, the pill arm (23:30 slot);
+short arm, 73 words -> 33.97 s; hook formula The Direct Address, the instruction itself, "Pat your head. Rub your tummy.
+Now... SWAP!" (after The Question, The Question, The Direct Address); answer "Tangled, right? Your brain mails every order...
+to BOTH hands." at 4.17 s; button "Now try it... FASTER." into the hook; YouTube 27B-0yL0PkI, 28 Oct 23:30 IST, playlist Your
+Brain Is Weird (cover.jpg uploaded in Studio: the API's thumbnail showed an automatic frame there); Instagram (Business Suite,
+Instagram only, cover uploaded) and the Page (fb.mjs, video 1141168658385930) 31 Oct 21:00 IST; one QA round, 18/18; the
+circle-line hit's closest kin, so its split-brain fact was left out and the weird fact is kids' mirror movements to about
+age 10):
+- **A real hand for a test done with the whole hand (new `pathands.js`):** the rig's hand is a ball. `phHand` draws a flat hand
+  from the back in rig units (palm, four fingers, thumb, one outline: stroke all, then fill all), `sy` squashes it across for a
+  hand seen edge-on from the front (the pat on his crown); `st.noArms = true` and both arms drawn in the layer's `post`, so the
+  patting forearm and hand lie over his head. The first pat hand pointed its fingers UP and read as a wave: the fingers lie
+  back over the head (ang π - 0.16) and droop as the wrist lifts. The rubbing elbow belongs by his side, not out in the air.
+- **Pats as a schedule of contacts:** make_timeline.py writes each shot's contact times (`hook_pats`, `tangle_pats`,
+  `slow_pats`...), the picture bounces the hand between them (`phBounce`, `phAround`) and audio.py puts a thud on each; the
+  hook's own schedule (`pat0` + k / `pat_hz`) holds at negative time, so the loop's last frames pat on the same beat.
+- **A glass head with a room inside (new `mailroom.js`):** fill the head's shape opaque first, then fade the room in with
+  `globalAlpha` (with the room drawn only at full glass it flashed a black disc for four frames); tubes from the chin down each
+  arm (`mrArmPts`, `mrArmTube`) capped at 15 px wide, or a close-up turns them into huge pipes; cards as functions of cycle
+  times (`mrCycles`, `mrContents`). A shredder on a counter: its confetti heap goes BESIDE it and stays below its face (it
+  buried it), and the close-up is centred on it, not the brain.
+- **A toddler from the rig (new `kitchen.js`):** the hiker at s 0.82, his head drawn again 1.32x about the neck (`drawHead` in
+  the layer's `post`), a curl and a bib; what is inside his head goes in a round window with a dotted pointer (`kcWindow`): a
+  glass dome on a face that must stay visible (the juice in his face) has no room. A window on the right starts below
+  y 480: at y 382 it met the watermark.
+- **The rebuild proof can lose the pill:** `WORK=<elsewhere> src/build.sh` read publish.json beside the work folder, found
+  none, and rendered the no-pill arm (frames byte-identical otherwise). The template's timeline_lib now falls back to the
+  publish.json beside src/ (`_publish`); the delivered MP4 is the first render (md5 checked).
+- Voice: 37.2 s on the first lay-out; tightening (0.28) and tempo gave 34.5; two seeds each of the answer and the shred line
+  by `voice.synth` (seed 23: 4.98 s and 4.53 s against 5.72 and 5.39) brought it to 33.0 s. quota.mjs read 30,805 before and
+  30,522 after (283 characters: the takes and four auditions). The squeak and the SPLAT were moved into the pauses after "hand..." and
+  "too." (the picture moves with them); the splash soft-clipped to read at -20.5 dB.
 
 **sharks-older-than-trees** (27 Oct 2026, nightly /cp next, 00:00-01:20 IST; THE FOURTH CURIOUS SHORT of the topic test
 `kind-2026-10`; no-pill arm (11:30 slot); short arm, 71 words -> 33.73 s; hook formula The Comparison, put to "you" as a

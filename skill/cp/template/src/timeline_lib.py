@@ -41,14 +41,23 @@ def fr(t):
     return round(t * FPS) / FPS
 
 
+def _publish(work):
+    """The video's publish.json: beside the work folder (the usual ../.work), else beside this src/ folder, so a rebuild
+    into a work folder elsewhere (WORK=/tmp/x src/build.sh) keeps the Short's look and pill arm (27 Oct 2026: such a
+    rebuild silently dropped the pill)."""
+    for d in (os.path.dirname(os.path.abspath(work)), os.path.dirname(os.path.dirname(os.path.abspath(__file__)))):
+        try:
+            return json.load(open(os.path.join(d, "publish.json")))
+        except (OSError, ValueError):
+            continue
+    return {}
+
+
 def video_look(work):
     """The picture's look: 'cine' (cinematic lighting, the house look since 8 Oct 2026; web/look.js) unless the
     video's publish.json says "look": "classic" (the picture as it was before). render.js falls back to classic by
     itself when the graphics chip is not available, and says so."""
-    try:
-        look = json.load(open(os.path.join(os.path.dirname(os.path.abspath(work)), "publish.json"))).get("look", "cine")
-    except (OSError, ValueError):
-        look = "cine"
+    look = _publish(work).get("look", "cine")
     return look if look in ("cine", "classic") else "cine"
 
 
@@ -56,10 +65,7 @@ def video_subscribe(work):
     """The Short's subscribe arm from its publish.json "subscribe" (`yt.mjs next-slot`, written by new-short.sh): 'pill'
     for a 23:30 slot of the pill test (25 Oct-8 Nov 2026; reference/analytics.md, the pill test), else 'none' (no
     pill, the Short ends on the button and loops, as since 16 Oct 2026)."""
-    try:
-        arm = (json.load(open(os.path.join(os.path.dirname(os.path.abspath(work)), "publish.json"))).get("subscribe") or {}).get("arm")
-    except (OSError, ValueError):
-        arm = None
+    arm = (_publish(work).get("subscribe") or {}).get("arm")
     return "pill" if arm == "pill" else "none"
 
 
