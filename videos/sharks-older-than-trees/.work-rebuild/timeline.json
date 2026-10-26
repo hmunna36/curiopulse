@@ -1,0 +1,1130 @@
+{
+ "fps": 30,
+ "duration": 33.733333333333334,
+ "shots": [
+  {
+   "id": "hook",
+   "start": 0.0,
+   "end": 4.0
+  },
+  {
+   "id": "answer",
+   "start": 4.0,
+   "end": 7.0
+  },
+  {
+   "id": "rewind",
+   "start": 7.0,
+   "end": 10.566666666666666
+  },
+  {
+   "id": "ankle",
+   "start": 10.566666666666666,
+   "end": 14.866666666666667
+  },
+  {
+   "id": "sea",
+   "start": 14.866666666666667,
+   "end": 17.2
+  },
+  {
+   "id": "payoff",
+   "start": 17.2,
+   "end": 20.5
+  },
+  {
+   "id": "watched",
+   "start": 20.5,
+   "end": 22.733333333333334
+  },
+  {
+   "id": "dinos",
+   "start": 22.733333333333334,
+   "end": 25.533333333333335
+  },
+  {
+   "id": "five",
+   "start": 25.533333333333335,
+   "end": 29.633333333333333
+  },
+  {
+   "id": "button",
+   "start": 29.633333333333333,
+   "end": 33.266666666666666
+  },
+  {
+   "id": "loop",
+   "start": 33.266666666666666,
+   "end": 33.733333333333334
+  }
+ ],
+ "captions": [
+  {
+   "start": 0.08,
+   "lines": [
+    [
+     {
+      "t": "WHICH",
+      "c": "#FFFFFF",
+      "at": 0.08
+     },
+     {
+      "t": "DO",
+      "c": "#FFFFFF",
+      "at": 0.313
+     },
+     {
+      "t": "YOU",
+      "c": "#FFFFFF",
+      "at": 0.416
+     }
+    ],
+    [
+     {
+      "t": "THINK",
+      "c": "#FFFFFF",
+      "at": 0.548
+     },
+     {
+      "t": "IS",
+      "c": "#FFFFFF",
+      "at": 0.809
+     },
+     {
+      "t": "OLDER",
+      "c": "#FFD447",
+      "at": 0.98
+     }
+    ]
+   ],
+   "end": 1.859
+  },
+  {
+   "start": 1.859,
+   "lines": [
+    [
+     {
+      "t": "SHARKS",
+      "c": "#8FB8FF",
+      "at": 1.859
+     }
+    ]
+   ],
+   "end": 2.63
+  },
+  {
+   "start": 2.63,
+   "lines": [
+    [
+     {
+      "t": "OR",
+      "c": "#FFFFFF",
+      "at": 2.63
+     },
+     {
+      "t": "TREES",
+      "c": "#4DFFB4",
+      "at": 2.84
+     }
+    ]
+   ],
+   "end": 4.0
+  },
+  {
+   "start": 4.04,
+   "lines": [
+    [
+     {
+      "t": "SHARKS",
+      "c": "#8FB8FF",
+      "at": 4.04
+     }
+    ]
+   ],
+   "end": 5.16
+  },
+  {
+   "start": 5.16,
+   "lines": [
+    [
+     {
+      "t": "TREES",
+      "c": "#4DFFB4",
+      "at": 5.16
+     },
+     {
+      "t": "ARE",
+      "c": "#FFFFFF",
+      "at": 5.538
+     }
+    ],
+    [
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 5.658
+     },
+     {
+      "t": "NEW",
+      "c": "#FFD447",
+      "at": 5.778
+     },
+     {
+      "t": "KIDS",
+      "c": "#FFD447",
+      "at": 5.994
+     }
+    ]
+   ],
+   "end": 7.0
+  },
+  {
+   "start": 7.03,
+   "lines": [
+    [
+     {
+      "t": "REWIND",
+      "c": "#C8A8FF",
+      "at": 7.03
+     },
+     {
+      "t": "ALMOST",
+      "c": "#FFFFFF",
+      "at": 7.87
+     }
+    ],
+    [
+     {
+      "t": "HALF",
+      "c": "#FFFFFF",
+      "at": 8.36
+     },
+     {
+      "t": "A",
+      "c": "#FFFFFF",
+      "at": 8.849
+     },
+     {
+      "t": "BILLION",
+      "c": "#FFD447",
+      "at": 9.043
+     },
+     {
+      "t": "YEARS",
+      "c": "#FFFFFF",
+      "at": 9.691
+     }
+    ]
+   ],
+   "end": 10.567
+  },
+  {
+   "start": 10.598,
+   "lines": [
+    [
+     {
+      "t": "NO",
+      "c": "#FFFFFF",
+      "at": 10.598
+     },
+     {
+      "t": "TREES",
+      "c": "#4DFFB4",
+      "at": 10.829
+     }
+    ],
+    [
+     {
+      "t": "ANYWHERE",
+      "c": "#FFFFFF",
+      "at": 11.317
+     }
+    ]
+   ],
+   "end": 12.367
+  },
+  {
+   "start": 12.367,
+   "lines": [
+    [
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 12.367
+     },
+     {
+      "t": "TALLEST",
+      "c": "#FFFFFF",
+      "at": 12.675
+     },
+     {
+      "t": "PLANT",
+      "c": "#FFFFFF",
+      "at": 13.076
+     }
+    ],
+    [
+     {
+      "t": "CAME",
+      "c": "#FFFFFF",
+      "at": 13.442
+     },
+     {
+      "t": "UP",
+      "c": "#FFFFFF",
+      "at": 13.678
+     }
+    ]
+   ],
+   "end": 13.778
+  },
+  {
+   "start": 13.778,
+   "lines": [
+    [
+     {
+      "t": "TO",
+      "c": "#FFFFFF",
+      "at": 13.778
+     },
+     {
+      "t": "YOUR",
+      "c": "#FFFFFF",
+      "at": 13.904
+     },
+     {
+      "t": "ANKLE",
+      "c": "#4DFFB4",
+      "at": 14.153
+     }
+    ]
+   ],
+   "end": 14.867
+  },
+  {
+   "start": 14.895,
+   "lines": [
+    [
+     {
+      "t": "BUT",
+      "c": "#FFFFFF",
+      "at": 14.895
+     },
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 14.959
+     },
+     {
+      "t": "SEA",
+      "c": "#7FE9FF",
+      "at": 15.155
+     }
+    ],
+    [
+     {
+      "t": "ALREADY",
+      "c": "#FFFFFF",
+      "at": 15.439
+     },
+     {
+      "t": "HAD",
+      "c": "#FFFFFF",
+      "at": 15.861
+     },
+     {
+      "t": "SHARKS",
+      "c": "#8FB8FF",
+      "at": 16.174
+     }
+    ]
+   ],
+   "end": 17.2
+  },
+  {
+   "start": 17.23,
+   "lines": [
+    [
+     {
+      "t": "TREES",
+      "c": "#4DFFB4",
+      "at": 17.23
+     },
+     {
+      "t": "SHOWED",
+      "c": "#FFFFFF",
+      "at": 17.608
+     },
+     {
+      "t": "UP",
+      "c": "#FFFFFF",
+      "at": 17.922
+     }
+    ],
+    [
+     {
+      "t": "ABOUT",
+      "c": "#FFFFFF",
+      "at": 18.08
+     },
+     {
+      "t": "60",
+      "c": "#FFD447",
+      "at": 18.422
+     },
+     {
+      "t": "MILLION",
+      "c": "#FFD447",
+      "at": 18.929
+     }
+    ]
+   ],
+   "end": 19.397
+  },
+  {
+   "start": 19.397,
+   "lines": [
+    [
+     {
+      "t": "YEARS",
+      "c": "#FFFFFF",
+      "at": 19.397
+     },
+     {
+      "t": "LATER",
+      "c": "#FFFFFF",
+      "at": 19.782
+     }
+    ]
+   ],
+   "end": 20.5
+  },
+  {
+   "start": 20.54,
+   "lines": [
+    [
+     {
+      "t": "AND",
+      "c": "#FFFFFF",
+      "at": 20.54
+     },
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 20.615
+     },
+     {
+      "t": "SHARKS",
+      "c": "#8FB8FF",
+      "at": 20.775
+     }
+    ],
+    [
+     {
+      "t": "WATCHED",
+      "c": "#C8A8FF",
+      "at": 21.6
+     }
+    ]
+   ],
+   "end": 22.733
+  },
+  {
+   "start": 22.78,
+   "lines": [
+    [
+     {
+      "t": "DINOSAURS",
+      "c": "#FF9A3C",
+      "at": 22.78
+     }
+    ],
+    [
+     {
+      "t": "CAME",
+      "c": "#FFFFFF",
+      "at": 23.4
+     }
+    ]
+   ],
+   "end": 24.42
+  },
+  {
+   "start": 24.42,
+   "lines": [
+    [
+     {
+      "t": "AND",
+      "c": "#FFFFFF",
+      "at": 24.42
+     },
+     {
+      "t": "WENT",
+      "c": "#FF5A6E",
+      "at": 24.68
+     }
+    ]
+   ],
+   "end": 25.533
+  },
+  {
+   "start": 25.58,
+   "lines": [
+    [
+     {
+      "t": "SHARKS",
+      "c": "#8FB8FF",
+      "at": 25.58
+     }
+    ]
+   ],
+   "end": 26.63
+  },
+  {
+   "start": 26.63,
+   "lines": [
+    [
+     {
+      "t": "5",
+      "c": "#FF5A6E",
+      "at": 26.63
+     },
+     {
+      "t": "MASS",
+      "c": "#FFFFFF",
+      "at": 26.88
+     }
+    ],
+    [
+     {
+      "t": "EXTINCTIONS",
+      "c": "#FF5A6E",
+      "at": 27.187
+     }
+    ]
+   ],
+   "end": 28.42
+  },
+  {
+   "start": 28.42,
+   "lines": [
+    [
+     {
+      "t": "STILL",
+      "c": "#FFFFFF",
+      "at": 28.42
+     },
+     {
+      "t": "SWIMMING",
+      "c": "#7FE9FF",
+      "at": 28.66
+     }
+    ]
+   ],
+   "end": 29.56
+  },
+  {
+   "start": 29.687,
+   "lines": [
+    [
+     {
+      "t": "SO",
+      "c": "#FFFFFF",
+      "at": 29.687
+     },
+     {
+      "t": "WHEN",
+      "c": "#FFFFFF",
+      "at": 29.809
+     },
+     {
+      "t": "YOU",
+      "c": "#FFFFFF",
+      "at": 29.937
+     }
+    ],
+    [
+     {
+      "t": "HUG",
+      "c": "#FF86A6",
+      "at": 30.077
+     },
+     {
+      "t": "A",
+      "c": "#FFFFFF",
+      "at": 30.257
+     },
+     {
+      "t": "TREE",
+      "c": "#4DFFB4",
+      "at": 30.43
+     }
+    ]
+   ],
+   "end": 31.38
+  },
+  {
+   "start": 31.38,
+   "lines": [
+    [
+     {
+      "t": "YOU'RE",
+      "c": "#FFFFFF",
+      "at": 31.38
+     },
+     {
+      "t": "HUGGING",
+      "c": "#FFFFFF",
+      "at": 31.497
+     }
+    ],
+    [
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 31.817
+     },
+     {
+      "t": "NEW",
+      "c": "#FFD447",
+      "at": 31.977
+     },
+     {
+      "t": "KID",
+      "c": "#FFD447",
+      "at": 32.177
+     }
+    ]
+   ],
+   "end": 33.073
+  }
+ ],
+ "cues": {
+  "which": 0.11,
+  "older": 1.01,
+  "older_end": 1.59,
+  "sharks1": 1.889,
+  "sharks1_end": 2.438,
+  "or": 2.66,
+  "trees1": 2.87,
+  "trees1_end": 3.615,
+  "sharks2": 4.07,
+  "sharks2_end": 4.77,
+  "trees2": 5.19,
+  "new1": 5.808,
+  "kids": 6.024,
+  "kids_end": 6.54,
+  "rewind": 7.06,
+  "rewind_end": 7.83,
+  "almost": 7.9,
+  "half": 8.39,
+  "billion": 9.073,
+  "billion_end": 9.617,
+  "years1": 9.721,
+  "years1_end": 10.316,
+  "no": 10.628,
+  "trees3": 10.859,
+  "anywhere": 11.347,
+  "anywhere_end": 12.244,
+  "the_tallest": 12.397,
+  "tallest": 12.705,
+  "plant": 13.106,
+  "came1": 13.472,
+  "your": 13.934,
+  "ankle": 14.183,
+  "ankle_end": 14.575,
+  "but": 14.925,
+  "sea": 15.185,
+  "already": 15.469,
+  "had": 15.891,
+  "sharks3": 16.204,
+  "sharks3_end": 16.753,
+  "trees4": 17.26,
+  "showed": 17.638,
+  "about": 18.11,
+  "sixty": 18.452,
+  "million": 18.959,
+  "years2": 19.427,
+  "later": 19.812,
+  "later_end": 20.31,
+  "and1": 20.57,
+  "sharks4": 20.805,
+  "sharks4_end": 21.285,
+  "watched": 21.63,
+  "watched_end": 22.245,
+  "dinosaurs": 22.81,
+  "dinosaurs_end": 23.32,
+  "came2": 23.43,
+  "came2_end": 24.0,
+  "and2": 24.45,
+  "went": 24.71,
+  "went_end": 25.2,
+  "sharks5": 25.61,
+  "sharks5_end": 26.11,
+  "five": 26.66,
+  "mass": 26.91,
+  "extinctions": 27.217,
+  "extinctions_end": 27.936,
+  "still": 28.45,
+  "swimming": 28.69,
+  "swimming_end": 29.01,
+  "so": 29.717,
+  "hug": 30.107,
+  "tree5": 30.46,
+  "tree5_end": 30.91,
+  "youre": 31.41,
+  "hugging": 31.527,
+  "new2": 32.007,
+  "kid": 32.207,
+  "kid_end": 32.523,
+  "loop": 33.28333333333333,
+  "heart": 3.6550000000000002,
+  "slap": 6.59,
+  "flomp": 10.376000000000001,
+  "tag1": 14.083,
+  "tagT": 13.056,
+  "wave": 16.813,
+  "turn": 22.295,
+  "boom": 25.23,
+  "shades": 28.4,
+  "pop": 32.583000000000006,
+  "tally": [
+   26.66,
+   26.992,
+   27.323,
+   27.654,
+   27.986
+  ]
+ },
+ "words": [
+  {
+   "word": "Which",
+   "start": 0.11,
+   "end": 0.291,
+   "block": "hook"
+  },
+  {
+   "word": "do",
+   "start": 0.343,
+   "end": 0.448,
+   "block": "hook"
+  },
+  {
+   "word": "you",
+   "start": 0.446,
+   "end": 0.526,
+   "block": "hook"
+  },
+  {
+   "word": "think",
+   "start": 0.578,
+   "end": 0.84,
+   "block": "hook"
+  },
+  {
+   "word": "is",
+   "start": 0.839,
+   "end": 0.919,
+   "block": "hook"
+  },
+  {
+   "word": "older...",
+   "start": 1.01,
+   "end": 1.59,
+   "block": "hook"
+  },
+  {
+   "word": "sharks,",
+   "start": 1.889,
+   "end": 2.438,
+   "block": "hook"
+  },
+  {
+   "word": "or",
+   "start": 2.66,
+   "end": 2.752,
+   "block": "hook"
+  },
+  {
+   "word": "TREES?",
+   "start": 2.87,
+   "end": 3.615,
+   "block": "hook"
+  },
+  {
+   "word": "Sharks.",
+   "start": 4.07,
+   "end": 4.77,
+   "block": "answer"
+  },
+  {
+   "word": "Trees",
+   "start": 5.19,
+   "end": 5.528,
+   "block": "answer"
+  },
+  {
+   "word": "are",
+   "start": 5.568,
+   "end": 5.688,
+   "block": "answer"
+  },
+  {
+   "word": "the",
+   "start": 5.688,
+   "end": 5.768,
+   "block": "answer"
+  },
+  {
+   "word": "new",
+   "start": 5.808,
+   "end": 5.928,
+   "block": "answer"
+  },
+  {
+   "word": "kids.",
+   "start": 6.024,
+   "end": 6.54,
+   "block": "answer"
+  },
+  {
+   "word": "Rewind",
+   "start": 7.06,
+   "end": 7.83,
+   "block": "rewind"
+  },
+  {
+   "word": "almost",
+   "start": 7.9,
+   "end": 8.297,
+   "block": "rewind"
+  },
+  {
+   "word": "half",
+   "start": 8.39,
+   "end": 8.763,
+   "block": "rewind"
+  },
+  {
+   "word": "a",
+   "start": 8.879,
+   "end": 8.96,
+   "block": "rewind"
+  },
+  {
+   "word": "billion",
+   "start": 9.073,
+   "end": 9.617,
+   "block": "rewind"
+  },
+  {
+   "word": "years.",
+   "start": 9.721,
+   "end": 10.316,
+   "block": "rewind"
+  },
+  {
+   "word": "No",
+   "start": 10.628,
+   "end": 10.782,
+   "block": "ankle"
+  },
+  {
+   "word": "trees",
+   "start": 10.859,
+   "end": 11.244,
+   "block": "ankle"
+  },
+  {
+   "word": "anywhere.",
+   "start": 11.347,
+   "end": 12.244,
+   "block": "ankle"
+  },
+  {
+   "word": "The",
+   "start": 12.397,
+   "end": 12.48,
+   "block": "ankle"
+  },
+  {
+   "word": "tallest",
+   "start": 12.705,
+   "end": 13.042,
+   "block": "ankle"
+  },
+  {
+   "word": "plant",
+   "start": 13.106,
+   "end": 13.426,
+   "block": "ankle"
+  },
+  {
+   "word": "came",
+   "start": 13.472,
+   "end": 13.657,
+   "block": "ankle"
+  },
+  {
+   "word": "up",
+   "start": 13.708,
+   "end": 13.811,
+   "block": "ankle"
+  },
+  {
+   "word": "to",
+   "start": 13.808,
+   "end": 13.888,
+   "block": "ankle"
+  },
+  {
+   "word": "your",
+   "start": 13.934,
+   "end": 14.119,
+   "block": "ankle"
+  },
+  {
+   "word": "ankle.",
+   "start": 14.183,
+   "end": 14.575,
+   "block": "ankle"
+  },
+  {
+   "word": "But",
+   "start": 14.925,
+   "end": 15.005,
+   "block": "sea"
+  },
+  {
+   "word": "the",
+   "start": 14.989,
+   "end": 15.106,
+   "block": "sea"
+  },
+  {
+   "word": "sea",
+   "start": 15.185,
+   "end": 15.42,
+   "block": "sea"
+  },
+  {
+   "word": "already",
+   "start": 15.469,
+   "end": 15.812,
+   "block": "sea"
+  },
+  {
+   "word": "had",
+   "start": 15.891,
+   "end": 16.126,
+   "block": "sea"
+  },
+  {
+   "word": "sharks.",
+   "start": 16.204,
+   "end": 16.753,
+   "block": "sea"
+  },
+  {
+   "word": "Trees",
+   "start": 17.26,
+   "end": 17.594,
+   "block": "payoff"
+  },
+  {
+   "word": "showed",
+   "start": 17.638,
+   "end": 17.901,
+   "block": "payoff"
+  },
+  {
+   "word": "up",
+   "start": 17.952,
+   "end": 18.055,
+   "block": "payoff"
+  },
+  {
+   "word": "about",
+   "start": 18.11,
+   "end": 18.363,
+   "block": "payoff"
+  },
+  {
+   "word": "sixty",
+   "start": 18.452,
+   "end": 18.901,
+   "block": "payoff"
+  },
+  {
+   "word": "million",
+   "start": 18.959,
+   "end": 19.363,
+   "block": "payoff"
+  },
+  {
+   "word": "years",
+   "start": 19.427,
+   "end": 19.748,
+   "block": "payoff"
+  },
+  {
+   "word": "later...",
+   "start": 19.812,
+   "end": 20.31,
+   "block": "payoff"
+  },
+  {
+   "word": "and",
+   "start": 20.57,
+   "end": 20.65,
+   "block": "watched"
+  },
+  {
+   "word": "the",
+   "start": 20.645,
+   "end": 20.725,
+   "block": "watched"
+  },
+  {
+   "word": "sharks",
+   "start": 20.805,
+   "end": 21.285,
+   "block": "watched"
+  },
+  {
+   "word": "watched.",
+   "start": 21.63,
+   "end": 22.245,
+   "block": "watched"
+  },
+  {
+   "word": "Dinosaurs",
+   "start": 22.81,
+   "end": 23.32,
+   "block": "dinos"
+  },
+  {
+   "word": "came...",
+   "start": 23.43,
+   "end": 24.0,
+   "block": "dinos"
+  },
+  {
+   "word": "and",
+   "start": 24.45,
+   "end": 24.63,
+   "block": "dinos"
+  },
+  {
+   "word": "went.",
+   "start": 24.71,
+   "end": 25.2,
+   "block": "dinos"
+  },
+  {
+   "word": "Sharks?",
+   "start": 25.61,
+   "end": 26.11,
+   "block": "five"
+  },
+  {
+   "word": "Five",
+   "start": 26.66,
+   "end": 26.848,
+   "block": "five"
+  },
+  {
+   "word": "mass",
+   "start": 26.91,
+   "end": 27.159,
+   "block": "five"
+  },
+  {
+   "word": "extinctions.",
+   "start": 27.217,
+   "end": 27.936,
+   "block": "five"
+  },
+  {
+   "word": "Still",
+   "start": 28.45,
+   "end": 28.62,
+   "block": "five"
+  },
+  {
+   "word": "swimming.",
+   "start": 28.69,
+   "end": 29.01,
+   "block": "five"
+  },
+  {
+   "word": "So",
+   "start": 29.717,
+   "end": 29.807,
+   "block": "button"
+  },
+  {
+   "word": "when",
+   "start": 29.839,
+   "end": 29.967,
+   "block": "button"
+  },
+  {
+   "word": "you",
+   "start": 29.967,
+   "end": 30.047,
+   "block": "button"
+  },
+  {
+   "word": "hug",
+   "start": 30.107,
+   "end": 30.287,
+   "block": "button"
+  },
+  {
+   "word": "a",
+   "start": 30.287,
+   "end": 30.367,
+   "block": "button"
+  },
+  {
+   "word": "tree...",
+   "start": 30.46,
+   "end": 30.91,
+   "block": "button"
+  },
+  {
+   "word": "you're",
+   "start": 31.41,
+   "end": 31.49,
+   "block": "button"
+  },
+  {
+   "word": "hugging",
+   "start": 31.527,
+   "end": 31.807,
+   "block": "button"
+  },
+  {
+   "word": "the",
+   "start": 31.847,
+   "end": 31.967,
+   "block": "button"
+  },
+  {
+   "word": "new",
+   "start": 32.007,
+   "end": 32.127,
+   "block": "button"
+  },
+  {
+   "word": "kid.",
+   "start": 32.207,
+   "end": 32.523,
+   "block": "button"
+  }
+ ],
+ "events": [],
+ "look": "cine",
+ "subscribe": "none"
+}

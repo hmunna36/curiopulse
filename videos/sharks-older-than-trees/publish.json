@@ -1,0 +1,59 @@
+{
+  "slug": "sharks-older-than-trees",
+  "file": "sharks-older-than-trees-short.mp4",
+  "title": "Sharks Are Older Than TREES 🦈",
+  "description": "Which is older: sharks or trees? Sharks, by a lot. The oldest shark-like scales are about 450 million years old; the first trees appeared around 390 to 385 million years ago. Before that, the tallest plants on land were mosses and liverworts a few centimetres high, while the sea already had early sharks. Then the trees showed up, the dinosaurs came and went, and sharks have made it through all five mass extinctions. (Those oldest scales are debated; the oldest undisputed shark teeth are about 420 million years old, still older than any tree.) What did you guess: sharks or trees?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Sharks #Trees #Evolution #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-28T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-10-28T11:30:00+05:30"
+  },
+  "pinnedComment": "🦈 Bonus: a Greenland shark studied in 2016 was about 400 years old (give or take 120), the longest-lived animal with a backbone we know.\nNext up: why can't you pat your head and rub your tummy at the same time? 🤚 Subscribe so you don't miss it!\nWhat did you guess: sharks or trees? 🌳",
+  "tags": [
+    "sharks",
+    "sharks older than trees",
+    "are sharks older than trees",
+    "first trees",
+    "oldest trees",
+    "how old are sharks",
+    "shark facts",
+    "prehistoric sharks",
+    "mass extinctions",
+    "evolution",
+    "earth history",
+    "fun facts",
+    "science shorts",
+    "nature facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "sharks-older-than-trees.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Sharks are older than trees. 🦈🌳\n450 million years ago there wasn't a single tree on land, just moss up to your ankle. The sea already had sharks. Trees showed up about 60 million years later.\nWhat did you guess: sharks or trees?\nFollow @curio_pulse_tv for the next one: can you pat your head and rub your tummy? 🤚\n#science #sharks #evolution #nature #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-10-28T11:30:00+05:30"
+  }
+}

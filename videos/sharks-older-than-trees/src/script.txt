@@ -1,0 +1,44 @@
+# Narration for "Sharks Are Older Than TREES 🦈"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# THE CURIOUS KIND (the topic test, 25 Oct-8 Nov 2026; reference/story.md §6): no viewer test; the hook is a two-second
+# guess put to "you" (sharks or trees?), with both already in frame 1 (him hugging a tree, a shark watching him from the
+# water). Hook formula: The Comparison (after The Question, The Question, The Impossible Claim): two named options, the
+# loser said out loud ("Trees are the new kids").
+# 71 words. Every claim is in the README's claims table; the shark dates rest on scales the museums count (hedged on screen).
+# - nobody says "subscribe" (qa.py fails it), and nothing asks, teases or winds up. The last block is the button; it
+#   runs into the hook when the Short loops ("...you're hugging the new kid." -> "Which do you think is older...").
+
+## hook gap=0.10 tempo=1.02
+Which do you think is older... sharks, or TREES?
+
+## answer gap=0.45 tighten=0.45 tempo=1.00
+Sharks. Trees are the new kids.
+
+## rewind gap=0.50 tempo=1.03
+Rewind almost half a billion years.
+
+## ankle gap=0.30 tighten=0.42 tempo=1.04
+No trees anywhere. The tallest plant came up to your ankle.
+
+## sea gap=0.35 tempo=1.02
+But the sea already had sharks.
+
+## payoff gap=0.45 tempo=1.04
+Trees showed up about sixty million years later...
+
+## watched gap=0.12 tighten=0.45 tempo=1.00
+and the sharks watched.
+
+## dinos gap=0.55 tighten=0.5 tempo=1.00
+Dinosaurs came... and went.
+
+## five gap=0.35 tighten=0.45 tempo=1.03
+Sharks? Five mass extinctions. Still swimming.
+
+## button gap=0.55 tighten=0.5 tempo=1.00
+So when you hug a tree... you're hugging the new kid.
