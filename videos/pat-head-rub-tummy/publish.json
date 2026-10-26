@@ -36,24 +36,40 @@
   "cover": "cover.jpg",
   "captions": "pat-head-rub-tummy.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-28T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "27B-0yL0PkI",
+    "url": "https://youtube.com/shorts/27B-0yL0PkI",
+    "uploaded": "2026-10-26T21:27:20.910Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-31T21:00:00+05:30",
     "caption": "Pat your head... rub your tummy... now SWAP! 🤚\nTangled, right? Your brain mails every order to BOTH hands, then has to shred the copy so they can do different things. Little kids can't yet: squeeze one hand and the other often squeezes too, till about age 10.\nCould you swap? Yes or no?\nFollow @curio_pulse_tv for the next one: why some people can make their ears RUMBLE 👂\n#science #brain #humanbody #funfacts #reels",
-    "coverTime": 1.0,
-    "shareToFeed": true
+    "coverTime": 1,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-27T03:03+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)",
+    "cover": "cover.jpg (Upload image)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-10-28T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1141168658385930",
+    "publishAt": "2026-10-31T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-26T21:34:59.570Z"
   }
 }

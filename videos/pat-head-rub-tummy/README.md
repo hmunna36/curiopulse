@@ -89,9 +89,9 @@ window the cool rim (`OFFICE_LIGHT`), the kitchen by day from its window on the 
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_TIME |
-| Instagram Reels | (Business Suite, Instagram only) | IG_TIME |
-| Facebook Page | (fb.mjs) | FB_TIME |
+| YouTube Shorts | https://youtube.com/shorts/27B-0yL0PkI | 28 Oct 2026 23:30 IST (scheduled; playlist Your Brain Is Weird; cover.jpg set in Studio) |
+| Instagram Reels | (Business Suite, Instagram only; cover.jpg as the cover) | 31 Oct 2026 21:00 IST (scheduled 27 Oct 03:03 IST) |
+| Facebook Page | `fb.mjs reel`, video 1141168658385930 | 31 Oct 2026 21:00 IST (scheduled) |
 
 **Title:** Why Can't You Pat Your Head and Rub Your TUMMY? 🤚
 
