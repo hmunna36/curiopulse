@@ -55,11 +55,46 @@
 | `eyes-shake`: "Can You Make Your Eyes SHAKE on Purpose? 👀" | 33 s (short arm) | https://youtube.com/shorts/6Y0ZurlxUio · 26 Oct 2026 23:30 IST | Business Suite, Instagram only, 29 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2056122628400137) |
 | `one-finger`: "Why Can't You Raise Just ONE Finger? ☝️" | 33 s (short arm) | https://youtube.com/shorts/I4272g9UqZE · 27 Oct 2026 11:30 IST | Business Suite, Instagram only, 30 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1132678476177994) |
 | `jupiter-no-ground`: "If You Fell Into JUPITER, You'd Never Hit the Ground 🪐" | 34 s (short arm) | https://youtube.com/shorts/lVK_uraLavc · 27 Oct 2026 23:30 IST | Business Suite, Instagram only, 30 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1763128764800387) |
+| `sharks-older-than-trees`: "Sharks Are Older Than TREES 🦈" | 34 s (short arm) | https://youtube.com/shorts/ax-W5RVgnJg · 28 Oct 2026 11:30 IST | Business Suite, Instagram only, 31 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1783193542942287) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**sharks-older-than-trees** (27 Oct 2026, nightly /cp next, 00:00-01:20 IST; THE FOURTH CURIOUS SHORT of the topic test
+`kind-2026-10`; no-pill arm (11:30 slot); short arm, 71 words -> 33.73 s; hook formula The Comparison, put to "you" as a
+two-second guess: "Which do you think is older... sharks, or TREES?"; answer "Sharks. Trees are the new kids." at 4.07 s; button
+"So when you hug a tree... you're hugging the new kid." into the hook; YouTube ax-W5RVgnJg, 28 Oct 11:30 IST, playlist Strange
+Nature (Studio's own thumbnail saved); Instagram (Business Suite, Instagram only, cover uploaded) and the Page (fb.mjs, video
+1783193542942287) 31 Oct 18:30 IST; two QA rounds; the render of record is build.sh's own, from a fresh work folder):
+- **A world built for the topic, 2 new files (borrow them):** `shore.js` (one stretch of coast from the land, the sea on the
+  right with a low sun over it, drawn in four AGES from one state `S` that can morph: `SH_PALS` today / ordo / devo / meso and
+  `shPal(a, b, k)`; `modern` (today's forest UN-GROWS toward its base, far trees first), `grass`, `rocks`, `moss` (cushions),
+  `devo` (the first trees: `shFirstTree`, a bowed trunk with a diamond scar lattice and a crown of fronds that unroll from
+  fiddleheads, `gt`/`gf`), far ridges and soft clouds sitting on the horizon at their own parallax (`shFar`), sun glitter
+  (`shWaveLines`), foam that breathes along the coast; the big tree he hugs as `bigTrunk` + `bigCrown` with growth `g`),
+  `creatures.js` (a cartoon shark `skShark`: flip, rot, look, blink, brows, smirk/grin with teeth, a waving pectoral fin,
+  shades, and a black occluder in the glow layer; `skWaterFront`; `skSplash`, `skFin`; a sauropod `dnSauropod` with a walk
+  cycle and a neck that bends down nose to nose; `dnFootprint`; `skFireball`; `tallyRock`; the NEW KID sticker `newKid`; the
+  YEARS AGO counter `yearsHud` (rewind / fast-forward); `shTag`).
+- **A hug that reads from the front:** the trunk is drawn IN FRONT of him in his layer's `post`, his body behind it, then his
+  forearms, hands and HEAD drawn again over the trunk (`heroDraw`): his cheek on the bark, his arms round it.
+- **Water in front of something that rises out of it is an IMAGE, not a fill** (round 1): a see-through patch, or a fill
+  inside `clip()`, is left out of the shape map, so the light stage still saw the shark under the surface and drew its rim and
+  shadow through the water. Painted into a canvas of its own and laid on with `drawImage`, it is one solid, flat, unlit thing
+  that hides what is under it; in the sea's own gradient it shows no edge. Keep it clipped to the water and off the shore (`x0`).
+- **Glow-layer coordinates after `screenSpace()`:** gctx is already at half scale there, so `softDot(gctx, x / 2, ...)` put the
+  sun's bloom at half its position (a bright blob on the trunk). Use the same coordinates as on ctx. Under `applyCam` gctx has the
+  camera too: draw glints at world coordinates.
+- **Cut the hero's layer out of the glow layer** (`destination-out` of `layerC`) when glints or a sun sit behind him: the
+  bloom otherwise shines through his body (here, through the trunk on his layer).
+- **The faint goes onto the land:** a topple about his feet to the side where the tree was went into the sea and out of frame;
+  he faints backward, onto the rock, and the camera follows.
+- **An eye-roll and a brow waggle are the cheapest comedy a side-on cartoon animal has** (round 2, retention 7 -> 8): the shark
+  squints on "older", waggles its brows with a grin on "sharks,", rolls its eyes up on "TREES?". A raised fin "me!" read as
+  touching his hand: dropped.
+- Render ~0.24 s a frame (~4.5 min for 1,012 frames). Studio's edit page opened fine this time.
 
 **jupiter-no-ground** (26 Oct 2026, the 02:00 second Short, 02:04-03:45 IST; THE THIRD CURIOUS SHORT of the topic test
 `kind-2026-10`; pill arm (23:30 slot); short arm, 68 words -> 34.43 s; hook formula The Impossible Claim, said to "you": "If you

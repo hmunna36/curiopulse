@@ -189,6 +189,10 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 - **Never clip to hide what is under water or behind a surface** (lake-natron, 24 Oct 2026): a clipped shape is left out of the
   shape map, so the light shades it as whatever is behind it, and it looks see-through. Draw it whole, then a soft patch of the
   surface's own colour over the hidden part (`nbWaterOver` in lake-natron's birds.js) and, on water, a faint mirrored copy.
+- **Water over something that rises out of it is laid on as an IMAGE** (sharks-older-than-trees, 27 Oct 2026): paint the
+  water's patch (in the sea's own gradient) into a canvas of its own and `drawImage` it. A see-through patch or a fill inside a
+  clip is left out of the shape map, and the light stage then draws the hidden body's rim and shadow through the water; a solid
+  image is one flat, unlit thing that hides what is under it (`skWaterFront` in sharks-older-than-trees' creatures.js).
 - **Keep the sun (or any bright source) off the subject's silhouette:** bloom eats a white subject in front of it (lake-natron's
   statue): put the source in a corner of the frame and keep the glow layer's sun modest.
 - **Several shapes as one outlined thing** (a see-through limb, a silhouette): stroke them all, then fill them all,
