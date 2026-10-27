@@ -58,11 +58,53 @@
 | `sharks-older-than-trees`: "Sharks Are Older Than TREES 🦈" | 34 s (short arm) | https://youtube.com/shorts/ax-W5RVgnJg · 28 Oct 2026 11:30 IST | Business Suite, Instagram only, 31 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1783193542942287) |
 | `pat-head-rub-tummy`: "Why Can't You Pat Your Head and Rub Your TUMMY? 🤚" | 34 s (short arm; pill arm) | https://youtube.com/shorts/27B-0yL0PkI · 28 Oct 2026 23:30 IST | Business Suite, Instagram only, 31 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1141168658385930) |
 | `ear-rumble`: "Why Do Your Ears RUMBLE When You Yawn? 👂" | 31 s (short arm; no-pill arm) | https://youtube.com/shorts/6QOky2URd9k · 29 Oct 2026 11:30 IST | Business Suite, Instagram only, 1 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2820187861686358) |
+| `neutron-star-teaspoon`: "How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄" | 33 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/4xcvqM40WhM · 29 Oct 2026 23:30 IST | Business Suite, Instagram only, 1 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2631055497376571) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**neutron-star-teaspoon** (28 Oct 2026, the 02:00 second-Short routine, 02:10-03:20 IST; THE FIFTH CURIOUS SHORT of the topic
+test, the pill arm (23:30 slot); short arm, 72 words -> 33.13 s; hook formula The Question, the exact search query, "How much do
+you think this teaspoon weighs?" (after The Comparison, The Direct Address, The Direct Address); answer "About as much as... a
+MOUNTAIN." at 2.88 s; button "Anyway... one spoon, or two?" (he dips another spoonful: the hook's picture); YouTube 4xcvqM40WhM,
+29 Oct 23:30 IST, playlist Strange Nature (Studio's vertical slot showed an automatic frame: cover.jpg uploaded there);
+Instagram (Business Suite, Instagram only, cover uploaded) and the Page (fb.mjs, video 2631055497376571) 1 Nov 21:00 IST; two
+QA rounds, 18/18 both; `build.sh` into a fresh work folder reproduced it exactly):
+- **Three new worlds, built for the topic (borrow them):** `ns_camp.js` (a mountain campsite at dusk: the alpenglow peak as a
+  plate painted at 1.5x for a whip up to it, ridges, pines, a meadow; soft out-of-focus copies of every plate for close-ups,
+  `ncSoft`, cross-faded by zoom; his tent, a lantern, an enamel mug that steams, a jar labelled NEUTRON STAR, a gingham table with
+  legs that can break into a V (`ncTable({brk})`) or lie in two halves (`ncTableWreck`), a teaspoon with a glowing heap
+  (`ncSpoon`, `ncBlob`: bulge, wobble, light cracks), a crater with the handle sticking out (`ncCrater`), dust, a soot puff,
+  fireflies; the blown-off summit as its own plate), `ns_space.js` (stars and a nebula, `nsStar`: a spinning neutron star with
+  hot spots, dipole field loops and two lighthouse beams from a tilted magnetic axis, front/back beam ordering; `nsSun`:
+  granulation tile, limb darkening, prominences, a cave-in `k` that turns it blue-white; `nsCity`: a night skyline painted once;
+  `nsSpan`: a measuring line with a label), `ns_stadium.js` (an atom as an empty night stadium: rows of seats as a bowl from a
+  per-row ellipse `sdRow`, floodlights, a striped pitch, a pea on the centre spot, a tumbleweed, the squeeze `q` that folds the
+  bowl in, packed peas `sdPacked`). Space shots used jupiter-no-ground's `jphero.js` (the spacesuit hero) as it was.
+- **`T.E("a b c")` is the END OF THE FIRST WORD** (word k = 0), not of the phrase: `E("right out")` gave the end of "right".
+  Write `E(phrase, k)` with k = the last word's index. And `W("a mountain.")` matched the ANSWER's "a MOUNTAIN", not the payoff's:
+  the music's silence span then ran from 4.7 s to 23.8 s and the payoff's label popped at the shot's start (qc_audio showed the
+  music stem at -180 dB in six shots: read that table every mix). Use `W("mountain", s=find("weighs a mountain"))`.
+- **Labels go in the shot's `overlay`** (drawn after the light and the bloom): "OUR WHOLE SUN" drawn into ctx on a bright Sun was
+  washed to nothing by the glow layer; in `overlay` it is crisp. A label that repeats the caption is wasted: it became
+  "≈ 1.4 × THE SUN" (the number the words leave out).
+- **A prop the hero handles must be drawn in FRONT of him:** the crater and the spoon's handle were drawn before him, so his legs
+  hid the handle he was heaving at and the gag did not read (round 1). Drawn after him, with two fists drawn again over the
+  handle's top, it reads at once. Also: "hiding behind a tiny jar" did not read as hiding; hands over his ears with his eyes
+  squeezed shut did.
+- **Props at a natural size:** the first jar and mug were head-sized (116 px wide next to a 132 px head) and the close-up read as a
+  toy shop; at 0.6x they read as a jar and a mug, and frame 0 tightened to zoom 2.8 (head ≈ 390 px).
+- **A tablecloth to the grass hides what falls under the table:** the crater was invisible in the crash; a cloth that ends at the
+  legs (hem 128 px under the top) shows it.
+- **lib.js's `E` has no inQuad / outQuad / outSine / outBounce:** the render died on `E.outQuad is not a function`; the template's
+  lib.js now has them.
+- **Sound:** THOOM in the pause after MOUNTAIN (a sub drop, a body slam, the table's crack, soft-clipped) -16.5 dB; the BOOM in its
+  own pause -14.4; the beams' "vwoom" twice a turn (all under 320 Hz plus air above 5.6 kHz: it runs under words); the bottom's
+  THUMP was -27 (too quiet) until +5 dB.
+- Voice: two hook and three button seeds auditioned (`voice.synth` into the scratchpad, installed by hand): the first hook's
+  "weighs?" sat -31.7 dB in the speech band; seed 19 kept it. 384 + 213 characters; 17,703 left on account 2 (resets 1 Nov).
 
 **ear-rumble** (28 Oct 2026, nightly /cp next, 00:02-01:10 IST; a TEST Short, the no-pill arm (11:30 slot); the queue's first
 topic (moved up 24 Oct as the Vulcan-salute hit's kin); short arm, 74 words -> 31.20 s; hook formula The Direct Address, the

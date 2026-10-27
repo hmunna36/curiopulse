@@ -32,6 +32,10 @@ const E = {
   outBack: (x, s = 1.9) => 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2),
   outQuint: (x) => 1 - Math.pow(1 - x, 5),
   inOutSine: (x) => -(Math.cos(Math.PI * x) - 1) / 2,
+  inQuad: (x) => x * x,
+  outQuad: (x) => 1 - (1 - x) * (1 - x),
+  outSine: (x) => Math.sin((x * Math.PI) / 2),
+  outBounce: (x) => { const n = 7.5625, d = 2.75; if (x < 1 / d) return n * x * x; if (x < 2 / d) return n * (x -= 1.5 / d) * x + 0.75; if (x < 2.5 / d) return n * (x -= 2.25 / d) * x + 0.9375; return n * (x -= 2.625 / d) * x + 0.984375; },
 };
 // eased 0..1 ramp between times a and b
 const ramp = (t, a, b, e = E.outCubic) => e(inv(a, b, t));

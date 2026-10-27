@@ -45,6 +45,9 @@ one number both sides use.
 - `T.W()` / `T.E()` / `T.find()` ignore case and punctuation: `W("TWO.")` finds the first "two" of the Short, and
   `W("Your fingers")` an earlier "your fingers" (two-noses, 17 Oct 2026: a ghost nose stayed up for 20 s). Give a
   repeated word `s=` (the index of its line from `find`) and assert the cues' order.
+- `T.E("a b c")` is the END OF ITS FIRST WORD (k = 0), not of the phrase: write `E("right out", 1)` for the end of "out"
+  (neutron-star-teaspoon, 28 Oct 2026: three `_end` cues sat a word early). After every mix read qc_audio.py's per-shot table:
+  a stem at -180 dB in a shot that should have score means a cue found the wrong word (a `silence()` span ran 19 s there).
 
 ## Writing shots
 
