@@ -57,11 +57,44 @@
 | `jupiter-no-ground`: "If You Fell Into JUPITER, You'd Never Hit the Ground 🪐" | 34 s (short arm) | https://youtube.com/shorts/lVK_uraLavc · 27 Oct 2026 23:30 IST | Business Suite, Instagram only, 30 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1763128764800387) |
 | `sharks-older-than-trees`: "Sharks Are Older Than TREES 🦈" | 34 s (short arm) | https://youtube.com/shorts/ax-W5RVgnJg · 28 Oct 2026 11:30 IST | Business Suite, Instagram only, 31 Oct 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1783193542942287) |
 | `pat-head-rub-tummy`: "Why Can't You Pat Your Head and Rub Your TUMMY? 🤚" | 34 s (short arm; pill arm) | https://youtube.com/shorts/27B-0yL0PkI · 28 Oct 2026 23:30 IST | Business Suite, Instagram only, 31 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1141168658385930) |
+| `ear-rumble`: "Why Do Your Ears RUMBLE When You Yawn? 👂" | 31 s (short arm; no-pill arm) | https://youtube.com/shorts/6QOky2URd9k · 29 Oct 2026 11:30 IST | Business Suite, Instagram only, 1 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2820187861686358) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**ear-rumble** (28 Oct 2026, nightly /cp next, 00:02-01:10 IST; a TEST Short, the no-pill arm (11:30 slot); the queue's first
+topic (moved up 24 Oct as the Vulcan-salute hit's kin); short arm, 74 words -> 31.20 s; hook formula The Direct Address, the
+instruction itself, "Yawn. A big one. Your ears RUMBLE, right?" (after The Direct Address, The Comparison, The Impossible
+Claim); answer "Congrats. You just flexed your EAR." at 4.63 s; button "Go on. Rumble twice for yes." into the hook; YouTube
+6QOky2URd9k, 29 Oct 11:30 IST, playlist Why Does Your Body Do That? (Studio's vertical slot showed an automatic frame: cover.jpg
+uploaded there); Instagram (Business Suite, Instagram only, cover uploaded) and the Page (fb.mjs, video 2820187861686358) 1 Nov
+18:30 IST; two QA rounds, 18/18 both; the title is the searched question ("ears rumble when I yawn"), not the queue's "Why can
+some people..."):
+- **A test half the viewers fail goes second, not first.** Only up to half can rumble at will (55 % of 1,853 self-reported, an
+  upper bound: Hoyle et al., JNER 2024), but a big yawn sets it off for most people. So the hook is the yawn (everyone gets the
+  rumble by 3 s), and "Now do it WITHOUT the yawn." is the 8-13 s re-do; the ones who can't are the joke ("The rest... just
+  pulled a weird face."), played by his friend in a camp chair.
+- **The subject's body part stays clear in frame 1:** a yawn's arms-up stretch put his elbows (the shortSleeve cuffs) over his
+  ears, the very thing the Short is about. The stretch goes out SIDEWAYS below the ears (wrists at rig (±236, hip-212)); his ears
+  are drawn bigger behind the rig's (`erBigEars` in the layer's `pre`: campChar now passes `o.pre`); rings shake out of them.
+  The stretch must drop fast (0.3 s): a slow drop passed through a T-pose with open hands.
+- **A muscle no one can see, as a character first, then as anatomy:** the answer's window on his ear shows a red bean in a
+  sweatband doing a curl (`erFlexMuscle`), the comedy; the mechanism (14 s) dives into ears-pop's section with the eardrum's own
+  muscle (`erTT`, drawn in a bony canal ABOVE the eustachian tube; ear.js's tube muscle left out with `noTubeMuscle`, or two red
+  muscles compete), tight ticks on the drum and a drumstick's TOK. The section framed at zoom 1.6 about (205, 50): wider showed
+  the inner ear's purple loops as the biggest thing, closer cut the muscle off the right edge.
+- **A line with no picture of its own gets a gag:** "Sound went muffled?" had nothing on screen until fluffy earmuffs popped onto
+  his ears; the crisp under them is a soft "crnch" (the crunch low-passed at 900 Hz), and the knob turns the second, big CRUNCH
+  down while it sounds (an envelope from 1 to 0.2 over 0.2 s, the word shrinking from 118 to 54 px).
+- **A device for disabled people, shown with care:** the hero zipped into a mummy sleeping bag (only his face, "can barely
+  move"), an ear camera in his ear, what it sees (the eardrum twitching), a tablet with a scanning keyboard (switch access) that
+  types H, I on two rumbles; nobody with the illness is drawn.
+- Two-shot of two characters across the fire: hero at x 470, friend at 850, camera (668, 1034) zoom 1.58: at 1.66-1.74 the
+  friend's head touched the covered right edge (round 2's only change).
+- Voice: 74 words, 383 + 59 + 22 characters (the half line split into its own take for the joke's pause; one retake when
+  whisper heard "Ken" for "can"); 18,077 left on account 2 after. About 3.6 minutes a render; build.sh's rebuild matched.
 
 **pat-head-rub-tummy** (27 Oct 2026, the 02:00 second Short, 02:04-03:10 IST; a TEST Short, the pill arm (23:30 slot);
 short arm, 73 words -> 33.97 s; hook formula The Direct Address, the instruction itself, "Pat your head. Rub your tummy.
