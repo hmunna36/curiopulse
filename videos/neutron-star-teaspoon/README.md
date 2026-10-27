@@ -60,8 +60,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 29 Oct 2026 23:30 IST |
-| Instagram Reels + Facebook Page | (after scheduling) | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/4xcvqM40WhM | 29 Oct 2026 23:30 IST (pill arm; playlist Strange Nature; cover set in Studio) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover uploaded) | 1 Nov 2026 21:00 IST |
+| Facebook Page CurioPulse | video 2631055497376571 (`fb.mjs reel`: ready, scheduled) | 1 Nov 2026 21:00 IST |
 
 **Title:** How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄 (49 characters)
 

@@ -67,7 +67,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Sharks Are Older Than TREES | 34 s | [`videos/sharks-older-than-trees`](videos/sharks-older-than-trees) | [28 Oct 2026](https://youtube.com/shorts/ax-W5RVgnJg) |
 | Why Can't You Pat Your Head and Rub Your TUMMY? | 34 s | [`videos/pat-head-rub-tummy`](videos/pat-head-rub-tummy) | [28 Oct 2026](https://youtube.com/shorts/27B-0yL0PkI) |
 | Why Do Your Ears RUMBLE When You Yawn? | 31 s | [`videos/ear-rumble`](videos/ear-rumble) | [29 Oct 2026](https://youtube.com/shorts/6QOky2URd9k) |
-| How Much Does a Teaspoon of NEUTRON Star Weigh? | 33 s | [`videos/neutron-star-teaspoon`](videos/neutron-star-teaspoon) | 29 Oct 2026 |
+| How Much Does a Teaspoon of NEUTRON Star Weigh? | 33 s | [`videos/neutron-star-teaspoon`](videos/neutron-star-teaspoon) | [29 Oct 2026](https://youtube.com/shorts/4xcvqM40WhM) |
 
 Each folder has:
 - the finished MP4;

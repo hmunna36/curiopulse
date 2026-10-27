@@ -35,24 +35,37 @@
   "cover": "cover.jpg",
   "captions": "neutron-star-teaspoon.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-29T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "4xcvqM40WhM",
+    "url": "https://youtube.com/shorts/4xcvqM40WhM",
+    "uploaded": "2026-10-27T21:34:11.872Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-01T21:00:00+05:30",
     "caption": "A teaspoon of neutron star weighs about as much as a mountain. 🥄🏔️\nIt's a star with more mass than our Sun, crushed to the size of a city, with the empty space squeezed out of its atoms. Bring a spoonful home and it would explode.\nOne spoon or two?\nFollow @curio_pulse_tv for the next one: why an octopus has THREE hearts 🐙\n#science #space #neutronstar #astronomy #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-10-29T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2631055497376571",
+    "publishAt": "2026-11-01T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-27T21:40:37.736Z"
   }
 }
