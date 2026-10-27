@@ -58,9 +58,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 29 Oct 2026, 11:30 IST |
-| Instagram Reels | @curio_pulse_tv | (after scheduling) |
-| Facebook Page | CurioPulse | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/6QOky2URd9k | 29 Oct 2026, 11:30 IST (scheduled; thumbnail, captions, playlist "Why Does Your Body Do That?"; cover.jpg also set in Studio's vertical slot, which showed an automatic frame) |
+| Instagram Reels | @curio_pulse_tv | 1 Nov 2026, 18:30 IST (scheduled in Meta Business Suite, Instagram only, cover.jpg as the cover; Content → Scheduled shows the row with the caption) |
+| Facebook Page | CurioPulse | 1 Nov 2026, 18:30 IST (scheduled by `fb.mjs reel`, video 2820187861686358) |
 
 **Title:** Why Do Your Ears RUMBLE When You Yawn? 👂 (40 characters)
 

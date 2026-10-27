@@ -36,24 +36,40 @@
   "cover": "cover.jpg",
   "captions": "ear-rumble.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-29T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "6QOky2URd9k",
+    "url": "https://youtube.com/shorts/6QOky2URd9k",
+    "uploaded": "2026-10-27T19:26:08.671Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-01T18:30:00+05:30",
     "caption": "Yawn. A big one. Your ears RUMBLE, right? 👂\nThat's a tiny muscle in your ear flexing: it pulls your eardrum tight, like a volume knob for your own chewing. Up to half of people can do it without the yawn.\nCould you do it without yawning? Yes or no?\nFollow @curio_pulse_tv for the next one: a teaspoon that weighs more than a mountain 🥄\n#science #humanbody #ears #funfacts #reels",
     "coverTime": 2.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-28T01:05+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)",
+    "cover": "cover.jpg (Upload image)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-10-29T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2820187861686358",
+    "publishAt": "2026-11-01T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-27T19:35:07.649Z"
   }
 }
