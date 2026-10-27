@@ -1,0 +1,46 @@
+# Narration for "Why Do Your Ears RUMBLE When You Yawn? 👂"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; the rules of 15 Oct 2026 and the 8-13 s rule of 24 Oct):
+# - `hook`: the viewer's test, told to them ("Yawn. A big one."; "Your" in the first eight words); the strange thing
+#   (the rumble) lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim ("Congrats. You just flexed your EAR."). It
+#   STARTS by 5.0 s.
+# - up to 13 s the viewer is still doing the test (here: "Now do it WITHOUT the yawn." and the weird-face joke about the
+#   ones who can't); the mechanism is ONE picture on their own ear (the muscle pulling the drum tight), and the words only
+#   point at it. No science word is spoken (the muscle's name is an on-screen label).
+# - nobody says "subscribe" (qa.py fails it), and nothing asks, teases or winds up. There is no `sub` block. This Short is
+#   in the no-pill arm of the pill test (an 11:30 slot).
+# - the last block is the button; the Short ends on it and loops into the hook ("Go on. Rumble twice for yes." "Yawn...").
+# - words in all: 66-76 (every Short is 30-35 s since 16 Oct 2026).
+
+## hook gap=0.10 tighten=0.30 tempo=1.04
+Yawn. A big one. Your ears RUMBLE, right?
+
+## answer gap=0.45 tighten=0.30 tempo=1.00
+Congrats. You just flexed your EAR.
+
+## retry gap=0.40 tighten=0.30 tempo=1.00
+Now do it WITHOUT the yawn.
+
+## half gap=0.30 tighten=0.30 tempo=1.00
+Up to half of you can.
+
+## face gap=0.40 tighten=0.30 tempo=1.00
+The rest... just pulled a weird face.
+
+## drum gap=0.35 tighten=0.30 tempo=1.02
+That muscle pulls your eardrum tight... like a drum.
+
+## payoff gap=0.35 tighten=0.30 tempo=1.02
+Sound went muffled? It's a volume knob, for your own chewing.
+
+## weird gap=0.45 tighten=0.30 tempo=1.02
+Scientists are testing it so people who can barely move... can type with a rumble.
+
+## button gap=0.55 tighten=0.40 tempo=1.00
+Go on. Rumble twice for yes.

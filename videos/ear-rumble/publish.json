@@ -1,0 +1,59 @@
+{
+  "slug": "ear-rumble",
+  "file": "ear-rumble-short.mp4",
+  "title": "Why Do Your Ears RUMBLE When You Yawn? 👂",
+  "description": "Yawn. A big one. Hear that low rumble in your ears? That's a muscle flexing: a tiny one in your middle ear (the tensor tympani) that tugs on the hammer bone and pulls your eardrum in tight, like tuning a drum skin. A tight eardrum passes less low sound, which is why everything goes a little muffled. Its everyday job is turning down loud noises you make yourself, like your own chewing. Up to half of people say they can rumble it on purpose, no yawn needed (that's from a survey, so the real share may be lower). Researchers at the University of Bath are now testing an ear camera that watches the eardrum move, so people who can barely move could type with a rumble. Could you do it without yawning? Yes or no?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Ears #HumanBody #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-29T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-10-29T11:30:00+05:30"
+  },
+  "pinnedComment": "👂 Bonus: the same muscle tightens when you chew, when you shout, and even just before a loud bang you're expecting.\nNext up: a teaspoon that weighs more than a mountain 🥄 Subscribe so you don't miss it!\nCould you do it without yawning? Yes or no? 👂",
+  "tags": [
+    "ear rumbling",
+    "why do my ears rumble when i yawn",
+    "ears rumble when yawning",
+    "rumbling in ears",
+    "tensor tympani",
+    "ear rumble",
+    "can you rumble your ears",
+    "ear muscle",
+    "eardrum",
+    "yawning",
+    "body test",
+    "human body facts",
+    "science shorts",
+    "try this",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "ear-rumble.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Why Does Your Body Do That?"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Yawn. A big one. Your ears RUMBLE, right? 👂\nThat's a tiny muscle in your ear flexing: it pulls your eardrum tight, like a volume knob for your own chewing. Up to half of people can do it without the yawn.\nCould you do it without yawning? Yes or no?\nFollow @curio_pulse_tv for the next one: a teaspoon that weighs more than a mountain 🥄\n#science #humanbody #ears #funfacts #reels",
+    "coverTime": 2.9,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "test": "kind-2026-10",
+    "slot": "2026-10-29T11:30:00+05:30"
+  }
+}

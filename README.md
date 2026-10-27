@@ -66,6 +66,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | If You Fell Into JUPITER, You'd Never Hit the Ground | 34 s | [`videos/jupiter-no-ground`](videos/jupiter-no-ground) | [27 Oct 2026](https://youtube.com/shorts/lVK_uraLavc) |
 | Sharks Are Older Than TREES | 34 s | [`videos/sharks-older-than-trees`](videos/sharks-older-than-trees) | [28 Oct 2026](https://youtube.com/shorts/ax-W5RVgnJg) |
 | Why Can't You Pat Your Head and Rub Your TUMMY? | 34 s | [`videos/pat-head-rub-tummy`](videos/pat-head-rub-tummy) | [28 Oct 2026](https://youtube.com/shorts/27B-0yL0PkI) |
+| Why Do Your Ears RUMBLE When You Yawn? | 31 s | [`videos/ear-rumble`](videos/ear-rumble) | 29 Oct 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;
