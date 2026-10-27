@@ -1,0 +1,26 @@
+voice.py: account 1: free plan (no commercial licence), skipped
+voice.py: account 3: free plan (no commercial licence), skipped
+  synthesized hook (43 chars)
+  synthesized answer (31 chars)
+  synthesized star (29 chars)
+  synthesized squeeze (65 chars)
+  synthesized atoms (31 chars)
+  synthesized gone (50 chars)
+  synthesized payoff (37 chars)
+  synthesized weird (53 chars)
+  synthesized boom (17 chars)
+  synthesized button (28 chars)
+ElevenLabs characters spent this run: 384
+block      start    end  wpm  rms   f0  cut
+hook        0.10   2.44  205 -20.1  182 0.00
+answer      2.89   6.08  113 -18.0  186 0.37
+star        6.43   8.40  183 -20.6  188 0.00
+squeeze     8.70  13.21  173 -20.2  204 0.13
+atoms      13.66  15.67  150 -18.2  198 0.00
+gone       15.79  19.37  151 -21.4  177 0.00
+payoff     19.72  22.77  118 -19.3  177 0.57
+weird      23.32  26.37  216 -19.9  184 0.21
+boom       26.49  28.40   94 -17.2  180 0.00
+button     29.20  31.44  134 -20.0  193 0.00
+narration 31.44s, 72 words, events: 
+EXIT 0

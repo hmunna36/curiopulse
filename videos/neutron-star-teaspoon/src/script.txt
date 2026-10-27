@@ -1,0 +1,56 @@
+# Narration for "How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# THE CURIOUS KIND (the topic test, 25 Oct-8 Nov 2026; reference/story.md §6): no viewer test; the hook is the exact
+# question people type into search, put to "you" (how much does a teaspoon of neutron star weigh?), with the glowing
+# teaspoon already in his hand on frame 1 at a mountain campsite. Hook formula: The Question (after The Comparison,
+# The Direct Address, The Direct Address). 70 words, four gag pauses. Every claim is in the README's claims table; the
+# weight is NASA's ("about a billion tons on Earth... about as much as a mountain"); the explosion is Astronomy
+# magazine's and Andrew Pontzen's (UCL) answer: off its star the stuff springs apart with enormous energy.
+# - the pill arm (23:30 slot): the silent pill plays over the last 2.4 s; nothing spoken refers to it.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The Subscribe pill plays silently over the last 3.4 s.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+#   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
+
+## hook gap=0.10 tempo=1.03
+How much do you think this teaspoon weighs?
+
+## answer gap=0.45 tighten=0.45 tempo=1.00
+About as much as... a MOUNTAIN.
+
+## star gap=0.65 tempo=1.03
+It's a scoop of NEUTRON star.
+
+## squeeze gap=0.30 tighten=0.42 tempo=1.03
+Picture more than our whole Sun... crushed to the size of a city.
+
+## atoms gap=0.45 tempo=1.02
+Atoms are mostly empty space...
+
+## gone gap=0.12 tempo=1.03
+and that crush squeezes the empty space right out.
+
+## payoff gap=0.35 tighten=0.42 tempo=1.02
+So one spoonful... weighs a mountain.
+
+## weird gap=0.55 tighten=0.42 tempo=1.03
+Oh, and here on Earth? It wouldn't stay in the spoon.
+
+## boom gap=0.12 tighten=0 tempo=1.00
+It would EXPLODE.
+
+## button gap=1.00 tighten=0.5 tempo=1.00
+Anyway... one spoon, or two?

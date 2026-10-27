@@ -1,0 +1,58 @@
+{
+  "slug": "neutron-star-teaspoon",
+  "file": "neutron-star-teaspoon-short.mp4",
+  "title": "How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄",
+  "description": "How much does a teaspoon of neutron star weigh? About as much as a mountain: NASA puts a sugar cube or a teaspoon of it at roughly a billion tonnes here on Earth. A neutron star packs more than our Sun's mass (usually about 1.4 Suns) into a ball about 20 km across, the size of a city. Atoms are mostly empty space, and that crush squeezes the empty space out, so its stuff is packed as tight as the middle of an atom. And if you brought a spoonful home, it wouldn't stay in the spoon: without its star's gravity holding it in, it would spring apart with an enormous blast. One spoon or two?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Space #NeutronStar #Astronomy #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-29T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "pill",
+    "test": "pill-2026-10",
+    "slot": "2026-10-29T23:30:00+05:30"
+  },
+  "pinnedComment": "🌀 Bonus: the fastest one we know, PSR J1748-2446ad, spins about 716 times a second, roughly twice as fast as a kitchen blender (NASA).\nNext up: why does an octopus have THREE hearts? 🐙 Subscribe so you don't miss it!\nOne spoon or two? 🥄",
+  "tags": [
+    "neutron star",
+    "teaspoon of neutron star",
+    "how much does a teaspoon of neutron star weigh",
+    "neutron star weight",
+    "neutron star density",
+    "densest thing in the universe",
+    "pulsar",
+    "space facts",
+    "astronomy",
+    "physics",
+    "fun facts",
+    "science shorts",
+    "strange facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "neutron-star-teaspoon.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "A teaspoon of neutron star weighs about as much as a mountain. 🥄🏔️\nIt's a star with more mass than our Sun, crushed to the size of a city, with the empty space squeezed out of its atoms. Bring a spoonful home and it would explode.\nOne spoon or two?\nFollow @curio_pulse_tv for the next one: why an octopus has THREE hearts 🐙\n#science #space #neutronstar #astronomy #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-10-29T23:30:00+05:30"
+  }
+}
