@@ -1,0 +1,41 @@
+# Narration for "Why Can You Read While Shaking Your HEAD? 👀"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; the rules of 15 Oct 2026 and the 8-13 s rule of 24 Oct):
+# - `hook`: the viewer's test, told to them ("Shake your phone." then "Now gently shake your HEAD."; "your" in the
+#   first eight words); the strange thing lands by 3 s (the phone shake blurs; the head shake doesn't).
+# - `answer` (this id is required): the answer as a plain, surprising claim ("Your EARS are steering your eyes."). It
+#   STARTS by 5.0 s.
+# - up to 13 s the viewer is still shaking their head ("Keep going."), then is sent back to the phone ("Shake the
+#   phone?"); the mechanism is ONE picture on their own head (the ear pulling both eyes on strings, the other way), and
+#   the words only point at it. No science word is spoken (the reflex's name is an on-screen label at most).
+# - nobody says "subscribe" (qa.py fails it), and nothing asks, teases or winds up. There is no `sub` block. This Short
+#   is in the pill arm of the pill test (a 23:30 slot): the silent pill comes from the timeline, never from a line.
+# - the last block is the button; the Short ends on it and loops into the hook ("Still reading? Nod yes." "Shake
+#   your phone...").
+# - words in all: 66-76 (every Short is 30-35 s since 16 Oct 2026). This script: 73.
+
+## hook gap=0.10 tighten=0.30 tempo=1.04
+Shake your phone. Blurry, right? Now gently shake your HEAD.
+
+## answer gap=0.40 tighten=0.30 tempo=1.00
+Sharp again? Your EARS are steering your eyes.
+
+## again gap=0.35 tighten=0.30 tempo=1.03
+Keep going. Head goes right... your ear rolls your eyes LEFT.
+
+## speed gap=0.25 tighten=0.30 tempo=1.00
+In a HUNDREDTH of a second!
+
+## payoff gap=0.40 tighten=0.30 tempo=1.03
+Shake the phone? Your ears feel nothing, so your eyes chase it. Too slow.
+
+## weird gap=0.45 tighten=0.30 tempo=1.03
+A doctor who lost this read with his head jammed between bed bars. Even his heartbeat made the words jump.
+
+## button gap=0.50 tighten=0.40 tempo=1.00
+Still reading? Nod yes.
