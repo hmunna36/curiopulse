@@ -70,7 +70,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | How Much Does a Teaspoon of NEUTRON Star Weigh? | 33 s | [`videos/neutron-star-teaspoon`](videos/neutron-star-teaspoon) | [29 Oct 2026](https://youtube.com/shorts/4xcvqM40WhM) |
 | Why Does an Octopus Have THREE Hearts? | 31 s | [`videos/octopus-hearts`](videos/octopus-hearts) | [30 Oct 2026](https://youtube.com/shorts/ZGudFA0cQuM) |
 | Why Can You Read While Shaking Your HEAD? | 31 s | [`videos/head-shake-reading`](videos/head-shake-reading) | [30 Oct 2026](https://youtube.com/shorts/aNBQO2osfZ4) |
-| Why Do You See a GREEN Dot That Isn't There? | 34 s | [`videos/green-dot`](videos/green-dot) | 31 Oct 2026 (link after upload) |
+| Why Do You See a GREEN Dot That Isn't There? | 34 s | [`videos/green-dot`](videos/green-dot) | [31 Oct 2026](https://youtube.com/shorts/5IpUoD_NtS0) |
 
 Each folder has:
 - the finished MP4;

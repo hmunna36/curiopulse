@@ -52,8 +52,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after upload) | 31 Oct 2026 11:30 IST |
-| Instagram Reels | Business Suite | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/5IpUoD_NtS0 | 31 Oct 2026 11:30 IST (playlist Your Brain Is Weird; cover.jpg also set in Studio's thumbnail slot) |
+| Instagram Reels | Business Suite (curio_pulse_tv only, cover.jpg as the cover) | 3 Nov 2026 18:30 IST |
+| Facebook Page | `fb.mjs reel`, video 3450602905125202 | 3 Nov 2026 18:30 IST |
 
 **Title:** Why Do You See a GREEN Dot That Isn't There? 👁️
 
