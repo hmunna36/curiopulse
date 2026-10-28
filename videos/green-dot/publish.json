@@ -1,0 +1,59 @@
+{
+  "slug": "green-dot",
+  "file": "green-dot-short.mp4",
+  "title": "Why Do You See a GREEN Dot That Isn't There? 👁️",
+  "description": "Keep your eyes on the cross. A green dot seems to run round the ring, but there is no green on the screen. Staring at each blurry pink dot tires out the colour sensing in the patch of your eye it falls on. When the dot blinks off, that patch sees plain grey with the pink taken out: its opposite, green (a negative afterimage), and your brain joins the flashes into one dot racing round. Keep staring and the pink dots can fade away completely, because blurry things that never change stop being reported (Troxler fading, described in 1804). In the 1950s, scientists stuck a tiny picture onto people's eyeballs with a suction cap, so the picture moved with the eye and never changed on it; usually within a few seconds it faded away. Did the pink dots vanish? Yes or no?\n\nThe illusion is Jeremy Hinton's lilac chaser (2005).\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #OpticalIllusion #Eyes #Brain #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-31T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-10-31T11:30:00+05:30"
+  },
+  "pinnedComment": "🟢 Bonus: Jeremy Hinton made this illusion in 2005, and within a few days it had been copied all over the internet.\nNext up: why wombats poop CUBES 🟫 Subscribe so you don't miss it!\nDid the pink dots vanish? Yes or no? 👁️",
+  "tags": [
+    "green dot illusion",
+    "lilac chaser",
+    "pac-man illusion",
+    "stare at the cross",
+    "why do i see a green dot",
+    "optical illusion",
+    "afterimage",
+    "troxler fading",
+    "eye illusion",
+    "brain illusion",
+    "eyes",
+    "body test",
+    "science shorts",
+    "try this",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "green-dot.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Your Brain Is Weird"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Keep your eyes on the cross. See a GREEN dot running round? 👁️\nThere's no green on your screen: staring at pink wears out your eye's pink-seeing, so when a dot blinks off you see its opposite, green. Keep staring and the blurry pink dots fade away too: your brain paints over things that never change.\nDid the pink dots vanish? Yes or no?\nFollow @curio_pulse_tv for the next one: why wombats poop CUBES 🟫\n#science #opticalillusion #eyes #brain #funfacts #reels",
+    "coverTime": 4.0,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "test": "kind-2026-10",
+    "slot": "2026-10-31T11:30:00+05:30"
+  }
+}

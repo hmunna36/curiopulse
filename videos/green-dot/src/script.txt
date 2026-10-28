@@ -1,0 +1,30 @@
+# Narration for "Why Do You See a GREEN Dot That Isn't There? 👁️"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# 30-35 s, 66-76 words (every Short since 16 Oct 2026). Hook formula: The Direct Address, as the test the viewer does
+# on the screen itself (reference/hooks.md), with The Impossible Claim as the answer ("There's no green on your
+# screen."). The rules of 15 Oct 2026 and the 8-13 s rule of 24 Oct: the viewer keeps staring at the cross through
+# 13 s ("Keep staring. Don't blink."), the mechanism is ONE picture inside their own eye (the pink-seers asleep),
+# no science word is spoken, nobody says "subscribe", no pill (an 11:30 slot), and the button sends the viewer back
+# into the test ("So blink. They're back. Now..." / "Keep your eyes on the cross...").
+# This script: 74 words.
+
+## hook gap=0.08 tighten=0.30 tempo=1.04
+Keep your eyes on the cross. See a GREEN dot running round?
+
+## answer gap=0.30 tighten=0.30 tempo=1.00
+[mischievously] There's no green on your screen. Your eye's faking it.
+
+## stare gap=0.30 tighten=0.36 tempo=1.00
+[whispers] Keep staring. Don't blink... The pink dots... fade away.
+
+## tired gap=0.32 tighten=0.32 tempo=1.05
+Your eye's sick of pink. A dot blinks off... you see the opposite. GREEN.
+
+## paint gap=0.36 tighten=0.32 tempo=1.05
+And blurry things that never change? Your brain just... paints over them.
+
+## weird gap=0.40 tighten=0.32 tempo=1.06
+A scientist once suction-cupped a picture onto people's eyeballs. Gone... in seconds.
+
+## button gap=0.50 tighten=0.50 tempo=1.00
+[deadpan] So blink. They're back. Now...
