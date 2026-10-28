@@ -36,24 +36,40 @@
   "cover": "cover.jpg",
   "captions": "head-shake-reading.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-30T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "aNBQO2osfZ4",
+    "url": "https://youtube.com/shorts/aNBQO2osfZ4",
+    "uploaded": "2026-10-28T19:59:24.416Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-02T21:00:00+05:30",
     "caption": "Shake your phone. Blurry, right? Now gently shake your HEAD. 👀\nSharp again: your inner ear feels every turn of your head and rolls your eyes the other way, in about a hundredth of a second. When the phone shakes, your ears feel nothing, so your eyes have to chase it. Too slow.\nWhich one blurred, head or phone?\nFollow @curio_pulse_tv for the next one: a green dot that isn't there 🟢\n#science #humanbody #eyes #brain #funfacts #reels",
     "coverTime": 10.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-29T01:47+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)",
+    "cover": "cover.jpg (Upload image)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-10-30T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2328255954632658",
+    "publishAt": "2026-11-02T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-28T20:07:02.436Z"
   }
 }

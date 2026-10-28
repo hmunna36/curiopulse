@@ -67,9 +67,9 @@ the speech band); "In a HUNDREDTH of a second!" fixed it. 423 characters in all.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_TIME |
-| Instagram Reels | (Business Suite) | IG_TIME |
-| Facebook Page | (fb.mjs) | IG_TIME |
+| YouTube Shorts | https://youtube.com/shorts/aNBQO2osfZ4 | 30 Oct 2026 23:30 IST (scheduled; playlist Why Does Your Body Do That?; cover uploaded in Studio) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover set) | 2 Nov 2026 21:00 IST (scheduled) |
+| Facebook Page | CurioPulse (fb.mjs, video 2328255954632658, ready/scheduled) | 2 Nov 2026 21:00 IST (scheduled) |
 
 **Title:** Why Can You Read While Shaking Your HEAD? 👀
 
