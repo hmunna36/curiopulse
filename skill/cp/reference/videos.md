@@ -61,11 +61,41 @@
 | `neutron-star-teaspoon`: "How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄" | 33 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/4xcvqM40WhM · 29 Oct 2026 23:30 IST | Business Suite, Instagram only, 1 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2631055497376571) |
 | `octopus-hearts`: "Why Does an Octopus Have THREE Hearts? 🐙" | 31 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/ZGudFA0cQuM · 30 Oct 2026 11:30 IST | Business Suite, Instagram only, 2 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2155813338477122) |
 | `head-shake-reading`: "Why Can You Read While Shaking Your HEAD? 👀" | 31 s (short arm; pill arm; TEST) | https://youtube.com/shorts/aNBQO2osfZ4 · 30 Oct 2026 23:30 IST | Business Suite, Instagram only, 2 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2328255954632658) |
+| `green-dot`: "Why Do You See a GREEN Dot That Isn't There? 👁️" | 34 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/5IpUoD_NtS0 · 31 Oct 2026 11:30 IST | Business Suite, Instagram only, 3 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3450602905125202) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**green-dot** (29 Oct 2026, the curiopulse-second-short routine at 02:00 IST, 02:04-03:15; a TEST Short on the screen itself,
+the no-pill arm (11:30 slot); short arm, 74 words -> 34.33 s; hook formula The Direct Address as the test: "Keep your eyes on the
+cross. See a GREEN dot running round?", with The Impossible Claim as the answer "There's no green on your screen. Your eye's faking
+it." at 4.27 s; button "So blink. They're back. Now..." into the hook; YouTube 5IpUoD_NtS0, playlist Your Brain Is Weird, cover set
+in Studio too; Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs 3450602905125202) 3 Nov 18:30 IST. 2 QA
+rounds, 18/18; the final MP4 came from build.sh, mix byte-identical to round 1.)
+World: new `fog.js` (the lilac chaser, the fog, the hiker close under it), `seers.js` (his eye, front up, with a team of colour-seers),
+`paint.js` (the brain's roller over the WHAT YOU SEE screen), `lab.js` (1950s chin rest, a suction cup with a cat picture on a stalk,
+WHAT HE SEES, a stopwatch, old film); borrowed eye-rub-stars' `eyeball.js` and blind-spot's `brainpaint.js` (`erBrain`).
+- **A test that IS a picture is drawn after the light and the lens** (`post.overlay`): the lilac chaser's grey (196,196,196) and pink
+  are then exact on every frame. The fog round the hero uses a light with `pool: 0, halo: 0, contrast: 0, split: 0, fringe: 0`, and the
+  overlay's field fades out over 120 px above his head with the vignette drawn into it, so the two meet with no seam (rows measured
+  178-197, R = G = B). Bach's stimulus in proportion: 12 dots, dot radius 0.18 of the ring's, a solid core to 0.3 of the dot, magenta
+  at about 0.6 alpha, one gap stepping every 4 frames (a lap in 1.6 s). The gap's clock runs back from the end in the button shot so
+  the loop goes round without a jump; the score's music box (four notes a lap) runs on the same clock.
+- **A claim about the screen must be true on the screen:** "There's no green on your screen" meant no green caption (the word GREEN
+  stays white until the payoff, then one coloured GREEN), navy straps instead of teal, and a numpy check of the MP4's test frames
+  (no pixel with G more than 12 over R and B). The cover may promise the green dot; the Short never draws it.
+- **The eye with its front up under a test card** (eye-rub-stars' eyeball turned a quarter, `noNerve`: the nerve hanging out of the
+  bottom read as a lollipop stick), filling the frame at 1.9x, with characters standing on its floor: big faces read where the six
+  wall sensors of eye-rub-stars would have been specks. The card holds its gap on a marked dot while the beam turns grey.
+- **qa.py's voice FAIL was the alignment:** "See" got 2.05-2.17 s, its "s" (above the speech band) and silence; the vowel was
+  2.20-2.30 (`T.bursts`). Moving the word onto its sound fixed it (content SNR min 10.3 dB). Check `qc_inband` flags with a short
+  window before re-voicing.
+- **A raised brow above about 0.6 vanishes into his hair** (as one-eyebrow found): a skeptical squint is one brow up 0.6 and the
+  other down 0.95.
+- **A rubber suction cup needs a lip, a shine and a stalk**, or a dark red disc on his eye reads as a black eye.
+- Voice: one take per block, 467 characters, no retakes. Render about 250 s for 1,030 frames.
 
 **head-shake-reading** (29 Oct 2026, the curiopulse-daily-short routine at 00:03 IST, 00:03-01:55; a TEST Short, the pill arm
 (23:30 slot); short arm, 73 words -> 31.07 s; hook formula The Direct Address as the test itself: "Shake your phone. Blurry,
