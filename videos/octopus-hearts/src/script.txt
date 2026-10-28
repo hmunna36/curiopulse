@@ -1,0 +1,33 @@
+# Narration for "Why Does an Octopus Have THREE Hearts? 🐙"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# A CURIOUS Short (story.md §6): the hook is the impossible-sounding claim said to "you"; the answer by 5 s;
+# 66-76 words; nobody says "subscribe"; the button runs into the hook ("...skips cardio." -> "You have one heart.").
+# Science (README claims table): Live Science, Onthank (Walla Walla University): two gill hearts, one systemic heart,
+# the low pressure after the gills is the reason, the same job as our four-chamber heart; the hearts pause for a
+# moment when it swims; octopuses prefer crawling. Copper-based hemocyanin = blue blood.
+
+## hook gap=0.10 tempo=1.00
+You have one heart. An octopus has... THREE.
+
+## answer gap=0.45 tempo=1.00
+Two of them are just for its gills.
+
+## gills gap=0.30 tempo=1.04
+Its blue blood squeezes through the gills... and comes out all floppy.
+
+## third gap=0.25 tempo=1.03
+So heart number three pumps it all over again.
+
+## you gap=0.40 tempo=1.02
+[curious] You do this too. Your heart's just two pumps... glued together.
+
+## swim gap=0.40 tempo=1.02
+But when an octopus swims... its big heart STOPS. For a moment.
+
+## walk gap=0.45 tighten=0 tempo=1.00
+[deadpan] So it would rather walk.
+
+## button gap=0.50 tighten=0 tempo=1.00
+Three hearts... and it still skips cardio.

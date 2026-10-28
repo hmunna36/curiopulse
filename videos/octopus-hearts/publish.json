@@ -1,0 +1,61 @@
+{
+  "slug": "octopus-hearts",
+  "file": "octopus-hearts-short.mp4",
+  "title": "Why Does an Octopus Have THREE Hearts? 🐙",
+  "description": "Why does an octopus have three hearts? Two of them are just for its gills. Its blue blood (blue because it carries oxygen with copper, not iron) squeezes through the gills and comes out at low pressure, all floppy, so heart number three pumps it round the body all over again. You do the same thing: the right side of your heart pumps blood to your lungs, the left side pumps it round your body. Your heart is just two pumps in one box. And when an octopus swims, its hearts stop for a moment (one biologist's best guess: jetting puts so much pressure on them that pausing is easier than pumping), which may be why octopuses would rather crawl. Three hearts or blue blood?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Octopus #OceanAnimals #MarineBiology #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-30T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-10-30T11:30:00+05:30"
+  },
+  "pinnedComment": "🧠 Bonus: an octopus has over 500 million nerve cells, and more than two-thirds of them are in its arms, not its head (OIST, 2020).\nNext up: why can you read while shaking your head, but not when the phone shakes? 📖 Subscribe so you don't miss it!\nThree hearts or blue blood? 🐙",
+  "tags": [
+    "octopus",
+    "octopus three hearts",
+    "why does an octopus have three hearts",
+    "octopus hearts",
+    "how many hearts does an octopus have",
+    "octopus blue blood",
+    "why is octopus blood blue",
+    "octopus facts",
+    "hemocyanin",
+    "cephalopod",
+    "ocean animals",
+    "marine biology",
+    "animal facts",
+    "fun facts",
+    "science shorts",
+    "strange facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "octopus-hearts.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "An octopus has THREE hearts. 🐙💙\nTwo just push its blue blood through the gills, where it comes out floppy, so heart number three pumps it all over again. And when it swims, its hearts stop for a moment. No wonder it would rather walk.\nThree hearts or blue blood?\nFollow @curio_pulse_tv for the next one: why you can read while shaking your head 📖\n#science #octopus #ocean #animals #funfacts #reels",
+    "coverTime": 3.4,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-10-30T11:30:00+05:30"
+  }
+}

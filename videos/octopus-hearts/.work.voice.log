@@ -1,0 +1,22 @@
+voice.py: account 1: free plan (no commercial licence), skipped
+voice.py: account 3: free plan (no commercial licence), skipped
+  synthesized hook (44 chars)
+  synthesized answer (35 chars)
+  synthesized gills (70 chars)
+  synthesized third (46 chars)
+  synthesized you (73 chars)
+  synthesized swim (63 chars)
+  synthesized walk (34 chars)
+  synthesized button (42 chars)
+ElevenLabs characters spent this run: 407
+block      start    end  wpm  rms   f0  cut
+hook        0.10   3.50  141 -19.3  188 0.82
+answer      3.95   6.18  216 -19.4  193 0.00
+gills       6.48  11.63  140 -20.5  178 0.00
+third      11.88  14.29  225 -18.5  176 0.00
+you        14.69  18.98  154 -22.9  189 1.11
+swim       19.38  24.33  146 -22.0  198 1.37
+walk       24.78  26.54  170 -19.1  162 0.00
+button     27.04  30.32  128 -22.8  171 0.00
+narration 30.32s, 72 words, events: curious@14.69, deadpan@24.78
+EXIT 0
