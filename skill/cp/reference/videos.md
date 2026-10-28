@@ -59,11 +59,46 @@
 | `pat-head-rub-tummy`: "Why Can't You Pat Your Head and Rub Your TUMMY? 🤚" | 34 s (short arm; pill arm) | https://youtube.com/shorts/27B-0yL0PkI · 28 Oct 2026 23:30 IST | Business Suite, Instagram only, 31 Oct 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1141168658385930) |
 | `ear-rumble`: "Why Do Your Ears RUMBLE When You Yawn? 👂" | 31 s (short arm; no-pill arm) | https://youtube.com/shorts/6QOky2URd9k · 29 Oct 2026 11:30 IST | Business Suite, Instagram only, 1 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2820187861686358) |
 | `neutron-star-teaspoon`: "How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄" | 33 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/4xcvqM40WhM · 29 Oct 2026 23:30 IST | Business Suite, Instagram only, 1 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2631055497376571) |
+| `octopus-hearts`: "Why Does an Octopus Have THREE Hearts? 🐙" | 31 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/ZGudFA0cQuM · 30 Oct 2026 11:30 IST | Business Suite, Instagram only, 2 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2155813338477122) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**octopus-hearts** (28 Oct 2026, the curiopulse-daily-short routine fired at 21:58 IST, 21:58-23:35; THE SIXTH CURIOUS SHORT of
+the topic test, the no-pill arm (11:30 slot); short arm, 72 words -> 31.33 s; hook formula The Impossible Claim, said to "you":
+"You have one heart. An octopus has... THREE." (after The Question, The Direct Address, The Direct Address); answer "Two of them
+are just for its gills." at 3.97 s; button "Three hearts... and it still skips cardio." into the hook; YouTube ZGudFA0cQuM,
+30 Oct 11:30 IST, playlist Strange Nature (cover.jpg also uploaded in Studio's thumbnail slot); Instagram (Business Suite,
+Instagram only, cover uploaded) and the Page (fb.mjs, video 2155813338477122) 2 Nov 18:30 IST; two QA rounds, qa.py 18/18 both;
+`build.sh` into a fresh work folder reproduced the MP4 byte for byte (same md5)):
+- **Research changed the story:** the queue line said blue blood is why it needs three hearts; Live Science's octopus biologist
+  (Kirt Onthank) calls that naive (octopus hemocyanin is as good as hemoglobin in cold sea water). The real reason is pressure:
+  blood leaves the gills weak, so a third heart re-pumps it, the job our heart's two sides do. Read the expert source before
+  writing the mechanism line; the queue's angle is only a lead.
+- **Three new files for an underwater world (borrow them):** `reef.js` (a sunny reef four metres down: the water column by
+  camera height, a rippling surface, light shafts, a far reef wall and a mid reef of coral heads/sea fans/sponges painted once
+  at parallax 0.25/0.55 (`rfPara`), a fish school (`rfFish`), sand with Worley-noise caustics as two drifting pattern tiles (a
+  whole number of tiles per loop in x AND y), seagrass, marine snow, kelp at parallax 1.3 (`reefFront`, `kelp: false` where it
+  would hide the action), `rfBubbles`, the octopus's rock (`reefRock`: encrusting coral, an anemone, a starfish), a barnacled
+  treadmill with a jogging crab in a sweatband (`reefTreadmill`, `s`, `flip`)); `octo.js` (a procedural octopus: eight arms as
+  22-segment spines `a + curl*u + tip*ramp(u)^2 + wave`, suckers on the curl side, a mantle + face as one shape, horizontal-pupil
+  eyes with moods calm/smug/proud/shock/lazy/happy/focus/dizzy, a siphon and a jet `ocJet`; poses sit/count/jet/lounge,
+  `ocWalkPose` (two arms as legs, six tucked in curls), `ocReachArm`, `ocMix`; GLASS mode `xray: 1`: one outline, gills that
+  squeeze with squeeze marks, two gill hearts and the big heart (`ocHeart`, `flat` = grey), vessels whose blood dots flow by a
+  clock, `sag` hangs the vessel after the gills like a wet noodle, `punch` fires the blood to every arm tip, `octoHeartGlow` for
+  the glow layer); `diver.js` (the rig snorkelling: `DVPAL` yellow rash vest + fins, a dive mask the eyes read through, a snorkel
+  clipped to the strap, floating hair, a stethoscope from his ears to a chest piece in his right hand `dvScope`, bubbles and a
+  gasp, `dvHeartWindow`: his heart as two halves TO LUNGS / TO BODY with tape).
+- **`W(phrase, k, s)` counts k words AFTER the match, like `E`:** `W("gills", 2, i)` meant "the word two after 'gills'", so five
+  cues sat a word or two late (the BODY HEART label, the heart that stops, the gill squeeze, the tape, the lazy hearts). Use
+  k = 0 with `s =` the index from `find`; assert the cues' order in make_timeline.py.
+- **A snorkel mouthpiece beside the mouth reads as a headset mic:** clip the tube to the mask strap.
+- **A glow-layer copy must know the state:** the stopped (grey) heart still bloomed pink until `octoHeartGlow` skipped it.
+- **Two walking arms that swing in opposite directions merge:** each leg keeps its side (`s * 0.34`) and steps in turn.
+- **A gag prop at 60 px does not read:** the crab on the treadmill needed the camera to push in on the punchline (zoom 1.95).
+- Voice: 72 words, 407 characters, every take first time (whisper exact); 13,680 left on account 2 at 23:40 (17,240 at the start: the other pipelines spend from it too; resets 1 Nov).
 
 **neutron-star-teaspoon** (28 Oct 2026, the 02:00 second-Short routine, 02:10-03:20 IST; THE FIFTH CURIOUS SHORT of the topic
 test, the pill arm (23:30 slot); short arm, 72 words -> 33.13 s; hook formula The Question, the exact search query, "How much do
