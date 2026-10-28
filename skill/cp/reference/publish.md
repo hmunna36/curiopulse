@@ -21,10 +21,21 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   - If the user ever has a token, route B takes over automatically. `ig.mjs route` tells which route is live.
 
 ## Comments: the "Next up" comment AND replies to viewers, every 2 hours (the user, 24 Oct 2026: "run a scheduler every 2 hours on curiopulse to check and reply the comments on curio pulse youtube channel", "update the comment scheduler to also reply comments on youtube")
-- The cloud routine "CurioPulse — Comments: Next up + chosen replies" (trig_01EYLp2sfdiRyNseJp12Jao8, cron `10 */2 * * *` UTC = 05:40, 07:40 ... 23:40 IST)
+- The cloud routine "CurioPulse — Comments: Next up + replies + moderation" (trig_01KL3ZE2hyjyhF4GUjyj4nEk since 25 Oct; the old trig_01EYLp2sfdiRyNseJp12Jao8 is deleted; cron `10 */2 * * *` UTC = 05:40, 07:40 ... 23:40 IST)
   runs `yt.mjs comments-due` (the "Next up" comment, at 11:40 and 23:40 IST as before), then `comments-inbox --json` and writes up to
   10 replies a run (5 until the user, 24 Oct: "raise it to 10 replies per run") with `comment-reply <id> --file <text>`.
-- **Replies are CHOSEN, not given to everyone (the user, 25 Oct 2026: "select the comments and reply instead of replying all
+- **LOOSENED 28 Oct 2026 (the user: "don't make it strict, loosen it up. i don't want engagement dip"); this replaces the
+  25 Oct bar below.**
+  - Most real comments get a reply again, the short reactions ("easy", "I can") included, up to 10 a run.
+  - Order: questions, corrections, our own thread, stories, ideas, the most liked, then everything else, with the newest
+    Shorts and newest comments first.
+  - At most 5 replies on one video while other videos have comments waiting.
+  - About half the replies invite an answer back. Never two replies alike. Answers to real questions may run up to 35 words.
+  - Still skipped: spam, links, crude jokes, gibberish, unknown languages, politics or religious arguments, and orders.
+  - The same day the routine was found DEAD: since its re-creation on 25 Oct it had no repository source ("No sources
+    configured"), so every run stopped at setup. The sparse source (skill/cp/bin, state) was re-attached on 28 Oct.
+    After any edit to a routine, check `RemoteTrigger get` shows the sources and read the first run's log.
+- (Superseded 28 Oct) **Replies are CHOSEN, not given to everyone (the user, 25 Oct 2026: "select the comments and reply instead of replying all
   comments").** On 25 Oct the inbox held 118 unanswered comments, mostly "easy" / "I can do it" on the Vulcan salute, and the
   routine was answering them in order (79 channel replies in 24 h). Now a comment gets a reply only if it clears the bar: a real
   question; a correction or doubt; a viewer answering the channel's own comment; a result or story that adds something (about 6+
@@ -32,6 +43,21 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   reactions per video per run (the best one, and only if the channel has not answered one like it there in 24 h). Everything
   else gets no reply, ever. At most 3 replies on one video a run; 0 replies in a run is fine. The report lists each reply with
   why it cleared the bar, and how many comments were passed over.
+- **Hiding abusive commenters (the owner, 25 Oct 2026, example @Cookie-t03's "ai slop plus i can do that" on w5b_ru8URMQ: "hide the user from the
+  channel").** This OVERRIDES the old "never hides" rule for the replies routine, in this one case. A comment that insults the
+  content (calls it "AI slop" and the like) or is a plain insult or hate gets `yt.mjs comment-hide <id>` instead of being skipped.
+  Plain disagreement, doubt, criticism with a reason, or a viewer saying "I can do that" with no insult is NOT hidden (it is judged
+  by the reply bar above). Limits: at most 3 hides a run; ALWAYS `comment-hide <id> --dry-run` first and only run the real one if
+  the dry run names the author and says the token has youtube.force-ssl. `comment-hide` calls `comments.setModerationStatus`
+  (rejected + banAuthor=true, 50 units): the comment disappears AND the author is banned from commenting on the channel. That is
+  a public moderation action and hard to undo (the owner unbans in YouTube Studio > Settings > Community > Hidden users), so
+  when unsure, do not hide. It refuses the channel's own comments and other channels' videos. If the token lacks the scope it
+  says so and stops: a run NEVER tries to authorize (the owner re-runs `yt.mjs auth` by hand); report it and go on with replies.
+  The run report lists every hide: id, author handle, video, the comment text, and why. The cloud routine (trig_01KL3ZE2hyjyhF4GUjyj4nEk,
+  Part C) has carried this rule since 25 Oct. But the command itself was lost the same night: the merge (c1c3c6c, 25 Oct 22:02)
+  was overwritten by the next backup-skill.sh (c1a517b, 26 Oct 01:23), which rsyncs the Mac's skill over the repo and still had
+  no comment-hide. It was restored on 28 Oct (the owner: "yes please"). Lesson: a change merged on GitHub must also land in
+  ~/.claude/skills/cp, or the next backup erases it.
 - The code reaches the run as the routine's SOURCE (github.com/hmunna36/curiopulse, sparse: `skill/cp/bin` and `state`, ~0.2 MB of
   a 2.4 GB repo), checked out before the run starts. Never `git clone` it inside the run: on 24 Oct the cloud's safety check
   began blocking `node yt.mjs` run from a clone the run had made itself ("Code from External"; circle-line's Next-up comment
@@ -195,7 +221,7 @@ Instagram is back:
   - It runs in every run's preflight, and from the cloud routine "CurioPulse — Next up comment" at 11:40 and 23:40 IST, ten
     minutes after each release.
   - That one comment is everything the pipeline does with comments: it never replies, likes, pins, hides or deletes
-    (the user's rule: only the comment actions they named). Pinning is the user's tap in the YouTube app; the API
+    (the user's rule: only the comment actions they named; the replies routine's `comment-hide` is the owner's separate rule below). Pinning is the user's tap in the YouTube app; the API
     cannot pin.
   - `"comment": false` in `youtube` keeps a Short out of the queue.
 - Since 5 Oct 2026 the "Next up" comment, the description and the Reel caption are the ONLY places the next topic is
