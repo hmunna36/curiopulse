@@ -60,11 +60,42 @@
 | `ear-rumble`: "Why Do Your Ears RUMBLE When You Yawn? 👂" | 31 s (short arm; no-pill arm) | https://youtube.com/shorts/6QOky2URd9k · 29 Oct 2026 11:30 IST | Business Suite, Instagram only, 1 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2820187861686358) |
 | `neutron-star-teaspoon`: "How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄" | 33 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/4xcvqM40WhM · 29 Oct 2026 23:30 IST | Business Suite, Instagram only, 1 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2631055497376571) |
 | `octopus-hearts`: "Why Does an Octopus Have THREE Hearts? 🐙" | 31 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/ZGudFA0cQuM · 30 Oct 2026 11:30 IST | Business Suite, Instagram only, 2 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2155813338477122) |
+| `head-shake-reading`: "Why Can You Read While Shaking Your HEAD? 👀" | 31 s (short arm; pill arm; TEST) | https://youtube.com/shorts/aNBQO2osfZ4 · 30 Oct 2026 23:30 IST | Business Suite, Instagram only, 2 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2328255954632658) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**head-shake-reading** (29 Oct 2026, the curiopulse-daily-short routine at 00:03 IST, 00:03-01:55; a TEST Short, the pill arm
+(23:30 slot); short arm, 73 words -> 31.07 s; hook formula The Direct Address as the test itself: "Shake your phone. Blurry,
+right? Now gently shake your HEAD." (after The Impossible Claim, The Question, The Direct Address); answer "Sharp again? Your EARS
+are steering your eyes." at 4.35 s; button "Still reading? Nod yes." (nodding while reading is the same test a new way) into the
+hook; YouTube aNBQO2osfZ4, playlist Why Does Your Body Do That?, cover uploaded in Studio; Instagram (Business Suite, Instagram
+only, cover set) + the Page (fb.mjs 2328255954632658) 2 Nov 21:00 IST. 2 QA rounds, 18/18, rebuild matched (mix byte-identical).
+World: blind-spot's `bed.js` (we ARE his phone) + new `shake.js` (the turned head, the ear's driver, cords, arrows, stopwatch,
+burst) + `ward.js` (1948 sepia ward, iron bed, clamp bars, the HOLD STILL page, `wdOldFilm`).
+- **A head that turns "no" or nods "yes", drawn as a sphere** (`shake.js`): `window.drawHead` is wrapped (the original kept), and a
+  rig state with `turn = {yaw, pitch, gaze, smear, cross, squash}` draws the face projected on a ball: the far ear goes behind the
+  head, the near one over it, the nose on a bigger sphere swings further than the eyes, the hair cap is carried round inside the
+  skull. Reusable for any shake/nod/turn test.
+- **Pupils of a turned head: the eyeball sits straight behind the lid along the way the FACE points**, not along the skull's
+  radius (radial eyeballs made him cross-eyed when looking at the camera). `hsPupil` keeps the iris inside the lid. gaze [0, 0] =
+  at the camera (the reflex: the face swings, the pupils stay); gaze = the face's angles = carried with the head.
+- **We are the phone, shaken:** the swing is the camera's `sx` with `post.blur` from its speed (0.022 x px/s; 0.045 turned frame
+  0 to mush), and frame 1 sits near the end of a swing (sharp, displaced). His arm reaches to the phone: the hand is pinned to a
+  screen point just past the frame's corner (`phoneArm` turns it back into rig units every frame), so the arm swings with the
+  phone; it is drawn again over the duvet. Labels on a shaking frame go in `post.overlay` (after the blur) or they smear.
+- **Shared rhythms:** the phone's and the head's swing frequency and phase are cues (`ph_f`, `ph_ph0`, `yaw_f`); make_timeline
+  lists each fastest moment (`swings1`, `swings2`, `heads`, `nods`) and audio.py puts a top-band swish on each.
+- **Round 1 scored retention 7:** a 1948 wide shot held 2.4 s with only the camera moving; he now lifts the book on "read" and his
+  head wobbles on "his head" until the bars clamp it. The clamp bars first ran over his body and read as jail bars: they stop
+  behind his shoulders.
+- Research: the J.C. account (NEJM 1952;246:458, reprinted Br J Ophthalmol 1964, PMC505972) is a scanned PDF behind PMC's bot
+  check; the bed-bars and pulse details are from MedLink's summaries (search results), the 8.6 ms latency from Collewijn & Smeets
+  2000, the demonstration from Scientific American.
+- Voice: one take per block plus one retake ("In a hundredth of a second." ended faint in the speech band; "In a HUNDREDTH of a
+  second!" fixed it), 423 characters.
 
 **octopus-hearts** (28 Oct 2026, the curiopulse-daily-short routine fired at 21:58 IST, 21:58-23:35; THE SIXTH CURIOUS SHORT of
 the topic test, the no-pill arm (11:30 slot); short arm, 72 words -> 31.33 s; hook formula The Impossible Claim, said to "you":
