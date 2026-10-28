@@ -53,8 +53,9 @@ sits in the gaps between blocks.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after the upload) | 30 Oct 2026 11:30 IST |
-| Instagram Reels | (Business Suite) | the slot `yt.mjs` picks (18:30 or 21:00 IST) |
+| YouTube Shorts | https://youtube.com/shorts/ZGudFA0cQuM | 30 Oct 2026 11:30 IST (playlist Strange Nature; cover.jpg also set in Studio) |
+| Instagram Reels | @curio_pulse_tv, scheduled in Business Suite (Instagram only, cover.jpg as the cover) | 2 Nov 2026 18:30 IST |
+| Facebook Page | CurioPulse, scheduled by `fb.mjs reel` (video 2155813338477122) | 2 Nov 2026 18:30 IST |
 
 **Title:** Why Does an Octopus Have THREE Hearts? 🐙
 

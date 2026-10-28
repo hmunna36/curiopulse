@@ -68,7 +68,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Can't You Pat Your Head and Rub Your TUMMY? | 34 s | [`videos/pat-head-rub-tummy`](videos/pat-head-rub-tummy) | [28 Oct 2026](https://youtube.com/shorts/27B-0yL0PkI) |
 | Why Do Your Ears RUMBLE When You Yawn? | 31 s | [`videos/ear-rumble`](videos/ear-rumble) | [29 Oct 2026](https://youtube.com/shorts/6QOky2URd9k) |
 | How Much Does a Teaspoon of NEUTRON Star Weigh? | 33 s | [`videos/neutron-star-teaspoon`](videos/neutron-star-teaspoon) | [29 Oct 2026](https://youtube.com/shorts/4xcvqM40WhM) |
-| Why Does an Octopus Have THREE Hearts? | 31 s | [`videos/octopus-hearts`](videos/octopus-hearts) | 30 Oct 2026 |
+| Why Does an Octopus Have THREE Hearts? | 31 s | [`videos/octopus-hearts`](videos/octopus-hearts) | [30 Oct 2026](https://youtube.com/shorts/ZGudFA0cQuM) |
 
 Each folder has:
 - the finished MP4;

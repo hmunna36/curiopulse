@@ -38,24 +38,37 @@
   "cover": "cover.jpg",
   "captions": "octopus-hearts.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-30T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "ZGudFA0cQuM",
+    "url": "https://youtube.com/shorts/ZGudFA0cQuM",
+    "uploaded": "2026-10-28T17:51:45.542Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-02T18:30:00+05:30",
     "caption": "An octopus has THREE hearts. 🐙💙\nTwo just push its blue blood through the gills, where it comes out floppy, so heart number three pumps it all over again. And when it swims, its hearts stop for a moment. No wonder it would rather walk.\nThree hearts or blue blood?\nFollow @curio_pulse_tv for the next one: why you can read while shaking your head 📖\n#science #octopus #ocean #animals #funfacts #reels",
     "coverTime": 3.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-10-30T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2155813338477122",
+    "publishAt": "2026-11-02T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-28T17:59:29.669Z"
   }
 }
