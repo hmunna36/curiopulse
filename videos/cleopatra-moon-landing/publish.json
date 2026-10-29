@@ -36,24 +36,38 @@
   "cover": "cover.jpg",
   "captions": "cleopatra-moon-landing.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-05T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "j1nzcpNxSS0",
+    "url": "https://youtube.com/shorts/j1nzcpNxSS0",
+    "uploaded": "2026-10-29T19:41:22.665Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-08T18:30:00+05:30",
     "caption": "You'd think Cleopatra lived closer to the pyramids than to the Moon landing. Nope. 🏛️🚀\nThe Great Pyramid was already about 2,500 years old when she was born. From her to Apollo 11: only about 2,000.\nPyramids or Moon: what did you guess?\nFollow @curio_pulse_tv for the next one: why your toes won't move one at a time 🔔\n#history #cleopatra #pyramids #moonlanding #funfacts #reels",
     "coverTime": 1.2,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Instagram only (Post to: curio_pulse_tv), cover.jpg uploaded as the cover; scheduled 30 Oct 2026 01:2x IST by the nightly run"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-11-05T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "29385531647751239",
+    "publishAt": "2026-11-08T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T19:48:55.313Z"
   }
 }

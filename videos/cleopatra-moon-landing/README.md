@@ -32,9 +32,9 @@ answer block's first take dropped "history." 17 dB into the chest (speech band);
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … |
-| Instagram Reels | (Business Suite, Instagram only) | … |
-| Facebook Page | (fb.mjs) | … |
+| YouTube Shorts | https://youtube.com/shorts/j1nzcpNxSS0 | 5 Nov 2026 11:30 IST (scheduled; thumbnail, captions and the playlist by the API) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 8 Nov 2026 18:30 IST (scheduled) |
+| Facebook Page | CurioPulse (fb.mjs, video 29385531647751239) | 8 Nov 2026 18:30 IST (scheduled, ready) |
 
 **Title:** Was Cleopatra Closer to the Pyramids or the MOON Landing? 🚀
 
