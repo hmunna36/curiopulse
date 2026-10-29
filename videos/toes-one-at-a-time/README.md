@@ -44,8 +44,13 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 5 Nov 2026 23:30 IST |
-| Instagram Reels | (filled in after scheduling) | the next free 18:30 or 21:00 slot |
+| YouTube Shorts | https://youtube.com/shorts/jgmry3gFWss | 5 Nov 2026 23:30 IST (scheduled; thumbnail, captions and the playlist "Why Does Your Body Do That?" set by the API) |
+| Instagram Reels | Business Suite, Instagram only (cover.jpg as the cover) | 8 Nov 2026 21:00 IST (scheduled) |
+| Facebook Page | `fb.mjs reel`, video 1449317237159821 | 8 Nov 2026 21:00 IST (scheduled, ready) |
+
+Studio's edit page answered "Oops, something went wrong" for this video in the user's Chrome (as on earlier Shorts: that
+Studio is probably on another channel; the channel switcher is never touched), so the vertical thumbnail slot was not
+checked by eye; the API's thumbnail (cover.jpg) is set.
 
 **Title:** Why Won't Your TOES Move One at a Time? 🦶
 

@@ -36,24 +36,39 @@
   "cover": "cover.jpg",
   "captions": "toes-one-at-a-time.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-05T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "jgmry3gFWss",
+    "url": "https://youtube.com/shorts/jgmry3gFWss",
+    "uploaded": "2026-10-29T21:35:27.214Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "Studio's edit page said 'Oops, something went wrong' in the user's Chrome (30 Oct 03:22 IST); the vertical slot not checked; the API thumbnail is set"
   },
   "instagram": {
-    "publishAt": "auto",
-    "caption": "Lift your big toe. Easy. Now lift JUST the next one... 🦶\nThe whole gang came, right? Your four small toes share ONE muscle with four strings, so they move as a team. (Foot cramps? Stop.)\nDid the whole gang come? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't NOT think of a white bear 🐻‍❄️🔔\n#science #humanbody #toes #feet #funfacts #reels",
+    "publishAt": "2026-11-08T21:00:00+05:30",
+    "caption": "Lift your big toe. Easy. Now lift JUST the next one... 🦶\nThe whole gang came, right? Your four small toes share ONE muscle with four strings, so they move as a team. (Foot cramps? Stop.)\nDid the whole gang come? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't NOT think of a white bear 🔔\n#science #humanbody #toes #feet #funfacts #reels",
     "coverTime": 5.2,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 8 Nov 2026 21:00 IST; scheduled 30 Oct 03:20 IST; Content -> Scheduled shows the row with the caption as its title"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-11-05T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1449317237159821",
+    "publishAt": "2026-11-08T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T21:36:18.512Z"
   }
 }

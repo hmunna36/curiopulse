@@ -81,7 +81,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Can't You Make a FIST With Your Wrist Bent? | 31 s | [`videos/bent-wrist-fist`](videos/bent-wrist-fist) | [4 Nov 2026](https://youtube.com/shorts/7ZRNtkXNeS4) |
 | Can a Shrimp's Snap Get as HOT as the SUN? | 34 s | [`videos/shrimp-snap`](videos/shrimp-snap) | [4 Nov 2026](https://youtube.com/shorts/bFFM9txGYyg) |
 | Was Cleopatra Closer to the Pyramids or the MOON Landing? | 35 s | [`videos/cleopatra-moon-landing`](videos/cleopatra-moon-landing) | [5 Nov 2026](https://youtube.com/shorts/j1nzcpNxSS0) |
-| Why Won't Your TOES Move One at a Time? | 31 s | [`videos/toes-one-at-a-time`](videos/toes-one-at-a-time) | 5 Nov 2026 (to be scheduled) |
+| Why Won't Your TOES Move One at a Time? | 31 s | [`videos/toes-one-at-a-time`](videos/toes-one-at-a-time) | [5 Nov 2026](https://youtube.com/shorts/jgmry3gFWss) |
 
 Each folder has:
 - the finished MP4;
