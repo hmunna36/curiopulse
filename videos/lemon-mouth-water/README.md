@@ -66,9 +66,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | Business Suite (Instagram only) | … IST |
-| Facebook Page | `fb.mjs reel` | … IST |
+| YouTube Shorts | https://youtube.com/shorts/rv4yQoSwWUE | 2 Nov 2026 11:30 IST (scheduled; thumbnail, captions and the playlist by the API; cover.jpg also into Studio's vertical slot) |
+| Instagram Reels | Business Suite, Instagram only (cover.jpg as the cover) | 5 Nov 2026 18:30 IST (scheduled) |
+| Facebook Page | `fb.mjs reel` (video 4414463775473675) | 5 Nov 2026 18:30 IST (scheduled) |
 
 **Title:** Why Does Your Mouth Water When You Imagine a LEMON? 🍋
 

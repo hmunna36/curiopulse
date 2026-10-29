@@ -74,7 +74,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do Wombats Poop CUBES? | 34 s | [`videos/wombat-cubes`](videos/wombat-cubes) | [31 Oct 2026](https://youtube.com/shorts/3JY_aSgAcEU) |
 | What If the Sun VANISHED Right Now? | 33 s | [`videos/sun-8-minutes`](videos/sun-8-minutes) | [1 Nov 2026](https://youtube.com/shorts/SUxhufpS8so) |
 | Can You Say MIT's HARDEST Tongue Twister? | 34 s | [`videos/tongue-twister`](videos/tongue-twister) | [1 Nov 2026](https://youtube.com/shorts/JAVcSxxWldY) |
-| Why Does Your Mouth Water When You Imagine a LEMON? | 33 s | [`videos/lemon-mouth-water`](videos/lemon-mouth-water) | 2 Nov 2026 (scheduled) |
+| Why Does Your Mouth Water When You Imagine a LEMON? | 33 s | [`videos/lemon-mouth-water`](videos/lemon-mouth-water) | [2 Nov 2026](https://youtube.com/shorts/rv4yQoSwWUE) |
 
 Each folder has:
 - the finished MP4;

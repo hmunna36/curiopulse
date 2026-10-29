@@ -36,24 +36,39 @@
   "cover": "cover.jpg",
   "captions": "lemon-mouth-water.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-02T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "rv4yQoSwWUE",
+    "url": "https://youtube.com/shorts/rv4yQoSwWUE",
+    "uploaded": "2026-10-29T08:24:47.836Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "the vertical slot showed an automatic frame (the lab at 18.7 s): cover.jpg uploaded in Studio and saved, 29 Oct 14:02 IST"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-05T18:30:00+05:30",
     "caption": "Imagine biting this juicy lemon. 🍋\nThere's no lemon... your brain just took a PRACTICE bite and turned on the spit taps early. People drool just WATCHING someone eat one.\nIs your mouth watering? Yes or no?\nFollow @curio_pulse_tv for the next one: why your finger moves when you bend your thumb 👍\n#science #humanbody #lemon #brain #funfacts #reels",
     "coverTime": 1.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 5 Nov 2026 18:30 IST; scheduled 29 Oct 14:09 IST"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-11-02T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "4414463775473675",
+    "publishAt": "2026-11-05T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T08:32:58.775Z"
   }
 }
