@@ -72,11 +72,40 @@
 | `bent-wrist-fist`: "Why Can't You Make a FIST With Your Wrist Bent? ✊" | 31 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/7ZRNtkXNeS4 · 4 Nov 2026 11:30 IST | Business Suite, Instagram only, 7 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1739343171533074) |
 | `shrimp-snap`: "Can a Shrimp's Snap Get as HOT as the SUN? 🦐" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/bFFM9txGYyg · 4 Nov 2026 23:30 IST | Business Suite, Instagram only, 7 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1433323355022781) |
 | `cleopatra-moon-landing`: "Was Cleopatra Closer to the Pyramids or the MOON Landing? 🚀" | 35 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/j1nzcpNxSS0 · 5 Nov 2026 11:30 IST | Business Suite, Instagram only, 8 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 29385531647751239) |
+| `toes-one-at-a-time`: "Why Won't Your TOES Move One at a Time? 🦶" | 31 s (short arm; pill arm; TEST) | https://youtube.com/shorts/jgmry3gFWss · 5 Nov 2026 23:30 IST | Business Suite, Instagram only, 8 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1449317237159821) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**toes-one-at-a-time** (30 Oct 2026, the 02:00 second-Short routine, 02:04-03:25 IST; a TEST Short (pill arm, 23:30 slot), the Queue's
+first line; short arm, 69 words -> 30.67 s; hook formula The Direct Address as the test: "Lift your big toe. Easy. Now lift JUST the next
+one." (after The Question, The Direct Address, Contrarian Flip); answer "The whole gang came, right? They share ONE string." at 4.55 s;
+button "So... practise. Big toe first." into the hook; caption question "Did the whole gang come? Yes or no?"; YouTube jgmry3gFWss,
+playlist Why Does Your Body Do That?; Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs 1449317237159821) 8 Nov
+21:00 IST. Three QA rounds, qa.py 18/18 each; build.sh into a fresh work folder reproduced the MP4 byte for byte.)
+World: NEW `toes.js` (borrow it for any foot or toe topic): the hero barefoot on a lake dock at sunset, chin on his knee, and his bare
+right foot as a 3D rig in centimetres (`tsView`/`tsP`: a camera with yaw, pitch and perspective, everything drawn in screen space, so a
+camera move is a change of the view; `TS_TOES`: five toes of capsules that `lift`, `curl`, `wig` and `spread`; the foot's body as the
+convex hull of its points, or `profile: true` for a side view with the heel and the arch; nails that show only when they face the
+camera; little eyes on the small toes (`faces`, `look`, `happy`)), the leg turned to glass from the knee (`glass`: the big toe's own
+orange muscle, the four's ONE cyan muscle whose string forks in four at the ankle, the violet curler under the sole; muscles with
+faces that strain; strings with beads that slide when pulled), the hero himself (`tsHero`/`tsHeroFront`: coat, straps, the folded
+other leg, the head through the rig's `drawHead`, arms hugging the shin with `clasp` the hands' height), the lake plate painted once
+(`tsLakeBg`: sky, clouds, the low sun with `sun` for its glow, hills with pines, a sailboat, glitter), the dock (`tsDock`: planks
+ACROSS the view, so a camera on the planks reads depth), a puppet string from a wooden handle (`tsPuppet`). The brain at its desk is
+pins-needles' `brainy.js`; scenes.js has a scan card (FINGERS five tidy patches, TOES one smudge or five lit ones) and a key panel.
+- **Two things stacked vertically fight the safe area.** Round 1 framed his face over his knee over his foot and put the face in the
+  covered top band (y < 375) on every dock shot. Fixed by lowering the cartoon knee and head and aiming the camera slightly UP (pitch
+  -0.05: near, low things rise on screen), so the eyes sit at y ~470 and the toes end above ~1060. Run the safe-area overlay on the
+  first stills, not after the render.
+- **A gesture drawn as one raised digit reads as a rude one.** The thumbs-up on "Easy." (a fist with one tall capsule on top) looked
+  like a middle finger in the stills. It was cut; a smug face and a sparkle carry the line. Draw a thumbs-up only with a sideways fist
+  and the thumb clearly off its side, and crop it at full size.
+- **A foot seen from above with curled toes reads as a hand.** The painting foot became readable only as an L from the side: the shin
+  straight up out of the frame (a rolled trouser leg), the foot flat with the heel showing, the brush between the first two toes.
+- Voice: one take per block, 374 characters (3,758 left on account 2 before; it resets 1 Nov). About 4-6 minutes a render.
 
 **cleopatra-moon-landing** (30 Oct 2026, nightly /cp next, 00:00-01:35 IST; THE TWELFTH CURIOUS SHORT of the topic test, the
 no-pill arm (11:30 slot); the Curious queue's first line (promised by shrimp-snap's Next-up comment); short arm, 67 words -> 34.67 s;
