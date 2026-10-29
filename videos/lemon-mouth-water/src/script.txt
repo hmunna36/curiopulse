@@ -1,0 +1,35 @@
+# Narration for "Why Does Your Mouth Water When You Imagine a LEMON? 🍋"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# The test (rules of 15 Oct 2026): the viewer imagines biting the lemon he bites, and their mouth waters.
+# Hook formula: The Direct Address as the test ("Imagine biting this juicy lemon." / "Your mouth's watering, right?").
+# The answer starts by 5.0 s; the button sends them back to the test ("Watch him again." runs into the hook).
+# 72 words (the short arm: 66-76).
+
+## hook gap=0.06 tighten=0.30 tempo=1.04
+Imagine biting this juicy lemon.
+
+## water gap=0.30 tighten=0.25 tempo=1.03
+Your mouth's watering, right?
+
+## answer gap=0.45 tighten=0.40 tempo=1.00
+There's no lemon... your brain just took a PRACTICE bite.
+
+## flood gap=0.35 tighten=0.30 tempo=1.04
+Feel that flood under your tongue?
+
+## lick gap=0.30 tighten=0.42 tempo=1.00
+[mischievously] Now imagine licking it. Slowly.
+
+## acid gap=0.40 tighten=0.30 tempo=1.05
+Lemon means acid... so your brain hoses your teeth down early.
+
+## payoff gap=0.40 tighten=0.30 tempo=1.04
+In one lab, people drooled just WATCHING a man eat a lemon.
+
+## weird gap=0.40 tighten=0.35 tempo=1.03
+The more they drooled... the more they cared about others.
+
+## button gap=0.60 tighten=0.40 tempo=1.00
+Drooling? Congrats, you're nice. Not drooling? Watch him again.
