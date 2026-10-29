@@ -1,0 +1,35 @@
+block      start    end  wpm  rms   f0  cut
+hook        0.10   3.70  183 -18.6  212 0.00
+answer      4.08   8.81  114 -21.4  188 0.92
+climb       9.16  14.95  124 -19.3  191 0.85
+moon       15.23  18.14  145 -20.1  189 0.30
+payoff     18.43  22.59  144 -20.4  166 0.46
+mammoth    22.99  28.32  124 -18.7  182 0.62
+island     28.67  29.69  176 -17.6  180 0.00
+button     30.14  33.71   67 -19.0  178 0.51
+narration 33.71s, 67 words, events: 
+hook         0.00 ->   4.60  (4.60s)
+giza         4.60 ->   9.07  (4.47s)
+climb        9.07 ->  18.37  (9.30s)
+payoff      18.37 ->  22.90  (4.53s)
+past        22.90 ->  30.03  (7.13s)
+button      30.03 ->  34.20  (4.17s)
+loop        34.20 ->  34.67  (0.47s)
+duration 34.67s, 23 caption chunks, 67 words
+subscribe arm: none (no pill; the Short loops)
+length: 34.67 s (every Short since 16 Oct 2026: 30-35 s passes; publish.json says the arm)
+answer line: starts at 4.10 s (must be 5.0 s or earlier)
+first words: "You'd think Cleopatra's closer to the pyramids than" (the claim, put to "you")
+subscribe: nothing said (no pill; the Short loops)
+mix.wav: 34.667s  integrated -14.00 LUFS  true-peak -1.90 dBTP (at 29.20 s)  [studio chain (pedalboard)]
+  150/1040 frames, 234 ms/frame
+  300/1040 frames, 237 ms/frame
+  450/1040 frames, 230 ms/frame
+  600/1040 frames, 211 ms/frame
+  750/1040 frames, 209 ms/frame
+  900/1040 frames, 210 ms/frame
+rendered 1040 frames in 252.7s
+look: cine (light stage on: ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version))
+/Users/harshad/Desktop/curiopulse/videos/cleopatra-moon-landing/src/../cleopatra-moon-landing.srt: 23 cues, 67 of 67 words
+done: /Users/harshad/Desktop/curiopulse/videos/cleopatra-moon-landing/src/../cleopatra-moon-landing-short.mp4
+EXIT 0

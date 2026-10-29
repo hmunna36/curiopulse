@@ -1,0 +1,33 @@
+# Narration for "Was Cleopatra Closer to the Pyramids or the MOON Landing? 🚀"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# CURIOUS kind (story.md §6): the hook is the claim put to "you" as the belief everyone holds (Contrarian Flip),
+# "Nope." flips it and the answer says why by 5 s; the time ladder from the pyramid's tip to the Moon is the one picture
+# (climb, 2,500 years; climb, 2,000 years); the payoff names Neil Armstrong; the weirdest fact is the mammoths (hedged:
+# "On one island."); the button reframes ("Practically... modern.") and runs into the hook when the Short loops.
+# 67 words ("Climb it with me" was heard as "Climate with me": now "Climb with me."). Nobody says "subscribe"; no `sub` block.
+
+## hook gap=0.10 tempo=1.00
+You'd think Cleopatra's closer to the pyramids than the Moon landing.
+
+## answer gap=0.38 tighten=0.40 tempo=1.00
+Nope. To her, the pyramids were already... ancient history.
+
+## climb gap=0.35 tighten=0.32 tempo=1.05
+Climb with me. Pyramid to Cleopatra? Two and a half THOUSAND years.
+
+## moon gap=0.28 tighten=0.36 tempo=1.04
+Cleopatra to the Moon? Just two thousand.
+
+## payoff gap=0.30 tighten=0.36 tempo=1.02
+She's closer to Neil Armstrong... by about five hundred years.
+
+## mammoth gap=0.40 tighten=0.32 tempo=1.04
+Weirder: while they built that pyramid... woolly mammoths were still alive.
+
+## island gap=0.35 tighten=0 tempo=1.00
+On one island.
+
+## button gap=0.45 tighten=0.38 tempo=1.02
+So Cleopatra? Practically... modern.

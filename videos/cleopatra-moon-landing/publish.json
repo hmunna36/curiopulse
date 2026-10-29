@@ -1,0 +1,59 @@
+{
+  "slug": "cleopatra-moon-landing",
+  "file": "cleopatra-moon-landing-short.mp4",
+  "title": "Was Cleopatra Closer to the Pyramids or the MOON Landing? 🚀",
+  "description": "You'd think Cleopatra lived closer to the pyramids than to the Moon landing. Nope. The Great Pyramid of Giza was finished around 2560 BC, so when Cleopatra was born (69 BC) it was already about 2,500 years old: ancient history, even to her. From Cleopatra to Apollo 11 (1969) is only about 2,000 years, so she lived roughly 500 years closer to Neil Armstrong than to the pyramid's builders. Weirder still: while that pyramid was going up, woolly mammoths were still alive, on Wrangel Island in the Arctic, where the last of them lived until about 4,000 years ago. Pyramids or Moon: what did you guess?\n\nSubscribe for a new strange question every day.\n\n#Shorts #History #Cleopatra #Pyramids #MoonLanding #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-05T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-11-05T11:30:00+05:30"
+  },
+  "pinnedComment": "🎓 Bonus: Oxford was already teaching students (1096) before the Aztecs founded their capital, Tenochtitlan (1325).\nNext up: why your toes won't move one at a time 🦶 Subscribe so you don't miss it!\nPyramids or Moon: what did you guess? 🏛️🚀",
+  "tags": [
+    "cleopatra",
+    "moon landing",
+    "great pyramid",
+    "pyramids of giza",
+    "apollo 11",
+    "neil armstrong",
+    "ancient egypt",
+    "history facts",
+    "history timeline",
+    "woolly mammoth",
+    "wrangel island",
+    "mind blowing facts",
+    "history shorts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "cleopatra-moon-landing.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Your Brain Is Weird"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "You'd think Cleopatra lived closer to the pyramids than to the Moon landing. Nope. 🏛️🚀\nThe Great Pyramid was already about 2,500 years old when she was born. From her to Apollo 11: only about 2,000.\nPyramids or Moon: what did you guess?\nFollow @curio_pulse_tv for the next one: why your toes won't move one at a time 🔔\n#history #cleopatra #pyramids #moonlanding #funfacts #reels",
+    "coverTime": 1.2,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-11-05T11:30:00+05:30"
+  }
+}

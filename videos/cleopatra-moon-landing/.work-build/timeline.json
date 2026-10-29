@@ -1,0 +1,1084 @@
+{
+ "fps": 30,
+ "duration": 34.666666666666664,
+ "shots": [
+  {
+   "id": "hook",
+   "start": 0.0,
+   "end": 4.6
+  },
+  {
+   "id": "giza",
+   "start": 4.6,
+   "end": 9.066666666666666
+  },
+  {
+   "id": "climb",
+   "start": 9.066666666666666,
+   "end": 18.366666666666667
+  },
+  {
+   "id": "payoff",
+   "start": 18.366666666666667,
+   "end": 22.9
+  },
+  {
+   "id": "past",
+   "start": 22.9,
+   "end": 30.033333333333335
+  },
+  {
+   "id": "button",
+   "start": 30.033333333333335,
+   "end": 34.2
+  },
+  {
+   "id": "loop",
+   "start": 34.2,
+   "end": 34.666666666666664
+  }
+ ],
+ "captions": [
+  {
+   "start": 0.08,
+   "lines": [
+    [
+     {
+      "t": "YOU'D",
+      "c": "#FFFFFF",
+      "at": 0.08
+     },
+     {
+      "t": "THINK",
+      "c": "#FFFFFF",
+      "at": 0.42
+     }
+    ],
+    [
+     {
+      "t": "CLEOPATRA'S",
+      "c": "#FFD447",
+      "at": 0.65
+     }
+    ]
+   ],
+   "end": 1.407
+  },
+  {
+   "start": 1.407,
+   "lines": [
+    [
+     {
+      "t": "CLOSER",
+      "c": "#FFFFFF",
+      "at": 1.407
+     },
+     {
+      "t": "TO",
+      "c": "#FFFFFF",
+      "at": 1.803
+     }
+    ],
+    [
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 1.91
+     },
+     {
+      "t": "PYRAMIDS",
+      "c": "#FF9A3C",
+      "at": 2.043
+     }
+    ]
+   ],
+   "end": 2.582
+  },
+  {
+   "start": 2.582,
+   "lines": [
+    [
+     {
+      "t": "THAN",
+      "c": "#FFFFFF",
+      "at": 2.582
+     },
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 2.71
+     }
+    ],
+    [
+     {
+      "t": "MOON",
+      "c": "#BFF0FF",
+      "at": 2.854
+     },
+     {
+      "t": "LANDING",
+      "c": "#FFFFFF",
+      "at": 3.16
+     }
+    ]
+   ],
+   "end": 4.07
+  },
+  {
+   "start": 4.07,
+   "lines": [
+    [
+     {
+      "t": "NOPE",
+      "c": "#FF5A6E",
+      "at": 4.07
+     }
+    ]
+   ],
+   "end": 4.6
+  },
+  {
+   "start": 4.675,
+   "lines": [
+    [
+     {
+      "t": "TO",
+      "c": "#FFFFFF",
+      "at": 4.675
+     },
+     {
+      "t": "HER",
+      "c": "#FFFFFF",
+      "at": 4.985
+     }
+    ],
+    [
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 5.695
+     },
+     {
+      "t": "PYRAMIDS",
+      "c": "#FF9A3C",
+      "at": 5.87
+     }
+    ]
+   ],
+   "end": 6.327
+  },
+  {
+   "start": 6.327,
+   "lines": [
+    [
+     {
+      "t": "WERE",
+      "c": "#FFFFFF",
+      "at": 6.327
+     }
+    ],
+    [
+     {
+      "t": "ALREADY",
+      "c": "#FFFFFF",
+      "at": 6.525
+     }
+    ]
+   ],
+   "end": 7.6
+  },
+  {
+   "start": 7.6,
+   "lines": [
+    [
+     {
+      "t": "ANCIENT",
+      "c": "#C8A8FF",
+      "at": 7.6
+     }
+    ],
+    [
+     {
+      "t": "HISTORY",
+      "c": "#C8A8FF",
+      "at": 8.135
+     }
+    ]
+   ],
+   "end": 9.067
+  },
+  {
+   "start": 9.14,
+   "lines": [
+    [
+     {
+      "t": "CLIMB",
+      "c": "#4DFFB4",
+      "at": 9.14
+     }
+    ],
+    [
+     {
+      "t": "WITH",
+      "c": "#FFFFFF",
+      "at": 9.439
+     },
+     {
+      "t": "ME",
+      "c": "#FFFFFF",
+      "at": 9.663
+     }
+    ]
+   ],
+   "end": 10.27
+  },
+  {
+   "start": 10.27,
+   "lines": [
+    [
+     {
+      "t": "PYRAMID",
+      "c": "#FF9A3C",
+      "at": 10.27
+     },
+     {
+      "t": "TO",
+      "c": "#FFFFFF",
+      "at": 10.64
+     }
+    ],
+    [
+     {
+      "t": "CLEOPATRA",
+      "c": "#FFD447",
+      "at": 10.799
+     }
+    ]
+   ],
+   "end": 12.13
+  },
+  {
+   "start": 12.13,
+   "lines": [
+    [
+     {
+      "t": "TWO",
+      "c": "#FFFFFF",
+      "at": 12.13
+     },
+     {
+      "t": "AND",
+      "c": "#FFFFFF",
+      "at": 12.342
+     }
+    ],
+    [
+     {
+      "t": "A",
+      "c": "#FFFFFF",
+      "at": 12.51
+     },
+     {
+      "t": "HALF",
+      "c": "#FFFFFF",
+      "at": 12.666
+     }
+    ]
+   ],
+   "end": 13.47
+  },
+  {
+   "start": 13.47,
+   "lines": [
+    [
+     {
+      "t": "THOUSAND",
+      "c": "#FF9A3C",
+      "at": 13.47
+     }
+    ],
+    [
+     {
+      "t": "YEARS",
+      "c": "#FFFFFF",
+      "at": 14.199
+     }
+    ]
+   ],
+   "end": 15.22
+  },
+  {
+   "start": 15.22,
+   "lines": [
+    [
+     {
+      "t": "CLEOPATRA",
+      "c": "#FFD447",
+      "at": 15.22
+     }
+    ],
+    [
+     {
+      "t": "TO",
+      "c": "#FFFFFF",
+      "at": 15.826
+     },
+     {
+      "t": "THE",
+      "c": "#FFFFFF",
+      "at": 15.926
+     },
+     {
+      "t": "MOON",
+      "c": "#BFF0FF",
+      "at": 16.083
+     }
+    ]
+   ],
+   "end": 16.84
+  },
+  {
+   "start": 16.84,
+   "lines": [
+    [
+     {
+      "t": "JUST",
+      "c": "#FFFFFF",
+      "at": 16.84
+     },
+     {
+      "t": "2,000",
+      "c": "#7FE9FF",
+      "at": 17.43
+     }
+    ]
+   ],
+   "end": 18.367
+  },
+  {
+   "start": 18.43,
+   "lines": [
+    [
+     {
+      "t": "SHE'S",
+      "c": "#FFFFFF",
+      "at": 18.43
+     },
+     {
+      "t": "CLOSER",
+      "c": "#FFFFFF",
+      "at": 18.661
+     },
+     {
+      "t": "TO",
+      "c": "#FFFFFF",
+      "at": 18.982
+     }
+    ],
+    [
+     {
+      "t": "NEIL",
+      "c": "#8FB8FF",
+      "at": 19.134
+     },
+     {
+      "t": "ARMSTRONG",
+      "c": "#8FB8FF",
+      "at": 19.393
+     }
+    ]
+   ],
+   "end": 20.413
+  },
+  {
+   "start": 20.413,
+   "lines": [
+    [
+     {
+      "t": "BY",
+      "c": "#FFFFFF",
+      "at": 20.413
+     },
+     {
+      "t": "ABOUT",
+      "c": "#FFFFFF",
+      "at": 20.584
+     }
+    ],
+    [
+     {
+      "t": "500",
+      "c": "#FFD447",
+      "at": 21.004
+     },
+     {
+      "t": "YEARS",
+      "c": "#FFFFFF",
+      "at": 21.891
+     }
+    ]
+   ],
+   "end": 22.9
+  },
+  {
+   "start": 22.97,
+   "lines": [
+    [
+     {
+      "t": "WEIRDER",
+      "c": "#FFD447",
+      "at": 22.97
+     }
+    ]
+   ],
+   "end": 23.88
+  },
+  {
+   "start": 23.88,
+   "lines": [
+    [
+     {
+      "t": "WHILE",
+      "c": "#FFFFFF",
+      "at": 23.88
+     },
+     {
+      "t": "THEY",
+      "c": "#FFFFFF",
+      "at": 24.075
+     },
+     {
+      "t": "BUILT",
+      "c": "#FFFFFF",
+      "at": 24.249
+     }
+    ],
+    [
+     {
+      "t": "THAT",
+      "c": "#FFFFFF",
+      "at": 24.56
+     },
+     {
+      "t": "PYRAMID",
+      "c": "#FF9A3C",
+      "at": 24.76
+     }
+    ]
+   ],
+   "end": 25.59
+  },
+  {
+   "start": 25.59,
+   "lines": [
+    [
+     {
+      "t": "WOOLLY",
+      "c": "#C8A8FF",
+      "at": 25.59
+     }
+    ],
+    [
+     {
+      "t": "MAMMOTHS",
+      "c": "#C8A8FF",
+      "at": 25.9
+     }
+    ]
+   ],
+   "end": 26.77
+  },
+  {
+   "start": 26.77,
+   "lines": [
+    [
+     {
+      "t": "WERE",
+      "c": "#FFFFFF",
+      "at": 26.77
+     },
+     {
+      "t": "STILL",
+      "c": "#FFFFFF",
+      "at": 27.003
+     }
+    ],
+    [
+     {
+      "t": "ALIVE",
+      "c": "#4DFFB4",
+      "at": 27.631
+     }
+    ]
+   ],
+   "end": 28.66
+  },
+  {
+   "start": 28.66,
+   "lines": [
+    [
+     {
+      "t": "ON",
+      "c": "#FFFFFF",
+      "at": 28.66
+     },
+     {
+      "t": "ONE",
+      "c": "#FFFFFF",
+      "at": 28.843
+     }
+    ],
+    [
+     {
+      "t": "ISLAND",
+      "c": "#7FE9FF",
+      "at": 29.092
+     }
+    ]
+   ],
+   "end": 30.033
+  },
+  {
+   "start": 30.113,
+   "lines": [
+    [
+     {
+      "t": "SO",
+      "c": "#FFFFFF",
+      "at": 30.113
+     }
+    ],
+    [
+     {
+      "t": "CLEOPATRA",
+      "c": "#FFD447",
+      "at": 30.544
+     }
+    ]
+   ],
+   "end": 32.01
+  },
+  {
+   "start": 32.01,
+   "lines": [
+    [
+     {
+      "t": "PRACTICALLY",
+      "c": "#FFFFFF",
+      "at": 32.01
+     }
+    ]
+   ],
+   "end": 33.07
+  },
+  {
+   "start": 33.07,
+   "lines": [
+    [
+     {
+      "t": "MODERN",
+      "c": "#FF86A6",
+      "at": 33.07
+     }
+    ]
+   ],
+   "end": 34.2
+  }
+ ],
+ "cues": {
+  "you": 0.11,
+  "cleo1": 0.68,
+  "closer1": 1.437,
+  "pyr1": 2.073,
+  "pyr1_end": 2.58,
+  "moon1": 2.884,
+  "landing_end": 3.7,
+  "nope": 4.1,
+  "nope_end": 4.465,
+  "to_her": 4.705,
+  "pyr2": 5.9,
+  "already": 6.555,
+  "already_end": 7.25,
+  "ancient": 7.63,
+  "history": 8.165,
+  "history_end": 8.79,
+  "climb": 9.17,
+  "me_end": 9.972,
+  "pyramid3": 10.3,
+  "cleo3": 10.829,
+  "cleo3_end": 11.69,
+  "two": 12.16,
+  "thousand1": 13.5,
+  "thousand1_end": 14.115,
+  "years1_end": 14.95,
+  "cleo4": 15.25,
+  "moon2": 16.113,
+  "moon2_end": 16.497,
+  "just": 16.87,
+  "thousand2": 17.46,
+  "thousand2_end": 18.02,
+  "shes": 18.46,
+  "neil": 19.164,
+  "armstrong_end": 20.2,
+  "by": 20.443,
+  "five": 21.034,
+  "hundred": 21.46,
+  "years2_end": 22.587,
+  "weirder": 23.0,
+  "weirder_end": 23.526,
+  "while": 23.91,
+  "built": 24.279,
+  "pyr4": 24.79,
+  "pyr4_end": 25.33,
+  "woolly": 25.62,
+  "mammoths": 25.93,
+  "still": 27.033,
+  "alive": 27.661,
+  "alive_end": 28.315,
+  "on": 28.69,
+  "island": 29.122,
+  "island_end": 29.64,
+  "so": 30.143,
+  "cleo5": 30.574,
+  "cleo5_end": 31.633,
+  "practically": 32.04,
+  "practically_end": 32.692,
+  "modern": 33.1,
+  "modern_end": 33.709,
+  "end": 34.666666666666664,
+  "flash": 4.13,
+  "old_tag": 6.6049999999999995,
+  "yawn": 7.51,
+  "yawn_end": 8.94,
+  "weed": 7.864999999999999,
+  "beckon": 9.19,
+  "up1": 9.921999999999999,
+  "reach1": 14.91,
+  "ding1": 14.979999999999999,
+  "up2": 15.27,
+  "space": 15.913,
+  "reach2": 17.99,
+  "ding2": 18.05,
+  "pull": 18.41,
+  "brackets": 20.393,
+  "slide500": 20.983999999999998,
+  "glow500": 21.51,
+  "jump": 23.02,
+  "land": 24.689999999999998,
+  "split": 25.5,
+  "trumpet": 28.355,
+  "zoomout": 28.64,
+  "shrug": 29.66,
+  "peer": 30.624000000000002,
+  "shades_up": 32.14,
+  "bubble": 33.15,
+  "pop": 33.829
+ },
+ "words": [
+  {
+   "word": "You'd",
+   "start": 0.11,
+   "end": 0.34,
+   "block": "hook"
+  },
+  {
+   "word": "think",
+   "start": 0.45,
+   "end": 0.58,
+   "block": "hook"
+  },
+  {
+   "word": "Cleopatra's",
+   "start": 0.68,
+   "end": 1.38,
+   "block": "hook"
+  },
+  {
+   "word": "closer",
+   "start": 1.437,
+   "end": 1.78,
+   "block": "hook"
+  },
+  {
+   "word": "to",
+   "start": 1.833,
+   "end": 1.94,
+   "block": "hook"
+  },
+  {
+   "word": "the",
+   "start": 1.94,
+   "end": 2.02,
+   "block": "hook"
+  },
+  {
+   "word": "pyramids",
+   "start": 2.073,
+   "end": 2.58,
+   "block": "hook"
+  },
+  {
+   "word": "than",
+   "start": 2.612,
+   "end": 2.74,
+   "block": "hook"
+  },
+  {
+   "word": "the",
+   "start": 2.74,
+   "end": 2.82,
+   "block": "hook"
+  },
+  {
+   "word": "Moon",
+   "start": 2.884,
+   "end": 3.14,
+   "block": "hook"
+  },
+  {
+   "word": "landing.",
+   "start": 3.19,
+   "end": 3.7,
+   "block": "hook"
+  },
+  {
+   "word": "Nope.",
+   "start": 4.1,
+   "end": 4.465,
+   "block": "answer"
+  },
+  {
+   "word": "To",
+   "start": 4.705,
+   "end": 4.935,
+   "block": "answer"
+  },
+  {
+   "word": "her,",
+   "start": 5.015,
+   "end": 5.42,
+   "block": "answer"
+  },
+  {
+   "word": "the",
+   "start": 5.725,
+   "end": 5.845,
+   "block": "answer"
+  },
+  {
+   "word": "pyramids",
+   "start": 5.9,
+   "end": 6.325,
+   "block": "answer"
+  },
+  {
+   "word": "were",
+   "start": 6.357,
+   "end": 6.485,
+   "block": "answer"
+  },
+  {
+   "word": "already...",
+   "start": 6.555,
+   "end": 7.25,
+   "block": "answer"
+  },
+  {
+   "word": "ancient",
+   "start": 7.63,
+   "end": 8.105,
+   "block": "answer"
+  },
+  {
+   "word": "history.",
+   "start": 8.165,
+   "end": 8.79,
+   "block": "answer"
+  },
+  {
+   "word": "Climb",
+   "start": 9.17,
+   "end": 9.439,
+   "block": "climb"
+  },
+  {
+   "word": "with",
+   "start": 9.469,
+   "end": 9.591,
+   "block": "climb"
+  },
+  {
+   "word": "me.",
+   "start": 9.693,
+   "end": 9.972,
+   "block": "climb"
+  },
+  {
+   "word": "Pyramid",
+   "start": 10.3,
+   "end": 10.62,
+   "block": "climb"
+  },
+  {
+   "word": "to",
+   "start": 10.67,
+   "end": 10.772,
+   "block": "climb"
+  },
+  {
+   "word": "Cleopatra?",
+   "start": 10.829,
+   "end": 11.69,
+   "block": "climb"
+  },
+  {
+   "word": "Two",
+   "start": 12.16,
+   "end": 12.315,
+   "block": "climb"
+  },
+  {
+   "word": "and",
+   "start": 12.372,
+   "end": 12.544,
+   "block": "climb"
+  },
+  {
+   "word": "a",
+   "start": 12.54,
+   "end": 12.62,
+   "block": "climb"
+  },
+  {
+   "word": "half",
+   "start": 12.696,
+   "end": 13.001,
+   "block": "climb"
+  },
+  {
+   "word": "THOUSAND",
+   "start": 13.5,
+   "end": 14.115,
+   "block": "climb"
+  },
+  {
+   "word": "years.",
+   "start": 14.229,
+   "end": 14.95,
+   "block": "climb"
+  },
+  {
+   "word": "Cleopatra",
+   "start": 15.25,
+   "end": 15.805,
+   "block": "moon"
+  },
+  {
+   "word": "to",
+   "start": 15.856,
+   "end": 15.959,
+   "block": "moon"
+  },
+  {
+   "word": "the",
+   "start": 15.956,
+   "end": 16.036,
+   "block": "moon"
+  },
+  {
+   "word": "Moon?",
+   "start": 16.113,
+   "end": 16.497,
+   "block": "moon"
+  },
+  {
+   "word": "Just",
+   "start": 16.87,
+   "end": 17.132,
+   "block": "moon"
+  },
+  {
+   "word": "two",
+   "start": 17.25,
+   "end": 17.42,
+   "block": "moon"
+  },
+  {
+   "word": "thousand.",
+   "start": 17.46,
+   "end": 18.02,
+   "block": "moon"
+  },
+  {
+   "word": "She's",
+   "start": 18.46,
+   "end": 18.646,
+   "block": "payoff"
+  },
+  {
+   "word": "closer",
+   "start": 18.691,
+   "end": 18.96,
+   "block": "payoff"
+  },
+  {
+   "word": "to",
+   "start": 19.012,
+   "end": 19.117,
+   "block": "payoff"
+  },
+  {
+   "word": "Neil",
+   "start": 19.164,
+   "end": 19.352,
+   "block": "payoff"
+  },
+  {
+   "word": "Armstrong...",
+   "start": 19.423,
+   "end": 20.2,
+   "block": "payoff"
+  },
+  {
+   "word": "by",
+   "start": 20.443,
+   "end": 20.548,
+   "block": "payoff"
+  },
+  {
+   "word": "about",
+   "start": 20.614,
+   "end": 20.94,
+   "block": "payoff"
+  },
+  {
+   "word": "five",
+   "start": 21.034,
+   "end": 21.411,
+   "block": "payoff"
+  },
+  {
+   "word": "hundred",
+   "start": 21.46,
+   "end": 21.803,
+   "block": "payoff"
+  },
+  {
+   "word": "years.",
+   "start": 21.921,
+   "end": 22.587,
+   "block": "payoff"
+  },
+  {
+   "word": "Weirder:",
+   "start": 23.0,
+   "end": 23.526,
+   "block": "mammoth"
+  },
+  {
+   "word": "while",
+   "start": 23.91,
+   "end": 24.075,
+   "block": "mammoth"
+  },
+  {
+   "word": "they",
+   "start": 24.105,
+   "end": 24.228,
+   "block": "mammoth"
+  },
+  {
+   "word": "built",
+   "start": 24.279,
+   "end": 24.536,
+   "block": "mammoth"
+  },
+  {
+   "word": "that",
+   "start": 24.59,
+   "end": 24.69,
+   "block": "mammoth"
+  },
+  {
+   "word": "pyramid...",
+   "start": 24.79,
+   "end": 25.33,
+   "block": "mammoth"
+  },
+  {
+   "word": "woolly",
+   "start": 25.62,
+   "end": 25.853,
+   "block": "mammoth"
+  },
+  {
+   "word": "mammoths",
+   "start": 25.93,
+   "end": 26.546,
+   "block": "mammoth"
+  },
+  {
+   "word": "were",
+   "start": 26.8,
+   "end": 26.93,
+   "block": "mammoth"
+  },
+  {
+   "word": "still",
+   "start": 27.033,
+   "end": 27.546,
+   "block": "mammoth"
+  },
+  {
+   "word": "alive.",
+   "start": 27.661,
+   "end": 28.315,
+   "block": "mammoth"
+  },
+  {
+   "word": "On",
+   "start": 28.69,
+   "end": 28.813,
+   "block": "island"
+  },
+  {
+   "word": "one",
+   "start": 28.873,
+   "end": 29.053,
+   "block": "island"
+  },
+  {
+   "word": "island.",
+   "start": 29.122,
+   "end": 29.64,
+   "block": "island"
+  },
+  {
+   "word": "So",
+   "start": 30.143,
+   "end": 30.457,
+   "block": "button"
+  },
+  {
+   "word": "Cleopatra?",
+   "start": 30.574,
+   "end": 31.633,
+   "block": "button"
+  },
+  {
+   "word": "Practically...",
+   "start": 32.04,
+   "end": 32.692,
+   "block": "button"
+  },
+  {
+   "word": "modern.",
+   "start": 33.1,
+   "end": 33.709,
+   "block": "button"
+  }
+ ],
+ "events": [],
+ "look": "cine",
+ "subscribe": "none"
+}
