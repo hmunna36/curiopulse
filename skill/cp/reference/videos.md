@@ -65,11 +65,54 @@
 | `wombat-cubes`: "Why Do Wombats Poop CUBES? 🟫" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/3JY_aSgAcEU · 31 Oct 2026 23:30 IST | Business Suite, Instagram only, 3 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2336367837139924) |
 | `sun-8-minutes`: "What If the Sun VANISHED Right Now? ☀️" | 33 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/SUxhufpS8so · 1 Nov 2026 11:30 IST | Business Suite, Instagram only, 4 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2529838607504984) |
 | `tongue-twister`: "Can You Say MIT's HARDEST Tongue Twister? 👅" | 34 s (short arm; pill arm; TEST) | https://youtube.com/shorts/JAVcSxxWldY · 1 Nov 2026 23:30 IST | Business Suite, Instagram only, 4 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1424079516566113) |
+| `lemon-mouth-water`: "Why Does Your Mouth Water When You Imagine a LEMON? 🍋" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/rv4yQoSwWUE · 2 Nov 2026 11:30 IST | Business Suite, Instagram only, 5 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4414463775473675) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**lemon-mouth-water** (29 Oct 2026, the coordinator's Short #4 of the day ("do as many videos you can"), 12:55-14:10 IST; a TEST Short, the
+no-pill arm (11:30 slot); short arm, 72 words -> 33.13 s; hook formula The Direct Address as the test: "Imagine biting this juicy lemon. /
+Your mouth's watering, right?" (after The Direct Address, The Question, The Warning); answer "There's no lemon... your brain just took a
+PRACTICE bite." at 4.26 s; button "Drooling? Congrats, you're nice. Not drooling? Watch him again." into the hook; caption question "Is your
+mouth watering? Yes or no?"; YouTube rv4yQoSwWUE, playlist Why Does Your Body Do That?, thumbnail + captions + playlist by the API, cover.jpg
+also into Studio's vertical slot (it showed an automatic frame of the lab); Instagram (Business Suite, Instagram only, cover set) + the Page
+(fb.mjs 4414463775473675, ready/scheduled) 5 Nov 18:30 IST. Two QA rounds, qa.py 18/18 both; `build.sh` into a fresh work folder reproduced
+mix.wav and the MP4 byte for byte.)
+World: four new files (borrow them): `lm_grove.js` (a lemon grove on a terrace over the sea at noon: a far plate (sky, the Sun's warmth top
+right, clouds, the sea with glitter, a headland with a white village, terraces of lemon trees) at parallax 0.22 and a mid plate of blurred
+canopies with lemons at 0.55 through `lmLayerCam(cam, p)` (a camera for any parallax factor), bokeh round his head, near branches with
+leaves and lemons `lmBranch`, big blurred leaves in front `groveFront`; `lmLemon`; `lmWedge` (a wedge in its own units: rind arc, pith,
+pulp segments, glints; `bite` scallops one end; `ghost` draws it as a dotted "imagined" outline; a `stamp`); `lmJuice` (a ballistic squirt
+of drops); `LMPAL` a sky-blue linen shirt), `lm_brain.js` (time-flies' brain as `lmBrain` with a bib, moods chomp (jaws closing by
+`chomp`), pucker, alarm, smug, grin, and a `held` callback drawn between its hands), `lm_taps.js` (over tongue-twister's side view
+`twSection`, in section units: `lmInside(t, o)`: the brain in the skull, a cord to the glands with a bead of signal, two glands as grape
+clusters with ducts, two side-view faucets `lmTap` (a bent chrome spout, a cross handle that turns), jets as tapered ribbons with drops
+`lmJet`, the mouth flooding from the bottom up (clipped to its hollow, a wavy surface, bubbles), a drop over the lower lip, the tongue out
+for a lick, his eye screwed shut, a ghost lemon in front of his lips, angry ACID drops that fizzle out on wet teeth, glinting teeth, a red
+SPIT button), `lm_lab.js` (a salivation lab plate (clock, a SALIVA STUDY poster, a window, shelves), a bench, volunteers `lmVol` (curly,
+bun, bald; cotton rolls in puffed cheeks, eyes on the TV, drool that runs off the chin, happy "aww" eyes), beakers `lmCup` with a level and a
+number, a wall TV `lmTV` playing him biting a lemon (drawHead with a fake rig, inside a clip: a picture on a screen), hearts `lmHeart`).
+Borrowed unchanged: tongue-twister's `tw_mouth.js` and `tw_face.js`. Its scenes.js: `lmHero` (the wedge between his mouth and his hand,
+`lmHandWedge`; a pinch grip `lmGrip`; sour mouths `lmMouth` pucker/water; drool), `lmHeroPt` (a head or wrist point from the pose with no
+drawing: a deterministic window spot), `hookA`/`hookCam` valid at negative time, the forehead window into the glass head (`secWindow`),
+`insideState`, `labDraw`, the NICE rosette slapped on the lens (`rosette`), `SC.loop`, `SC.cover`.
+- **A test that happens in the viewer's head is safest watched AND imagined:** watching someone bite a lemon makes saliva flow (Hagenmuller
+  2014, Wang 2017) and imagining the taste of a lemon in view adds to it (Keesman 2016), but looking alone (Kerr 1961, Shannon 1974) and
+  imagery alone (Drummond 1995, 24 people) did not reach significance. So the hook says "imagine" while the picture bites.
+- **A prop he holds after the test must clear the caption line (y 1290-1370):** the wedge held at his chin sat under "THERE'S NO LEMON",
+  so the ghost lemon and its pop were hidden; held up beside his jaw they read.
+- **A glow drawn from screen coordinates needs `screenSpace()` first:** the ghost's `softDot(gctx, ...)` after the scene (whose last call
+  is `applyCam(cam)`) landed in the sky above his head.
+- **A label tied to a moving camera can show up early in the wrong place:** SPIT TAPS popped beside the brain while the camera was still
+  travelling down to the taps; start it once the camera has arrived.
+- **The effects bus is peak-normalised:** the gulp 5 dB down moved 2.6 dB in the mix; `levels={"sfx": -7}` brought every gag to -16..-22 dB
+  in its gap against a -16 dB voice.
+- **The answer's music:** a music box under "your brain just took a PRACTICE bite" put four words under 6 dB; a low pad under 420 Hz and one
+  note in the gap before the line kept the line clear.
+- Voice: 441 characters for the takes, 97 for auditions of two flat-sounding lines (none better: 1.6-2.8 st against the takes' 2.4-3.3).
+  Render about 220 s for 994 frames.
 
 **tongue-twister** (29 Oct 2026, the coordinator's Short #3 of the day ("do as many videos you can"), 11:28-13:00 IST; a TEST Short, the pill
 arm (23:30 slot); short arm, 72 words -> 33.73 s; hook formula The Direct Address as the test itself: "Pad kid poured curd pulled cod.
