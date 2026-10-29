@@ -37,24 +37,39 @@
   "cover": "cover.jpg",
   "captions": "bent-wrist-fist.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-04T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "7ZRNtkXNeS4",
+    "url": "https://youtube.com/shorts/7ZRNtkXNeS4",
+    "uploaded": "2026-10-29T13:11:09.689Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-07T18:30:00+05:30",
     "caption": "Bend your wrist all the way down. Now squeeze a tight fist. ✊\nCan't? Your fingers have no muscles: they're puppets. The puppeteer sits in your forearm and pulls strings over your wrist. Bend it down and the strings go slack. Tip it back and the fist clamps shut.\nCould you make a fist? Yes or no?\nFollow @curio_pulse_tv for the next one: why your toes won't move one at a time 🦶\n#science #humanbody #hand #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "postTo": "curio_pulse_tv (Instagram only; the Page by fb.mjs)",
+    "cover": "cover.jpg (Upload image)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-11-04T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1739343171533074",
+    "publishAt": "2026-11-07T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T13:18:49.780Z"
   }
 }

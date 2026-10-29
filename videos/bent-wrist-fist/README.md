@@ -70,9 +70,9 @@ with the answer at 4.75 s.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after the upload) | 4 Nov 2026 11:30 IST |
-| Instagram Reels | Business Suite, Instagram only | (after scheduling) |
-| Facebook Page (CurioPulse) | `fb.mjs reel` | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/7ZRNtkXNeS4 | 4 Nov 2026 11:30 IST (scheduled by the Data API; thumbnail, captions and the playlist Why Does Your Body Do That? by the API; Studio's vertical thumbnail slot showed the grey processing placeholder, so cover.jpg was uploaded there too, "Changes saved") |
+| Instagram Reels | Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover (Upload image), caption typed line by line; Content → Scheduled lists it with the caption as its title and the Instagram badge | 7 Nov 2026 18:30 IST |
+| Facebook Page (CurioPulse) | video 1739343171533074, scheduled natively by `fb.mjs reel` | 7 Nov 2026 18:30 IST |
 
 **Title:** Why Can't You Make a FIST With Your Wrist Bent? ✊
 
