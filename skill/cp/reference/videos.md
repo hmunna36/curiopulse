@@ -67,11 +67,53 @@
 | `tongue-twister`: "Can You Say MIT's HARDEST Tongue Twister? 👅" | 34 s (short arm; pill arm; TEST) | https://youtube.com/shorts/JAVcSxxWldY · 1 Nov 2026 23:30 IST | Business Suite, Instagram only, 4 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1424079516566113) |
 | `lemon-mouth-water`: "Why Does Your Mouth Water When You Imagine a LEMON? 🍋" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/rv4yQoSwWUE · 2 Nov 2026 11:30 IST | Business Suite, Instagram only, 5 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4414463775473675) |
 | `saturn-bathtub`: "Would SATURN Float in Your Bathtub? 🪐" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/y3lEQ0aaGkY · 2 Nov 2026 23:30 IST | Business Suite, Instagram only, 5 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2301697670683125) |
+| `glass-rain`: "The Planet Where It Rains GLASS Sideways ☔" | 34 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/OoeBkzXongc · 3 Nov 2026 11:30 IST | Business Suite, Instagram only, 6 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 967507022632296) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**glass-rain** (29 Oct 2026, the coordinator's Short #6 of the day ("do as many videos you can"), 15:30-16:55 IST; THE TENTH CURIOUS
+SHORT of the topic test, the no-pill arm (11:30 slot); short arm, 66 words -> 34.13 s; hook formula The Impossible Claim with The Warning's
+cost, said to "your" umbrella: "It rains GLASS here. Your umbrella? Shredded." (after The Question, The Direct Address, The Direct Address);
+answer, a metaphor, "This whole sky is one big... GLASS factory." at 4.34 s; button "Lovely planet. Pack an umbrella." into the hook;
+caption question "Umbrella or helmet?"; YouTube OoeBkzXongc, playlist Strange Nature, thumbnail + captions + playlist by the API, cover.jpg
+also into Studio's slot (it showed an automatic frame); Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs
+967507022632296) 6 Nov 18:30 IST. Three QA rounds, qa.py 18/18 each; the final MP4 is build.sh's into a fresh work folder (mix.wav and
+timeline.json byte-identical).)
+World: two new files (borrow them) and jupiter-no-ground's `jphero.js` (spacesuit + glass helmet) with one addition, `A.pre(lc, rig, st,
+pose)`: what he holds is drawn BEFORE his body, so it drops no shadow on his face. `gr_sky.js`: HD 189733b's sky (`grSkyBg`: azure
+gradient, a warm wash on the star's side, the star at a layer point or `starScreen: [x, y, R]`, four cloud decks `GR_DECKS` painted once
+as tileable strips of lit cartoon puffs (`grDeck`: parallax, wind scroll, twinkling glass glitter), `deep` (a red-orange glow from below));
+the star painted once pixel by pixel (`GR_STAR`: an orange K dwarf, limb darkening, granulation, dark spots) and drawn with a modest
+corona (`grStarDraw`); the glass rain (`grRain`: four screen layers of beads with streak tails at any fall angle `ang` and speed, the near
+ones faceted crystals with rainbow glints), `grSparks` (beads bouncing off something), `grSteam` (plumes of rock vapour that rise, cool
+and pop into glass beads that fall back); the balloon (`grEnvelope` striped, `grRigging` ropes + burner flame, `grBasketBack`,
+`grBasketFront` wicker with a padded rim); space (`grSpaceBg` star field, `grPlanet`: the planet painted once: azure bands, a hot spot
+east of noon, an ember-red night side, a haze limb drawn as whole gradient circles). `gr_props.js`: the umbrella `grUmbrella(c, L, R,
+{open, shred, wind})` (furled under 0.12, blooms open, punctures, then rags that stream downwind from the ribs, bare spokes), a cartoon
+bullet with eyes that sweats `grBullet`, `grStink`, an egg badge `grEgg`, `grTag` (a pill with a second line), `grBurst` (CLONK!). Its
+scenes.js: `grHero` (the umbrella in `pre`, his fist again in `post`, a visor tint), `grScene` (sky -> far rain -> balloon -> him ->
+basket front -> near rain), `hookA`/`hookCam` valid at negative time (the fresh umbrella pops open into frame 1), the furnace whip
+(`SC.furnace`: the camera leaves him for the star, then the balloon comes back small in front of it), the pull-back to space
+(`SC.space`: an exponential zoom from a curved horizon to the whole planet), `SC.cover` (IT RAINS / GLASS over the tearing umbrella).
+- **A local named `H` shadows the canvas height** (`const H = {face...}` in a shot): `y0: H + 80` became NaN and render.js died on
+  createRadialGradient; scene-smoke.js did not catch it (its mock canvas takes NaN). Never name a local `W` or `H`.
+- **Looking straight up from a balloon basket hits the balloon:** the first furnace shot tilted up and the envelope sat in front of the
+  star. Whip up AND sideways to the star, then pull back so the balloon is a silhouette against it (occluder in the glow layer).
+- **Cloud decks from noise strips read as frosted walls** (vertical streaks: the slope of a noisy top edge flipped the light column by
+  column); one pass of circles per puff then read as bubble wrap. Fill all puffs in one colour first (one mass), then lay each puff's lit
+  dome on with `source-atop`.
+- **An arc's ends show as a white block when the circle is huge:** the planet's haze limb was an open arc; at R ~ 2,500 px its butt
+  ends made a rectangle on the horizon. Whole circles with a gradient stroke.
+- **Something held above his head, drawn after him, shades his face:** the canopy and shaft in `post` left a dark band down his cheek in
+  the cine look; drawn in the layer's `pre` (behind him) plus a more frontal key (`key: [0.3, -0.5, 0.86]`, `cast: 0.45`) the face is clean.
+- **Pops and flashes placed by a formula can land on his face** after the camera changes: check the beat's stills again after any
+  camera edit (round 2's bead flashes washed his face white at 8.1 s).
+- Voice: 392 characters for the takes, 48 for an `eggs` retake (EGGS in capitals: the first take's last word sat 13 dB under the narration
+  in the speech band; the new one has a pause before it), 42 for a `rock` retake not kept (longer, whisper heard "glock"): 482. Render about
+  250 s for 1,024 frames (three renders: two rounds and the build).
 
 **saturn-bathtub** (29 Oct 2026, the coordinator's Short #5 of the day ("do as many videos you can"), 14:07-15:30 IST; THE NINTH CURIOUS
 SHORT of the topic test, the pill arm (23:30 slot); short arm, 70 words -> 34.03 s; hook formula The Question as a two-second guess, the
