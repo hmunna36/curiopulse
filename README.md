@@ -72,6 +72,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Can You Read While Shaking Your HEAD? | 31 s | [`videos/head-shake-reading`](videos/head-shake-reading) | [30 Oct 2026](https://youtube.com/shorts/aNBQO2osfZ4) |
 | Why Do You See a GREEN Dot That Isn't There? | 34 s | [`videos/green-dot`](videos/green-dot) | [31 Oct 2026](https://youtube.com/shorts/5IpUoD_NtS0) |
 | Why Do Wombats Poop CUBES? | 34 s | [`videos/wombat-cubes`](videos/wombat-cubes) | [31 Oct 2026](https://youtube.com/shorts/3JY_aSgAcEU) |
+| What If the Sun VANISHED Right Now? | 33 s | [`videos/sun-8-minutes`](videos/sun-8-minutes) | 1 Nov 2026 (scheduling) |
 
 Each folder has:
 - the finished MP4;

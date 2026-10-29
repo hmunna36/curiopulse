@@ -1,0 +1,59 @@
+{
+  "slug": "sun-8-minutes",
+  "file": "sun-8-minutes-short.mp4",
+  "title": "What If the Sun VANISHED Right Now? ☀️",
+  "description": "If the Sun vanished right now, you'd keep sunbathing for about eight minutes. Sunshine is light, and light takes about 8 minutes 20 seconds to cross the 150 million kilometres from the Sun to you, so the sunshine already on its way would keep arriving. Changes in gravity travel at the speed of light too, so Earth would keep circling the empty spot for those same eight minutes. Then the sky would go dark, and Earth would fly off in a straight line at about 30 kilometres a second... and you wouldn't feel a thing, because you and Earth are falling together. (Relax: the Sun can't actually vanish.) Panic or keep sunbathing?\n\nHow do we know gravity is that fast? In 2017 two neutron stars collided 130 million light-years away, and their gravitational waves and their light arrived 1.7 seconds apart.\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Space #Sun #Physics #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-01T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-11-01T11:30:00+05:30"
+  },
+  "pinnedComment": "🌌 Bonus: if you spot the Andromeda galaxy on a dark night, that light left it 2.5 million years ago, long before our species existed.\nNext up: Saturn would float in a bathtub 🪐 Subscribe so you don't miss it!\nPanic or keep sunbathing? ☀️",
+  "tags": [
+    "what if the sun disappeared",
+    "sun vanished",
+    "what if the sun vanished",
+    "8 minutes",
+    "speed of light",
+    "speed of gravity",
+    "sunlight takes 8 minutes",
+    "space facts",
+    "physics",
+    "astronomy",
+    "earth orbit",
+    "what if",
+    "science shorts",
+    "mind blowing facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "sun-8-minutes.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "If the Sun vanished right now, you'd keep sunbathing for 8 minutes. ☀️\nSunshine is a delivery: it left the Sun 8 minutes ago, and even the Sun's pull takes that long to reach us. So Earth would keep circling... nothing. Then lights out, and off we'd fly. You wouldn't even feel it.\nPanic or keep sunbathing?\nFollow @curio_pulse_tv for the next one: Saturn would float in a bathtub 🪐\n#science #space #sun #physics #funfacts #reels",
+    "coverTime": 2.4,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-11-01T11:30:00+05:30"
+  }
+}

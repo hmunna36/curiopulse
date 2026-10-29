@@ -1,0 +1,40 @@
+# Narration for "What If the Sun VANISHED Right Now? ☀️"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# A CURIOUS Short (the topic test, story.md §6): the hook is the title's question put to "you" (The
+# Question, the exact search, answered at once by The Impossible Claim): the Sun pops out of existence on "vanished",
+# and he keeps sunbathing; the answer ("you'd keep sunbathing for EIGHT minutes") starts by 5 s; the delivery
+# (sunshine is sent eight minutes ago) opens the way in; ONE mechanism picture (switch the Sun off and the
+# light already on the road keeps arriving: a ribbon of light whose dark end creeps toward him); the payoff is the
+# pull (just as slow: Earth keeps circling a chalk outline of the Sun... nothing); the weird fact is the end
+# (lights out, Earth flies off in a straight line at 30 km/s, and you wouldn't feel it); the button runs into the
+# hook ("Relax. The Sun's still there. Probably." -> "What if the Sun vanished right now?"). 72 words.
+# Nobody says "subscribe"; this is the no-pill arm (11:30 slot).
+
+## hook gap=0.10 tighten=0.30 tempo=1.00
+What if the Sun vanished right now?
+
+## answer gap=0.30 tighten=0.30 tempo=1.02
+you'd keep sunbathing for EIGHT minutes.
+
+## delivery gap=0.40 tighten=0.30 tempo=1.03
+Your sunshine is a delivery... sent eight minutes ago.
+
+## road gap=0.30 tighten=0.28 tempo=1.04
+Switch the Sun off, and the light already on the road... keeps arriving.
+
+## pull gap=0.35 tighten=0.28 tempo=1.04
+Even its PULL is that slow. So Earth keeps circling...
+
+## nothing gap=0.22 tighten=0 tempo=1.00
+nothing.
+
+## dark gap=0.45 tighten=0 tempo=1.00
+Then... lights out.
+
+## fly gap=0.60 tighten=0.28 tempo=1.05
+Earth flies off in a straight line, at thirty kilometres a second... and you wouldn't even feel it.
+
+## button gap=0.50 tighten=0.75 tempo=1.00
+Relax. The Sun's still there. Probably.
