@@ -168,6 +168,7 @@ the road's dark end and rides with it), the road sign and the scrawl, Earth at n
 on the orbit were fixed on stills. Round 2: the timer moved clear of the window, the LAST flag made readable, the fly shot's
 camera follows loosely (Earth slides across the frame) and the 0:00 timer pops out, the squint shows his eyes over the
 sunglasses, the cover made. qa.py: 33.47 s, -14.02 LUFS, -1.76 dBTP, content words 28.4 dB over the mix, WER 2.7 %.
+`src/build.sh` from the cached takes, into a fresh work folder, reproduced the MP4 byte for byte (md5 b12e7cdc…) and the SRT.
 
 ## Rebuild
 
