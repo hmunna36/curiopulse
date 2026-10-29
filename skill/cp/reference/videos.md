@@ -70,11 +70,50 @@
 | `glass-rain`: "The Planet Where It Rains GLASS Sideways ☔" | 34 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/OoeBkzXongc · 3 Nov 2026 11:30 IST | Business Suite, Instagram only, 6 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 967507022632296) |
 | `thumb-finger`: "Does Your Finger Move When You Bend Your THUMB? 👍" | 34 s (short arm; pill arm; TEST) | https://youtube.com/shorts/1Y1AgF4LMnE · 3 Nov 2026 23:30 IST | Business Suite, Instagram only, 6 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1119859203784124) |
 | `bent-wrist-fist`: "Why Can't You Make a FIST With Your Wrist Bent? ✊" | 31 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/7ZRNtkXNeS4 · 4 Nov 2026 11:30 IST | Business Suite, Instagram only, 7 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1739343171533074) |
+| `shrimp-snap`: "Can a Shrimp's Snap Get as HOT as the SUN? 🦐" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/bFFM9txGYyg · 4 Nov 2026 23:30 IST | Business Suite, Instagram only, 7 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1433323355022781) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**shrimp-snap** (29 Oct 2026, the coordinator's Short #9, the last of the day ("do as many videos you can"), 18:53-20:00 IST; THE
+ELEVENTH CURIOUS SHORT of the topic test, the pill arm (23:30 slot); the first line of the Curious queue; short arm, 67 words ->
+34.27 s; hook formula The Comparison, with something the viewer does first: "Snap your fingers... Cute." (after The Impossible
+Claim, The Direct Address, The Direct Address); answer, the impossible claim, "This shrimp's snap gets nearly as hot... as the Sun."
+at 2.62 s; button "So... never challenge a shrimp to a snap-off." into the hook (he raises his hand to snap again); caption
+question "Who wins a snap-off: you or the shrimp?"; YouTube bFFM9txGYyg, playlist Strange Nature, thumbnail + captions + playlist
+by the API, cover.jpg also into Studio's slot (the grey processing placeholder); Instagram (Business Suite, Instagram only, cover
+set) + the Page (fb.mjs 1433323355022781) 7 Nov 21:00 IST. Two QA rounds, qa.py 18/18 both; the final MP4 is build.sh's into a
+fresh work folder (mix.wav and timeline.json byte-identical).)
+World: octopus-hearts' `reef.js` (the rock moved up to his hand's height) and `diver.js` (no stethoscope), plus a new
+`ss_shrimp.js` (borrow it): a candy-striped pistol shrimp in profile facing screen-left (`ssShrimp`: antennae whips, legs, a banded
+tail, eyes that peek out from under the shell's hood with `lids` (unimpressed) / `wide` / `look`, `cock` 0..1 opens the snapping
+claw, `flex` raises it like a bodybuilder, `glow` heats the tips); the claw on its own (`ssClaw`, hinge at 0,0: a palm with a white
+band, the fixed finger with its socket, the top finger with the plunger; outlined so it reads as a pincer, not a snout);
+`ssHingeW` / `ssJetW` (world points for the jet's mouth); the slow-motion rig (`ssJet`: a tapered jet with speed streaks;
+`ssBubble`: a see-through vapour bubble with rim, window highlight and inward crush arrows sized by `unit` = 1 / zoom; `ssFlash` +
+`ssFlashGlow`: a white-hot point, rays, a shock ring and a spray of tiny bubbles); `ssSnapHand` (the hero's snapping hand at his
+wrist along his forearm: cocked = middle finger on the thumb, snapped = slammed onto the palm, with snap marks); `ssShades`
+(sunglasses over his dive mask, in head units); `ssThermo` (a thermometer whose column climbs to a Sun on top); `ssSub` (a 1943
+submarine) and `ssSonar` (a sonar scope whose sweep fills with crackle). Its scenes.js: `ssHero` (dvHero + the snapping hand +
+shades in `post`), `hookState`/`hookCam`/`hookDraw` valid at negative time, `ssSlow` (the claw angle, jet and bubble radius over
+two slow-motion passes with a REWIND between them, and the crush), `slowCam` (a dive from the hook framing into the claw), the
+pull-back from 9.5x to 2.5x as one zoom-blurred whip, `SC.cover`.
+- **A CURIOUS claim can still open with something the viewer does:** "Snap your fingers... Cute." puts the viewer's own snap in
+  the first second (the test rule's strength) and sets up the comparison the claim wins.
+- **A raised hand beside his face:** the wrist target ~150 px right of the head centre with `bendR: 1` stands the forearm up; any
+  closer and the forearm leans over his mask (the hand covered his face in the first stills).
+- **scene-smoke.js has no DOMMatrix:** reef.js's caustics (`pattern.setTransform(new DOMMatrix())`) failed every smoke frame; the
+  video's copy now guards it (`typeof DOMMatrix`), the browser render is unchanged. Guard it in any borrowed reef.js.
+- **White-outs:** a post `flash` of 0.75-0.85 washed the whole frame for several frames; 0.16-0.45 for 0.15-0.25 s plus the
+  glow-layer flash reads as a flash.
+- **A camera that pulls back from 9.5x to 2.5x passes through his giant face:** a zoom blur (`zblur` 0.14 * sin(pi * k)) over
+  the move makes it read as a whip.
+- **WER near the limit from spellings, not the voice:** whisper wrote "5,000" (the normaliser splits it into "five zero"),
+  "World War II" and "shrimp luminescence": 7.4 % with every word heard right.
+- Voice: 398 characters, one take per block, every take first time; quota.mjs showed 4,828 before (it lags by about 1,400).
+  Renders about 275 s for 1,028 frames (two full renders: round 1 and build.sh).
 
 **bent-wrist-fist** (29 Oct 2026, the coordinator's Short #8 of the day ("do as many videos you can"), 17:48-18:58 IST; a TEST Short,
 the no-pill arm (11:30 slot); the first line of the Queue, promised by thumb-finger's caption and Next-up; short arm, 71 words -> 31.40 s;
