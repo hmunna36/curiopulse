@@ -63,9 +63,9 @@ the first take's last word sat 13 dB under the narration in the speech band). Th
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 3 Nov 2026 11:30 IST |
-| Instagram Reels | Business Suite, Instagram only | (filled in after scheduling) |
-| Facebook Page | `fb.mjs reel` | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/OoeBkzXongc (scheduled; thumbnail, captions and the Strange Nature playlist by the API; cover.jpg also into Studio's thumbnail slot, which showed an automatic frame) | 3 Nov 2026 11:30 IST |
+| Instagram Reels | Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line; the Scheduled row carries the caption | 6 Nov 2026 18:30 IST |
+| Facebook Page | `fb.mjs reel` (video 967507022632296), scheduled natively (publish_status: scheduled) | 6 Nov 2026 18:30 IST |
 
 **Title:** The Planet Where It Rains GLASS Sideways ☔
 

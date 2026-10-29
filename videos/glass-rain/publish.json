@@ -36,24 +36,39 @@
   "cover": "cover.jpg",
   "captions": "glass-rain.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-03T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "OoeBkzXongc",
+    "url": "https://youtube.com/shorts/OoeBkzXongc",
+    "uploaded": "2026-10-29T11:03:04.566Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "the Studio slot showed an automatic frame (the wind shot): cover.jpg uploaded in Studio and saved (\"Changes saved\"), 29 Oct 16:49 IST"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-06T18:30:00+05:30",
     "caption": "It rains GLASS on this planet. Sideways. ☔\nHD 189733b's sky is so hot that rock steams up and falls back as glass, and winds of over 8,700 km/h blow it sideways. That glass may be why it looks so blue. (It also smells of rotten eggs.)\nUmbrella or helmet?\nFollow @curio_pulse_tv for the next one: a shrimp whose snap is hotter than the Sun's surface 🦐\n#science #space #exoplanets #astronomy #funfacts #reels",
     "coverTime": 1,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 6 Nov 2026 18:30 IST; scheduled 29 Oct 16:46 IST"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-11-03T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "967507022632296",
+    "publishAt": "2026-11-06T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T11:04:05.109Z"
   }
 }
