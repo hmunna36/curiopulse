@@ -53,8 +53,9 @@ livelier one, 10.9 semitones of pitch range against 5.1–5.7 for the others). T
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 2 Nov 2026 23:30 IST |
-| Instagram Reels + the Facebook Page | (after scheduling) | 5 Nov 2026 21:00 IST |
+| YouTube Shorts | https://youtube.com/shorts/y3lEQ0aaGkY (scheduled; thumbnail, captions and the Strange Nature playlist by the API; cover.jpg also into Studio's vertical slot) | 2 Nov 2026 23:30 IST |
+| Instagram Reels | Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line | 5 Nov 2026 21:00 IST |
+| Facebook Page | `fb.mjs reel` (video 2301697670683125), scheduled natively | 5 Nov 2026 21:00 IST |
 
 **Title:** Would SATURN Float in Your Bathtub? 🪐
 

@@ -36,24 +36,39 @@
   "cover": "cover.jpg",
   "captions": "saturn-bathtub.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-02T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "y3lEQ0aaGkY",
+    "url": "https://youtube.com/shorts/y3lEQ0aaGkY",
+    "uploaded": "2026-10-29T09:45:33.278Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "the vertical slot was still processing (a placeholder): cover.jpg uploaded in Studio and saved, 29 Oct 15:18 IST"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-05T21:00:00+05:30",
     "caption": "Drop Saturn in your bath. Sink... or float? 🪐\nIt FLOATS. Cup for cup, Saturn is lighter than water: it's mostly gas. Earth sinks, Jupiter sinks, only Saturn floats. (In real life it would probably fall apart. And leave a ring.)\nDid you guess sink or float?\nFollow @curio_pulse_tv for the next one: a planet where it rains glass sideways 🌧️\n#science #space #saturn #planets #funfacts #reels",
-    "coverTime": 1.0,
-    "shareToFeed": true
+    "coverTime": 1,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 5 Nov 2026 21:00 IST; scheduled 29 Oct 15:22 IST"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-11-02T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2301697670683125",
+    "publishAt": "2026-11-05T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T09:53:31.598Z"
   }
 }
