@@ -1,0 +1,59 @@
+{
+  "slug": "shrimp-snap",
+  "file": "shrimp-snap-short.mp4",
+  "title": "Can a Shrimp's Snap Get as HOT as the SUN? 🦐",
+  "description": "Snap your fingers. Cute. Now meet the pistol shrimp: it snaps one giant claw shut so fast that it shoots out a jet of water (about 90 km/h) and tears the water open into a bubble. The bang isn't the claw hitting anything: it's that bubble crushing itself, one of the loudest animal sounds in the sea. For a split second, the inside of the bubble gets nearly as hot as the surface of the Sun (at least about 4,700 °C, against roughly 5,500 °C for the Sun's surface), and it gives off a flash of light far too faint for your eyes. Scientists really did name it shrimpoluminescence. And in World War Two, the crackle of whole reefs of these shrimp scrambled the sonar the Navy used to hunt submarines. Who wins a snap-off: you or the shrimp?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Ocean #PistolShrimp #Animals #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-04T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "pill",
+    "test": "pill-2026-10",
+    "slot": "2026-11-04T23:30:00+05:30"
+  },
+  "pinnedComment": "🔦 Bonus: the flash is far too faint for your eyes. Scientists caught it with a light detector sensitive enough to count single particles of light.\nNext up: Cleopatra lived closer to the Moon landing than to the pyramids 🏛️ Subscribe so you don't miss it!\nWho wins a snap-off: you or the shrimp? 🦐",
+  "tags": [
+    "pistol shrimp",
+    "snapping shrimp",
+    "shrimp snap",
+    "shrimpoluminescence",
+    "cavitation bubble",
+    "hot as the sun",
+    "loudest animal",
+    "ocean facts",
+    "sea creatures",
+    "marine biology",
+    "animal facts",
+    "weird animals",
+    "science shorts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "shrimp-snap.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Snap your fingers. Cute. This shrimp's snap gets nearly as hot as the Sun. 🦐\nIts claw slams shut so fast it tears the water open into a bubble, and when the bubble crushes itself: BANG, a flash, and for a split second nearly 5,000 °C.\nWho wins a snap-off: you or the shrimp?\nFollow @curio_pulse_tv for the next one: Cleopatra vs the Moon landing 🔔\n#science #ocean #pistolshrimp #animals #funfacts #reels",
+    "coverTime": 2.36,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-11-04T23:30:00+05:30"
+  }
+}

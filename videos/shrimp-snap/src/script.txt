@@ -1,0 +1,35 @@
+# Narration for "Can a Shrimp's Snap Get as HOT as the SUN? 🦐"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# A CURIOUS Short (story.md §6) whose hook is still a thing the viewer does: snap your fingers. The answer (the
+# impossible claim) by 5 s; 67 words; nobody says "subscribe"; the button runs into the hook
+# ("...never challenge a shrimp to a snap-off." -> "Snap your fingers...").
+# Science (README claims table): Versluis et al., Science 2000 (the bang is a collapsing cavitation bubble, not the
+# claw; the jet ~25 m/s); Lohse, Schmitz & Versluis, Nature 2001 (the collapse flashes: "shrimpoluminescence",
+# at least ~5,000 K inside, i.e. ~4,700 °C; the Sun's surface ~5,500 °C); WHOI (WWII: the crackle interfered with
+# Navy sonar). No capitals on short words ("APE." was spelled out once); "SUN" and "BANG" are written lowercase.
+
+## hook gap=0.10 tighten=0.55 tempo=1.00
+Snap your fingers... Cute.
+
+## answer gap=0.55 tempo=1.00
+This shrimp's snap gets nearly as hot... as the Sun.
+
+## bang gap=0.32 tempo=1.03
+That bang isn't the claw. It's a BUBBLE.
+
+## slam gap=0.30 tempo=1.06
+The claw slams so fast, it rips the water open...
+
+## pop gap=0.12 tempo=1.06
+then the bubble crushes itself. Bang! Nearly five thousand degrees.
+
+## flash gap=0.38 tempo=1.03
+It even flashes. Scientists named it... shrimpoluminescence.
+
+## navy gap=0.32 tempo=1.05
+In World War Two, their crackle scrambled the Navy's sonar.
+
+## button gap=0.45 tighten=0.36 tempo=1.00
+So... never challenge a shrimp to a snap-off.
