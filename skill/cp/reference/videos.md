@@ -69,11 +69,49 @@
 | `saturn-bathtub`: "Would SATURN Float in Your Bathtub? 🪐" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/y3lEQ0aaGkY · 2 Nov 2026 23:30 IST | Business Suite, Instagram only, 5 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2301697670683125) |
 | `glass-rain`: "The Planet Where It Rains GLASS Sideways ☔" | 34 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/OoeBkzXongc · 3 Nov 2026 11:30 IST | Business Suite, Instagram only, 6 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 967507022632296) |
 | `thumb-finger`: "Does Your Finger Move When You Bend Your THUMB? 👍" | 34 s (short arm; pill arm; TEST) | https://youtube.com/shorts/1Y1AgF4LMnE · 3 Nov 2026 23:30 IST | Business Suite, Instagram only, 6 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1119859203784124) |
+| `bent-wrist-fist`: "Why Can't You Make a FIST With Your Wrist Bent? ✊" | 31 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/7ZRNtkXNeS4 · 4 Nov 2026 11:30 IST | Business Suite, Instagram only, 7 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1739343171533074) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**bent-wrist-fist** (29 Oct 2026, the coordinator's Short #8 of the day ("do as many videos you can"), 17:48-18:58 IST; a TEST Short,
+the no-pill arm (11:30 slot); the first line of the Queue, promised by thumb-finger's caption and Next-up; short arm, 71 words -> 31.40 s;
+hook formula The Direct Address as the test: "Bend your wrist all the way down." / "Now squeeze a tight fist." (after The Direct Address,
+The Impossible Claim, The Impossible Claim); answer, a true claim and a metaphor, "Can't? Your fingers have no muscles. They're... puppets."
+at 4.75 s; button "Now bend it down again... and watch the puppet flop." into the hook; caption question "Could you make a fist? Yes or
+no?"; YouTube 7ZRNtkXNeS4, playlist Why Does Your Body Do That?, thumbnail + captions + playlist by the API, cover.jpg also into Studio's
+slot (the grey processing placeholder); Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs 1739343171533074) 7 Nov
+18:30 IST. Three QA rounds, qa.py 18/18 in rounds 2 and 3; the final MP4 is build.sh's into a fresh work folder (mix.wav and timeline.json
+byte-identical).)
+World: mosquito-bites' `camp.js` (the campsite at night, `CAMPPAL` sleeves pushed up) and one-finger's `fist3d.js` (the 3D hand), plus a
+new `bwhand.js` (borrow it): a wrist that bends (`bwRot`: the hand frame turns about its x axis through the wrist; `bwProj(V, th)` gives
+`pa` for arm-frame points and `ph` for hand-frame points), the forearm as an oval tube (`bwArmRing`, a hull of rings with the flexor bulge
+on the palm side, `bulge`) and the wrist joint as a hull of the end rings and a ball (`bwJointOutline`), both as depth-sorted items for
+fkDraw (`bwArmItems`, `bwDraw`); the finger-closing strings from a puppet's control bar in the forearm over the wrist to each fingertip
+(`bwStrings`: `slack` waves, `glow`, beads that ride with the bar), marionette strings from the fingertips up out of the frame (`bwTies`,
+`jig`), the puppeteer (`bwPuppeteer`: the forearm muscle as a little character anchored in the forearm, holding the bar (`bar` callback
+between his body and his arms), moods calm / happy / strain / worry / pant / shock / proud / sleep, `wave`, `lift`, a nightcap `cap`),
+`bwBar`, `bwGlass` (hand + forearm as rosy glass), `bwStickItems` (a marshmallow stick across the palm, in pieces so the fingers wrap
+round it; `drop` falls in screen space). Its scenes.js: ONE state for the whole Short (`bwS(t)`, valid at negative time for the loop;
+every SC.<id> draws from it, so the hand never jumps at a cut), `bwCam` / `bwAng` (the 2D camera with rotation, the hand's yaw and pitch),
+`bwView` (the 3D camera tied to the 2D one: see below), `bwHero` (campChar, the rig's arm on the screen's right hidden), `bwUpperArm`
+(the sleeve from the rig's shoulder to the projected elbow), `bwTag`, `bwBurst`, `bwShake`, `SC.loop`, `SC.cover`.
+- **A 3D forearm that stays on a 2D hero:** put the wrist and the elbow in WORLD coordinates (`BW_WR`, `BW_EL`), take the 3D camera's
+  target screen point from the 2D camera (`toScreen(cam, wrist)`), its scale from the zoom (`f = px_per_cm * D * zoom / 2.9`) and its
+  roll from the wrist-to-elbow direction on screen, and draw the upper arm from the rig's shoulder to the projected elbow. Every 2D camera
+  move (zoom, pan, a Dutch tilt for the glass shots) then carries the hand with him.
+- **The rig's 'L' and 'R' are SCREEN sides** (`hideArm: 'R'` hides the arm on the right of the frame: his anatomical left).
+- **"See" was aligned to its "s" only:** qa.py's voice check failed it at -14.6 dB in the speech band (the hiss is above 4 kHz, the vowel
+  0.1 s later); make_timeline.py now moves it onto the first speech-band burst (`T.bursts`). Read qc_inband's "short window" flags on
+  sibilant words as this, not as a quiet take.
+- **"Puppets" reads as strings that rise from the fingertips** out of the frame (a marionette); the same strings drawn along the fingers
+  read as glowing fingers. A puppeteer that moves with his bar reads as sliding; anchored, with the bar coming down to his chest, he hauls.
+- **A cartoon head is wide:** at zoom 3.2 the hiker's head was ~460 px across, so a face plus a hand beside it did not fit the key zone;
+  zoom 3.0 and the wrist closer to the face fixed both edges.
+- Voice: 419 characters, one take per block, no retakes; quota.mjs showed 5,014 before (it lags; about 3,400 really left after).
+  Renders about 215 s for 942 frames (three full renders: two rounds and the build).
 
 **thumb-finger** (29 Oct 2026, the coordinator's Short #7 of the day ("do as many videos you can"), 16:45-17:50 IST; a TEST Short, the
 pill arm (23:30 slot); the first line of the Queue, promised by lemon-mouth-water's caption and Next-up; short arm, 74 words -> 33.60 s;
