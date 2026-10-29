@@ -51,9 +51,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block, every take f
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after the upload) | 4 Nov 2026 23:30 IST |
-| Instagram Reels | (Business Suite) | (after the upload) |
-| Facebook Page | (`fb.mjs reel`) | the same slot as Instagram |
+| YouTube Shorts | https://youtube.com/shorts/bFFM9txGYyg | 4 Nov 2026 23:30 IST (scheduled by the Data API; thumbnail, captions and the playlist set by the API; cover.jpg also uploaded into Studio's vertical slot, which showed the processing placeholder) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover, caption typed line by line) | 7 Nov 2026 21:00 IST |
+| Facebook Page | CurioPulse (`fb.mjs reel`, video 1433323355022781) | 7 Nov 2026 21:00 IST |
 
 **Title:** Can a Shrimp's Snap Get as HOT as the SUN? 🦐
 
