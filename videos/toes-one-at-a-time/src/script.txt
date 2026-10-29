@@ -1,0 +1,41 @@
+# Narration for "Why Won't Your TOES Move One at a Time? 🦶"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses (jokes, reveals). tempo 1.03-1.06 for explanations, 1.00 for jokes.
+# Rules (reference/narration.md, reference/story.md): talk to ONE friend; the hook is the test; `answer` starts by
+# 5.0 s; no science word in the first 15 s; nobody says "subscribe" (this 23:30 Short gets the pill test's short
+# silent pill over its last 2.4 s: timeline_lib.py sets it); the last block is the button and the Short loops.
+
+# The test (rules of 15 Oct 2026): sitting, foot flat, socks fine: lift only the big toe (easy: it has its own lifting
+# muscle), then only the next toe: the other three come with it (the four small toes are lifted by ONE long muscle
+# that splits into four tendons). Then curl them: the same again underneath (one long curling muscle, four tendons).
+# Hook formula: The Direct Address as the test ("Lift your big toe..."); the answer starts by 5.0 s; the button sends
+# them back to the test ("Big toe first...") and runs into the hook. 69 words (the short arm: 66-76).
+
+## hook gap=0.03 tighten=0.12 tempo=1.04
+Lift your big toe. Easy.
+
+## next gap=0.22 tighten=0.20 tempo=1.04
+Now lift JUST the next one.
+
+## answer gap=0.42 tighten=0.30 tempo=1.00
+The whole gang came, right? They share ONE string.
+
+## own gap=0.45 tighten=0.25 tempo=1.04
+Your big toe has its own muscle.
+
+## four gap=0.22 tighten=0.30 tempo=1.03
+The other four? ONE muscle... four strings.
+
+## curl gap=0.42 tighten=0.25 tempo=1.04
+Now curl them. Same deal underneath.
+
+## brain gap=0.36 tighten=0.25 tempo=1.05
+Your brain's no help: scans found no neat spot for each toe.
+
+## artists gap=0.34 tighten=0.30 tempo=1.03
+But two foot-painting artists, born without arms, had one for EVERY toe.
+
+## button gap=0.60 tighten=0.30 tempo=1.00
+So... practise. Big toe first.
