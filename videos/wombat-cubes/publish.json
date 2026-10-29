@@ -36,24 +36,42 @@
   "cover": "cover.jpg",
   "captions": "wombat-cubes.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-10-31T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "3JY_aSgAcEU",
+    "url": "https://youtube.com/shorts/3JY_aSgAcEU",
+    "uploaded": "2026-10-29T04:17:55.407Z",
+    "thumbnailSet": true,
+    "playlistSet": true,
+    "captionsSet": true,
+    "captionsVia": "studio",
+    "captionsNote": "captions.insert was refused with quotaExceeded (the shared Data API quota, 29 Oct 09:48 IST); the SRT was uploaded in YouTube Studio instead (Subtitles > Upload file > With timing): 'English subtitles published' 10:06 IST",
+    "studioThumbnail": "cover.jpg uploaded in Studio (the vertical slot showed an automatic frame): 'Changes saved'"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-03T21:00:00+05:30",
     "caption": "Don't eat that cube you found. It's wombat poop. 🟫\nAnd no, its butt isn't square: the corners are made inside its gut, where two stiff stripes squeeze in faster than the rest. Wombats leave the cubes on rocks like little notes, and scientists think a cube won't roll off.\nWould you have eaten it? Yes or no?\nFollow @curio_pulse_tv for the next one: you'd still see the Sun for 8 minutes after it vanished ☀️\n#science #nature #wombat #animals #funfacts #reels",
     "coverTime": 2.75,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-29T10:01:00+05:30",
+    "coverSet": true
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-10-31T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2336367837139924",
+    "publishAt": "2026-11-03T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T04:19:32.569Z"
   }
 }
