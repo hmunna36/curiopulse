@@ -76,9 +76,9 @@ and `tempo` (all free) brought it to 33.6 s and the answer to 4.86 s. The `ape` 
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 3 Nov 2026 23:30 IST |
-| Instagram Reels | Business Suite, Instagram only | (after scheduling) |
-| Facebook Page (CurioPulse) | `fb.mjs reel` | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/1Y1AgF4LMnE | 3 Nov 2026 23:30 IST (scheduled by the Data API; thumbnail, captions and the playlist Why Does Your Body Do That? by the API; Studio's vertical thumbnail slot showed an automatic frame, so cover.jpg was uploaded there too, "Changes saved") |
+| Instagram Reels | Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line; Content → Scheduled lists it with the caption as its title | 6 Nov 2026 21:00 IST |
+| Facebook Page (CurioPulse) | video 1119859203784124, scheduled natively by `fb.mjs reel` (status: ready, scheduled) | 6 Nov 2026 21:00 IST |
 
 **Title:** Does Your Finger Move When You Bend Your THUMB? 👍
 
@@ -101,7 +101,7 @@ finger's tip bends with it (in most it doesn't, which is the other answer).
 **Answer line (spoken, starts by 5 s):** "Moved? Your thumb's got a clingy little SIDEKICK." at 4.86 s.
 **The loop:** "...It might be less ape." runs into "Bend just your thumb..."; the silent pill (pill arm), nobody says
 "subscribe".
-**Cover:** [`cover.jpg`](cover.jpg), `SC.cover` ("DID IT / MOVE?").
+**Cover:** [`cover.jpg`](cover.jpg), `SC.cover` ("DID IT / MOVE?"), also in Studio's vertical slot and as the Reel's cover.
 
 ## Story and shots
 

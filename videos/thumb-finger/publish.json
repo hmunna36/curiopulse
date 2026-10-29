@@ -36,24 +36,39 @@
   "cover": "cover.jpg",
   "captions": "thumb-finger.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-03T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "1Y1AgF4LMnE",
+    "url": "https://youtube.com/shorts/1Y1AgF4LMnE",
+    "uploaded": "2026-10-29T12:06:43.143Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "the vertical slot showed an automatic frame (POINTER FOLLOWS at 15.6 s): cover.jpg uploaded in Studio and saved, 29 Oct 17:44 IST"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-06T21:00:00+05:30",
     "caption": "Bend just your thumb all the way across your palm. 👍\nDid your pointer finger move too? A tiny strap can tie their two strings together: thumb pulls, pointer follows. In gorillas they're one string.\nDid your finger move? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't make a fist with your wrist bent ✊\n#science #humanbody #thumb #hands #funfacts #reels",
-    "coverTime": 2.0,
-    "shareToFeed": true
+    "coverTime": 2,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 6 Nov 2026 21:00 IST; scheduled 29 Oct 17:52 IST"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-11-03T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1119859203784124",
+    "publishAt": "2026-11-06T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T12:07:37.314Z"
   }
 }
