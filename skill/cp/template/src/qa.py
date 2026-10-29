@@ -236,7 +236,9 @@ SPELL = {"chili": "chilli", "chilis": "chillies", "chilies": "chillies", "chiles
          # whisper writes a spoken number as digits ("number 10", "30 feet", "100 times"): the word was said right
          "1": "one", "2": "two", "3": "three", "4": "four", "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine",
          "10": "ten", "11": "eleven", "12": "twelve", "20": "twenty", "30": "thirty", "40": "forty", "50": "fifty",
-         "100": "hundred", "1000": "thousand", "smelier": "smellier"}
+         "100": "hundred", "1000": "thousand", "smelier": "smellier",
+         # whisper drops a possessive's apostrophe, or its s before an s ("thumb's string" -> "thumb string"): one word
+         "thumb's": "thumb", "pointer's": "pointers"}
 
 
 def _num_words(n):

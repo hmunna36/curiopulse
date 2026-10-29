@@ -68,11 +68,52 @@
 | `lemon-mouth-water`: "Why Does Your Mouth Water When You Imagine a LEMON? 🍋" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/rv4yQoSwWUE · 2 Nov 2026 11:30 IST | Business Suite, Instagram only, 5 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4414463775473675) |
 | `saturn-bathtub`: "Would SATURN Float in Your Bathtub? 🪐" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/y3lEQ0aaGkY · 2 Nov 2026 23:30 IST | Business Suite, Instagram only, 5 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2301697670683125) |
 | `glass-rain`: "The Planet Where It Rains GLASS Sideways ☔" | 34 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/OoeBkzXongc · 3 Nov 2026 11:30 IST | Business Suite, Instagram only, 6 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 967507022632296) |
+| `thumb-finger`: "Does Your Finger Move When You Bend Your THUMB? 👍" | 34 s (short arm; pill arm; TEST) | https://youtube.com/shorts/1Y1AgF4LMnE · 3 Nov 2026 23:30 IST | Business Suite, Instagram only, 6 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1119859203784124) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**thumb-finger** (29 Oct 2026, the coordinator's Short #7 of the day ("do as many videos you can"), 16:45-17:50 IST; a TEST Short, the
+pill arm (23:30 slot); the first line of the Queue, promised by lemon-mouth-water's caption and Next-up; short arm, 74 words -> 33.60 s;
+hook formula The Direct Address as the test, then the title's question: "Bend just your thumb all the way across your palm." / "Did your
+pointer finger move?" (after The Impossible Claim, The Impossible Claim, The Direct Address); answer, a metaphor, "Moved? Your thumb's got a
+clingy little SIDEKICK." at 4.86 s; button "Now try your OTHER hand. It might be less ape." into the hook (the strap is often in one hand
+only); caption question "Did your finger move? Yes or no?"; YouTube 1Y1AgF4LMnE, playlist Why Does Your Body Do That?, thumbnail + captions
++ playlist by the API, cover.jpg also into Studio's slot (it showed an automatic frame); Instagram (Business Suite, Instagram only, cover
+set) + the Page (fb.mjs 1119859203784124) 6 Nov 21:00 IST. Three QA rounds; the final MP4 is build.sh's into a fresh work folder (mix.wav
+and timeline.json byte-identical).)
+World: wrist-tendon's `wtroom.js` (the living room seen from the TV; a brick-red T-shirt; a new `pre` step in wtHero's charLayer for what
+stands behind him) and two new files (borrow them). `tfhand.js`: wrist-tendon's palm-to-us hand and forearm in hand units, with the thumb
+in three bones that folds across the palm (`tb`: angles from TF_TH.rest to TF_TH.bent, so it never shrinks), the pointer in three bones
+whose tip curls (`curl`: it leans in toward the middle finger and the tip foreshortens; a sideways bend toward the thumb read as a broken
+finger), a face on the pointer's tip (`face`, moods happy / love / whee / sad, `look`, `wave`: the sidekick, paint), the glass with two
+muscles and two strings (the thumb's orange, the pointer's cyan; beads that slide toward the elbow with `pull` / `pullI`), the strap (a
+chunky yellow belt with a buckle and a loop round each string, `strap`, `strapGlow`; `ghost` = a dashed outline: no strap) and the gorilla
+mode (`fork`: ONE string that splits in the palm to the pointer and the thumb); `tfStrings`, `tfXAt`, `tfAt`/`tfLens` (a point at an
+arclength). `gorilla.js`: a cartoon western lowland gorilla from the front (`tfGorilla`: crest, brow ridge, leathery face, big nostrils,
+`grin`, `huff`, `brow`, `look`, `blink`, `drum` (both fists on its chest, `drumT`), a raised arm on either side (`armSide`) whose hand is
+`wtHand` in `GORPAL` (dark skin, fur strokes on the forearm, a dark glass)). Its scenes.js: `handState(t)` (the test hand's whole state for
+every shot, valid at negative time), `heroHandPt(t, key)` (a hand point in world coordinates without drawing, for camera targets: the
+strap close-up and the pointer close-up aim at it), `tfSay` (a speech bubble: ME TOO!), `tfRing`, `tfMarks`, `tfSpot`, `SC.loop`, `SC.cover`.
+- **A second character beside the hero, drawn on HIS layer:** drawn after him it is foreground (and covers his raised other hand); drawn
+  before him on the main canvas it is set (dimmed, out of focus). wtHero's charLayer now takes `pre` (kit.js already called it): the gorilla
+  is drawn there, lit as an actor, sharp, and his hands come in front of it.
+- **"APE." in capitals was spelled out A-P-E by v3** (1.2 s for one word, whisper wrote "A-P-E"): a short word in capitals can be read as an
+  acronym. The lowercase retake said the word (62 characters).
+- **qa.py's whisper pieces can drop the first word of a piece:** the cut fell in the 0.38 s comic pause before "ape.", and whisper's
+  second piece began "Now try..." (the word was there: whisper heard it on its own). With the compound splits ("side kick", "left over")
+  and two possessives that cost 8.1 % WER; SPELL now maps "thumb's" and "pointer's" (whisper drops the apostrophe or the s before an s),
+  in the template too: 5.4 %.
+- **v3 put "see those strings?" early after a tightened pause:** qa.py read "see" at -13 dB (its window was silence); `T.retime` moved the
+  three words onto their three bursts (narration.md's tool, first used on tongue-nose).
+- **The effects bus is peak-normalised (again):** turning the chest drum down raised every other gag 2-3 dB; set the bus with
+  `levels={"sfx": -12}` and measure each gag in its gap (-16...-20 dB against the narrator's -16.7).
+- **A camera hand-over into the loop passes the last caption:** the lifted caption (y 1150, it shares the screen with the pill) is still up
+  0.55 s after "ape."; start the move to the hook's camera a little earlier and keep the hook's framing so his face lands above y 1050.
+- Voice: 430 characters for the takes + 62 for the `ape` retake = 492; quota.mjs showed 5,231 before and 5,014 after (it lags; about
+  3,800 really left). Renders about 220 s for 1,008 frames (three renders: two rounds and the build).
 
 **glass-rain** (29 Oct 2026, the coordinator's Short #6 of the day ("do as many videos you can"), 15:30-16:55 IST; THE TENTH CURIOUS
 SHORT of the topic test, the no-pill arm (11:30 slot); short arm, 66 words -> 34.13 s; hook formula The Impossible Claim with The Warning's

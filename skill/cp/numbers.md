@@ -1,8 +1,8 @@
 # CurioPulse numbers
 
-Written by `yt.mjs numbers` on 2026-10-29 15:29 IST. Do not edit: every /cp run rewrites it. How to read it: `reference/analytics.md`.
+Written by `yt.mjs numbers` on 2026-10-29 16:45 IST. Do not edit: every /cp run rewrites it. How to read it: `reference/analytics.md`.
 
-**Channel:** 486 subscribers (+4 since the log of 2026-10-29 14:07 IST) · 49 public videos, 11 scheduled.
+**Channel:** 489 subscribers (+3 since the log of 2026-10-29 15:29 IST) · 48 public videos, 12 scheduled.
 Views and likes are the public counters, live. Stayed, viewed and subscribers come from YouTube Analytics, which runs about two days behind: a dash means YouTube has not processed that day yet.
 
 ## The length test (length-2026-10, 2026-10-06 23:30 IST to 2026-10-16 11:30 IST), and the Shorts since
@@ -14,11 +14,10 @@ During the test a Short in a 23:30 slot was built to 30-35 s, one in an 11:30 sl
 | Group | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views |
 |---|---|---|---|---|---|---|
 | PILL TEST · pill (23:30) | 4 | 4735 (2) | 52.8 % | 78.4 % | 26 s | 1.1 (2) |
-| PILL TEST · no pill (11:30) | 4 | 9061 (2) | 56.5 % | 90.0 % | 28 s | 1.4 (1) |
-| since 16 Oct · 30-35 s, the test | 18 | 23942 (18) | 54.1 % | 87.7 % | 28 s | 0.6 (18) |
+| PILL TEST · no pill (11:30) | 4 | 9084 (2) | 56.5 % | 90.0 % | 28 s | 1.4 (1) |
+| since 16 Oct · 30-35 s, the test | 18 | 23952 (18) | 54.1 % | 87.7 % | 28 s | 0.6 (18) |
 | TEST · short arm (30-35 s) | 10 | 5881 (10) | 57.9 % | 76.4 % | 25 s | 1.9 (10) |
-| TEST · standard arm (45-50 s) | 9 | 2916 (9) | 58.6 % | 61.5 % | 29 s | 1.7 (9) |
-| before · 46-50 s · 11:30 slot | 1 | 2151 (1) | 55.9 % | 65.2 % | 32 s | 4.2 (1) |
+| TEST · standard arm (45-50 s) | 8 | 3089 (8) | 58.1 % | 62.6 % | 30 s | 1.7 (8) |
 
 In brackets: how many Shorts the figure rests on. Analytics figures count a Short once YouTube has processed 200 of its views.
 
@@ -28,10 +27,10 @@ Each arm sits in one slot, and the slots differ by themselves, so read each arm 
 
 | Slot | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views | Middle views per Short | Middle subs per 1,000 |
 |---|---|---|---|---|---|---|---|---|
-| 23:30 · before (16 Oct to the test, no pill) | 9 | 10745 (9) | 55.7 % | 88.1 % | 29 s | 1.0 (9) | 8420 | 0.8 |
+| 23:30 · before (16 Oct to the test, no pill) | 9 | 10746 (9) | 55.7 % | 88.1 % | 29 s | 1.0 (9) | 8420 | 0.8 |
 | 23:30 · the test (pill) | 4 | 4735 (2) | 52.8 % | 78.4 % | 26 s | 1.1 (2) | 4735 | 1.0 |
-| 11:30 · before (16 Oct to the test, no pill) | 9 | 37138 (9) | 53.6 % | 87.3 % | 27 s | 0.4 (9) | 10085 | 0.7 |
-| 11:30 · the test (no pill) | 4 | 9061 (2) | 56.5 % | 90.0 % | 28 s | 1.4 (1) | 9061 | 1.4 |
+| 11:30 · before (16 Oct to the test, no pill) | 9 | 37157 (9) | 53.6 % | 87.3 % | 27 s | 0.4 (9) | 10085 | 0.7 |
+| 11:30 · the test (no pill) | 4 | 9084 (2) | 56.5 % | 90.0 % | 28 s | 1.4 (1) | 9084 | 1.4 |
 
 ### The topic test (kind-2026-10): test Shorts against curious Shorts
 
@@ -39,8 +38,8 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 
 | Kind | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views | Middle views per Short | Middle subs per 1,000 |
 |---|---|---|---|---|---|---|---|---|
-| test (body, mind, screen) | 4 | 3160 (2) | 58.9 % | 71.7 % | 23 s | 0.7 (1) | 3160 | 0.7 |
-| curious (the world) | 4 | 10636 (2) | 54.7 % | 87.5 % | 28 s | 1.4 (2) | 10636 | 1.3 |
+| test (body, mind, screen) | 4 | 3180 (2) | 58.9 % | 71.7 % | 23 s | 0.7 (1) | 3180 | 0.7 |
+| curious (the world) | 4 | 10640 (2) | 54.7 % | 87.5 % | 28 s | 1.4 (2) | 10640 | 1.3 |
 
 ## Every upload (newest first)
 
@@ -49,6 +48,7 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 | Released (IST) | Length | Group | Views | Likes | Counted | Stayed | Avg % viewed | Avg s | Subs | Per 1,000 | Title |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-11-15 17:30 (scheduled) | 273 s | long-form | 2 | 0 | 2 | – | – | – | – | – | [What Happens If You Stop Eating? (Day by Day)](https://youtu.be/rPzNcr3Is98) |
+| 2026-11-03 11:30 (scheduled) | 35 s | PILL TEST · no pill (11:30) | 0 | 0 | – | – | – | – | – | – | [The Planet Where It Rains GLASS Sideways ☔](https://youtu.be/OoeBkzXongc) |
 | 2026-11-02 23:30 (scheduled) | 35 s | PILL TEST · pill (23:30) | 0 | 0 | – | – | – | – | – | – | [Would SATURN Float in Your Bathtub? 🪐](https://youtu.be/y3lEQ0aaGkY) |
 | 2026-11-02 11:30 (scheduled) | 34 s | PILL TEST · no pill (11:30) | 0 | 0 | – | – | – | – | – | – | [Why Does Your Mouth Water When You Imagine a LEMON? 🍋](https://youtu.be/rv4yQoSwWUE) |
 | 2026-11-01 23:30 (scheduled) | 34 s | PILL TEST · pill (23:30) | 0 | 0 | – | – | – | – | – | – | [Can You Say MIT's HARDEST Tongue Twister? 👅](https://youtu.be/JAVcSxxWldY) |
@@ -59,32 +59,32 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 | 2026-10-30 23:30 (scheduled) | 32 s | PILL TEST · pill (23:30) | 0 | 0 | – | – | – | – | – | – | [Why Can You Read While Shaking Your HEAD? 👀](https://youtu.be/aNBQO2osfZ4) |
 | 2026-10-30 11:30 (scheduled) | 32 s | PILL TEST · no pill (11:30) | 0 | 0 | – | – | – | – | – | – | [Why Does an Octopus Have THREE Hearts? 🐙](https://youtu.be/ZGudFA0cQuM) |
 | 2026-10-29 23:30 (scheduled) | 34 s | PILL TEST · pill (23:30) | 0 | 0 | – | – | – | – | – | – | [How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄](https://youtu.be/4xcvqM40WhM) |
-| 2026-10-29 11:30 | 32 s | PILL TEST · no pill (11:30) | 232 | 5 | – | – | – | – | – | – | [Why Do Your Ears RUMBLE When You Yawn? 👂](https://youtu.be/6QOky2URd9k) |
-| 2026-10-28 23:30 | 34 s | PILL TEST · pill (23:30) | 1464 | 25 | 1 | – | – | – | – | – | [Why Can't You Pat Your Head and Rub Your TUMMY? 🤚](https://youtu.be/27B-0yL0PkI) |
-| 2026-10-28 11:30 | 34 s | PILL TEST · no pill (11:30) | 11467 | 239 | 2 | – | – | – | – | – | [Sharks Are Older Than TREES 🦈](https://youtu.be/ax-W5RVgnJg) |
-| 2026-10-27 23:30 | 35 s | PILL TEST · pill (23:30) | 10693 | 201 | 2 | – | – | – | – | – | [If You Fell Into JUPITER, You'd Never Hit the Ground 🪐](https://youtu.be/lVK_uraLavc) |
-| 2026-10-27 11:30 | 34 s | PILL TEST · no pill (11:30) | 3906 | 109 | 75 | – | – | – | – | – | [Why Can't You Raise Just ONE Finger? ☝️](https://youtu.be/I4272g9UqZE) |
+| 2026-10-29 11:30 | 32 s | PILL TEST · no pill (11:30) | 234 | 5 | – | – | – | – | – | – | [Why Do Your Ears RUMBLE When You Yawn? 👂](https://youtu.be/6QOky2URd9k) |
+| 2026-10-28 23:30 | 34 s | PILL TEST · pill (23:30) | 1684 | 28 | 1 | – | – | – | – | – | [Why Can't You Pat Your Head and Rub Your TUMMY? 🤚](https://youtu.be/27B-0yL0PkI) |
+| 2026-10-28 11:30 | 34 s | PILL TEST · no pill (11:30) | 12603 | 254 | 2 | – | – | – | – | – | [Sharks Are Older Than TREES 🦈](https://youtu.be/ax-W5RVgnJg) |
+| 2026-10-27 23:30 | 35 s | PILL TEST · pill (23:30) | 11236 | 206 | 2 | – | – | – | – | – | [If You Fell Into JUPITER, You'd Never Hit the Ground 🪐](https://youtu.be/lVK_uraLavc) |
+| 2026-10-27 11:30 | 34 s | PILL TEST · no pill (11:30) | 3945 | 108 | 75 | – | – | – | – | – | [Why Can't You Raise Just ONE Finger? ☝️](https://youtu.be/I4272g9UqZE) |
 | 2026-10-26 23:30 | 33 s | PILL TEST · pill (23:30) | 2414 | 32 | 1397 | 58.9 % | 71.7 % | 23 | 1 | 0.7 | [Can You Make Your Eyes SHAKE on Purpose? 👀](https://youtu.be/6Y0ZurlxUio) |
-| 2026-10-26 11:30 | 32 s | PILL TEST · no pill (11:30) | 14216 | 264 | 11043 | 56.5 % | 90.0 % | 28 | 16 | 1.4 | [Why Is a Day on Venus LONGER Than Its Year? 🎂](https://youtu.be/zdmZmB1AJBQ) |
+| 2026-10-26 11:30 | 32 s | PILL TEST · no pill (11:30) | 14223 | 264 | 11043 | 56.5 % | 90.0 % | 28 | 16 | 1.4 | [Why Is a Day on Venus LONGER Than Its Year? 🎂](https://youtu.be/zdmZmB1AJBQ) |
 | 2026-10-25 23:30 | 33 s | PILL TEST · pill (23:30) | 7056 | 73 | 5856 | 51.3 % | 85.0 % | 28 | 7 | 1.2 | [Why Does Lake Natron Turn Animals Into STATUES? 🦩](https://youtu.be/HYIP2vEE1Gc) |
-| 2026-10-25 17:30 | 274 s | long-form | 247 | 2 | 177 | – | – | – | – | – | [What If You Went to Space WITHOUT a Suit? (Second by Second)](https://youtu.be/KpftORrT9_A) |
+| 2026-10-25 17:30 | 274 s | long-form | 248 | 2 | 177 | – | – | – | – | – | [What If You Went to Space WITHOUT a Suit? (Second by Second)](https://youtu.be/KpftORrT9_A) |
 | 2026-10-25 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 6094 | 50 | 5868 | 54.3 % | 77.1 % | 24 | 5 | 0.9 | [Why Can't You See Your Own EYES Move in a Mirror? 👀](https://youtu.be/VgHmLADdE7w) |
-| 2026-10-24 23:30 | 33 s | since 16 Oct · 30-35 s, the test | 23530 | 410 | 22841 | 56.6 % | 98.1 % | 32 | 53 | 2.3 | [Why Can't Your Tongue Touch Your NOSE? 👅](https://youtu.be/N1vgcsMvZjI) |
-| 2026-10-24 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 43939 | 468 | 38453 | 55.9 % | 101.2 % | 32 | 19 | 0.5 | [Why Can't You Draw a Circle and a Line at the SAME Time? ⭕](https://youtu.be/XCPq2xvL02w) |
+| 2026-10-24 23:30 | 33 s | since 16 Oct · 30-35 s, the test | 23532 | 410 | 22841 | 56.6 % | 98.1 % | 32 | 53 | 2.3 | [Why Can't Your Tongue Touch Your NOSE? 👅](https://youtu.be/N1vgcsMvZjI) |
+| 2026-10-24 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 43965 | 468 | 38453 | 55.9 % | 101.2 % | 32 | 19 | 0.5 | [Why Can't You Draw a Circle and a Line at the SAME Time? ⭕](https://youtu.be/XCPq2xvL02w) |
 | 2026-10-23 23:30 | 34 s | since 16 Oct · 30-35 s, the test | 6404 | 65 | 6287 | 53.9 % | 74.2 % | 25 | 7 | 1.1 | [Why Does Your Voice Go DEEP With Fingers in Your Ears? 👂](https://youtu.be/sFx9o5nAFXE) |
 | 2026-10-23 11:30 | 31 s | since 16 Oct · 30-35 s, the test | 7413 | 99 | 7322 | 56.2 % | 91.2 % | 28 | 6 | 0.8 | [Why Can't Most People WIGGLE Their Ears? 👂](https://youtu.be/2cczUGi_viI) |
 | 2026-10-22 23:30 | 32 s | since 16 Oct · 30-35 s, the test | 20731 | 269 | 20605 | 55.1 % | 91.4 % | 29 | 10 | 0.5 | [Why Can't You Raise Just ONE Eyebrow? 🤨](https://youtu.be/mkp42FARp0c) |
 | 2026-10-22 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 14938 | 138 | 14786 | 54.7 % | 85.2 % | 27 | 5 | 0.3 | [Why Do Some People Have NO Wrist Tendon? 🖐️](https://youtu.be/qU0s1Isj7BA) |
-| 2026-10-21 23:30 | 33 s | since 16 Oct · 30-35 s, the test | 6399 | 71 | 6223 | 54.3 % | 88.6 % | 29 | 5 | 0.8 | [Why Can't You TICKLE Yourself? (Try It Now) 🤭](https://youtu.be/VtqzIWIHoRY) |
+| 2026-10-21 23:30 | 33 s | since 16 Oct · 30-35 s, the test | 6403 | 71 | 6223 | 54.3 % | 88.6 % | 29 | 5 | 0.8 | [Why Can't You TICKLE Yourself? (Try It Now) 🤭](https://youtu.be/VtqzIWIHoRY) |
 | 2026-10-20 23:30 | 35 s | since 16 Oct · 30-35 s, the test | 5364 | 74 | 5342 | 63.7 % | 75.9 % | 26 | 4 | 0.7 | [Why Is There a SAUSAGE Between Your Fingers? 🌭](https://youtu.be/L08J-VnxDlg) |
-| 2026-10-20 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 223822 | 1621 | 213344 | 53.0 % | 102.2 % | 32 | 70 | 0.3 | [Why Is the Vulcan Salute So HARD? 🖖](https://youtu.be/w5b_ru8URMQ) |
+| 2026-10-20 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 223968 | 1625 | 213344 | 53.0 % | 102.2 % | 32 | 70 | 0.3 | [Why Is the Vulcan Salute So HARD? 🖖](https://youtu.be/w5b_ru8URMQ) |
 | 2026-10-19 23:30 | 33 s | since 16 Oct · 30-35 s, the test | 10989 | 113 | 10949 | 55.1 % | 86.6 % | 28 | 4 | 0.4 | [Why Can't You Breathe and SWALLOW at the Same Time? 🫁](https://youtu.be/pJIc92uQLiU) |
 | 2026-10-19 11:30 | 31 s | since 16 Oct · 30-35 s, the test | 2527 | 29 | 2517 | 46.8 % | 79.4 % | 24 | 1 | 0.4 | [Why Can't You HUM With Your Nose Pinched? 🤐](https://youtu.be/7A4VxK8d5Z8) |
 | 2026-10-18 23:30 | 33 s | since 16 Oct · 30-35 s, the test | 4832 | 50 | 4819 | 51.5 % | 87.8 % | 28 | 4 | 0.8 | [Why Does Your Foot FLIP When You Draw a 6? 🦶](https://youtu.be/5sYH3lRmDDk) |
 | 2026-10-18 17:30 | 263 s | long-form | 1594 | 12 | 1590 | 40.4 % | 44.9 % | 118 | 3 | 1.9 | [What If You Hold Your Breath TOO Long? (Second by Second)](https://youtu.be/BhkHz6gpbrk) |
 | 2026-10-18 11:30 | 33 s | since 16 Oct · 30-35 s, the test | 10085 | 156 | 10024 | 55.4 % | 96.3 % | 31 | 12 | 1.2 | [Can You ROLL Your Tongue? (It's Not Just Genes) 👅](https://youtu.be/id7jJEKKNtI) |
 | 2026-10-17 23:30 | 35 s | since 16 Oct · 30-35 s, the test | 8420 | 66 | 8406 | 57.6 % | 94.7 % | 33 | 4 | 0.5 | [Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞](https://youtu.be/vW0AeAfgNe0) |
-| 2026-10-17 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 3089 | 34 | 3071 | 54.3 % | 58.1 % | 18 | 7 | 2.3 | [Why Does This Dot VANISH? (Find Your Blind Spot) 👁️](https://youtu.be/wn5ow9UxzoI) |
+| 2026-10-17 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 3090 | 34 | 3071 | 54.3 % | 58.1 % | 18 | 7 | 2.3 | [Why Does This Dot VANISH? (Find Your Blind Spot) 👁️](https://youtu.be/wn5ow9UxzoI) |
 | 2026-10-16 23:30 | 32 s | since 16 Oct · 30-35 s, the test | 10035 | 86 | 9994 | 53.6 % | 95.6 % | 30 | 8 | 0.8 | [Why Does Your Finger JUMP When You Close One Eye? 👁️](https://youtu.be/8QjXeZNUq9Y) |
 | 2026-10-16 11:30 | 31 s | since 16 Oct · 30-35 s, the test | 22337 | 246 | 22272 | 53.4 % | 95.0 % | 29 | 15 | 0.7 | [Why Can't You Lift Your RING FINGER? 💍](https://youtu.be/jmFlKDR_P-8) |
 | 2026-10-15 23:30 | 34 s | TEST · short arm (30-35 s) | 4131 | 79 | 4123 | 55.2 % | 79.7 % | 27 | 6 | 1.5 | [Why Does a Doorknob SHOCK You? ⚡](https://youtu.be/Vf-6HscC28w) |
@@ -95,9 +95,9 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 | 2026-10-13 11:30 | 47 s | TEST · standard arm (45-50 s) | 2157 | 43 | 2139 | 62.5 % | 43.3 % | 20 | 4 | 1.9 | [Why Do Nails on a CHALKBOARD Make You Cringe? 😖](https://youtu.be/N2Wl7YPFLmg) |
 | 2026-10-12 23:30 | 31 s | TEST · short arm (30-35 s) | 27567 | 608 | 27527 | 59.7 % | 102.5 % | 31 | 69 | 2.5 | [Why Is One Nostril ALWAYS Blocked? 👃](https://youtu.be/KqsUFF1Mmm0) |
 | 2026-10-12 11:30 | 50 s | TEST · standard arm (45-50 s) | 1832 | 43 | 1824 | 58.8 % | 68.3 % | 34 | 5 | 2.7 | [Why Is the Sky BLUE? (It Should Be Black) 🌌](https://youtu.be/RS7bKKA_2d0) |
-| 2026-10-11 23:30 | 32 s | TEST · short arm (30-35 s) | 3359 | 90 | 3317 | 54.1 % | 82.2 % | 26 | 4 | 1.2 | [Why Do Cats PURR? 🐱](https://youtu.be/Tj57vuNTmWg) |
+| 2026-10-11 23:30 | 32 s | TEST · short arm (30-35 s) | 3362 | 90 | 3317 | 54.1 % | 82.2 % | 26 | 4 | 1.2 | [Why Do Cats PURR? 🐱](https://youtu.be/Tj57vuNTmWg) |
 | 2026-10-11 17:30 | 269 s | long-form | 351 | 9 | 349 | 93.1 % | 41.6 % | 111 | 2 | 5.7 | [What Happens If You NEVER Sleep? (Day by Day)](https://youtu.be/GvZX6Yq81P4) |
-| 2026-10-11 11:30 | 46 s | TEST · standard arm (45-50 s) | 1530 | 35 | 1526 | 66.5 % | 52.5 % | 24 | 4 | 2.6 | [Why Do We CRY? 😢](https://youtu.be/PqYnHstEFfY) |
+| 2026-10-11 17:30 | 269 s | long-form | 351 | 9 | 349 | 93.1 % | 41.6 % | 111 | 2 | 5.7 | [What Happens If You NEVER Sleep? (Day by Day)](https://youtu.be/GvZX6Yq81P4) |
 | 2026-10-10 23:30 | 33 s | TEST · short arm (30-35 s) | 357 | 11 | 349 | 59.6 % | 74.2 % | 24 | 1 | 2.9 | [Why Do We DREAM? 💭](https://youtu.be/FcY5zJ2Nlgs) |
 | 2026-10-10 11:30 | 47 s | TEST · standard arm (45-50 s) | 1242 | 33 | 1235 | 55.9 % | 59.1 % | 27 | 0 | 0.0 | [How Do Fireflies GLOW? ✨](https://youtu.be/9cwzb7rjmR8) |
 | 2026-10-09 23:30 | 35 s | TEST · short arm (30-35 s) | 3308 | 73 | 3295 | 60.0 % | 66.3 % | 23 | 4 | 1.2 | [Why Does Time FLY as You Get Older? ⏳](https://youtu.be/VLiKEQwxHqk) |
@@ -107,4 +107,3 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 | 2026-10-07 23:30 | 34 s | TEST · short arm (30-35 s) | 2342 | 33 | 2336 | 53.2 % | 65.7 % | 22 | 9 | 3.9 | [Why Does Spicy Food BURN? 🌶️](https://youtu.be/R5rsvm9IN8M) |
 | 2026-10-07 11:30 | 47 s | TEST · standard arm (45-50 s) | 3398 | 69 | 3393 | 60.5 % | 56.2 % | 26 | 7 | 2.1 | [Why Do We Get DÉJÀ VU? 🌀](https://youtu.be/Zjz5FIZo0q8) |
 | 2026-10-06 23:30 | 34 s | TEST · short arm (30-35 s) | 2726 | 39 | 2721 | 58.0 % | 73.5 % | 24 | 5 | 1.8 | [Why Do We Get HICCUPS? 🫢](https://youtu.be/onEZr_W7qLM) |
-| 2026-10-06 11:30 | 50 s | before · 46-50 s · 11:30 slot | 2151 | 69 | 2148 | 55.9 % | 65.2 % | 32 | 9 | 4.2 | [Why Does Your Voice Sound WEIRD on Recordings? 🎙️](https://youtu.be/eJ8T5p0OEwk) |
