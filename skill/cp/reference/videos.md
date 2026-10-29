@@ -66,11 +66,57 @@
 | `sun-8-minutes`: "What If the Sun VANISHED Right Now? ☀️" | 33 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/SUxhufpS8so · 1 Nov 2026 11:30 IST | Business Suite, Instagram only, 4 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2529838607504984) |
 | `tongue-twister`: "Can You Say MIT's HARDEST Tongue Twister? 👅" | 34 s (short arm; pill arm; TEST) | https://youtube.com/shorts/JAVcSxxWldY · 1 Nov 2026 23:30 IST | Business Suite, Instagram only, 4 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1424079516566113) |
 | `lemon-mouth-water`: "Why Does Your Mouth Water When You Imagine a LEMON? 🍋" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/rv4yQoSwWUE · 2 Nov 2026 11:30 IST | Business Suite, Instagram only, 5 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4414463775473675) |
+| `saturn-bathtub`: "Would SATURN Float in Your Bathtub? 🪐" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/y3lEQ0aaGkY · 2 Nov 2026 23:30 IST | Business Suite, Instagram only, 5 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2301697670683125) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**saturn-bathtub** (29 Oct 2026, the coordinator's Short #5 of the day ("do as many videos you can"), 14:07-15:30 IST; THE NINTH CURIOUS
+SHORT of the topic test, the pill arm (23:30 slot); short arm, 70 words -> 34.03 s; hook formula The Question as a two-second guess, the
+title's question: "Drop Saturn in your bath. Sink... or float?" (after The Impossible Claim, The Comparison); answer "It FLOATS! Like a
+giant... rubber duck." at 4.08 s (it pops back up on FLOATS); button "So yes... it leaves a RING." and he reaches for a fresh Saturn (the
+loop shot is frame 1 a moment earlier); caption question "Did you guess sink or float?"; YouTube y3lEQ0aaGkY, playlist Strange Nature,
+thumbnail + captions + playlist by the API, cover.jpg also into Studio's vertical slot (still a processing placeholder); Instagram (Business
+Suite, Instagram only, cover set) + the Page (fb.mjs 2301697670683125) 5 Nov 21:00 IST. Two QA rounds, qa.py 18/18 both; `build.sh` into a
+fresh work folder reproduced mix.wav and the MP4 byte for byte.)
+World: two new files (borrow them): `sb_space.js` (space: three tiled star layers at their own parallax `sbLayerCam(cam, p)` + `sbTile`, a
+Milky Way band with dust lanes and a violet-teal nebula painted once, the Sun as a layer object with spikes `sbSun`; planets painted once
+pixel by pixel from one Sun `SB_SUN`: Saturn `sbPaintSaturn(R, el)` (an oblate globe seen from `el` above its rings, latitude bands
+`SB_SAT_BANDS`, the north-pole hexagon, the rings' shadow ray-cast onto the globe), its rings face on `sbPaintRings(Rs, el)` (C, B, the
+Cassini division, A with the Encke gap, F; the planet's shadow ray-cast across them) drawn squashed and split `sbRingsDraw(x, y, R,
+'back'|'front'|'all')`, `sbGlobeDraw` (with a glow occluder), `sbSatFace` (smug / eek / happy / worried / dizzy), jupiter-no-ground's
+painter as `sbPaintJupiter`, `sbPaintWorld` (earth, mercury, venus, mars, uranus, neptune), `SB_SIZE` (true widths against Saturn's)),
+`sb_bath.js` (a clawfoot tub floating in space seen from 23 degrees up `TB`, its far rim and inner wall, the water whole behind him and
+laid over him in front AS AN IMAGE `sbWaterFront`, foam, steam, soap bubbles drifting off into space, ripples, a crowned splash
+`sbSplash`, surface pops; the hero soaking `sbHero` (BARE palette, arms by elbow + wrist, `held` drawn in his layer with the hands again
+over it); Saturn afloat `sbSatFloat` (the rings on the water, the globe 0.255 R under, the water's patch over its submerged part, a
+meniscus, a pop-up offset `dy`), the see-through globe `sbSatGlass` (a scan wipe, gas bands, fizz, a tiny core), measuring cups `sbCup`
+(water / a heaped swirl of Saturn), a scrub brush `sbBrush`; THE SPLIT-LEVEL SET `TK`: the tub cut open at the waterline (far wall, floor,
+water tint, soft shafts, caustics, a silver surface, the cut near wall with claw feet `sbTankCut`), bubbles rising `sbBubbles`). Its
+scenes.js: `hookA`/`hookSat`/`hookCam` valid at negative time (the loop shot lifts a fresh Saturn into his hands), the human balance in
+`SC.cup`, the knock with the fist drawn again in front of the planet in `SC.why`, `tankScene` + `tankPlanets`/`planetY` (each planet's
+drop, splash and landing from cues; heavy ones sink fast, Jupiter and Uranus slowly), the foam mound that buries him and pops from the
+top `foamMound`/`foamPops`, `ringsDuck` (the duck paddles into the abandoned rings), `SC.cover` (SINK / OR FLOAT?).
+- **The shape map counts an image as solid only when most of it is over 90 % opaque** (shapemap.js `idSolid`: alpha > 230 on at least 60 %
+  of its visible pixels, judged on a 24 px copy). Saturn's first rings (C ring 0.42, A ring 0.88 opacity) failed it, so the light stage
+  went on lighting his chest UNDER them: his shoulder's outline and neck shadow showed through the rings. Cartoon rings at 0.94-0.98
+  opacity pass, and hide him.
+- **Water in front of him is an image** (as sharks-older-than-trees found): a fill inside a clip left his body below the waterline in the
+  shape map, and the light stage drew its rim and shading through the water. The front water is painted into its own canvas each frame
+  and drawn with `drawImage` (`SB_WCAN`).
+- **A ball held in two hands: put the wrists BEHIND it.** Hands drawn over the globe read as two blobs on its face (ears or eyes); hidden
+  behind it, the forearms leading in read as holding.
+- **A prop that floats nearer the camera than he sits hides his hand:** the knock missed in round 1 (his fist went past Saturn to the rim);
+  the fist and forearm are drawn again after the planet, and fluff closes over the fist as it sinks in.
+- **Check the Sun's screen position in every camera:** in the knock close-up it sat behind his head and its bloom washed his forehead;
+  `bg: {sun: false}` for that shot.
+- **The splash after the word:** he lets go during "Sink..." and it hits the water in the pause after it (SPLASH at -17 dB in its gap);
+  Jupiter's splash the same, after "Jupiter?". What lands on a word is only low or only top (the pop-up on FLOATS, the balance's boing).
+- **Earth is a marble next to Saturn** (true widths, `SB_SIZE`): a white outline keeps a small planet readable on blue water.
+- Voice: 388 characters for the takes + 69 for a retake of the catch block + 138 for two seeds of a reworded one (the livelier, 10.9
+  semitones, installed by hand) = 595. Render about 230 s for 1,021 frames (three renders: two rounds and the rebuild).
 
 **lemon-mouth-water** (29 Oct 2026, the coordinator's Short #4 of the day ("do as many videos you can"), 12:55-14:10 IST; a TEST Short, the
 no-pill arm (11:30 slot); short arm, 72 words -> 33.13 s; hook formula The Direct Address as the test: "Imagine biting this juicy lemon. /
