@@ -63,11 +63,56 @@
 | `head-shake-reading`: "Why Can You Read While Shaking Your HEAD? 👀" | 31 s (short arm; pill arm; TEST) | https://youtube.com/shorts/aNBQO2osfZ4 · 30 Oct 2026 23:30 IST | Business Suite, Instagram only, 2 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2328255954632658) |
 | `green-dot`: "Why Do You See a GREEN Dot That Isn't There? 👁️" | 34 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/5IpUoD_NtS0 · 31 Oct 2026 11:30 IST | Business Suite, Instagram only, 3 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3450602905125202) |
 | `wombat-cubes`: "Why Do Wombats Poop CUBES? 🟫" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/3JY_aSgAcEU · 31 Oct 2026 23:30 IST | Business Suite, Instagram only, 3 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2336367837139924) |
+| `sun-8-minutes`: "What If the Sun VANISHED Right Now? ☀️" | 33 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/SUxhufpS8so · 1 Nov 2026 11:30 IST | Business Suite, Instagram only, 4 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2529838607504984) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**sun-8-minutes** (29 Oct 2026, the coordinator's Short #2 of the day ("do as many videos you can"), 10:04-11:45 IST; THE EIGHTH
+CURIOUS SHORT of the topic test, the no-pill arm (11:30 slot); short arm, 72 words -> 33.47 s; hook formula The Question, the exact
+search, answered at once by The Impossible Claim: "What if the Sun vanished right now?" / answer "you'd keep sunbathing for EIGHT
+minutes." at 2.97 s (after The Warning, The Direct Address, The Direct Address); button "Relax. The Sun's still there. Probably."
+into the hook; caption question "Panic or keep sunbathing?"; YouTube SUxhufpS8so, playlist Strange Nature, thumbnail and captions
+also in Studio; Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs 2529838607504984) 4 Nov 18:30 IST; two QA
+rounds, qa.py 18/18 both; `build.sh` into a fresh work folder reproduced the MP4 byte for byte.)
+World: four new files (borrow them): `sv_beach.js` (a beach at noon with the horizon at his eye level: sky, a Sun high on the right
+you can hide (`o.sun`), gulls, cumulus, a headland with a lighthouse (it blinks at night), the sea band with swell lines and the
+Sun's glitter, a wash that breathes up wet sand with foam, dry sand with speckles, shells and footprints, a striped umbrella (a
+dome), a towel, a ball, a castle with a flag, a cooler, a bucket and spade, the striped deck chair (`svChairBack`/`svChairFront`);
+all of it again at night with one switch `N` (navy sky, stars and the Milky Way, black sea)), `sv_hero.js` (the hiker in a coral
+beach shirt and teal shorts, bare legs drawn in his layer's `pre`, sitting in the chair; a tall lemonade with a straw that reaches his
+lips (`sip`), ice that clinks, a level that stays level; sunglasses that push up onto his forehead (`shadesUp`) or slide down his nose
+for a squint over the frames (`shadesDown`); his free hand behind his head (`relax`, through a raised-elbow key) or up at the
+shades (`liftL`); faces sip/aah/smug/deadpan/wide/read/squint/up; `svPortrait`), `sv_space.js` (a vertically tiling star field, the
+Sun with granulation and prominences, a wall light switch floating in space (`svSwitch`), the POP, a chalk outline with SUN WAS
+HERE (`svOutline`), Earth painted once from 3D noise (oceans, land, ice, clouds) with a day side, a night side and a separate city
+lights layer (`svEarth({sun, lit})`: lit 0 = a dark navy ball with a blue rim and glowing cities), the road of sunshine
+(`svRoad`: a lit highway with envelopes riding at the speed of light, dark behind its last envelope, LAST flag), a green road
+sign), `sv_props.js` (an envelope with a wax seal and a light trail, a postmark SENT 8 MIN AGO, the SUNSHINE LEFT countdown, a
+round window on space with a label, pill tags, a tumbleweed). Its scenes.js: `svLeft(t)` (8:20 held while she says "EIGHT
+minutes", then running to 0:00 on "out" with the last three seconds slowed), `svNews(t)` (how far the dark has come: the same
+clock drives the road's dark end, the orbit's ring and the countdown), `svRoadCam` (stop on the outline, travel to the road's
+dark end and ride with it, dive to Earth), the orbit from above (`svOrbitScene`, `svRope`: the PULL rope frays where the news has
+passed, so Earth circles a rope tied to nothing), `SC.cover`.
+- **A one-breath claim hook can run long:** "If the Sun vanished right now, you'd keep sunbathing for EIGHT minutes." took 6.0 s on
+  two seeds (the answer could not start by 5 s). Splitting it into the title's question ("What if the Sun vanished right now?",
+  2.6 s) and the claim as the answer block (from 2.97 s) fixed the timing and made the hook the title word for word. qa.py's
+  "you" list does not count "you'd" (a warning only).
+- **A horizon at eye level makes a close-up hold sky:** with the sea's horizon at his eye height (world y 1418), the close-up at
+  zoom 2.9 still shows sky, the Sun and the umbrella above the chair; a horizon far above him leaves only sea behind his head.
+- **The Sun in the frame needs a modest glow:** R x 7 soft dots and sunRays 0.9 washed half the frame white; R x 4 / 1.8, a glow
+  layer dot of R x 1.9 and rays 0.32 keep a bright Sun with a readable sky.
+- **One clock for every picture of the same event** (`svNews`): the road's dark end, the orbit's ring and the countdown all
+  read it, so the shots agree with each other and with "lights out".
+- **A camera locked on a moving thing makes it look still:** the fly shot first followed Earth exactly and it sat in one spot for
+  3 s; following at a lag (it slides across the frame) reads as speed.
+- **Studio's subtitle editor from the Details page:** after Upload file > With timing > Continue (the armed SRT), its Done did not
+  publish (a re-opened editor offered Publish); Languages > Edit subtitles > Publish gave "English subtitles published".
+- The YouTube upload itself (1,600 units) went through the API at 11:13 IST with the quota "out" since 09:48; captions.insert (400)
+  was refused again. Voice: 452 characters for the takes used, 243 more for auditions (hook2 and the button; the first takes were
+  kept). Render about 225-260 s for 1,004 frames.
 
 **wombat-cubes** (29 Oct 2026, a coordinator-run /cp next at 08:00 IST ("do as many videos you can"), 08:05-10:15 IST; THE SEVENTH CURIOUS
 SHORT of the topic test, the pill arm (23:30 slot); short arm, 75 words -> 34.50 s; hook formula The Warning carrying The

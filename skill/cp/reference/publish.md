@@ -282,8 +282,17 @@ Instagram is back:
      prefilled with YouTube's automatic captions (do NOT press Done on those); its ⋮ menu > Upload file > With timing >
      Continue opens a native picker, so first put the SRT (copied to the scratchpad) in a collector input and arm the
      click hook with it (route A's snippets), then Continue: the cues load with their timings; Done says "English subtitles
-     published". Put `captionsSet: true, captionsVia: "studio"` in publish.json. The quota resets at midnight Pacific
+     published". (sun-8-minutes, 29 Oct 2026: that Done closed the editor with no toast, and Languages > Edit subtitles
+     re-opened it with a Publish button: press Publish there and wait for the toast "English subtitles published".) Put
+     `captionsSet: true, captionsVia: "studio"` in publish.json. The quota resets at midnight Pacific
      (12:30 IST in summer time, 13:30 IST after the first Sunday of November).
+   - **Quota out? Studio, and don't stop (the owner, 29 Oct 2026: "if youtube allowance runs out, use studio on chrome
+     but don't stop").** Whatever the Data API refuses with `quotaExceeded` (the upload, the thumbnail, the captions, the
+     playlist or the schedule) is done in YouTube Studio in the owner's Chrome (Claude in Chrome), and the run carries on
+     to the end: never wait for the reset, never stop. A video uploaded in Studio gets the same title, description, tags,
+     thumbnail (cover.jpg) and captions (the SRT) as publish.json, "No, it's not made for kids", and is scheduled for the
+     slot `yt.mjs next-slot` gives (read the date and time back on the page before saving); write its id, URL and
+     `uploadedVia: "studio"` into publish.json at once, so nothing is uploaded twice.
    - Shorts have no end screens or cards. The "Related video" link is optional (Studio, if the user asks).
 3. **Instagram** (the slot in `instagram.publishAt`: 18:30 or 21:00 IST):
    - Check the route with `node ~/.claude/skills/cp/bin/ig.mjs route`.
