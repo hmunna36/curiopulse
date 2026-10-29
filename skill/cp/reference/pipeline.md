@@ -81,6 +81,13 @@ rebuild and to prove the folder rebuilds.
     "idle (hung?)", names the PIDs and lets the render go. It never stops them: they belong to another session.
   - Print PIDs, not command lines, when you look at what is running (`pgrep -f`, not `pgrep -fl`): a shell that
     was started with a long here-document prints all of it.
+  - **While another pipeline holds the gate, smoke-test the shots in Node** (29 Oct 2026, wombat-cubes: History
+    Frontline's weekly film held it for an hour): `node ~/.claude/skills/cp/bin/scene-smoke.js src/web .work/timeline.json
+    "0,9,18,…"` loads scene.html's scripts with a mock canvas and runs `renderFrame` on those frames. No picture, no
+    browser, so no gate: it finds the ReferenceErrors, TypeErrors and bad cues before the first stills.
+  - **A wait loop on `render.log` can read the LAST render's `EXIT`** (29 Oct 2026): a background `render-gate.sh && node
+    render.js … > render.log` leaves the old log in place for the gate's 20 s check, and an `until grep -q EXIT` loop
+    returned at once. Delete the old log before starting (`rm -f ../.work/render.log`), or wait for the background task.
 - **Disk:** keep ≥ 5 GB free on `/System/Volumes/Data` (`df -h /System/Volumes/Data`). A Short needs ≈ 400 MB
   while it builds (.work stems and mixes plus the MP4). `bin/cleanup.sh` gives it back at the end of every run,
   once everything is on GitHub.

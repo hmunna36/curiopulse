@@ -396,6 +396,8 @@ own level, which in a routine run is medium. So:
 - `topics.md`: the topic queue for `/cp next`
 - `bin/new-short.sh`, `bin/publish-short.sh`, `bin/backup-skill.sh`, `bin/run-lock.sh`, `bin/cp-env.sh`
 - `bin/render-gate.sh`: the render gate for /cp (wait until no other pipeline is rendering; an idle open Blender does not count)
+- `bin/scene-smoke.js`: run a Short's shots in Node with a mock canvas while the gate is shut (no picture, no browser: it finds
+  crashes and bad cues before the first stills; `pipeline.md`)
 - `bin/cleanup.sh`: back to the light checkout (`skill/` + top-level files) once everything is on GitHub
 - `bin/yt.mjs`: YouTube Data API (auth · whoami · upcoming · next-free · next-slot · upload · reschedule · status · stats ·
   comments-due · queue-comment · comments-inbox · comments-mine · comment-reply · comment-hide · channel-info · playlists · playlist-create ·

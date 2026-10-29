@@ -275,6 +275,15 @@ Instagram is back:
      channel switcher), copy cover.jpg into the scratchpad, `find` the Thumbnail section's file input, `file_upload`
      it, wait for "Uploading..." to end, click `ytcp-button#save` from JavaScript and wait for "Changes saved". If
      Chrome is not connected or Studio opens another channel, leave it and report it as pending.
+   - **The captions can fail on quota** (29 Oct 2026, wombat-cubes): the 10,000 units a day are shared with Visual Algo
+     and Inner Devil Films, and at 09:48 IST `captions.insert` (400 units) answered `quotaExceeded` while 1- and 50-unit
+     calls still worked. yt.mjs now logs it and goes on (the playlist add and the "Next up" comment queue used to be
+     skipped by the throw). Studio needs no quota: on the same edit page, Subtitles (the pencil) opens an English editor
+     prefilled with YouTube's automatic captions (do NOT press Done on those); its ⋮ menu > Upload file > With timing >
+     Continue opens a native picker, so first put the SRT (copied to the scratchpad) in a collector input and arm the
+     click hook with it (route A's snippets), then Continue: the cues load with their timings; Done says "English subtitles
+     published". Put `captionsSet: true, captionsVia: "studio"` in publish.json. The quota resets at midnight Pacific
+     (12:30 IST in summer time, 13:30 IST after the first Sunday of November).
    - Shorts have no end screens or cards. The "Related video" link is optional (Studio, if the user asks).
 3. **Instagram** (the slot in `instagram.publishAt`: 18:30 or 21:00 IST):
    - Check the route with `node ~/.claude/skills/cp/bin/ig.mjs route`.

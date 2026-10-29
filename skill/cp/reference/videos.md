@@ -62,11 +62,55 @@
 | `octopus-hearts`: "Why Does an Octopus Have THREE Hearts? 🐙" | 31 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/ZGudFA0cQuM · 30 Oct 2026 11:30 IST | Business Suite, Instagram only, 2 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2155813338477122) |
 | `head-shake-reading`: "Why Can You Read While Shaking Your HEAD? 👀" | 31 s (short arm; pill arm; TEST) | https://youtube.com/shorts/aNBQO2osfZ4 · 30 Oct 2026 23:30 IST | Business Suite, Instagram only, 2 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2328255954632658) |
 | `green-dot`: "Why Do You See a GREEN Dot That Isn't There? 👁️" | 34 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/5IpUoD_NtS0 · 31 Oct 2026 11:30 IST | Business Suite, Instagram only, 3 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3450602905125202) |
+| `wombat-cubes`: "Why Do Wombats Poop CUBES? 🟫" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/3JY_aSgAcEU · 31 Oct 2026 23:30 IST | Business Suite, Instagram only, 3 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2336367837139924) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**wombat-cubes** (29 Oct 2026, a coordinator-run /cp next at 08:00 IST ("do as many videos you can"), 08:05-10:15 IST; THE SEVENTH CURIOUS
+SHORT of the topic test, the pill arm (23:30 slot); short arm, 75 words -> 34.50 s; hook formula The Warning carrying The
+Impossible Claim: "Don't eat that cube you found! It's wombat POOP." (after Direct Address, Direct Address, Impossible Claim);
+answer "And no, its butt isn't square. Its GUT makes the corners." at 3.82 s; button "So... found a cute little cube on a log?"
+into the hook; caption question "Would you have eaten it? Yes or no?")
+World: four new files (borrow them): `wb_bush.js` (Tasmanian bush at golden hour: a twin-peaked crag, forested ridges, pale
+gum trees, buttongrass meadow as parallax plates with soft copies `wbSoft`; the mossy log `wbLog` (returns its top line);
+`wbGrassBand` + `wbTussock` (foreground buttongrass that hides a seated hero's waist); the sandstone boulder `wbRock` (returns
+its top `y(x)`, a ledge); the creek `wbCreek` (sky reflection, the rock's dark reflection, glints, foam, splash rings);
+`wbMotes`), `wb_wombat.js` (a bare-nosed wombat `wbWombat`: a chunky loaf body, stubby legs with claws, a broad head with a big
+leathery nose, lids for deadpan, a side-eye `look`, a glare `brow`, chewing with a grass blade, `walk`, `squash`, a hard hat,
+GLASS mode: a navy body with a cyan outline and the gut inside `wbGutXray` (slurry -> lumps -> cubes in the last part);
+props: `wbCube` (a poop cube, three faces, fibres, a toothpick flag note `wbFlag`), `wbBall`, `wbMagnifier` (with a clipped
+`fill` view), `wbLettuce`, `wbHardHat`, `wbClipboard`), `wb_gut.js` (THE gut in section, end-on, with the tunnel receding
+behind it: a muscle coat with two stiff stripes, a lining with folds, a brown round that keeps the wall's squareness a step
+per squeeze `wbGutState`/`wbSuper`; arrows `wbArrow`, sparkles `wbSpark`, label pills `wbTag`, a corner portrait of him
+`wbPortrait`), `wb_factory.js` (a hall plate, lamps, a belt whose ribs and rollers loop, a press with a mould, a guillotine,
+factory cubes, the CUBES TODAY counter).
+- **YouTube 3JY_aSgAcEU, playlist Strange Nature; Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs
+  2336367837139924) 3 Nov 21:00 IST; two QA rounds, 18/18 both; `build.sh` into a fresh work folder reproduced the MP4
+  byte for byte (md5 994e9798…).** The History Frontline weekly film held the render gate from 08:30 to 09:12: the script,
+  voice, timeline, audio, all four world files and a Node smoke test (`bin/scene-smoke.js`, new) were done before the first
+  still, and the first sheet already ran end to end.
+- **The first wombat was a capybara on stilts** (a long low body, thin legs): a chunky loaf (250 x 180, the rump round,
+  the chest broad), stubby 50-unit legs and a head scaled 1.22 read as a wombat at once.
+- **A seated hero needs grass in front, not a cut-off coat:** with `noLegs` his coat ended in a hard line over the
+  meadow (he looked sunk in a pit); `wbGrassBand` (tussocks 1.75x, bases below his waist) hides it in the hook and button.
+- **An x-ray reveal as a scan line** (`ctx.clip()` to a rect growing head to rump, the glass wombat drawn in it): the
+  first try (x-ray only inside the lens, magnified 1.7x) read as polka dots. The whole body going see-through, then the lens
+  magnifying the last part (the cubes), reads in one look. Keep the scan's glow small (100 px, 0.45): 160 px at 0.8 flashed
+  white over the head.
+- **"Up to a hundred a day" needs the hundred to pile up:** cubes riding a belt away left in half a second each never
+  added up; a 4-3-2 pyramid that each cube flies onto (a launch flick, a landing pat) beside the counter does.
+- **A hand that enters from off-frame is a plank** (a straight 46 px coat line from the corner): the dough ball plops onto
+  the rock from above instead.
+- **Keep the sun off the subject per shot** (`wbBushBack`'s `sunDX/sunDY`): on the rock it sat right behind the wombat's
+  head.
+- **The Data API quota ran out in the morning** (shared with Visual Algo and Inner Devil Films): `captions.insert`
+  refused, and the throw skipped the playlist add and the comment queue. The playlist (50 units) still went through by
+  hand, the comment queue is local, the SRT went up in Studio (publish.md), and yt.mjs no longer throws there.
+- Voice: one take per block, 430 characters, no retakes; the narration ran 36.3 s at first and 34.5 s with tighter pauses
+  and tempo 1.04-1.07 (free). Render 269-348 s for 1,035 frames.
 
 **green-dot** (29 Oct 2026, the curiopulse-second-short routine at 02:00 IST, 02:04-03:15; a TEST Short on the screen itself,
 the no-pill arm (11:30 slot); short arm, 74 words -> 34.33 s; hook formula The Direct Address as the test: "Keep your eyes on the

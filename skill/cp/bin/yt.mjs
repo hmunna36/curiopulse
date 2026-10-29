@@ -497,10 +497,17 @@ async function upload(specPath, dryRun, autoSchedule = false) {
       srt,
       Buffer.from(`\r\n--${boundary}--\r\n`),
     ]);
-    await api('POST', `${UPLOAD}/captions?part=snippet&uploadType=multipart`, {body, headers: {'Content-Type': `multipart/related; boundary=${boundary}`}});
-    y.captionsSet = true;
-    save();
-    console.log('  captions uploaded');
+    // non-fatal (29 Oct 2026, wombat-cubes): the shared Data API quota refused captions.insert (400 units) in the morning,
+    // and the throw skipped the playlist add and the "Next up" comment queue below. Studio takes the SRT without the API:
+    // Subtitles > Upload file > With timing (reference/publish.md).
+    try {
+      await api('POST', `${UPLOAD}/captions?part=snippet&uploadType=multipart`, {body, headers: {'Content-Type': `multipart/related; boundary=${boundary}`}});
+      y.captionsSet = true;
+      save();
+      console.log('  captions uploaded');
+    } catch (e) {
+      console.log(`  captions not uploaded (${e.message.slice(0, 160)}); retry with the same command later, or upload the SRT in Studio (Subtitles > Upload file > With timing)`);
+    }
   }
   if (y.playlist && !/REPLACE/.test(y.playlist) && !y.playlistSet) {
     try {
