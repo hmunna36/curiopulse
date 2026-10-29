@@ -70,7 +70,7 @@ here for every new Short, with its links.
 
 ## Lessons
 
-**sun-8-minutes** (29 Oct 2026, the coordinator's Short #2 of the day ("do as many videos you can"), 10:04-11:45 IST; THE EIGHTH
+**sun-8-minutes** (29 Oct 2026, the coordinator's Short #2 of the day ("do as many videos you can"), 10:04-11:26 IST; THE EIGHTH
 CURIOUS SHORT of the topic test, the no-pill arm (11:30 slot); short arm, 72 words -> 33.47 s; hook formula The Question, the exact
 search, answered at once by The Impossible Claim: "What if the Sun vanished right now?" / answer "you'd keep sunbathing for EIGHT
 minutes." at 2.97 s (after The Warning, The Direct Address, The Direct Address); button "Relax. The Sun's still there. Probably."
