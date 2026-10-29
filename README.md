@@ -76,6 +76,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Say MIT's HARDEST Tongue Twister? | 34 s | [`videos/tongue-twister`](videos/tongue-twister) | [1 Nov 2026](https://youtube.com/shorts/JAVcSxxWldY) |
 | Why Does Your Mouth Water When You Imagine a LEMON? | 33 s | [`videos/lemon-mouth-water`](videos/lemon-mouth-water) | [2 Nov 2026](https://youtube.com/shorts/rv4yQoSwWUE) |
 | Would SATURN Float in Your Bathtub? | 34 s | [`videos/saturn-bathtub`](videos/saturn-bathtub) | [2 Nov 2026](https://youtube.com/shorts/y3lEQ0aaGkY) |
+| The Planet Where It Rains GLASS Sideways | 34 s | [`videos/glass-rain`](videos/glass-rain) | 3 Nov 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;

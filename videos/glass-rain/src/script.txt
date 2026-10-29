@@ -1,0 +1,37 @@
+# Narration for "The Planet Where It Rains GLASS Sideways ☔" (CURIOUS kind, story.md §6; short arm, 66-76 words)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there.
+# Hook formula: The Impossible Claim, said to "you" (the title's claim in the first sentence), with The Warning's
+# cost to "your" umbrella. The answer (a metaphor: the sky is a glass factory) starts by 5 s. The ONE picture
+# (8-13 s): the star as the furnace, rock steaming up and coming down as glass, with him in the shot. Nobody says
+# "subscribe"; no pill (11:30 slot). The button runs into the hook: "Pack an umbrella." -> "It rains GLASS here."
+
+## hook gap=0.10 tighten=0.24 tempo=1.02
+It rains GLASS here.
+
+## shred gap=0.16 tighten=0.34 tempo=1.02
+Your umbrella? Shredded.
+
+## answer gap=0.30 tighten=0.36 tempo=1.03
+This whole sky is one big... GLASS factory.
+
+## furnace gap=0.24 tighten=0.27 tempo=1.05
+The furnace? Its star. It's RIGHT there.
+
+## rock gap=0.20 tighten=0.32 tempo=1.02
+Rock steams up... and comes down as glass.
+
+## wind gap=0.24 tighten=0.32 tempo=1.05
+[excited] Then the wind hits. Faster than a bullet.
+
+## side gap=0.14 tighten=0.34 tempo=1.03
+So the glass falls... SIDEWAYS.
+
+## blue gap=0.28 tighten=0.34 tempo=1.05
+From space, scientists think all that glass makes it... BLUE.
+
+## eggs gap=0.30 tighten=0.32 tempo=1.04
+Pretty, right? It also stinks... of rotten EGGS.
+
+## button gap=0.36 tighten=0.34 tempo=1.00
+Lovely planet. Pack an umbrella.

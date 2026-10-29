@@ -1,0 +1,59 @@
+{
+  "slug": "glass-rain",
+  "file": "glass-rain-short.mp4",
+  "title": "The Planet Where It Rains GLASS Sideways ☔",
+  "description": "There's a planet where it rains glass, sideways: HD 189733b, a gas giant 64 light-years away. It hugs its star (about 13 times closer than Mercury is to our Sun, so a year there lasts about two days), and its sky is around 1,000 °C. That's hot enough that rock goes up as vapour and comes back down as tiny bits of glass: scientists think its clouds are made of silica, the stuff of sand and glass, and in 2024 the Webb telescope picked up their signal. Then winds measured at over 8,700 km/h (faster than a bullet) blow the glass sideways. All that glass may be why the planet looks deep blue. And Webb also found hydrogen sulfide in its air: the gas that makes rotten eggs stink. Umbrella or helmet?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Space #Exoplanet #Astronomy #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-03T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-11-03T11:30:00+05:30"
+  },
+  "pinnedComment": "🌍 Bonus: a year on HD 189733b lasts just 2.2 Earth days, and one side probably always faces its star, so it never gets dark there.\nNext up: a shrimp whose snap is hotter than the Sun's surface 🦐 Subscribe so you don't miss it!\nUmbrella or helmet? ☔",
+  "tags": [
+    "planet where it rains glass",
+    "glass rain planet",
+    "hd 189733b",
+    "exoplanet",
+    "hot jupiter",
+    "space facts",
+    "astronomy",
+    "james webb telescope",
+    "rotten egg planet",
+    "blue planet",
+    "science shorts",
+    "fun facts",
+    "mind blowing facts",
+    "space",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "glass-rain.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "It rains GLASS on this planet. Sideways. ☔\nHD 189733b's sky is so hot that rock steams up and falls back as glass, and winds of over 8,700 km/h blow it sideways. That glass may be why it looks so blue. (It also smells of rotten eggs.)\nUmbrella or helmet?\nFollow @curio_pulse_tv for the next one: a shrimp whose snap is hotter than the Sun's surface 🦐\n#science #space #exoplanets #astronomy #funfacts #reels",
+    "coverTime": 1,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-11-03T11:30:00+05:30"
+  }
+}
