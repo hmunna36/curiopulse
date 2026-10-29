@@ -1,0 +1,59 @@
+{
+  "slug": "wombat-cubes",
+  "file": "wombat-cubes-short.mp4",
+  "title": "Why Do Wombats Poop CUBES? 🟫",
+  "description": "Wombats really do poop cubes, up to a hundred a day. And no, a wombat's bottom isn't square: a CT scan of a live wombat showed it's round, like everyone else's. The corners are made inside, in the last part of the gut. Its wall has two stiff stripes, about four times stiffer than the rest, and every squeeze the stiff parts pull in faster than the soft parts, so the drying poop slowly gets four corners (Yang et al., Soft Matter, 2021). Why bother? Wombats leave their poop on rocks and logs, like smelly notes for other wombats, and scientists think a cube is less likely to roll off. Would you have eaten it? Yes or no?\n\nThe scientists who worked this out won the 2019 Ig Nobel Prize in Physics.\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Wombat #Animals #Nature #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-10-31T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "pill",
+    "test": "pill-2026-10",
+    "slot": "2026-10-31T23:30:00+05:30"
+  },
+  "pinnedComment": "🏆 Bonus: the scientists who worked this out won the 2019 Ig Nobel Prize in Physics, for studying how, and why, wombats make cube-shaped poo.\nNext up: you'd still see the Sun for 8 MINUTES after it vanished ☀️ Subscribe so you don't miss it!\nWould you have eaten it? Yes or no? 🟫",
+  "tags": [
+    "wombat poop",
+    "cube poop",
+    "why do wombats poop cubes",
+    "wombat",
+    "square poop",
+    "wombat facts",
+    "animal facts",
+    "australian animals",
+    "ig nobel prize",
+    "weird animals",
+    "nature facts",
+    "science shorts",
+    "strange facts",
+    "funny animals",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "wombat-cubes.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Don't eat that cube you found. It's wombat poop. 🟫\nAnd no, its butt isn't square: the corners are made inside its gut, where two stiff stripes squeeze in faster than the rest. Wombats leave the cubes on rocks like little notes, and scientists think a cube won't roll off.\nWould you have eaten it? Yes or no?\nFollow @curio_pulse_tv for the next one: you'd still see the Sun for 8 minutes after it vanished ☀️\n#science #nature #wombat #animals #funfacts #reels",
+    "coverTime": 2.75,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-10-31T23:30:00+05:30"
+  }
+}
