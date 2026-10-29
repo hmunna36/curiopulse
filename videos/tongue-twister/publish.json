@@ -1,0 +1,59 @@
+{
+  "slug": "tongue-twister",
+  "file": "tongue-twister-short.mp4",
+  "title": "Can You Say MIT's HARDEST Tongue Twister? 👅",
+  "description": "Say \"pad kid poured curd pulled cod\" five times fast, and your mouth tries to say two sounds at once. P is a pop at your lips; K is the same pop at the back of your tongue. Said slowly, they take turns. Speed up, and your mouth slips into an easier rhythm and fires both together: tongue sensors in speech labs have caught it making both at the same instant. That's why the first one is easy and the fifth falls apart. When MIT scientists tried this one on volunteers, some of them simply stopped talking. How many did you manage?\n\nOne idea for why this one is so hard: every word ends in a D, so the tip of your tongue taps on every word while your lips and the back of your tongue take turns, and the mouth would rather move them all together.\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #TongueTwister #Brain #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-01T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "pill",
+    "test": "pill-2026-10",
+    "slot": "2026-11-01T23:30:00+05:30"
+  },
+  "pinnedComment": "🐑 Bonus: Guinness once named \"The sixth sick sheik's sixth sheep's sick\" the hardest tongue twister in English.\nNext up: why your mouth waters when you just imagine a lemon 🍋 Subscribe so you don't miss it!\nHow many did you manage? 👅",
+  "tags": [
+    "tongue twister",
+    "hardest tongue twister",
+    "pad kid poured curd pulled cod",
+    "tongue twister challenge",
+    "say it 5 times fast",
+    "mit tongue twister",
+    "speech science",
+    "why do tongue twisters work",
+    "speech errors",
+    "brain facts",
+    "try this",
+    "science shorts",
+    "mind blowing facts",
+    "human body",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "tongue-twister.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Why Does Your Body Do That?"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Say \"pad kid poured curd pulled cod\" five times, fast. 👅\nYour mouth tries to say TWO sounds at once: P pops at your lips, K at the back. Speed up and it fires both. MIT tried this one on volunteers... some just stopped talking.\nHow many did you manage?\nFollow @curio_pulse_tv for the next one: why your mouth waters when you imagine a lemon 🍋\n#science #tonguetwister #brain #funfacts #reels",
+    "coverTime": 4.9,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "test": "kind-2026-10",
+    "slot": "2026-11-01T23:30:00+05:30"
+  }
+}

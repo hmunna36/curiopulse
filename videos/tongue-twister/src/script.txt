@@ -1,0 +1,31 @@
+# Narration for "Can You Say MIT's HARDEST Tongue Twister? 👅"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# The test (rules of 15 Oct 2026): the viewer says the twister five times fast. Hook formula: The Direct Address as the
+# test (the twister first, then "Your turn"). The answer starts by 5.0 s; the button sends them back to it, faster.
+# 72 words (the short arm: 66-76).
+
+## hook gap=0.06 tighten=0.30 tempo=1.08
+Pad kid poured curd pulled cod.
+
+## turn gap=0.10 tighten=0.15 tempo=1.07
+[mischievously] Your turn. Five times, fast.
+
+## answer gap=0.32 tighten=0.30 tempo=1.00
+Tangled? Your mouth tried to say TWO sounds at once.
+
+## slow gap=0.35 tighten=0.28 tempo=1.05
+Say it slow. P pops at your LIPS... K, at the BACK.
+
+## fast gap=0.30 tighten=0.30 tempo=1.05
+Speed up, and your mouth slips into an easier rhythm: it fires BOTH.
+
+## payoff gap=0.40 tighten=0.30 tempo=1.03
+That's why the first one's easy... and the fifth falls apart.
+
+## weird gap=0.45 tighten=0.45 tempo=1.02
+MIT tried this one on volunteers. Some just... stopped talking.
+
+## button gap=0.65 tighten=0.40 tempo=1.00
+Still talking? Then go FASTER.

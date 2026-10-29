@@ -73,6 +73,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Do You See a GREEN Dot That Isn't There? | 34 s | [`videos/green-dot`](videos/green-dot) | [31 Oct 2026](https://youtube.com/shorts/5IpUoD_NtS0) |
 | Why Do Wombats Poop CUBES? | 34 s | [`videos/wombat-cubes`](videos/wombat-cubes) | [31 Oct 2026](https://youtube.com/shorts/3JY_aSgAcEU) |
 | What If the Sun VANISHED Right Now? | 33 s | [`videos/sun-8-minutes`](videos/sun-8-minutes) | [1 Nov 2026](https://youtube.com/shorts/SUxhufpS8so) |
+| Can You Say MIT's HARDEST Tongue Twister? | 34 s | [`videos/tongue-twister`](videos/tongue-twister) | 1 Nov 2026 23:30 IST |
 
 Each folder has:
 - the finished MP4;
