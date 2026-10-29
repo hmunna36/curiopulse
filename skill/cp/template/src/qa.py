@@ -317,7 +317,7 @@ said = lambda ws: " ".join(w["word"] for w in ws)  # noqa: E731
 # the test (15 Oct 2026): the two Shorts that broke out told the viewer to do something to their own body while
 # watching ("pinch one nostril", "lock your fingers"), so the first line speaks to them about it
 first8 = [re.sub(r"[^a-z']", "", w["word"].lower()) for w in words[:8]]
-check(any(w_ in ("you", "your", "you're", "you've", "you'll", "yours") for w_ in first8),
+check(any(w_ in ("you", "your", "you're", "you've", "you'll", "you'd", "yours") for w_ in first8),
       'opens with the test: "you"/"your" in the first eight words', f'first words: "{said(words[:8])}"', warn=True)
 ans = [w for w in words if w.get("block") == "answer"]
 if ans:

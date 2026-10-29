@@ -71,11 +71,54 @@
 | `thumb-finger`: "Does Your Finger Move When You Bend Your THUMB? 👍" | 34 s (short arm; pill arm; TEST) | https://youtube.com/shorts/1Y1AgF4LMnE · 3 Nov 2026 23:30 IST | Business Suite, Instagram only, 6 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1119859203784124) |
 | `bent-wrist-fist`: "Why Can't You Make a FIST With Your Wrist Bent? ✊" | 31 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/7ZRNtkXNeS4 · 4 Nov 2026 11:30 IST | Business Suite, Instagram only, 7 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1739343171533074) |
 | `shrimp-snap`: "Can a Shrimp's Snap Get as HOT as the SUN? 🦐" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/bFFM9txGYyg · 4 Nov 2026 23:30 IST | Business Suite, Instagram only, 7 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1433323355022781) |
+| `cleopatra-moon-landing`: "Was Cleopatra Closer to the Pyramids or the MOON Landing? 🚀" | 35 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/j1nzcpNxSS0 · 5 Nov 2026 11:30 IST | Business Suite, Instagram only, 8 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 29385531647751239) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**cleopatra-moon-landing** (30 Oct 2026, nightly /cp next, 00:00-01:35 IST; THE TWELFTH CURIOUS SHORT of the topic test, the
+no-pill arm (11:30 slot); the Curious queue's first line (promised by shrimp-snap's Next-up comment); short arm, 67 words -> 34.67 s;
+hook formula Contrarian Flip, the belief put to "you": "You'd think Cleopatra's closer to the pyramids than the Moon landing." (after
+The Comparison, The Direct Address, The Direct Address); answer "Nope. To her, the pyramids were already... ancient history." at 4.10 s;
+button "So Cleopatra? Practically... modern." (a gum bubble POPs) into the hook; caption question "Pyramids or Moon: what did you
+guess?"; YouTube j1nzcpNxSS0, playlist Your Brain Is Weird (none of the three is history), thumbnail + captions + playlist by the API;
+Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs 29385531647751239) 8 Nov 18:30 IST. Two QA rounds, qa.py 17/18
+then 18/18; the final MP4 is build.sh's into a fresh work folder (timeline.json and mix.wav byte-identical).)
+World: two new files (borrow them) + jupiter-no-ground's `jphero.js` (the spacesuit with the selfie stick; pass `scarf: undefined`
+for no scarf tail: its red tail crossed the next character's collar). `cm_world.js`: a star tile and a noise-painted Earth (after
+sun-8-minutes), the Moon at the landing site (`cmMoonGround`: a curved horizon, perspective craters, boot prints; `cmLM`: Apollo's
+lunar module, gold-foil descent stage on four legs, faceted ascent stage; `cmFlag`: crinkled, never waving), Giza at dusk
+(`cmGizaSky`, `cmPyramid(x, tip, hw, h, {built, courses})`: two faces lit from the right, a flat working top when `built` < 1;
+`cmPalm`), THE TIME ROPE (one world, 0.6 units a year from the pyramid's tip at y 0 to 1969: `cmYearY`; `cmRopeSky`: the sky's
+colour by world height from dusk to space with the stars fading in; `cmClouds` at their own depth; `cmRope` with a knot every 100
+years and a flag every 500 on its left; `cmMoonDisc` and `cmMoonTopY` for things standing on a small round Moon, turned to its
+normal), and Wrangel Island (`cmArcticSky`, `cmIsland`: a long hump in an icy sea). `cm_cast.js`: Cleopatra in the house style
+(`cmCleo`: the rig's own drawFace with kohl wings, her own lips (smile, duck, yawn, o, smirk, grin, blow), a black bob with a straight
+fringe, the gold diadem with the cobra, the broad collar in bands, a linen dress with a sash, bare arms by a 2-bone IK `cmIK`, hands
+open / peace / wave / mouth / glasses, sunglasses that slide (`glassesY`), a gum bubble and its POP, standing or sitting on a swing),
+Neil Armstrong (the rig drawn on ctx in a white suit as an actor, a gold visor with Earth in it, a backpack), a side-view woolly
+mammoth (`cmMammoth`: chew, trunk wave, look, blink), the pyramid builders (`cmWorker`, `cmBlock`), the tumbleweed, `cmCounter`
+(a big number with a label, up or rewinding), `cmBracket`, `cmTag`, `cmBurst`.
+- **A history timeline reads as a CLIMB:** the years as height on one rope from the pyramid's tip to the Moon made the two spans
+  physical (he climbs 2,500 years, rests beside her, climbs 2,000), and the pull-back to the whole rope with the shorter span slid
+  down beside the longer one showed the ~500 at a glance. A counter tied to his PLACE on the rope (not to time) never lies.
+- **A rope beside him, not in front:** a front-facing rig climbing a rope in front of his body hides his face; hang him on the rope's
+  right with both hands reaching across to it (one high, one at the waist).
+- **Size a backdrop by what sits under it:** a big Moon disc at the rope's top reached down behind Cleopatra's head (her figure spans
+  ~600 years of rope) and made her look glued to it; R 380 left a clear gap.
+- **A selfie is a hook action:** frame 0 tight on the two of them posing (the stick in his hand, her peace sign), and both bob to the
+  groove so a 4 s hold still moves; the flash on "Nope." freezes everything (pass the flash time as t) in a white photo border.
+- **A rebuild folder outside `.work/` was committed** (`.work-build`, 67 MB of stems and mixes, removed in the next commit; the repo's
+  .gitignore now has `videos/*/.work-*/`). Rebuild into `.work-build` only with that rule in place, or into the scratchpad.
+- **qa.py's "you" check missed "You'd"** (it took you're / you've / you'll): fixed here and in the template.
+- **Business Suite's caption field offers a mention after "@curio_pulse_tv "**: the list showed another account (curiopulsetv,
+  "Space & Science"); typing on closes it without tagging. Read the field's HTML back (no mention, no link) before Next.
+- **Studio opened another of the user's channels** (Statecraft IAS Academy) for the direct edit URL: "Oops, something went wrong"
+  twice; the vertical-slot thumbnail check was left to the user (never switch channels).
+- Voice: 426 + 67 (the "Climb it" retake: whisper heard "Climate") + 118 (two answer auditions) = 611 characters; quota.mjs showed
+  4,653 before and 3,977 after. Renders about 250 s for 1,040 frames (two renders: round 1 and build.sh).
 
 **shrimp-snap** (29 Oct 2026, the coordinator's Short #9, the last of the day ("do as many videos you can"), 18:53-20:00 IST; THE
 ELEVENTH CURIOUS SHORT of the topic test, the pill arm (23:30 slot); the first line of the Curious queue; short arm, 67 words ->

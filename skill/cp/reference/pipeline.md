@@ -37,6 +37,9 @@ $PYTHON qa.py ../.work ../<slug>-short.mp4
 
 `src/build.sh` runs the whole chain from cached takes (voice → timeline → audio → render → srt). Use it for the final
 rebuild and to prove the folder rebuilds.
+For the proof, `WORK=../.work-build bash src/build.sh` from `src/` (a fresh folder; `videos/*/.work-*/` is ignored since
+30 Oct 2026: before that rule a sibling `.work-build` was committed with the Short). Compare its timeline.json and mix.wav
+with `.work`'s, then run qa.py on it with that folder.
 
 ## The numbers, the length, the test, the answer and the loop in the order of work (rules of 15 Oct 2026)
 
