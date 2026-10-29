@@ -78,6 +78,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Would SATURN Float in Your Bathtub? | 34 s | [`videos/saturn-bathtub`](videos/saturn-bathtub) | [2 Nov 2026](https://youtube.com/shorts/y3lEQ0aaGkY) |
 | The Planet Where It Rains GLASS Sideways | 34 s | [`videos/glass-rain`](videos/glass-rain) | [3 Nov 2026](https://youtube.com/shorts/OoeBkzXongc) |
 | Does Your Finger Move When You Bend Your THUMB? | 34 s | [`videos/thumb-finger`](videos/thumb-finger) | [3 Nov 2026](https://youtube.com/shorts/1Y1AgF4LMnE) |
+| Why Can't You Make a FIST With Your Wrist Bent? | 31 s | [`videos/bent-wrist-fist`](videos/bent-wrist-fist) | 4 Nov 2026 |
 
 Each folder has:
 - the finished MP4;
