@@ -457,8 +457,11 @@
       "title": "Why Do Your Ears RUMBLE When You Yawn? 👂",
       "publishAt": "2026-10-29T06:00:00.000Z",
       "question": "👂 Bonus: the same muscle tightens when you chew, when you shout, and even just before a loud bang you're expecting.\nCould you do it without yawning? Yes or no? 👂",
-      "status": "queued",
-      "queued": "2026-10-27T19:26:17.369Z"
+      "status": "posted",
+      "queued": "2026-10-27T19:26:17.369Z",
+      "commentId": "UgxI8vTAGg1MEcZY4rd4AaABAg",
+      "posted": "2026-10-29T07:12:10.473Z",
+      "text": "Next up: How Much Does a Teaspoon of NEUTRON Star Weigh? 🥄 Subscribe so you don't miss it!\n👂 Bonus: the same muscle tightens when you chew, when you shout, and even just before a loud bang you're expecting.\nCould you do it without yawning? Yes or no? 👂"
     },
     {
       "videoId": "4xcvqM40WhM",
@@ -513,6 +516,15 @@
       "question": "🌌 Bonus: if you spot the Andromeda galaxy on a dark night, that light left it 2.5 million years ago, long before our species existed.\nPanic or keep sunbathing? ☀️",
       "status": "queued",
       "queued": "2026-10-29T05:43:16.801Z"
+    },
+    {
+      "videoId": "JAVcSxxWldY",
+      "slug": "tongue-twister",
+      "title": "Can You Say MIT's HARDEST Tongue Twister? 👅",
+      "publishAt": "2026-11-01T18:00:00.000Z",
+      "question": "🐑 Bonus: Guinness once named \"The sixth sick sheik's sixth sheep's sick\" the hardest tongue twister in English.\nHow many did you manage? 👅",
+      "status": "queued",
+      "queued": "2026-10-29T07:04:19.745Z"
     }
   ]
 }

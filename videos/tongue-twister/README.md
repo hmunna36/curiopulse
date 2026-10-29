@@ -49,9 +49,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 1 Nov 2026 23:30 IST |
-| Instagram Reels | (Business Suite) | (after upload) |
-| Facebook Page | (fb.mjs) | same slot as Instagram |
+| YouTube Shorts | https://youtube.com/shorts/JAVcSxxWldY | 1 Nov 2026 23:30 IST (scheduled by the Data API: thumbnail, captions, playlist; cover.jpg also set in Studio's vertical slot) |
+| Instagram Reels | @curio_pulse_tv | 4 Nov 2026 21:00 IST (Business Suite, Instagram only, cover set; Content → Scheduled shows the row with the caption) |
+| Facebook Page | CurioPulse (fb.mjs, video 1424079516566113) | 4 Nov 2026 21:00 IST (`scheduled`, `ready`) |
 
 **Title:** Can You Say MIT's HARDEST Tongue Twister? 👅
 

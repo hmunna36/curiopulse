@@ -36,24 +36,40 @@
   "cover": "cover.jpg",
   "captions": "tongue-twister.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-01T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "JAVcSxxWldY",
+    "url": "https://youtube.com/shorts/JAVcSxxWldY",
+    "uploaded": "2026-10-29T07:04:10.484Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "the vertical slot showed an automatic frame (try 3): cover.jpg uploaded in Studio and saved, 29 Oct 12:39 IST"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-04T21:00:00+05:30",
     "caption": "Say \"pad kid poured curd pulled cod\" five times, fast. 👅\nYour mouth tries to say TWO sounds at once: P pops at your lips, K at the back. Speed up and it fires both. MIT tried this one on volunteers... some just stopped talking.\nHow many did you manage?\nFollow @curio_pulse_tv for the next one: why your mouth waters when you imagine a lemon 🍋\n#science #tonguetwister #brain #funfacts #reels",
     "coverTime": 4.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-29T12:39:00+05:30",
+    "coverSet": true
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-11-01T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1424079516566113",
+    "publishAt": "2026-11-04T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T07:11:52.785Z"
   }
 }
