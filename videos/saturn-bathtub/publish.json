@@ -1,0 +1,59 @@
+{
+  "slug": "saturn-bathtub",
+  "file": "saturn-bathtub-short.mp4",
+  "title": "Would SATURN Float in Your Bathtub? 🪐",
+  "description": "Drop Saturn in a bathtub and it would float. Cup for cup, Saturn is about 30% lighter than water: its average density is about 0.69 grams per cubic centimetre, water's is 1. That's because Saturn isn't rock: it's mostly hydrogen and helium, the two lightest things in the universe. Earth sinks, Jupiter sinks: of all the planets in our solar system, only Saturn floats. The catch: the bath would have to be wider than Saturn (about 120,000 km), and Saturn would probably fall apart in it: its dense core would sink, its gas would rise, and its icy rings would float. So yes, it leaves a ring. Did you guess sink or float?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Saturn #Space #Planets #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-02T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "pill",
+    "test": "pill-2026-10",
+    "slot": "2026-11-02T23:30:00+05:30"
+  },
+  "pinnedComment": "🪐 Bonus: a day on Saturn lasts only about 10.7 hours, and it spins so fast that it bulges: it's about a tenth wider through the middle than from pole to pole.\nNext up: a planet where it rains glass sideways 🌧️ Subscribe so you don't miss it!\nDid you guess sink or float? 🛁",
+  "tags": [
+    "saturn",
+    "would saturn float",
+    "saturn float in water",
+    "saturn density",
+    "saturn bathtub",
+    "planets",
+    "solar system",
+    "space facts",
+    "astronomy",
+    "gas giant",
+    "science shorts",
+    "fun facts",
+    "mind blowing facts",
+    "space",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "saturn-bathtub.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Drop Saturn in your bath. Sink... or float? 🪐\nIt FLOATS. Cup for cup, Saturn is lighter than water: it's mostly gas. Earth sinks, Jupiter sinks, only Saturn floats. (In real life it would probably fall apart. And leave a ring.)\nDid you guess sink or float?\nFollow @curio_pulse_tv for the next one: a planet where it rains glass sideways 🌧️\n#science #space #saturn #planets #funfacts #reels",
+    "coverTime": 1.0,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-11-02T23:30:00+05:30"
+  }
+}

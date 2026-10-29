@@ -75,6 +75,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | What If the Sun VANISHED Right Now? | 33 s | [`videos/sun-8-minutes`](videos/sun-8-minutes) | [1 Nov 2026](https://youtube.com/shorts/SUxhufpS8so) |
 | Can You Say MIT's HARDEST Tongue Twister? | 34 s | [`videos/tongue-twister`](videos/tongue-twister) | [1 Nov 2026](https://youtube.com/shorts/JAVcSxxWldY) |
 | Why Does Your Mouth Water When You Imagine a LEMON? | 33 s | [`videos/lemon-mouth-water`](videos/lemon-mouth-water) | [2 Nov 2026](https://youtube.com/shorts/rv4yQoSwWUE) |
+| Would SATURN Float in Your Bathtub? | 34 s | [`videos/saturn-bathtub`](videos/saturn-bathtub) | 2 Nov 2026 (YouTube link after upload) |
 
 Each folder has:
 - the finished MP4;

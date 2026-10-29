@@ -1,0 +1,39 @@
+# Narration for "Would SATURN Float in Your Bathtub? 🪐"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# A CURIOUS Short (the topic test, story.md §6), the pill arm (23:30 slot). Hook formula: The Question, put to "you" as
+# a two-second guess (the title's question): "Drop Saturn in your bath. Sink... or float?" He drops it on "Sink" and it
+# goes under; the answer pops it back up by 5 s ("It FLOATS! Like a giant... rubber duck."). ONE mechanism picture: a
+# cup of Saturn against a cup of bathwater on a balance (cup for cup, Saturn is lighter); "not rock": his knuckles
+# sink into it like fluff. The payoff is the rule of three (Earth plunks, Jupiter sinks slowly, only Saturn floats);
+# the weird fact is the honest catch (it would fall apart: the gas fizzes up, the core sinks, the icy rings float);
+# the button is the pun ("So yes... it leaves a RING.") and he lifts a fresh Saturn: frame 1 again. 70 words.
+# Nobody says "subscribe": the pill is silent (timeline_lib.py sets it).
+
+## hook gap=0.10 tighten=0.34 tempo=1.02
+Drop Saturn in your bath. Sink... or float?
+
+## answer gap=0.28 tighten=0.30 tempo=1.03
+It FLOATS! Like a giant... rubber duck.
+
+## cup gap=0.24 tighten=0.26 tempo=1.05
+Scoop out a cup of Saturn... it's LIGHTER than a cup of water.
+
+## why gap=0.20 tighten=0.24 tempo=1.07
+Because Saturn's not rock. It's mostly GAS.
+
+## sinks gap=0.28 tighten=0.40 tempo=1.00
+Earth? Sinks. Jupiter? Sinks.
+
+## only gap=0.24 tighten=0.28 tempo=1.04
+Of all our planets... only SATURN floats.
+
+## catch gap=0.32 tighten=0.24 tempo=1.06
+Catch? It'd probably fall apart. The core sinks... the gas fizzes UP.
+
+## rings gap=0.20 tighten=0.28 tempo=1.05
+And its icy rings? They float.
+
+## button gap=0.38 tighten=0.45 tempo=1.02
+So yes... it leaves a RING.
