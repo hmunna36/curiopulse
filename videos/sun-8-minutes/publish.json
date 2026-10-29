@@ -36,24 +36,42 @@
   "cover": "cover.jpg",
   "captions": "sun-8-minutes.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-01T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "SUxhufpS8so",
+    "url": "https://youtube.com/shorts/SUxhufpS8so",
+    "uploaded": "2026-10-29T05:43:06.562Z",
+    "thumbnailSet": true,
+    "playlistSet": true,
+    "captionsSet": true,
+    "captionsVia": "studio",
+    "captionsNote": "captions.insert was refused with quotaExceeded (the shared Data API quota, 29 Oct 11:13 IST); the SRT was uploaded in YouTube Studio (Subtitles > Upload file > With timing; the editor's Done kept it unpublished, Languages > Edit subtitles > Publish: 'English subtitles published' 11:27 IST)",
+    "studioThumbnail": "cover.jpg uploaded in Studio (the vertical slot showed the processing placeholder): saved 11:25 IST"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-04T18:30:00+05:30",
     "caption": "If the Sun vanished right now, you'd keep sunbathing for 8 minutes. ☀️\nSunshine is a delivery: it left the Sun 8 minutes ago, and even the Sun's pull takes that long to reach us. So Earth would keep circling... nothing. Then lights out, and off we'd fly. You wouldn't even feel it.\nPanic or keep sunbathing?\nFollow @curio_pulse_tv for the next one: Saturn would float in a bathtub 🪐\n#science #space #sun #physics #funfacts #reels",
     "coverTime": 2.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-29T11:33:00+05:30",
+    "coverSet": true
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-11-01T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2529838607504984",
+    "publishAt": "2026-11-04T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-29T05:52:42.176Z"
   }
 }

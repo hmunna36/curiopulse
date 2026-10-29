@@ -77,9 +77,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | PENDING | 1 Nov 2026 11:30 IST |
-| Instagram Reels | Business Suite (Instagram only) | PENDING |
-| Facebook Page | `fb.mjs reel` | PENDING |
+| YouTube Shorts | https://youtube.com/shorts/SUxhufpS8so | 1 Nov 2026 11:30 IST (Data API; thumbnail also set in Studio; captions uploaded in Studio: the API's quota was out) |
+| Instagram Reels | Business Suite (Instagram only, cover.jpg as the cover) | 4 Nov 2026 18:30 IST |
+| Facebook Page | `fb.mjs reel` (video 2529838607504984) | 4 Nov 2026 18:30 IST |
 
 **Title:** What If the Sun VANISHED Right Now? ☀️
 
