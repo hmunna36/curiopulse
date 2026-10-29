@@ -8,3 +8,5 @@ __pycache__/
 long/*/.work/
 long/*/src/fonts/
 long/*/*.mp4
+# a fresh work folder for a rebuild proof (WORK=../.work-build bash src/build.sh): never committed
+videos/*/.work-*/
