@@ -64,11 +64,53 @@
 | `green-dot`: "Why Do You See a GREEN Dot That Isn't There? 👁️" | 34 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/5IpUoD_NtS0 · 31 Oct 2026 11:30 IST | Business Suite, Instagram only, 3 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3450602905125202) |
 | `wombat-cubes`: "Why Do Wombats Poop CUBES? 🟫" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/3JY_aSgAcEU · 31 Oct 2026 23:30 IST | Business Suite, Instagram only, 3 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2336367837139924) |
 | `sun-8-minutes`: "What If the Sun VANISHED Right Now? ☀️" | 33 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/SUxhufpS8so · 1 Nov 2026 11:30 IST | Business Suite, Instagram only, 4 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2529838607504984) |
+| `tongue-twister`: "Can You Say MIT's HARDEST Tongue Twister? 👅" | 34 s (short arm; pill arm; TEST) | https://youtube.com/shorts/JAVcSxxWldY · 1 Nov 2026 23:30 IST | Business Suite, Instagram only, 4 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1424079516566113) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**tongue-twister** (29 Oct 2026, the coordinator's Short #3 of the day ("do as many videos you can"), 11:28-13:00 IST; a TEST Short, the pill
+arm (23:30 slot); short arm, 72 words -> 33.73 s; hook formula The Direct Address as the test itself: "Pad kid poured curd pulled cod.
+[mischievously] Your turn. Five times, fast." (after The Superlative, The Question); answer "Tangled? Your mouth tried to say TWO sounds at
+once." at 4.89 s; button "Still talking? Then go FASTER." into the hook; caption question "How many did you manage?"; YouTube JAVcSxxWldY,
+playlist Why Does Your Body Do That?, thumbnail + captions + playlist by the API (the quota had reset at 12:30 IST), cover.jpg also into
+Studio's vertical slot (it showed an automatic frame); Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs
+1424079516566113) 4 Nov 21:00 IST. Three QA rounds, qa.py 18/18 each; `build.sh` into a fresh work folder reproduced mix.wav byte for
+byte and made the shipped MP4.)
+World: four new files (borrow them): `tw_stage.js` (TWISTER NIGHT: a plum brick wall plate with curtains and a valance, a TONGUE / TWISTERS
+neon that flickers, a string of bulbs that dips clear of his head, out-of-focus bokeh placed round his head, a spotlight cone and pool,
+wedge monitors; `twCrowd` (heads from behind, phone lights, a cheer), `twMic` (a hand mic at a rig wrist), `twScore` (a SAY IT 5X FAST
+board, unused), `TWPAL` (a teal bowling shirt)), `tw_face.js` (his talking mouth drawn over the rig's in head units: `twVisAt(tt, rate)`
+the twister as 18 mouth shapes on his own clock, valid at negative time; `twMouth` P (lips pressed, cheeks puffed) / A I O U D K / grin /
+smirk / ooh / gape; `twKnot` (his tongue out, tied in an overhand knot); `twJam` (P and K squeezing out of his lips together, then
+popping); `twPuff`; `twHead`; `twCountHand` (a fist with 1-5 fingers up)), `tw_mouth.js` (after tongue-nose's side.js: his head from the
+side as glass with a mouth that articulates: `twSection(t, {lips, back, tip, open, glowP/K/D, puffP/K})` -- lips that shut (P), the
+back of the tongue up against the soft palate (K), the tip up behind the teeth (D), air that leaves from the lips or rides forward from
+the back), `tw_lab.js` (a 2013 speech-lab booth: foam wall plate, a SPEECH LAB sign, a taped note, a studio mic on a boom with a pop
+filter, headphones in head units, a monitor whose voice trace goes flat from the right with a WORDS/MIN readout). Its scenes.js:
+`twStageHero` (mic hand, counting hand, a two-hand grip, talk marks off his lips), `hookA`/`hookCam` valid at negative time, the window on
+his cheek into the side view (`secWindow`), `secState` (held closures over "P... pops" and "K,", quick ones when it speeds up),
+`twSeq` (a P row and a K row of beats; on "easier rhythm" the K dots slide under the P dots), `twBubble` (five numbered tries, worse
+each time; the fifth's letters fall), `SC.cover`.
+- **A test the viewer SAYS:** the narrator says the phrase once from frame 1 (tempo 1.08), and the hero rattles it on his own faster
+  clock (4.5 words a second, 3 mouth shapes a word), so his mouth never lip-syncs her voice; "Your turn" then hands it to the viewer.
+  The trip cannot land by 3 s (it needs a try or two): the hero's knot lands on "fast" and the answer at 4.9 s says what happened.
+- **The articulators as drums:** the slow P and K pops land in the gaps AFTER their words (the closure held over "P... pops", the burst
+  after it), so their sounds play whole; when it speeds up, the pops run under the words as their edges only (a low knock for P, a
+  high tick for K) and become the rhythm track.
+- **The science:** most tongue-twister slips are not swaps but both sounds at once (Goldstein, Pouplier et al. 2007, Cognition: intrusions
+  28.2 % of tokens, substitutions 4.3 %; faster and more repetitions = more); "pad kid poured curd pulled cod" made some MIT volunteers stop
+  talking altogether (ASA press release via ScienceDaily, 5 Dec 2013; HuffPost misprints it "cold").
+- **A flat take shows in numbers:** the payoff's p10-p90 pitch range was 4.3 semitones and its words 10 dB under the in-band median; one
+  `--redo` (61 characters) gave 9.0 st. Back the old take up first (src/voice/<id>.*) so the better one can be kept.
+- **A tick that marks the first try must outlive the second:** try 2 replaced try 1 at the instant the tick was due, so it never showed
+  (found on round 2's sheet); the first try now stays up through its word.
+- **A fact on a sign must clear the app's top band at every camera key:** the lab's MIT · 2013 note was fine at the wide key and under
+  the band (y < 375) once the camera pushed in; the set was moved under it.
+- Voice: 400 characters for the takes, 61 for the payoff retake. Render about 215 s for 1,012 frames (three renders: two rounds and the
+  rebuild).
 
 **sun-8-minutes** (29 Oct 2026, the coordinator's Short #2 of the day ("do as many videos you can"), 10:04-11:26 IST; THE EIGHTH
 CURIOUS SHORT of the topic test, the no-pill arm (11:30 slot); short arm, 72 words -> 33.47 s; hook formula The Question, the exact
