@@ -74,11 +74,47 @@
 | `cleopatra-moon-landing`: "Was Cleopatra Closer to the Pyramids or the MOON Landing? 🚀" | 35 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/j1nzcpNxSS0 · 5 Nov 2026 11:30 IST | Business Suite, Instagram only, 8 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 29385531647751239) |
 | `toes-one-at-a-time`: "Why Won't Your TOES Move One at a Time? 🦶" | 31 s (short arm; pill arm; TEST) | https://youtube.com/shorts/jgmry3gFWss · 5 Nov 2026 23:30 IST | Business Suite, Instagram only, 8 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1449317237159821) |
 | `white-bear`: "Why Can't You NOT Think of a White Bear? 🐻‍❄️" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/1YX1YzS3OD4 · 6 Nov 2026 11:30 IST | Business Suite, Instagram only, 9 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1043182888794723) |
+| `scale-trees`: "The Tree That Wore SNAKESKIN (Then Became Coal) 🐍" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/BqvcFwIyHTw · 6 Nov 2026 23:30 IST | Business Suite, Instagram only, 9 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1196753236585344) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**scale-trees** (31 Oct 2026, the 02:00 routine (the day's second Short), 02:04-03:35 IST; THE THIRTEENTH CURIOUS SHORT of the topic
+test, pill arm (23:30 slot); the Curious queue's first line, a viewer's idea (@Catuser346's comment on sharks-older-than-trees: the reply
+is the user's); short arm, 71 words -> 34.00 s; hook formula The Comparison as a two-second guess (after Contrarian Flip, The Direct
+Address, The Direct Address): "Is this a snake or a TREE? You've got two seconds." over python-patterned bark under his palm; answer
+"A tree. Forty metres tall... wearing snakeskin." at 4.57 s; button "Snake, tree, coal... ceiling hazard. What a career." into the
+hook; caption question "Snake or tree: what did you guess?"; YouTube BqvcFwIyHTw, playlist Strange Nature, cover also put into
+Studio's Shorts slot; Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs 1196753236585344) 9 Nov 21:00 IST.
+Two QA rounds; the final MP4 is build.sh's into a fresh work folder (timeline.json and mix.wav byte-identical). Voice: 406 characters
++ one 52-character retake + a 104-character two-seed audition of the miners line.)
+- **Two world files (borrow them):** `st_world.js`, a Carboniferous coal swamp: ONE perspective camera for every layer
+  (`stLayerCam(cam, dz)`: scale 1 / (1 / zoom + dz) about the same point, so a crane up a 12,440-unit trunk and a pull-back to
+  zoom 0.115 keep the parallax physical), three layers of 30-40 m scale trees in haze (`ST_LAYERS`, `stLayer` with a `fall` hook
+  for toppling and an `afterTree` hook for splashes, `clear` thins the haze), the trunk (`stTrunk`: leaf cushions drawn on a
+  cylinder while a cushion is over 22 px on screen, a pattern tile `ST_BARK_TILE` below that; `litFn` lights cushions up),
+  `stCushion` (a python-like diamond with a rim, a ridge and a leaf scar; `scarLit` = a fresh pale scar), `stCrown` (dichotomous
+  forks, grassy tufts, hanging cones; `far` = blobs), `stPole` (a young leafy pole tree: `gust`, `lit`, `plucked`, `pull`, returns
+  the pluck leaf's base), `stBank` (a mud island with Stigmaria roots), `stHorsetail`, `stFern`, `stDragonfly` (Meganeura),
+  `stSplash`, `stBackdrop` (sky to canopy to ground haze by world height). `st_props.js`: the burial cutaway (`stCutaway`: layers
+  pour in at the surface and push the peat down; it squashes to a glossy black seam, logs flatten with it; `stPushArrows`), a
+  19th-century engine (`stLocoBack` dusk + rushing scenery, `stLoco` boiler, chimney, dome, drivers with a coupling rod, the cab
+  with a firebox that flares, `stTender`, `stAvalanche`, `stSmoke`, `stLump` coal with a diamond print), a coal mine in
+  one-point perspective (`MINE`, `stMine`, `stRoofStump` kettlebottoms with bark rims and roots, `stFallingStump`, `stDust`;
+  scenes.js's `mineProj` adds a pitch so the camera can look up), `stHardHat` (head units, `dent`), `stBeam`, `stStars`, `stBurst`,
+  `stCountHand`; scenes.js's `stCareer` (a row of icons that pop on their words) and `camLog` (below).
+- **`camLog(t, keys)`: a camera whose zoom eases in log space while x/y follow the view width.** A 20x pull-back (2.6 -> 0.115) with
+  linear zoom races at the start and crawls at the end; in log space it reads as one move, and the dive back down lands on him.
+- **The loop as a hard cut to the hook's own drawing:** SC.button draws `hookDraw(t - D, t)` for the last 0.17 s (hookCam and hookA
+  valid at negative time), right after a push into the fallen stump's diamonds (a match on the scales). `setLights` takes a function
+  of t for the button so those frames get the swamp's light, not the mine's.
+- **Crop every reaction frame at full size, not just the sheets:** in round 1 the BONK's dazed face sat under THEY FALL (the mine's
+  framing put his head at y 1240); the sheets were too small to show it. Fixed by moving the whole mine framing up 170 px.
+- **Studio's Shorts thumbnail slot ignored the click hook:** its image input (`#file-loader`, accept image/jpeg,image/png) takes
+  `file_upload` directly; the slot showed an auto frame (the train) after the API's thumbnail, so cover.jpg went in there and Save.
+- Render ~0.29-0.42 s a frame (5-7 min for 1,020 frames).
 
 **white-bear** (31 Oct 2026, the 00:00 routine, 00:03-01:10 IST; a TEST Short (no-pill arm, 11:30 slot), the Queue's first line,
 promised by toes-one-at-a-time's caption and Next-up; short arm, 73 words -> 33.27 s; hook formula The Direct Address as the test
