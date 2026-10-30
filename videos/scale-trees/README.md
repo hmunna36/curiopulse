@@ -51,8 +51,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block (the miners l
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (set at upload) | 6 Nov 2026 23:30 IST |
-| Instagram Reels + the Facebook Page | (set at schedule) | (set at schedule) |
+| YouTube Shorts | https://youtube.com/shorts/BqvcFwIyHTw | 6 Nov 2026 23:30 IST (scheduled by the Data API; thumbnail, captions, playlist Strange Nature; cover also set in Studio's Shorts slot) |
+| Instagram Reels | Business Suite (Instagram only, cover.jpg as the cover) | 9 Nov 2026 21:00 IST (checked in Content → Scheduled: the caption is the row's title) |
+| Facebook Page CurioPulse | `fb.mjs reel`, video 1196753236585344 (`scheduled`, `ready`) | 9 Nov 2026 21:00 IST |
 
 **Title:** The Tree That Wore SNAKESKIN (Then Became Coal) 🐍
 
