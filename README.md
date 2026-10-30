@@ -83,6 +83,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Was Cleopatra Closer to the Pyramids or the MOON Landing? | 35 s | [`videos/cleopatra-moon-landing`](videos/cleopatra-moon-landing) | [5 Nov 2026](https://youtube.com/shorts/j1nzcpNxSS0) |
 | Why Won't Your TOES Move One at a Time? | 31 s | [`videos/toes-one-at-a-time`](videos/toes-one-at-a-time) | [5 Nov 2026](https://youtube.com/shorts/jgmry3gFWss) |
 | Why Can't You NOT Think of a White Bear? | 33 s | [`videos/white-bear`](videos/white-bear) | [6 Nov 2026](https://youtube.com/shorts/1YX1YzS3OD4) |
+| The Tree That Wore SNAKESKIN (Then Became Coal) | 34 s | [`videos/scale-trees`](videos/scale-trees) | 6 Nov 2026 |
 
 Each folder has:
 - the finished MP4;

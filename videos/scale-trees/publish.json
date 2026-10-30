@@ -1,0 +1,60 @@
+{
+  "slug": "scale-trees",
+  "file": "scale-trees-short.mp4",
+  "title": "The Tree That Wore SNAKESKIN (Then Became Coal) 🐍",
+  "description": "Is this a snake or a tree? A tree: a scale tree (Lepidodendron), up to about 40 metres tall, from the coal swamps of about 300 million years ago. Every diamond on its bark is a leaf cushion: the spot where a leaf grew, then fell off. When whole swamp forests of them fell into the water, they didn't rot away. They were buried, squashed and slowly cooked into coal: in some North American coal swamps these trees were about 70% of all the plant matter. Steam engines burned that coal by the ton. And miners still find their stumps standing in the rock above the coal seams. They call them kettlebottoms, and they can drop out of the roof without warning. Snake or tree: what did you guess?\n\nFun fact: the name of their age, the Carboniferous, means \"coal-bearing\". (The idea for this one came from a viewer's comment: thank you!)\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Fossils #Prehistoric #Coal #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-06T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "pill",
+    "test": "pill-2026-10",
+    "slot": "2026-11-06T23:30:00+05:30"
+  },
+  "pinnedComment": "🌴 Bonus: their age, the Carboniferous, is named after coal: it means \"coal-bearing\".\nNext up: there are more trees on Earth than stars in our galaxy 🌳✨ Subscribe so you don't miss it!\nSnake or tree: what did you guess? 🐍🌳",
+  "tags": [
+    "scale tree",
+    "lepidodendron",
+    "carboniferous",
+    "coal",
+    "how coal forms",
+    "fossil",
+    "fossil tree",
+    "prehistoric",
+    "ancient trees",
+    "coal mine",
+    "kettlebottom",
+    "steam train",
+    "snake skin",
+    "science facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "scale-trees.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Is this a snake or a tree? 🐍🌳\nA tree: a 40 m scale tree from 300 million years ago. Every diamond is where a leaf fell off, and whole swamps of them became coal.\nSnake or tree: what did you guess?\nFollow @curio_pulse_tv for the next one: there are more trees on Earth than stars in our galaxy 🔔\n#science #fossils #prehistoric #coal #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-11-06T23:30:00+05:30"
+  }
+}
