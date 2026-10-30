@@ -62,8 +62,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block, no retakes. 
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 6 Nov 2026 11:30 IST |
-| Instagram Reels | (Business Suite) | the next free 18:30 / 21:00 IST slot after the YouTube release |
+| YouTube Shorts | https://youtube.com/shorts/1YX1YzS3OD4 | 6 Nov 2026 11:30 IST (scheduled; thumbnail, captions and the playlist by the API, cover.jpg also into Studio's slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 9 Nov 2026 18:30 IST (scheduled 31 Oct 01:03 IST) |
+| Facebook Page | CurioPulse (`fb.mjs reel`, video 1043182888794723, `publish_status: scheduled`) | 9 Nov 2026 18:30 IST |
 
 **Title:** Why Can't You NOT Think of a White Bear? 🐻‍❄️
 **Description, tags, Reels caption, "Next up" comment:** in [`publish.json`](publish.json).

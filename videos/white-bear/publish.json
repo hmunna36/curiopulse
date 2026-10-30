@@ -35,24 +35,39 @@
   "cover": "cover.jpg",
   "captions": "white-bear.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-06T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "1YX1YzS3OD4",
+    "url": "https://youtube.com/shorts/1YX1YzS3OD4",
+    "uploaded": "2026-10-30T19:25:28.539Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-09T18:30:00+05:30",
     "caption": "For five seconds, do NOT think of a white bear. 🐻‍❄️\nToo late, right? Your brain posts a guard to check you're not thinking of it... and to check, he has to picture one.\nDid you think of it? Yes or no?\nFollow @curio_pulse_tv for the next one: the ancient trees with diamond scales that turned into coal 🔔\n#science #brain #psychology #mindtricks #funfacts #reels",
     "coverTime": 3.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-10-31T01:03:00+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-11-06T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1043182888794723",
+    "publishAt": "2026-11-09T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-10-30T19:32:25.206Z"
   }
 }
