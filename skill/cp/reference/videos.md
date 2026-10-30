@@ -73,11 +73,45 @@
 | `shrimp-snap`: "Can a Shrimp's Snap Get as HOT as the SUN? 🦐" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/bFFM9txGYyg · 4 Nov 2026 23:30 IST | Business Suite, Instagram only, 7 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1433323355022781) |
 | `cleopatra-moon-landing`: "Was Cleopatra Closer to the Pyramids or the MOON Landing? 🚀" | 35 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/j1nzcpNxSS0 · 5 Nov 2026 11:30 IST | Business Suite, Instagram only, 8 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 29385531647751239) |
 | `toes-one-at-a-time`: "Why Won't Your TOES Move One at a Time? 🦶" | 31 s (short arm; pill arm; TEST) | https://youtube.com/shorts/jgmry3gFWss · 5 Nov 2026 23:30 IST | Business Suite, Instagram only, 8 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1449317237159821) |
+| `white-bear`: "Why Can't You NOT Think of a White Bear? 🐻‍❄️" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/1YX1YzS3OD4 · 6 Nov 2026 11:30 IST | Business Suite, Instagram only, 9 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1043182888794723) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**white-bear** (31 Oct 2026, the 00:00 routine, 00:03-01:10 IST; a TEST Short (no-pill arm, 11:30 slot), the Queue's first line,
+promised by toes-one-at-a-time's caption and Next-up; short arm, 73 words -> 33.27 s; hook formula The Direct Address as the test
+(after The Impossible Claim and The Question): "Five seconds. Don't you DARE think of a white bear. Go!"; answer "Too late. Your
+brain hired a guard... to watch for bears." at 4.79 s; button "The trick? Picture a red car instead. Ready?" into the hook (the
+viewer re-does the test with the trick), undercut by the bear popping up through the car's sunroof and honking; caption question
+"Did you think of it? Yes or no?"; YouTube 1YX1YzS3OD4, playlist Your Brain Is Weird, thumbnail + captions + playlist by the API,
+cover.jpg also into Studio's slot (it showed a grey placeholder); Instagram (Business Suite, Instagram only, cover set) + the Page
+(fb.mjs 1043182888794723) 9 Nov 18:30 IST. Two QA rounds; the final MP4 is build.sh's into a fresh work folder (timeline.json and
+mix.wav byte-identical). Voice: 414 characters, one take per block, no retakes.)
+World: mosquito-bites' `camp.js` (campBack soft 0.9, campChar) and lemon-mouth-water's `lm_lab.js` (lmVol, lmBench), plus two new
+files (borrow them). `wb_props.js`: the white bear (`wbBear`: head and shoulders, a waving paw, `drive`), his thought bubble
+(`wbBubble(x, y, w, h, k, tail, inner)`: a dark edge, a pale blue inside so a WHITE thing reads in it, `inner` draws clipped; black
+in the glow layer), the guard (`RANGER` palette on the hiker rig at s 0.22, `wbHat` a ranger hat in head units, `wbBinos`), the lookout
+that springs out of his hair (`wbTowerGeo/Back/Front`: a post on his crown from `headPt`, a cabin, a BEAR WATCH sign fitted with
+measureText), a WANTED poster that unfolds (`wbPoster`), a five-second countdown ring (`wbTimer`), a desk bell (`wbDeskBell`), a red
+car (`wbCar`: the bear pops up through its sunroof, honk arcs), a camping clock reading 2:00 (`wbClock`), a sleeping bag (`wbBag`,
+in the layer's post) with its hood behind his head (`wbHood`, in the layer's `pre`: charLayer's pre runs before the rig). `wb_lab.js`:
+the 1987 study room (THINK ALOUD poster with a crossed-out bear, a wall clock whose hand is live).
+- **Fingertips on the temples:** `armAt` elbow [+-176, -332], wrist [+-104, -420] with hand 'point' puts the fingertip at the temple;
+  the rig draws the head last, so the forearm, cuff and hand are drawn again in the layer's post (`wbHero` in scenes.js).
+- **A thought bubble anchored in the world must move WITH the camera:** its move to the wide framing ran ahead of the pull-back and
+  its edge crossed x 980 at 6.3 s; tying its ramp to the camera's key times fixed it. During close-ups that would leave it half off
+  the frame it scales out and pops back on the next wide beat (`away` in drawBubbleHead).
+- **Close-ups on a small character standing on the hero's head:** his hat crossed the chip row (y < 400) at zoom 3.45-3.55; the
+  camera keys came down 14-16 world units. Check the top of the frame, not only the right column.
+- **"two a.m."**: v3 aligned "two" into the 0.1 s silence after "at" (its window read -56 dB, so qa.py's voice check would have read
+  it as a masked word); `T.retime("at two a.m.", ...)` moved the three words onto their bursts.
+- **Sounds that ring:** a desk bell rings 0.7 s; whole in a pause it ran over "It's" (cut each ring to the gap: `nxt - f - 0.06`).
+  An owl hoot is at ~410 Hz: speech band, cut. The cringe wah-wah is 1.2 s: only its first 'wah' fits a 0.4 s gap.
+- **The one-finger Reel became a hit on Instagram** (published 30 Oct 18:31 IST: 158K views, 104K reached by 31 Oct 00:05 IST;
+  the other Reels of the week had 0.1-2.4K). Its kin were already next on YouTube (thumb-finger, bent-wrist-fist, toes, 3-5 Nov);
+  this run moved the Queue's two hand tests (SNAP, clasped thumbs) to its top.
 
 **toes-one-at-a-time** (30 Oct 2026, the 02:00 second-Short routine, 02:04-03:25 IST; a TEST Short (pill arm, 23:30 slot), the Queue's
 first line; short arm, 69 words -> 30.67 s; hook formula The Direct Address as the test: "Lift your big toe. Easy. Now lift JUST the next
