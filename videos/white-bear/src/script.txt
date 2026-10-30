@@ -1,0 +1,31 @@
+# Narration for "Why Can't You NOT Think of a White Bear?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there.
+# The test (rules of 15 Oct 2026): for five seconds, do NOT think of a white bear. Everyone fails on the spot.
+# The mechanism as ONE picture: a guard in his head checks for bears by holding up a WANTED poster of one.
+# The button sends the viewer back to the test a new way (picture a red car), and "Ready?" runs into "Five seconds".
+# 72 words. No "subscribe", no outro: the Short loops.
+
+## hook gap=0.10 tighten=0.35 tempo=1.00
+[mischievously] Five seconds. Don't you DARE think of a white bear. Go!
+
+## answer gap=0.42 tighten=0 tempo=1.00
+Too late. Your brain hired a guard... to watch for bears.
+
+## check gap=0.30 tempo=1.04
+Keep trying. Every few seconds, he checks...
+
+## anybears gap=0.12 tighten=0 tempo=1.00
+[whispers] any bears?
+
+## picture gap=0.35 tempo=1.02
+But to spot one... he has to PICTURE one.
+
+## payoff gap=0.40 tempo=1.03
+In one study, people rang a bell whenever it came back... over once a minute!
+
+## weird gap=0.40 tempo=1.02
+It's probably why your cringiest moment replays at two a.m.
+
+## button gap=0.45 tighten=0 tempo=1.00
+The trick? Picture a red car instead. Ready?
