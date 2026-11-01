@@ -75,11 +75,27 @@
 | `toes-one-at-a-time`: "Why Won't Your TOES Move One at a Time? 🦶" | 31 s (short arm; pill arm; TEST) | https://youtube.com/shorts/jgmry3gFWss · 5 Nov 2026 23:30 IST | Business Suite, Instagram only, 8 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1449317237159821) |
 | `white-bear`: "Why Can't You NOT Think of a White Bear? 🐻‍❄️" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/1YX1YzS3OD4 · 6 Nov 2026 11:30 IST | Business Suite, Instagram only, 9 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1043182888794723) |
 | `scale-trees`: "The Tree That Wore SNAKESKIN (Then Became Coal) 🐍" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/BqvcFwIyHTw · 6 Nov 2026 23:30 IST | Business Suite, Instagram only, 9 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1196753236585344) |
+| `trees-vs-stars`: "Earth Has More TREES Than Our Galaxy Has STARS 🌲" | 34 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/qyi7O16noEg · 7 Nov 2026 11:30 IST | Business Suite, Instagram only, 10 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1903031057771199) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**trees-vs-stars** (built 1 Nov 2026 09:05-10:33 IST after the ElevenLabs reset, shipped by the 00:00 routine of 2 Nov; THE FOURTEENTH
+CURIOUS SHORT of the topic test, no-pill arm (11:30 slot); short arm, 73 words -> 34.43 s; hook formula The Impossible Claim: "Your
+planet has more trees than your galaxy has STARS." over him clicking a tally counter at the Milky Way; answer "And it's not close.
+Trees win... at least SEVEN to one." at 4.64 s; button "So, stargazers... you've been looking the wrong way." into the hook; caption
+question "Trees or stars: what did you guess?"; new worlds `tv_world.js` (one pinhole-camera 3D hill, forest and sky) and
+`tv_space.js` (Earth from 3D noise, a squinting satellite, a balance); YouTube qyi7O16noEg, playlist Strange Nature; Instagram
+(Business Suite, Instagram only, cover set) + the Page (fb.mjs 1903031057771199) 10 Nov 18:30 IST. Two QA rounds (round 1: the
+3 TRILLION card lagged its line by 1.4 s and "Almost" sat under a drone; fixed by a count-up card and softer drones).
+- **The building run stopped right after the YouTube upload** (1 Nov 10:33 IST: publish.json had the YouTube id uncommitted, no
+  Reel, the lock left behind). The next nightly run found the `[~]` line, took the lock over as stale, committed nothing new
+  but the ids, and shipped the Reel and the Page copy: the resume path works as written. A resumed Short that only needs ship
+  steps is the night's Short; with 212 voice characters left (the 1 Nov renewal still not through), no new topic could start.
+- Studio's video page answered "Oops, something went wrong" twice again (direct URL, no switcher touched): the vertical
+  thumbnail slot is unchecked, as on toes-one-at-a-time.
 
 **scale-trees** (31 Oct 2026, the 02:00 routine (the day's second Short), 02:04-03:35 IST; THE THIRTEENTH CURIOUS SHORT of the topic
 test, pill arm (23:30 slot); the Curious queue's first line, a viewer's idea (@Catuser346's comment on sharks-older-than-trees: the reply
