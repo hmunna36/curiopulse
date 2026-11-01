@@ -1,0 +1,58 @@
+{
+  "slug": "trees-vs-stars",
+  "file": "trees-vs-stars-short.mp4",
+  "title": "Earth Has More TREES Than Our Galaxy Has STARS 🌲",
+  "description": "Your planet has more trees than your galaxy has stars, and it's not close. A 2015 study in Nature put the number of trees on Earth at about 3 trillion. Our galaxy, the Milky Way, holds roughly 100 to 400 billion stars. So trees win at least seven to one: give every star in the Milky Way its own tree and more than two trillion trees still don't get one. The funny part? Before that study, the best guess was about 400 billion trees, close to a tie with the stars. Then scientists counted trees on the ground, in more than 400,000 forest plots around the world, and matched them with satellite maps. And since farming began, Earth has lost almost half its trees: there were about 5.6 trillion before. Trees or stars: what did you guess?\n\nBonus: we still cut down about 15 billion trees every year.\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Space #Trees #MilkyWay #FunFacts #CurioPulse",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-07T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "test": "pill-2026-10",
+    "slot": "2026-11-07T11:30:00+05:30"
+  },
+  "pinnedComment": "🌲 Bonus: we still cut down about 15 billion trees every year.\nNext up: why some people can't SNAP their fingers 🫰 Subscribe so you don't miss it!\nTrees or stars: what did you guess? 🌲⭐",
+  "tags": [
+    "trees vs stars",
+    "more trees than stars",
+    "how many trees on earth",
+    "3 trillion trees",
+    "how many stars in the milky way",
+    "milky way",
+    "galaxy",
+    "stars",
+    "trees",
+    "forest",
+    "space facts",
+    "science facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "trees-vs-stars.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Your planet has more trees than your galaxy has stars 🌲⭐\nAbout 3 trillion trees vs a few hundred billion stars: give every star its own tree and 2 trillion+ trees still wait.\nTrees or stars: what did you guess?\nFollow @curio_pulse_tv for the next one: why some people can't snap their fingers 🔔\n#science #space #trees #milkyway #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "test": "kind-2026-10",
+    "slot": "2026-11-07T11:30:00+05:30"
+  }
+}

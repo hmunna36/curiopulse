@@ -1,0 +1,49 @@
+# Narration for "Earth Has More TREES Than Our Galaxy Has STARS 🌲"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. No Subscribe pill: this Short is in the pill test's no-pill arm (7 Nov 11:30).
+# - the last block is the button; the Short ends on it and loops.
+
+# - words in all: 66-76 (every Short is 30-35 s since 16 Oct 2026).
+# THE CURIOUS KIND (the topic test, 25 Oct-8 Nov 2026; reference/story.md §6): no viewer test; the hook is the claim itself,
+# said to "you" while frame 0 already shows it (he lies on a hilltop clicking a counter at the Milky Way, the forest behind him).
+# Hook formula: The Impossible Claim (after The Direct Address, The Direct Address?, The Comparison); the proof starts at once
+# (the scoreboard, then every star dropped onto a tree). The button runs into the hook when the Short loops
+# ("...looking the wrong way." -> "Your planet has more trees..."). 73 words. Every claim is in the README's claims table.
+
+## hook gap=0.10 tempo=1.00
+Your planet has more trees than your galaxy has STARS.
+
+## answer gap=0.40 tighten=0.40 tempo=1.00
+And it's not close. Trees win... at least SEVEN to one.
+
+## give gap=0.40 tighten=0.30 tempo=1.04
+Give every star in the Milky Way its own tree...
+
+## left gap=0.42 tighten=0.40 tempo=1.00
+and over two TRILLION trees still don't get one.
+
+## tie gap=0.45 tighten=0.30 tempo=1.03
+Funny thing? Scientists used to think it was about a TIE.
+
+## ground gap=0.30 tighten=0.35 tempo=1.02
+Then someone counted... from the GROUND.
+
+## weird gap=0.35 tighten=0.35 tempo=1.02
+Three TRILLION. And before farming? Almost double that.
+
+## button gap=0.55 tighten=0.40 tempo=1.00
+So, stargazers... you've been looking the wrong way.
