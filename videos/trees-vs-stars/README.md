@@ -46,8 +46,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 7 Nov 2026 11:30 IST |
-| Instagram Reels + the Facebook Page | (after release) | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/qyi7O16noEg | 7 Nov 2026 11:30 IST (scheduled by the Data API; thumbnail, captions, playlist Strange Nature; the Studio Shorts-slot cover check is still to do: Studio would not open on 2 Nov) |
+| Instagram Reels | Business Suite (Instagram only, cover.jpg as the cover) | 10 Nov 2026 18:30 IST (checked in Content → Scheduled: the caption is the row's title) |
+| Facebook Page CurioPulse | `fb.mjs reel`, video 1903031057771199 (`scheduled`) | 10 Nov 2026 18:30 IST |
 
 **Title:** Earth Has More TREES Than Our Galaxy Has STARS 🌲
 

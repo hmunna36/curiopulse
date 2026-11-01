@@ -84,7 +84,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Won't Your TOES Move One at a Time? | 31 s | [`videos/toes-one-at-a-time`](videos/toes-one-at-a-time) | [5 Nov 2026](https://youtube.com/shorts/jgmry3gFWss) |
 | Why Can't You NOT Think of a White Bear? | 33 s | [`videos/white-bear`](videos/white-bear) | [6 Nov 2026](https://youtube.com/shorts/1YX1YzS3OD4) |
 | The Tree That Wore SNAKESKIN (Then Became Coal) | 34 s | [`videos/scale-trees`](videos/scale-trees) | [6 Nov 2026](https://youtube.com/shorts/BqvcFwIyHTw) |
-| Earth Has More TREES Than Our Galaxy Has STARS | 34 s | [`videos/trees-vs-stars`](videos/trees-vs-stars) | 7 Nov 2026 |
+| Earth Has More TREES Than Our Galaxy Has STARS | 34 s | [`videos/trees-vs-stars`](videos/trees-vs-stars) | [7 Nov 2026](https://youtube.com/shorts/qyi7O16noEg) |
 
 Each folder has:
 - the finished MP4;

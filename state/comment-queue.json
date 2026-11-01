@@ -524,8 +524,10 @@
       "title": "What If the Sun VANISHED Right Now? ☀️",
       "publishAt": "2026-11-01T06:00:00.000Z",
       "question": "🌌 Bonus: if you spot the Andromeda galaxy on a dark night, that light left it 2.5 million years ago, long before our species existed.\nPanic or keep sunbathing? ☀️",
-      "status": "queued",
-      "queued": "2026-10-29T05:43:16.801Z"
+      "status": "posted",
+      "queued": "2026-10-29T05:43:16.801Z",
+      "commentId": "Ugw5cDUzp35eITFQT9d4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "JAVcSxxWldY",
@@ -533,8 +535,10 @@
       "title": "Can You Say MIT's HARDEST Tongue Twister? 👅",
       "publishAt": "2026-11-01T18:00:00.000Z",
       "question": "🐑 Bonus: Guinness once named \"The sixth sick sheik's sixth sheep's sick\" the hardest tongue twister in English.\nHow many did you manage? 👅",
-      "status": "queued",
-      "queued": "2026-10-29T07:04:19.745Z"
+      "status": "posted",
+      "queued": "2026-10-29T07:04:19.745Z",
+      "commentId": "Ugyig4Av-9sQXJKF5k14AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "rv4yQoSwWUE",
@@ -625,6 +629,15 @@
       "question": "🌴 Bonus: their age, the Carboniferous, is named after coal: it means \"coal-bearing\".\nSnake or tree: what did you guess? 🐍🌳",
       "status": "queued",
       "queued": "2026-10-30T21:37:48.673Z"
+    },
+    {
+      "videoId": "qyi7O16noEg",
+      "slug": "trees-vs-stars",
+      "title": "Earth Has More TREES Than Our Galaxy Has STARS 🌲",
+      "publishAt": "2026-11-07T06:00:00.000Z",
+      "question": "🌲 Bonus: we still cut down about 15 billion trees every year.\nTrees or stars: what did you guess? 🌲⭐",
+      "status": "queued",
+      "queued": "2026-11-01T05:03:14.064Z"
     }
   ]
 }

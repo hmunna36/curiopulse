@@ -35,24 +35,37 @@
   "cover": "cover.jpg",
   "captions": "trees-vs-stars.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-07T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "qyi7O16noEg",
+    "url": "https://youtube.com/shorts/qyi7O16noEg",
+    "uploaded": "2026-11-01T05:02:50.433Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-10T18:30:00+05:30",
     "caption": "Your planet has more trees than your galaxy has stars 🌲⭐\nAbout 3 trillion trees vs a few hundred billion stars: give every star its own tree and 2 trillion+ trees still wait.\nTrees or stars: what did you guess?\nFollow @curio_pulse_tv for the next one: why some people can't snap their fingers 🔔\n#science #space #trees #milkyway #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite"
   },
   "kind": {
     "kind": "curious",
     "test": "kind-2026-10",
     "slot": "2026-11-07T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1903031057771199",
+    "publishAt": "2026-11-10T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-01T18:42:58.547Z"
   }
 }
