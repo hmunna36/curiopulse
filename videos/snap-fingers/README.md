@@ -46,9 +46,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after upload) | 7 Nov 2026 23:30 IST |
-| Instagram Reels | Business Suite (Instagram only) | (filled in after scheduling) |
-| Facebook Page | `fb.mjs reel` | the Reel's slot |
+| YouTube Shorts | https://youtube.com/shorts/PJ_TbjnXu8U | 7 Nov 2026 23:30 IST (scheduled; thumbnail, captions and playlist by the API; cover.jpg also put into Studio's Shorts slot, which showed an automatic frame) |
+| Instagram Reels | Business Suite, Instagram only (curio_pulse_tv), cover.jpg as the cover | 10 Nov 2026 21:00 IST (scheduled; Content → Scheduled lists it with the caption as its title) |
+| Facebook Page | `fb.mjs reel` (video 4498951500435091, `publish_status: scheduled`) | 10 Nov 2026 21:00 IST |
 
 **Title:** Why Can't Some People SNAP Their Fingers? 🫰
 

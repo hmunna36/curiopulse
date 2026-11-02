@@ -36,24 +36,39 @@
   "cover": "cover.jpg",
   "captions": "snap-fingers.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-07T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "PJ_TbjnXu8U",
+    "url": "https://youtube.com/shorts/PJ_TbjnXu8U",
+    "uploaded": "2026-11-02T19:32:18.949Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-10T21:00:00+05:30",
     "caption": "Snap your fingers. Now snap with them barely touching. 🫰\nFizzled? A snap is a tiny catapult: your squishy fingertips grip, your muscles load it, then it SLIPS and the finger slams your palm. That slap is the snap.\nCan you snap? Yes or no?\nFollow @curio_pulse_tv for the next one: which thumb lands on top when you clasp your hands 🤝\n#science #humanbody #hand #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "postTo": "curio_pulse_tv (Instagram only; the Page by fb.mjs)",
+    "cover": "cover.jpg (Upload image)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-11-07T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "4498951500435091",
+    "publishAt": "2026-11-10T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-02T19:38:33.322Z"
   }
 }
