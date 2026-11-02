@@ -76,11 +76,45 @@
 | `white-bear`: "Why Can't You NOT Think of a White Bear? 🐻‍❄️" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/1YX1YzS3OD4 · 6 Nov 2026 11:30 IST | Business Suite, Instagram only, 9 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1043182888794723) |
 | `scale-trees`: "The Tree That Wore SNAKESKIN (Then Became Coal) 🐍" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/BqvcFwIyHTw · 6 Nov 2026 23:30 IST | Business Suite, Instagram only, 9 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1196753236585344) |
 | `trees-vs-stars`: "Earth Has More TREES Than Our Galaxy Has STARS 🌲" | 34 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/qyi7O16noEg · 7 Nov 2026 11:30 IST | Business Suite, Instagram only, 10 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1903031057771199) |
+| `snap-fingers`: "Why Can't Some People SNAP Their Fingers? 🫰" | 35 s (short arm; pill arm; TEST) | https://youtube.com/shorts/PJ_TbjnXu8U · 7 Nov 2026 23:30 IST | Business Suite, Instagram only, 10 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4498951500435091) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**snap-fingers** (3 Nov 2026, the nightly 00:00 routine; a TEST Short (pill arm, 23:30 slot), the Queue's first line, kin of the
+one-finger Instagram hit and promised by trees-vs-stars' Next-up; short arm, 71 words -> 34.77 s; hook formula The Direct Address as
+the test (after The Impossible Claim, The Comparison, The Direct Address): "Snap your fingers." / "Now barely touching... snap.";
+answer "Fizzled? A snap's a catapult... and you never LOADED it." at 4.13 s; button "Now try a SLOW snap." into the hook; caption
+question "Can you snap? Yes or no?"; YouTube PJ_TbjnXu8U, 7 Nov 23:30 IST, playlist Why Does Your Body Do That?, thumbnail + captions + playlist by the API, cover.jpg
+also into Studio's Shorts slot (it showed an automatic frame); Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs
+4498951500435091) 10 Nov 21:00 IST. Two QA rounds, qa.py 18/18; the final MP4 is build.sh's into a fresh work folder (timeline.json and
+mix.wav byte-identical). Voice: 455 + 118 characters (two lines re-taken shorter to fit 35 s), no other retakes.)
+World: mosquito-bites' `camp.js`, one-finger's `fist3d.js`, bent-wrist-fist's `bwhand.js` (BWK shortened to L 21 for a hand held toward
+us; `bwPuppeteer` takes `tilt`: he topples when his string lets go) and a new `snaphand.js` (borrow it): fingers posed by their three
+joint angles (`SN_POSE` open / ready / fired / fizz, blended by `snPose`), the thumb's tip SOLVED onto a target (`snGeo` tw: pad =
+the middle fingertip's pad pushed in by `press`, side = against the index finger, rest = out; `snThumb`: metacarpal aimed, then a
+two-bone reach), so the thumb follows the finger it holds; `snString` (one tendon: slack wave, taut + humming + hot), `snContact`
+(the squish), `snStreak` (a comet trail along the fingertip's path: `snArc` samples the blend), `snRings` (shock rings and spikes),
+`snPuff`, `snMeter` (a horizontal LOAD bar), `snMacro` (two fingertips in profile, pad to pad: fingerprint loops that flatten with
+`press`, a nail edge-on, push arrows, sweat, `shear`, `slip` with streaks), `snRace` (a SPEED-UP bar chart with a baseball), `snSteel`
+(recolours fist3d's module palettes for a steel glove and puts them back), `snRivets`, `snCape` / `snCollar`.
+- **A snap reads from the thumb side** (yaw -PI/2 + 0.3..0.45 on the mirrored left hand): the thumb rises in front, the middle finger
+  arches over it onto its tip, the index curls alongside. From the palm side the whip comes straight at the camera and does not read.
+- **fist3d's thumb is too short to reach a snapping finger:** its bones were made longer (3.7 / 3.0 / 2.45 cm) and the middle finger
+  arches less (knuckle 1.05, middle 0.95, end 0.25 rad); fingers x1.16 thicker read better at hook size.
+- **`render.js` stills take FRAME numbers, not seconds:** "1.2" made every frame after 0 fail with a drawImage TypeError.
+- **The forearm on a hand held toward the camera:** SN_PX 24 (px per cm at zoom 2.9) makes the hand big beside his face; put the elbow
+  out to his side and below the wrist, or the forearm grows out of his belly.
+- **Watermark row:** the watermark sits at y 430 (x 118-330 or 790-962, swapping every 8 s); a meter or a small word there collides
+  with it. The LOAD meter went to y 1572 (under the captions, inside the key zone).
+- **A slam in a 0.16 s pause:** "palm... and" left only 0.16 s; a full THWACK there masked "and" (SNR -1.6). The mid-band crack was
+  cut to 0.1 s inside the pause and the rest of the hit is a boom under 190 Hz (order-4 low-pass), which can sit under the word.
+- **Gags right after a word measure low:** the SLIP snap, the glove's pop and the tink read -26, -30 and -25.5 dB in their gaps (the
+  sfx bus is peak-normalised and they sit in the voice's duck release); +4..+5 dB, tanh soft-clip and 0.03 s later brought them to
+  -22, -25 and -22.6.
+- The repo passed 3.5 GB on GitHub with this push (3,561 MB): publish-short.sh says to propose moving old MP4s to GitHub Releases.
 
 **trees-vs-stars** (built 1 Nov 2026 09:05-10:33 IST after the ElevenLabs reset, shipped by the 00:00 routine of 2 Nov; THE FOURTEENTH
 CURIOUS SHORT of the topic test, no-pill arm (11:30 slot); short arm, 73 words -> 34.43 s; hook formula The Impossible Claim: "Your
