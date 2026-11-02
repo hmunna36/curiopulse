@@ -1,0 +1,57 @@
+# Narration for "Why Can't Some People SNAP Their Fingers? 🫰"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The pill test (25 Oct-8 Nov 2026): this 23:30 Short gets the short silent pill (the pill arm).
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 95-110 for a 45-50 s Short, 66-76 for the 30-35 s arm of the length test
+#   (`node ~/.claude/skills/cp/bin/yt.mjs next-slot` says which one this Short is).
+
+# The test (rules of 15 Oct 2026): snap; then snap with the thumb and middle finger barely touching: it fizzles. A snap is
+# a latch-and-spring move (Acharya, Challita, Ilton & Bhamla, J R Soc Interface 2021): the thumb presses on the middle
+# finger, skin friction holds it (the latch) while the muscles load it, then it slips and the finger whips into the palm in
+# ~7 ms; the pop is the finger hitting the palm. Barely touching = almost nothing loaded, so it fizzles. Squishy fingertip
+# pads grip better (more contact); metal thimbles cut the snap's speed ~3.4x (rubber ~2.2x, lubricant ~4x). Peak angular
+# acceleration ~1.6 million deg/s^2: the highest measured in a human, ~2.6x a pitcher's arm ("almost triple").
+# Hook formula: The Direct Address, as the test (two instructions), then the answer "Fizzled?".
+# The answer starts by 5.0 s; the button sends them back to the test (a slow snap: impossible) and runs into the hook.
+# 69 words (the short arm: 66-76).
+
+## hook gap=0.03 tighten=0.20 tempo=1.03
+Snap your fingers.
+
+## barely gap=0.32 tighten=0.24 tempo=1.05
+Now barely touching... snap.
+
+## answer gap=0.40 tighten=0.16 tempo=1.05
+Fizzled? A snap's a catapult... and you never LOADED it.
+
+## load gap=0.32 tighten=0.22 tempo=1.05
+Press HARD. Feel it straining? That's the catapult loading.
+
+## slip gap=0.26 tighten=0.32 tempo=1.03
+[mischievously] Your squishy fingertips grip... grip... SLIP!
+
+## palm gap=0.30 tighten=0.22 tempo=1.06
+Your finger slams into your palm... and THAT slap is the snap.
+
+## fast gap=0.36 tighten=0.24 tempo=1.07
+The fastest speed-up ever clocked in a human... almost triple a pitcher's arm!
+
+## metal gap=0.34 tighten=0.20 tempo=1.05
+Metal fingertips can't squish... so it flops. Sorry, VILLAINS.
+
+## button gap=0.48 tighten=0.26 tempo=1.00
+Now try a SLOW snap.
