@@ -86,6 +86,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | The Tree That Wore SNAKESKIN (Then Became Coal) | 34 s | [`videos/scale-trees`](videos/scale-trees) | [6 Nov 2026](https://youtube.com/shorts/BqvcFwIyHTw) |
 | Earth Has More TREES Than Our Galaxy Has STARS | 34 s | [`videos/trees-vs-stars`](videos/trees-vs-stars) | [7 Nov 2026](https://youtube.com/shorts/qyi7O16noEg) |
 | Why Can't Some People SNAP Their Fingers? | 35 s | [`videos/snap-fingers`](videos/snap-fingers) | [7 Nov 2026](https://youtube.com/shorts/PJ_TbjnXu8U) |
+| Which THUMB Is On Top When You Clasp Your Hands? | 33 s | [`videos/clasped-thumbs`](videos/clasped-thumbs) | 8 Nov 2026 |
 
 Each folder has:
 - the finished MP4;
