@@ -37,23 +37,39 @@
   "cover": "cover.jpg",
   "captions": "leg-kick.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-08T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "vLCaOs8xvaA",
+    "url": "https://youtube.com/shorts/vLCaOs8xvaA",
+    "uploaded": "2026-11-03T21:40:03.648Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-11T21:00:00+05:30",
     "caption": "Cross your legs and tap just under your kneecap. 🦵\nDid it kick? That wasn't you: the tap stretches your thigh muscle, it pings your spine, and your spine kicks back in about 1/50 of a second. Your brain isn't even asked.\nNo kick? Clench your teeth and tap again.\nIn 1902 a scientist rang a bell before every tap, and soon the bell alone made legs kick. Nobody asked a single question. Pavlov's dog got famous instead.\nDid your leg kick? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't say the colour, not the word 🎨\n#science #humanbody #reflex #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-11T21:00:00+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs reel)",
+    "cover": "cover.jpg (uploaded in the composer)"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-08T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1637359621186472",
+    "publishAt": "2026-11-11T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-03T21:47:12.254Z"
   }
 }

@@ -87,7 +87,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Earth Has More TREES Than Our Galaxy Has STARS | 34 s | [`videos/trees-vs-stars`](videos/trees-vs-stars) | [7 Nov 2026](https://youtube.com/shorts/qyi7O16noEg) |
 | Why Can't Some People SNAP Their Fingers? | 35 s | [`videos/snap-fingers`](videos/snap-fingers) | [7 Nov 2026](https://youtube.com/shorts/PJ_TbjnXu8U) |
 | Which THUMB Is On Top When You Clasp Your Hands? | 33 s | [`videos/clasped-thumbs`](videos/clasped-thumbs) | [8 Nov 2026](https://youtube.com/shorts/lfbe4XMgOHg) |
-| Why Does Your Leg KICK When You Tap Your Knee? | 34 s | [`videos/leg-kick`](videos/leg-kick) | 8 Nov 2026 (scheduled) |
+| Why Does Your Leg KICK When You Tap Your Knee? | 34 s | [`videos/leg-kick`](videos/leg-kick) | [8 Nov 2026](https://youtube.com/shorts/vLCaOs8xvaA) |
 
 Each folder has:
 - the finished MP4;

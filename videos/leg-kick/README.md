@@ -57,9 +57,9 @@ timing sits in the gaps between blocks.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 8 Nov 2026 23:30 IST |
-| Instagram Reels | @curio_pulse_tv | (filled in after scheduling) |
-| Facebook Page | CurioPulse (`fb.mjs reel`) | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/vLCaOs8xvaA | 8 Nov 2026 23:30 IST (scheduled; thumbnail, captions and the playlist by the API, cover.jpg also into Studio's Shorts slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 11 Nov 2026 21:00 IST (scheduled) |
+| Facebook Page | CurioPulse (`fb.mjs reel`, video 1637359621186472) | 11 Nov 2026 21:00 IST (scheduled) |
 
 **Title:** Why Does Your Leg KICK When You Tap Your Knee? 🦵
 
