@@ -35,24 +35,40 @@
   "cover": "cover.jpg",
   "captions": "clasped-thumbs.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-08T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "lfbe4XMgOHg",
+    "url": "https://youtube.com/shorts/lfbe4XMgOHg",
+    "uploaded": "2026-11-03T18:48:29.527Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-11T18:30:00+05:30",
     "caption": "Clasp your hands. Now put the OTHER thumb on top. 🙏\nFeels wrong? Every finger just moved one seat over: clasped fingers sit turn about, so the other thumb on top puts each finger next to two new neighbours.\nIt's basically a coin toss: about half go left thumb, half right. Even identical twins pick different thumbs 4 times in 10.\nLeft thumb or right?\nFollow @curio_pulse_tv for the next one: why your leg kicks all by itself 🦵\n#science #humanbody #hand #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-11T18:30:00+05:30",
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs reel)",
+    "cover": "cover.jpg (uploaded in the composer)"
   },
   "kind": {
     "kind": "test",
     "test": "kind-2026-10",
     "slot": "2026-11-08T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1146685474774956",
+    "publishAt": "2026-11-11T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-03T18:54:50.852Z"
   }
 }

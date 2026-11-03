@@ -47,8 +47,9 @@ for clearer last words). The joke timing sits in the gaps between blocks.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in by the upload) | 8 Nov 2026 11:30 IST |
-| Instagram Reels + the Facebook Page | (filled in by the upload) | the slot `yt.mjs` writes into `instagram.publishAt` |
+| YouTube Shorts | https://youtube.com/shorts/lfbe4XMgOHg | 8 Nov 2026 11:30 IST (scheduled; thumbnail, captions and the playlist by the API, cover.jpg also into Studio's Shorts slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 11 Nov 2026 18:30 IST (scheduled) |
+| Facebook Page | CurioPulse (`fb.mjs reel`, video 1146685474774956) | 11 Nov 2026 18:30 IST (scheduled) |
 
 **Title:** Which THUMB Is On Top When You Clasp Your Hands? 🙏
 
