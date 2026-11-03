@@ -243,7 +243,7 @@ void main() {
     float near = smoothstep(uRay.z, 0.0, length((p - c) * vec2(1.0, H / W)));
     acc += texture(uSrc, p).rgb * near * w; w *= uRay.w;
   }
-  float ang = atan(d.y * H / W, d.x);
+  float ang = atan(d.y * H / W, d.x + 1e-5);   // atan(0, 0) is NaN: a sun on a texel centre drew a black square (clasped-thumbs, 3 Nov 2026)
   float streak = 0.5 + 1.1 * pow(vnoise(vec2(ang * 6.0, 0.5)) * 0.6 + vnoise(vec2(ang * 17.0, 4.2)) * 0.4, 2.0);
   o = vec4(acc / 44.0 * 4.2 * streak, 1.0);
 }`;

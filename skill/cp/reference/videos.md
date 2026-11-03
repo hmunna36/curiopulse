@@ -77,11 +77,29 @@
 | `scale-trees`: "The Tree That Wore SNAKESKIN (Then Became Coal) 🐍" | 34 s (short arm; pill arm; CURIOUS) | https://youtube.com/shorts/BqvcFwIyHTw · 6 Nov 2026 23:30 IST | Business Suite, Instagram only, 9 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1196753236585344) |
 | `trees-vs-stars`: "Earth Has More TREES Than Our Galaxy Has STARS 🌲" | 34 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/qyi7O16noEg · 7 Nov 2026 11:30 IST | Business Suite, Instagram only, 10 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1903031057771199) |
 | `snap-fingers`: "Why Can't Some People SNAP Their Fingers? 🫰" | 35 s (short arm; pill arm; TEST) | https://youtube.com/shorts/PJ_TbjnXu8U · 7 Nov 2026 23:30 IST | Business Suite, Instagram only, 10 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4498951500435091) |
+| `clasped-thumbs`: "Which THUMB Is On Top When You Clasp Your Hands? 🙏" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/lfbe4XMgOHg · 8 Nov 2026 11:30 IST | Business Suite, Instagram only, 11 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1146685474774956) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**clasped-thumbs** (started by the 02:00 routine of 3 Nov 2026, finished by the 00:00 routine of 4 Nov; a TEST Short (no-pill
+arm, 11:30 slot), the Queue's first line, kin of the one-finger Instagram hit; short arm, 70 words -> 32.63 s; hook formula The Direct
+Address as the test: "Clasp your hands. Don't think." / "Now put the OTHER thumb on top."; answer "Feels wrong, right? Every finger
+just moved... one seat over." at 4.94 s; button "So if you're praying for sunshine... use your own thumb. Just in case." into the
+hook; caption question "Left thumb or right?"; YouTube lfbe4XMgOHg, 8 Nov 11:30 IST, playlist Why Does Your Body Do That?, thumbnail +
+captions + playlist by the API, cover.jpg also into Studio's Shorts slot (it showed a processing placeholder); Instagram (Business
+Suite, Instagram only, cover set) + the Page (fb.mjs 1146685474774956) 11 Nov 18:30 IST. One QA round, qa.py 18/18; build.sh into a
+fresh work folder gave a byte-identical MP4.)
+World: mosquito-bites' `camp.js` land under a new storm sky (`ct_world.js`: rain, lantern, drowned campfire, the sun's hole and
+shaft) and `ct_hands.js` (borrow it): ten clasped digits with faces that move one seat over when the other thumb goes on top, dashed
+ghosts where they sat, a coin that lands on its edge, the twin standing in, a 4-in-10 card of = / != pairs.
+Lesson (resume after a dead render): the 3 Nov run built everything, then its full render logged `CONTEXT_LOST_WEBGL` at frame 600
+and the run stopped with no EXIT line and an MP4 without its moov atom (`ffprobe`: "moov atom not found"). render.js's classic
+fall-back never printed, so the process died rather than falling back. Resuming needs nothing but a re-render of the same
+timeline.json and mix.wav (behind render-gate.sh): 255 s, cine, clean. Check `.work/render.log` for `EXIT` before trusting an MP4
+left by an interrupted run.
 
 **snap-fingers** (3 Nov 2026, the nightly 00:00 routine; a TEST Short (pill arm, 23:30 slot), the Queue's first line, kin of the
 one-finger Instagram hit and promised by trees-vs-stars' Next-up; short arm, 71 words -> 34.77 s; hook formula The Direct Address as
