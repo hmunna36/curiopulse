@@ -78,11 +78,40 @@
 | `trees-vs-stars`: "Earth Has More TREES Than Our Galaxy Has STARS 🌲" | 34 s (short arm; no-pill arm; CURIOUS) | https://youtube.com/shorts/qyi7O16noEg · 7 Nov 2026 11:30 IST | Business Suite, Instagram only, 10 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1903031057771199) |
 | `snap-fingers`: "Why Can't Some People SNAP Their Fingers? 🫰" | 35 s (short arm; pill arm; TEST) | https://youtube.com/shorts/PJ_TbjnXu8U · 7 Nov 2026 23:30 IST | Business Suite, Instagram only, 10 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4498951500435091) |
 | `clasped-thumbs`: "Which THUMB Is On Top When You Clasp Your Hands? 🙏" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/lfbe4XMgOHg · 8 Nov 2026 11:30 IST | Business Suite, Instagram only, 11 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1146685474774956) |
+| `leg-kick`: "Why Does Your Leg KICK When You Tap Your Knee? 🦵" | 34 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/vLCaOs8xvaA · 8 Nov 2026 23:30 IST | Business Suite, Instagram only, 11 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1637359621186472) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**leg-kick** (the 02:00 second Short of 4 Nov 2026, 02:05-03:50 IST; a TEST Short (no-pill arm: the 8 Nov 23:30 slot is where both
+the pill test and the topic test end, so `next-slot` gave none and TEST), the Queue's first line; short arm, 75 words -> 33.77 s; hook
+formula The Direct Address as the test (the third in a row, the most the rule allows): "Cross your legs. Tap just under your
+kneecap." / "Did it KICK?"; answer "That wasn't you. That was your SPINE." at 4.81 s; button "No kick? Clench your teeth... and tap
+again." (sends the viewer back to the test) into the hook; caption question "Did your leg kick? Yes or no?"; YouTube vLCaOs8xvaA, 8 Nov
+23:30 IST, playlist Why Does Your Body Do That?, cover also set in Studio; Reel + Page 11 Nov 21:00 IST). A new world: a doctor's exam
+room at night (`lk_world.js`), 1902-1904 in sepia and Pavlov's dog on a stage (`lk_past.js`). Lessons:
+- **Seated legs in profile on the front-facing rig** (`lk_world.js`): `drawCharacter` with `noLegs` + `noArms`, then the legs and arms
+  drawn in `charLayer`'s `post` in rig-local units (translate st.x, st.y, scale st.s), wrapped in `actor()`. Knees to screen-left, the top
+  shin hanging from the knee and swung by one angle (`lkShinDir`), the bottom shin angled back so the two feet separate (crossed legs
+  read). A karate chop is a hand drawn at an ABSOLUTE angle (`lkArm(..., absAng)`), not the forearm's. Reusable for any seated
+  side-leg action (a kick, a knee tap, a foot tap).
+- **`LK` is taken**: look.js declares `let LK` at the top level, so a video's own `const LK` breaks every script after it ("Identifier
+  'LK' has already been declared"; scene-smoke caught it). Prefix (`LKH`).
+- **The rig's head sits ~30 rig units lower than `rig().head` suggests on screen** (measured on this Short's stills): when framing by
+  numbers, check the head on a still before trusting the arithmetic.
+- **A replay on the body part beats a diagram:** "Tap again" (full speed, the viewer taps with him), then REPLAY x300 with the thigh
+  turned to glass in place, one wire loop (cyan up, orange back) with a spark that travels on "pings" and returns on "yanks", and the
+  slow kick landing on "back". Framed on his lap at zoom 2.0 so his face is out of the frame (at 1.6-1.75 it sat half under the
+  header band).
+- **Exam-room captions at y 1545** (`capY`): the tap spot and the knee sit at y 1150-1300 in a tight seated shot; default captions
+  (1330) covered the chop. Below the knee only the hanging shins are under them.
+- **A gag that the line names goes in the pause after it** (again): the bell ALONE rings and the legs kick in the 0.3 s after
+  "ALONE", and again after "kick." with the monocle's tink; on the word "bell" only the bell's top above 5.2 kHz. A music box under
+  a line masked "Wasn't" (3.1 dB): a low hum instead. A bell's ring must be cut short (`dur`) before the next word ("He").
+- **Stamps and tags off the watermark corners** (y 405-455): the 1902/1904 stamps at y 520 sat under it; y 610 is clear.
+- The cover's words first sat over his face: put them above the head and frame him lower (`SC.cover` with its own camera).
 
 **clasped-thumbs** (started by the 02:00 routine of 3 Nov 2026, finished by the 00:00 routine of 4 Nov; a TEST Short (no-pill
 arm, 11:30 slot), the Queue's first line, kin of the one-finger Instagram hit; short arm, 70 words -> 32.63 s; hook formula The Direct
