@@ -80,11 +80,42 @@
 | `clasped-thumbs`: "Which THUMB Is On Top When You Clasp Your Hands? 🙏" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/lfbe4XMgOHg · 8 Nov 2026 11:30 IST | Business Suite, Instagram only, 11 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1146685474774956) |
 | `leg-kick`: "Why Does Your Leg KICK When You Tap Your Knee? 🦵" | 34 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/vLCaOs8xvaA · 8 Nov 2026 23:30 IST | Business Suite, Instagram only, 11 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1637359621186472) |
 | `colour-word`: "Why Can't You Say the COLOUR, Not the Word? 🎨" | 32 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/G_AYp1V2XU0 · 9 Nov 2026 11:30 IST | Business Suite, Instagram only, 12 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1335940458544178) |
+| `word-weird`: "Why Does a Word Go WEIRD When You Repeat It? 🥄" | 33 s (short arm; no pill; TEST) | https://youtube.com/shorts/bypzNQNaQK0 · 9 Nov 2026 23:30 IST | Business Suite, Instagram only, 12 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1106492098847901) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**word-weird** (the 02:00 second Short of 5 Nov 2026, 02:05-03:15 IST; a TEST Short (no pill: its slot, 9 Nov 23:30, is after the pill
+test), the Queue's first line (promised by colour-word's Next-up); semantic satiation; short arm, 66 words -> 32.87 s; hook formula The
+Impossible Claim, then the test: "You can break a word. Say SPOON. Fast."; answer "Keep going. The sound stays... but the MEANING walks
+out." at 3.73 s; button "Now try it with your NAME." (the same test a new way) into the hook; caption question "Did the word go weird?
+Yes or no?"; YouTube bypzNQNaQK0, 9 Nov 23:30 IST, playlist Your Brain Is Weird (Studio's vertical slot pending: "Oops" again); Reel
+(Business Suite, IG only, cover set) + Page (fb.mjs 1106492098847901) 12 Nov 21:00 IST. Two QA rounds after three rounds of stills;
+qa.py 18/18 (voice 22.7 dB, WER 0.0 %). Voice: 408 + ~530 characters of auditions/retakes.)
+World: snap-fingers' copy of `camp.js` (the hiker with a spoon held like a microphone), stomach-growl's `exam.js` as `ww_exam.js` (a
+blackboard COPY THIS WORD: DOOR instead of the clock, a classroom door `wwClassDoor` that wobbles like jelly instead of the right
+window, students as actors with painted faces, `quit` per seat) and a new `ww_world.js` (borrow it): `wwWord` (a big word letter by
+letter that cracks, drifts apart, goes hollow and wobbles), `wwSpoon` (a little spoon character: moods, a walk, a suitcase, a nightcap,
+a bathrobe), `wwHouse` (a house whose door opens, a labelled doorbell that rings, a porch lamp, a NOBODY HOME sign, a doormat word),
+`wwBrainRoom`, `wwButtonPost`, `wwWire` (a wire that frays and sparks), `wwCard` (a LAB RESULTS clipboard with ticks and crosses),
+`wwCounter` (a REPS pill), `wwPop` (a said word that pops and floats), `wwHand` / `wwPage` (handwriting that can bend and flip).
+- **A spoken chant does not fit before the answer:** four auditions of the hook with "spoon, spoon, spoon, spoon" ran 6-10 s (the answer
+  must start by 5 s). The chant became the hiker's: a "spoon!" pops from his mouth on every rep, a soft tok on each one (a knock under
+  250 Hz plus a tick above 5.2 kHz, so it can sit on any word), the REPS counter. The reps are one cue list (`reps`, DT = 0.358 s from
+  "SPOON" to "Thirty", so the counter reads 30 on the word); the groove runs at 60/DT BPM with `half=True`, its marimba eighths on the
+  reps; the button's toks run on the grid `D + reps[0] - k*DT`, so they meet frame 1's across the loop.
+- **Something held at the mouth hides the test:** the spoon's bowl first sat on his mouth (the viewer could not see him say the word).
+  It sits under his chin to the side (`WW_BOWL`), dark-rimmed so it reads against his skin.
+- **A zoom blur on the first frame of a dive smeared it** (the window's shot): `zblur` at the cut made frame 7.87 a grey streak of the
+  last shot. A window that opens and a push-in are enough.
+- **`pencil(c, x, y, L, a)` draws its body from the tip along -y**: to run it from the tip back to a hand that is down-right of it, use
+  `a = PI - atan2(dx, dy)` (the first page shot had the pencil pointing away from the fist).
+- **Handwriting fits two words a line** on a 420-unit page at x-height 0.42 of the line; three ran off the page.
+- **The rebuild proof:** build.sh into a fresh work folder gave timeline.json and mix.wav byte-identical, and one GOP of the MP4
+  (7.0-8.0 s) differed by a mean of 1.1/255 (an encode/GPU difference you cannot see); every other sampled frame was identical. The
+  QA'd MP4 was kept.
 
 **colour-word** (the 00:00 routine of 5 Nov 2026, 00:03-01:10 IST; a TEST Short (no-pill arm, 11:30 slot), the Queue's first line
 (promised by leg-kick's Next-up); the Stroop test ON THE SCREEN; short arm, 69 words -> 31.87 s; hook formula The Mistake as the test
