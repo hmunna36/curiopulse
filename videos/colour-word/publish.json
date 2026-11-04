@@ -35,23 +35,38 @@
   "cover": "cover.jpg",
   "captions": "colour-word.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-09T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "G_AYp1V2XU0",
+    "url": "https://youtube.com/shorts/G_AYp1V2XU0",
+    "uploaded": "2026-11-04T19:23:48.310Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio (vertical slot), Changes saved, 5 Nov 2026 01:05 IST"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-12T18:30:00+05:30",
     "caption": "Say the INK colour, not the word. 🎨\nTripped? You can't switch reading off: your brain reads every word you see, so the word barges into your mouth before the colour gets a turn.\nColoured squiggles? Easy. No words, no trip.\nLittle kids who can't read yet breeze through it. Kids who've just learned to read trip the hardest of all.\nNow read the words instead. Easy, right?\nDid you trip? Yes or no?\nFollow @curio_pulse_tv for the next one: why a word goes weird when you repeat it 🥄\n#science #brain #psychology #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (the Page by fb.mjs), cover set; 12 Nov 2026 18:30 IST"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-09T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1335940458544178",
+    "publishAt": "2026-11-12T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-04T19:24:38.089Z"
   }
 }

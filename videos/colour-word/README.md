@@ -68,8 +68,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block; the hook is 
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 9 Nov 2026 11:30 IST |
-| Instagram Reels + Facebook Page | (filled in after scheduling) | 18:30 or 21:00 IST, after the YouTube release |
+| YouTube Shorts | https://youtube.com/shorts/G_AYp1V2XU0 | 9 Nov 2026 11:30 IST (scheduled; thumbnail by the API and in Studio's vertical slot, captions, playlist Your Brain Is Weird) |
+| Instagram Reels | @curio_pulse_tv | 12 Nov 2026 18:30 IST (Business Suite, Instagram only, cover set; listed in Content → Scheduled with its caption) |
+| Facebook Page | CurioPulse (fb.mjs, video 1335940458544178) | 12 Nov 2026 18:30 IST (scheduled natively) |
 
 **Title:** Why Can't You Say the COLOUR, Not the Word? 🎨
 
