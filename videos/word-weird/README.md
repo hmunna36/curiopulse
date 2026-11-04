@@ -52,8 +52,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … |
-| Instagram Reels | … | … |
+| YouTube Shorts | https://youtube.com/shorts/bypzNQNaQK0 | scheduled, public 9 Nov 2026 23:30 IST (playlist Your Brain Is Weird; thumbnail and captions set by the API; Studio's vertical thumbnail slot pending: Studio's edit page said "Oops, something went wrong") |
+| Instagram Reels | scheduled in Meta Business Suite (Instagram only, cover.jpg as the cover) | 12 Nov 2026 21:00 IST |
+| Facebook Page CurioPulse | `fb.mjs reel`, video 1106492098847901 | 12 Nov 2026 21:00 IST (native schedule) |
 
 **Title:** Why Does a Word Go WEIRD When You Repeat It? 🥄
 

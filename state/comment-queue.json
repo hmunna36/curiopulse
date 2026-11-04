@@ -1,18 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "9cwzb7rjmR8",
-      "slug": "fireflies-glow",
-      "title": "How Do Fireflies GLOW? ✨",
-      "publishAt": "2026-10-10T06:00:00.000Z",
-      "question": "Did YOU ever catch fireflies in a jar? 👇",
-      "status": "posted",
-      "queued": "2026-10-09T10:46:42.107Z",
-      "commentId": "UgwSbmPsJj2ZGb6l5WJ4AaABAg",
-      "posted": "2026-10-10T06:49:47.172Z",
-      "text": "Next up: Why Do We DREAM? 💭 Subscribe so you don't miss it!\nDid YOU ever catch fireflies in a jar? 👇"
-    },
-    {
       "videoId": "FcY5zJ2Nlgs",
       "slug": "why-we-dream",
       "title": "Why Do We DREAM? 💭",
@@ -662,6 +650,15 @@
       "question": "Did you trip? Yes or no? 🎨",
       "status": "queued",
       "queued": "2026-11-04T19:23:59.219Z"
+    },
+    {
+      "videoId": "bypzNQNaQK0",
+      "slug": "word-weird",
+      "title": "Why Does a Word Go WEIRD When You Repeat It? 🥄",
+      "publishAt": "2026-11-09T18:00:00.000Z",
+      "question": "Did the word go weird? Yes or no? 🥄",
+      "status": "queued",
+      "queued": "2026-11-04T21:26:36.199Z"
     }
   ]
 }

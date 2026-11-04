@@ -34,23 +34,38 @@
   "cover": "cover.jpg",
   "captions": "word-weird.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-09T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "bypzNQNaQK0",
+    "url": "https://youtube.com/shorts/bypzNQNaQK0",
+    "uploaded": "2026-11-04T21:26:24.996Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-12T21:00:00+05:30",
     "caption": "Say \"spoon\" out loud. Fast. Keep going. 🥄\nWeird yet? The sound stays, but the meaning walks out.\nEvery \"spoon\" rings the meaning's doorbell. Ring it thirty times and nobody answers: the link between the sound and the meaning wears out (for a minute or so).\nScientists had 94 students copy \"door\" over and over. 7 in 10 stopped because it looked WRONG. It won an Ig Nobel Prize.\nNow try it with your own name.\nDid the word go weird? Yes or no?\nFollow @curio_pulse_tv for the next one: can you HEAR your phone getting closer? 📱\n#science #brain #psychology #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-12T21:00:00+05:30",
+    "cover": "uploaded in the composer (cover.jpg)"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-09T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1106492098847901",
+    "publishAt": "2026-11-12T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-04T21:33:17.666Z"
   }
 }
