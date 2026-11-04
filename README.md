@@ -89,6 +89,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Which THUMB Is On Top When You Clasp Your Hands? | 33 s | [`videos/clasped-thumbs`](videos/clasped-thumbs) | [8 Nov 2026](https://youtube.com/shorts/lfbe4XMgOHg) |
 | Why Does Your Leg KICK When You Tap Your Knee? | 34 s | [`videos/leg-kick`](videos/leg-kick) | [8 Nov 2026](https://youtube.com/shorts/vLCaOs8xvaA) |
 | Why Can't You Say the COLOUR, Not the Word? | 32 s | [`videos/colour-word`](videos/colour-word) | [9 Nov 2026](https://youtube.com/shorts/G_AYp1V2XU0) |
+| Why Does a Word Go WEIRD When You Repeat It? | 33 s | [`videos/word-weird`](videos/word-weird) | 9 Nov 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;

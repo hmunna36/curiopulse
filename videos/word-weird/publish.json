@@ -1,0 +1,56 @@
+{
+  "slug": "word-weird",
+  "file": "word-weird-short.mp4",
+  "title": "Why Does a Word Go WEIRD When You Repeat It? 🥄",
+  "description": "Say \"spoon\" out loud, fast, over and over. After about thirty goes it stops sounding like a word: the sound is still there, but the meaning drops away. Every time you say it, the sound calls up its meaning, and when the same sound calls it again and again, the link between the two wears out for a while. In 2010 psychologists Xing Tian and David Huber tested where the slowdown happens: not in the word, not in the meaning, but in the connection between them. It's called semantic satiation. In a 2021 study, 94 students copied words like \"door\" over and over; about 7 in 10 stopped at least once because the word suddenly looked wrong, after about 33 copies. The researchers called it jamais vu, the opposite of déjà vu, and it won the 2023 Ig Nobel Prize for Literature. It wears off in a minute or so. Now try it with your own name. Did the word go weird? Yes or no?\n\nNext up: can you HEAR your phone getting closer? 📱 Subscribe for a new strange question every day.\n\n#Shorts #Science #Brain #Psychology #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-09T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-09T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: can you HEAR your phone getting closer? 📱 Subscribe so you don't miss it!\nDid the word go weird? Yes or no? 🥄",
+  "tags": [
+    "semantic satiation",
+    "word goes weird when you repeat it",
+    "say a word over and over",
+    "why words lose meaning",
+    "jamais vu",
+    "repeat a word 30 times",
+    "brain test",
+    "psychology test",
+    "try this",
+    "ig nobel prize",
+    "brain facts",
+    "your brain is weird",
+    "science shorts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "word-weird.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Your Brain Is Weird"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Say \"spoon\" out loud. Fast. Keep going. 🥄\nWeird yet? The sound stays, but the meaning walks out.\nEvery \"spoon\" rings the meaning's doorbell. Ring it thirty times and nobody answers: the link between the sound and the meaning wears out (for a minute or so).\nScientists had 94 students copy \"door\" over and over. 7 in 10 stopped because it looked WRONG. It won an Ig Nobel Prize.\nNow try it with your own name.\nDid the word go weird? Yes or no?\nFollow @curio_pulse_tv for the next one: can you HEAR your phone getting closer? 📱\n#science #brain #psychology #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "slot": "2026-11-09T23:30:00+05:30"
+  }
+}

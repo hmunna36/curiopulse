@@ -1,0 +1,39 @@
+# Narration for "Why Does a Word Go WEIRD When You Repeat It? 🥄"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses. tempo speeds a take up without changing pitch (explanations 1.03-1.06,
+# jokes and reveals 1.00). Rules: reference/narration.md, reference/story.md.
+# - the hook is the test; the answer STARTS by 5.0 s; nobody says "subscribe"; the button runs into the hook (loop).
+# - this Short: no-pill arm (YouTube 9 Nov 23:30 IST, after the pill test), TEST kind, 30-35 s, 66-76 words.
+#
+# The test: say "spoon" out loud, fast, over and over: after about thirty goes the sound stays but the meaning drops
+# away (semantic satiation). Tian & Huber 2010 (Cognitive Psychology 60:267-290): the slowing comes when the SAME word is
+# used again and again to reach its meaning; the word itself and the meaning itself are not what tires: it is the link
+# between them. Moulin et al. 2021 (Memory 29:933-942; 2023 Ig Nobel Prize for Literature): 94 students copied words
+# like "door" over and over; 66 of 93 (70.9 %) stopped at least once because the word felt peculiar, after about 33
+# copies (about a minute).
+# Hook formula: The Impossible Claim ("You can break a word."), then the test as an instruction. The chant itself is
+# the hiker's (speech bubbles) on the score's pulse: a spoken chant ran 6-10 s on four takes (answer by 5 s impossible).
+# 66 words.
+
+## hook gap=0.03 tighten=0.20 tempo=1.03
+You can break a word. Say SPOON. Fast.
+
+## answer gap=0.30 tighten=0.24 tempo=1.04
+Keep going. The sound stays... but the MEANING walks out.
+
+## bell gap=0.34 tighten=0.24 tempo=1.05
+Each spoon rings your brain's doorbell... and the meaning answers.
+
+## nobody gap=0.30 tighten=0.34 tempo=1.00
+Thirty rings in? Nobody's home.
+
+## wire gap=0.38 tighten=0.20 tempo=1.06
+Lab results: sound, fine. Meaning, fine. The WIRE between them... worn out.
+
+## door gap=0.36 tighten=0.22 tempo=1.06
+Scientists had students copy DOOR over and over. Seven in ten quit... it looked WRONG.
+
+## button gap=0.46 tighten=0.26 tempo=1.00
+Now try it with your NAME.
