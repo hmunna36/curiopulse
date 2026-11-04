@@ -1,0 +1,30 @@
+# Narration for "Why Can't You Say the COLOUR, Not the Word? 🎨"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take; gap = silence held BEFORE the block (the comedy and the viewer's test time live there).
+# Rules: reference/narration.md, reference/story.md. 66-76 words (the short arm); `answer` starts by 5.0 s; nobody says
+# "subscribe"; the last block is the button and the Short loops into the hook.
+# Hook formula: The Mistake (the error the viewer is about to make, named before they make it), as the test.
+
+## hook gap=0.10 tempo=1.00
+You'll trip. Say the ink colour, not the word. Go!
+
+## answer gap=1.00 tighten=0 tempo=1.00
+Tripped, right? You can't switch reading OFF.
+
+## autopilot gap=0.35 tempo=1.03
+It runs on autopilot... the word just barges straight into your mouth.
+
+## these gap=0.40 tempo=1.00
+Now these.
+
+## easy gap=1.10 tighten=0.45 tempo=1.00
+Easy, right? No words... no trip.
+
+## kids gap=0.40 tempo=1.02
+Little kids who can't read yet? They breeze right through.
+
+## weird gap=0.35 tempo=1.00
+But kids who JUST learned to read? They trip the hardest of all.
+
+## button gap=0.50 tighten=0 tempo=1.00
+Now read the WORDS out loud. Easy, huh? [sarcastic] Show-off.
