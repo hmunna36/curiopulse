@@ -79,11 +79,42 @@
 | `snap-fingers`: "Why Can't Some People SNAP Their Fingers? 🫰" | 35 s (short arm; pill arm; TEST) | https://youtube.com/shorts/PJ_TbjnXu8U · 7 Nov 2026 23:30 IST | Business Suite, Instagram only, 10 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4498951500435091) |
 | `clasped-thumbs`: "Which THUMB Is On Top When You Clasp Your Hands? 🙏" | 33 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/lfbe4XMgOHg · 8 Nov 2026 11:30 IST | Business Suite, Instagram only, 11 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1146685474774956) |
 | `leg-kick`: "Why Does Your Leg KICK When You Tap Your Knee? 🦵" | 34 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/vLCaOs8xvaA · 8 Nov 2026 23:30 IST | Business Suite, Instagram only, 11 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1637359621186472) |
+| `colour-word`: "Why Can't You Say the COLOUR, Not the Word? 🎨" | 32 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/G_AYp1V2XU0 · 9 Nov 2026 11:30 IST | Business Suite, Instagram only, 12 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1335940458544178) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**colour-word** (the 00:00 routine of 5 Nov 2026, 00:03-01:10 IST; a TEST Short (no-pill arm, 11:30 slot), the Queue's first line
+(promised by leg-kick's Next-up); the Stroop test ON THE SCREEN; short arm, 69 words -> 31.87 s; hook formula The Mistake as the test
+(after three Direct Addresses in a row): "You'll trip. Say the ink colour, not the word. Go!" (the shortest of four auditioned wordings:
+3.5 s against 3.7-4.5 s); answer "Tripped, right? You can't switch reading OFF." at 4.49 s; button "Now read the WORDS out loud. Easy,
+huh? Show-off." (reading the words is the same test a new way, and it is easy: no reverse Stroop) into the hook; caption question "Did
+you trip? Yes or no?"; YouTube G_AYp1V2XU0, 9 Nov 11:30 IST, playlist Your Brain Is Weird, cover also in Studio's vertical slot;
+Instagram (Business Suite, Instagram only, cover set) + the Page (fb.mjs 1335940458544178) 12 Nov 18:30 IST. Two QA rounds, 18/18;
+build.sh into a fresh work folder reproduced timeline.json and mix.wav byte for byte. Voice: 341 characters + 3 auditions of the hook.)
+World: sky-blue's summit `trail.js` (breathe-swallow's copy, with `armLew`) and a new `cw_world.js` (borrow it for any test on a sign or a
+board): the STROOP TRAIL sign (`cwBoard`: header plank, wood frame, slate; it spins on its vertical axis with `flip` 0..1, posts drawn
+before the hero, the board after him since it sits above his head), the test drawn in `post.overlay` after the lens (`cwTestOverlay`:
+four incongruent colour words or four coloured squiggles, ticks), a winged word with goggles (`cwFlyWord`), the ink as a polite red
+drop with a face (`cwInkDrop`, moods calm / oof, a raised hand), speech and dot bubbles (`cwBubble`, `cwDotBubble`), a buzzer cross,
+the hero with a trekking pole and a free right arm (`cwHero`: the pole's upper part redrawn in front of the board by `cwPoleFront`), a
+READING switch on his temple with an ON/OFF tag, sunglasses, two kids on the hero's rig in their own clothes (`CW_TOT` with a propeller
+beanie on a scooter, `CW_KID` with a backpack and a book who faceplants), dust, an AGES tag.
+- **A pointer that reaches a test must not cross it:** the pole's tip first sat just left of each word; the line from his hand crossed
+  YELLOW. The tip rides the slate's left margin at the row's height instead, and everything else that moves near the test (the drop)
+  keeps to that margin.
+- **A prop that rises behind the hero's head is drawn after him, and anything he holds up to it must be redrawn after it** (the pole
+  vanished behind the board).
+- **Keep a sign's top under the watermark row at every zoom:** `cwCamY(z, y) = min(y, top + (960 - 474) / z)`; the camera pushes
+  lifted the plank into the CurioPulse watermark (y 405-455) twice.
+- **Close-up captions with the face low in frame:** capY 1600 put a two-line caption's second line past y 1640; 1545 fits two lines.
+- **Repeated words in cues again:** `W("JUST")` found "the word JUST barges" and `W("WORDS")` found "No words": use a phrase
+  (`W("JUST learned")`) or `find(..., start)`.
+- **The cover's one-shot timeline has only the cover shot:** code that looks up another shot (`TLd.shots.find(...)`) needs a fallback,
+  or cover.sh dies with "Cannot read properties of undefined".
+- **A buzzer reads loud:** at -20 dB it measured -14.5 dB in its gap (the narrator -16.9); -29 dB gave -17.5.
 
 **leg-kick** (the 02:00 second Short of 4 Nov 2026, 02:05-03:50 IST; a TEST Short (no-pill arm: the 8 Nov 23:30 slot is where both
 the pill test and the topic test end, so `next-slot` gave none and TEST), the Queue's first line; short arm, 75 words -> 33.77 s; hook
