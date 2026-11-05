@@ -82,11 +82,42 @@
 | `colour-word`: "Why Can't You Say the COLOUR, Not the Word? 🎨" | 32 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/G_AYp1V2XU0 · 9 Nov 2026 11:30 IST | Business Suite, Instagram only, 12 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1335940458544178) |
 | `word-weird`: "Why Does a Word Go WEIRD When You Repeat It? 🥄" | 33 s (short arm; no pill; TEST) | https://youtube.com/shorts/bypzNQNaQK0 · 9 Nov 2026 23:30 IST | Business Suite, Instagram only, 12 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1106492098847901) |
 | `finger-w`: "Can You Make a W With Your FINGERS? 🖐️" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/sEr9s0tAphI · 10 Nov 2026 11:30 IST | Business Suite, Instagram only, 13 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2695065854246760) |
+| `planets-earth-moon`: "Could Every PLANET Fit Between You and the Moon? 🌕" | 27 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/hGbLDBMPtSM · 10 Nov 2026 23:30 IST | Business Suite, Instagram only, 13 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 28636799632682933) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**planets-earth-moon** (the 02:00 second Short of 6 Nov 2026, 02:05-03:20 IST; a CURIOUS Short, the Curious queue's first line, the
+FIRST curious Short on the tight arm: 62 words -> 26.53 s; hook formula The Question as a two-second guess (after The Impossible
+Claim, The Comparison, Contrarian Flip): "Could every planet fit between you and the Moon?"; answer "Yep! All seven FIT... side by
+side." at 3.71 s; button "So on a close night... Neptune sleeps outside." into the hook (he shoves the nightcapped Neptune back
+in); caption question "Did you think they'd fit?"; YouTube hGbLDBMPtSM, 10 Nov 23:30 IST, playlist Strange Nature, cover also put
+into Studio's vertical slot (it showed an auto frame); Reel (Business Suite, IG only, cover set) + Page (fb.mjs 28636799632682933)
+13 Nov 21:00 IST. Two QA rounds, qa.py 19/19 both; the final MP4 is build.sh's into a fresh .work-build (timeline.json and mix.wav
+byte-identical); about 6.2 minutes a render (796 frames, 0.41-0.48 s a frame)):
+- **A size comparison as ONE true-scale picture:** `pe_world.js` stacks the seven planets from Earth up to the Moon at NASA's
+  equatorial diameters (0.004 world units a km, `PE_R`, `PE_Y`), the Moon at its farthest (`PE_GAP_FAR`, surface to surface).
+  At true scale the Moon is a pebble (14 units) and Earth a marble: the hero (s 0.55) is a cosmic stand-in, and MOON / YOU
+  tags make the ends readable. Borrow it for any "X fits in Y" comparison. `peSqueeze(moonY)` squashes Neptune between Uranus
+  and the Moon; `pePaintIce` (Neptune with its dark spot and cirrus, Uranus with a bright pole), `pePaintMoon`, a Saturn
+  without its ring shadow (`pePaintSaturn(R, el, false)`) and a tan line where the rings were; `peFace` (smug, happy, eek,
+  worried, grumpy, sleep, squeeze, side, blush, proud; `dx`/`k` turn a face toward someone); props `peNightcap`, `pePillow`,
+  `peTape` + `peTapeCase`, `peJetpack` (tanks at his shoulders, flames in his layer's pre), `peTag`, `peBracket`.
+- **Check the honest version of a famous fact before writing it:** "all the planets fit between Earth and the Moon" is true
+  only centre to centre at the average distance with mean diameters; from your feet to the Moon's surface it holds only when the
+  Moon is far. The catch became the story's escalation ("One catch... the Moon has to be FAR", "drifts in and out... by up to a
+  whole NEPTUNE", "on a close night... Neptune sleeps outside"), and the description explains the popular version.
+- **The pose that puts a pushing hero's head near the screen centre:** rotating him -1.02 rad about his middle with both
+  arms overhead puts his head beside the thing he pushes; `peFeetFor(rigPoint, worldPoint, s, rot)` solves where his feet go
+  for a contact point, `peLocal` turns a world target into rig-local IK. Frame 0 then gets the head at ~400 px while the
+  camera travels up to what the line names ("the Moon?") by 2.5 s.
+- **Faces under captions:** in a tall stack every planet has a face; check every framing for a face in the caption band
+  (y 1270-1400) and move the camera (the whole-tower view went from y -880 to -800, the top from -1650 to -1618) or drop that
+  face for the shot (Uranus after the POP).
+- **A peak-normalised sfx bus again:** -2 dB on the CLICK (the bus's peak) moved it only 0.3 dB in the mix; the other gags rose.
+- Voice: 327 characters, no retakes; quota.mjs read 102,616 before.
 
 **finger-w** (the 00:00 routine of 6 Nov 2026, 00:02-01:40 IST; a TEST Short, the Queue's first line (the Vulcan salute's kin, the
 rules of 5 Nov); the FIRST Short on the tight arm: 60 words -> 29.33 s; hook formula The Direct Address, the instruction itself: "Make a
