@@ -48,16 +48,26 @@
     "uploaded": "2026-11-05T21:34:39.892Z",
     "thumbnailSet": true,
     "captionsSet": true,
-    "playlistSet": true
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded into Studio's vertical Shorts slot (it showed an automatic frame), saved 6 Nov 2026 03:15 IST"
   },
   "instagram": {
     "publishAt": "2026-11-13T21:00:00+05:30",
     "caption": "Every planet fits between you and the Moon 🪐🌕\nMercury to Neptune, side by side: about 388,000 km. The gap when the Moon is farthest: about 398,000 km. Saturn has to take its rings off, and on a close night Neptune sleeps outside.\nDid you think they'd fit?\nFollow @curio_pulse_tv for the next one: some of the water you drink is older than the Sun 💧\n#science #space #planets #moon #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-06T03:13:00+05:30",
+    "cover": "cover.jpg (uploaded as the Reel thumbnail)"
   },
   "kind": {
     "kind": "curious",
     "slot": "2026-11-10T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "28636799632682933",
+    "publishAt": "2026-11-13T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-05T21:35:27.436Z"
   }
 }

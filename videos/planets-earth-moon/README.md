@@ -50,8 +50,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_TIME |
-| Instagram Reels (Business Suite) + the Facebook Page (`fb.mjs reel`) | IG_LINK | IG_TIME |
+| YouTube Shorts | https://youtube.com/shorts/hGbLDBMPtSM | 10 Nov 2026, 23:30 IST (scheduled; thumbnail, captions and the Strange Nature playlist by the API; cover.jpg also put into Studio's vertical Shorts slot) |
+| Instagram Reels (Business Suite, Instagram only, cover.jpg as the cover) + the Facebook Page (`fb.mjs reel`, video 28636799632682933) | after release | 13 Nov 2026, 21:00 IST, both (scheduled; Content → Scheduled lists both rows with the caption as their title) |
 
 **Title:** Could Every PLANET Fit Between You and the Moon? 🌕
 
