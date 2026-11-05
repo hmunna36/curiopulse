@@ -8,9 +8,9 @@ import sys
 
 from timeline_lib import PALETTE as P, Timeline, video_subscribe
 
-T = Timeline(sys.argv[1], tail=1.0)  # seconds after the last word: the button beat (a held look, a last gag) and the cut
-#                                      back to frame 1 for the loop. Every Short is 30-35 s since 16 Oct 2026: keep it short,
-#                                      so the loop comes before the thumb does.
+T = Timeline(sys.argv[1], tail=0.7)  # seconds after the last word: only the cut back to frame 1 for the loop. The tight
+#                                      rules (5 Nov 2026): 25-30 s, the last line runs straight into the first and nothing
+#                                      comes after it (qa.py: at most 1.0 s), so the loop comes before the thumb does.
 
 # (shot id, phrase whose first word opens the shot). The first shot starts at 0. None = timed in `special`
 # (reaction beats: on a gasp, after a punchline word, in a silent gap). Every id needs an SC.<id> in web/.
@@ -54,7 +54,7 @@ cues = {
 T.write(shots, caps, cues)
 # the numbers to read before any picture is built (qa.py checks them on the MP4; fixing them now is free)
 _ans = [w for w in T.words if w.get("block") == "answer"]
-print(f'length: {T.duration:.2f} s (every Short since 16 Oct 2026: 30-35 s passes; publish.json says the arm)')
+print(f'length: {T.duration:.2f} s (the slots from 10 Nov 2026: 25-30 s passes, the tight arm; publish.json "length" says the arm)')
 print(f'answer line: starts at {_ans[0]["start"]:.2f} s (must be 5.0 s or earlier)' if _ans else 'NO `## answer` BLOCK in script.txt (qa.py fails without it)')
 print(f'first words: "{" ".join(w["word"] for w in T.words[:8])}" (the test: tell the viewer what to try, about "your" body)')
 _spoken = [w["word"] for w in T.words if "subscrib" in w["word"].lower()]

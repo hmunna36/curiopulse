@@ -305,7 +305,8 @@ weeks"** (`analytics.md`, the pill test): subscribers per 1,000 views had fallen
   `sub_tap + 1.0`, `sub_out + 0.1` and `sub_out + 0.5`; Read the sheet. It must show the pill popping in, the click,
   SUBSCRIBED, the pill gone, and the hero and captions clear of it throughout.
 - **The last shot ends on the picture of frame 1 (the loop; the rule in both arms):** bring the camera, the
-  hero's pose and the props back to where the hook starts (him mid-test), in the last 0.3–0.5 s. Ambient motion in that world (lights that
+  hero's pose and the props back to where the hook starts (him mid-test), in the last 0.3–0.5 s. Since 5 Nov 2026
+  (the tight arm) the cut back comes within 0.7 s of the last word: no held look and no reaction shot after it. Ambient motion in that world (lights that
   blink, things that sway) runs on `loopW(w)` (fx.js), so it is in the same place on the last frame as on the first.
 
 ## The watermark (main.js, every Short; user, 6 Oct 2026)

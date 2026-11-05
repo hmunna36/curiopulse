@@ -18,7 +18,7 @@ EXPERIENCE the explanation, not be told it.
   - Every sound is synthesized in Python.
   - The only recorded element is the narration: ElevenLabs.
   - No stock footage, no generated images or video, no Higgsfield credits.
-- **Length: 30–35 s since 16 Oct 2026 (below); 40–50 s from 1 Oct, never over 55 s.** The user, 1 Oct 2026: "can we reduce the short length? it's going to 73
+- **Length: 25–30 s for every slot from 10 Nov 2026 (below); 30–35 s from 16 Oct; 40–50 s from 1 Oct, never over 55 s.** The user, 1 Oct 2026: "can we reduce the short length? it's going to 73
   seconds".
   - The Shorts up to onion tears ran 64–75 s, after the user's hypnic-jerk note ("duration relaxed, everything matters
     is the production quality, subtle pacing and clarity with comedic pauses and extremely expressive"). That note
@@ -37,6 +37,10 @@ EXPERIENCE the explanation, not be told it.
   - **Since 16 Oct 2026 every Short is 30–35 s, 66–76 words** (user, 15 Oct 2026: "yes", on the test's readings: twice
     as many viewers reached the end, the short ones drew more views on both platforms, and both breakouts were
     31–33 s). The length test is over; `yt.mjs next-slot` says "short" for every slot.
+  - **From the 10 Nov slots every Short is 25–30 s, 55–64 words** (user, 5 Nov 2026: "yes", on the reading of 5 Nov:
+    the Shorts watched to the end and replayed got the views, and the weak ones lost their viewers in the middle and
+    in the last seconds). The cut comes out of the middle, and nothing comes after the last line. `yt.mjs next-slot`
+    says "tight"; qa.py passes 25–30 s and fails above 32 s.
 - **The narrator is performed, not read.** Jessica (ElevenLabs `eleven_v3`, voice `cgSgspJ2msm6clMCkdW9`), stability
   0 ("creative"), with v3 delivery tags. The first lightning cut used Kokoro, and the user said it "sounded like
   someone was READING A BOOK". That must never happen again. See `narration.md`.
@@ -83,16 +87,16 @@ EXPERIENCE the explanation, not be told it.
   - The viewer instantly sees that something strange is happening.
   - Never "Hey guys", "Welcome back", "Today we…", "Did you know…", a logo or a slow establishing shot.
   - Motion is on frame 1.
-- **Structure** (30–35 s since 16 Oct 2026; the full table is in `story.md` §3):
+- **Structure** (25–30 s from the 10 Nov slots; the full table is in `story.md` §3):
 
   | Time | Beat |
   |---|---|
   | 0–3 s | hook: the viewer's test, and the strange thing happens to them |
   | by 5 s | the answer starts |
-  | to ≈ 17 s | the mechanism, shown, pointing back to the test |
-  | ≈ 17–21 s | payoff |
-  | to ≈ 29 s | the weirdest true fact |
-  | to the end | button (it runs into the hook), and the cut back to frame 1; no pill (pill test: the 23:30 Shorts' short pill) |
+  | to ≈ 13 s | the mechanism, ONE picture, pointing back to the test |
+  | ≈ 13–18 s | payoff |
+  | to ≈ 25 s | the weirdest true fact (one beat with the payoff when they are one surprise) |
+  | to the end | the loop line (the sting, or one short line that runs into the hook), nothing after it, and the cut back to frame 1 within 0.7 s; no pill |
 
 - **Never static.** Something meaningful changes every 1–3 s (camera, character, particles, light, process, text).
   But no random motion: every movement supports the story.

@@ -16,7 +16,8 @@
 //                                         retention curve. Needs the yt-analytics.readonly scope (the token from
 //                                         before 5 Oct 2026 lacks it: run `auth` once more and allow it).
 //   node yt.mjs next-slot [--json]        the next free YouTube slot and the length arm a Short for it must be built
-//                                         to (the length test: 23:30 slots are 30-35 s, 11:30 slots are 45-50 s)
+//                                         to (TIGHT, 25-30 s, for every slot from 10 Nov 2026; SHORT, 30-35 s, from
+//                                         16 Oct; the length test of 6-16 Oct: 23:30 slots 30-35 s, 11:30 slots 45-50 s)
 //   node yt.mjs comments-due [--dry-run]  posts the "Next up" comment on every Short that has gone public since it was
 //                                         uploaded (the queue is ~/.config/cp/comment-queue.json; `upload` fills it).
 //                                         "Next up" names the channel's next scheduled video at that moment. One comment
@@ -93,14 +94,21 @@ const istHM = (ms) => new Date(ms + IST_MS).toISOString().slice(11, 16); // HH:M
 // from LENGTH_TEST.end on, every Short is HOUSE_ARM. `next-slot` tells a run which arm it is building, qa.py reads the
 // arm from publish.json ("length"), and `numbers` keeps the test's rows and adds one for the Shorts made since.
 export const LENGTH_ARMS = {
+  tight: {min: 25, max: 30, words: '55-64', chars: '335-395'},
   short: {min: 30, max: 35, words: '66-76', chars: '400-470'},
   standard: {min: 45, max: 50, words: '95-110', chars: '560-680'},
 };
 export const LENGTH_TEST = {name: 'length-2026-10', start: '2026-10-06T23:30:00+05:30', end: '2026-10-16T11:30:00+05:30', slots: {'23:30': 'short', '11:30': 'standard'}};
-export const HOUSE_ARM = 'short'; // every slot from LENGTH_TEST.end on (user, 15 Oct 2026)
+export const HOUSE_ARM = 'short'; // every slot from LENGTH_TEST.end on (user, 15 Oct 2026), until TIGHT.from
+// The tight rules (user, 5 Nov 2026: "yes", after YouTube's Shorts feed fell 79 % in the week after 28 Oct): the Shorts
+// that viewers watched to the end and replayed got the views, so every Short for a slot from TIGHT.from on is built to
+// the TIGHT arm: 25-30 s, a shorter middle, and a last line that runs straight into the first (reference/analytics.md,
+// the reading of 5 Nov; story.md §3). The Shorts built before it, for the slots up to 9 Nov, stay 30-35 s.
+export const TIGHT = {name: 'tight-2026-11', from: '2026-11-10T00:00:00+05:30'};
+const TIGHT_GROUP = 'since 10 Nov · 25-30 s, the tight rules'; // the numbers report's row for them
 const SINCE_GROUP = 'since 16 Oct · 30-35 s, the test'; // the numbers report's row for the Shorts made to the rules of 15 Oct
 const inTest = (ms) => Boolean(LENGTH_TEST) && ms >= Date.parse(LENGTH_TEST.start) && ms < Date.parse(LENGTH_TEST.end);
-const armOfSlot = (ms) => (inTest(ms) ? LENGTH_TEST.slots[istHM(ms)] ?? 'standard' : !LENGTH_TEST || ms >= Date.parse(LENGTH_TEST.end) ? HOUSE_ARM : 'standard');
+const armOfSlot = (ms) => (inTest(ms) ? LENGTH_TEST.slots[istHM(ms)] ?? 'standard' : TIGHT && ms >= Date.parse(TIGHT.from) ? 'tight' : !LENGTH_TEST || ms >= Date.parse(LENGTH_TEST.end) ? HOUSE_ARM : 'standard');
 // The pill test (user, 24 Oct 2026: "yes let's test it for 2 weeks"): a Short released in a 23:30 YouTube slot from
 // PILL_TEST.start to PILL_TEST.end ends with a short silent Subscribe pill (on screen 1.6 s, gone 0.6 s before the
 // loop), one in an 11:30 slot ends with none, as every Short has since 16 Oct. 14 Shorts an arm. `next-slot` tells a
@@ -119,7 +127,9 @@ const PILL_GROUPS = {pill: 'PILL TEST · pill (23:30)', none: 'PILL TEST · no p
 export const KIND_TEST = {name: 'kind-2026-10', start: '2026-10-25T23:30:00+05:30', end: '2026-11-08T23:30:00+05:30', day0: '2026-10-25'};
 const inKindTest = (ms) => Boolean(KIND_TEST) && ms >= Date.parse(KIND_TEST.start) && ms < Date.parse(KIND_TEST.end);
 const kindOfSlot = (ms) => {
-  if (!inKindTest(ms)) return 'test';
+  // from KIND_TEST.end on the alternation simply goes on: one test and one curious Short a day (user, 5 Nov 2026: "yes"
+  // to the topics that won, hand and face tests most people can't do and mind-bending time and size facts)
+  if (!KIND_TEST || ms < Date.parse(KIND_TEST.start)) return 'test';
   const d = Math.round((Date.parse(istDate(ms)) - Date.parse(KIND_TEST.day0)) / 86400000);
   return istHM(ms) === (d % 2 === 0 ? '23:30' : '11:30') ? 'curious' : 'test';
 };
@@ -342,9 +352,9 @@ async function nextSlot(asJson) {
   const kind = {kind: kindOfSlot(Date.parse(iso)), ...(kt ? {test: KIND_TEST.name} : {}), slot: iso};
   if (asJson) return console.log(JSON.stringify({slot: iso, length, subscribe, kind}));
   console.log(`next free YouTube slot: ${istTime(Date.parse(iso))}`);
-  console.log(`length arm: ${arm.toUpperCase()} = ${a.min}-${a.max} s, ${a.words} words in all (about ${a.chars} characters)${test ? ` · length test "${LENGTH_TEST.name}": 23:30 slots are short, 11:30 slots are standard` : ' · every Short is 30-35 s since 16 Oct 2026 (the length test is over)'}`);
+  console.log(`length arm: ${arm.toUpperCase()} = ${a.min}-${a.max} s, ${a.words} words in all (about ${a.chars} characters)${test ? ` · length test "${LENGTH_TEST.name}": 23:30 slots are short, 11:30 slots are standard` : arm === 'tight' ? ' · every Short for a slot from 10 Nov 2026 is 25-30 s: a shorter middle, and the last line runs straight into the first (the tight rules of 5 Nov, story.md §3)' : ' · every Short is 30-35 s since 16 Oct 2026 (the length test is over)'}`);
   console.log(`subscribe arm: ${subscribe.arm === 'pill' ? 'PILL = the short silent Subscribe pill over the last 2.2 s (timeline_lib.py sets it; nobody says "subscribe")' : 'NONE = no pill, the Short ends on the button and loops'}${pt ? ` · pill test "${PILL_TEST.name}" until ${istTime(Date.parse(PILL_TEST.end))}: 23:30 slots get the pill, 11:30 slots none` : ''}`);
-  console.log(`topic kind: ${kind.kind === 'curious' ? 'CURIOUS = take the topic from topics.md "Curious queue" (story.md §6)' : 'TEST = take the topic from topics.md "Queue" (a test the viewer does on themselves)'}${kt ? ` · topic test "${KIND_TEST.name}" until ${istTime(Date.parse(KIND_TEST.end))}: the kind alternates by day` : ''}`);
+  console.log(`topic kind: ${kind.kind === 'curious' ? 'CURIOUS = take the topic from topics.md "Curious queue" (story.md §6)' : 'TEST = take the topic from topics.md "Queue" (a test the viewer does on themselves)'}${kt ? ` · topic test "${KIND_TEST.name}" until ${istTime(Date.parse(KIND_TEST.end))}: the kind alternates by day` : ' · one test and one curious Short a day, the kind alternating slots by day (5 Nov 2026)'}`);
   console.log(`put into publish.json → "length": ${JSON.stringify(length)}, "subscribe": ${JSON.stringify(subscribe)}, "kind": ${JSON.stringify(kind)}`);
 }
 async function reschedule(id, when) {
@@ -1012,6 +1022,7 @@ async function numbers(outDir = SKILL_DIR) {
     v.hours = v.live ? (now - v.when) / 3600000 : 0;
     v.slot = istHM(v.when);
     v.group = v.seconds > 90 ? 'long-form' // the weekly film; a CurioPulse Short has never run past 75 s
+      : TIGHT && v.when >= Date.parse(TIGHT.from) ? TIGHT_GROUP // the tight rules (5 Nov 2026): 25-30 s, the end runs into the first line
       : v.when >= pillEnd ? 'after the pill test'
       : v.when >= pillStart ? PILL_GROUPS[pillOfSlot(v.when)] // the pill test (24 Oct 2026): the slot says the arm
       : v.when >= testEnd ? SINCE_GROUP // the rules of 15 Oct 2026: every Short 30-35 s, a test the viewer tries, no pill
@@ -1036,7 +1047,7 @@ async function numbers(outDir = SKILL_DIR) {
   // the report
   const mean = (xs) => (xs.length ? xs.reduce((p, q) => p + q, 0) / xs.length : null);
   const f = (x, d = 0, unit = '') => (x === null || x === undefined || Number.isNaN(x) ? '–' : `${x.toFixed(d)}${unit}`);
-  const order = ['after the pill test', PILL_GROUPS.pill, PILL_GROUPS.none, SINCE_GROUP, 'TEST · short arm (30-35 s)', 'TEST · standard arm (45-50 s)', 'TEST · between the arms', 'before · 46-50 s · 23:30 slot', 'before · 46-50 s · 11:30 slot', 'before · 64-75 s'];
+  const order = [TIGHT_GROUP, 'after the pill test', PILL_GROUPS.pill, PILL_GROUPS.none, SINCE_GROUP, 'TEST · short arm (30-35 s)', 'TEST · standard arm (45-50 s)', 'TEST · between the arms', 'before · 46-50 s · 23:30 slot', 'before · 46-50 s · 11:30 slot', 'before · 64-75 s'];
   const groups = [...order.filter((g) => g.startsWith('TEST') && !g.includes('between') || g.startsWith('PILL') && Date.now() >= pillStart || vids.some((v) => v.group === g)), ...new Set(vids.map((v) => v.group).filter((g) => g !== 'long-form' && !order.includes(g)))];
   const md = [];
   md.push('# CurioPulse numbers', '');
@@ -1045,6 +1056,7 @@ async function numbers(outDir = SKILL_DIR) {
   md.push(`Views and likes are the public counters, live. Stayed, viewed and subscribers come from YouTube Analytics, which runs about two days behind: a dash means YouTube has not processed that day yet.${note ? ` **Analytics failed: ${note}.**` : ''}`, '');
   md.push(`## The length test${LENGTH_TEST ? ` (${LENGTH_TEST.name}, ${istTime(testStart)} to ${LENGTH_TEST.end ? istTime(testEnd) : 'now'})` : ' (ended)'}, and the Shorts since`, '');
   md.push(`During the test a Short in a 23:30 slot was built to 30-35 s, one in an 11:30 slot to 45-50 s. The verdict was **views per Short** and **subscribers per 1,000 views**; a shorter video scores a higher average % viewed by construction, so that column is not the verdict. The "before" rows are the same slots before the test. **"${SINCE_GROUP}"** are the Shorts made to the rules of 15 Oct 2026 (every Short 30-35 s, a test the viewer tries, no Subscribe pill: \`reference/analytics.md\`); read them against the short arm.`, '');
+  if (TIGHT) md.push(`**"${TIGHT_GROUP}"** are the Shorts made to the tight rules of 5 Nov 2026 (25-30 s, a shorter middle, a last line that runs straight into the first; topics: hand and face tests most people can't do, and mind-bending time and size facts: \`reference/analytics.md\`, the reading of 5 Nov). Read them against "${SINCE_GROUP}" and the pill test's rows: the target is the average % viewed of the hits (95 % or more) and the replays that come with it.`, '');
   if (PILL_TEST) md.push(`**The pill test** (${PILL_TEST.name}, ${istTime(pillStart)} to ${istTime(pillEnd)}; user, 24 Oct 2026): a Short in a 23:30 slot ends with a short silent Subscribe pill, one in an 11:30 slot with none. The verdict is **subscribers per 1,000 views** (the pill must win it clearly) with **views per Short** and **stayed to watch** about the same; how to read it: \`reference/analytics.md\`, the pill test.`, '');
   md.push('| Group | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views |', '|---|---|---|---|---|---|---|');
   const median = (xs) => { const q = [...xs].sort((p, r) => p - r); return q.length ? (q.length % 2 ? q[(q.length - 1) / 2] : (q[q.length / 2 - 1] + q[q.length / 2]) / 2) : null; };

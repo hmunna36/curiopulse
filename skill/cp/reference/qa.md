@@ -3,7 +3,7 @@
 ## While building (cheap and early)
 
 - **After voice.py and make_timeline.py:** do the listening pass (narration.md), and read what make_timeline.py
-  prints: the duration (30–35 s), where the `answer` line starts (5.0 s or earlier), the first words (the test, with
+  prints: the duration (25–30 s on the tight arm), where the `answer` line starts (5.0 s or earlier), the first words (the test, with
   "you"/"your" in them) and the subscribe line ("nothing said", with the arm publish.json gives: the pill arm or no
   pill), and timeline_lib.py's "subscribe arm" line (the pill's three times in the pill arm). Fix the words, the delivery and
   those before any picture exists; it is free now and a re-render later.
@@ -62,7 +62,8 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 | Check | Bar |
 |---|---|
 | Streams | H.264 High 1080×1920 30 fps yuv420p, AAC 48 kHz stereo, moov first |
-| Length / size | the band of the Short's length arm (`"length"` in publish.json, from `yt.mjs next-slot`; "short" for every Short since 16 Oct 2026): SHORT passes at 30–35 s and fails above 37 s; anything else warns (the old STANDARD arm: 43–50 s) · under 95 MB |
+| Length / size | the band of the Short's length arm (`"length"` in publish.json, from `yt.mjs next-slot`; "tight" for every slot from 10 Nov 2026, "short" from 16 Oct): TIGHT passes at 25–30 s and fails above 32 s, SHORT at 30–35 s and above 37 s; anything else warns (the old STANDARD arm: 43–50 s) · under 95 MB |
+| The end | the tight arm (the rules of 5 Nov 2026): at most 1.0 s from the last spoken word to the loop; warns to 1.5 s, fails beyond |
 | Opening | "you"/"your" in the first eight words: the test (warning only; 15 Oct 2026) · the `answer` block starts by 5.0 s (warns to 6.0 s; fails later, or when there is no `answer` block). The 9 Oct "first cut at 7 s" check is gone (15 Oct 2026) |
 | Subscribe | nobody says "subscribe" (fails when the word is spoken anywhere) · the pill as publish.json "subscribe" says (the pill test, 25 Oct–8 Nov 2026): "pill" needs `sub_in` / `sub_tap` / `sub_out` at 2.4 / 1.7 / 0.85 s before the end (± 0.1 s; fails otherwise); "none" or no arm fails when the timeline has any of them |
 | Loudness | −14 ± 0.5 LUFS integrated, true peak ≤ −1.0 dBTP (decoded from the AAC) |
@@ -95,7 +96,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 |---|---|---|
 | 1 | **The test, the hook and the answer** | the topic is a test the viewer can do on themselves on the spot, phone in hand, safely; the first line tells them to do it (or says they are doing it), with "you"/"your"; frame 0 is a tight shot (his head about 350 px tall or more, or his hand that big) of him already doing that test, and it would sit in the top row of `reference/openings.jpg`; the strange thing lands in ≤ 3 s, while they try it; picture and sound hit together; the answer line starts by 5 s and is a plain, surprising claim or metaphor that leaves a "wait, how?"; you would try it yourself |
 | 2 | **Retention** | nothing between the hook and the answer; no shot of his frozen face, stare or held reaction before second 12; no title or name card in the first 15 s; the first look inside the body grows out of the scene (no cut to a separate diagram); every mechanism line points back to the viewer's test, in everyday words, no science word spoken in the first 15 s; no spoken naming beat, no bridge-only line; the 8–13 s rule: up to 13 s the viewer is still doing (or re-doing) the test, the mechanism is ONE picture on their body part, and no line before 13 s explains in words what a picture shows (list what the viewer's hand is doing at 5, 8, 10 and 13 s); a new visual question or reveal every 3–5 s; no stretch where only the captions move; escalation to the weirdest fact |
-| 3 | **Story** | test → answer → mechanism → payoff → the weirdest fact → button; every beat earns its seconds; the button sends the viewer back to the test a new way (best) or reframes or undercuts, and runs into the hook when the Short loops, and the last shot returns to the picture of frame 1; no ask, tease, outro or pill at the end |
+| 3 | **Story** | test → answer → mechanism → payoff → the weirdest fact → button; every beat earns its seconds; the button sends the viewer back to the test a new way (best) or reframes or undercuts, and runs into the hook when the Short loops, and the last shot returns to the picture of frame 1; no ask, tease, outro or pill at the end; since 5 Nov 2026 the last line is the payoff's sting or ONE short line after it, never a second tail or an "Anyway…" |
 | 4 | **Show, don't tell** | every major statement has its visual; the camera travels to what's named; nothing is a slide |
 | 5 | **Narration** | sounds told, not read (brief: "NOT reading a book"); energy changes per beat; jokes land in the gaps; no mis-said words |
 | 6 | **Comedy** | 2 laugh beats (the answer line and the button); timing comes from the gaps and cuts, not wacky voices |
@@ -104,7 +105,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |
 | 10 | **Packaging** | title ≤ 60 characters with a curiosity gap; the cover reads at thumbnail size; description, hashtags and IG caption written, and the caption and the description end their story part with a one-word question about the test ("Left or right?") |
-| 11 | **The loop** | nobody says "subscribe", and nothing spoken asks, teases or winds up; the pill only in the pill arm, short, gone 0.6 s before the end, never over the face or the key action (qa.py checks the cues); the last frame matches frame 0 closely enough that the restart reads as one move; the button line and then the hook, read aloud, run on as one thought |
+| 11 | **The loop** | nobody says "subscribe", and nothing spoken asks, teases or winds up; the pill only in the pill arm, short, gone 0.6 s before the end, never over the face or the key action (qa.py checks the cues); the last frame matches frame 0 closely enough that the restart reads as one move; the button line and then the hook, read aloud, run on as one thought; nothing after the last line (≤ 1.0 s to the loop, qa.py) |
 
 - **Satisfied** means: qa.py has no FAIL, every ship-bar item scores 8 or more, and nothing in the review would make
   the user wince.

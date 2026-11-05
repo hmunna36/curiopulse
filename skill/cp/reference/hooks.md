@@ -73,4 +73,4 @@ A hook that only does the third is a summary, and it leaks viewers.
 - The channel's own rules stay: frame 0 is a tight shot of him doing the test (`story.md` §2). The formula shapes the
   SENTENCE, not the picture. (The 9 Oct "one continuous shot" rule was dropped on 15 Oct.)
 - "You"/"your" lands within the first eight words (qa.py warns otherwise; an instruction about "your" body passes).
-- Not for a 30 to 35 s animated Short: The Receipt, The Teardown, The Stack, The Origin, The Deadline, The Insider.
+- Not for a 25 to 35 s animated Short: The Receipt, The Teardown, The Stack, The Origin, The Deadline, The Insider.

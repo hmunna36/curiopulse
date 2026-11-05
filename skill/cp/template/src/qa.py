@@ -7,13 +7,15 @@ for the transcript check, and the stems from audio.py.
 Checks (FAIL blocks the upload; WARN is for the review):
 - Streams: H.264 High, 1080x1920, 30 fps, yuv420p, AAC 48 kHz stereo, faststart.
 - Length and file size: the band of the Short's length arm, read from ../publish.json "length" (`yt.mjs next-slot`
-  says which; every Short is "short" since 16 Oct 2026). short: 30-35 s passes, over 37 s fails, anything else warns.
+  says which; every Short is "tight" for the slots from 10 Nov 2026, "short" from 16 Oct). tight: 25-30 s passes, over
+  32 s fails; short: 30-35 s passes, over 37 s fails; anything else warns.
   standard (the length test's other arm, 6-16 Oct): 43-50 s passes, over 55 s fails. The MP4 under 95 MB (GitHub's
   per-file limit is 100 MB).
 - Opening (5 and 15 Oct 2026, from the channel's retention curves): the `answer` block starts by 5.0 s (warns to 6.0,
   fails later or when there is no such block); the first line talks to the viewer about their own body, "you"/"your"
   in the first eight words (the test the viewer tries; a warning only). The 9 Oct "no cut before 7 s" check is gone
   (it failed its own test, 15 Oct 2026).
+- The end (5 Nov 2026, the tight arm): at most 1.0 s from the last spoken word to the loop (warns to 1.5 s).
 - Subscribe (9 Oct, 15 Oct and 24 Oct 2026): nobody says "subscribe" (fails when it is spoken). The pill follows the
   subscribe arm in ../publish.json "subscribe" (the pill test, 25 Oct-8 Nov 2026): "pill" needs all three cues, timed
   as timeline_lib.py sets them (in 2.4 s before the end, the click 0.7 s later, out 0.85 s before the end; fails
@@ -79,7 +81,7 @@ with open(MP4, "rb") as fh:
 check(head.find(b"moov") != -1 and head.find(b"moov") < head.find(b"mdat") if b"mdat" in head else b"moov" in head,
       "faststart (moov before mdat)", "ok" if b"moov" in head else "moov atom not at the front")
 # the length this Short was built for: "length": {"arm": "short" | "standard"} in publish.json, next to the MP4
-ARMS = {"standard": (43.0, 50.0, 55.0), "short": (30.0, 35.0, 37.0)}   # passes from, passes to, fails above
+ARMS = {"standard": (43.0, 50.0, 55.0), "short": (30.0, 35.0, 37.0), "tight": (25.0, 30.0, 32.0)}   # passes from, passes to, fails above
 try:
     arm = (json.load(open(os.path.join(os.path.dirname(os.path.abspath(MP4)), "publish.json"))).get("length") or {}).get("arm")
 except Exception:
@@ -347,6 +349,14 @@ if sub_arm == "pill":
 else:
     check(not has_pill, "no Subscribe pill (no-pill arm: the Short ends on the button and loops)",
           "none in the timeline" if not has_pill else f'the timeline sets {", ".join(has_pill)}, but publish.json "subscribe" is not the pill arm: rerun make_timeline.py')
+
+# the end (the tight rules, 5 Nov 2026): the last line runs straight into the first and nothing comes after it. The
+# Shorts of 29 Oct-4 Nov kept 27-37 % of their viewers to the last second against about 72 % for the hits; their
+# endings added a second tail line ("Not drooling? Watch him again.") or a bridge ("Anyway...") after the payoff
+if arm == "tight":
+    tail = tl["duration"] - words[-1]["end"]
+    check(tail <= 1.0, "the end: nothing after the last line (tight arm: <= 1.0 s from the last word to the loop)",
+          f'{tail:.2f} s after "{said(words[-3:])}"', warn=tail <= 1.5)
 
 # ---------------------------------------------------------------- captions
 caps = tl["captions"]

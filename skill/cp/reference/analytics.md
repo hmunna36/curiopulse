@@ -344,3 +344,46 @@ other way), so over the two weeks each slot carries 7 of each and the kind never
 - A Short that slips to a later slot is read by the slot it was released in (rare; its publish.json "kind" says what
   it really was: check the per-upload table against it).
 
+
+## The reading of 5 Nov 2026 (the YouTube drop) and the rules of 5 Nov (user: "yes")
+
+The user, 5 Nov 2026: "pull now. it became very weak". The numbers to 2 Nov (YouTube Analytics; daily views and traffic
+sources from `report({dimensions: 'day'})` and `insightTrafficSourceType`, the curves from `retention-data.sh`):
+- **Daily views:** 4-6K a day in early October, a peak of 122,897 on 24 Oct (the Vulcan wave), 31,556 on 29 Oct, 18,935
+  on 30 Oct, 9,550 on 1 Nov, 5,407 on 2 Nov. Subscribers gained fell from 30-56 a day to about 10.
+- **Traffic:** the Shorts feed gave 342,367 views on 22-28 Oct and 73,047 on 29 Oct-4 Nov (-79 %). Search (12.5K to 3.8K)
+  and the channel page (6.6K to 2.3K) fell by about the same share, so the feed's push was what went.
+- **Average % viewed predicts the views.** Every Short at 95 % or more drew 7K-234K (Vulcan 101.7 %, circle and line
+  99.8 %, Jupiter 99.2 %, tongue to nose 97.4 %, sharks 96.3 %, ring finger 94.9 %). The Shorts of 29 Oct-4 Nov averaged
+  about 76 % and drew 84-7.7K; under 70 % drew almost nothing (wombat cubes 65 %, 136 views; glass rain 48.6 %, 84). Both
+  are public and normal (status, licence and restrictions checked). Stayed to watch did not separate them: 48-66 %
+  for all.
+- **Where the weak ones lose viewers** (audience watch ratio, hits against weak):
+
+  | Point | Hits (Jupiter, sharks, Venus, Sun) | Weak (lemon, tongue twister, octopus, Saturn, eyes shake) |
+  |---|---|---|
+  | start (replays) | 1.55-1.69 | 1.26-1.48 |
+  | 10 s | 0.97-1.09 | 0.73-0.92 |
+  | half the Short | 0.87-0.98 | 0.62-0.78 |
+  | 90 % | 0.68-0.80 | 0.35-0.62 |
+  | the last second | 0.60-0.73 | 0.27-0.51 |
+
+  So: fewer replays, a leak through the middle, and a drop over the last seconds. Relative retention at the halfway
+  point is 0.62-0.74 for the hits against 0.33-0.48.
+- **Not the pill:** the 23:30 Shorts (pill) averaged 82.3 % viewed and the 11:30 ones (none) 82.6 %; both fell alike.
+- **The endings:** the hits stop on the sting ("Your hands aren't clumsy. They're cheating."; "So when you hug a tree...
+  you're hugging the new kid."; "Still want to jump?"). The weak ones add a second tail ("Drooling? Congrats, you're nice.
+  Not drooling? Watch him again."), a bridge ("Anyway... one spoon, or two?") or a soft tag ("So yes... it leaves a RING.").
+- **The topics:** the test hits were hands or face, most people can't (Vulcan, circle and line, tongue to nose, ring
+  finger, one eyebrow); the curious hits were comparisons of time or size (sharks and trees, Jupiter, Venus). The losers:
+  imagine-it (lemon), speech (tongue twister), one-animal or one-thing trivia (wombats, glass rain, octopus).
+- **Instagram did not fall the same way:** one-finger drew 429,421 views (30 Oct) and head-shake-reading 12.4K (2 Nov);
+  most Reels 1.4-4K. But the skip rate rose to 36-40 % on the newest Reels (sun, tongue twister, green dot), against
+  about 20-30 % before.
+
+**The rules of 5 Nov (user: "yes" to all three; `SKILL.md`):** the two topic kinds that won only (`topics.md` re-sorted,
+the rest under Held and "Curious held"); 25-30 s, 55-64 words (the tight arm `tight-2026-11`, every slot from 10 Nov;
+`yt.mjs` `TIGHT`); the end is the loop with nothing after it (template tail 0.7 s; qa.py at most 1.0 s from the last
+word). One test and one curious Short a day go on after 8 Nov. **Read it** about 20 Nov, on the first 14 tight Shorts
+(`numbers.md`'s row "since 10 Nov · 25-30 s"): average % viewed (the target is 90 % or more), the start of the curve
+(replays, 1.5+), the last second (0.6+), and views per Short against the 29 Oct-4 Nov Shorts.

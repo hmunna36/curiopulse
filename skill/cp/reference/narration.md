@@ -56,14 +56,16 @@
   - Write numbers as words ("seventy percent"), with DISPLAY in make_timeline showing "70%".
   - Keep acronyms and hard words rare. If whisper mis-hears a line in QA, rephrase it: "isn't instant" became
     "is actually a handover".
-- **Pace:** ≈ 2.15 words/s including the gaps. **Every Short is 30–35 s since 16 Oct 2026** (the length test is over;
-  user, 15 Oct 2026; `analytics.md`): **66–76 words**, about 400–470 characters. `yt.mjs next-slot` says "short".
+- **Pace:** ≈ 2.15 words/s including the gaps. **Every Short for a slot from 10 Nov 2026 is 25–30 s** (the rules of 5 Nov;
+  30–35 s and 66–76 words from 16 Oct; `analytics.md`): **55–64 words**, about 335–395 characters. `yt.mjs next-slot`
+  says "tight".
     (hiccups, 6 Oct 2026: 72 words came in at 37.1 s and 70 words at 33.9 s after capping the pauses. Every gag that needs a
-    pause of its own costs 0.7–0.9 s: with three or more of those, write 66–70 words.)
+    pause of its own costs 0.7–0.9 s: with three or more of those, write the low end of the band, 55–58 words.)
   Count them before synthesizing; if the draft is longer, cut whole sentences (a second example, a bonus fact, the
   hedged debate), never the comedic gaps or the answer line. After `voice.py`, `make_timeline.py` prints
-  the duration: outside 30–35 s (qa.py's band for the short arm), fix it with `gap`, `tighten` and `tempo`
-  (free) before touching the text. (The old 45–50 s arm, 95–110 words, is only in the Shorts made before 16 Oct.)
+  the duration: outside 25–30 s (qa.py's band for the tight arm), fix it with `gap`, `tighten` and `tempo`
+  (free) before touching the text. (The old 45–50 s arm, 95–110 words, is only in the Shorts made before 16 Oct, and
+  the 30–35 s arm, 66–76 words, in those for the slots up to 9 Nov.)
 - **Everyday words (15 Oct 2026, `story.md` §2).** Viewers leave when the words turn technical: chalkboard lost 23 % of
   those still watching in one second, on "one narrow band of pitch". No science word is spoken in the first 15 s;
   every mechanism line points back to what the viewer just did ("That blocked side? It's on its break.").
@@ -111,10 +113,11 @@ reading is in `analytics.md`.
   subscribers, so from 16 Oct it was gone and the Short loops. The pill test (25 Oct–8 Nov 2026) brings back a
   shorter silent pill on the 23:30 Shorts only; the script is the same in both arms (nothing in it refers to a pill). The subscribe ask lives in the caption, the description and the
   comments (`publish.md`).
-- **The last block is the button, written to loop.** Nothing comes after it but the tail (1.0 s) and the cut back to
-  frame 1. Read the button and then the hook aloud as one sentence: the viewer should slide straight back into the
+- **The last block is the button, written to loop.** Nothing comes after it but the tail (0.7 s since 5 Nov; qa.py
+  wants at most 1.0 s) and the cut back to frame 1. It is the payoff's sting itself or ONE short line after it
+  (≤ 2.5 s): never a second tail line ("Not drooling? Watch him again.") or a bridge ("Anyway…"). Read the button and then the hook aloud as one sentence: the viewer should slide straight back into the
   test.
-- **Budget:** 66–76 words; the few words an ask would take go to the story.
+- **Budget:** 55–64 words (the tight arm); the few words an ask would take go to the story.
 - The next topic is teased in text only: the "Next up" comment, the description and the Reel caption (`publish.md`).
 - History: until 5 Oct 2026 `sub` was the last block, ≤ 70 characters, and teased the next Short ("Next up: …
   Subscribe…"); from 5 to 9 Oct it was a mid-video aside of ≤ 45 characters ("Subscribe... it gets weirder.") with the

@@ -44,7 +44,7 @@ with `.work`'s, then run qa.py on it with that folder.
 ## The numbers, the length, the test, the answer and the loop in the order of work (rules of 15 Oct 2026)
 
 - Preflight: `yt.mjs numbers` (the log; read the "since 16 Oct" row against the length test's short arm), then
-  `yt.mjs next-slot` (the slot, and the arm: "short", 30–35 s, for every slot since 16 Oct 2026). `analytics.md`
+  `yt.mjs next-slot` (the slot, and the arm: "tight", 25–30 s, for every slot from 10 Nov 2026; "short", 30–35 s, from 16 Oct). `analytics.md`
   explains both. Then the Instagram check of `SKILL.md` step 1 (did the last Reels really go out?).
 - The topic is the first `[ ]` line of `topics.md`'s Queue: a test the viewer can do on themselves while watching
   (`story.md` §4). If a recent Short broke out (five times the middle views per Short), take its closest kin first.
@@ -52,7 +52,7 @@ with `.work`'s, then run qa.py on it with that folder.
   script says it could not reach YouTube, put the object `next-slot` prints there by hand.
 - Before `voice.py --synth`: the hook is the test ("you"/"your" in the first eight words), the script has an
   `## answer` block (it must start by 5.0 s) and NO `sub` block: nobody says "subscribe". Count the whole script's
-  words (66–76) and its characters against `quota.mjs` (narration.md).
+  words (55–64 on the tight arm) and its characters against `quota.mjs` (narration.md).
 - `make_timeline.py` prints the length, where the answer starts, the first words and the subscribe line ("nothing
   said", and the arm). It sets no subscribe cue itself: timeline_lib.py sets the pill for publish.json's pill arm (the
   pill test, 25 Oct–8 Nov 2026) and drops it otherwise; qa.py checks it. Fix a miss now, not after the render.

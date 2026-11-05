@@ -1,4 +1,4 @@
-# Story: from a topic to a 30–35 second experience
+# Story: from a topic to a 25–30 second experience
 
 **The rules of 15 Oct 2026 (user: "yes"; the evidence is in `analytics.md`, readings of 15 Oct).** The two Shorts that
 broke out (blocked nostril: 567K views on Instagram, 25K on YouTube; knuckle cracking: 41.5K and 6.2K) were the only two
@@ -7,7 +7,7 @@ nostril is the only Short that never fell below YouTube's typical retention. Eve
 1. **The topic is a test the viewer can do on themselves, on the spot, phone in hand** (§4).
 2. **The hook is that test:** the first line tells them what to do, or what they are doing, and the strange result
    lands while they try it (§2).
-3. **30–35 s, every Short** (§3; the length test is over).
+3. **25–30 s for every slot from 10 Nov 2026** (§3; 30–35 s from 16 Oct; item 9).
 4. **The lesson stays on their body, in everyday words** (§2): viewers leave when the explanation starts.
 5. **The Short loops; no Subscribe pill, except the pill test's 23:30 Shorts (25 Oct–8 Nov 2026), which end with a
    short silent one** (§3, `visual.md`; publish.json "subscribe" says the arm).
@@ -15,6 +15,11 @@ nostril is the only Short that never fell below YouTube's typical retention. Eve
 7. **No missed day, and a hit is followed by its kin** (§4, `SKILL.md`).
 8. **The test stays in their hands through 13 s, the mechanism is one picture, and the button sends them back to the
    test** (24 Oct 2026; §2 "The 8–13 s rule", §3).
+9. **The rules of 5 Nov 2026 (user: "yes"; `analytics.md`, the reading of 5 Nov).** After the Vulcan wave the Shorts
+   that viewers watched to the end and replayed were the ones YouTube kept pushing (95 % viewed or more: 7K–234K views
+   each); the Shorts of 29 Oct–4 Nov averaged 76 % and lost their viewers in the middle and in the last seconds. So:
+   25–30 s with a shorter middle (§3), an end that is the loop with nothing after it (§3), and only the two topic kinds
+   that won (§4, §6).
 
 ## 1. Research first (15–20 minutes; it prevents re-voicing)
 
@@ -145,21 +150,23 @@ Old openings redone to the rule (they show the shape; don't reuse them as script
 | brain freeze | "You take ONE giant slurp of milkshake… and then your forehead… FREEZES!" / "Your forehead. The milkshake went in your MOUTH." / "Doctors call it…" | the same hook / "Your mouth just pulled the fire alarm… and your forehead got the bill." (the name, if at all, is a label) |
 | goosebumps | "Scary movie… creepy music… and your arm does… this." / "Congrats. You're a plucked goose." | "You press play on a horror movie… and your arm hair stands UP." / "That's your body trying to look bigger. It's not working." |
 
-## 3. The shape (30–35 s, every Short since 16 Oct 2026)
+## 3. The shape (25–30 s, every Short for a slot from 10 Nov 2026)
 
-The length test is over (user, 15 Oct 2026, from its readings in `analytics.md`): twice as many viewers reached the
-end of a 30–35 s Short as of a 45–50 s one (middle 35 % against 18 %), the short ones drew more views on both
-platforms, and both breakouts were 31–33 s. `yt.mjs next-slot` says "short" for every slot; the word budget is
-66–76 words (`narration.md`).
+**The tight arm (the rules of 5 Nov 2026).** The hits of 16–28 Oct were watched to the end and replayed (95–102 %
+viewed). The Shorts of 29 Oct–4 Nov kept 62–80 % of their viewers at the halfway point, against 95–98 % for the hits,
+and 27–37 % at the last second, against about 72 %. So the middle is cut, never the test: `yt.mjs next-slot` says
+"tight" for every slot from 10 Nov, and the word budget is 55–64 words (`narration.md`). (From 16 Oct to the 9 Nov
+slots every Short was 30–35 s, 66–76 words: the length test of 6–16 Oct found twice as many viewers reaching the end
+of a 30–35 s Short as of a 45–50 s one.)
 
 | Beat | Block | Time | What it does |
 |---|---|---|---|
 | Hook: the test | `hook` | 0–3 s | the viewer is told to do something to their own body (or is doing it), and the strange thing happens to them |
 | Answer | `answer` | starts by 5.0 s | the plain, surprising claim or metaphor; the first laugh |
-| Mechanism, shown | 2–3 blocks | to ≈ 17 s | ONE mechanism, step by step, pointing back to the test; the camera travels to each thing as it is named; up to 13 s the viewer is still doing (or re-doing) the test and the mechanism is ONE picture on their body part (the 8–13 s rule) |
-| Payoff | `payoff` | ≈ 17–20 s | the moment it clicks: the proof, or "that's why…" |
-| The weirdest true fact | 1 block | to ≈ 29 s | stranger than everything before it; hedged when science isn't sure |
-| Button and loop | `button` | to 30–35 s | best: a line that sends the viewer back to the test a new way ("now try the other hand", "now slower"), so they replay; otherwise the line that reframes or undercuts, written to run straight into the hook when the Short loops; the picture cuts back to frame 1; the pill only in the pill test's pill arm (over its last 2.4 s) |
+| Mechanism, shown | 1–2 blocks | to ≈ 13 s | ONE mechanism, pointing back to the test; the camera travels to each thing as it is named; up to 13 s the viewer is still doing (or re-doing) the test and the mechanism is ONE picture on their body part (the 8–13 s rule); no second step |
+| Payoff | `payoff` | ≈ 13–18 s | the moment it clicks: the proof, or "that's why…" |
+| The weirdest true fact | 1 block, or one beat with the payoff | to ≈ 25 s | stranger than everything before it; hedged when science isn't sure; folded into the payoff when the two are one surprise |
+| Button and loop | `button` | to 25–30 s | the payoff's sting itself, or ONE short line after it (≤ 2.5 s), and nothing after that (the picture cuts back to frame 1 within 0.7 s of the last word); best: a line that sends the viewer back to the test a new way ("now try the other hand", "now slower"), so they replay; otherwise the line that reframes or undercuts, written to run straight into the hook when the Short loops; the picture cuts back to frame 1; the pill only in the pill test's pill arm (over its last 2.4 s) |
 
 - One idea per block and one visual per idea. Every 3–5 s there is a new question or reveal. A question that leads
   into a beat ("How do we know?", "And the weirdest part?") is folded into the line that answers it; it is never a
@@ -178,8 +185,15 @@ platforms, and both breakouts were 31–33 s. `yt.mjs next-slot` says "short" fo
   last 4 s, against 13 % with nothing there), while a Short that loops gets watched again, which is what carried the
   nostril Short (it started at 142 %: replays). Write the button so that it runs into the first line: the viewer
   should be halfway into the test again before they notice it restarted.
-- What a 30–35 s Short drops: the hedged debate, the second example, the bonus fact (each can be another day's
-  topic). Never the answer line or the comedic gaps (tighter, but there).
+- **Nothing after the last line (the rules of 5 Nov 2026).** The weak Shorts of 29 Oct–4 Nov ended with a second tail
+  after the payoff ("Drooling? Congrats, you're nice. Not drooling? Watch him again."), a bridge ("Anyway… one spoon,
+  or two?") or a held look; the hits stopped on the sting ("Your hands aren't clumsy. They're cheating.", "So when you
+  hug a tree… you're hugging the new kid.", "Still want to jump?"). So the last line is the sting, or one short line
+  after it, never two; no "Anyway…" or "So yes…"; the template's tail is 0.7 s and qa.py wants at most 1.0 s from the
+  last word to the loop.
+- What a 25–30 s Short drops: the hedged debate, the second example, the bonus fact, a second mechanism step and any
+  line after the sting (each fact can be another day's topic). Never the test, the answer line or the comedic gaps
+  (tighter, but there).
 
 The first Shorts (64–75 s, up to onion tears) followed an older shape: hook → reaction → name → mechanism →
 twist/proof → debate → bonus → button → subscribe line. `reference/examples/` holds finger-wrinkles and hypnic-jerk in
@@ -192,6 +206,13 @@ seconds, phone in hand, safely (pinch a nostril, crack a knuckle, lift a ring fi
 pinched, cross two fingers on the nose). Or something on the screen itself that their own eyes do (a blind spot, an
 afterimage). Both breakouts were built like that and nothing else on the channel was (`analytics.md`, 15 Oct). A
 topic that cannot be tried on the spot waits under "Held" in `topics.md` until it finds a test angle.
+
+**Since 5 Nov 2026 (user: "yes"; the rules of 5 Nov): the tests that win are done with the hands or the face, and most
+people can NOT do them on the first try** (the Vulcan salute 234K views, circle and line 49K, tongue to nose 24K, the
+ring finger 22.5K, one eyebrow 21K: all 95 % viewed or more). The viewer fails, laughs and tries again, and that is the
+replay. Imagine-it tests lost (the lemon, 75 % viewed) and so did speech tests (the tongue twister, 66 %); tests on the
+screen, with sound, or that need a clock, a wall or the sky wait under Held. Before taking a Queue topic, ask: can most
+people NOT do it on the first try, with their hands or face, in two seconds? If not, it waits.
 
 A good CurioPulse topic also:
 - is a question people Google or ask out loud;
@@ -209,7 +230,7 @@ queue. Prefer topics where the hiker can be the one it happens to.
 
 ## 5. The one-page plan (write it in the video README before any code)
 
-1. The length (30–35 s, 66–76 words; `yt.mjs next-slot` confirms the arm).
+1. The length (25–30 s, 55–64 words on the tight arm; `yt.mjs next-slot` confirms the arm).
 2. The test the viewer does, the hook sentence (the instruction), the answer line, and the button line (it runs into
    the hook when the Short loops).
 3. The claims table (science notes).
@@ -238,6 +259,11 @@ depends on the viewer's own body; the replacements:
 - **The topic:** a true thing that sounds impossible, one sentence a stranger would stop for and repeat to a friend
   ("There's a lake that turns animals to stone."). Space, animals, Earth, physics, history. Never a "why is the sky
   blue" textbook question: those never broke out. It must have ONE spectacular picture.
+  **Since 5 Nov 2026 (the rules of 5 Nov): a mind-bending comparison of time or size the viewer can picture.** The
+  winners: sharks are older than trees (23K views, 96 % viewed), falling into Jupiter (18.6K, 99 %), a day on Venus is
+  longer than its year (15K, 91 %), what if the Sun vanished (4.6K, 93 %). The losers were trivia about one animal or
+  one thing: wombat cubes (136 views, 65 %), glass rain (84, 49 %), the octopus's three hearts (4.6K, 77 %). Those wait
+  under "Curious held" in `topics.md`.
 - **The hook (0–3 s):** the claim, said to the viewer, while frame 1 already shows it (the stone flamingo staring
   at the hiker). Put the viewer in it: "you" or "your" in the first line ("If you fell into Jupiter, you'd never hit
   the ground."). If a two-second guess fits, ask it ("Guess which is older: sharks or trees?") and answer by 5 s.
