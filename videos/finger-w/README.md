@@ -40,9 +40,9 @@ Takes: one take per block, seed-free; the hook was tightened (pauses capped at 0
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_TIME |
-| Instagram Reels | IG_LINK | IG_TIME |
-| Facebook Page | FB_LINK | IG_TIME |
+| YouTube Shorts | https://youtube.com/shorts/sEr9s0tAphI | 10 Nov 2026 11:30 IST (thumbnail set by the API and again in Studio's vertical slot, which had an automatic frame; captions; playlist) |
+| Instagram Reels | scheduled in Business Suite (Instagram only, cover.jpg as the cover; Content → Scheduled lists it with the caption) | 13 Nov 2026 18:30 IST |
+| Facebook Page | video 2695065854246760 (`fb.mjs reel`: ready, scheduled) | 13 Nov 2026 18:30 IST |
 
 **Title:** Can You Make a W With Your FINGERS? 🖐️
 

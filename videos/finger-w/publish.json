@@ -34,23 +34,36 @@
   "cover": "cover.jpg",
   "captions": "finger-w.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-10T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "sEr9s0tAphI",
+    "url": "https://youtube.com/shorts/sEr9s0tAphI",
+    "uploaded": "2026-11-05T19:21:08.085Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-13T18:30:00+05:30",
     "caption": "Make a W with your fingers. One, two, one. 🖐️\nStuck? Your fingers are in a group chat.\nYour brain texts the pinky \"go OUT\"... and the ring finger reads it too.\nEach finger has its OWN spreading muscles. The leak is your brain, oversharing. And they all run on one nerve: your funny bone.\nNow try it slower.\nCould you do it?\nFollow @curio_pulse_tv for the next one: why you can't lick your own elbow 👅\n#science #humanbody #handtest #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-10T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2695065854246760",
+    "publishAt": "2026-11-13T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-05T19:27:36.907Z"
   }
 }
