@@ -35,17 +35,23 @@
   "cover": "cover.jpg",
   "captions": "planets-earth-moon.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-10T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "hGbLDBMPtSM",
+    "url": "https://youtube.com/shorts/hGbLDBMPtSM",
+    "uploaded": "2026-11-05T21:34:39.892Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-13T21:00:00+05:30",
     "caption": "Every planet fits between you and the Moon 🪐🌕\nMercury to Neptune, side by side: about 388,000 km. The gap when the Moon is farthest: about 398,000 km. Saturn has to take its rings off, and on a close night Neptune sleeps outside.\nDid you think they'd fit?\nFollow @curio_pulse_tv for the next one: some of the water you drink is older than the Sun 💧\n#science #space #planets #moon #funfacts #reels",
     "coverTime": null,
     "shareToFeed": true
