@@ -331,6 +331,10 @@ node ~/.claude/skills/cp/bin/ig.mjs prepare videos/<slug>/publish.json --out <sc
 the CurioPulse business as @curio_pulse_tv.
 - Check the browser's timezone with JS: `Intl.DateTimeFormat().resolvedOptions().timeZone` must be
   `Asia/Calcutta`. The schedule fields are browser-local.
+- **Check the page's name on the home before Create Reel** (6 Nov 2026, finger-w): Business Suite can open on another of the
+  user's pages ("UPSC PYQ Daily", made 5 Nov). Open the asset picker at the top left (`find` the combobox with the page's name,
+  click by ref) -> Business portfolios -> curio_pulse_tv -> "CurioPulse, curio_pulse_tv". It only changes which page is shown;
+  never create a portfolio or connect anything there.
 - Decline prompts for DM access or notifications. Accept only essential cookies.
 - **If it asks to log in:** "Continue with Instagram" opens a popup you can't see.
   1. First run `window.__openedUrl = null; window.open = (u) => { window.__openedUrl = u; return null; }`.

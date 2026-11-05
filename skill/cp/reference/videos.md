@@ -81,11 +81,36 @@
 | `leg-kick`: "Why Does Your Leg KICK When You Tap Your Knee? 🦵" | 34 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/vLCaOs8xvaA · 8 Nov 2026 23:30 IST | Business Suite, Instagram only, 11 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1637359621186472) |
 | `colour-word`: "Why Can't You Say the COLOUR, Not the Word? 🎨" | 32 s (short arm; no-pill arm; TEST) | https://youtube.com/shorts/G_AYp1V2XU0 · 9 Nov 2026 11:30 IST | Business Suite, Instagram only, 12 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1335940458544178) |
 | `word-weird`: "Why Does a Word Go WEIRD When You Repeat It? 🥄" | 33 s (short arm; no pill; TEST) | https://youtube.com/shorts/bypzNQNaQK0 · 9 Nov 2026 23:30 IST | Business Suite, Instagram only, 12 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1106492098847901) |
+| `finger-w`: "Can You Make a W With Your FINGERS? 🖐️" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/sEr9s0tAphI · 10 Nov 2026 11:30 IST | Business Suite, Instagram only, 13 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2695065854246760) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**finger-w** (the 00:00 routine of 6 Nov 2026, 00:02-01:40 IST; a TEST Short, the Queue's first line (the Vulcan salute's kin, the
+rules of 5 Nov); the FIRST Short on the tight arm: 60 words -> 29.33 s; hook formula The Direct Address, the instruction itself: "Make a
+W with your fingers. One... TWO... one."; answer "Stuck? Relax... your fingers are in a group chat." at 4.65 s; button "Now try it
+SLOWER." into the hook; caption question "Could you do it?"; YouTube sEr9s0tAphI, 10 Nov 11:30 IST, playlist Why Does Your Body Do
+That?; Reel (Business Suite, IG only, cover set) + Page (fb.mjs 2695065854246760) 13 Nov 18:30 IST. Two QA rounds; the final MP4 is
+build.sh's (timeline.json and mix.wav byte-identical); about 7.2 minutes a render):
+- **A new angle on a done mechanism**: the Vulcan, ring-finger and one-finger Shorts had used straps, leashes, handcuffs and levers. This
+  one used the SIDE-to-side study (Pataky, Latash & Zatsiorsky 2007, PMC2844444: neighbours push sideways too, up to 70 %; the muscles
+  are separate, so they read it as the brain): "a group chat" where the brain texts the pinky and the ring finger reads it, "each finger
+  has its OWN spreading muscles", "your brain... oversharing", and the funny-bone nerve (the ulnar nerve runs every spreading muscle).
+- **v3 performs a spoken count slowly**: "One... TWO... one." ran 4.6-5.9 s on five takes and three wordings (commas did not help).
+  `tighten=0.22 tempo=1.04` on the hook block (free) brought the answer in at 4.65 s.
+- **Business Suite opened on ANOTHER business** ("UPSC PYQ Daily", a page the user made on 5 Nov). The asset picker at the top left ->
+  Business portfolios -> curio_pulse_tv -> "CurioPulse, curio_pulse_tv" (it only changes which page is shown). Check the page name on
+  the home before Create Reel.
+- **Studio opened the right channel this time** (direct edit URL): its vertical thumbnail slot showed an automatic frame (the brain
+  bubble); cover.jpg uploaded there, "Changes saved".
+- **A UI card next to a raised hand**: a tall card on the side sat on his hat; a wide, short card across the top (x 110-970,
+  y 452-684), with the camera putting the fingertips at about y 770, freed both.
+- **A speech-band sound right before the answer's first word** (a buzzer 0.4 s before "Stuck?") made whisper hear "or" (WER 5 %); the
+  same BZZT as `buzz_hi` above 5.2 kHz fixed it (3.3 %). A notification ding at -13.8 dB in its gap was louder than the voice: -5 dB.
+- **A see-through window down a yellow sleeve**: dark violet read as a black bar; a lighter violet with a pale edge reads as glass.
+- Voice: 330 characters for the takes + 176 for hook auditions (not used); quota.mjs read 103,663 before and 102,836 after.
 
 **word-weird** (the 02:00 second Short of 5 Nov 2026, 02:05-03:15 IST; a TEST Short (no pill: its slot, 9 Nov 23:30, is after the pill
 test), the Queue's first line (promised by colour-word's Next-up); semantic satiation; short arm, 66 words -> 32.87 s; hook formula The
