@@ -60,7 +60,7 @@ console.log(`length arm: ${spec.length.arm.toUpperCase()} (${spec.length.min}-${
 console.log(`subscribe arm: ${spec.subscribe.arm.toUpperCase()}${spec.subscribe.test ? ` (pill test ${spec.subscribe.test})` : ""}, written to publish.json`);
 console.log(`topic kind: ${spec.kind.kind.toUpperCase()}${spec.kind.test ? ` (topic test ${spec.kind.test})` : ""}, written to publish.json`);' "$DEST/publish.json" "$LEN"
 else
-  echo 'note: could not read the next YouTube slot, so publish.json still says length arm "short" and subscribe arm "none" (the template defaults): run yt.mjs next-slot and put its "length" and "subscribe" objects there before writing the script'
+  echo 'note: could not read the next YouTube slot, so publish.json still says length arm "tight" and subscribe arm "none" (the template defaults): run yt.mjs next-slot and put its "length" and "subscribe" objects there before writing the script'
 fi
 mkdir -p "$DEST/.work" "$DEST/src/fonts"
 cp "$CACHE/fonts/"*.ttf "$DEST/src/fonts/" 2>/dev/null || echo "note: no cached fonts; build.sh downloads them"
