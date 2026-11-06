@@ -55,9 +55,9 @@ blocks; the long pauses of the answer and the button are capped at 0.6 and 0.5 s
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 11 Nov 2026 11:30 IST |
-| Instagram Reels | Business Suite, Instagram only | (the slot from `instagram.publishAt`) |
-| Facebook Page | `fb.mjs reel` | the same slot |
+| YouTube Shorts | https://youtube.com/shorts/OejAWGWazTI | 11 Nov 2026 11:30 IST (scheduled; thumbnail, captions, playlist Strange Nature; cover also put into Studio's vertical slot, which showed a grey placeholder) |
+| Instagram Reels | Business Suite, Instagram only, cover uploaded ("Reel scheduled ... 14 Nov 2026"; listed in Content → Scheduled) | 14 Nov 2026 18:30 IST |
+| Facebook Page | `fb.mjs reel`, video 983982440896956 (`publish_status: scheduled`, ready) | 14 Nov 2026 18:30 IST |
 
 **Title:** Is Your Water Older Than the SUN? 💧
 

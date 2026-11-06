@@ -32,23 +32,37 @@
   "cover": "cover.jpg",
   "captions": "water-older-than-sun.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-11T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "OejAWGWazTI",
+    "url": "https://youtube.com/shorts/OejAWGWazTI",
+    "uploaded": "2026-11-06T19:16:54.942Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-14T18:30:00+05:30",
     "caption": "Some of the water you drink is older than the Sun 💧☀️\nScientists think up to half of Earth's water formed as ice in the freezing, dark cloud the Sun was born from. The clue: it's a teeny bit too heavy for the young Sun to have made. And you're mostly water...\nWhat did you guess: Sun or water?\nFollow @curio_pulse_tv for the next one: why you can't lick your own elbow 👅\n#science #space #water #sun #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (the Page by fb.mjs), cover uploaded; \"Reel scheduled ... 14 Nov 2026\" (7 Nov 2026 01:56 IST)"
   },
   "kind": {
     "kind": "curious",
     "slot": "2026-11-11T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "983982440896956",
+    "publishAt": "2026-11-14T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-06T19:23:42.880Z"
   }
 }
