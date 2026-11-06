@@ -84,11 +84,49 @@
 | `finger-w`: "Can You Make a W With Your FINGERS? 🖐️" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/sEr9s0tAphI · 10 Nov 2026 11:30 IST | Business Suite, Instagram only, 13 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2695065854246760) |
 | `planets-earth-moon`: "Could Every PLANET Fit Between You and the Moon? 🌕" | 27 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/hGbLDBMPtSM · 10 Nov 2026 23:30 IST | Business Suite, Instagram only, 13 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 28636799632682933) |
 | `water-older-than-sun`: "Is Your Water Older Than the SUN? 💧" | 27 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/OejAWGWazTI · 11 Nov 2026 11:30 IST | Business Suite, Instagram only, 14 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 983982440896956) |
+| `lick-elbow`: "Why Can't You Lick Your ELBOW? 💪" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/X0HFKdRQ49k · 11 Nov 2026 23:30 IST | Business Suite, Instagram only, 14 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3474543846051359) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**lick-elbow** (the 02:00 second Short of 7 Nov 2026, 02:05-03:58 IST; a TEST Short, the Queue's first line (promised by
+water-older-than-sun's Next-up), the kin of tongue-to-nose; tight arm, 64 words -> 29.00 s; hook formula The Question (after
+The Comparison, The Question, The Direct Address): "Can you lick your elbow? Go on... gently."; answer "Can't? Your tongue's
+fine... your ARM's too long." at 3.47 s; button "Now try the OTHER elbow." (the cone flies over his head into the other fist,
+the other arm comes up: frame 1); caption question "Could you reach it? Yes or no?"; YouTube X0HFKdRQ49k, 11 Nov 23:30 IST,
+playlist Why Does Your Body Do That?, cover also put in Studio's vertical slot (it showed an automatic frame; Studio's header
+read "Mahabharata: What If, you're a manager" yet the direct edit URL loaded and saved the CurioPulse video); Reel (Business
+Suite, IG only, cover set) + Page (fb.mjs 3474543846051359) 14 Nov 21:00 IST. Two QA rounds, qa.py 19/19 both (voice 19.7 dB,
+WER 0.0 %); the final MP4 is build.sh's from a fresh .work-build (timeline.json and mix.wav byte-identical, qa.py 19/19 on
+it); about 3.5 minutes a render (870 frames, 0.21 s a frame)):
+- **One picture for "your arm's too long": a compass pinned at the shoulder.** The elbow can only move on a circle round the
+  shoulder (the upper arm is one stiff bone on a ball joint), and the mouth sits inside it. Front view, in `elbow.js`: a dashed
+  gold arc the elbow draws as the arm swings round a red pushpin (`elArc`, `elPin`), then the whole circle with MOUTH as a red
+  target inside (`elTarget`), then the arm windmilling round it; the rare few (long tongue, short arm) as the same circle
+  SHRINKING until it reaches his tongue: SLURP. Borrow it for any "it can only swing round a joint" topic.
+- **2D honesty for a reach test:** in a front view the circle's nearest point to the mouth is on the shoulder-mouth line, which
+  puts the upper arm across his mouth. Keep the long upper arm (EL_LU 135 vs the rig's 100: on-message, "too long"), aim the
+  hook's elbow out at eye level with the forearm folded back over his hair (`EL_A_HOOK` 0.5, `EL_F_HOOK` -1.15), keep the
+  tongue short whenever the elbow passes his face, and let the elbow HOVER by his temple (so close) before a quick 0.6 s sweep
+  across his face on the word "PAST" (round 1 held the arm over his brow for 1.5 s: retention 7).
+- **A raised arm needs a sharp bend to read as an elbow:** with the forearm nearly in line (0.4 rad) it read as a straight
+  raised arm; at ~95 degrees with a chocolate drip running down the forearm to a glossy drop under the elbow point it reads at
+  once. `elArm` draws a rolled sleeve (bare elbow and forearm), the elbow's knobbly point and crease, an x-ray of the upper arm,
+  squeeze lines and the drip; `elCone` a waffle cone with a slumped scoop, drips and sprinkles in a fist; `elTongue` a sideways
+  tongue out of a mouth corner (face mouth 'none'), aimed live at a target in head units.
+- **Two cones are not needed for a "try the other one" loop:** frame 0 uses the right arm, the answer CUTS to the left arm (he
+  has switched: "Can't?"), the button tosses the cone back over his head and raises the right arm: the last frame is frame 0's.
+  Keep `dripLow` on in the hook so the other elbow's drip does not pop at the loop.
+- **capY moves the captions, but the second line must stay above y 1640:** capY 1560 put "UPPER" at ~1690, inside the covered
+  bottom band (safe_sheet.png). With CAP_SIZE 96 and CAP_LINE 112, a two-line caption needs capY <= ~1536; 1500 cleared both
+  the horizontal arm (~1238) and the band.
+- **Sounds in the speech band go in the pauses:** a rubber squeak on "arm?", a slurp on "arms." and a slide whistle under
+  "tongues..." each cost a word (qc_audio, SNR 3-5 dB). The squeak and the SLURP moved into the pauses after the words (the
+  picture's slurp moved with it), the stretch became a low rising glide under 280 Hz, and the music drops for a breath before
+  "Now swing".
+- Voice: 347 characters, one take a block, no retakes; quota.mjs read 98,265 before.
 
 **water-older-than-sun** (the 00:00 routine of 7 Nov 2026, 00:03-01:58 IST; a CURIOUS Short, the Curious queue's first line; tight
 arm, 62 words -> 26.67 s; hook formula The Comparison as a two-second guess (after The Question, The Direct Address, The Mistake):
