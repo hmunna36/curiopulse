@@ -64,9 +64,9 @@ One take per block, no retakes (347 characters). Whisper heard every word.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 11 Nov 2026 23:30 IST |
-| Instagram Reels | — | (filled in after scheduling) |
-| Facebook Page | — | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/X0HFKdRQ49k | 11 Nov 2026 23:30 IST (scheduled; cover.jpg also put in Studio's vertical slot) |
+| Instagram Reels | — | 14 Nov 2026 21:00 IST (scheduled in Business Suite, Instagram only, cover.jpg as the cover; read back in Content → Scheduled) |
+| Facebook Page | — | 14 Nov 2026 21:00 IST, scheduled by the Page API (`fb.mjs reel`, video 3474543846051359: ready, scheduled) |
 
 **Title:** Why Can't You Lick Your ELBOW? 💪
 

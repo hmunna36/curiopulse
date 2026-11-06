@@ -33,23 +33,38 @@
   "cover": "cover.jpg",
   "captions": "lick-elbow.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-11T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "X0HFKdRQ49k",
+    "url": "https://youtube.com/shorts/X0HFKdRQ49k",
+    "uploaded": "2026-11-06T21:17:30.246Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg put in the vertical slot in Studio (\"Changes saved\", 7 Nov 2026 03:56 IST)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-14T21:00:00+05:30",
     "caption": "Can you lick your elbow? Try it right now (gently) 👅💪\nYour tongue's fine. Your upper arm is one stiff bone pinned at your shoulder, so your elbow can only swing round in a circle... and your mouth sits INSIDE it.\nCould you reach it? Yes or no?\nFollow @curio_pulse_tv for the next one: why you can't move just ONE eye 👀\n#science #humanbody #bodytest #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (the Page by fb.mjs), cover uploaded; \"Reel scheduled ... 14 Nov 2026\" (7 Nov 2026 03:52 IST)"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-11T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "3474543846051359",
+    "publishAt": "2026-11-14T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-06T21:23:24.833Z"
   }
 }
