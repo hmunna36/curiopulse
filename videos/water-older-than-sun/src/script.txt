@@ -1,0 +1,22 @@
+# Narration for "Is Your Water Older Than the SUN?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there.
+# A CURIOUS Short on the tight arm (25-30 s, 55-64 words; the rules of 5 Nov 2026): the hook is a two-second guess
+# put to "you" (The Comparison), the answer starts by 5 s, ONE picture for the reason (the ice in the cold dark cloud,
+# and its heavy-water fingerprint), and the button is the sting that runs into the hook. Nobody says "subscribe".
+# 62 words.
+
+## hook gap=0.10 tempo=1.00
+Quick, what's older: the Sun... or the water you drink?
+
+## answer gap=0.45 tighten=0.6 tempo=1.00
+The WATER. You've been sipping... leftovers.
+
+## cloud gap=0.30 tempo=1.03
+Before the Sun was born, up to half of it was ice... in a freezing, dark cloud.
+
+## heavy gap=0.30 tempo=1.03
+How do we know? It's a teeny bit too HEAVY... for the baby Sun to make.
+
+## button gap=0.40 tighten=0.5 tempo=1.00
+And you're mostly water. So... bits of YOU are older than the Sun.

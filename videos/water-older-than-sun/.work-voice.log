@@ -1,0 +1,16 @@
+voice.py: account 1: free plan (no commercial licence), skipped
+voice.py: account 3: free plan (no commercial licence), skipped
+  synthesized hook (55 chars)
+  synthesized answer (44 chars)
+  synthesized cloud (79 chars)
+  synthesized heavy (71 chars)
+  synthesized button (66 chars)
+ElevenLabs characters spent this run: 315
+block      start    end  wpm  rms   f0  cut
+hook        0.10   3.80  162 -19.9  176 0.34
+answer      4.25   8.25   90 -22.4  158 0.00
+cloud       8.55  14.36  175 -20.7  183 0.31
+heavy      14.66  19.58  195 -19.9  188 0.92
+button     19.98  27.26  107 -22.3  177 0.00
+narration 27.26s, 62 words, events: 
+EXIT 0
