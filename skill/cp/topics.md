@@ -55,7 +55,6 @@ viewer can picture.** The winners: sharks are older than trees (23K views, 96 % 
 99 %), a day on Venus is longer than its year (15K, 91 %). The losers were trivia about one animal or one thing: wombat
 cubes (136 views), glass rain (84), the octopus's three hearts (77 % viewed). Those wait under "Curious held".
 
-- [ ] Some of the WATER You Drink Is Older Than the Sun — the hiker sips and the glass shows a cosmic timeline. Ratios of heavy water suggest a share of Earth's water formed in the cold cloud before the Sun (Science 2014; hedge: "up to half"). Bonus to verify: the numbers. Caption question: "How old was your last sip?"
 - [ ] All of HUMANITY Would Fit in a Sugar Cube — (space it weeks from neutron-star-teaspoon, 29 Oct 2026: the same "atoms are empty space, crush it out" mechanism and the stadium-and-pea picture) the hiker squeezes the crowd into a cube. Atoms are almost entirely empty space; remove it and all 8 billion people compress to roughly a sugar cube (that weighs billions of tonnes; hedge the exact numbers). Bonus to verify: that's how neutron star matter works. Caption question: "Want two sugars?"
 - [ ] Lightning Is 5 Times HOTTER Than the Sun's Surface — the hiker's marshmallow on a lightning bolt. ~30,000 °C for a split second vs ~5,500 °C photosphere; the heat bursts air into thunder. Bonus to verify: it can fuse sand into glass tubes (fulgurites). Caption question: "Thunder or flash, which scares you more?" (check the old lightning Short doesn't overlap: angle on the heat, not on being hit)
 - [ ] The EIFFEL TOWER Grows in Summer — the hiker measures it in July and in January. Iron expands in the heat: the top can rise up to ~15 cm (sources vary, hedge). Bonus to verify: it also leans a little away from the Sun. Caption question: "Which season would you visit?"
@@ -111,6 +110,7 @@ with such an angle ("a hummingbird's heart beats more in a day than yours in a w
 - [h] SLOTHS Can Hold Their Breath for 40 MINUTES — the hiker holds his breath beside a swimming sloth and turns purple first. They slow their heart to a third and swim well. Bonus to verify: they come down from trees about once a week to poop. Caption question: "How long can you last?"
 
 ## Done
+- [x] Is Your Water Older Than the SUN? — water-older-than-sun — https://youtube.com/shorts/OejAWGWazTI (11 Nov 2026 11:30 IST); Reel + Page 14 Nov 2026 18:30 IST
 - [x] Could Every PLANET Fit Between You and the Moon? — planets-earth-moon — https://youtube.com/shorts/hGbLDBMPtSM (10 Nov 2026 23:30 IST); Reel + Page 13 Nov 2026 21:00 IST (CURIOUS, 26.5 s)
 - [x] Can You Make a "W" With Your FINGERS? — finger-w — https://youtube.com/shorts/sEr9s0tAphI · YouTube 10 Nov 2026 11:30 IST · Reel + Page 13 Nov 18:30 IST (the 00:00 routine of 6 Nov 2026; tight arm, 29 s)
 - [x] Why Does a Word Go WEIRD When You Repeat It? — word-weird — https://youtube.com/shorts/bypzNQNaQK0 · YouTube 9 Nov 2026 23:30 IST · Reel + Page 12 Nov 21:00 IST (the 02:00 second Short of 5 Nov)

@@ -83,11 +83,38 @@
 | `word-weird`: "Why Does a Word Go WEIRD When You Repeat It? 🥄" | 33 s (short arm; no pill; TEST) | https://youtube.com/shorts/bypzNQNaQK0 · 9 Nov 2026 23:30 IST | Business Suite, Instagram only, 12 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1106492098847901) |
 | `finger-w`: "Can You Make a W With Your FINGERS? 🖐️" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/sEr9s0tAphI · 10 Nov 2026 11:30 IST | Business Suite, Instagram only, 13 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2695065854246760) |
 | `planets-earth-moon`: "Could Every PLANET Fit Between You and the Moon? 🌕" | 27 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/hGbLDBMPtSM · 10 Nov 2026 23:30 IST | Business Suite, Instagram only, 13 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 28636799632682933) |
+| `water-older-than-sun`: "Is Your Water Older Than the SUN? 💧" | 27 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/OejAWGWazTI · 11 Nov 2026 11:30 IST | Business Suite, Instagram only, 14 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 983982440896956) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**water-older-than-sun** (the 00:00 routine of 7 Nov 2026, 00:03-01:58 IST; a CURIOUS Short, the Curious queue's first line; tight
+arm, 62 words -> 26.67 s; hook formula The Comparison as a two-second guess (after The Question, The Direct Address, The Mistake):
+"Quick, what's older: the Sun... or the water you drink?"; answer "The WATER. You've been sipping... leftovers." at 4.25 s; button
+"And you're mostly water. So... bits of YOU are older than the Sun." (a white beard POPS on "older", then he sips: the loop); caption
+question "What did you guess: Sun or water?"; YouTube OejAWGWazTI, 11 Nov 11:30 IST, playlist Strange Nature, cover also put into
+Studio's vertical slot (grey placeholder); Reel (Business Suite, IG only, cover set) + Page (fb.mjs 983982440896956) 14 Nov 18:30 IST.
+Two QA rounds, qa.py 19/19 both (one WARN: "you" is word 9 of a curious first line); the final MP4 is build.sh's from a fresh
+.work-build, byte-identical; about 4 minutes a render (800 frames, 0.25-0.27 s a frame)):
+- **Borrowed sky-blue's `trail.js` whole** (the trail, the hiker with his bottle from a description, `trHero` with `suit`, `trHelmet`,
+  `trDrops`): a hook of him SIPPING is frame 0 at once (head ~400 px, CAM_A of sky-blue). `trHero`'s `post` gets `{H, rim, rot}`, so
+  a note on the bottle (`noteOnBottle`), a beard in head space and frost on the helmet all ride on the rig.
+- **A new world, `cloud.js`:** the dark cloud before the Sun as dust painted from noise at a quarter size (`clPaintNebula`: fbm
+  density, a hollow kept clear round the hero, a silver rim where the density rises toward the light), over a painted glow layer,
+  ice grains at three depths (`clGrains`, the near band skips the face), a baby Sun with a bonnet and a dummy (`clBabySun`: a BLACK
+  disc in the glow layer under its face, or the bloom eats the face), a bathroom scale and a dial (`clScale`, `clDial`), a water
+  molecule as a character with one heavy hydrogen (`clMol`: an extra ball stuck on it; `suck` pulls the belly in), `clNote`, `clBeard`,
+  `clPuff`, `clTag`. Round blobs of soft dots read as polka dots, not cloud: paint dust from noise.
+- **A rewind as the time machine:** VHS lines, a counter that climbs to 4,600,000,000 YEARS AGO (`Math.pow(u, 3)` so the digits
+  spin), the bottle's water flying back UP, the Sun shrinking to a spark and going out on "born", the ground blowing away as dust,
+  the suit popping on in a puff. It did the "before the Sun" line in 1.7 s with no words on screen but the counter.
+- **The held-reaction rule bites a freeze gag too:** he froze mid-gulp 0.8 s before the spit-take (round 1). The freeze now starts
+  0.3 s before the word and the spit lands 8 frames after it, inside a push-in: a 0.57 s hold.
+- **Keep the sfx bus's peak in mind:** a ding and a boing at -15 dB were louder than the narrator; lowering their gains did nothing
+  (the bus is peak-normalised); the bus went down 4 dB (`SFX_LEVEL -12`) and the quiet gags up 3: all gags then -19.8...-24.1 dB.
+- Voice: 315 characters, one take a block, `tighten` 0.6 / 0.5 on the answer and the button; quota.mjs read 100,458 before.
 
 **planets-earth-moon** (the 02:00 second Short of 6 Nov 2026, 02:05-03:20 IST; a CURIOUS Short, the Curious queue's first line, the
 FIRST curious Short on the tight arm: 62 words -> 26.53 s; hook formula The Question as a two-second guess (after The Impossible
