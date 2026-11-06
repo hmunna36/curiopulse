@@ -93,6 +93,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Make a W With Your FINGERS? | 29 s | [`videos/finger-w`](videos/finger-w) | [10 Nov 2026](https://youtube.com/shorts/sEr9s0tAphI) |
 | Could Every PLANET Fit Between You and the Moon? | 27 s | [`videos/planets-earth-moon`](videos/planets-earth-moon) | [10 Nov 2026](https://youtube.com/shorts/hGbLDBMPtSM) |
 | Is Your Water Older Than the SUN? | 27 s | [`videos/water-older-than-sun`](videos/water-older-than-sun) | [11 Nov 2026](https://youtube.com/shorts/OejAWGWazTI) |
+| Why Can't You Lick Your ELBOW? | 29 s | [`videos/lick-elbow`](videos/lick-elbow) | 11 Nov 2026 |
 
 Each folder has:
 - the finished MP4;
