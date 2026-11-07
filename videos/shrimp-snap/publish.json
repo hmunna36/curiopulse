@@ -53,12 +53,13 @@
     "studioThumbnail": "the Studio slot showed the grey processing placeholder: cover.jpg uploaded in Studio and saved (\"Changes saved\"), 29 Oct 19:43 IST"
   },
   "instagram": {
-    "publishAt": "2026-11-07T21:00:00+05:30",
+    "publishAt": "2026-11-15T18:30:00+05:30",
     "caption": "Snap your fingers. Cute. This shrimp's snap gets nearly as hot as the Sun. 🦐\nIts claw slams shut so fast it tears the water open into a bubble, and when the bubble crushes itself: BANG, a flash, and for a split second nearly 5,000 °C.\nWho wins a snap-off: you or the shrimp?\nFollow @curio_pulse_tv for the next one: Cleopatra vs the Moon landing 🔔\n#science #ocean #pistolshrimp #animals #funfacts #reels",
     "coverTime": 2.36,
     "shareToFeed": true,
     "scheduledVia": "business-suite",
-    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 7 Nov 2026 21:00 IST; scheduled 29 Oct 19:49 IST"
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 7 Nov 2026 21:00 IST; scheduled 29 Oct 19:49 IST",
+    "movedNote": "7 Nov 2026 ~19:50 IST: moved from 7 Nov 21:00 to 15 Nov 18:30 in Business Suite (the owner clicked Reschedule) for the FACEBOOK-ONLY TEST: the Facebook Reel (1433323355022781) goes out alone on 7 Nov 21:00, never on Instagram first. Every FB Reel posted alongside Instagram since 17 Oct got 0 views; read its views at 24 h (8 Nov 21:00)."
   },
   "kind": {
     "kind": "curious",
@@ -69,6 +70,7 @@
     "videoId": "1433323355022781",
     "publishAt": "2026-11-07T21:00:00+05:30",
     "via": "api",
-    "scheduledAt": "2026-10-29T14:16:41.510Z"
+    "scheduledAt": "2026-10-29T14:16:41.510Z",
+    "test": "facebook-only test, 7 Nov 21:00 IST (Instagram copy moved to 15 Nov 18:30)"
   }
 }
