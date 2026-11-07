@@ -17,6 +17,7 @@ import json, sys
 w = sys.argv[1]
 tl = json.load(open(f"{w}/timeline.json"))
 tl.update(duration=1 / tl["fps"] * 2, shots=[{"id": "cover", "start": 0, "end": 1}], captions=[])
+tl["cinema"] = False   # the cover is a still drawn on its own: no handheld drift, moods or particles from the plan
 json.dump(tl, open(f"{w}/cover_tl.json", "w"))
 PY
 node "$SRC/render.js" "$WORK/cover_tl.json" "$WORK/cover" "0"

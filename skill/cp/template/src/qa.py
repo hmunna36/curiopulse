@@ -25,6 +25,9 @@ Checks (FAIL blocks the upload; WARN is for the review):
   - the first frame is not black;
   - it moves in the first 0.5 s;
   - there is no frozen stretch over 1.5 s (sampled every 0.25 s).
+- Camera (7 Nov 2026, the cinema kit): the timeline's CAMERA plan has at least two whip pans, a punch-in, a mood change
+  and depth (a foreground layer or particles) in half the shots (a warning only; timeline_lib already refuses a plan
+  that breaks the loop).
 - Look (8 Oct 2026): the MP4 was rendered in the look the timeline asks for. render.js writes <work>/look.txt; a
   warning when the cinematic look was asked for and the render fell back to the classic one (no graphics chip).
 - Voice: speech-band SNR >= 10 dB on all but 3 words (from the stems).
@@ -200,6 +203,24 @@ elif look_asked == "cine" and not look_got.startswith("cine"):
           "it and say so in the report", warn=True)
 else:
     check(True, "Look", look_got)
+
+# ---------------------------------------------------------------- the camera and the light (the cinema kit, 7 Nov 2026)
+# make_timeline.py's CAMERA plan, as timeline_lib.camera_plan wrote it (it already refused a punch, tilt or mood that
+# breaks the loop). A warning names what the plan lacks; the ship bar's item 7c judges the craft on the sheets.
+_tlc = json.load(open(os.path.join(WORK, "timeline.json")))
+if _tlc.get("cinema"):
+    _cam = _tlc.get("camera") or {}
+    _w, _p, _m = _cam.get("whip") or [], _cam.get("punch") or [], [m[1] for m in _cam.get("mood") or []]
+    _deep = set((_cam.get("fg") or {}).keys()) | set((_cam.get("air") or {}).keys())
+    _ids = [s_["id"] for s_ in _tlc["shots"]]
+    _miss = []
+    if len(_w) < 2: _miss.append(f"{len(_w)} whip pan(s) (want 2 or more, at the story turns)")
+    if not _p: _miss.append("no punch-in (want one on the answer's punchline or the payoff)")
+    if len(set(_m)) < 2: _miss.append("no mood change (the light should follow the stakes and come back for the loop)")
+    if len(_deep) * 2 < len(_ids): _miss.append(f"depth (a foreground layer or particles) in {len(_deep)} of {len(_ids)} shots (want half)")
+    check(not _miss, "camera and light plan (whips, punch-in, mood, depth)",
+          "; ".join(_miss) if _miss else f'{len(_w)} whips, {len(_p)} punch-ins, mood {" -> ".join(_m)}, depth in {len(_deep)} of {len(_ids)} shots',
+          warn=True)
 
 # ---------------------------------------------------------------- voice: per-word speech-band SNR (content words)
 STOP = set("a an the and or but so of to in on at by for with from as is are was were be been it its it's this that "

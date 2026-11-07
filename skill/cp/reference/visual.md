@@ -200,6 +200,9 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 
 ## Camera grammar
 
+(Since 7 Nov 2026 the cinema kit below adds the camera and light craft every shot needs: framings, whips, punch-ins,
+handheld drift, moods, particles and depth. Read both.)
+
 - **Frame 1 moves, and it is tight.** The hook starts mid-action (a plunge, a slurp, a chop) with a whip, shake or
   push, on a close shot: his head is about 350 px tall or more in the 1080×1920 frame, or his hand is that big,
   with the thing he is eating, drinking, cutting or touching (`story.md` §2, "The first picture";
@@ -216,6 +219,59 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
 - **Reaction cuts are hard cuts** on the beat: the stare, the raisin thud. Explanations get smooth moves.
 - **Split screen** for "what your brain thinks vs what's happening". Captions go to the seam with
   `post.capY = H / 2`.
+
+## Camera and light craft (the cinema kit, since 7 Nov 2026)
+
+**Why.** The owner, 7 Nov 2026: "use these learnings to improve all other engines too", after Mishapland's Shorts were
+reworked to the camera grammar of Ricks Clips (@RicksClips3000: 153K subscribers, Shorts at 14M-32M views), studied
+frame by frame. Our own Shorts of 6-7 Nov (lick-elbow, water-older-than-sun, finger-w) held one eye-level, front-on
+framing for most of their length, kept one light per place, stood him against empty sky and hills, and had no whip and
+no punch-in. Proof of the kit, before against after on the same seconds of lick-elbow: the repo's
+`proof/2026-11-07-cinema-kit/`. We take the camera grammar only: never another channel's shots, lines or characters.
+
+**The rules (every Short; ship bar item 7c).** They sit inside the approved format: the test still opens tight
+(frame 0, the first 1.5 s untouched), the test stays on screen through 13 s, and the last frame is still frame 1.
+1. **A new framing at almost every cut, never two alike in a row.** Shot sizes: extreme close-up (his eyes and mouth,
+   or the hand doing the test), close-up, medium, wide only when size is the point. Change the side he stands on, and
+   the camera's height: a **low angle** (the horizon drops, he stands against the sky: a confident line, a big claim),
+   a **high angle** (the horizon rises, more ground behind him: he is small, puzzled, being explained to). In the canvas
+   engine the camera's height is where the horizon sits: give the world's far camera a vertical offset for the shot
+   (lick-elbow's proof: `EL_BGDY` in its elbow.js, -300 low to +240 high) and frame him to match.
+2. **Whip pans at the story turns, at least two** (`CAMERA["whip"]`): the switch from the test to the answer, into the
+   mechanism, into the weirdest fact. Never in the first 1.5 s. Before 13 s only between two framings of the same test
+   (the 8-13 s rule). The incoming shot is sharp again 4 frames after the cut, so the next word lands on a clear picture.
+3. **A punch-in on the punchline** (`CAMERA["punch"]`, 1.15-1.25): the answer line's last word, the pin, the miss, the
+   sting. Only on his face or a hand: never on a shot whose point is the whole picture (a diagram, a circle, a crowd;
+   lick-elbow's "INSIDE its circle" punch cropped the circle and was taken out).
+4. **Handheld drift on every shot** (`CAMERA["hand"]`): 0.25 calm, 0.35 tense, 0.6 chaos; 0.3 when not listed. The loop
+   shot takes the hook's amount, so the restart is one move.
+5. **The light follows the stakes** (`CAMERA["mood"]`): at least one change of mood. Hot day on the test, a cloud over
+   the sun (`shade`), `storm` or `night` when it goes wrong, `warm` for the reveal, and back to frame 1's mood before the
+   button (timeline_lib refuses a plan that ends in another mood: the loop). Moods: day, shade, dusk, night, storm, warm,
+   cold, spot. They grade the lit frame and keep most of the light on his face; never a violet or black face.
+6. **Weather and particles in at least half the shots** (`CAMERA["air"]`): dust or pollen in sunlight, embers by a fire,
+   drizzle or rain at night, snow, spray, sparkle on a reveal, haze in a big space. They suit the place and its light.
+7. **Depth in front of the lens in at least half the shots** (`CAMERA["fg"]`): grass at the bottom, leaves or a branch
+   hanging in from a top corner, a rock, a post or the bars of a gate at one side, bokeh of lamps or glints, a dark frame
+   on both sides (looking through a gap). They stay in the corners and edges: never over his face, the key action or the
+   caption band (y 1180-1480 in the middle). Two shots in a row with the same corner read as one: alternate. It fits
+   the place (grass and leaves outdoors; a post, bars or lamp bokeh indoors). A punch-in crops what sits at the edges,
+   the foreground too: a punched shot gets its depth from particles.
+8. **Dressed sets, never an empty sky.** The hero's place has at least three things that belong there, with practical
+   lights where the place has them: prayer flags across a mountain pass, lanterns and a kettle at a campsite, string
+   lights and balloons at a party, a mug, a lamp and sticky notes on a desk, tiles, a towel and a steamy mirror in a
+   bathroom. Lamps, windows, screens and candles go in the glow layer so they bloom; metal gets a highlight. Build them
+   into the world file (a new world, or an `…Dress()` of an old one), drawn every frame so they catch the light.
+9. **Light beams only against something dark**: a night sky, an interior, a storm (`sunRays`, `LIGHT.beams`). On a bright
+   day sky they only haze the frame.
+10. **Macro inserts for the reveal**: when the payoff is a detail (a tendon, a muscle, a bone), cut to it big.
+
+**Check on the stills** (qa.md, "While building"): the frames of each whip (2 before the cut, 1 and 3 after: the smear
+must hide the cut, the incoming shot sharp by frame 4), each punch-in (just before and 0.3 s after: his face still inside
+the key zone), one still per mood (faces readable), and every shot with a foreground layer under the safe-area mask.
+Lessons from the proof (7 Nov 2026): a foreground drawn near-black read as a black blob, not leaves (plants are deep green
+with a lighter green where light catches them); the cloud-over-the-sun mood had to be stronger than felt right in one
+still to read in motion; a punch-in on a diagram crops what the shot is for.
 
 ## Graphics on screen (fx.js)
 

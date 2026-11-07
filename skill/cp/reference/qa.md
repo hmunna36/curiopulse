@@ -21,6 +21,12 @@
     and lettering are clean, nothing is outlined in light, he is the brightest thing;
   - then render the shot's frame range to a short MP4 without audio (`render.js tl.json /tmp/shot.mp4 "A-B"`)
     when the motion matters.
+- **After the camera plan** (make_timeline.py's `CAMERA`, visual.md "Camera and light craft"): read timeline_lib's
+  `camera:` line, then render and Read: each whip's frames (2 before the cut, 1 and 3 after: the smear hides the cut and
+  the incoming shot is sharp by frame 4), each punch-in (just before, and 0.3 s after: his face still in the key zone),
+  one still per mood (faces readable, never violet or black), and every shot with a foreground layer under the safe-area
+  mask (nothing over his face, the key action or the captions). List each cut's framing (size, side, height): two in a
+  row must not match.
 - **After audio.py:** `qc_audio.py`. Masked words get fixed now, not after the render.
 - **The subscribe arm (the pill test, 25 Oct–8 Nov 2026; publish.json "subscribe"):** no-pill arm: a still 2 s before
   the end shows no pill and no bell, and the captions sit at y 1330 to the end. Pill arm: the stills of `visual.md`
@@ -68,6 +74,7 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 | Subscribe | nobody says "subscribe" (fails when the word is spoken anywhere) · the pill as publish.json "subscribe" says (the pill test, 25 Oct–8 Nov 2026): "pill" needs `sub_in` / `sub_tap` / `sub_out` at 2.4 / 1.7 / 0.85 s before the end (± 0.1 s; fails otherwise); "none" or no arm fails when the timeline has any of them |
 | Loudness | −14 ± 0.5 LUFS integrated, true peak ≤ −1.0 dBTP (decoded from the AAC) |
 | Picture | the first frame isn't black · it moves in the first 0.5 s · no frozen stretch over 1.5 s |
+| Camera | the timeline's `CAMERA` plan (7 Nov 2026): at least two whip pans, a punch-in, a mood change and depth (a foreground layer or particles) in half the shots; a warning names what is missing (timeline_lib already refuses a plan that breaks the loop) |
 | Look | the MP4 was rendered in the look the timeline asks for (render.js writes `.work/look.txt`); a warning when cine was asked for and it fell back to classic: ship it and say so |
 | Voice | content words: mean speech-band SNR ≥ 12 dB, ≤ 10 % under 6 dB, none under 3 dB (it lists the weak words) |
 | Intelligibility | whisper (base.en) transcript of the final mix vs the script: WER ≤ 8 % (it lists the differing words) |
@@ -101,6 +108,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 5 | **Narration** | sounds told, not read (brief: "NOT reading a book"); energy changes per beat; jokes land in the gaps; no mis-said words |
 | 6 | **Comedy** | 2 laugh beats (the answer line and the button); timing comes from the gaps and cuts, not wacky voices |
 | 7 | **Look** | cinematic light and depth: every shot has its place's light (`setLights`), shadows fall away from that lamp, the hero is the brightest thing, other characters are `actor`s, faces are `paint` (no shadow ring round an eye, nothing outlined in light); the hero on model and acting; bloom/grain clean; nothing cropped by the safe area |
+| 7c | **Camera and light craft** (the cinema kit, 7 Nov 2026; visual.md) | a new framing at almost every cut and never two alike in a row (list each cut: size, side, height: low, eye, high); at least two whip pans at story turns, none in the first 1.5 s, sharp by the next word; a punch-in on his face or hand on the punchline (never on a diagram); handheld on every shot; the light follows the stakes (one mood change or more, back to frame 1's mood by the loop) and faces stay readable; depth (a foreground layer or particles) in half the shots, never over his face, the key action or the captions; his place dressed with three or more things that belong there (practical lights bloom), no empty sky; beams only against something dark |
 | 7b | **Safe area** | stills checked with the safe-area mask: nothing important under a covered zone (hook words, titles, labels, captions, the face, the key action); list the `.safe.png` frames in ship-review.md |
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |

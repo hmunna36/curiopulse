@@ -143,6 +143,13 @@ Short's YouTube release (Business Suite).
     caption and the description end on a one-word question about the test, then the follow / subscribe line; the
     "Next up" comment asks the same question.
   Details: `reference/brief.md`, `narration.md`, `visual.md`, `qa.md`, `publish.md`.
+- **Camera and light craft (the cinema kit, 7 Nov 2026; owner: "use these learnings to improve all other engines too"):**
+  every Short plans its camera and light in make_timeline.py's `CAMERA` (`reference/visual.md`, "Camera and light
+  craft"; `reference/engine.md`, "The cinema kit in code"): a new framing at almost every cut (size, side, a low or high
+  angle), at least two whip pans at story turns, a punch-in on the punchline, handheld drift on every shot, a light that
+  follows the stakes and comes back for the loop, particles and a foreground layer for depth, and a dressed place, never
+  an empty sky. The approved format does not move: frame 0 and the first 1.5 s stay the tight test, the test stays on
+  screen through 13 s, the last frame is frame 1. Ship bar item 7c.
 - **Watermarked:** the engine puts the channel name on every frame of every Short (user, 6 Oct 2026; `reference/visual.md`). Never remove it; check it is there on the QA sheets.
 - **The hiker** is the hero: the same rig, only the outfit changes.
 - **Scientifically responsible:** claims are sourced; uncertain ones are hedged ("Scientists think…", "One idea…").
@@ -216,6 +223,11 @@ Read each reference file when you reach its phase. They are short; don't skip th
    every beat. Worked example: `reference/examples/make_timeline.finger-wrinkles.py`.
 6. **Picture** (`reference/visual.md`, `reference/engine.md`), shot by shot:
    - write the world files and `SC.<shot>` in `src/web/`, and list them in `scene.html`;
+   - the camera and the light of the story (visual.md, "Camera and light craft"; the cinema kit since 7 Nov 2026): plan
+     each shot's framing (size, side, height) so no two cuts in a row match, dress the place (three or more things that
+     belong there, practical lights in the glow layer), and write `CAMERA` in make_timeline.py: whips at the story turns,
+     the punch-in on the punchline, tilts where it goes wrong, the moods (back to frame 1's by the button), handheld, the
+     foreground layer and particles; check the stills qa.md lists for it;
    - the light (visual.md, "The light"; the cinematic look since 8 Oct 2026): `setLights({...})` with the place of
      every shot, `actor(...)` round every character that is not the hiker, `paint(...)` round faces and labels, every
      lamp in the glow layer;
@@ -235,7 +247,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
 10. **QA the MP4:**
     - `$PYTHON qa.py ../.work ../<slug>-short.mp4` must have no FAIL;
     - read every contact sheet and crop the risky moments;
-    - score the ship bar (12 items, incl. the test (1), the safe area (7b) and the loop (11)), with evidence;
+    - score the ship bar (13 items, incl. the test (1), the safe area (7b), camera and light craft (7c) and the loop (11)), with evidence;
     - log the round in `.work/qa/ship-review.md`.
 11. **Not satisfied? Fix the weak parts:**
     - name the cause of each item under 8;

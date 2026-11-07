@@ -12,12 +12,13 @@
 | `web/lib.js` | canvases (`ctx`, `gctx`, scratch layers), easing `E`, `ramp`, `inv`, `clamp`, `lerp`, noise, camera (`applyCam`, `screenSpace`, `CAM0`), drawing helpers | engine |
 | `web/shapemap.js`, `web/lightstage.js`, `web/look.js` | the cinematic look (8 Oct 2026): the shape map (every opaque shape again, flat, in a colour that is its serial number), the light stage (WebGL2 passes: drawn shadows, dropped shadows, rim, glow spill, the lens), and the switch with the light rig: `LIGHTS`, `setLights`, `flipLight`, `actor`, `paint`, `sunRays` | engine |
 | `web/env.js` | storm sky, clouds, hills, rain, lightning bolts, sparks, smoke (`initEnv`) | engine |
+| `web/cinema.js` | the cinema kit (7 Nov 2026): handheld drift, whip pans with a smear, punch-ins and dutch tilts centred on the hero's face, light moods that follow the story, particles in the air, a foreground layer; applied to the finished, lit frame from timeline.json's `camera` plan (make_timeline.py's `CAMERA`) | engine |
 | `web/character.js` | the hiker rig: `POSES`, `FACES`, `PAL`/`XPAL`, `drawCharacter` | engine |
 | `web/kit.js` | the lightning-era kit: `SC = {}`, `charLayer`, `pill`, `thermo`, the x-ray world (`initScenes`) | engine |
 | `web/fx.js` | shared scene helpers (see visual.md) | engine |
 | `web/scenes.js` (+ more) | this video's worlds, props and `SC.<shot>` functions, and `initScenes2()` | yes |
 | `web/subscribe.js` | the subscribe cue (pill, bell, cursor click, pop-out), silent, over the last 2.4 s in the pill test (3.4 s in 9–15 Oct), driven by `cues.sub_in` / `cues.sub_tap` / `cues.sub_out` (timeline_lib.py sets them from the duration for publish.json's pill arm, `PILL_IN` / `PILL_TAP` / `PILL_OUT`); `SUB_LINE` = an optional line of text under the pill (empty); `subLift` tells main.js which caption chunks sit at y 1150 | engine |
-| `web/main.js` | the compositor: runs the active shot, the light (`lookFrameStart`, `lookScene`, `lookFinal`), bloom, push, blur, grade, VHS, grain, flash, captions | engine |
+| `web/main.js` | the compositor: runs the active shot, the light (`lookFrameStart`, `lookScene`, `lookFinal`), bloom, the cinema kit (`cinemaScene`, `cinemaLens`), push, blur, grade, VHS, grain, flash, captions | engine |
 | `render.js` | headless Chrome → PNG frames piped into ffmpeg (or to a folder for stills); prints `look: …`, takes `CP_LOOK`, falls back to the classic look without a graphics chip | engine |
 | `make_srt.py`, `qa.py`, `qc_*.py`, `contact_sheet.py` | captions file, the QA gate, review tools | engine |
 | `qc_inband.py` | which narrated words are faint between 300 Hz and 4 kHz (run it after voice.py; narration.md) | engine |
@@ -104,6 +105,56 @@ What to write is in visual.md ("The light"). How it works, for when something lo
   draw it with opaque shapes. A line between two parts of one thing: give them the same colour, back to back.
 - If the light stage cannot start, or dies mid-render, render.js makes the picture in the classic look and says so.
   Tuning lives in `LIGHT` and `LIGHTS` at the top of `look.js`; change the template, not one video.
+
+## The cinema kit in code (7 Nov 2026; the rules are in visual.md, "Camera and light craft")
+
+- **The plan** is `CAMERA` in make_timeline.py (the template has the block), passed as `T.write(shots, caps, cues,
+  camera=CAMERA)`. `timeline_lib.camera_plan` checks it and prints one line (`camera: 3 whip pan(s), 3 punch-in(s), ...`):
+  whips snap to the nearest cut (within 0.2 s; never before 1.5 s), punch-ins 1.05-1.4, tilts up to 6 degrees, and it
+  refuses a punch or tilt still on in the last 0.5 s, or a mood at the end that is not frame 1's (the loop), and unknown
+  shots, moods, foreground or particle kinds. Every time is a cue.
+
+  ```python
+  _st = {s_["id"]: s_["start"] for s_ in shots}
+  CAMERA = {
+      "hand": {"hook": 0.25, "swing": 0.45, "loop": 0.25},          # unlisted shots: 0.3
+      "whip": [[_st["answer"], -1], [_st["swing"], 1]],             # at a cut; 1 = the camera swings right
+      "punch": [[cues["long"] - 0.02, 1.22], [cues["past"] - 0.03, 1.2]],   # held to the shot's end, or give an end time
+      "tilt": [[cues["it"] - 0.05, cues["past_end"], -3.5]],
+      "mood": [[0, "day"], [cues["cant"] - 0.05, "shade"], [cues["one"] - 0.1, "warm"], [cues["rare_the"] - 0.15, "day"]],
+      "fg": {"hook": "leaves-tr", "answer": "grass-b", "loop": "leaves-tr"},
+      "air": {"hook": {"kind": "pollen", "amount": 0.7}, "feel": "dust"},
+  }
+  ```
+- **timeline.json** carries `"cinema": true` (timeline_lib writes it for every Short made from this template) and
+  `"camera"`. Without the flag (every Short made before 7 Nov 2026, which has its own copy of the engine anyway) the kit
+  does nothing. With the flag and no plan, every shot gets handheld 0.3 and nothing else.
+- **A shot can override its plan** in what it returns: `post.hand`, `post.mood` (a name or a mood object), `post.fg`,
+  `post.air`, `post.focus` (`[x, y]` on screen: where a punch-in or tilt centres; by default his face).
+- **Where it runs** (main.js): the scene draws, the light stage lights it, the glow layer goes on, then
+  `cinemaScene` (the mood's grade, the particles, the foreground layer), the scene's own `post.push`, then `cinemaLens`
+  (handheld, punch-in, tilt and whip as one move of the finished frame, then the whip's smear), then blur, grade, VHS,
+  vignette, the lens pass, grain, captions, the pill and the watermark (these never move).
+- **His face**: cinema.js wraps `drawCharacter` and notes where the rig's head lands on screen and how big it is
+  (`CIN.hero`, the largest copy drawn this frame), in either look. A world file that declares its own `drawCharacter`
+  replaces the wrapper: punch-ins then centre at `post.focus` or the upper middle of the frame.
+- **Quality**: handheld moves the frame by whole pixels (an exact copy: never softer); what it uncovers at an edge keeps
+  its own pixels and sits under the phone's side crop and the app's bands. A punch-in or tilt resamples the frame only
+  while it is on (a 1.2 zoom is a little soft; keep punches to their beat). A tilt zooms by about 0.55 x its angle in
+  radians, so the uncovered corners stay under the crop and the bands.
+- **The whip**: `half` frames out (default 5) and 4 in; the frame slides up to 0.62 of its width with a copy wrapped in
+  behind it, and a smear of up to 0.42 of the width (the frame squeezed thin and stretched back) hides the seam.
+- **Moods** (`MOODS` in cinema.js): `mul` tints the set (weaker round his face by `keep`), `pool` darkens away from him,
+  `top` tints the sky end, `add` lifts with warm light, `sat` drains colour. A change takes 0.45 s (a third number in
+  the mood's entry sets another). Tune moods in the template, never in one video.
+- **Particles** (`AIR`) and the **foreground** (`cinFgShapes`) are screen-space and deterministic per frame on loop-safe
+  clocks (`cinLoopW`), so the last frame lines up with frame 0. The foreground's shapes are drawn into their own canvas
+  and blurred once; plants are deep green (`#15301A`) with a lighter green (`#3E7330`) where the light catches them;
+  give `{kind, col, lit, blur, alpha, k}` to change it (`k` 0..1 slides it in from its edge).
+- **Cost** (lick-elbow, 7 Nov 2026): about 6 % more render time (the same 60 frames rendered side by side: 251 s without
+  the kit, 266 s with it, on a heavily loaded Mac) and 3.5 ms of canvas work a frame; the file grows with the extra
+  detail (the re-shot Short is 52.0 MB against 48.5 MB as shipped; still far under the 95 MB cap).
+- **The weekly film** (cp-long) has the same file in its template; sizes there scale with the frame (`CIN_U`).
 
 ## Borrowing from past videos
 

@@ -239,6 +239,10 @@ queue. Prefer topics where the hiker can be the one it happens to.
    from 5 to 13 s says what the viewer's hand (nose, eyes) is doing then (the 8–13 s rule).
 5. For every beat:
    - the picture (world, camera move, what changes);
+   - the framing (size, side, low / eye / high) and how it cuts in (a cut, a whip, a dive), never the same as the beat
+     before (`visual.md`, "Camera and light craft");
+   - the mood of the light (`day`, then `shade` / `storm` / `night` when it goes wrong, `warm` for the reveal, back for
+     the loop), the punch-in beat, and what fills the foreground and the air;
    - the sound (hit, bed, music state);
    - the caption emphasis.
 6. The subscribe arm (publish.json): no pill, the button shot ends clean; or the pill arm, the face and the key
@@ -246,7 +250,9 @@ queue. Prefer topics where the hiker can be the one it happens to.
 7. How the last shot gets back to the picture of frame 1.
 8. The world files needed:
    - reuse from past videos where possible (`engine.md`, "Borrowing from past videos");
-   - list what must be built new.
+   - list what must be built new;
+   - how the hero's place is dressed: three or more things that belong there, its practical lights, nothing left as an
+     empty sky or a bare wall (`visual.md`, "Camera and light craft", rule 8).
 9. The cover frame: which moment, what text.
 10. The caption's closing question: one word to answer, about the test ("Left or right?", "Could you lift it?").
 

@@ -46,12 +46,23 @@ W, E, ev, find = T.W, T.E, T.ev, T.find
 cues = {
     # "gasp": ev("gasps")["t"], "jumps": W("JUMPS"), "jumps_end": E("JUMPS"), "bam": W("BAM"),
 }
+# ---- the camera and the light (the cinema kit, 7 Nov 2026; reference/visual.md "Camera and light craft"): every time
+# is a cue. web/cinema.js applies it to the finished frame; timeline_lib checks it and prints a summary line.
+CAMERA = {
+    "hand": {},        # handheld drift per shot, 0..1: 0.25 calm, 0.35 tense, 0.6 chaos (0 = locked off); unlisted 0.3
+    "whip": [],        # [cue time of a cut, 1 | -1]: whip pans at the story turns (at least two), never in the first 1.5 s
+    "punch": [],       # [cue time, 1.15-1.25 (, end)]: a punch-in on the answer's punchline and on the payoff's sting
+    "tilt": [],        # [from, to, 2-5 degrees]: a dutch tilt when things go wrong (the fail, the jolt)
+    "mood": [],        # [[0, "day"], [cue, "shade"], [cue, "warm"], [cue, "day"]]: the light follows the stakes and comes back
+    "fg": {},          # {shot: "grass-b" | "leaves-tr" | "post-l" | "bokeh-r" ...}: depth in front of the lens, in the corners
+    "air": {},         # {shot: "dust" | "pollen" | "embers" | "drizzle" ...}: particles that suit the place and its light
+}
 # ---- the Subscribe pill: the pill test (user, 24 Oct 2026: "yes let's test it for 2 weeks"; reference/analytics.md).
 # publish.json "subscribe" says the arm (`yt.mjs next-slot`): "pill" (a 23:30 slot, 25 Oct-8 Nov) or "none". T.write
 # sets the pill's cues for the pill arm by itself (sub_in 2.4 s before the end, the click 0.7 s later, gone 0.6 s
 # before the end) and drops them otherwise. Never set cues["sub_in"] / ["sub_tap"] / ["sub_out"] here. Nobody says
 # "subscribe" in either arm; the ask also lives in the caption, the description and the comments.
-T.write(shots, caps, cues)
+T.write(shots, caps, cues, camera=CAMERA)
 # the numbers to read before any picture is built (qa.py checks them on the MP4; fixing them now is free)
 _ans = [w for w in T.words if w.get("block") == "answer"]
 print(f'length: {T.duration:.2f} s (the slots from 10 Nov 2026: 25-30 s passes, the tight arm; publish.json "length" says the arm)')
