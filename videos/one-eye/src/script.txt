@@ -1,0 +1,32 @@
+# Narration for "Why Can't You Move Just ONE Eye? 👀"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses; tempo speeds a take up without changing pitch.
+# The tight arm (the rules of 5 Nov 2026): 25-30 s, 55-64 words. This script: 59 words.
+# Hook formula: The Direct Address, as a test ("Move just one eye. Only your left. Go!").
+# Nobody says "subscribe"; the last block is the button, and the Short loops straight into the hook.
+
+## hook gap=0.10 tempo=1.00
+Move just one eye. Only your left. Go!
+
+## answer gap=0.60 tighten=0.38 tempo=1.00
+Can't? Your eyes are on ONE leash.
+
+## tug gap=0.30 tempo=1.03
+Look left. Look right. One tug... BOTH go.
+
+## close gap=0.32 tempo=1.04
+Now close one eye. Fingertip on the lid.
+
+## feel gap=0.30 tighten=0.35 tempo=1.02
+Look around. Feel that? Still walking... blindfolded.
+
+## weird gap=0.38 tempo=1.03
+A chameleon gets TWO leashes. One eye forward... one eye back.
+
+## fly gap=0.25 tighten=0 tempo=1.00
+Until it spots a fly.
+
+## button gap=0.60 tighten=0 tempo=1.00
+Now try the RIGHT one.

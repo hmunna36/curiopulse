@@ -94,6 +94,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Could Every PLANET Fit Between You and the Moon? | 27 s | [`videos/planets-earth-moon`](videos/planets-earth-moon) | [10 Nov 2026](https://youtube.com/shorts/hGbLDBMPtSM) |
 | Is Your Water Older Than the SUN? | 27 s | [`videos/water-older-than-sun`](videos/water-older-than-sun) | [11 Nov 2026](https://youtube.com/shorts/OejAWGWazTI) |
 | Why Can't You Lick Your ELBOW? | 29 s | [`videos/lick-elbow`](videos/lick-elbow) | [11 Nov 2026](https://youtube.com/shorts/X0HFKdRQ49k) |
+| Why Can't You Move Just ONE Eye? | 29 s | [`videos/one-eye`](videos/one-eye) | 12 Nov 2026 |
 
 Each folder has:
 - the finished MP4;
