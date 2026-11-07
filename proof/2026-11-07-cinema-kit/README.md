@@ -24,11 +24,32 @@ The Short: **Why Can't You Lick Your ELBOW?** (`videos/lick-elbow`, YouTube X0HF
 - punch-ins on "too long", "pinned" and "PAST"; dutch tilts on "Can't?" and "it sails right PAST";
 - handheld drift on every shot (calm on the test, tense on the swing, the hook's amount on the loop);
 - the light follows the stakes: hot sun, a cloud over it at the fail ("Can't?"), warm for the bone, back to day before the
-  loop (the last frame still matches frame 1);
+  loop (the last frame still matches frame 1), with the colours as vibrant as the shipped Short's (see "Colour" below);
 - pollen and dust in the sun; a leafy branch and grass in front of the lens, in the corners;
 - the empty sky dressed: two strings of prayer flags across the pass.
 
-**Checked:** qa.py on the whole re-shot Short (29 s): 20/20 checks (the voice-stem and transcript checks were skipped: the
+**Colour (second version, 7 Nov 2026).** The owner's first word on the first version: "no, the before's colours were
+vibrant". Its moods were a grey multiply, a dark pool and a desaturation: measured on frames of the clips, up to 18 % less
+saturated and 24 % darker than the shipped Short. The moods were rebuilt (a saturated soft-light tint, then the richness
+put back) and these clips re-shot; mean HSV saturation and brightness of the after against the before, at the same
+seconds: 
+
+| s | mood | saturation, new | brightness, new | saturation, first version | brightness, first version |
+|---|---|---|---|---|---|
+| 1.0 | day | -1 % | -2 % | -1 % | -2 % |
+| 2.5 | day | -1 % | -2 % | -1 % | -2 % |
+| 4.0 | shade | +7 % | -5 % | -8 % | -18 % |
+| 5.5 | shade | +5 % | -2 % | -2 % | -17 % |
+| 7.0 | shade | +12 % | +1 % | -4 % | -12 % |
+| 8.5 | shade | +8 % | -12 % | -9 % | -24 % |
+| 10.0 | warm | +2 % | -5 % | -18 % | -11 % |
+| 11.5 | warm | +2 % | -4 % | -18 % | -9 % |
+| 13.0 | warm | +4 % | +5 % | -11 % | -3 % |
+| 14.5 | warm | +12 % | +5 % | -7 % | -2 % |
+
+(The 8.5 s frame is the bone's high angle, with more ground in shot than the before's framing: most of its -12 % is the framing.)
+
+**Checked:** qa.py on the whole re-shot Short (29 s, the first version; the second changes only the moods' colour): 20/20 checks (the voice-stem and transcript checks were skipped: the
 mix is the shipped one), the camera plan check passes (3 whips, 3 punch-ins, mood day -> shade -> warm -> day, depth in 8 of
 8 shots), the safe-area sheet is clean, and the last frame matches frame 0.
 
