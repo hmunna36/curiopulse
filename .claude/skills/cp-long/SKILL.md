@@ -88,6 +88,10 @@ Plus: the video scheduled on YouTube with its thumbnail and captions, a row in `
   juice, lines with no filler, and a score that builds into every payoff (`pay_*` / `big_*` cues), holds its breath
   before the biggest and changes at least every 30 s. qa.py's every-second rows and the 5-second audit prove it.
   Ship-bar item 15.
+- **Camera and light craft** (`reference/long-form.md`, "Camera and light craft"; the cinema kit, 7 Nov 2026; owner: "use
+  these learnings to improve all other engines too"): make_timeline.py's `CAMERA` plans a new framing at almost every
+  cut, a whip at each act turn and clock jump, punch-ins on the punchlines, handheld on every shot, the colour script
+  (`mood`), depth and particles; every world is dressed, never an empty sky. Ship-bar item 7.
 - **4:00–5:00, never over 5:15.** qa.py fails anything over 315 s. If the cut runs long, cut the scene with the
   lowest stakes; never speed the narrator up to fit.
 - **Code-built only.** Procedural canvas animation plus synthesized sound. Never AI video, stock footage or generated

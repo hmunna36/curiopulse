@@ -40,6 +40,81 @@ def fr(t):
     return round(t * FPS) / FPS
 
 
+# ---- the cinema kit (7 Nov 2026; web/cinema.js, reference/visual.md "Camera and light craft"): the camera and light plan
+MOODS = ("day", "shade", "dusk", "night", "storm", "warm", "cold", "spot")
+FG_KINDS = ("grass-b", "grass-bl", "grass-br", "leaves-tl", "leaves-tr", "branch-tl", "branch-tr", "rock-bl", "rock-br",
+            "post-l", "post-r", "bars-l", "bars-r", "bokeh-l", "bokeh-r", "bokeh-t", "frame")
+AIR_KINDS = ("dust", "pollen", "haze", "embers", "sparkle", "snow", "rain", "drizzle", "spray")
+LOOP_CLEAR = 0.5          # the last half second shows the picture of frame 1: no punch-in or tilt may still be on
+
+
+def camera_plan(camera, shots, dur, loop=True):
+    """Check a Short's CAMERA plan (make_timeline.py) and return it ready for timeline.json, with one summary line.
+    Whips snap to the nearest cut (within 0.2 s); a punch or tilt that is still on in the loop's last half second, a
+    mood at the end that differs from frame 1's, an unknown shot, mood, foreground or particle kind: all raise."""
+    cam = dict(camera or {})
+    ids = [s["id"] for s in shots]
+    starts = [s["start"] for s in shots[1:]]
+    for key in ("hand", "fg", "air"):
+        v = cam.get(key)
+        if isinstance(v, dict):
+            bad = [k for k in v if k not in ids]
+            assert not bad, f"CAMERA[{key!r}] names shots that do not exist: {bad} (shots: {ids})"
+    for sid, h in (cam.get("hand") or {}).items() if isinstance(cam.get("hand"), dict) else []:
+        assert 0 <= h <= 1, f"CAMERA['hand'][{sid!r}] = {h}: handheld runs 0 (locked off) to 1 (chaos); 0.25 calm, 0.35 tense, 0.6 chaos"
+
+    def kinds(v, allowed, what):
+        for x in v if isinstance(v, list) else [v]:
+            k = x if isinstance(x, str) else (x or {}).get("kind")
+            assert k in allowed, f"CAMERA[{what!r}]: unknown kind {k!r} (kinds: {', '.join(allowed)})"
+    for sid, v in (cam.get("fg") or {}).items():
+        kinds(v, FG_KINDS, "fg")
+    for sid, v in (cam.get("air") or {}).items():
+        kinds(v, AIR_KINDS, "air")
+    whips = []
+    for w in cam.get("whip") or []:
+        t, d = float(w[0]), int(w[1]) if len(w) > 1 else 1
+        near = min(starts, key=lambda b: abs(b - t)) if starts else None
+        assert near is not None and abs(near - t) <= 0.2, f"CAMERA whip at {t:.2f} s is not at a cut (cuts: {[round(b, 2) for b in starts]})"
+        assert d in (1, -1), f"CAMERA whip at {t:.2f} s: direction must be 1 (swing right) or -1 (swing left)"
+        assert near >= 1.5, f"CAMERA whip at {near:.2f} s: the first 1.5 s hold the opening shot"
+        whips.append([round(near, 3), d] + ([int(w[2])] if len(w) > 2 else []))
+    cam["whip"] = whips
+    punches = []
+    for p in cam.get("punch") or []:
+        t, k = float(p[0]), float(p[1]) if len(p) > 1 else 1.2
+        t1 = float(p[2]) if len(p) > 2 and p[2] is not None else next((b for b in starts if b > t + 0.01), dur)
+        assert 1.05 <= k <= 1.4, f"CAMERA punch at {t:.2f} s: zoom {k} (1.12-1.3 reads as a punch; 1.05-1.4 allowed)"
+        assert not loop or t1 <= dur - LOOP_CLEAR + 1e-6, f"CAMERA punch at {t:.2f} s is still on in the last {LOOP_CLEAR} s (the loop needs frame 1's picture): end it earlier"
+        punches.append([round(t, 3), k] + ([round(float(p[2]), 3)] if len(p) > 2 and p[2] is not None else []))
+    cam["punch"] = punches
+    tilts = []
+    for p in cam.get("tilt") or []:
+        t0, t1, deg = float(p[0]), float(p[1]), float(p[2]) if len(p) > 2 else 3.0
+        assert t1 > t0, f"CAMERA tilt {t0:.2f}-{t1:.2f} s ends before it starts"
+        assert abs(deg) <= 6, f"CAMERA tilt {t0:.2f} s: {deg} degrees (2-5 reads as a dutch tilt; at most 6)"
+        assert not loop or t1 + 0.25 <= dur - LOOP_CLEAR + 1e-6, f"CAMERA tilt {t0:.2f}-{t1:.2f} s is still on near the loop: end it by {dur - LOOP_CLEAR - 0.25:.2f} s"
+        tilts.append([round(t0, 3), round(t1, 3), deg])
+    cam["tilt"] = tilts
+    moods = sorted([[float(m[0]), m[1]] + list(m[2:]) for m in cam.get("mood") or []], key=lambda m: m[0])
+    for m in moods:
+        assert m[1] in MOODS, f"CAMERA mood {m[1]!r} at {m[0]:.2f} s: moods are {', '.join(MOODS)}"
+    if moods:
+        assert moods[0][0] <= 0.05, f"CAMERA mood: the first one must start at 0 (frame 1), not {moods[0][0]:.2f} s"
+        assert not loop or moods[-1][1] == moods[0][1] and moods[-1][0] + (moods[-1][2] if len(moods[-1]) > 2 else 0.45) <= dur - LOOP_CLEAR + 1e-6, (
+            f"CAMERA mood: the Short ends in {moods[-1][1]!r} but frame 1 is {moods[0][1]!r} (the loop): come back to "
+            f"{moods[0][1]!r} by {dur - LOOP_CLEAR - 0.45:.2f} s")
+    cam["mood"] = [[round(m[0], 3)] + m[1:] for m in moods]
+    hand = cam.get("hand")
+    hand_s = (f"{hand:g} on every shot" if isinstance(hand, (int, float)) else
+              ("0.3 on every shot" if not hand else ", ".join(f"{k} {v:g}" for k, v in hand.items()) + ", 0.3 elsewhere"))
+    mood_s = " -> ".join(m[1] for m in cam["mood"]) or "none (the place's own light only)"
+    fg_n = len(cam.get("fg") or {}); air_n = len(cam.get("air") or {})
+    summary = (f"camera: {len(whips)} whip pan(s), {len(punches)} punch-in(s), {len(tilts)} tilt(s); mood {mood_s}; "
+               f"handheld {hand_s}; foreground layer in {fg_n} of {len(ids)} shots, particles in {air_n}")
+    return cam, summary
+
+
 class Timeline:
     def __init__(self, work, tail=1.5):
         self.work = work
@@ -163,10 +238,16 @@ class Timeline:
         n = int(dur * self.sr)
         voice = np.pad(self.audio, (0, max(0, n - len(self.audio))))[:n]
         sf.write(f"{self.work}/voice.wav", voice, self.sr, subtype="FLOAT")
+        # the cinema kit (7 Nov 2026): handheld drift by default; whips, punch-ins, tilts, moods (the colour script),
+        # the foreground layer and particles from make_timeline.py's CAMERA. A film does not loop: no loop rules.
+        cam_summary = None
+        if "camera" in extra:
+            extra["camera"], cam_summary = camera_plan(extra["camera"], shots, dur, loop=False)
         tl = {"fps": FPS, "duration": dur, "shots": shots, "captions": caps, "cues": cues, "words": self.words,
-              "events": self.events, **extra}
+              "events": self.events, "cinema": True, **extra}
         json.dump(tl, open(f"{self.work}/timeline.json", "w"), indent=1)
         for s in shots:
             print(f'{s["id"]:10s} {s["start"]:6.2f} -> {s["end"]:6.2f}  ({s["end"] - s["start"]:.2f}s)')
         print(f"duration {dur:.2f}s, {len(caps)} caption chunks, {len(self.words)} words")
+        print(cam_summary or "camera: no CAMERA plan (handheld 0.3 on every shot, nothing else): plan the framings, whips, punch-ins and the colour script")
         return tl

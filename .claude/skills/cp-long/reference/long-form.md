@@ -244,6 +244,40 @@ try any more, and what is still unknown).
 - No padding: no recap, no "let's dive in", no "as we said". If a sentence could be cut without the viewer noticing,
   cut it.
 
+## Camera and light craft (the cinema kit, 7 Nov 2026)
+
+The owner, 7 Nov 2026: "use these learnings to improve all other engines too", after Mishapland's Shorts took on the
+camera grammar of Ricks Clips (studied frame by frame). The film bar already asks for depth, motivated light and a colour
+script; the kit (`web/cinema.js`, the same file as the Shorts') gives the tools, planned in make_timeline.py's `CAMERA`
+(the template has the block; timeline_lib checks it and prints a `camera:` line). The Shorts' rules are in the cp skill's
+`reference/visual.md`, "Camera and light craft"; for the film:
+- **A new framing at almost every cut, never two alike in a row**: extreme close-up for acting (the face is the channel's
+  best asset), close-up, medium, wide for scale; change his side of the frame (he sits on a third) and the camera's
+  height (a low angle: the horizon drops, he stands against the sky; a high angle: the horizon rises, he is small).
+- **Whip pans** (`CAMERA["whip"]`) at the act turns and at the clock's jumps (`HOUR 18 → DAY 3`): at least one per act.
+- **Punch-ins** (`CAMERA["punch"]`, 1.15-1.25) on his face or hand on the punchlines and the reveals; never on a
+  diagram, a split screen or a wide shot whose point is the whole picture.
+- **Handheld drift on every shot** (`CAMERA["hand"]`): 0.25 calm, 0.35 tense, 0.6 chaos; 0 only for a planned locked-off
+  beat (a wordless reveal).
+- **The colour script is `CAMERA["mood"]`**: cold when he is stuck (`shade`, `cold`, `night`, `storm`), warm when it turns
+  (`warm`), `spot` when everything else falls away; at least one change per act, and the final image's mood planned
+  first. The film does not loop, so its last mood is free.
+- **Depth in half the shots** (`CAMERA["fg"]`: grass, leaves, a post, bars, bokeh, a dark frame) and **weather or
+  particles where the place has them** (`CAMERA["air"]`: dust in sunlight, rain at night, embers by a fire, snow, spray,
+  sparkle); in the corners and edges, never over his face, the key action, the clock (top left) or the captions
+  (the lower 220 px). In the wide frame use the corner kinds (`grass-bl` / `grass-br`, `leaves-tl` / `leaves-tr`,
+  `rock-bl` / `rock-br`, `post-l` / `post-r`, `bokeh-l` / `bokeh-r`): `grass-b` runs across the caption band. A punch-in
+  crops what sits at the frame's edges, the foreground too: give a punched shot its depth from particles instead. Fit
+  the layer to the place: grass and leaves outdoors, a post, bars or bokeh indoors (the test on stop-eating, 7 Nov 2026,
+  put grass in front of a candlelit table: wrong for the place).
+- **Dressed sets**: every world has things that belong there, with practical lights that bloom (lamps, windows, screens,
+  candles in the glow layer); never an empty sky or a bare wall behind him.
+- **Light beams only against something dark** (a night sky, an interior, a storm).
+- Check on the stills: each whip (2 frames before the cut, 1 and 3 after), each punch-in, one still per mood.
+- **Render time in the cloud:** the kit is plain canvas work (no graphics chip needed). If preflight's render test
+  shows a full render would not fit the run, keep the plan but set `"air": {}` first (the particles are its dearest
+  part), then `"fg": {}`; say so in the report.
+
 ## Landscape staging (1920×1080)
 
 - **Use the width.** Hero on one third (x ≈ 640 or 1280), what he looks at on the other; or a split: the hiker on the
@@ -332,7 +366,7 @@ only the ones that qualify. `topics.md` holds the queue; one line per video, the
 | 4 | **Show, don't tell** | every statement has its picture; the camera travels to what is named; nothing is a slide |
 | 5 | **Narration** | sounds told, not read; energy changes per beat; jokes land in the gaps; no mis-said words (the transcript check) |
 | 6 | **Comedy** | 8–12 laugh beats, at least two per act; timing from gaps and cuts |
-| 7 | **Look** | every shot composed on purpose: subject, depth, motivated light, a colour script that follows the emotion; the hero on model and acting; the wide frame is used; nothing important under the captions or in the outer 90 px; bloom and grain clean |
+| 7 | **Look** | every shot composed on purpose: subject, depth, motivated light, a colour script that follows the emotion; the cinema kit's craft (a new framing at almost every cut, a whip at each act turn, punch-ins on the punchlines, handheld on every shot, the colour script in `CAMERA["mood"]`, depth or particles in half the shots, dressed sets); the hero on model and acting; the wide frame is used; nothing important under the captions or in the outer 90 px; bloom and grain clean |
 | 8 | **Sound** | every beat has its sound; one theme stated, developed and resolved on the final image; silence used on the biggest moment; the score drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words |
 | 10 | **Packaging** | the question passed the demand check and its line in topics.md says so; the title is ≤ 60 characters in the words people type; the thumbnail (one face, one object, one to three words) won the shelf test against six real ones at 320×180; chapters named after the clock, description, tags written |

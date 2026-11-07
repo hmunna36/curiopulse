@@ -165,8 +165,11 @@ function renderFrame(f) {
   gctx.setTransform(1, 0, 0, 1, 0, 0); gctx.clearRect(0, 0, W / 2, H / 2);
   gctx.globalAlpha = 1; gctx.globalCompositeOperation = 'source-over';
   const shot = shotAt(t);
+  const CINK = typeof cinemaScene === 'function';   // the cinema kit (cinema.js, 7 Nov 2026)
+  if (CINK) cinemaFrameStart(f);
   const post = SC[shot.id](t - shot.start, t, shot) || {};
   composeGlow(post.glow === undefined ? 0.85 : post.glow);
+  if (CINK) cinemaScene(t, shot, post);   // the mood of the moment, particles in the air, the foreground layer
   // digital camera push (graphic shots): post.push = {k, cx, cy}, k = scale factor
   if (post.push && Math.abs(post.push.k - 1) > 1e-4) {
     const { k, cx = W / 2, cy = H / 2 } = post.push;
@@ -175,6 +178,7 @@ function renderFrame(f) {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.drawImage(tmpC, cx - cx * k, cy - cy * k, W * k, H * k);
   }
+  if (CINK) cinemaLens(t, shot, post);    // handheld drift, punch-in, dutch tilt and whip pan (then the whip's smear)
   if (post.blur) dirBlur(post.blur[0], post.blur[1]);
   if (post.zblur) zoomBlur(post.zblur, post.zcx, post.zcy);
   if (post.desat || post.tint) grade(post.desat || 0, post.tint, post.tintA || 0);

@@ -97,4 +97,15 @@ cues["sub_in"] = max(0.0, _sub_in)
 cues["sub_tap"] = min(T.E("subscribe") + 0.25, T.duration - 0.8)  # the cursor click, just after the word
 # if the sub line goes on after "subscribe" ("Subscribe... if you're still awake"), click in that gap instead:
 # cues["sub_tap"] = T.E("subscribe") + 0.10   (the click and bell then never sit on the next words)
-T.write(shots, caps, cues, width=1920, height=1080)
+# ---- the camera and the light (the cinema kit, 7 Nov 2026; reference/long-form.md "Camera and light craft"). Every time
+# is a cue; web/cinema.js applies it to the finished frame; timeline_lib checks it and prints a summary line.
+CAMERA = {
+    "hand": {},        # handheld drift per shot, 0..1: 0.25 calm, 0.35 tense, 0.6 chaos (0 = locked off); unlisted 0.3
+    "whip": [],        # [cue time of a cut, 1 | -1]: whip pans at the act turns and the clock's jumps
+    "punch": [],       # [cue time, 1.15-1.25 (, end)]: punch-ins on his face or hand on the punchlines
+    "tilt": [],        # [from, to, 2-5 degrees]: a dutch tilt when things go wrong
+    "mood": [],        # [[0, "day"], [cue, "night"], ...]: the colour script (cold when he is stuck, warm when it turns)
+    "fg": {},          # {shot: "grass-b" | "leaves-tr" | "post-l" | "bokeh-r" ...}: depth in front of the lens, in the corners
+    "air": {},         # {shot: "dust" | "embers" | "drizzle" ...}: particles that suit the place and its light
+}
+T.write(shots, caps, cues, width=1920, height=1080, camera=CAMERA)
