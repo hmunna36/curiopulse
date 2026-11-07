@@ -86,11 +86,47 @@
 | `water-older-than-sun`: "Is Your Water Older Than the SUN? 💧" | 27 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/OejAWGWazTI · 11 Nov 2026 11:30 IST | Business Suite, Instagram only, 14 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 983982440896956) |
 | `lick-elbow`: "Why Can't You Lick Your ELBOW? 💪" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/X0HFKdRQ49k · 11 Nov 2026 23:30 IST | Business Suite, Instagram only, 14 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3474543846051359) |
 | `one-eye`: "Why Can't You Move Just ONE Eye? 👀" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/efXlAw8QUoQ · 12 Nov 2026 11:30 IST | Business Suite, Instagram only, 15 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1946513936307677) |
+| `humanity-sugar-cube`: "All of HUMANITY Fits in a Sugar Cube ☕" | 26 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/4UHm_oEbdQk · 12 Nov 2026 23:30 IST | Business Suite, Instagram only, 16 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1605124080837283) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**humanity-sugar-cube** (the 02:00 second Short of 8 Nov 2026, 02:05-03:10 IST; a CURIOUS Short, the Curious queue's first line
+(promised by one-eye's Next-up; two weeks after neutron-star-teaspoon, whose stadium-and-pea picture it does not reuse); tight arm,
+61 words -> 25.73 s; hook formula The Question as a two-second guess (after The Direct Address, The Question, The Comparison):
+"Guess how many people fit in your sugar cube."; answer "All of them, because you're mostly... nothing." at 3.18 s; button "Still
+want sugar?" (he lifts the cube off the saucer and holds it over the mug: frame 1); caption question "What was your guess?";
+YouTube 4UHm_oEbdQk, 12 Nov 23:30 IST, playlist Strange Nature, cover.jpg also put in Studio's vertical slot (it showed an
+automatic frame); Reel (Business Suite, Instagram only, cover uploaded) and the Page (fb.mjs, video 1605124080837283) 16 Nov
+18:30 IST; three QA rounds, qa.py 20/20 each; `build.sh` into a fresh work folder reproduced mix.wav and timeline.json byte for
+byte):
+- **Two new worlds (borrow them):** `cafe.js` (a log-hut trail cafe at dusk painted once: planks with grain, a window on snowy
+  peaks lit pink, a backpack and coiled rope on a peg, a shelf of enamel mugs and a SUGAR jar, a wood stove, a framed trail map;
+  per frame: string-light bulbs on loop-safe clocks and a pendant lamp in the glow layer (`cfBack(cam, t, {noLamp})`), a table
+  band whose depth stands for the camera's height (`cfTable(cam, {depth})`), the enamel mug with steam (`cfMug`), `cfSaucer`,
+  `cfBowl`, a sugar cube (`cfCube`, `glow` for the one that is all of us), sugar tongs (`cfTongs`), cotton-candy fluff round one
+  gold speck (`cfFluff`: `poke` dents it, `sq` squashes it flat, `speck`, `wob`), a puff with a direction (`cfPoof`), a bean
+  scale with a reading, a plate that dents and table cracks (`cfScale`), a magnifier with an opaque fill before its clip
+  (`cfMagnifier`), the hero at the table (`cfHero`: handL/handR by IK, armL/armR by joints, tongs in his fist)) and `world.js`
+  (the money shot: a dusk sky with the Milky Way, a planet whose crowd of ~8,000 painted people runs to its curved horizon,
+  phone lights that twinkle, giant tongs, and the squeeze: the crowd plate scaled into the pinch point with streaks, then a
+  glowing cube).
+- **An arm holding something up near its own shoulder:** IK with the rig's bones put the elbow up by his cheek; `armAt` with a
+  low elbow made a noodle forearm. Two EQUAL bones (96) with the elbow always bent OUT to his side (`hsElbowL` in scenes.js)
+  reads as a natural bent arm at every hand position, up by his eye or stretched to a saucer.
+- **A gag on the music bus is often the bus's peak:** the bwomp measured -16 dB in its gap (narrator -17) and turning its gain
+  down changed nothing but raised every groove (master() normalises the bus). On the sfx bus at -22 with the music bus at -18
+  it read -20 and no word fell under 10 dB.
+- **A puff that bursts from his chest flies over his face by default** (`cfPoof` aimed up): give it a direction away from his
+  face (right and down) and no rise; the same for the squash's puffs (sideways).
+- **A camera move that ends on frame 1 can start outside the safe area:** the button's opening framing (zoom 2.4 at x 392)
+  put his cheek past x 980; check the first frame of the button under the mask, not only the last.
+- The hit rule: scale-trees (15.9K views two days after release) is 4.2x the curious Shorts' middle (3,788) and 6x the pill
+  arm's (2,665): not counted as a hit against its own kind; a kin (deep time, plants) is a candidate for the Curious queue.
+- Voice: 317 + 142 characters (the weird block retaken twice; the take with "you." at -32.4 dB in band kept); quota.mjs read
+  86,296 before.
 
 **one-eye** (the 00:00 routine of 8 Nov 2026, 00:03-01:25 IST; a TEST Short, the Queue's first line (promised by lick-elbow's
 Next-up); THE FIRST SHORT BUILT WITH THE CINEMA KIT IN THE TEMPLATE; tight arm, 59 words -> 28.63 s; hook formula The Direct
