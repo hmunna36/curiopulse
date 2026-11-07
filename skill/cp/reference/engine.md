@@ -144,9 +144,12 @@ What to write is in visual.md ("The light"). How it works, for when something lo
   radians, so the uncovered corners stay under the crop and the bands.
 - **The whip**: `half` frames out (default 5) and 4 in; the frame slides up to 0.62 of its width with a copy wrapped in
   behind it, and a smear of up to 0.42 of the width (the frame squeezed thin and stretched back) hides the seam.
-- **Moods** (`MOODS` in cinema.js): `mul` tints the set (weaker round his face by `keep`), `pool` darkens away from him,
-  `top` tints the sky end, `add` lifts with warm light, `sat` drains colour. A change takes 0.45 s (a third number in
-  the mood's entry sets another). Tune moods in the template, never in one video.
+- **Moods** (`MOODS` in cinema.js) keep the colours vibrant (owner, 7 Nov 2026): `tint` is a soft-light wash in a saturated
+  colour (weaker round his face by `keep`), `top` tints the sky end, then one filter pass `saturate(sat) brightness(bright)`
+  puts the richness back (every mood measured at least as saturated as the drawn frame) and darkens only as much as the
+  mood means; only `spot` has a `pool` (deep blue edges). A change takes 0.45 s (a third number in the mood's entry sets
+  another). Tune moods in the template, never in one video, and measure a change: HSV saturation and brightness of stills
+  with and without it (the numbers of 7 Nov 2026 are in cinema.js).
 - **Particles** (`AIR`) and the **foreground** (`cinFgShapes`) are screen-space and deterministic per frame on loop-safe
   clocks (`cinLoopW`), so the last frame lines up with frame 0. The foreground's shapes are drawn into their own canvas
   and blurred once; plants are deep green (`#15301A`) with a lighter green (`#3E7330`) where the light catches them;

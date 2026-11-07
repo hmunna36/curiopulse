@@ -24,7 +24,8 @@
 - **After the camera plan** (make_timeline.py's `CAMERA`, visual.md "Camera and light craft"): read timeline_lib's
   `camera:` line, then render and Read: each whip's frames (2 before the cut, 1 and 3 after: the smear hides the cut and
   the incoming shot is sharp by frame 4), each punch-in (just before, and 0.3 s after: his face still in the key zone),
-  one still per mood (faces readable, never violet or black), and every shot with a foreground layer under the safe-area
+  one still per mood next to the place's `day` still (the colours as vibrant or more: never greyer, darker than the mood
+  means or washed out; faces readable, never violet or black), and every shot with a foreground layer under the safe-area
   mask (nothing over his face, the key action or the captions). List each cut's framing (size, side, height): two in a
   row must not match.
 - **After audio.py:** `qc_audio.py`. Masked words get fixed now, not after the render.
@@ -108,7 +109,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 5 | **Narration** | sounds told, not read (brief: "NOT reading a book"); energy changes per beat; jokes land in the gaps; no mis-said words |
 | 6 | **Comedy** | 2 laugh beats (the answer line and the button); timing comes from the gaps and cuts, not wacky voices |
 | 7 | **Look** | cinematic light and depth: every shot has its place's light (`setLights`), shadows fall away from that lamp, the hero is the brightest thing, other characters are `actor`s, faces are `paint` (no shadow ring round an eye, nothing outlined in light); the hero on model and acting; bloom/grain clean; nothing cropped by the safe area |
-| 7c | **Camera and light craft** (the cinema kit, 7 Nov 2026; visual.md) | a new framing at almost every cut and never two alike in a row (list each cut: size, side, height: low, eye, high); at least two whip pans at story turns, none in the first 1.5 s, sharp by the next word; a punch-in on his face or hand on the punchline (never on a diagram); handheld on every shot; the light follows the stakes (one mood change or more, back to frame 1's mood by the loop) and faces stay readable; depth (a foreground layer or particles) in half the shots, never over his face, the key action or the captions; his place dressed with three or more things that belong there (practical lights bloom), no empty sky; beams only against something dark |
+| 7c | **Camera and light craft** (the cinema kit, 7 Nov 2026; visual.md) | a new framing at almost every cut and never two alike in a row (list each cut: size, side, height: low, eye, high); at least two whip pans at story turns, none in the first 1.5 s, sharp by the next word; a punch-in on his face or hand on the punchline (never on a diagram); handheld on every shot; the light follows the stakes (one mood change or more, back to frame 1's mood by the loop) with the colours as vibrant as the world draws them (never greyed or washed out) and faces readable; depth (a foreground layer or particles) in half the shots, never over his face, the key action or the captions; his place dressed with three or more things that belong there (practical lights bloom), no empty sky; beams only against something dark |
 | 7b | **Safe area** | stills checked with the safe-area mask: nothing important under a covered zone (hook words, titles, labels, captions, the face, the key action); list the `.safe.png` frames in ship-review.md |
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |

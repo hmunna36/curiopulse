@@ -245,10 +245,14 @@ no punch-in. Proof of the kit, before against after on the same seconds of lick-
    lick-elbow's "INSIDE its circle" punch cropped the circle and was taken out).
 4. **Handheld drift on every shot** (`CAMERA["hand"]`): 0.25 calm, 0.35 tense, 0.6 chaos; 0.3 when not listed. The loop
    shot takes the hook's amount, so the restart is one move.
-5. **The light follows the stakes** (`CAMERA["mood"]`): at least one change of mood. Hot day on the test, a cloud over
-   the sun (`shade`), `storm` or `night` when it goes wrong, `warm` for the reveal, and back to frame 1's mood before the
-   button (timeline_lib refuses a plan that ends in another mood: the loop). Moods: day, shade, dusk, night, storm, warm,
-   cold, spot. They grade the lit frame and keep most of the light on his face; never a violet or black face.
+5. **The light follows the stakes, and the colours stay vibrant** (`CAMERA["mood"]`): at least one change of mood. Hot
+   day on the test, a cloud over the sun (`shade`), `storm` or `night` when it goes wrong, `warm` for the reveal, and
+   back to frame 1's mood before the button (timeline_lib refuses a plan that ends in another mood: the loop). Moods:
+   day, shade, dusk, night, storm, warm, cold, spot. **A mood changes the colour of the light, never its richness**
+   (owner, 7 Nov 2026: "no, the before's colours were vibrant", on a first version whose moods greyed the frame: up to
+   18 % less saturated and 24 % darker): every mood keeps the frame at least as saturated as the world drew it, and only
+   darkens as much as it means (shade about 4 %, storm 8 %, night 13 %). Never wash a shot out, never grey it, never a
+   violet or black face. The vibrant palette is part of the channel's look; nothing in the kit may dull it.
 6. **Weather and particles in at least half the shots** (`CAMERA["air"]`): dust or pollen in sunlight, embers by a fire,
    drizzle or rain at night, snow, spray, sparkle on a reveal, haze in a big space. They suit the place and its light.
 7. **Depth in front of the lens in at least half the shots** (`CAMERA["fg"]`): grass at the bottom, leaves or a branch
@@ -266,12 +270,15 @@ no punch-in. Proof of the kit, before against after on the same seconds of lick-
    day sky they only haze the frame.
 10. **Macro inserts for the reveal**: when the payoff is a detail (a tendon, a muscle, a bone), cut to it big.
 
-**Check on the stills** (qa.md, "While building"): the frames of each whip (2 before the cut, 1 and 3 after: the smear
+**Check on the stills** (qa.md, "While building"): each mood's still next to the place's `day` still: the colours as rich
+or richer, never greyer or washed out; the frames of each whip (2 before the cut, 1 and 3 after: the smear
 must hide the cut, the incoming shot sharp by frame 4), each punch-in (just before and 0.3 s after: his face still inside
 the key zone), one still per mood (faces readable), and every shot with a foreground layer under the safe-area mask.
 Lessons from the proof (7 Nov 2026): a foreground drawn near-black read as a black blob, not leaves (plants are deep green
-with a lighter green where light catches them); the cloud-over-the-sun mood had to be stronger than felt right in one
-still to read in motion; a punch-in on a diagram crops what the shot is for.
+with a lighter green where light catches them); the first moods were a grey multiply, a dark pool and a desaturation, and
+the owner saw at once that the after had lost the before's vibrant colours (measured: up to 18 % less saturated, 24 %
+darker): moods are now a saturated soft-light tint with the richness put back; a punch-in on a diagram crops what the
+shot is for.
 
 ## Graphics on screen (fx.js)
 

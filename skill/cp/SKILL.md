@@ -147,8 +147,8 @@ Short's YouTube release (Business Suite).
   every Short plans its camera and light in make_timeline.py's `CAMERA` (`reference/visual.md`, "Camera and light
   craft"; `reference/engine.md`, "The cinema kit in code"): a new framing at almost every cut (size, side, a low or high
   angle), at least two whip pans at story turns, a punch-in on the punchline, handheld drift on every shot, a light that
-  follows the stakes and comes back for the loop, particles and a foreground layer for depth, and a dressed place, never
-  an empty sky. The approved format does not move: frame 0 and the first 1.5 s stay the tight test, the test stays on
+  follows the stakes and comes back for the loop (its colour changes, never its richness: the channel's colours stay
+  vibrant; owner, 7 Nov 2026), particles and a foreground layer for depth, and a dressed place, never an empty sky. The approved format does not move: frame 0 and the first 1.5 s stay the tight test, the test stays on
   screen through 13 s, the last frame is frame 1. Ship bar item 7c.
 - **Watermarked:** the engine puts the channel name on every frame of every Short (user, 6 Oct 2026; `reference/visual.md`). Never remove it; check it is there on the QA sheets.
 - **The hiker** is the hero: the same rig, only the outfit changes.
