@@ -108,30 +108,31 @@ function cinWhip(f) {
 }
 
 // ---------------------------------------------------------------- moods: the light follows the stakes
-// Each mood grades the lit frame: `mul` darkens/tints the set (less on the hero, so his face stays readable), `pool`
-// darkens the frame away from him, `top` tints the sky end of the frame, `add` lifts it with warm light, `sat` < 1
-// drains colour. "day" is the picture as drawn. Never make a face violet or black: the hero keeps most of his light.
+// CurioPulse's colours are VIBRANT, and a mood never takes that away (owner, 7 Nov 2026: "no, the before's colours were
+// vibrant", on the first version, whose moods greyed and darkened the frame: up to 18 % less saturated, up to 24 %
+// darker). So a mood moves the COLOUR of the light, never its richness: a soft-light tint in a saturated colour (weaker
+// round his face, by `keep`), a sky-end tint (`top`), then one filter pass, `saturate(sat) brightness(bright)`, tuned so
+// the frame stays at least as saturated as drawn (measured on lick-elbow's frames, 7 Nov 2026: shade +5..+9 %, warm
+// +1..+5 %, dusk 0..+5 %, night +7..+12 %, storm +5..+9 %, cold +5..+8 %) and only as much darker as the mood means
+// (shade -4 %, storm -8 %, night -13 %; warm +3 %). No grey wash, no screen lift. Only `spot` darkens the edges (pool).
 const MOODS = {
   day: {},
-  shade: { mul: '#7F8FC0', mulA: 0.46, keep: 0.5, pool: 0.30, sat: 0.74 },                      // a cloud over the sun
-  dusk: { mul: '#E3906C', mulA: 0.26, keep: 0.55, top: '#FF8A4C', topA: 0.20, pool: 0.30, sat: 1.0 },   // a low warm sun
-  night: { mul: '#4A5CA6', mulA: 0.48, keep: 0.62, pool: 0.46, sat: 0.78 },                      // moonlight
-  storm: { mul: '#76849A', mulA: 0.42, keep: 0.58, pool: 0.38, sat: 0.62, top: '#2E3846', topA: 0.22 },  // trouble peaks
-  warm: { mul: '#FFC98A', mulA: 0.2, keep: 0.45, add: '#FFAE5C', addA: 0.12, pool: 0.2, sat: 1.08, top: '#FFB060', topA: 0.18 },   // the reveal, close and warm
-  cold: { mul: '#A9C4FF', mulA: 0.24, keep: 0.6, pool: 0.22, sat: 0.88 },                        // a chill, a shock
-  spot: { mul: '#2A2F4A', mulA: 0.5, keep: 0.9, pool: 0.55, sat: 0.9 },                           // everything else falls away
+  shade: { tint: '#3D6BFF', tintA: 0.30, keep: 0.45, sat: 1.04, bright: 0.93 },                              // a cloud over the sun
+  dusk: { tint: '#FF6A2E', tintA: 0.28, keep: 0.45, top: '#B04DFF', topA: 0.26, sat: 1.36, bright: 0.93 },   // a low sun, a violet sky end
+  night: { tint: '#2E4BFF', tintA: 0.40, keep: 0.5, top: '#1C2CFF', topA: 0.24, sat: 1.0, bright: 0.84 },     // moonlight, deep blue
+  storm: { tint: '#2F6BFF', tintA: 0.32, keep: 0.5, top: '#283A80', topA: 0.24, sat: 1.0, bright: 0.90 },     // trouble peaks
+  warm: { tint: '#FFA028', tintA: 0.26, keep: 0.4, sat: 1.23, bright: 0.98 },                                // the reveal: golden
+  cold: { tint: '#33C2FF', tintA: 0.26, keep: 0.45, sat: 1.03, bright: 0.96 },                               // a chill, a shock
+  spot: { tint: '#2A3A9A', tintA: 0.20, keep: 0.9, sat: 1.12, bright: 1.0, pool: 0.42 },                     // everything else falls away
 };
-const CIN_MOOD_KEYS = ['mulA', 'keep', 'pool', 'sat', 'topA', 'addA'];
+const CIN_MOOD_KEYS = ['tintA', 'keep', 'topA', 'sat', 'bright', 'pool'];
+const CIN_MOOD_DEF = { tintA: 0, keep: 0.45, topA: 0, sat: 1, bright: 1, pool: 0 };
 function cinMoodObj(m) { return typeof m === 'string' ? (MOODS[m] || {}) : (m || {}); }
 function cinMoodMix(a, b, k) {
   const A = cinMoodObj(a), B = cinMoodObj(b), o = {};
-  for (const key of CIN_MOOD_KEYS) {
-    const da = key === 'sat' ? 1 : key === 'keep' ? 0.6 : 0, va = A[key] === undefined ? da : A[key], vb = B[key] === undefined ? da : B[key];
-    o[key] = lerp(va, vb, k);
-  }
-  for (const key of ['mul', 'top', 'add']) o[key] = A[key] && B[key] ? cinMixH(A[key], B[key], k) : (B[key] && k > 0 ? B[key] : A[key]);
-  // a colour that only one side has fades with its amount
-  if (!A.mul && B.mul) o.mul = B.mul; if (A.mul && !B.mul) o.mul = A.mul;
+  for (const key of CIN_MOOD_KEYS) o[key] = lerp(A[key] === undefined ? CIN_MOOD_DEF[key] : A[key], B[key] === undefined ? CIN_MOOD_DEF[key] : B[key], k);
+  // a colour that only one side has keeps its hue while its amount fades
+  for (const key of ['tint', 'top']) o[key] = A[key] && B[key] ? cinMixH(A[key], B[key], k) : (A[key] || B[key]);
   return o;
 }
 const CIN_MOOD_FADE = 0.45;        // seconds a mood takes to change (a cut inside it makes it read as the light changing)
@@ -152,33 +153,33 @@ function cinFocus(post) {
 }
 function cinGrade(m, F) {
   if (!m) return;
+  const tintA = m.tintA || 0, topA = m.topA || 0, sat = m.sat === undefined ? 1 : m.sat, bright = m.bright === undefined ? 1 : m.bright;
+  const pool = m.pool || 0, keep = m.keep === undefined ? 0.45 : m.keep;
+  if (tintA < 0.004 && topA < 0.004 && Math.abs(sat - 1) < 0.004 && Math.abs(bright - 1) < 0.004 && pool < 0.004) return;
   const x = ctx;
   x.save(); x.setTransform(1, 0, 0, 1, 0, 0); x.filter = 'none'; x.globalAlpha = 1;
   const r0 = clamp(260 * F.sc, 180, 900), r1 = clamp(1500 * Math.max(0.6, F.sc), 900, 2400);
-  if (m.sat !== undefined && m.sat < 0.995) {
-    x.globalCompositeOperation = 'saturation';
-    x.fillStyle = `rgba(128,128,128,${clamp(1 - m.sat)})`; x.fillRect(0, 0, W, H);
-  }
-  if (m.mul && m.mulA > 0.004) {
-    // the hero keeps `keep` of his light: the tint is weaker round his face
+  if (m.tint && tintA > 0.004) {            // the light's colour: weaker round his face
     const g = x.createRadialGradient(F.x, F.y, r0 * 0.4, F.x, F.y, r0 * 2.4);
-    g.addColorStop(0, rgba(m.mul, m.mulA * (1 - m.keep))); g.addColorStop(1, rgba(m.mul, m.mulA));
-    x.globalCompositeOperation = 'multiply'; x.fillStyle = g; x.fillRect(0, 0, W, H);
-  }
-  if (m.top && m.topA > 0.004) {
-    const g = x.createLinearGradient(0, 0, 0, H * 0.75);
-    g.addColorStop(0, rgba(m.top, m.topA)); g.addColorStop(1, rgba(m.top, 0));
+    g.addColorStop(0, rgba(m.tint, tintA * (1 - keep))); g.addColorStop(1, rgba(m.tint, tintA));
     x.globalCompositeOperation = 'soft-light'; x.fillStyle = g; x.fillRect(0, 0, W, H);
   }
-  if (m.pool > 0.004) {
+  if (m.top && topA > 0.004) {              // the sky end of the frame
+    const g = x.createLinearGradient(0, 0, 0, H * 0.75);
+    g.addColorStop(0, rgba(m.top, topA)); g.addColorStop(1, rgba(m.top, 0));
+    x.globalCompositeOperation = 'soft-light'; x.fillStyle = g; x.fillRect(0, 0, W, H);
+  }
+  if (pool > 0.004) {                       // spot only: the edges fall away in a deep blue, never grey
     const g = x.createRadialGradient(F.x, F.y + 0.3 * r0, r0, F.x, F.y + 0.3 * r0, r1);
-    g.addColorStop(0, 'rgba(6,8,22,0)'); g.addColorStop(1, `rgba(6,8,22,${clamp(m.pool)})`);
+    g.addColorStop(0, 'rgba(10,14,60,0)'); g.addColorStop(1, `rgba(10,14,60,${clamp(pool)})`);
     x.globalCompositeOperation = 'source-over'; x.fillStyle = g; x.fillRect(0, 0, W, H);
   }
-  if (m.add && m.addA > 0.004) {
-    const g = x.createRadialGradient(F.x, F.y, 0, F.x, F.y, r1);
-    g.addColorStop(0, rgba(m.add, m.addA)); g.addColorStop(1, rgba(m.add, m.addA * 0.3));
-    x.globalCompositeOperation = 'screen'; x.fillStyle = g; x.fillRect(0, 0, W, H);
+  if (Math.abs(sat - 1) > 0.004 || Math.abs(bright - 1) > 0.004) {   // richness back (at least as drawn), and the mood's darkness
+    cinx.setTransform(1, 0, 0, 1, 0, 0); cinx.globalCompositeOperation = 'copy'; cinx.filter = 'none'; cinx.drawImage(mainC, 0, 0);
+    cinx.globalCompositeOperation = 'source-over';
+    x.globalCompositeOperation = 'copy'; x.filter = `saturate(${sat.toFixed(3)}) brightness(${bright.toFixed(3)})`;
+    x.drawImage(cinC, 0, 0);
+    x.filter = 'none';
   }
   x.restore();
 }

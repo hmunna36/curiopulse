@@ -261,7 +261,9 @@ script; the kit (`web/cinema.js`, the same file as the Shorts') gives the tools,
   beat (a wordless reveal).
 - **The colour script is `CAMERA["mood"]`**: cold when he is stuck (`shade`, `cold`, `night`, `storm`), warm when it turns
   (`warm`), `spot` when everything else falls away; at least one change per act, and the final image's mood planned
-  first. The film does not loop, so its last mood is free.
+  first. The film does not loop, so its last mood is free. **A mood changes the colour of the light, never its
+  richness** (owner, 7 Nov 2026, on the Shorts: "no, the before's colours were vibrant"): every mood keeps the frame at
+  least as saturated as drawn and darkens only as much as it means; never grey or wash out a shot.
 - **Depth in half the shots** (`CAMERA["fg"]`: grass, leaves, a post, bars, bokeh, a dark frame) and **weather or
   particles where the place has them** (`CAMERA["air"]`: dust in sunlight, rain at night, embers by a fire, snow, spray,
   sparkle); in the corners and edges, never over his face, the key action, the clock (top left) or the captions
