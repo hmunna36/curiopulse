@@ -1,0 +1,27 @@
+# Narration for "All of HUMANITY Fits in a Sugar Cube ☕"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses; tempo speeds a take up without changing pitch.
+# The tight arm (the rules of 5 Nov 2026): 25-30 s, 55-64 words. This script: 61 words.
+# CURIOUS kind (story.md §6): a mind-bending comparison of size. Hook formula: The Question as a two-second guess
+# ("Guess how many people fit in your sugar cube."), after The Direct Address, The Question, The Comparison.
+# Nobody says "subscribe"; the last block is the button, and the Short loops straight into the hook.
+
+## hook gap=0.10 tempo=1.00
+Guess how many people fit in your sugar cube.
+
+## answer gap=0.55 tighten=0.40 tempo=1.00
+All of them, because you're mostly... nothing.
+
+## atom gap=0.40 tempo=1.03
+Every atom in you is cotton candy. All fluff... one tiny speck.
+
+## squash gap=0.35 tempo=1.03
+Squash out the fluff, and all eight billion of us would fit... in one cube.
+
+## weird gap=0.65 tempo=1.02
+Just you? A speck too small to see... that still weighs as much as you.
+
+## button gap=0.75 tighten=0 tempo=1.00
+Still want sugar?
