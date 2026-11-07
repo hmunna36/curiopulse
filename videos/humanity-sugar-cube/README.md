@@ -59,8 +59,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 12 Nov 2026 23:30 IST |
-| Instagram Reels | (after scheduling) | the next free 18:30 / 21:00 IST slot |
+| YouTube Shorts | https://youtube.com/shorts/4UHm_oEbdQk | 12 Nov 2026 23:30 IST (scheduled; thumbnail, captions, playlist Strange Nature; cover.jpg also put in Studio's vertical slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 16 Nov 2026 18:30 IST (scheduled) |
+| Facebook Page | CurioPulse (`fb.mjs reel`, video 1605124080837283) | 16 Nov 2026 18:30 IST (scheduled) |
 
 **Title:** All of HUMANITY Fits in a Sugar Cube ☕
 
