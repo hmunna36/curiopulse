@@ -65,9 +65,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_WHEN |
-| Instagram Reels | (Business Suite) | IG_WHEN |
-| Facebook Page | (fb.mjs) | FB_WHEN |
+| YouTube Shorts | https://youtube.com/shorts/efXlAw8QUoQ | 12 Nov 2026 11:30 IST (scheduled; thumbnail = cover.jpg, also put in Studio's vertical slot; captions uploaded; playlist Your Brain Is Weird) |
+| Instagram Reels | Business Suite, @curio_pulse_tv only, cover.jpg as the cover | 15 Nov 2026 21:00 IST (scheduled; seen in Content → Scheduled with the caption) |
+| Facebook Page | `fb.mjs reel` (video 1946513936307677) | 15 Nov 2026 21:00 IST (scheduled, ready) |
 
 **Title:** Why Can't You Move Just ONE Eye? 👀
 

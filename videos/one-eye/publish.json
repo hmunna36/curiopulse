@@ -35,23 +35,38 @@
   "cover": "cover.jpg",
   "captions": "one-eye.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-12T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "efXlAw8QUoQ",
+    "url": "https://youtube.com/shorts/efXlAw8QUoQ",
+    "uploaded": "2026-11-07T19:34:05.718Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio 8 Nov 2026 ~01:08 IST (the vertical slot showed an automatic frame)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-15T21:00:00+05:30",
     "caption": "Move just one eye. Only your left. Go! 👀\nCan't? Your eyes are on ONE leash: every look is one tug from your brain, and BOTH go. Close one eye, fingertip on the lid, look around: it's still walking. Blindfolded.\nA chameleon gets two leashes... until it spots a fly 🦎\nDid only one move? Yes or no?\nFollow @curio_pulse_tv for the next one: all 8 billion of us would fit in a sugar cube ☕\n#science #humanbody #bodytest #brain #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 15 Nov 2026 21:00 IST; scheduled 8 Nov 2026 ~01:21 IST"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-12T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1946513936307677",
+    "publishAt": "2026-11-15T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-07T19:41:50.343Z"
   }
 }

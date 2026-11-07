@@ -1,18 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "KqsUFF1Mmm0",
-      "slug": "blocked-nostril",
-      "title": "Why Is One Nostril ALWAYS Blocked? 👃",
-      "publishAt": "2026-10-12T18:00:00.000Z",
-      "question": "Which nostril is on shift for YOU right now: left or right? 👃",
-      "status": "posted",
-      "queued": "2026-10-11T01:26:52.538Z",
-      "commentId": "Ugwv7AkQYOdk94QJZr54AaABAg",
-      "posted": "2026-10-13T16:27:26.501Z",
-      "text": "Next up: Why Do Nails on a CHALKBOARD Make You Cringe? 😖 Subscribe so you don't miss it!\nWhich nostril is on shift for YOU right now: left or right? 👃"
-    },
-    {
       "videoId": "N2Wl7YPFLmg",
       "slug": "nails-chalkboard",
       "title": "Why Do Nails on a CHALKBOARD Make You Cringe? 😖",
@@ -659,6 +647,15 @@
       "question": "💪 Bonus: the pointy bit you were aiming for is the top of your FOREARM bone (the olecranon), not your upper arm.\nCould you reach it? Yes or no? 👅",
       "status": "queued",
       "queued": "2026-11-06T21:17:39.576Z"
+    },
+    {
+      "videoId": "efXlAw8QUoQ",
+      "slug": "one-eye",
+      "title": "Why Can't You Move Just ONE Eye? 👀",
+      "publishAt": "2026-11-12T06:00:00.000Z",
+      "question": "🦎 Bonus: a chameleon's eyes really can look two ways at once, but they still keep in touch: once it picks a fly, the second eye swings over to the same target.\nDid only one move? Yes or no? 👀",
+      "status": "queued",
+      "queued": "2026-11-07T19:34:13.700Z"
     }
   ]
 }
