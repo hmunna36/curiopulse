@@ -85,11 +85,46 @@
 | `planets-earth-moon`: "Could Every PLANET Fit Between You and the Moon? 🌕" | 27 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/hGbLDBMPtSM · 10 Nov 2026 23:30 IST | Business Suite, Instagram only, 13 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 28636799632682933) |
 | `water-older-than-sun`: "Is Your Water Older Than the SUN? 💧" | 27 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/OejAWGWazTI · 11 Nov 2026 11:30 IST | Business Suite, Instagram only, 14 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 983982440896956) |
 | `lick-elbow`: "Why Can't You Lick Your ELBOW? 💪" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/X0HFKdRQ49k · 11 Nov 2026 23:30 IST | Business Suite, Instagram only, 14 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3474543846051359) |
+| `one-eye`: "Why Can't You Move Just ONE Eye? 👀" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/efXlAw8QUoQ · 12 Nov 2026 11:30 IST | Business Suite, Instagram only, 15 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1946513936307677) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**one-eye** (the 00:00 routine of 8 Nov 2026, 00:03-01:25 IST; a TEST Short, the Queue's first line (promised by lick-elbow's
+Next-up); THE FIRST SHORT BUILT WITH THE CINEMA KIT IN THE TEMPLATE; tight arm, 59 words -> 28.63 s; hook formula The Direct
+Address (after The Question): "Move just one eye. Only your left. Go!"; answer "Can't? Your eyes are on ONE leash." at 3.83 s;
+button "Now try the RIGHT one." (the button and the loop are the hook at negative time); caption question "Did only one move?
+Yes or no?"; YouTube efXlAw8QUoQ, 12 Nov 11:30 IST, playlist Your Brain Is Weird, cover also put in Studio's vertical slot (it
+showed an automatic frame); Reel (Business Suite, IG only, cover set) + Page (fb.mjs 1946513936307677) 15 Nov 21:00 IST. Two QA
+rounds, qa.py 20/20 both (voice 21.1 dB, WER 0.0 %); build.sh from a fresh .work-build reproduced the MP4 byte for byte (same
+SHA-256); about 7 minutes a render (859 frames, ~0.5 s a frame with the kit and the macro shots)):
+- **One picture for Hering's law: a brain walking both eyes on ONE leash.** `oneeye.js`: time-flies' brain (renamed `oeBrain`)
+  sits on his hair, both fists on a red leash handle; the lead splits at his forehead (a ring) and snap-clips onto the top of
+  BOTH irises; a tug of the handle moves both eyes (the eyes follow 0.04 s later, with eyes.js's smear). It carried three more
+  beats for free: "still walking... blindfolded" (the shut eye's x-ray iris still on its lead, a tiny sleep mask pops on it) and
+  the chameleon whose own tiny brain holds TWO leads (one per eye turret). Borrow it for any "one command, two parts" topic.
+- **One eye can shut on its own in big head-unit eyes (`oeEyes`):** `shutR` / `shutL`, a lid with the eye's bulge rolling under it
+  where the iris points, a dashed x-ray `ghost` iris, and `mask`. The fingertip on the lid is the rig's own arm placed with `armAt`
+  (`oeFingerPose`: elbow low by his chest, the forearm along the finger's line, `handL: 'point'`) and the forearm and hand drawn
+  again in `post` (the head is drawn last), so the finger lands ON the lid in every framing.
+- **A brain on his head must visibly HOLD the handle:** at first (small brain, thin arms, the loop under its chin) it read as the
+  brain biting a ring. Bigger brain (0.25 head units), thick arms, fists drawn over the loop, the loop a strap with stitching.
+- **A detail gag on a small character needs a line, not a pose:** "one eye forward, one eye back" on the chameleon's turrets was
+  unreadable at phone size (round 1, look 7.5). Dotted gold sight lines with arrowheads pop out of each eye on its word; the
+  forward one lands on the hiker (a second joke).
+- **The peak-normalised sfx bus again:** turning the loudest gag (the gulp) down 5 dB pushed the other gags up to -16.5…-17 dB
+  against a -15.5 narrator (round 1, sound 7). Moving the whole bus (`levels sfx` -9 -> -12) put every gag at -18.4…-24.0.
+- **Foreground plants in the meadow's own greens:** the kit's default deep green read as a black band at the bottom of a bright day
+  shot. `{"kind": "grass-b", "col": "#2E7030", "lit": "#6CBB4C"}` (and leaves `#2C6B30` / `#66B24E`) in CAMERA["fg"].
+- **The loop as the hook at negative time** (`SC.button` and `SC.loop` both call `hookDraw(t - duration)`, butterflies that
+  flutter in from the sides for tt < 0, two hops before frame 1) gave a last frame that matches frame 0 with no special shot.
+- **Audition a fast hook before building:** "Move just ONE eye. Only your left... go." ran 4.1 s on two takes; "Move just one eye.
+  Only your left. Go!" (no "...", no capitals) ran 3.1 s and put the answer at 3.83 s (narration.md's one-breath rule again).
+- The 7 Nov Reel of shrimp-snap looked missing at the 48-hour check: the owner had moved it to 15 Nov 18:30 for a Facebook-only
+  test (its publish.json `movedNote`); read a Short's publish.json before calling a Reel missing.
+- Voice: 314 + 76 audition characters; quota.mjs read 87,153 before.
 
 **lick-elbow** (the 02:00 second Short of 7 Nov 2026, 02:05-03:58 IST; a TEST Short, the Queue's first line (promised by
 water-older-than-sun's Next-up), the kin of tongue-to-nose; tight arm, 64 words -> 29.00 s; hook formula The Question (after
