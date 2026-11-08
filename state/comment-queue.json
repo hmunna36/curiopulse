@@ -1,18 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "FuqnD4vj-q4",
-      "slug": "eye-rub-stars",
-      "title": "Why Do You See STARS When You Rub Your Eyes? ✨",
-      "publishAt": "2026-10-14T06:00:00.000Z",
-      "question": "What do YOU see when you rub your eyes (gently!): stars, blobs or rings? 👇",
-      "status": "posted",
-      "queued": "2026-10-13T17:42:23.502Z",
-      "commentId": "Ugw9HfR5b14DZdZi5HV4AaABAg",
-      "posted": "2026-10-14T09:53:22.888Z",
-      "text": "Subscribe for a new strange question every day.\nWhat do YOU see when you rub your eyes (gently!): stars, blobs or rings? 👇"
-    },
-    {
       "videoId": "4Ts56nQI1-M",
       "slug": "dizzy-spin",
       "title": "Why Do You Get DIZZY When You Spin? 💫",
@@ -654,6 +642,15 @@
       "question": "🌩️ Bonus: count the seconds between the flash and the thunder and divide by 3: that's roughly how many kilometres away it struck (divide by 5 for miles). And when thunder roars, go indoors!\nThunder or flash: which scares you more? ⚡",
       "status": "queued",
       "queued": "2026-11-08T19:31:05.173Z"
+    },
+    {
+      "videoId": "xL7tQTt3zCQ",
+      "slug": "knuckle-lock",
+      "title": "Make a Duck Hand. Can You SPREAD Your Fingers? 🦆",
+      "publishAt": "2026-11-13T18:00:00.000Z",
+      "question": "🦆 Bonus: doctors splint injured hands in this exact duck shape, so the knuckle straps stay long.\nDid yours spread? Yes or no? 🖐️",
+      "status": "queued",
+      "queued": "2026-11-08T21:30:36.484Z"
     }
   ]
 }

@@ -34,23 +34,37 @@
   "cover": "cover.jpg",
   "captions": "knuckle-lock.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-13T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "xL7tQTt3zCQ",
+    "url": "https://youtube.com/shorts/xL7tQTt3zCQ",
+    "uploaded": "2026-11-08T21:30:27.682Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-17T18:30:00+05:30",
     "caption": "Make a duck with your hand. Now spread your fingers. 🦆\nStuck? Bend a big knuckle and a bump in the bone pulls its two side straps tight. Flatten your hand: slack straps, and they spread!\nDid yours spread? Yes or no?\nFollow @curio_pulse_tv for the next one: can you bend just the TIP of your finger? 🔔\n#science #humanbody #hands #bodytest #funfacts #reels",
     "coverTime": 4.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 17 Nov 2026 18:30 IST; scheduled 9 Nov 03:08 IST"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-13T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1877873516960721",
+    "publishAt": "2026-11-17T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-08T21:36:12.969Z"
   }
 }

@@ -25,8 +25,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 13 Nov 2026 23:30 IST |
-| Instagram Reels | Business Suite (Instagram only) + the Facebook Page by `fb.mjs reel` | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/xL7tQTt3zCQ (playlist Why Does Your Body Do That?; thumbnail, captions; cover.jpg also in Studio's vertical slot) | 13 Nov 2026 23:30 IST |
+| Instagram Reels | Business Suite, Instagram only (curio_pulse_tv), cover.jpg as the cover | 17 Nov 2026 18:30 IST |
+| Facebook Page | `fb.mjs reel`, video 1877873516960721 (scheduled, ready) | 17 Nov 2026 18:30 IST |
 
 **Title:** Make a Duck Hand. Can You SPREAD Your Fingers? 🦆
 
