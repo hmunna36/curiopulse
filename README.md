@@ -96,6 +96,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Why Can't You Lick Your ELBOW? | 29 s | [`videos/lick-elbow`](videos/lick-elbow) | [11 Nov 2026](https://youtube.com/shorts/X0HFKdRQ49k) |
 | Why Can't You Move Just ONE Eye? | 29 s | [`videos/one-eye`](videos/one-eye) | [12 Nov 2026](https://youtube.com/shorts/efXlAw8QUoQ) |
 | All of HUMANITY Fits in a Sugar Cube | 26 s | [`videos/humanity-sugar-cube`](videos/humanity-sugar-cube) | [12 Nov 2026](https://youtube.com/shorts/4UHm_oEbdQk) |
+| Lightning Is 5x HOTTER Than the Sun's Surface | 29 s | [`videos/lightning-hotter-than-sun`](videos/lightning-hotter-than-sun) | 13 Nov 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;
