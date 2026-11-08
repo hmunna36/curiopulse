@@ -88,11 +88,51 @@
 | `one-eye`: "Why Can't You Move Just ONE Eye? 👀" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/efXlAw8QUoQ · 12 Nov 2026 11:30 IST | Business Suite, Instagram only, 15 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1946513936307677) |
 | `humanity-sugar-cube`: "All of HUMANITY Fits in a Sugar Cube ☕" | 26 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/4UHm_oEbdQk · 12 Nov 2026 23:30 IST | Business Suite, Instagram only, 16 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1605124080837283) |
 | `lightning-hotter-than-sun`: "Lightning Is 5x HOTTER Than the Sun's Surface ⚡" | 29 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/TJwzbIRpig4 · 13 Nov 2026 11:30 IST | Business Suite, Instagram only, 16 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4569125756734546) |
+| `knuckle-lock`: "Make a Duck Hand. Can You SPREAD Your Fingers? 🦆" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/xL7tQTt3zCQ · 13 Nov 2026 23:30 IST | Business Suite, Instagram only, 17 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1877873516960721) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**knuckle-lock** (the 02:00 second Short of 9 Nov 2026, 02:05-03:15 IST; a TEST Short, the Queue's first line (moved up by the 00:00 run
+as kin of bent-wrist-fist's 62.8K Reel); tight arm, 62 words -> 26.27 s; hook formula The Direct Address as the test: "Make a duck with
+your hand. Knuckles bent, fingers straight." / "Now spread them." (after The Impossible Claim, The Question, The Comparison); answer
+"Stuck? Your knuckles just buckled them in." at 4.91 s; button "Now duck again. Buckled." into the hook; caption question "Did yours
+spread? Yes or no?"; YouTube xL7tQTt3zCQ, 13 Nov 23:30 IST, playlist Why Does Your Body Do That?, cover.jpg also put in Studio's
+vertical slot (grey placeholder); Reel (Business Suite, Instagram only, cover set) + Page (fb.mjs 1877873516960721) 17 Nov 18:30 IST.
+Two QA rounds, qa.py 20/20 both; `build.sh` into a fresh .work-build reproduced timeline.json and mix.wav byte for byte and its MP4
+passed 20/20; about 4 minutes a render (788 frames, 0.27-0.29 s a frame)):
+- **New world (borrow it):** `kl_world.js`: the inside of his tent at night (`klTent`: teal nylon walls, a ridge pole, stitched seams,
+  a mesh window with rain, a door zip, a map in a mesh pocket, socks on a cord, the floor; `dy` moves the far camera for a low or high
+  angle; the torch's cream stage on the back wall, `KL.BEAM`), `klLantern` (sways on loopW, a moth orbits it), fairy lights in the
+  glow layer, `klBag` (a sleeping bag over his legs, a backpack, a mug), `klGeo` (fist3d's hand bent ONLY at the big knuckles: `mcp`
+  0..1, `ip` curl, `spread` (it works only with the knuckles straight), `try` (the little sideways push a bent finger manages), the
+  thumb as a duck's lower beak with `open`, or out flat), `klShadowDraw` (the hand drawn again in one colour from the same view,
+  scaled and laid on the wall inside the beam), `klDuckEye` (an eye of light on the shadow: calm / strain with sweat / annoyed / shock /
+  happy, a plaster), `klBelt` (a seatbelt across the knuckles: webbing, tongue, a red-button buckle; it slides in by k), `klKnuckle`
+  (one knuckle up close in a round window: an egg-shaped bone head with its palm-side bump, the finger bone swinging by phi round it,
+  the side strap slack (waves) or taut (glow, twang), a far strap), `klCast` (a white padded cast in duck mode, bandage turns, a smiley
+  sticker), `klTag`, `klBurst`, `klShake`. Its scenes.js: one state `klS(tt)` (valid at negative time), `klCam` / `klAng` / `klView`
+  (the 3D hand tied to the 2D camera, as in bent-wrist-fist), QUACK! bubbles, `klSideStraps` (bold yellow straps at each glass knuckle).
+- **A duck hand reads from the THUMB side, with the thumb laid along the fingers:** seen from the little-finger side the thumb hid
+  behind the fingers and it read as a flat hand on a stick; from the thumb side (yaw = PI/2 + 0.2), with the thumb tip just under the
+  fingers' pads, it reads as a beak, and its shadow as a duck's head.
+- **A hand's shadow is the rig drawn again:** the same 3D view with f x 1.42 x 0.88 and its anchor moved up from the hand, filled in one
+  colour on its own canvas, masked to the beam, blurred 2 px, laid on at 0.8. It follows every finger for free; a flat spread hand
+  turned to the lamp gives a giant jazz-hand shadow.
+- **A yellow coat vanishes on an orange tent:** teal walls make him and the cream beam stand out. A glow-layer dot as big as the beam
+  washed the whole frame out: keep the beam a painted oval and the glows small.
+- **Everything of a shot ends by its cut:** a close-up window and a burst that faded out 0.1-0.5 s after their cut showed through the
+  next whip and into the next shot. Tie their ends to the `shot_<id>` cues.
+- **A running sound gag needs a picture too:** the quack was heard but not seen (the beak barely opens): a QUACK! bubble at the beak
+  for 0.4 s on each of the three.
+- **The seatbelt:** it slides across while the line is said (webbing above 5.2 kHz under the words) and the CLICK lands in the pause
+  after the line ("say it on the word, do it in the pause").
+- Voice: 373 characters, one take per block, no retakes; two free gap changes put the answer at 4.91 s. quota.mjs read 83,302 before
+  and 83,138 after (it lags; the parallel routines share the account).
+- The Curious queue was refilled with 8 comparisons of time or size by a research agent (sources in topics.md); the Voyager 1 line is
+  time-sensitive (its slot must be on 18 Nov 2026).
 
 **lightning-hotter-than-sun** (the 00:00 routine of 9 Nov 2026, 00:04-01:20 IST; a CURIOUS Short, the Curious queue's first line
 (promised by humanity-sugar-cube's Next-up; the channel's very first Short, lightning-full, had the 5x thermometer as one beat of
