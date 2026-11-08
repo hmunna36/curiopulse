@@ -1,0 +1,49 @@
+# Narration for "Make a Duck Hand. Can You SPREAD Your Fingers? 🦆"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block, and no pill (this 23:30 Short is after the pill test: publish.json "subscribe" is none).
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 55-64 on the tight arm (every slot from 10 Nov 2026: 25-30 s; `yt.mjs next-slot` says "tight").
+
+# The test (rules of 15 Oct and 5 Nov 2026): a duck hand, the big knuckles bent all the way, the fingers straight; now try
+# to spread the fingers: they barely move. Flatten the hand and they spread at once. The side straps of each big knuckle
+# (the collateral ligaments of the MCP joint) start on the back of a bone end that bulges toward the palm (the cam-shaped
+# metacarpal head), so they are slack with the finger straight and stretched tight with the knuckle bent: no sideways
+# wiggle. Doctors splint injured hands with the big knuckles bent 70-90 degrees and the fingers straight (the "position of
+# safety") so those straps stay long and cannot shorten and stiffen the knuckles.
+# Hook formula: The Direct Address, as the test (the instruction itself), then "Stuck?". The answer starts by 5.0 s;
+# the button sends them back to the test (duck again) and runs into the hook. 62 words (the tight arm: 55-64).
+
+## hook gap=0.04 tighten=0.20 tempo=1.03
+Make a duck with your hand. Knuckles bent, fingers straight.
+
+## spread gap=0.08 tighten=0.20 tempo=1.02
+Now spread them.
+
+## answer gap=0.42 tighten=0.32 tempo=1.00
+Stuck? Your knuckles just buckled them in.
+
+## straps gap=0.38 tighten=0.28 tempo=1.04
+Each knuckle has two side straps. Bend it, and a bump in the bone pulls them tight.
+
+## flat gap=0.45 tighten=0.30 tempo=1.02
+Now flatten your hand. Slack straps... and they spread!
+
+## splint gap=0.50 tighten=0.28 tempo=1.04
+Doctors often splint broken hands in duck mode, so those straps can't shrink.
+
+## button gap=0.50 tighten=0.30 tempo=1.00
+[mischievously] Now duck again. Buckled.
