@@ -87,11 +87,50 @@
 | `lick-elbow`: "Why Can't You Lick Your ELBOW? 💪" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/X0HFKdRQ49k · 11 Nov 2026 23:30 IST | Business Suite, Instagram only, 14 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3474543846051359) |
 | `one-eye`: "Why Can't You Move Just ONE Eye? 👀" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/efXlAw8QUoQ · 12 Nov 2026 11:30 IST | Business Suite, Instagram only, 15 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1946513936307677) |
 | `humanity-sugar-cube`: "All of HUMANITY Fits in a Sugar Cube ☕" | 26 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/4UHm_oEbdQk · 12 Nov 2026 23:30 IST | Business Suite, Instagram only, 16 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1605124080837283) |
+| `lightning-hotter-than-sun`: "Lightning Is 5x HOTTER Than the Sun's Surface ⚡" | 29 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/TJwzbIRpig4 · 13 Nov 2026 11:30 IST | Business Suite, Instagram only, 16 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4569125756734546) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**lightning-hotter-than-sun** (the 00:00 routine of 9 Nov 2026, 00:04-01:20 IST; a CURIOUS Short, the Curious queue's first line
+(promised by humanity-sugar-cube's Next-up; the channel's very first Short, lightning-full, had the 5x thermometer as one beat of
+being struck: this one is about the heat); tight arm, 59 words -> 28.87 s; hook formula The Impossible Claim (after The
+Question, The Comparison, The Question): "You're roasting a marshmallow on something hotter than the Sun's surface."; answer
+"Lightning. Up to FIVE times hotter." at 4.30 s, then "The Sun's basically... lukewarm."; button "Thunder, glass, and one crispy
+marshmallow." (a fresh marshmallow pops on 0.12 s after the last word: frame 1); caption question "Thunder or flash: which scares
+you more?"; YouTube TJwzbIRpig4, 13 Nov 11:30 IST, playlist Strange Nature, cover.jpg also put in Studio's vertical slot (grey
+placeholder); Reel (Business Suite, Instagram only, cover set) + Page (fb.mjs 4569125756734546) 16 Nov 21:00 IST. Two QA rounds,
+qa.py 20/20 both; `build.sh` into a fresh .work-build reproduced timeline.json and mix.wav byte for byte, and the MP4 frame for
+frame except 7 frames at 17.9-18.1 s (a dutch tilt easing out under a mood change) that differ by under 1/255 (the graphics chip's
+rounding): an MP4 is not always byte-identical even when its inputs are; about 4 minutes a render (866 frames, 0.25-0.29 s a frame)):
+- **New worlds (borrow them):** `ls_world.js` (a summit camp in a thunderstorm at night: `lsSky` (storm gradient, the engine's
+  cloud canvases, a dusk mode for deserts), `lsRidges` far BELOW the summit, `lsGround` (a crest that falls away to both sides, wet
+  boulders, puddles that mirror the bolt), `lsTent` with a lantern in the glow layer, `lsFlags` (prayer flags that blow in a
+  blast), `lsFire` (rained out: wet logs, dying embers, steam), `lsBag` (MALLOWS), `lsRod` (a copper spike on a steel pole on a
+  cairn, sparks at the tip); `lsMakeBolt` (a bolt whose last stretch comes down plumb, so a prop can sit beside the channel;
+  `lsChannelX(b, y)` finds it); `lsMallow` (toast 0..1 white -> golden -> charcoal, puff, fire, crumble), `lsFlame`, `lsStick`; a
+  "site" object so the same code films from the other side) and `ls_props.js` (`lsThermo` (a thermometer standing on the ground),
+  `lsSun` (the Sun as an actor: proud, shock, pout, cold with chattering teeth; a knitted scarf that pops on; `lsBrr`),
+  `lsThumbHand` (a thumbs-up big enough for a macro), `lsDune` (a desert at storm dusk: dunes in three layers, a cactus, a dry
+  bush, a DUNES sign), `lsFulgurite` (a branching glass root that grows molten and cools to glass), `lsTag` (a pill label that
+  puts a black patch in the glow layer under itself)).
+- **Labels next to a bright thing get eaten by its bloom:** the 5x stamp beside the glowing lightning tube read as a plain yellow
+  disc in round 1. Anything drawn in screen space near a glow source needs a black patch in `gctx` under it (the clBabySun trick):
+  `lsTag` does it for every tag; the stamp and the cover's words got their own patches. The first cover lost "SUN" the same way.
+- **Numbers of a comparison belong on a fixed scoreboard,** not pinned to the moving props: labels pinned to the tubes drifted into
+  the caption band while the camera tilted up after the column. Two pills at y 540-625 (left and right) and the stamp between them
+  read at every moment of the move.
+- **A hand macro next to his face puts the face under the captions:** reach the arm out to the side (wrist 200 units from the head)
+  so the face leaves the macro frame; frame the thumb's tip at y ~760.
+- **A screen-space helper inside world drawing resets the transform:** `lsTag` calls `screenSpace()`, so the glass root drawn after
+  it landed at screen coordinates (the bottom of the frame). Call `applyCam(cam)` again after any screen-space helper.
+- **Voice:** the first takes ran 34.7 s for 62 words: v3 gave every "..." and every mid-line CAPS word its pause (the button took
+  6 s for 7 words). Taking the ellipses out of the mechanism lines, one-breath hook (no CAPS), and three retakes brought it to 28.2 s
+  (59 words); `tighten` and the gaps did the rest. About 930 characters in all (361 + 211 + 130, and four single-block retakes); quota.mjs read 85,747 before and 83,302 after (the parallel routines share the account).
+- The hit rule: bent-wrist-fist's Reel drew 62.8K Instagram views in ~30 h (about 20x the usual), thumb-finger's 29.1K: their
+  hand-tendon kin (fingers that lock, the fingertip) were moved to the top of the test Queue on 9 Nov.
 
 **humanity-sugar-cube** (the 02:00 second Short of 8 Nov 2026, 02:05-03:10 IST; a CURIOUS Short, the Curious queue's first line
 (promised by one-eye's Next-up; two weeks after neutron-star-teaspoon, whose stadium-and-pea picture it does not reuse); tight arm,
