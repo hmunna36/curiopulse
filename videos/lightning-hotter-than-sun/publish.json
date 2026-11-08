@@ -34,23 +34,38 @@
   "cover": "cover.jpg",
   "captions": "lightning-hotter-than-sun.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-13T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "TJwzbIRpig4",
+    "url": "https://youtube.com/shorts/TJwzbIRpig4",
+    "uploaded": "2026-11-08T19:30:56.704Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg uploaded in Studio 9 Nov 2026 ~01:03 IST (the vertical slot showed a grey placeholder); Changes saved"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-16T21:00:00+05:30",
     "caption": "You're roasting a marshmallow on something hotter than the Sun's surface ⚡\nLightning! Up to 5 times hotter than the Sun's surface. A giant zap crams through air as thin as your thumb, the air cooks so fast it explodes: that BOOM is thunder. And if it hits sand, it can melt it into glass.\nThunder or flash: which scares you more?\nFollow @curio_pulse_tv for the next one: the Eiffel Tower grows taller every summer 🗼\n#science #lightning #weather #funfacts #mindblown #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 16 Nov 2026 21:00 IST; the dialog said \"scheduled to publish on 16 Nov 2026\"; scheduled 9 Nov 2026 ~01:10 IST"
   },
   "kind": {
     "kind": "curious",
     "slot": "2026-11-13T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "4569125756734546",
+    "publishAt": "2026-11-16T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-08T19:37:17.175Z"
   }
 }

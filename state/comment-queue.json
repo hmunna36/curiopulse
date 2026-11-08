@@ -1,18 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "JJYB6rAaF2w",
-      "slug": "funny-bone",
-      "title": "Why Does Your FUNNY BONE Hurt So Much? ⚡",
-      "publishAt": "2026-10-13T18:00:00.000Z",
-      "question": "Which fingers tingle when YOU hit your funny bone? 👇",
-      "status": "posted",
-      "queued": "2026-10-12T01:32:21.168Z",
-      "commentId": "Ugz3UIw-YImloBvAZ_F4AaABAg",
-      "posted": "2026-10-14T09:53:21.999Z",
-      "text": "Next up: Why Do You See STARS When You Rub Your Eyes? ✨ Subscribe so you don't miss it!\nWhich fingers tingle when YOU hit your funny bone? 👇"
-    },
-    {
       "videoId": "FuqnD4vj-q4",
       "slug": "eye-rub-stars",
       "title": "Why Do You See STARS When You Rub Your Eyes? ✨",
@@ -657,6 +645,15 @@
       "question": "🌟 Bonus: the one place matter really is squashed like this is a neutron star. A teaspoon of it weighs about as much as a mountain.\nWhat was your guess? ☕",
       "status": "queued",
       "queued": "2026-11-07T21:25:47.333Z"
+    },
+    {
+      "videoId": "TJwzbIRpig4",
+      "slug": "lightning-hotter-than-sun",
+      "title": "Lightning Is 5x HOTTER Than the Sun's Surface ⚡",
+      "publishAt": "2026-11-13T06:00:00.000Z",
+      "question": "🌩️ Bonus: count the seconds between the flash and the thunder and divide by 3: that's roughly how many kilometres away it struck (divide by 5 for miles). And when thunder roars, go indoors!\nThunder or flash: which scares you more? ⚡",
+      "status": "queued",
+      "queued": "2026-11-08T19:31:05.173Z"
     }
   ]
 }

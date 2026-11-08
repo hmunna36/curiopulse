@@ -47,8 +47,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_RELEASE |
-| Instagram Reels (+ the Facebook Page) | Business Suite / fb.mjs | IG_RELEASE |
+| YouTube Shorts | https://youtube.com/shorts/TJwzbIRpig4 | 13 Nov 2026 11:30 IST (scheduled; playlist Strange Nature; cover.jpg also in Studio's vertical slot) |
+| Instagram Reels (+ the Facebook Page) | Business Suite (Instagram only, cover set) / `fb.mjs` (Page video 4569125756734546, scheduled) | 16 Nov 2026 21:00 IST |
 
 **Title:** Lightning Is 5x HOTTER Than the Sun's Surface ⚡
 
