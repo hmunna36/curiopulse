@@ -33,23 +33,39 @@
   "cover": "cover.jpg",
   "captions": "eiffel-summer.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-14T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "qeCHoD61IoA",
+    "url": "https://youtube.com/shorts/qeCHoD61IoA",
+    "uploaded": "2026-11-09T21:24:57.024Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-18T18:30:00+05:30",
     "caption": "Hold up your phone 📱 In summer, the Eiffel Tower can grow about that much!\nHot iron stretches, like a cat in a sunbeam. 18,000 iron pieces, each one a hair longer: stack it all up and you get up to ~15 cm. And on sunny days the sunny side stretches more, so the top leans AWAY from the Sun.\nSummer or winter: when would you visit?\nFollow @curio_pulse_tv for the next one: honey that never goes off 🍯\n#science #eiffeltower #paris #physics #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-18T18:30:00+05:30",
+    "coverSet": true,
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)"
   },
   "kind": {
     "kind": "curious",
     "slot": "2026-11-14T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "3124294561109796",
+    "publishAt": "2026-11-18T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-09T21:32:22.361Z"
   }
 }

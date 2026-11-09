@@ -99,7 +99,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Lightning Is 5x HOTTER Than the Sun's Surface | 29 s | [`videos/lightning-hotter-than-sun`](videos/lightning-hotter-than-sun) | [13 Nov 2026](https://youtube.com/shorts/TJwzbIRpig4) |
 | Make a Duck Hand. Can You SPREAD Your Fingers? | 26 s | [`videos/knuckle-lock`](videos/knuckle-lock) | [13 Nov 2026](https://youtube.com/shorts/xL7tQTt3zCQ) |
 | Can You Bend Just the TIP of Your Finger? | 26 s | [`videos/finger-tip-bend`](videos/finger-tip-bend) | [14 Nov 2026](https://youtube.com/shorts/o6lX2LPekDw) |
-| The EIFFEL TOWER Gets Taller in Summer | 26 s | [`videos/eiffel-summer`](videos/eiffel-summer) | 14 Nov 2026 |
+| The EIFFEL TOWER Gets Taller in Summer | 26 s | [`videos/eiffel-summer`](videos/eiffel-summer) | [14 Nov 2026](https://youtube.com/shorts/qeCHoD61IoA) |
 
 Each folder has:
 - the finished MP4;

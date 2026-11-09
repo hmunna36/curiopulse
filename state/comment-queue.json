@@ -1,18 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "ORFb3ma5RyA",
-      "slug": "ears-ring",
-      "title": "Why Do Your Ears RING After a Concert? 🎸",
-      "publishAt": "2026-10-15T06:00:00.000Z",
-      "question": "What's the loudest concert you've ever been to? 🎸👇",
-      "status": "posted",
-      "queued": "2026-10-15T01:59:30.664Z",
-      "commentId": "UgxChXMQo4agGnOvGUx4AaABAg",
-      "posted": "2026-10-15T13:41:25.919Z",
-      "text": "Subscribe for a new strange question every day.\nWhat's the loudest concert you've ever been to? 🎸👇"
-    },
-    {
       "videoId": "Vf-6HscC28w",
       "slug": "doorknob-shock",
       "title": "Why Does a Doorknob SHOCK You? ⚡",
@@ -652,6 +640,15 @@
       "question": "👆 Bonus: hand doctors hold your middle joint straight exactly like this to check the tendon that bends your fingertip.\nDid only the tip bend? Yes or no? ☝️",
       "status": "queued",
       "queued": "2026-11-09T19:18:58.604Z"
+    },
+    {
+      "videoId": "qeCHoD61IoA",
+      "slug": "eiffel-summer",
+      "title": "The EIFFEL TOWER Gets Taller in Summer 🗼",
+      "publishAt": "2026-11-14T18:00:00.000Z",
+      "question": "🌉 Bonus: ever heard a clunk-clunk driving over a bridge? Those gaps are expansion joints: bridges stretch in summer too, so they need room.\nSummer or winter: when would you visit? 🗼",
+      "status": "queued",
+      "queued": "2026-11-09T21:25:08.228Z"
     }
   ]
 }

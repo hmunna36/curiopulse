@@ -61,9 +61,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 14 Nov 2026 23:30 IST |
-| Instagram Reels | Business Suite (Instagram only) | (the slot from `instagram.publishAt`) |
-| Facebook Page | `fb.mjs reel` | the same slot |
+| YouTube Shorts | https://youtube.com/shorts/qeCHoD61IoA (playlist Strange Nature; cover.jpg also set in Studio's thumbnail slot) | 14 Nov 2026 23:30 IST |
+| Instagram Reels | Business Suite, Instagram only (@curio_pulse_tv; cover.jpg as the cover; Content → Scheduled shows the caption as its title) | 18 Nov 2026 18:30 IST |
+| Facebook Page | `fb.mjs reel` (video 3124294561109796, ready / scheduled) | 18 Nov 2026 18:30 IST |
 
 **Title:** The EIFFEL TOWER Gets Taller in Summer 🗼
 **Description, tags, IG caption, "Next up" comment:** in [`publish.json`](publish.json). The description and the caption end their story
