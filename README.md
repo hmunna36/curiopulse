@@ -98,7 +98,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | All of HUMANITY Fits in a Sugar Cube | 26 s | [`videos/humanity-sugar-cube`](videos/humanity-sugar-cube) | [12 Nov 2026](https://youtube.com/shorts/4UHm_oEbdQk) |
 | Lightning Is 5x HOTTER Than the Sun's Surface | 29 s | [`videos/lightning-hotter-than-sun`](videos/lightning-hotter-than-sun) | [13 Nov 2026](https://youtube.com/shorts/TJwzbIRpig4) |
 | Make a Duck Hand. Can You SPREAD Your Fingers? | 26 s | [`videos/knuckle-lock`](videos/knuckle-lock) | [13 Nov 2026](https://youtube.com/shorts/xL7tQTt3zCQ) |
-| Can You Bend Just the TIP of Your Finger? | 26 s | [`videos/finger-tip-bend`](videos/finger-tip-bend) | 14 Nov 2026 |
+| Can You Bend Just the TIP of Your Finger? | 26 s | [`videos/finger-tip-bend`](videos/finger-tip-bend) | [14 Nov 2026](https://youtube.com/shorts/o6lX2LPekDw) |
 
 Each folder has:
 - the finished MP4;

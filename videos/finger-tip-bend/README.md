@@ -25,9 +25,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_TIME |
-| Instagram Reels | IG_LINK | IG_TIME |
-| Facebook Page | FB_LINK | IG_TIME |
+| YouTube Shorts | https://youtube.com/shorts/o6lX2LPekDw (playlist Why Does Your Body Do That?; thumbnail, captions; cover.jpg also in Studio's vertical slot, which showed an automatic frame) | 14 Nov 2026 11:30 IST |
+| Instagram Reels | Business Suite, Instagram only (curio_pulse_tv), cover.jpg as the cover, caption typed line by line | 17 Nov 2026 21:00 IST |
+| Facebook Page | `fb.mjs reel`, video 2365184184301536 (scheduled, ready) | 17 Nov 2026 21:00 IST |
 
 **Title:** Can You Bend Just the TIP of Your Finger? 👆
 

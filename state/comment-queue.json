@@ -1,18 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "4Ts56nQI1-M",
-      "slug": "dizzy-spin",
-      "title": "Why Do You Get DIZZY When You Spin? 💫",
-      "publishAt": "2026-10-14T18:00:00.000Z",
-      "question": "How long can YOU spin before the room wins? 👇",
-      "status": "posted",
-      "queued": "2026-10-14T10:41:49.155Z",
-      "commentId": "Ugw6nDjfqJ8qGM5QShZ4AaABAg",
-      "posted": "2026-10-15T01:01:59.160Z",
-      "text": "Subscribe for a new strange question every day.\nHow long can YOU spin before the room wins? 👇"
-    },
-    {
       "videoId": "ORFb3ma5RyA",
       "slug": "ears-ring",
       "title": "Why Do Your Ears RING After a Concert? 🎸",
@@ -655,6 +643,15 @@
       "question": "🦆 Bonus: doctors splint injured hands in this exact duck shape, so the knuckle straps stay long.\nDid yours spread? Yes or no? 🖐️",
       "status": "queued",
       "queued": "2026-11-08T21:30:36.484Z"
+    },
+    {
+      "videoId": "o6lX2LPekDw",
+      "slug": "finger-tip-bend",
+      "title": "Can You Bend Just the TIP of Your Finger? 👆",
+      "publishAt": "2026-11-14T06:00:00.000Z",
+      "question": "👆 Bonus: hand doctors hold your middle joint straight exactly like this to check the tendon that bends your fingertip.\nDid only the tip bend? Yes or no? ☝️",
+      "status": "queued",
+      "queued": "2026-11-09T19:18:58.604Z"
     }
   ]
 }

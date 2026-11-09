@@ -34,23 +34,37 @@
   "cover": "cover.jpg",
   "captions": "finger-tip-bend.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-14T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "o6lX2LPekDw",
+    "url": "https://youtube.com/shorts/o6lX2LPekDw",
+    "uploaded": "2026-11-09T19:18:47.314Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-17T21:00:00+05:30",
     "caption": "Point your finger. Now bend ONLY the tip. 👆\nMiddle joint came too? One string bends your tip, and it runs right over the middle joint. Hold the middle joint still with your other hand: now only the tip bends!\nDid only the tip bend? Yes or no?\nFollow @curio_pulse_tv for the next one: can you fold your tongue into a CLOVER? 🔔\n#science #humanbody #hands #bodytest #funfacts #reels",
     "coverTime": 3.4,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 17 Nov 2026 21:00 IST; scheduled 10 Nov 00:58 IST"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-14T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2365184184301536",
+    "publishAt": "2026-11-17T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-09T19:19:35.574Z"
   }
 }
