@@ -89,11 +89,49 @@
 | `humanity-sugar-cube`: "All of HUMANITY Fits in a Sugar Cube ☕" | 26 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/4UHm_oEbdQk · 12 Nov 2026 23:30 IST | Business Suite, Instagram only, 16 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1605124080837283) |
 | `lightning-hotter-than-sun`: "Lightning Is 5x HOTTER Than the Sun's Surface ⚡" | 29 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/TJwzbIRpig4 · 13 Nov 2026 11:30 IST | Business Suite, Instagram only, 16 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4569125756734546) |
 | `knuckle-lock`: "Make a Duck Hand. Can You SPREAD Your Fingers? 🦆" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/xL7tQTt3zCQ · 13 Nov 2026 23:30 IST | Business Suite, Instagram only, 17 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1877873516960721) |
+| `finger-tip-bend`: "Can You Bend Just the TIP of Your Finger? 👆" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/o6lX2LPekDw · 14 Nov 2026 11:30 IST | Business Suite, Instagram only, 17 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2365184184301536) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**finger-tip-bend** (the 00:00 routine of 10 Nov 2026, 00:03-01:05 IST; a TEST Short, the Queue's first line (moved up on 9 Nov as
+kin of the bent-wrist-fist Reel, and promised by knuckle-lock's Next-up); tight arm, 59 words -> 26.20 s; hook formula The Direct Address
+as the test: "Point your finger. Now bend only the TIP." (after The Direct Address, The Impossible Claim, The Question; The Impossible
+Claim "Your fingertip can't move on its own" was dropped: it is false once the middle joint is held); answer "Middle joint bent too?
+Sorry. The tip only comes as a COMBO." at 4.32 s; the second test inside the Short at 13.7 s ("Now hold the middle joint still, and
+bend the tip." / "There it goes!": the clinical FDP test) and the fact "Congrats. That's exactly how hand doctors check that string.";
+button "Let go, and the combo's back." into the hook; caption question "Did only the tip bend? Yes or no?"; YouTube o6lX2LPekDw,
+14 Nov 11:30 IST, playlist Why Does Your Body Do That?, cover.jpg also put in Studio's vertical slot (it showed an automatic frame);
+Reel (Business Suite, Instagram only, cover set) + Page (fb.mjs 2365184184301536) 17 Nov 21:00 IST. Three QA rounds (qa.py 19/20,
+19/20, 20/20); `build.sh` into a fresh .work-build reproduced timeline.json and mix.wav byte for byte and its MP4 passed 20/20; about
+3.8 minutes a render (786 frames, 0.25-0.28 s a frame)):
+- **World:** humanity-sugar-cube's `cafe.js` (the trail cafe at dusk) with the hero standing at its table, one-finger's `fist3d.js`
+  and bent-wrist-fist's `bwhand.js` (forearm, glass, the puller and its bar), and a new `ft_world.js` (borrow it): `ftGeo` (a fist
+  pointing UP with the index's three joints set one by one: `mcp`, `pip` = the middle joint, `dip` = the tip's joint; the index
+  1.3x and the other fingers 1.12x chunkier than fist3d's real proportions, which read as a stick next to the rig's big head),
+  `ftString` (ONE string from the puller's bar to a knot on the last bone, over the palm side of the middle joint; `hotTip` /
+  `hotMid` rings), `ftPinHand` (his other hand holding the middle bone: the curled fingers behind it as bumps on its far side, the
+  back of the hand and a fat thumb with a nail across its near side, the forearm rising from an elbow on the table), `ftMenu` (the
+  cafe's menu card: FINGER TIP, alone SOLD OUT, + MIDDLE JOINT, a COMBO ONLY stamp), `ftMirror` (a doctor's head mirror on a band),
+  `ftRing`, `ftTag`, `ftBurst`, `ftShake`. Its scenes.js: one state `ftS(tt)` (valid at negative time), `ftCam` / `ftAng` / `ftView`
+  (knuckle-lock's 3D hand tied to the 2D camera).
+- **Where the raised hand goes decides whether his other hand can reach it:** with the forearm standing beside his face (wrist
+  x 736) his other arm crossed his face and then read as a long stick; with the wrist in front of his shoulder (x 676, y 1240) the
+  holding arm rises from an elbow on the table, clear of his face, at a believable length.
+- **A word the aligner leaves 10 ms long fails qa.py's voice check on its own:** "See" (after a tightened pause) had a 10 ms window,
+  and the whip's whoosh that ended 0.04 s after the cut sat on it (-18.7 dB, then -1.4 dB after shortening the bell). this Short's
+  make_timeline.py gives a word it moves onto its first speech-band burst its real length (until the next word; copy its loop), and
+  whooshes end at the cut.
+- **A bell rings on:** the cash register's second ding (1760 Hz, 0.5 s) ran into the next line's first word; a sting in a 0.5 s gap
+  must be gone 0.4 s after it starts.
+- **Punch-ins centre between his face and the hand** (`focus` = their midpoint), or the face slides out past the side crop.
+- **A glow on the joint that bends hides the bend:** the string's glow at full pull plus a ring's soft dot turned the bending tip
+  into a bright blob; 0.18 + 0.2 x pull on the string and 0.16 on the ring's dot keep the knuckle readable.
+- **Business Suite opened on Mishapland** this time (the asset picker -> curio_pulse_tv -> "CurioPulse, curio_pulse_tv").
+- Voice: 611 characters (319 first takes, 60 for "Congrats." added to reach 25 s, 177 + 55 for retakes of the answer, the
+  string line and the pin line: "COMBO." was faint with [deadpan], fine with [sarcastic]); quota.mjs read 82,796 before and 82,062 after.
 
 **knuckle-lock** (the 02:00 second Short of 9 Nov 2026, 02:05-03:15 IST; a TEST Short, the Queue's first line (moved up by the 00:00 run
 as kin of bent-wrist-fist's 62.8K Reel); tight arm, 62 words -> 26.27 s; hook formula The Direct Address as the test: "Make a duck with
