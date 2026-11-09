@@ -1,0 +1,44 @@
+# Narration for "The EIFFEL TOWER Gets Taller in Summer 🗼"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The Subscribe pill plays silently over the last 3.4 s.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 55-64 on the tight arm (every slot from 10 Nov 2026; `yt.mjs next-slot` says "tight").
+# - CURIOUS Short (story.md §6): the hook is the impossible claim told to "you", frame 1 already shows it. Here the
+#   viewer holds up their own phone: that is the size the tower grows (hedged: "can"; on screen "up to ~15 cm").
+# - the hook is two takes (hook + grow) so the answer starts by 5.0 s (one take of the line ran 4.6-6.6 s).
+# - no pill: the 23:30 slot of 14 Nov is outside the pill test; the Short loops, the button undercuts.
+
+## hook gap=0.10 tempo=1.00
+Hold up your phone.
+
+## grow gap=0.12 tempo=1.03
+The Eiffel Tower can grow that much in summer.
+
+## answer gap=0.40 tighten=0.35 tempo=1.00
+Hot iron stretches... like a cat in a sunbeam.
+
+## pieces gap=0.70 tempo=1.05
+Eighteen thousand iron pieces, each one a hair longer.
+
+## stack gap=0.45 tighten=0.40 tempo=1.02
+Stack it all up... one PHONE.
+
+## lean gap=0.55 tempo=1.04
+And on sunny days, the sunny side stretches more, so the top leans AWAY from the Sun.
+
+## button gap=0.75 tighten=0.40 tempo=1.00
+Honestly? Same.
