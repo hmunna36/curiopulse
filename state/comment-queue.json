@@ -568,8 +568,10 @@
       "title": "Why Can't You Say the COLOUR, Not the Word? 🎨",
       "publishAt": "2026-11-09T06:00:00.000Z",
       "question": "Did you trip? Yes or no? 🎨",
-      "status": "queued",
-      "queued": "2026-11-04T19:23:59.219Z"
+      "status": "posted",
+      "queued": "2026-11-04T19:23:59.219Z",
+      "commentId": "UgyPI9fc00wvzeOD7eB4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "bypzNQNaQK0",
@@ -577,8 +579,10 @@
       "title": "Why Does a Word Go WEIRD When You Repeat It? 🥄",
       "publishAt": "2026-11-09T18:00:00.000Z",
       "question": "Did the word go weird? Yes or no? 🥄",
-      "status": "queued",
-      "queued": "2026-11-04T21:26:36.199Z"
+      "status": "posted",
+      "queued": "2026-11-04T21:26:36.199Z",
+      "commentId": "UgzFqQaHmERuWWpdRPB4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "sEr9s0tAphI",
