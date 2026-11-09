@@ -90,11 +90,50 @@
 | `lightning-hotter-than-sun`: "Lightning Is 5x HOTTER Than the Sun's Surface ⚡" | 29 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/TJwzbIRpig4 · 13 Nov 2026 11:30 IST | Business Suite, Instagram only, 16 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 4569125756734546) |
 | `knuckle-lock`: "Make a Duck Hand. Can You SPREAD Your Fingers? 🦆" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/xL7tQTt3zCQ · 13 Nov 2026 23:30 IST | Business Suite, Instagram only, 17 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1877873516960721) |
 | `finger-tip-bend`: "Can You Bend Just the TIP of Your Finger? 👆" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/o6lX2LPekDw · 14 Nov 2026 11:30 IST | Business Suite, Instagram only, 17 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2365184184301536) |
+| `eiffel-summer`: "The EIFFEL TOWER Gets Taller in Summer 🗼" | 26 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/qeCHoD61IoA · 14 Nov 2026 23:30 IST | Business Suite, Instagram only, 18 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3124294561109796) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**eiffel-summer** (the 02:00 second Short of 10 Nov 2026, 02:05-03:20 IST; a CURIOUS Short, the Curious queue's first line (promised by
+lightning-hotter-than-sun's Next-up); tight arm, 56 words -> 25.97 s; hook formula The Impossible Claim told through the viewer's own
+phone: "Hold up your phone. / The Eiffel Tower can grow that much in summer." (two takes: one take of the line ran 4.6-6.6 s); answer
+"Hot iron stretches... like a cat in a sunbeam." at 4.68 s; button "Honestly? Same." (sunburnt, he leans away from the Sun too, then the
+phone comes up as a sunshade: frame 1); caption question "Summer or winter: when would you visit?"; YouTube qeCHoD61IoA, 14 Nov 23:30
+IST, playlist Strange Nature, cover.jpg also put in Studio's thumbnail slot ("Changes saved"); Reel (Business Suite, Instagram only, cover
+set) + Page (fb.mjs 3124294561109796) 18 Nov 18:30 IST. Two QA rounds, qa.py 20/20 both; `build.sh` into a fresh .work-build reproduced
+timeline.json and mix.wav byte for byte and its MP4 (the same size) passed 20/20; about 3.8 minutes a render (779 frames, 0.25-0.29 s a
+frame)):
+- **The size is disputed: say "can" and "up to", and put both figures in the description.** The tower's own page says heat makes it "a
+  few millimeters taller" (and "a few centimeters" over the year); a physicist in The Conversation says engineers see 12-15 cm; physics
+  gives 3.6 mm per °C for 300 m of puddled iron (12 × 10⁻⁶ /°C). The leaning top's "curve about 15 cm across" on a sunny day is the
+  operator's own figure. The viral "grows 15 cm" may come from that curve.
+- **New worlds (borrow them):** `ef_world.js` (a summer sky with cumulus `efSky` (Sun, clouds, a dusk dial), Haussmann blocks painted once
+  into strips `efBlockStrip` (zinc mansards, dormers, chimney pots, window rows, balcony lines) and tree strips, `efFar` (a far layer in the
+  shot's own screen frame that moves by p times the camera), the Eiffel Tower drawn with shapes every frame `efTower` (an exponential
+  profile, the legs, the big arch, three platforms with a frieze and railings, the cabin and a red-white antenna; options `grow`,
+  `stretch` (a waking cat's stretch), `lean` (v²), `hot` + `sunSide` (an orange wash laid on its own shapes), `ghost` (the old top,
+  dashed), `wobble`), `efTowerGlow`, `efTowerFace` (closed lids, a yawn), the Trocadero terrace `efTerrace` (balustrade, paving),
+  `efPigeon`, a Paris lamp `efLamp`, `efTree`, the Champ de Mars) and `ef_cast.js` (`EFPAL` (a coral short-sleeved shirt, khaki
+  trousers), `efBeret`, `efSunburn`, `efSweat`, `efPhone` (a ruler app reading 15 cm, or its back with the lenses) + `efGrip`,
+  `efArmFromBehind`, a ginger cafe cat that stretches `efCat`, `efGirder` (rivets, hot, a growing end), `efPlate`, `efHair`, `efSliver`,
+  the city seen from high on the tower `efBelowInit`, label pills `efTag` that black out the glow layer under themselves, `efBracket`).
+- **The cinema kit's "leaves"/"branch" foregrounds read as palm fronds** in a city: use particles (and a place's own props) for depth
+  there. qa.py counts particles as depth.
+- **Never `source-atop` on the main canvas to tint one object:** it paints over everything already drawn in its rectangle (a pale box over
+  the sky). Fill the object's own shapes again with the tint.
+- **`armAt` then `ikReach` on the same arm breaks it:** `ikReach` keeps `armAt`'s bone lengths and threw the upper arm off the frame. Give
+  the elbow and the wrist (`armAt` alone) and blend the two points between poses.
+- **The Sun's bloom washes out a label pill:** `efTag` fills a black patch into the glow layer under itself (the cover's trick).
+- **A plain behind a tall subject reads as desert:** fill it with more rows of the city painted behind the subject, not in front of it.
+- **The score as place:** an original musette waltz (3/4, a synthesized accordion: three detuned saw reeds with a 6 Hz tremolo,
+  pizzicato on one, chords on two and three) said Paris at once; it drops out for each gag and goes to 200 bpm for the time-lapse.
+- **Business Suite this time** opened on CurioPulse; Post to was "CurioPulse and curio_pulse_tv" and was set to curio_pulse_tv alone; the
+  Share step's Schedule option, the date by its aria-label and the 24-hour spinbuttons worked as written.
+- Voice: 294 characters, one take per block, no retakes (plus about 350 for five auditions of the one-take hook); quota.mjs read 81,844
+  before and 81,559 after (it lags).
 
 **finger-tip-bend** (the 00:00 routine of 10 Nov 2026, 00:03-01:05 IST; a TEST Short, the Queue's first line (moved up on 9 Nov as
 kin of the bent-wrist-fist Reel, and promised by knuckle-lock's Next-up); tight arm, 59 words -> 26.20 s; hook formula The Direct Address
