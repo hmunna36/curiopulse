@@ -97,6 +97,53 @@ here for every new Short, with its links.
 
 ## Lessons
 
+**honey-never-goes-off** (the 00:00 routine of 11 Nov 2026, 00:03-01:15 IST; a CURIOUS Short, the Curious queue's first line (promised by
+eiffel-summer's Next-up), framed as two comparisons of time (your honey outlives you; the oldest honey ever found is older than the
+pyramids) to fit the rules of 5 Nov; tight arm, 58 words -> 26.10 s; hook formula The Comparison as a two-second guess (after The
+Impossible Claim, The Direct Address, The Question): "Which outlives you: bread, a banana, or HONEY?"; answer "Honey. To germs, it's a
+DESERT." at 4.21 s; mechanism "All that sugar... SLURPS the water right out of any germ that lands in it."; payoff "Keep the lid on... and
+it can stay good for CENTURIES." / "Way longer than YOU."; weird "The oldest honey ever found? Older than the PYRAMIDS."; button "Maybe
+don't eat THAT one." (the spoon of black crust matches into frame 1's honey dipper); caption question "Would you taste it? Yes or no?";
+YouTube zDKpHRcwe-A, 15 Nov 11:30 IST, playlist Strange Nature, cover.jpg also in Studio's Shorts thumbnail slot ("Changes saved");
+Reel (Business Suite, Instagram only, cover set; Business Suite opened on Mishapland: asset picker) + Page (fb.mjs 1130295899586791)
+18 Nov 21:00 IST. Two QA rounds, qa.py 20/20 both; build.sh into a fresh .work-build reproduced timeline.json, mix.wav and the SRT byte
+for byte, its MP4 4.5 KB different but pixel-identical on sampled frames, 20/20; about 3.9 minutes a render (783 frames, 0.25-0.27 s a
+frame)):
+- **charLayer leaves the main canvas in SCREEN space** (it ends with `ctx.setTransform(1, 0, 0, 1, 0, 0)` to composite the layer):
+  anything drawn on `ctx` after it in world coordinates lands in the wrong place (the germ and the sugar grains vanished under the front
+  dune in the first stills). Call `applyCam(cam)` again after every hero helper (this Short's `hnKHero`/`hnDesertHero`/`hnTombHero` do).
+- **The hiker has almost no forehead:** the hair cap comes down to about y -26..-42 in head units, so lines drawn there sit ON his hair
+  (white hair read as a grey-striped headband, on the cover too). Age him with crow's feet at the outer eye corners (x +-49..60), round
+  glasses (paint), white hair through the palette (`hair`/`hairHi`), a beard and moustache drawn in head space after the face.
+- **New worlds (borrow them):** `hn_kitchen.js` (a cosy kitchen: a window with gingham curtains, basil and a tree that changes with the
+  seasons, day or night (`night`, `season`); a shelf of spice jars, books and a teapot; a pendant lamp in the glow layer; a calendar whose
+  pages peel off (`page`, a float); cobwebs (`hnWeb`); a butcher-block counter over teal cabinets (`hnCounter`, `dust`); a kettle; the
+  breakfast: a honey jar with a ridged lid that can drop and turn (`hnJar`: lid, drop, turn, glint), toast that is drizzled, then mouldy
+  and furry (`hnToast`: flat, honey, mould, fur), a banana that browns, blackens, flattens and draws flies (`hnBanana` rot), a plate, a
+  honey dipper and a glossy honey ribbon (`hnDipper`, `hnRibbon`)), `hn_desert.js` (inside the jar: honey dunes as four parallax layers
+  with gloss, bubbles and glints (`HN_DUNES`, `hnDuneY`, `hnParCam(cam, p, hz)`: hz raises or lowers the horizon for a high or low angle),
+  the curved glass with the label's letters backwards, the lid's gold underside, the lamp as the sun, a dipper monolith, sugar-crystal
+  rocks, heat shimmer; a germ with a straw hat that pants, sweats and shrivels into a raisin (`hnGerm`: shrivel, pant, fear, hat); sugar
+  grains as cubes with faces that pop out of the honey and drink through striped straws (`hnGrain`: k, tx/ty, straw, slurp, cheeks),
+  a honey splash (`hnSplash`)), `hn_tomb.js` (a torch-lit stone tomb with a carved band of bees and zigzags, a niche of pots, wall torches
+  with flicker in the glow layer (`hnTorch`), an ancient clay jar with painted bands, a crusty dark rim and dust that brushes off from the
+  top (`hnOldJar`: dust, crust, glow), dust puffs; dusk over three pyramids with a lit face and a shadow face (`hnPyramidBack`,
+  `hnPyramid`)), `hn_cast.js` (`HNPAL` a blue home shirt, `HNEXP` khaki explorer, `hnOldPal(age)`, the head frame `hnHeadT`/`hnHeadW`, a
+  pith helmet, a beard with a moustache, round glasses, crow's feet, a canteen, a brush, a spoon with a black lump, a two-layer sparkle
+  `hnSparkle`, an age tag `hnTag` (a black patch in the glow layer under it)).
+- **The loop as a shot of its own:** `SC.loop` draws the hook at NEGATIVE hook time (`lt - D`) for the last 0.43 s, so the last frame IS
+  frame 0's picture (measured 2.2/255 mean difference, handheld and particles only); everything in the hook must be a function of hook
+  time (the drizzle's wobble, the cues by t).
+- **The time-lapse:** the lapse's own clock is the integral of a speed curve (ramps in at the shot, out on "Way longer"), so pages, the
+  window's day/night and the seasons run fast and then stop exactly when the tape stops (`hnAgingState`); a translucent navy wash over
+  the whole room on the night beats sells the flicker without touching the mood plan.
+- **Fact framing:** the "edible 3,000-year-old honey from Egyptian tombs" story has no clear source (Tutankhamun's jars' residues were
+  never confirmed as honey), so the Short says only "the oldest honey ever found" (Georgia, ~5,500 years, residue identified by pollen)
+  and "Maybe don't eat THAT one."; the description says the residue was not edible and adds the infant-botulism warning (also the "Next
+  up" comment's bonus line).
+- Voice: 298 + 74 + 54 characters plus 6 auditions (~170) for the answer's "DESERT" and the button's "one." (seeds 47 and 29, chosen by
+  speech-band level); quota.mjs read 81,209 before and 78,767 after (other routines share the account).
+
 **eiffel-summer** (the 02:00 second Short of 10 Nov 2026, 02:05-03:20 IST; a CURIOUS Short, the Curious queue's first line (promised by
 lightning-hotter-than-sun's Next-up); tight arm, 56 words -> 25.97 s; hook formula The Impossible Claim told through the viewer's own
 phone: "Hold up your phone. / The Eiffel Tower can grow that much in summer." (two takes: one take of the line ran 4.6-6.6 s); answer

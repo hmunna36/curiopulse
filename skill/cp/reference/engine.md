@@ -68,6 +68,9 @@ SC.burst = (lt, t, shot) => {              // lt = time in the shot, t = video t
 };
 ```
 
+- **`charLayer` leaves `ctx` in screen space** (it ends with `ctx.setTransform(1, 0, 0, 1, 0, 0)` to composite his layer). Anything
+  drawn on `ctx` after it in world coordinates lands in the wrong place: call `applyCam(cam)` again first (honey-never-goes-off,
+  11 Nov 2026: the germ and the sugar grains vanished under the front dune until the hero helpers put the camera back).
 - After `screenSpace()` the glow layer `gctx` is already at half scale: draw on it with the SAME coordinates as on `ctx`
   (`softDot(gctx, x, y, r, ...)`), never `x / 2` (sharks-older-than-trees, 27 Oct 2026: the sun's bloom landed at half its
   position, on the hero's tree). Under `applyCam` it carries the camera as well: world coordinates.

@@ -167,6 +167,10 @@ small gaps; a cached desk in front of him was lit as his jacket, so images becam
   14 head units one at a time; `f.browL` / `f.browR` move the rig's own brows one at a time when that is enough.
 - **One hand's shape** (funny-bone, 12 Oct 2026): `pose.handL` / `pose.handR` override `pose.hand` for that side, so one
   hand can be spread (zapped, reaching) while the other stays as it was.
+- **He has almost no forehead** (honey-never-goes-off, 11 Nov 2026): the hair cap comes down to about y -26..-42 in head units, so
+  lines drawn there sit ON his hair (forehead wrinkles on white hair read as a striped headband, on the cover too). To age him: crow's
+  feet at the outer eye corners (x +-49..60), round glasses as paint, white hair through the palette (`hair`, `hairHi`), a beard and a
+  moustache in head space after the face (that Short's `hn_cast.js`).
 - Acting sells the joke. Examples:
   - a deadpan stare after the chaos;
   - a glance down at his own body ("Thanks, body.");
