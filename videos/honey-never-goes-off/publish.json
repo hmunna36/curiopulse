@@ -33,23 +33,40 @@
   "cover": "cover.jpg",
   "captions": "honey-never-goes-off.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-15T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "zDKpHRcwe-A",
+    "url": "https://youtube.com/shorts/zDKpHRcwe-A",
+    "uploaded": "2026-11-10T19:30:03.304Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg set in Studio 2026-11-11 (Changes saved)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-18T21:00:00+05:30",
     "caption": "Which outlives you: bread, a banana, or honey? 🍯\nHoney, easily. To germs, honey is a desert: all that sugar slurps the water right out of them. Keep the lid on and it can stay good for centuries. And the oldest honey ever found is older than the pyramids (maybe don't eat that one).\nWould you taste it? Yes or no?\nFollow @curio_pulse_tv for the next one: your phone's GPS needs Einstein 🛰️\n#science #honey #food #funfacts #history #reels",
     "coverTime": 17.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-11T01:10:00+05:30",
+    "coverSet": true,
+    "postTo": "curio_pulse_tv (Instagram only; the Page by fb.mjs)"
   },
   "kind": {
     "kind": "curious",
     "slot": "2026-11-15T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1130295899586791",
+    "publishAt": "2026-11-18T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-10T19:37:18.098Z"
   }
 }

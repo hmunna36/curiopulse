@@ -52,8 +52,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block (answer: seed
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 15 Nov 2026 11:30 IST |
-| Instagram Reels | (after scheduling) | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/zDKpHRcwe-A | 15 Nov 2026 11:30 IST (scheduled; playlist Strange Nature; cover.jpg also in Studio's Shorts thumbnail slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 18 Nov 2026 21:00 IST (scheduled) |
+| Facebook Page | CurioPulse (fb.mjs, video 1130295899586791, `scheduled`) | 18 Nov 2026 21:00 IST |
 
 **Title:** Your HONEY Could Outlive You 🍯
 
