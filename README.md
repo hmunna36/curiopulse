@@ -100,6 +100,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Make a Duck Hand. Can You SPREAD Your Fingers? | 26 s | [`videos/knuckle-lock`](videos/knuckle-lock) | [13 Nov 2026](https://youtube.com/shorts/xL7tQTt3zCQ) |
 | Can You Bend Just the TIP of Your Finger? | 26 s | [`videos/finger-tip-bend`](videos/finger-tip-bend) | [14 Nov 2026](https://youtube.com/shorts/o6lX2LPekDw) |
 | The EIFFEL TOWER Gets Taller in Summer | 26 s | [`videos/eiffel-summer`](videos/eiffel-summer) | [14 Nov 2026](https://youtube.com/shorts/qeCHoD61IoA) |
+| Your HONEY Could Outlive You | 26 s | [`videos/honey-never-goes-off`](videos/honey-never-goes-off) | 15 Nov 2026 |
 
 Each folder has:
 - the finished MP4;

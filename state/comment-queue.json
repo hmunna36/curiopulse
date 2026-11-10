@@ -566,8 +566,10 @@
       "title": "Can You Make a W With Your FINGERS? 🖐️",
       "publishAt": "2026-11-10T06:00:00.000Z",
       "question": "Could you do it? 🖐️",
-      "status": "queued",
-      "queued": "2026-11-05T19:21:17.072Z"
+      "status": "posted",
+      "queued": "2026-11-05T19:21:17.072Z",
+      "commentId": "UgyUt4rWvJU02u2gM5d4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "hGbLDBMPtSM",
@@ -575,8 +577,10 @@
       "title": "Could Every PLANET Fit Between You and the Moon? 🌕",
       "publishAt": "2026-11-10T18:00:00.000Z",
       "question": "🌕 Bonus: the Moon drifts about 3.8 cm farther from Earth every year.\nDid you think they'd fit? 🪐",
-      "status": "queued",
-      "queued": "2026-11-05T21:34:48.668Z"
+      "status": "posted",
+      "queued": "2026-11-05T21:34:48.668Z",
+      "commentId": "UgypWmdrgfiAFfQYDUZ4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "OejAWGWazTI",
