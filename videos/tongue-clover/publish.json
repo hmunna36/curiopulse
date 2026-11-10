@@ -34,23 +34,38 @@
   "cover": "cover.jpg",
   "captions": "tongue-clover.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-15T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "b5odNX2YsG4",
+    "url": "https://youtube.com/shorts/b5odNX2YsG4",
+    "uploaded": "2026-11-10T21:21:24.464Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg put in Studio's vertical thumbnail slot, \"Changes saved\" (11 Nov 02:55 IST)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-19T18:30:00+05:30",
     "caption": "Can you make a tongue clover? Roll it, then flip the tip UP. ☘️\nTaco? Join the club: only about 1 in 7 people can. Every tongue has the same muscles, but the wiring is different!\nTaco, clover or flat?\nFollow @curio_pulse_tv for the next one: why can't you say M with your mouth OPEN? 🔔\n#science #humanbody #tongue #bodytest #funfacts #reels",
     "coverTime": 3.2,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 19 Nov 2026 18:30 IST; scheduled 11 Nov 03:00 IST"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-15T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1013667795108376",
+    "publishAt": "2026-11-19T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-10T21:27:33.265Z"
   }
 }

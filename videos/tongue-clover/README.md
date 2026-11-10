@@ -54,9 +54,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | pending | 15 Nov 2026 23:30 IST |
-| Instagram Reels | pending | the next free slot after the YouTube release |
-| Facebook Page | pending | the same slot as the Reel |
+| YouTube Shorts | https://youtube.com/shorts/b5odNX2YsG4 | 15 Nov 2026 23:30 IST (scheduled; cover.jpg also in Studio's vertical thumbnail slot; playlist Why Does Your Body Do That?) |
+| Instagram Reels | scheduled in Meta Business Suite (Instagram only, cover.jpg as the cover) | 19 Nov 2026 18:30 IST |
+| Facebook Page | scheduled by the Page API (video 1013667795108376, ready / scheduled) | 19 Nov 2026 18:30 IST |
 
 **Title:** Can You Make a Tongue CLOVER? ☘️
 
