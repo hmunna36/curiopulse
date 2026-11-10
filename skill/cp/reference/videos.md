@@ -91,11 +91,53 @@
 | `knuckle-lock`: "Make a Duck Hand. Can You SPREAD Your Fingers? 🦆" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/xL7tQTt3zCQ · 13 Nov 2026 23:30 IST | Business Suite, Instagram only, 17 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1877873516960721) |
 | `finger-tip-bend`: "Can You Bend Just the TIP of Your Finger? 👆" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/o6lX2LPekDw · 14 Nov 2026 11:30 IST | Business Suite, Instagram only, 17 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2365184184301536) |
 | `eiffel-summer`: "The EIFFEL TOWER Gets Taller in Summer 🗼" | 26 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/qeCHoD61IoA · 14 Nov 2026 23:30 IST | Business Suite, Instagram only, 18 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3124294561109796) |
+| `tongue-clover`: "Can You Make a Tongue CLOVER? ☘️" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/b5odNX2YsG4 · 15 Nov 2026 23:30 IST | Business Suite, Instagram only, 19 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1013667795108376) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**tongue-clover** (the 02:00 second Short of 11 Nov 2026, 02:05-03:05 IST; a TEST Short, the Queue's first line (the kin of the tongue
+roll and tongue-to-nose, promised by finger-tip-bend's Next-up); tight arm, 61 words -> 25.83 s; hook formula The Question as the test,
+the title word for word: "Can you make a tongue clover? Roll it, then flip the tip UP." (after The Comparison, The Comparison, The Direct
+Address); answer "Taco? Join the club. Only one in seven can." at 4.50 s; the second test inside the Short "Try again. Tip up... sides
+flop?" (8.0-11.4 s); the mechanism "Every tongue has the same muscles. The WIRING's different." and the hedge "Scientists suspect that's
+what makes a tongue a gymnast." (Kappert et al., Dysphagia 2020: 374 adults, 14.7 % clover, 83.7 % roll; the same muscle layout, the
+innervation differs and "might contribute"); the fact "Clover people can do most other tongue tricks too." / "SHOW-offs." (rimshot);
+button "Now flip the tip FIRST." into the hook; caption question "Taco, clover or flat?"; YouTube b5odNX2YsG4, 15 Nov 23:30 IST, playlist
+Why Does Your Body Do That?, cover.jpg also in Studio's vertical slot ("Changes saved"); Reel (Business Suite, Instagram only, cover set;
+Business Suite opened on CurioPulse this time) + Page (fb.mjs 1013667795108376) 19 Nov 18:30 IST. Two QA rounds, qa.py 20/20 both;
+build.sh into a fresh .work-build reproduced timeline.json, mix.wav and the SRT byte for byte, its MP4 753 bytes different and
+pixel-identical on sampled frames, 20/20; about 3.4 minutes a render (775 frames, 0.27 s a frame)):
+- **World (borrow it):** the mirror Shorts' `mirror.js` (from mirror-eyes) with the room repainted in a new file `tc_world.js`: apricot
+  tiles, a band of mint tiles, the morning window, a pot of three-leaf clover on the sill, a shelf (cup + toothbrush, bottles), a mint
+  towel, a wall light (`tcPaintRoom`, `tcRoom`); his tongue (`tcTongue`, over roll-tongue's `tongueFront`): `fold` (the tip flipped up
+  and back: the paler underside with two blue veins, a shadow under it and a bright bend), `clover` (three heart-shaped leaves out of one
+  middle, with its own x-ray of the three ways of muscle), `top` (taco toppings: lettuce, cheese, tomato), `wires` ({tangle}: a buzzing
+  orange knot and one fat cord; {neat}: three coloured wires to the tip and both sides), `twist`; `tcMini` (roll-tongue's miniFace with
+  tcTongue); `tcGym` (a tongue gymnast in a violet leotard with a yellow bow: stand / crouch / tuck, `rot`, `clover` turns its top into
+  three leaves, `wink`); `tcPaintHall` + `tcArena` (the TONGUE CUP hall: a dimmed crowd, banners, three spotlight cones in the glow
+  layer, camera flashes, the beam); `tcScore` (a judge's 10); `tcCard` (the TACO CLUB membership card); `tcLeafPath` (one heart-shaped
+  leaf as a subpath, for any clover).
+- **Two round lobes and a ball below the mouth read as something else.** The first clover (two spheres for the rolled sides, a ball for
+  the tip) looked anatomical at a glance; three heart-shaped leaves radiating from one middle, each with a crease, read as a clover at
+  once, at any size.
+- **`pops(times, bus, gain)` takes a LINEAR gain** (most sfxkit helpers take dB): `pops(..., sfx, -21)` made the sprinkle 21 times too
+  loud and inverted, the sfx bus normalised to it, and every other gag fell to -78 dB in qc_audio's shot table. Pass `db(-21)`.
+- **Labels at y 300-330 sit under the player's top band** (0-375 covered): the first stills had 1 IN 7, SAME MUSCLES, the tick row and
+  SCIENTISTS SUSPECT there. Keep labels at y 400 or lower from the first draft.
+- **A spotlight on a pink character washes it white:** the hall's middle cone at 0.5 plus a soft dot on the gymnast bloomed it to a
+  white ghost; cones at 0.2-0.22 and no extra dot kept it pink.
+- **The first look inside grows out of the scene even before a comparison board:** round 1 cut from the mirror straight to a YOU /
+  CLOVER CHAMP board (retention 7.5); round 2 lets his own tongue turn see-through in the mirror (fibres lit on "Every tongue") and dives
+  in with a zoom blur and a flash into the board (8).
+- **A compact prop needs a tighter cover:** at zoom 4.3 the clover read as a bow tie at thumbnail size; at 6.0 it is ~280 px wide and
+  plainly comes out of his mouth.
+- **Shell:** zsh does not split `set -- $x`, and Remotion's ffmpeg has no `select` filter: grab single frames with `-ss` from a short
+  Python loop.
+- Voice: 358 characters on the first synth (the hook auditioned three ways first: 182 more) + 2 retakes of "SHOW-offs." (the deadpan and
+  the sarcastic takes read -29 dB in the speech band; "SHOW-offs." untagged with capitals -21.9); quota.mjs read 78,767 before.
 
 **honey-never-goes-off** (the 00:00 routine of 11 Nov 2026, 00:03-01:15 IST; a CURIOUS Short, the Curious queue's first line (promised by
 eiffel-summer's Next-up), framed as two comparisons of time (your honey outlives you; the oldest honey ever found is older than the

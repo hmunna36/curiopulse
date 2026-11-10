@@ -133,3 +133,5 @@ $PYTHON qc_audio.py ../.work                          # per-shot stem levels + w
 - mixlib's studio chain (pedalboard 0.9.25 in ~/.cache/cp/venv; default when importable, `CP_STUDIO=0` turns it
   off): voice compressor 3:1 with a ≤3 dB transient shave, master glue 1.6:1, true-peak brickwall limiter.
   On onion tears it raised content-word SNR 15.4 → 17.8 dB and true peak after AAC −1.19 → −1.79 dBTP at −14 LUFS.
+
+- **`pops(times, bus, gain)` takes a LINEAR gain** (tongue-clover, 11 Nov 2026), unlike most helpers here (dB): pass `db(-21)`, never `-21`, or the sprinkle becomes the bus peak, the bus normalises to it, and every other gag drops out of the mix (qc_audio.py's per-shot table shows the sfx column near -80 dB).
