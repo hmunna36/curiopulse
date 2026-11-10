@@ -101,6 +101,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Bend Just the TIP of Your Finger? | 26 s | [`videos/finger-tip-bend`](videos/finger-tip-bend) | [14 Nov 2026](https://youtube.com/shorts/o6lX2LPekDw) |
 | The EIFFEL TOWER Gets Taller in Summer | 26 s | [`videos/eiffel-summer`](videos/eiffel-summer) | [14 Nov 2026](https://youtube.com/shorts/qeCHoD61IoA) |
 | Your HONEY Could Outlive You | 26 s | [`videos/honey-never-goes-off`](videos/honey-never-goes-off) | [15 Nov 2026](https://youtube.com/shorts/zDKpHRcwe-A) |
+| Can You Make a Tongue CLOVER? | 26 s | [`videos/tongue-clover`](videos/tongue-clover) | 15 Nov 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;
