@@ -1,17 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "wn5ow9UxzoI",
-      "slug": "blind-spot",
-      "title": "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️",
-      "publishAt": "2026-10-17T06:00:00.000Z",
-      "question": "Did it vanish? 👁️",
-      "status": "posted",
-      "queued": "2026-10-16T19:22:51.224Z",
-      "commentId": "UgwLlD9PGuoTtLotXpt4AaABAg",
-      "note": "the channel had commented already"
-    },
-    {
       "videoId": "vW0AeAfgNe0",
       "slug": "two-noses",
       "title": "Why Do You Feel TWO Noses? (Cross Your Fingers) 🤞",
@@ -648,6 +637,15 @@
       "question": "👄 Bonus: ventriloquists can't make a real M either. They swap in an N, and your brain hears the M.\nDid you get an M? 🤔",
       "status": "queued",
       "queued": "2026-11-11T19:28:21.739Z"
+    },
+    {
+      "videoId": "ts0Bp3aDLA0",
+      "slug": "gps-einstein",
+      "title": "Your Phone's GPS Needs EINSTEIN 🛰️",
+      "publishAt": "2026-11-16T18:00:00.000Z",
+      "question": "🛰️ Bonus: every GPS clock is set to tick slightly SLOW before launch, so that up in orbit it ticks exactly right.\nDid you know your phone uses relativity? Yes or no? 🛰️",
+      "status": "queued",
+      "queued": "2026-11-11T21:27:16.022Z"
     }
   ]
 }

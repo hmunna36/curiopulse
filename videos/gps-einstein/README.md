@@ -60,9 +60,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block (the "gain" b
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 16 Nov 2026 23:30 IST (scheduled; playlist Strange Nature) |
-| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only) | (filled in after scheduling) |
-| Facebook Page | CurioPulse (fb.mjs) | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/ts0Bp3aDLA0 | 16 Nov 2026 23:30 IST (scheduled; playlist Strange Nature; thumbnail and captions set by the API; cover.jpg also in Studio's Shorts thumbnail slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 20 Nov 2026 18:30 IST (scheduled) |
+| Facebook Page | CurioPulse (fb.mjs, video 963341966520829, `scheduled`, `ready`) | 20 Nov 2026 18:30 IST |
 
 **Title:** Your Phone's GPS Needs EINSTEIN 🛰️
 **Description, tags, Reel caption, "Next up" comment:** in [`publish.json`](publish.json).
