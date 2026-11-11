@@ -49,8 +49,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 16 Nov 2026 11:30 IST |
-| Instagram Reels | (Business Suite) | (the next free 18:30 / 21:00 IST slot after the YouTube release) |
+| YouTube Shorts | https://youtube.com/shorts/KoPr0S0NIkc | 16 Nov 2026 11:30 IST (scheduled; playlist Why Does Your Body Do That?; cover.jpg also in Studio's vertical slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 19 Nov 2026 21:00 IST (scheduled) |
+| Facebook Page | CurioPulse (fb.mjs, video 1511378984148243) | 19 Nov 2026 21:00 IST (scheduled) |
 
 **Title:** Why Can't You Say "M" With Your Mouth OPEN? 👄
 

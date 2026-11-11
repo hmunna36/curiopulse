@@ -34,23 +34,38 @@
   "cover": "cover.jpg",
   "captions": "m-mouth-open.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-16T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "KoPr0S0NIkc",
+    "url": "https://youtube.com/shorts/KoPr0S0NIkc",
+    "uploaded": "2026-11-11T19:28:11.525Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg put in Studio's vertical thumbnail slot, \"Changes saved\" (12 Nov 01:00 IST)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-19T21:00:00+05:30",
     "caption": "Open your mouth wide and say \"mmm\". 👄\nCan't? M is a hum that comes out of your NOSE, and it only works with your lips shut. Open them and the hum spills out as \"aaah\". That's why you can't answer your dentist!\nDid you get an M?\nFollow @curio_pulse_tv for the next one: why does folding your arms the OTHER way feel so wrong? 🔔\n#science #humanbody #bodytest #funfacts #speech #reels",
     "coverTime": 3.2,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover, caption typed line by line, 19 Nov 2026 21:00 IST; scheduled 12 Nov 01:07 IST"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-16T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1511378984148243",
+    "publishAt": "2026-11-19T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-11T19:35:06.940Z"
   }
 }

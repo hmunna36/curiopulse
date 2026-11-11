@@ -1,18 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "8QjXeZNUq9Y",
-      "slug": "dominant-eye",
-      "title": "Why Does Your Finger JUMP When You Close One Eye? 👁️",
-      "publishAt": "2026-10-16T18:00:00.000Z",
-      "question": "Left or right? 👁️",
-      "status": "posted",
-      "queued": "2026-10-16T14:46:15.684Z",
-      "commentId": "Ugw3aPJ8Rf5UTp6HmgV4AaABAg",
-      "posted": "2026-10-16T18:20:50.575Z",
-      "text": "Next up: What If You Hold Your Breath TOO Long? (Second by Second) Subscribe so you don't miss it!\nLeft or right? 👁️"
-    },
-    {
       "videoId": "wn5ow9UxzoI",
       "slug": "blind-spot",
       "title": "Why Does This Dot VANISH? (Find Your Blind Spot) 👁️",
@@ -651,6 +639,15 @@
       "question": "☘️ Bonus: in that 2020 study, the clover people could also do most of the other tongue tricks. Show-offs.\nTaco, clover or flat? 👅",
       "status": "queued",
       "queued": "2026-11-10T21:21:33.171Z"
+    },
+    {
+      "videoId": "KoPr0S0NIkc",
+      "slug": "m-mouth-open",
+      "title": "Why Can't You Say \"M\" With Your Mouth OPEN? 👄",
+      "publishAt": "2026-11-16T06:00:00.000Z",
+      "question": "👄 Bonus: ventriloquists can't make a real M either. They swap in an N, and your brain hears the M.\nDid you get an M? 🤔",
+      "status": "queued",
+      "queued": "2026-11-11T19:28:21.739Z"
     }
   ]
 }
