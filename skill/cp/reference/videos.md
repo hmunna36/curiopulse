@@ -98,6 +98,48 @@ here for every new Short, with its links.
 
 ## Lessons
 
+**m-mouth-open** (the 00:00 routine of 12 Nov 2026, 00:04-01:15 IST; a TEST Short, the Queue's first line (promised by
+tongue-clover's Next-up); tight arm, 62 words -> 26.87 s; hook formula The Direct Address as the test: "Open your mouth wide. Now
+say 'Mmm.'" (after The Question, The Comparison, The Comparison); answer "Can't? M is a hum... that comes out your NOSE." at 4.00 s;
+two more tests in the 8-13 s stretch ("Shut your lips and hum. Feel your nose buzz?", "Now open up... and the hum spills out your
+MOUTH instead."); payoff "That's why you can't answer your dentist."; fact "Ventriloquists can't say M either. They fake it with an
+N." (ventriloquism teaching: M -> N, B -> D, P -> T); button "Now say 'mama'... without moving your lips." into the hook; caption
+question "Did you get an M?"; YouTube KoPr0S0NIkc, 16 Nov 11:30 IST, playlist Why Does Your Body Do That?, cover.jpg also in Studio's
+vertical slot ("Changes saved"); Reel (Business Suite, Instagram only, cover set; opened on CurioPulse) + Page (fb.mjs
+1511378984148243) 19 Nov 21:00 IST. Two QA rounds, qa.py 20/20 both (WER 0.0 %); build.sh into a fresh .work-build reproduced
+timeline.json, mix.wav, the SRT AND the MP4 byte for byte; about 3.6 minutes a render (806 frames, 0.26 s a frame)):
+- **World (borrow it):** `mm_clinic.js`: the dentist's room as a wall plate painted once with parallax round his head (`initClinic`,
+  `mmWall`, `mmWallGlow`: mint wall, tiles, a window with blinds and a tree, the FLOSS! poster, an x-ray light box, a cabinet with a
+  jar of toothbrushes and a plant; a soft copy for zoom > 3.2), the dental lamp (`mmLamp`), the chair (`mmChairBack`,
+  `mmChairFront`), him SEATED (`mmHero`: POSES.sit at st (540, 1700, 1): his head lands at (528, 1418); a paper bib in post kept
+  below the chin at full jaw; `A.mirror` the dental mirror in his yawn-mouth with the dentist's blue glove (`mmMirror`,
+  `mmGlove`, sleeve optional); `A.lips: 'P'` pressed lips + `puff`; `A.finger` a pointing finger along the side of his nose;
+  `A.buzz` jitters the head), `mmDentist` (an actor: cap with little teeth, round glasses, mask, white coat, badge; eyes 'smile' /
+  'squint' / 'open', a brow that lifts); `mm_section.js` over tongue-twister's `tw_mouth.js`: his head as glass with the ROAD
+  THROUGH THE NOSE added (`mmNosePath`, `mmFlow`: a glowing road with travelling beads; `MM_ROAD_UP/NOSE/MOUTH`; `mmLetters`:
+  letters leaving a point, deterministic); `mm_vent.js` over tongue-twister's `tw_stage.js` (its neon now takes `o.top`, `o.bot`,
+  `o.neonY`; `twCrowd` takes `o.noPhones`): the wooden dummy (`mmDummy`: hinged jaw with slots, painted hair, freckles, bow tie),
+  him with the dummy on his arm (`mmVentHero`), a bubble whose M's flip to N's (`mmFlipBubble`). Its scenes.js: `mmBubble` (any
+  speech bubble with a tail), `mmScreenLetters`, `mmBuzzMarks`, the window on his cheek and the dive (`mmSecWindow`), `SC.loop`,
+  `SC.cover`.
+- **Letters that come out of his face must be born OFF his face.** The first M burst (from the nose outwards) and the hum's m's
+  crossed his eyes, and a soft glow at the nostril washed the whole face white in the close-up. The m's now leave sideways
+  (+-0.06 rad) from beside each nostril, the M's are born at radius 170 px (the edge of his face) and slide out, and nothing glows
+  on a face in a close-up.
+- **A gag in the pause right before a whip-out gets about a quarter of a second:** the whip leaves 5 frames before the cut, so the
+  dentist's AAH-AAH! (hitstop at 18.48) was readable only to 18.6. The gap before the next block 0.45 -> 0.72 (free) gave it half a
+  second. Check the frames between a pause's gag and the next cut.
+- **A finger at his own nose (seated rig):** with the forearm coming up from below (elbow [96, -150], wrist [40, -232]) the finger
+  lay across his eye; nearly horizontal (elbow [140, -206], wrist [54, -240]) it lies along the side of the nose, under the eye.
+  The same goes for buzz marks: keep them to the sides and below the nose.
+- **A full-size dummy reads as a second person:** at scale 1.05 with its head at his head's height it stood beside him; at 0.8
+  with its head at his chest, on his arm, it is a dummy.
+- **Judge a re-take in the mix, not alone:** two new takes each of "spill" and "button" were auditioned for their faint last words
+  (instead., lips.); the new "spill" held "instead." 5 dB better by itself but was quieter overall and put three other words under
+  10 dB in the mix, so the first take stayed. `hum_voice` and `yawn_voice` cannot be shorter than their fades (0.11 / 0.14 s):
+  this audio.py writes a short vowel by hand (`vowel_a`) for the "Aaah?", "ah-AAH!" and "na-na?".
+- Voice: 325 characters (one take per block) + 350 for the auditions; quota.mjs read 78,138 before, 77,458 after.
+
 **tongue-clover** (the 02:00 second Short of 11 Nov 2026, 02:05-03:05 IST; a TEST Short, the Queue's first line (the kin of the tongue
 roll and tongue-to-nose, promised by finger-tip-bend's Next-up); tight arm, 61 words -> 25.83 s; hook formula The Question as the test,
 the title word for word: "Can you make a tongue clover? Roll it, then flip the tip UP." (after The Comparison, The Comparison, The Direct
