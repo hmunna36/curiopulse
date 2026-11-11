@@ -104,6 +104,8 @@ CAMERA = {
     "whip": [],        # [cue time of a cut, 1 | -1]: whip pans at the act turns and the clock's jumps
     "punch": [],       # [cue time, 1.15-1.25 (, end)]: punch-ins on his face or hand on the punchlines
     "tilt": [],        # [from, to, 2-5 degrees]: a dutch tilt when things go wrong
+    "hit": [],         # [cue time, 4]: a hitstop on a punchline's impact frame; add its layered hit in audio.py
+    "act": {"brow": []},   # brow lifts where he finds something out (blinks and eye darts run by themselves)
     "mood": [],        # [[0, "day"], [cue, "night"], ...]: the colour script (cold when he is stuck, warm when it turns)
     "fg": {},          # {shot: "grass-b" | "leaves-tr" | "post-l" | "bokeh-r" ...}: depth in front of the lens, in the corners
     "air": {},         # {shot: "dust" | "embers" | "drizzle" ...}: particles that suit the place and its light

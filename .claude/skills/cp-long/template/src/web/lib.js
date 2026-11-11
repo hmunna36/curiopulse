@@ -13,12 +13,15 @@ function mkCanvas(w, h) {
 // main output + emissive (glow) layer at half resolution + scratch layers
 const mainC = document.getElementById('c');
 mainC.width = W; mainC.height = H;
-const ctx = mainC.getContext('2d');
-const glowC = mkCanvas(W / 2, H / 2), gctx = glowC.getContext('2d');
-const bloomC = mkCanvas(W / 4, H / 4), bctx = bloomC.getContext('2d');
-const layerC = mkCanvas(W, H), lctx = layerC.getContext('2d');
-const tintC = mkCanvas(W, H), tctx = tintC.getContext('2d');
-const tmpC = mkCanvas(W, H), tmpx = tmpC.getContext('2d');
+// The drawing canvases are raster (CPU-backed) canvases (8 Nov 2026, the Shorts' video-quality research): exact edges.
+// The cloud's Chrome has no graphics chip, so they already were there; on a Mac render this keeps edges from crawling.
+const CP_CTX2D = window.TL && window.TL.raster === 'gpu' ? {} : { willReadFrequently: true };
+const ctx = mainC.getContext('2d', CP_CTX2D);
+const glowC = mkCanvas(W / 2, H / 2), gctx = glowC.getContext('2d', CP_CTX2D);
+const bloomC = mkCanvas(W / 4, H / 4), bctx = bloomC.getContext('2d', CP_CTX2D);
+const layerC = mkCanvas(W, H), lctx = layerC.getContext('2d', CP_CTX2D);
+const tintC = mkCanvas(W, H), tctx = tintC.getContext('2d', CP_CTX2D);
+const tmpC = mkCanvas(W, H), tmpx = tmpC.getContext('2d', CP_CTX2D);
 
 // ---------- math ----------
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));

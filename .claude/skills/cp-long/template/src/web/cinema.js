@@ -29,10 +29,10 @@ const CIN_ON = CIN_TL.cinema === true;                  // timeline_lib writes i
 const CIN_CFG = CIN_ON ? (CIN_TL.camera || {}) : {};
 const CIN = { hero: null, frame: -1 };
 const CIN_HAND_DEFAULT = 0.3;
-const cinC = mkCanvas(W, H), cinx = cinC.getContext('2d');          // a copy of the frame for the lens
-const cinS = mkCanvas(64, H / 2), cinsx = cinS.getContext('2d');     // the whip's smear (resized per frame)
+const cinC = mkCanvas(W, H), cinx = cinC.getContext('2d', typeof CP_CTX2D === 'object' ? CP_CTX2D : {});          // a copy of the frame for the lens
+const cinS = mkCanvas(64, H / 2), cinsx = cinS.getContext('2d', typeof CP_CTX2D === 'object' ? CP_CTX2D : {});     // the whip's smear (resized per frame)
 const CIN_P = CanvasRenderingContext2D.prototype;
-const cinF = mkCanvas(W, H), cinfx = cinF.getContext('2d');          // the foreground layer, blurred in one pass
+const cinF = mkCanvas(W, H), cinfx = cinF.getContext('2d', typeof CP_CTX2D === 'object' ? CP_CTX2D : {});          // the foreground layer, blurred in one pass
 // the kit's own clocks and colour mixing, so it also runs in engines without fx.js's loopW / mixH (the weekly film)
 function cinLoopW(w) {
   const D = window.TL && window.TL.duration > 5 ? window.TL.duration : 0, T2 = Math.PI * 2;
@@ -343,7 +343,27 @@ function cinFg(spec, t, hand) {
 }
 
 // ---------------------------------------------------------------- the two moments main.js calls
-function cinemaFrameStart(f) { CIN.hero = null; CIN.frame = f; }
+function cinemaFrameStart(f) { CIN.hero = null; CIN.frame = f; CIN.sceneT = null; }
+// HITSTOP (8 Nov 2026, the video-quality research): on a punchline's impact the action freezes for a few frames while the
+// camera keeps shaking, then snaps on. CAMERA["hit"] = [[t, frames]] (2-6 frames; 4 reads as a hit). main.js asks for the
+// scene's clock here; captions, the drift, particles and the lens keep the real one.
+function cinHitT(t) {
+  if (!CIN_ON) return t;
+  for (const h of CIN_CFG.hit || []) {
+    const t0 = h[0], n = h[1] || 4;
+    if (t >= t0 && t < t0 + n / FPS) { CIN.sceneT = t0; return t0; }
+  }
+  return t;
+}
+function cinHitShake(t) {
+  for (const h of CIN_CFG.hit || []) {
+    const t0 = h[0], n = h[1] || 4, u = (t - t0) * FPS;
+    if (u < 0 || u > n + 5) continue;
+    const a = 11 * (u < n ? 1 : Math.max(0, 1 - (u - n) / 5)), fr = Math.floor(u);
+    return [a * (hash(fr * 3.1 + t0) * 2 - 1), a * 0.8 * (hash(fr * 7.7 + t0) * 2 - 1)];
+  }
+  return [0, 0];
+}
 // after the scene is lit and its glow is on: the mood, the particles, the foreground layer
 function cinemaScene(t, shot, post) {
   if (!CIN_ON) return;
@@ -359,6 +379,7 @@ function cinemaLens(t, shot, post) {
   if (!CIN_ON) return;
   const f = Math.round(t * FPS);
   const hd = cinHandXY(t, cinHand(shot, post)), k = cinPunch(t), th = cinTilt(t), wp = cinWhip(f);
+  const hs = cinHitShake(t); hd[0] += hs[0]; hd[1] += hs[1];
   const hx = Math.round(hd[0]), hy = Math.round(hd[1]);
   if (!wp && Math.abs(k - 1) < 1e-4 && Math.abs(th) < 1e-5 && !hx && !hy) return;
   const F = cinFocus(post);
@@ -378,6 +399,26 @@ function cinemaLens(t, shot, post) {
   }
   ctx.restore();
   if (wp && wp.v > 0.02) cinSmear(W * 0.42 * wp.v, wp.v);
+  // camera motion blur (8 Nov 2026, the video-quality research): a punch-in streaks outward from his face while it
+  // zooms, a tilt smears round him while it turns, as a real lens would; nothing while the camera holds still
+  const dk = k - cinPunch(t - 1 / FPS), dth = th - cinTilt(t - 1 / FPS);
+  // a half-open shutter: the blur covers half of the frame-to-frame move, so his face (the centre) stays sharp
+  if (Math.abs(dk) > 0.004 && typeof zoomBlur === 'function') zoomBlur(clamp(Math.abs(dk) * 0.55, 0, 0.045), F.x, F.y);
+  if (Math.abs(dth) > 0.0015) cinRotBlur(dth * 0.5, F);
+}
+// a rotational smear about F over the angle the frame turned since the last frame (progressive average of 8 copies)
+function cinRotBlur(dth, F) {
+  cinx.setTransform(1, 0, 0, 1, 0, 0); cinx.globalCompositeOperation = 'copy'; cinx.filter = 'none'; cinx.drawImage(mainC, 0, 0);
+  cinx.globalCompositeOperation = 'source-over';
+  ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.filter = 'none'; ctx.globalCompositeOperation = 'source-over';
+  const n = 8;
+  for (let i = 1; i < n; i++) {
+    const a = -dth * (i / (n - 1)) * 0.9;
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.translate(F.x, F.y); ctx.rotate(a); ctx.translate(-F.x, -F.y);
+    ctx.globalAlpha = 1 / (i + 1);
+    ctx.drawImage(cinC, 0, 0);
+  }
+  ctx.restore();
 }
 // a smooth horizontal smear of about `px` pixels (squeeze the frame thin, then stretch it back), blended in by `mix`
 function cinSmear(px, mix) {

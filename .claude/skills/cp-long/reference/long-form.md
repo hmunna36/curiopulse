@@ -280,6 +280,16 @@ script; the kit (`web/cinema.js`, the same file as the Shorts') gives the tools,
   shows a full render would not fit the run, keep the plan but set `"air": {}` first (the particles are its dearest
   part), then `"fg": {}`; say so in the report.
 
+## Acting and timing (8 Nov 2026; the Shorts' video-quality research, approved by the owner on a before/after)
+
+The same layer as the Shorts (the cp skill's `reference/visual.md`, "Acting and timing"): he blinks and his eyes dart on
+their own (`web/acting.js`), brow beats go in `CAMERA["act"]["brow"]` on the beats where he finds something out, his big
+moves use `snapRamp(t, a, b)` (a wind-up, then an overshoot that settles), the punchlines' impact frames get a hitstop
+(`CAMERA["hit"] = [[cue, 4]]`, 4 frames frozen while the camera shakes, inside one shot) with its layered hit in audio.py
+(the cp skill's `reference/sound.md`, "Hitstops"), and the camera blurs on punch-ins and tilts by itself. All of it is a
+pure function of time, so `render_par.js` pieces join without a seam. In a film, a hitstop on each act's biggest laugh,
+not on every joke.
+
 ## Landscape staging (1920×1080)
 
 - **Use the width.** Hero on one third (x ≈ 640 or 1280), what he looks at on the other; or a split: the hiker on the
