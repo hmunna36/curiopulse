@@ -253,7 +253,7 @@ else:
 norm = lambda s: re.sub(r"[^a-z0-9' ]", " ", s.lower().replace("%", " percent"))  # noqa: E731
 # one word, two spellings: whisper writes the American one whatever the script uses (spicy-food, 7 Oct 2026: four
 # "chilli" in 70 words would have cost 5.7 % WER for a word it heard every time). Both sides are mapped to one spelling.
-SPELL = {"chili": "chilli", "chilis": "chillies", "chilies": "chillies", "chiles": "chillies", "color": "colour",
+SPELL = {"kilometers": "kilometres", "kilometer": "kilometre", "chili": "chilli", "chilis": "chillies", "chilies": "chillies", "chiles": "chillies", "color": "colour",
          "colors": "colours", "flavor": "flavour", "odor": "odour", "gray": "grey", "fiber": "fibre", "fibers": "fibres",
          "liter": "litre", "meter": "metre", "meters": "metres", "tumor": "tumour", "mold": "mould",
          # whisper writes a spoken number as digits ("number 10", "30 feet", "100 times"): the word was said right

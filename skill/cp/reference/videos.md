@@ -98,6 +98,54 @@ here for every new Short, with its links.
 
 ## Lessons
 
+**gps-einstein** (the 02:00 second Short of 12 Nov 2026, 02:05-03:10 IST; a CURIOUS Short, the Curious queue's first line (promised by
+honey-never-goes-off's Next-up), framed as a comparison of time (up in space time runs faster than in your pocket, 38 millionths of a
+second a day = ten kilometres of error); tight arm, 57 words -> 27.83 s (the first draft, 61 words, ran 31.9 s: "Because", "For GPS",
+"switched" cut, pauses capped); hook formula The Impossible Claim told through the viewer's own phone (after The Direct Address, The
+Question, The Comparison): "Your phone's GPS needs EINSTEIN."; answer "Up in space... time runs FASTER." at 3.04 s; mechanism "Gravity slows
+clocks down. Yours, down here? Dragging."; number "Up there, satellite clocks gain thirty-eight millionths of a second... every day.";
+payoff "Sounds tiny? That's over ten kilometres of error. A DAY." (he follows his drifting blue dot off a jetty into the lake); fact "The
+first test satellite flew with the fix OFF... in case Einstein was wrong."; button "He wasn't." (he flips the 1977 FIX switch ON) into the
+hook; caption question "Did you know your phone uses relativity? Yes or no?"; YouTube ts0Bp3aDLA0, 16 Nov 23:30 IST, playlist Strange
+Nature, cover.jpg also in Studio's Shorts slot (it showed an automatic frame; "Changes saved"); Reel (Business Suite, Instagram only, cover
+set; opened on CurioPulse) + Page (fb.mjs 963341966520829) 20 Nov 18:30 IST. Two QA rounds, qa.py 20/20 both; build.sh into a fresh
+.work-build reproduced timeline.json, mix.wav, the SRT AND the MP4 byte for byte; about 3.6-4.2 minutes a render (835 frames)):
+- **New world file (borrow it): `gp_world.js`:** a mountain lake at dusk as a screen-space backdrop (`gpLakeBack`: sky gradient with
+  twinkling first stars, the afterglow, a satellite glint with a cross flare and a dashed beam to it from any screen point, three ranges
+  painted once with alpenglow and snow (`GP_MTN`), the lake mirroring them in rippled strips, a glitter path); the near shore (`gpShore`:
+  trail, rocks, grass, a LAKE TRAIL signpost), a lantern post that blooms (`gpLantern`), a wooden jetty side-on (`gpJetty`: posts with
+  reflections, deck, a mooring rope, a lantern at `lanternX`); orbit: a star field with the Milky Way (`GP_STARS`), the Earth from a
+  painted map (`gpEarth`: oceans, continents from noise, wrapped clouds, a night side whose town lights are masked to the dark half in the
+  scratch canvas, a rim; `rot`, `sunA`, `night`, `lights`), gravity as rings hugging it that flow inward (`gpGravRings`); clocks that
+  whirl or droop like wet noodles and sweat (`gpClock`), a wristwatch (`gpWatch`), the GPS satellite with a clock on its side (`gpSat`),
+  the 1977 test satellite with a FIX toggle, a lamp red/green and a sticky note (`gpOldSat`), a phone whose map app has a drifting blue
+  dot and a 10 KM error arrow (`gpPhone`, `gpMapFace`), a bubble helmet with floating drops (`gpHelmet`), drips, the Einstein poof
+  (`gpEinsteinHair`), label pills (`gpTag`) and a DAY counter board (`gpCounter`). Its scenes.js has `gpHero` (any place: arms by
+  `armAt`, a watch on a wrist, a phone with a grip, helmet, drips), `gpFloatPose`, `gpHookDraw(tt)` (the hook as a function of time, valid
+  at negative time: `SC.loop`), `SC.cover`.
+- **The rig's `frizz` in a white palette read as a feathered headdress** (white spikes tinted by the light): a wild-haired look is a cloud
+  of white puffs round the head plus a moustache, drawn in head units in the layer's `post` (`gpEinsteinHair`).
+- **A radial gradient fills inside its first stop too:** a "ring" gradient (stops from 0.99 R to 1.05 R) filled as a disc in the GLOW
+  layer bloomed the whole planet white and washed out every orbit shot. In the glow layer, stroke a ring; in the main layer draw the halo
+  before the planet so the planet covers its inside.
+- **Pseudo-random rules built from linear sums (`(i * 7919 + j * 104729) % 97`) make lattices:** the night lights drew dotted diagonal
+  lines across the Earth. Use `hash()` (and cluster it with noise). Wrap anything painted near a wrapping texture's edge (clouds left a
+  seam).
+- **`shockLines(x, y, r, k)` takes PROGRESS:** k = 1 draws nothing. Drive it with `inv(t0, t0 + 0.5, t)`; for a hitstop, start a second
+  burst at the hit so the frozen frames hold it mid-burst.
+- **A practical lamp next to a gag's spot blooms the gag white:** the jetty's end lantern washed the arm-and-phone-out-of-the-water gag
+  into a white pillar; the lantern moved to the shore end, the splash's own glow was cut to a quarter, and the arm is drawn after the
+  splash.
+- **The cinema kit's fg layers:** `branch-tl` read as a stray twig in a CU and `bokeh-l` as soap bubbles over his helmet in the button:
+  both taken out (particles give the depth; qa.py counts them).
+- **Fact framing:** "over ten kilometres of error" is the classic estimate (Ashby: "more than 11 km" a day; Pogge: "about 10 km"): the
+  range error of 38 µs of light travel, so the words say "of error", not that the dot itself moves exactly that far. The 1977 line is
+  Ashby's (Living Reviews 2003): the size and even the sign were uncertain and "some ... doubted"; the satellite ran ~20 days before the
+  synthesizer was switched on.
+- qa.py's SPELL list now maps kilometers -> kilometres (template too): whisper writes the American spelling.
+- Voice: 368 + 165 (three lines re-voiced after the trim) + 81 (one re-roll of "gain" for "every day.") = 614 characters; quota.mjs read
+  77,242 before and 76,970 after (it lags).
+
 **m-mouth-open** (the 00:00 routine of 12 Nov 2026, 00:04-01:15 IST; a TEST Short, the Queue's first line (promised by
 tongue-clover's Next-up); tight arm, 62 words -> 26.87 s; hook formula The Direct Address as the test: "Open your mouth wide. Now
 say 'Mmm.'" (after The Question, The Comparison, The Comparison); answer "Can't? M is a hum... that comes out your NOSE." at 4.00 s;
