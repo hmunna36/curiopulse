@@ -103,6 +103,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Your HONEY Could Outlive You | 26 s | [`videos/honey-never-goes-off`](videos/honey-never-goes-off) | [15 Nov 2026](https://youtube.com/shorts/zDKpHRcwe-A) |
 | Can You Make a Tongue CLOVER? | 26 s | [`videos/tongue-clover`](videos/tongue-clover) | [15 Nov 2026](https://youtube.com/shorts/b5odNX2YsG4) |
 | Why Can't You Say "M" With Your Mouth OPEN? | 27 s | [`videos/m-mouth-open`](videos/m-mouth-open) | [16 Nov 2026](https://youtube.com/shorts/KoPr0S0NIkc) |
+| Your Phone's GPS Needs EINSTEIN | 28 s | [`videos/gps-einstein`](videos/gps-einstein) | 16 Nov 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;

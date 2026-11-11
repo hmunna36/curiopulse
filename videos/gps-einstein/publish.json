@@ -1,0 +1,55 @@
+{
+  "slug": "gps-einstein",
+  "file": "gps-einstein-short.mp4",
+  "title": "Your Phone's GPS Needs EINSTEIN 🛰️",
+  "description": "Your phone's GPS needs Einstein. Up in space, time runs faster: gravity slows clocks down, so your clock down here drags, and the clocks on GPS satellites gain about 38 millionths of a second every day. Sounds tiny? To GPS, that's over 10 kilometres of error, a day. The first test satellite even flew with the fix switched off, in case Einstein was wrong. He wasn't.\nDid you know your phone uses relativity? Yes or no?\n\nThe science: GPS satellites orbit about 20,000 km up at about 14,000 km/h. Their speed makes their atomic clocks tick slower than ours by about 7 microseconds a day (special relativity), but the weaker gravity up there makes them tick faster by about 45 microseconds a day (general relativity), so they run about 38 microseconds a day fast. GPS finds you by timing radio signals that cross about 30 cm in a billionth of a second, so 38 microseconds is about 11 km: uncorrected, the errors would build up by more than 10 km in a single day (Neil Ashby, Physics Today, 2002; Richard Pogge, Ohio State University). That is why every GPS clock is set to tick slightly slow before launch. When the first test satellite, NTS-2, was launched in 1977, the size of the effect, and even its sign, was uncertain, and some doubted it was real, so its correction was built in switched off. After about 20 days of measuring, the clock ran fast just as relativity predicted, to within 1 %, and the correction was switched on.\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Physics #Einstein #GPS #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "tight",
+    "min": 25,
+    "max": 30,
+    "slot": "2026-11-16T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-16T23:30:00+05:30"
+  },
+  "pinnedComment": "🛰️ Bonus: every GPS clock is set to tick slightly SLOW before launch, so that up in orbit it ticks exactly right.\nNext up: dinosaurs are older than flowers 🦕🌸 Subscribe so you don't miss it!\nDid you know your phone uses relativity? Yes or no? 🛰️",
+  "tags": [
+    "gps",
+    "einstein",
+    "relativity",
+    "time dilation",
+    "how does gps work",
+    "gps satellites",
+    "time runs faster in space",
+    "general relativity",
+    "physics",
+    "science facts",
+    "mind blowing facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "gps-einstein.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Your phone's GPS needs Einstein 🛰️\nUp in space, time runs faster: the clocks on GPS satellites gain about 38 millionths of a second a day. Sounds tiny, but to GPS that's over 10 km of error, every day. The first test satellite even flew with the fix switched off, in case Einstein was wrong. He wasn't.\nDid you know your phone uses relativity? Yes or no?\nFollow @curio_pulse_tv for the next one: dinosaurs are older than flowers 🦕🌸\n#science #physics #einstein #space #funfacts #reels",
+    "coverTime": 2.3,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "slot": "2026-11-16T23:30:00+05:30"
+  }
+}
