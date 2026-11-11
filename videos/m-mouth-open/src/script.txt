@@ -1,0 +1,30 @@
+# Narration for "Why Can't You Say "M" With Your Mouth OPEN? 👄"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# The test (rules of 15 Oct 2026, 5 Nov 2026): the viewer opens wide and tries to say M; nobody can. Hook formula: The
+# Direct Address as the test. The answer starts by 5.0 s. While the lesson runs the viewer keeps testing: lips shut and
+# hum (the nose buzzes), then open up mid-hum (the M is gone). Payoff: the dentist. Weirdest fact: ventriloquists fake M
+# with an N. The button sends them back to a new test ("mama" with still lips) and runs into the hook.
+# Tight arm: 61 words (55-64), 25-30 s.
+
+## hook gap=0.06 tighten=0.30 tempo=1.02
+Open your mouth wide. Now say "Mmm."
+
+## answer gap=0.55 tighten=0.30 tempo=1.00
+Can't? M is a hum... that comes out your NOSE.
+
+## buzz gap=0.35 tighten=0.30 tempo=1.04
+Shut your lips and hum. Feel your nose buzz?
+
+## spill gap=0.30 tighten=0.30 tempo=1.04
+Now open up... and the hum spills out your MOUTH instead.
+
+## dentist gap=0.40 tighten=0.40 tempo=1.00
+That's why you can't answer your dentist.
+
+## weird gap=0.72 tighten=0.35 tempo=1.03
+Ventriloquists can't say M either. They fake it with an N.
+
+## button gap=0.45 tighten=0.30 tempo=1.00
+Now say "mama"... without moving your lips.
