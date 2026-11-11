@@ -148,7 +148,11 @@ Short's YouTube release (Business Suite).
   craft"; `reference/engine.md`, "The cinema kit in code"): a new framing at almost every cut (size, side, a low or high
   angle), at least two whip pans at story turns, a punch-in on the punchline, handheld drift on every shot, a light that
   follows the stakes and comes back for the loop (its colour changes, never its richness: the channel's colours stay
-  vibrant; owner, 7 Nov 2026), particles and a foreground layer for depth, and a dressed place, never an empty sky. The approved format does not move: frame 0 and the first 1.5 s stay the tight test, the test stays on
+  vibrant; owner, 7 Nov 2026), particles and a foreground layer for depth, and a dressed place, never an empty sky.
+  Since 8 Nov 2026 (the video-quality research, after the owner approved a before/after): he acts on his own (blinks,
+  eye darts; brow beats in `CAMERA["act"]`), his big moves use `snapRamp`, the answer's punchline gets a hitstop with a
+  layered hit (`CAMERA["hit"]`), and the camera blurs on punch-ins and tilts (`reference/visual.md`, "Acting and
+  timing"; ship bar item 7d). The approved format does not move: frame 0 and the first 1.5 s stay the tight test, the test stays on
   screen through 13 s, the last frame is frame 1. Ship bar item 7c.
 - **Watermarked:** the engine puts the channel name on every frame of every Short (user, 6 Oct 2026; `reference/visual.md`). Never remove it; check it is there on the QA sheets.
 - **The hiker** is the hero: the same rig, only the outfit changes.
@@ -247,7 +251,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
 10. **QA the MP4:**
     - `$PYTHON qa.py ../.work ../<slug>-short.mp4` must have no FAIL;
     - read every contact sheet and crop the risky moments;
-    - score the ship bar (13 items, incl. the test (1), the safe area (7b), camera and light craft (7c) and the loop (11)), with evidence;
+    - score the ship bar (14 items, incl. the test (1), the safe area (7b), camera and light craft (7c), acting and timing (7d) and the loop (11)), with evidence;
     - log the round in `.work/qa/ship-review.md`.
 11. **Not satisfied? Fix the weak parts:**
     - name the cause of each item under 8;

@@ -18,6 +18,7 @@
 | `web/fx.js` | shared scene helpers (see visual.md) | engine |
 | `web/scenes.js` (+ more) | this video's worlds, props and `SC.<shot>` functions, and `initScenes2()` | yes |
 | `web/subscribe.js` | the subscribe cue (pill, bell, cursor click, pop-out), silent, over the last 2.4 s in the pill test (3.4 s in 9–15 Oct), driven by `cues.sub_in` / `cues.sub_tap` / `cues.sub_out` (timeline_lib.py sets them from the duration for publish.json's pill arm, `PILL_IN` / `PILL_TAP` / `PILL_OUT`); `SUB_LINE` = an optional line of text under the pill (empty); `subLift` tells main.js which caption chunks sit at y 1150 | engine |
+| `web/acting.js` | automatic acting (8 Nov 2026): blinks, eye darts and planned brow beats on top of each shot's face (a `drawCharacter` wrapper, deterministic), and `snapRamp()` (a move with a wind-up and an overshoot) | engine |
 | `web/main.js` | the compositor: runs the active shot, the light (`lookFrameStart`, `lookScene`, `lookFinal`), bloom, the cinema kit (`cinemaScene`, `cinemaLens`), push, blur, grade, VHS, grain, flash, captions | engine |
 | `render.js` | headless Chrome → PNG frames piped into ffmpeg (or to a folder for stills); prints `look: …`, takes `CP_LOOK`, falls back to the classic look without a graphics chip | engine |
 | `make_srt.py`, `qa.py`, `qc_*.py`, `contact_sheet.py` | captions file, the QA gate, review tools | engine |
@@ -161,6 +162,22 @@ What to write is in visual.md ("The light"). How it works, for when something lo
   the kit, 266 s with it, on a heavily loaded Mac) and 3.5 ms of canvas work a frame; the file grows with the extra
   detail (the re-shot Short is 52.0 MB against 48.5 MB as shipped; still far under the 95 MB cap).
 - **The weekly film** (cp-long) has the same file in its template; sizes there scale with the frame (`CIN_U`).
+
+## Acting, hitstops and the raster canvases in code (8 Nov 2026; the rules are in visual.md, "Acting and timing")
+
+- `acting.js` wraps `drawCharacter` after cinema.js does: it copies `st.face`, adds the blink (max), the dart (added to
+  `lookX` / `lookY`) and the brow beat (added to `browY`), and draws. Its clock is the frame's own (`CIN.frame`), or the
+  frozen clock during a hitstop (`CIN.sceneT`), never a shot's local time. Schedules come from `hash()` of the beat's
+  index, so a frame renders the same in any order.
+- A hitstop: main.js asks `cinHitT(t)` for the scene's clock and runs the shot on it; captions, the subscribe pill, the
+  drift, the mood, the particles and the lens keep the real clock. `cinHitShake` adds an 11 px shake for the freeze and
+  5 frames after. timeline_lib refuses a hit outside 2-6 frames, in the first 1.5 s, in the loop's last 0.5 s, or across
+  a cut.
+- The camera blur sits at the end of `cinemaLens`: `zoomBlur` for the punch-in's change of zoom since the last frame
+  (x 0.55, at most 0.045) and `cinRotBlur` for the tilt's change of angle (x 0.5).
+- The raster canvases: lib.js creates every drawing canvas (and cinema.js its own) with `CP_CTX2D`
+  (`{willReadFrequently: true}`); `timeline.raster = 'gpu'` (render.js reads `CP_RASTER`) restores the GPU canvases. The
+  shape map's canvases are unchanged.
 
 ## Borrowing from past videos
 

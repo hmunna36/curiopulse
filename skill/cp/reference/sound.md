@@ -135,3 +135,16 @@ $PYTHON qc_audio.py ../.work                          # per-shot stem levels + w
   On onion tears it raised content-word SNR 15.4 → 17.8 dB and true peak after AAC −1.19 → −1.79 dBTP at −14 LUFS.
 
 - **`pops(times, bus, gain)` takes a LINEAR gain** (tongue-clover, 11 Nov 2026), unlike most helpers here (dB): pass `db(-21)`, never `-21`, or the sprinkle becomes the bus peak, the bus normalises to it, and every other gag drops out of the mix (qc_audio.py's per-shot table shows the sfx column near -80 dB).
+
+## Hitstops (8 Nov 2026, the video-quality research)
+
+Every `CAMERA["hit"]` gets a layered hit on its frame, made to be heard on a phone (a phone speaker plays little below
+about 600 Hz, so the body sits at 300-950 Hz, not under 220): a crisp transient, a body, a short bright tail, on top of
+the beat's own sound (the stamp's thud, the chomp), with the music already out (`silence`) or dipped:
+
+```python
+for _th in (c["long"] + 0.06, c["past"] + 0.08):                    # the CAMERA["hit"] times
+    sfx.add(pan_st(filt(snap(51), "highpass", 1800), 0.0), _th, db(-20))
+    sfx.add(pan_st(filt(filt(kick(0.9), "highpass", 300), "lowpass", 950), 0.0), _th + 0.004, db(-17))
+    sfx.add(cymbal(52, 0.45), _th + 0.01, db(-31))                  # cymbal() is already stereo: no pan_st
+```

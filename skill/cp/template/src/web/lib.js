@@ -11,12 +11,17 @@ function mkCanvas(w, h) {
 
 // main output + emissive (glow) layer at half resolution + scratch layers
 const mainC = document.getElementById('c');
-const ctx = mainC.getContext('2d');
-const glowC = mkCanvas(W / 2, H / 2), gctx = glowC.getContext('2d');
-const bloomC = mkCanvas(W / 4, H / 4), bctx = bloomC.getContext('2d');
-const layerC = mkCanvas(W, H), lctx = layerC.getContext('2d');
-const tintC = mkCanvas(W, H), tctx = tintC.getContext('2d');
-const tmpC = mkCanvas(W, H), tmpx = tmpC.getContext('2d');
+// The drawing canvases are raster (CPU-backed) canvases (8 Nov 2026, the video-quality research): on the M1 the default
+// GPU canvas smooths filled edges with 4 samples a pixel (Skia Graphite's MSAA), so slow drifts make hills, horizons and
+// limbs crawl; a raster canvas computes exact edge coverage, the same picture the cloud's CPU Chrome draws, at about the
+// same speed. TL.raster = 'gpu' (or CP_RASTER=gpu for render.js) brings the old canvases back for one render.
+const CP_CTX2D = window.TL && window.TL.raster === 'gpu' ? {} : { willReadFrequently: true };
+const ctx = mainC.getContext('2d', CP_CTX2D);
+const glowC = mkCanvas(W / 2, H / 2), gctx = glowC.getContext('2d', CP_CTX2D);
+const bloomC = mkCanvas(W / 4, H / 4), bctx = bloomC.getContext('2d', CP_CTX2D);
+const layerC = mkCanvas(W, H), lctx = layerC.getContext('2d', CP_CTX2D);
+const tintC = mkCanvas(W, H), tctx = tintC.getContext('2d', CP_CTX2D);
+const tmpC = mkCanvas(W, H), tmpx = tmpC.getContext('2d', CP_CTX2D);
 
 // ---------- math ----------
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));

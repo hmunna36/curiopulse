@@ -53,6 +53,9 @@ CAMERA = {
     "whip": [],        # [cue time of a cut, 1 | -1]: whip pans at the story turns (at least two), never in the first 1.5 s
     "punch": [],       # [cue time, 1.15-1.25 (, end)]: a punch-in on the answer's punchline and on the payoff's sting
     "tilt": [],        # [from, to, 2-5 degrees]: a dutch tilt when things go wrong (the fail, the jolt)
+    "hit": [],         # [cue time, 4]: a hitstop on a punchline's impact frame (the stamp in, the word full size); add its
+                       # layered hit in audio.py (sound.md, "Hitstops"); inside one shot, never in the first 1.5 s
+    "act": {"brow": []},   # brow lifts on the beats where he finds something out (blinks and eye darts run by themselves)
     "mood": [],        # [[0, "day"], [cue, "shade"], [cue, "warm"], [cue, "day"]]: the light follows the stakes and comes back
     "fg": {},          # {shot: "grass-b" | "leaves-tr" | "post-l" | "bokeh-r" ...}: depth in front of the lens, in the corners
     "air": {},         # {shot: "dust" | "pollen" | "embers" | "drizzle" ...}: particles that suit the place and its light

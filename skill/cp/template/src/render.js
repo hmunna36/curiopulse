@@ -90,6 +90,7 @@ async function renderPass(tl, tlPath, out, frames, audio) {
   const want = process.env.CP_LOOK || tl.look || 'classic';
   tl.look = want === 'bold' ? 'cine' : want === 'cine' ? 'cine' : 'classic';
   tl.lookBold = want === 'bold';
+  if (process.env.CP_RASTER) tl.raster = process.env.CP_RASTER;   // 'gpu' = the old GPU-backed drawing canvases (lib.js), for an A/B
   const frames = parseFrames(spec, Math.round(tl.duration * tl.fps));
   let r = await renderPass(tl, tlPath, out, frames, audio), status = r.status;
   if (r.lost) {

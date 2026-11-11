@@ -284,6 +284,37 @@ the owner saw at once that the after had lost the before's vibrant colours (meas
 darker): moods are now a saturated soft-light tint with the richness put back; a punch-in on a diagram crops what the
 shot is for.
 
+## Acting and timing (since 8 Nov 2026; the video-quality research)
+
+The research of 7 Nov 2026 (`~/Desktop/reports/CurioPulse video quality tools.md`) found that what still separated our
+Shorts from top animated channels was motion: he was moved, not animated. These came in after a before/after the owner
+approved. Most of it is automatic; the rest is one line in the plan.
+- **Cleaner edges (automatic):** the drawing canvases are raster canvases (lib.js `CP_CTX2D`). On the M1 the default GPU
+  canvas smooths edges with 4 samples a pixel, so hills and limbs crawl under the handheld drift; the raster canvas has
+  exact edges at the same speed (218 against 226 ms a frame on lick-elbow). `CP_RASTER=gpu node render.js ...` shows the
+  old canvases for an A/B.
+- **His eyes are alive (automatic, web/acting.js):** blinks on a natural rhythm (2.4-4.6 s apart, sometimes double, one
+  just after most cuts; 2 frames down, 1 held, 3 up), small eye darts (a 2-frame hop, held 0.5-1.6 s; smaller when the
+  shot already aims his gaze), none in the first 0.7 s or the last 0.6 s (the loop). They hold off when the shot's face
+  has its eyes shut or squinting (`blink` or `squeeze` over 0.3), dizzy (`cross`) or wide in shock (`eyeOpen` over 1.25).
+  A blink a shot places by hand still works (the larger one wins). **Brow beats** are planned: `CAMERA["act"]["brow"]`
+  = the cue times where he finds something out (the answer's turn, "Feel your...", "Now swing..."): up in 3 frames, held,
+  eased down.
+- **Snap on the big moves:** `snapRamp(t, a, b, {pre, ant, over})` in place of `ramp()` gives a move a small wind-up the
+  other way and an overshoot that settles (what the Cartoon Animation Filter does). Use it on his reaches, swings, grabs
+  and tosses and on props that land (a stamp, a pin); never on fades, colours or camera keys.
+- **Hitstops on punchline impacts:** `CAMERA["hit"] = [[cue, 4]]` freezes the action for 4 frames on the impact frame
+  while the camera shakes, then it snaps on. The impact frame is when the thing has landed: the stamp in, the word at full
+  size (lick-elbow's first try froze CHOMP while it was still tiny). One or two per Short, on the answer's punchline and
+  the miss or the sting. Give each its layered hit in audio.py (sound.md, "Hitstops").
+- **Camera blur (automatic):** a punch-in streaks outward from his face while it zooms and a tilt smears round him while
+  it turns, at a half-open shutter, so the face stays readable; the whip keeps its smear.
+- **Not yet:** hair and strap swing needs the rig's motion over time, which a frame-by-frame engine does not keep (a
+  pre-pass that records it is the planned way).
+
+**Check on the stills** (qa.md): a frame inside one automatic blink, the 4 frames of each hitstop and the 2 after it, the
+punch-in's middle frame (his face readable), and a still of each brow beat.
+
 ## Graphics on screen (fx.js)
 
 - `bigWord(txt, x, y, size, col, k, rot)`: Anton, hard outline. Use it for the title card (HYPNIC / JERK) and

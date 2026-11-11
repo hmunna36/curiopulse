@@ -135,6 +135,21 @@ def camera_plan(camera, shots, dur):
         assert t1 + 0.25 <= dur - LOOP_CLEAR + 1e-6, f"CAMERA tilt {t0:.2f}-{t1:.2f} s is still on near the loop: end it by {dur - LOOP_CLEAR - 0.25:.2f} s"
         tilts.append([round(t0, 3), round(t1, 3), deg])
     cam["tilt"] = tilts
+    hits = []
+    for h in cam.get("hit") or []:
+        t0, n = float(h[0]), int(h[1]) if len(h) > 1 else 4
+        assert 2 <= n <= 6, f"CAMERA hit at {t0:.2f} s: {n} frames (2-6; 4 reads as a hitstop)"
+        assert t0 >= 1.5 and t0 + n / FPS <= dur - LOOP_CLEAR, f"CAMERA hit at {t0:.2f} s: not in the first 1.5 s or the loop's last {LOOP_CLEAR} s"
+        cut = [b for b in starts if t0 < b < t0 + n / FPS + 0.02]
+        assert not cut, f"CAMERA hit at {t0:.2f} s runs into the cut at {cut[0]:.2f} s: a freeze stays inside its shot"
+        hits.append([round(t0, 3), n])
+    cam["hit"] = hits
+    act = dict(cam.get("act") or {})
+    for key in ("brow", "blink"):
+        v = sorted(float(x) for x in act.get(key) or [])
+        assert all(0 <= x < dur for x in v), f"CAMERA act {key}: times must be inside the Short (0-{dur:.2f} s)"
+        act[key] = [round(x, 3) for x in v]
+    cam["act"] = act
     moods = sorted([[float(m[0]), m[1]] + list(m[2:]) for m in cam.get("mood") or []], key=lambda m: m[0])
     for m in moods:
         assert m[1] in MOODS, f"CAMERA mood {m[1]!r} at {m[0]:.2f} s: moods are {', '.join(MOODS)}"
@@ -149,7 +164,8 @@ def camera_plan(camera, shots, dur):
               ("0.3 on every shot" if not hand else ", ".join(f"{k} {v:g}" for k, v in hand.items()) + ", 0.3 elsewhere"))
     mood_s = " -> ".join(m[1] for m in cam["mood"]) or "none (the place's own light only)"
     fg_n = len(cam.get("fg") or {}); air_n = len(cam.get("air") or {})
-    summary = (f"camera: {len(whips)} whip pan(s), {len(punches)} punch-in(s), {len(tilts)} tilt(s); mood {mood_s}; "
+    summary = (f"camera: {len(whips)} whip pan(s), {len(punches)} punch-in(s), {len(tilts)} tilt(s), {len(hits)} hitstop(s), "
+               f"{len(act.get('brow', []))} brow beat(s); mood {mood_s}; "
                f"handheld {hand_s}; foreground layer in {fg_n} of {len(ids)} shots, particles in {air_n}")
     return cam, summary
 

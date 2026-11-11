@@ -28,6 +28,9 @@
   means or washed out; faces readable, never violet or black), and every shot with a foreground layer under the safe-area
   mask (nothing over his face, the key action or the captions). List each cut's framing (size, side, height): two in a
   row must not match.
+- **Acting** (visual.md, "Acting and timing"): render a frame inside an automatic blink (eyes shut, no lid over a
+  pupil that is looking away), each hitstop's 4 frames and the 2 after it (frozen on the impact, the thing landed, the
+  camera shaking, then on), the punch-in's middle frame (his face readable through the blur), and each brow beat.
 - **After audio.py:** `qc_audio.py`. Masked words get fixed now, not after the render.
 - **The subscribe arm (the pill test, 25 Oct–8 Nov 2026; publish.json "subscribe"):** no-pill arm: a still 2 s before
   the end shows no pill and no bell, and the captions sit at y 1330 to the end. Pill arm: the stills of `visual.md`
@@ -110,6 +113,7 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 6 | **Comedy** | 2 laugh beats (the answer line and the button); timing comes from the gaps and cuts, not wacky voices |
 | 7 | **Look** | cinematic light and depth: every shot has its place's light (`setLights`), shadows fall away from that lamp, the hero is the brightest thing, other characters are `actor`s, faces are `paint` (no shadow ring round an eye, nothing outlined in light); the hero on model and acting; bloom/grain clean; nothing cropped by the safe area |
 | 7c | **Camera and light craft** (the cinema kit, 7 Nov 2026; visual.md) | a new framing at almost every cut and never two alike in a row (list each cut: size, side, height: low, eye, high); at least two whip pans at story turns, none in the first 1.5 s, sharp by the next word; a punch-in on his face or hand on the punchline (never on a diagram); handheld on every shot; the light follows the stakes (one mood change or more, back to frame 1's mood by the loop) with the colours as vibrant as the world draws them (never greyed or washed out) and faces readable; depth (a foreground layer or particles) in half the shots, never over his face, the key action or the captions; his place dressed with three or more things that belong there (practical lights bloom), no empty sky; beams only against something dark |
+| 7d | **Acting and timing** (8 Nov 2026; visual.md) | he blinks and his eyes move on their own (no stare with dead eyes), brow beats on the beats where he finds something out, `snapRamp` on his big moves, a hitstop with its layered hit on the answer's punchline (and the miss or the sting) frozen on the impact frame; nothing of it in the first 0.7 s or the loop's last 0.6 s |
 | 7b | **Safe area** | stills checked with the safe-area mask: nothing important under a covered zone (hook words, titles, labels, captions, the face, the key action); list the `.safe.png` frames in ship-review.md |
 | 8 | **Sound** | every beat has its sound; the music drops for punchlines; the voice is always clear (qa.py numbers) |
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |

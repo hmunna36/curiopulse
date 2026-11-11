@@ -168,7 +168,8 @@ function renderFrame(f) {
   const shot = shotAt(t);
   const CINK = typeof cinemaScene === 'function';   // the cinema kit (cinema.js, 7 Nov 2026)
   if (CINK) cinemaFrameStart(f);
-  const post = SC[shot.id](t - shot.start, t, shot) || {};
+  const tS = CINK && typeof cinHitT === 'function' ? cinHitT(t) : t;   // a hitstop freezes the scene's clock (cinema.js)
+  const post = SC[shot.id](tS - shot.start, tS, shot) || {};
   lookScene(f);                      // the scene is drawn: light it, then add the glow layer on top
   composeGlow(post.glow === undefined ? 0.85 : post.glow);
   if (CINK) cinemaScene(t, shot, post);   // the mood of the moment, particles in the air, the foreground layer
