@@ -34,23 +34,40 @@
   "cover": "cover.jpg",
   "captions": "fold-arms.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-17T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "-vQCuYxFc-M",
+    "url": "https://youtube.com/shorts/-vQCuYxFc-M",
+    "uploaded": "2026-11-13T04:55:30.180Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg set in Studio 2026-11-13 (it showed a grey placeholder; Changes saved)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-21T18:30:00+05:30",
     "caption": "Fold your arms. Now fold them the OTHER way. 🙅\nFeels wrong? You just switched off your autopilot: your usual fold runs by itself, the other way your brain flies by hand. And almost half of identical twins fold opposite ways!\nWhich arm's on top: left or right?\nFollow @curio_pulse_tv for the next one: can you make SAD eyebrows on purpose? 🔔\n#science #humanbody #bodytest #funfacts #brain #reels",
     "coverTime": 3.7,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-13T10:35:00+05:30",
+    "coverSet": true,
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-17T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1674777447558371",
+    "publishAt": "2026-11-21T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-13T05:02:54.914Z"
   }
 }

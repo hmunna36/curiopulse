@@ -1,17 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "id7jJEKKNtI",
-      "slug": "roll-tongue",
-      "title": "Can You ROLL Your Tongue? (It's Not Just Genes) 👅",
-      "publishAt": "2026-10-18T06:00:00.000Z",
-      "question": "Can you roll it? Yes or no? 👅",
-      "status": "posted",
-      "queued": "2026-10-17T19:36:54.425Z",
-      "commentId": "UgzKqtZaHIrICI2fCw54AaABAg",
-      "note": "the channel had commented already"
-    },
-    {
       "videoId": "5sYH3lRmDDk",
       "slug": "foot-switch",
       "title": "Why Does Your Foot FLIP When You Draw a 6? 🦶",
@@ -650,6 +639,15 @@
       "question": "🦕 Bonus: the last dinosaurs did meet grass. Bits of it turned up in fossil dino poop from India.\nDinosaurs or flowers: what did you guess? 🌸",
       "status": "queued",
       "queued": "2026-11-13T03:02:48.034Z"
+    },
+    {
+      "videoId": "-vQCuYxFc-M",
+      "slug": "fold-arms",
+      "title": "Fold Your Arms the OTHER Way. Feels WRONG? 🙅",
+      "publishAt": "2026-11-17T18:00:00.000Z",
+      "question": "🙅 Bonus: crossing your arms may dull pain a little. In a 2011 study, a laser zap on the hand felt weaker with the arms crossed.\nWhich arm's on top: left or right? 🤔",
+      "status": "queued",
+      "queued": "2026-11-13T04:55:39.255Z"
     }
   ]
 }
