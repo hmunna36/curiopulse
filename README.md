@@ -104,7 +104,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Make a Tongue CLOVER? | 26 s | [`videos/tongue-clover`](videos/tongue-clover) | [15 Nov 2026](https://youtube.com/shorts/b5odNX2YsG4) |
 | Why Can't You Say "M" With Your Mouth OPEN? | 27 s | [`videos/m-mouth-open`](videos/m-mouth-open) | [16 Nov 2026](https://youtube.com/shorts/KoPr0S0NIkc) |
 | Your Phone's GPS Needs EINSTEIN | 28 s | [`videos/gps-einstein`](videos/gps-einstein) | [16 Nov 2026](https://youtube.com/shorts/ts0Bp3aDLA0) |
-| Dinosaurs Are Older Than FLOWERS | 30 s | [`videos/dinosaurs-older-than-flowers`](videos/dinosaurs-older-than-flowers) | 17 Nov 2026 (scheduled) |
+| Dinosaurs Are Older Than FLOWERS | 30 s | [`videos/dinosaurs-older-than-flowers`](videos/dinosaurs-older-than-flowers) | [17 Nov 2026](https://youtube.com/shorts/2xgDf7fG7ws) |
 
 Each folder has:
 - the finished MP4;

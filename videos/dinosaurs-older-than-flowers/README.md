@@ -44,8 +44,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 17 Nov 2026 11:30 IST (the slot `yt.mjs next-slot` gave) |
-| Instagram Reels | (after it goes out) | the slot `yt.mjs upload` writes into `instagram.publishAt` |
+| YouTube Shorts | https://youtube.com/shorts/2xgDf7fG7ws | 17 Nov 2026 11:30 IST (scheduled; playlist Strange Nature; cover.jpg also set in Studio's Shorts slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover set) | 20 Nov 2026 21:00 IST (scheduled; Content → Scheduled lists it with the caption as its title) |
+| Facebook Page | CurioPulse (`fb.mjs reel`, video 2106633086633005) | 20 Nov 2026 21:00 IST (scheduled, ready) |
 
 **Title:** Dinosaurs Are Older Than FLOWERS 🌸
 

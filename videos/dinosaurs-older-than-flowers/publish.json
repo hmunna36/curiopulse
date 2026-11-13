@@ -1,56 +1,73 @@
 {
- "slug": "dinosaurs-older-than-flowers",
- "file": "dinosaurs-older-than-flowers-short.mp4",
- "title": "Dinosaurs Are Older Than FLOWERS 🌸",
- "description": "Quick, guess what's older: dinosaurs, or your flowers? Dinosaurs, by almost a hundred million years. Stegosaurus probably never saw a single flower: just ferns, and green, and more green. No wonder it ate the bouquet. But T. rex? Flowers everywhere. And T. rex lived closer in time to YOU than to Stegosaurus!\nDinosaurs or flowers: what did you guess?\n\nThe science: the first definite dinosaurs appear in rocks about 230 million years old (Herrerasaurus and Eoraptor, from Argentina's Ischigualasto Formation, about 231 to 228 million years old). The oldest fossils that are definitely from flowering plants are pollen grains about 140 to 133 million years old (from Italy and Israel), and the oldest fossil flowers about 130 to 125 million years old. Molecular clocks and a few disputed older pollen grains hint that flowering plants began earlier, so this goes by the oldest flowers ever found. Stegosaurus lived about 155 to 145 million years ago, among ferns, cycads, conifers and horsetails (a disputed Jurassic \"flower\" from China is why we say probably). By the end of the age of dinosaurs, flowering plants were everywhere: about 9 in 10 of the leaf species in the Hell Creek rocks, where T. rex is found, are from flowering plants. T. rex lived about 68 to 66 million years ago, so about 80 million years separate it from Stegosaurus, and only about 66 million separate it from you. Bonus: the last dinosaurs did meet grass: bits of it turned up in fossil dinosaur dung from central India (Prasad et al., Science, 2005).\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Dinosaurs #TRex #Stegosaurus #FunFacts",
- "look": "cine",
- "length": {
-  "arm": "tight",
-  "min": 25,
-  "max": 30,
-  "slot": "2026-11-17T11:30:00+05:30"
- },
- "subscribe": {
-  "arm": "none",
-  "slot": "2026-11-17T11:30:00+05:30"
- },
- "pinnedComment": "🦕 Bonus: the last dinosaurs did meet grass. Bits of it turned up in fossil dino poop from India.\nNext up: your text to Voyager 1 would take a whole day 🛰️ Subscribe so you don't miss it!\nDinosaurs or flowers: what did you guess? 🌸",
- "tags": [
-  "dinosaurs",
-  "flowers",
-  "dinosaurs older than flowers",
-  "stegosaurus",
-  "t rex",
-  "first flowers",
-  "flowering plants",
-  "jurassic",
-  "cretaceous",
-  "prehistoric",
-  "mind blowing facts",
-  "science facts",
-  "fun facts",
-  "curiopulse"
- ],
- "cover": "cover.jpg",
- "captions": "dinosaurs-older-than-flowers.srt",
- "youtube": {
-  "publishAt": "auto",
-  "privacy": "private",
-  "categoryId": "27",
-  "language": "en",
-  "madeForKids": false,
-  "syntheticMedia": false,
-  "notifySubscribers": true,
-  "playlist": "Strange Nature"
- },
- "instagram": {
-  "publishAt": "auto",
-  "caption": "Quick, guess what's older: dinosaurs, or your flowers? 🦕🌸\nDinosaurs, by almost 100 million years. Stegosaurus probably never saw a single flower: just ferns, and green, and more green. But T. rex had flowers everywhere, and it lived closer in time to YOU than to Stegosaurus.\nDinosaurs or flowers: what did you guess?\nFollow @curio_pulse_tv for the next one: your text to Voyager 1 would take a whole day 🛰️\n#science #dinosaurs #trex #funfacts #prehistoric #reels",
-  "coverTime": 1.0,
-  "shareToFeed": true
- },
- "kind": {
-  "kind": "curious",
-  "slot": "2026-11-17T11:30:00+05:30"
- }
+  "slug": "dinosaurs-older-than-flowers",
+  "file": "dinosaurs-older-than-flowers-short.mp4",
+  "title": "Dinosaurs Are Older Than FLOWERS 🌸",
+  "description": "Quick, guess what's older: dinosaurs, or your flowers? Dinosaurs, by almost a hundred million years. Stegosaurus probably never saw a single flower: just ferns, and green, and more green. No wonder it ate the bouquet. But T. rex? Flowers everywhere. And T. rex lived closer in time to YOU than to Stegosaurus!\nDinosaurs or flowers: what did you guess?\n\nThe science: the first definite dinosaurs appear in rocks about 230 million years old (Herrerasaurus and Eoraptor, from Argentina's Ischigualasto Formation, about 231 to 228 million years old). The oldest fossils that are definitely from flowering plants are pollen grains about 140 to 133 million years old (from Italy and Israel), and the oldest fossil flowers about 130 to 125 million years old. Molecular clocks and a few disputed older pollen grains hint that flowering plants began earlier, so this goes by the oldest flowers ever found. Stegosaurus lived about 155 to 145 million years ago, among ferns, cycads, conifers and horsetails (a disputed Jurassic \"flower\" from China is why we say probably). By the end of the age of dinosaurs, flowering plants were everywhere: about 9 in 10 of the leaf species in the Hell Creek rocks, where T. rex is found, are from flowering plants. T. rex lived about 68 to 66 million years ago, so about 80 million years separate it from Stegosaurus, and only about 66 million separate it from you. Bonus: the last dinosaurs did meet grass: bits of it turned up in fossil dinosaur dung from central India (Prasad et al., Science, 2005).\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Dinosaurs #TRex #Stegosaurus #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "tight",
+    "min": 25,
+    "max": 30,
+    "slot": "2026-11-17T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-17T11:30:00+05:30"
+  },
+  "pinnedComment": "🦕 Bonus: the last dinosaurs did meet grass. Bits of it turned up in fossil dino poop from India.\nNext up: your text to Voyager 1 would take a whole day 🛰️ Subscribe so you don't miss it!\nDinosaurs or flowers: what did you guess? 🌸",
+  "tags": [
+    "dinosaurs",
+    "flowers",
+    "dinosaurs older than flowers",
+    "stegosaurus",
+    "t rex",
+    "first flowers",
+    "flowering plants",
+    "jurassic",
+    "cretaceous",
+    "prehistoric",
+    "mind blowing facts",
+    "science facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "dinosaurs-older-than-flowers.srt",
+  "youtube": {
+    "publishAt": "2026-11-17T11:30:00+05:30",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature",
+    "id": "2xgDf7fG7ws",
+    "url": "https://youtube.com/shorts/2xgDf7fG7ws",
+    "uploaded": "2026-11-13T03:02:39.023Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg set in Studio 2026-11-13 (it showed an automatic frame; Changes saved)"
+  },
+  "instagram": {
+    "publishAt": "2026-11-20T21:00:00+05:30",
+    "caption": "Quick, guess what's older: dinosaurs, or your flowers? 🦕🌸\nDinosaurs, by almost 100 million years. Stegosaurus probably never saw a single flower: just ferns, and green, and more green. But T. rex had flowers everywhere, and it lived closer in time to YOU than to Stegosaurus.\nDinosaurs or flowers: what did you guess?\nFollow @curio_pulse_tv for the next one: your text to Voyager 1 would take a whole day 🛰️\n#science #dinosaurs #trex #funfacts #prehistoric #reels",
+    "coverTime": 1,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-13T08:46:00+05:30",
+    "coverSet": true,
+    "postTo": "curio_pulse_tv (Instagram only; the Page by fb.mjs)"
+  },
+  "kind": {
+    "kind": "curious",
+    "slot": "2026-11-17T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "2106633086633005",
+    "publishAt": "2026-11-20T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-13T03:12:58.914Z"
+  }
 }
