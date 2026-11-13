@@ -1,0 +1,33 @@
+# Narration for "Fold Your Arms the OTHER Way. Feels WRONG? 🙅"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# The test (rules of 15 Oct 2026, 5 Nov 2026): the viewer folds their arms, then tries the OTHER way; it feels wrong and
+# most fumble. Hook formula: The Direct Address as the test. The answer starts by 5.0 s: their autopilot is off. While the
+# lesson runs the viewer keeps testing: switch back (it feels right again), then the other way once more (by hand).
+# Weirdest fact: almost half of identical twins fold opposite ways (Reiss & Reiss 1998). The button sends them back to
+# the test, faster, and runs into the hook. Tight arm: 59 words (55-64), 25-30 s.
+
+## hook gap=0.06 tighten=0.30 tempo=1.02
+Fold your arms. Now fold them the OTHER way.
+
+## answer gap=0.44 tighten=0.30 tempo=1.00
+Feels wrong? You just switched OFF your autopilot.
+
+## back gap=0.28 tighten=0.30 tempo=1.02
+Switch back... Ahh. Autopilot.
+
+## usual gap=0.22 tighten=0.24 tempo=1.06
+You've folded that way thousands of times... it flies itself.
+
+## hand gap=0.22 tighten=0.26 tempo=1.05
+The other way? Your brain flies it... by hand.
+
+## twins gap=0.40 tighten=0.26 tempo=1.06
+Weirdest part? Identical twins... almost half fold opposite ways.
+
+## pilot gap=0.30 tighten=0.30 tempo=1.00
+Same DNA... different pilot.
+
+## button gap=0.32 tighten=0.26 tempo=1.00
+Now try the wrong way... FASTER.
