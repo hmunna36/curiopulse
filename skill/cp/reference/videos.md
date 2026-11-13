@@ -92,11 +92,46 @@
 | `finger-tip-bend`: "Can You Bend Just the TIP of Your Finger? 👆" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/o6lX2LPekDw · 14 Nov 2026 11:30 IST | Business Suite, Instagram only, 17 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2365184184301536) |
 | `eiffel-summer`: "The EIFFEL TOWER Gets Taller in Summer 🗼" | 26 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/qeCHoD61IoA · 14 Nov 2026 23:30 IST | Business Suite, Instagram only, 18 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3124294561109796) |
 | `tongue-clover`: "Can You Make a Tongue CLOVER? ☘️" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/b5odNX2YsG4 · 15 Nov 2026 23:30 IST | Business Suite, Instagram only, 19 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1013667795108376) |
+| `dinosaurs-older-than-flowers`: "Dinosaurs Are Older Than FLOWERS 🌸" | 30 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/2xgDf7fG7ws · 17 Nov 2026 11:30 IST | Business Suite, Instagram only, 20 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2106633086633005) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**dinosaurs-older-than-flowers** (the 00:00 routine of 13 Nov 2026, cut off by the weekly usage limit at 00:03 before it chose a
+topic and restarted by the watchdog at 06:48 IST; built 06:48-08:50 IST while the restarted second-Short run waited on the cp lock;
+a CURIOUS Short, the Curious queue's first line (promised by gps-einstein's Next-up), a comparison of time; tight arm, 54 words ->
+29.70 s (one word under the guide: four comedic gaps; the first take ran 31.4 s and was brought in with tempo, tighten and one
+shorter line, "never saw a single one" -> "never saw one"); hook formula The Comparison as a two-second guess: "Quick, guess what's
+older: dinosaurs... or your FLOWERS?"; answer "Dinosaurs. By almost a HUNDRED million years." at 4.31 s (a YEARS AGO counter rewinds
+66 -> 150 million while every flower in the valley sinks back into the ground; tags DINOSAURS ~230 / FLOWERS* ~130 MILLION YRS,
+*the oldest ones ever found); "Stegosaurus probably never saw one. Just ferns... and green... and more GREEN." (a Jurassic valley with
+not one petal); payoff "No wonder he's EATING them." (CHOMP, hitstop); fact "But T-rex? Flowers everywhere. And it lived closer in
+time to YOU... than to Stegosaurus!" (the time road: 80M vs 66M years); button "So... flowers for T-rex, then? Tiny arms." (its
+arms flail short of the bouquet: the hook's own picture, so it loops); caption question "Dinosaurs or flowers: what did you guess?";
+YouTube 2xgDf7fG7ws, 17 Nov 11:30 IST, Strange Nature, cover.jpg also in Studio's Shorts slot; Reel (Business Suite, Instagram only,
+cover set; Business Suite opened on Mishapland: switched with the asset picker) + Page (fb.mjs 2106633086633005) 20 Nov 21:00 IST.
+Two QA rounds, qa.py 20/20 both; rebuild: voice + timeline + audio into a fresh folder byte-identical (the render was not repeated:
+the Mac sat at a load average of 30-57 with five restarted routines, 13-16 minutes a render)):
+- **New world file `df_world.js` (borrow it):** one valley drawn in two ages in parallax layers that each carry their own ground
+  strip, so no gap opens between layers at any camera height (`dfLayerCam(cam, p, hz)`: parallax plus a vertical shift of the far
+  layers for low and high angles); `era` blends the sky, `bloom` grows or shrinks every flower (meadow, magnolias), `magK` grows or
+  shrinks the magnolia trees themselves, `mids` overrides the mid-layer trees (clear them from behind a close-up's character).
+  Plants: `dfConifer` (monkey puzzle), `dfCycad`, `dfFern`, `dfHorsetail`, `dfMagnolia`, `dfFlower` (cup, daisy, star), `dfBush`
+  (it read as a striped watermelon; use fern clumps). Cast: `dfStego` (plates in two rows along a spine, thagomizer, a small beak that
+  sniffs, chomps and chews, petals in the beak), `dfRex` (drawn from its HIP: lean, neck, head pitch, jaw, tiny arms with reach and
+  flail, a stomping walk; returns `o.snout`), `dfBouquet` (flowers eaten one by one) + `dfGrip`, the time road (`dfRoadBack`,
+  `dfRoad`, `dfBracket`, `dfRoadLabel`), and sharks-older-than-trees' `yearsHud` (now with a y) and `shTag`.
+- **Pose a creature for a close-up with a solver, not by eye:** the first T. rex close-up (head pitched straight down, arms off the
+  edge) read as a drooping green dragon. A 20-line Python grid search over scale, lean, neck and head pitch, with the snout's and the
+  arm root's world targets as the cost, gave a pose that reads at once (snout in the flowers, tiny hands stopping about 90 units short
+  of the cone). Write the rig's forward kinematics once in Python and solve.
+- **A character the same green as the trees disappears:** the T. rex went teal (#3A8C9C) and the trees behind its head were cleared.
+- **A short-necked animal must eat at its own height:** raising the Stegosaurus's head to his chest stretched its neck into a yellow
+  worm; he lowers the bouquet to it instead.
+- **On the name, on screen (round 1's two items under 8):** the Stegosaurus was still off-frame right while its name was spoken, and
+  "Just ferns" pushed in on him; the fix was to start it in shot and to put a big fern clump beside him for the camera to go to.
 
 **gps-einstein** (the 02:00 second Short of 12 Nov 2026, 02:05-03:10 IST; a CURIOUS Short, the Curious queue's first line (promised by
 honey-never-goes-off's Next-up), framed as a comparison of time (up in space time runs faster than in your pocket, 38 millionths of a
