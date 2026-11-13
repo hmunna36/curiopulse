@@ -93,11 +93,33 @@
 | `eiffel-summer`: "The EIFFEL TOWER Gets Taller in Summer 🗼" | 26 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/qeCHoD61IoA · 14 Nov 2026 23:30 IST | Business Suite, Instagram only, 18 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 3124294561109796) |
 | `tongue-clover`: "Can You Make a Tongue CLOVER? ☘️" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/b5odNX2YsG4 · 15 Nov 2026 23:30 IST | Business Suite, Instagram only, 19 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1013667795108376) |
 | `dinosaurs-older-than-flowers`: "Dinosaurs Are Older Than FLOWERS 🌸" | 30 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/2xgDf7fG7ws · 17 Nov 2026 11:30 IST | Business Suite, Instagram only, 20 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2106633086633005) |
+| `fold-arms`: "Fold Your Arms the OTHER Way. Feels WRONG? 🙅" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/-vQCuYxFc-M · 17 Nov 2026 23:30 IST | Business Suite, Instagram only, 21 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1674777447558371) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**fold-arms** (the 02:00 second-Short routine of 13 Nov 2026, cut off by the weekly usage limit at 02:04 before it saved
+anything, restarted at 06:48 IST; it waited on the cp lock until 08:46 while the 00:00 run's restart built dinosaurs, and drafted
+the whole Short in the scratchpad meanwhile (scene-smoke 124/124 frames), then built and shipped 08:47-10:40 IST; a TEST Short,
+the Queue's first line (promised by m-mouth-open's Next-up), the kin of clasp-hands (11.2K views on IG); tight arm, 59 words ->
+29.03 s; hook The Direct Address "Fold your arms. Now fold them the OTHER way." (his arms tie themselves into a pretzel for his
+self-timer on a summit); answer "Feels wrong? You just switched OFF your autopilot." at 4.08 s (a window opens on top of his
+head, the camera dives into the cockpit that flies his arms: AUTOPILOT OFF, the pilot's coffee flies); mechanism as one picture
+(the brain pilot dozes while FOLDS rolls to 9,999+ and the levers fold by themselves; "by hand" he yanks the levers); fact
+"Identical twins... almost half fold opposite ways. Same DNA... different pilot." (46 %, Reiss & Reiss 1998 via McDonald);
+button "Now try the wrong way... FASTER." (the super-pretzel springs open into frame 1); new `fa_world.js` (the summit above a
+cloud sea, a cairn, prayer flags, a self-timer camera), `fa_arms.js` (folded arms either way, the pretzel), `fa_cockpit.js`
+(a cockpit in the head, reusable for any habit/autopilot topic). Lessons: (1) **frame a body test by its width, not by the
+head**: folded arms span about 260 rig units, so above zoom ~3 they cannot fit x 60-870 below y 1050; frame 0 at zoom 3.3 put
+his gripping fist under the like/comment column, which only qa.py's safe_sheet caught (one extra full render). Run the
+safe-area overlay on the hook frames at the FIRST stills and fit the widest pose of each shot (here the pretzel, which first
+spanned 300 units: its elbows were pulled in). (2) A glow drawn in world units (a camera flash) is multiplied by the zoom: a
+260-unit flash at zoom 3.4 whited out the frame. (3) Sounds that end a block (a splash, a klaxon blast) must fit the pause
+before the next word: a 0.5 s splash in a 0.3 s gap masked "Switch" (SNR -1.8 dB); size them from the gap. (4) Moving the
+captions (capY) to clear a face is not allowed (qa.md: fix the shot); reframe instead. 2 QA rounds, qa.py 20/20, rebuild
+byte-identical (timeline, mix, MP4).
 
 **dinosaurs-older-than-flowers** (the 00:00 routine of 13 Nov 2026, cut off by the weekly usage limit at 00:03 before it chose a
 topic and restarted by the watchdog at 06:48 IST; built 06:48-08:50 IST while the restarted second-Short run waited on the cp lock;
