@@ -94,11 +94,48 @@
 | `tongue-clover`: "Can You Make a Tongue CLOVER? ☘️" | 26 s (tight arm; no pill; TEST) | https://youtube.com/shorts/b5odNX2YsG4 · 15 Nov 2026 23:30 IST | Business Suite, Instagram only, 19 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1013667795108376) |
 | `dinosaurs-older-than-flowers`: "Dinosaurs Are Older Than FLOWERS 🌸" | 30 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/2xgDf7fG7ws · 17 Nov 2026 11:30 IST | Business Suite, Instagram only, 20 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2106633086633005) |
 | `fold-arms`: "Fold Your Arms the OTHER Way. Feels WRONG? 🙅" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/-vQCuYxFc-M · 17 Nov 2026 23:30 IST | Business Suite, Instagram only, 21 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1674777447558371) |
+| `finger-flip`: "Can You Wag Your Fingers Like WIPERS? 🌧️" | 27 s (tight arm; no pill; TEST) | https://youtube.com/shorts/NzQYuPcNutY · 18 Nov 2026 11:30 IST | Business Suite, Instagram only, 21 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1009672005532294) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**finger-flip** (the 00:00 routine of 16 Nov 2026, which fired at 10:06 IST; built 10:06-11:06, shipped by 11:35 IST; a TEST
+Short taken AHEAD of the Queue's first line (SAD eyebrows) because the finger-W Reel became a hit on Instagram: 153,926 views by
+16 Nov, about 60x the Reels around it (`ig.mjs insights` lists the account's last posts with views: the fastest way to see an
+Instagram hit when Chrome is not connected); SAD eyebrows kept second, because fold-arms's Next-up already promises it and this
+one does too; tight arm, 55 words -> 26.70 s; hook formula The Direct Address, the instruction itself: "Wag your fingers like
+wipers. Same way... now FASTER!" (Kelso 1984: the parallel pattern collapses into the mirror at speed); answer "Flipped into a
+mirror? Your hands are clingy TWINS." at 4.68 s; button "Now try to flip it BACK." into the hook; caption question "Did yours
+flip? Yes or no?"; YouTube NzQYuPcNutY, 18 Nov 11:30 IST, playlist Your Brain Is Weird (Studio's own thumbnail showed an
+automatic frame: cover.jpg set there); Reel (Business Suite, Instagram only, cover set; Business Suite opened on Mishapland:
+switched with the asset picker) + Page (fb.mjs 1009672005532294) 21 Nov 21:00 IST. Two QA rounds, qa.py 20/20 both; rebuild:
+voice + timeline + mix into a fresh folder byte-identical (the MP4 re-render was stopped: the Mac sat at a load average of ~35
+with other pipelines running)):
+- **New world files (borrow them):** `ff_van.js` (a campervan on a rainy evening: the driver's view through a windscreen with
+  tandem wipers that clear the drops they pass (`ffPOV`, sweep angle `sw`, a history of past sweeps for the cleared glass), a
+  dashboard with a mug, a map, a cactus on a spring and fuzzy dice; the cab seen from the dashboard (`ffCabin`: wood panelling,
+  fairy lights, a gingham-curtained rainy window, a kettle shelf, a hanging plant, a patchwork bunk, his seat, a floor); the back
+  step outside under a striped awning with a lantern, puddles and drips (`ffBack`, `ffBackFront`)), `ff_hand.js` (`ffPointer`: a
+  pointing fist in hand units, back or palm view, either hand, an index finger that wags (+ = the tip to screen-right in both
+  views), ghost fingers for speed, faces on the nail or the pad with moods calm/love/strain/cheer/worried/dizzy; `ffTipWorld`),
+  `ff_cast.js` (`ffRef`: the brain as a referee with a whistle, a striped shirt, arms that point the way the fingers swing, dizzy
+  eyes, a white flag, a slump; `ffSwingLegs`: seated legs seen from the front that swing toward the camera (the shin shortens,
+  the boot rises and grows, its sole shows); `ffGran`: a gran in a lilac raincoat with a mug).
+- **Motion that the picture and the sound share:** make_timeline.py integrates the wagging speed into a phase per frame (`wag`
+  in timeline.json: phase, relative phase, amplitude, the wipers' and the legs' phases), aligns the copy shot's phase so the tips
+  meet on the high-five, and spreads the loop's phase error over the last 0.6 s so the last frame runs into frame 1; audio.py
+  takes the wiper turns, fingertip swishes, whistle tweets and boot kicks from the same arrays (crossings of the phase).
+- **A hitstop freezes the scene's clock: whatever "lands" on the hit must already be in.** Round 1 popped the heart in AT the
+  hit, so the four frozen frames had no heart; it now pops in 0.15 s before.
+- **The sfx bus's peaks were low thumps (the wipers), so every gag sat above the voice** (the boing -12.5 dB against the voice's
+  -16): lowering single gags only raised the rest (peak normalisation). Turning the thumps and whips down AND moving the whole
+  bus (`levels={"sfx": -10}`) put the gags at -17..-19 dB.
+- **Two people's legs swinging, seen from the front, read only when the boot rises and grows toward the camera** (a shin that just
+  shortens looked like nothing); keep the boots clear of the caption band (frame the step so the boots sit above y 1180).
+- **A referee window that sits ON the head covers the face and the test:** put it above the head with a beam down to it.
+- Voice: 321 characters for the takes + ~1,200 for hook and answer auditions; quota.mjs read 64,236 before and 62,690 after.
 
 **fold-arms** (the 02:00 second-Short routine of 13 Nov 2026, cut off by the weekly usage limit at 02:04 before it saved
 anything, restarted at 06:48 IST; it waited on the cp lock until 08:46 while the 00:00 run's restart built dinosaurs, and drafted
