@@ -1,0 +1,42 @@
+# Narration for "Your Text to VOYAGER 1 Would Take a Whole DAY 🛰️"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# A CURIOUS Short (story.md §6; the rules of 5 Nov: a mind-bending comparison of time or size), hook formula The
+# Impossible Claim (it confirms the title in the first sentence). On 18 Nov 2026, 10:16 UTC (15:46 IST), Voyager 1
+# becomes the first human-made object one light-day from Earth (NASA); this Short goes out that night.
+# - hook: the claim, to "you", while frame 1 shows him pressing SEND on "u ok?" to Voyager 1 on his porch;
+# - answer (by 5 s): the left-on-read joke, then the plain claim: even LIGHT takes that long;
+# - race + tomorrow: ONE picture, him riding his own text at the speed of light (the Moon in a second, Pluto in five
+#   hours, Voyager the next day: BONK, delivered);
+# - reply + beep: the reply takes another day, and it is "beep" (the payoff's laugh);
+# - weird: the comparison: 49 years to get one light-day out; the nearest star is 1,500 times farther;
+# - button: "Better hit send now." runs straight into the hook ("Your text to Voyager 1...") when the Short loops.
+# Nobody says "subscribe"; the no-pill arm. Words: 62 (the tight arm: 55-64).
+
+## hook gap=0.10 tempo=1.05
+Your text to Voyager 1 would take a whole day to arrive.
+
+## answer gap=0.45 tighten=0.40 tempo=1.02
+It's not ignoring you... even LIGHT takes that long.
+
+## race gap=0.35 tighten=0.30 tempo=1.05
+It zips past the Moon in one second... Pluto in five hours...
+
+## tomorrow gap=0.20 tighten=0.55 tempo=1.00
+and Voyager? TOMORROW.
+
+## reply gap=0.75 tighten=0.35 tempo=1.02
+And its reply? Another whole day.
+
+## beep gap=0.45 tighten=0 tempo=1.00
+Beep.
+
+## weird gap=0.50 tighten=0.30 tempo=1.04
+Forty-nine years to get this far... and the nearest star is fifteen hundred times farther.
+
+## button gap=0.45 tighten=0.40 tempo=1.00
+Better hit send now!
