@@ -1,8 +1,8 @@
 # CurioPulse numbers
 
-Written by `yt.mjs numbers` on 2026-11-16 10:06 IST. Do not edit: every /cp run rewrites it. How to read it: `reference/analytics.md`.
+Written by `yt.mjs numbers` on 2026-11-16 11:33 IST. Do not edit: every /cp run rewrites it. How to read it: `reference/analytics.md`.
 
-**Channel:** 607 subscribers (+6 since the log of 2026-11-14 02:05 IST) · 55 public videos, 5 scheduled.
+**Channel:** 607 subscribers (+0 since the log of 2026-11-16 10:06 IST) · 55 public videos, 5 scheduled.
 Views and likes are the public counters, live. Stayed, viewed and subscribers come from YouTube Analytics, which runs about two days behind: a dash means YouTube has not processed that day yet.
 
 ## The length test (length-2026-10, 2026-10-06 23:30 IST to 2026-10-16 11:30 IST), and the Shorts since
@@ -15,11 +15,11 @@ During the test a Short in a 23:30 slot was built to 30-35 s, one in an 11:30 sl
 
 | Group | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views |
 |---|---|---|---|---|---|---|
-| since 10 Nov · 25-30 s, the tight rules | 12 | 3351 (8) | 52.7 % | 88.2 % | 24 s | 0.5 (8) |
+| since 10 Nov · 25-30 s, the tight rules | 13 | 3663 (9) | 52.7 % | 88.2 % | 24 s | 0.5 (8) |
 | after the pill test | 3 | 2314 (3) | 56.1 % | 91.1 % | 30 s | 0.6 (3) |
 | PILL TEST · pill (23:30) | 14 | 5701 (14) | 57.8 % | 83.7 % | 28 s | 1.3 (13) |
 | PILL TEST · no pill (11:30) | 14 | 7101 (14) | 55.5 % | 88.6 % | 29 s | 1.2 (13) |
-| since 16 Oct · 30-35 s, the test | 8 | 17154 (8) | 55.6 % | 87.8 % | 28 s | 0.8 (8) |
+| since 16 Oct · 30-35 s, the test | 7 | 18660 (7) | 55.7 % | 87.8 % | 28 s | 0.8 (7) |
 | TEST · short arm (30-35 s) | 0 | – | – | – | – | – |
 | TEST · standard arm (45-50 s) | 0 | – | – | – | – | – |
 
@@ -31,7 +31,7 @@ Each arm sits in one slot, and the slots differ by themselves, so read each arm 
 
 | Slot | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views | Middle views per Short | Middle subs per 1,000 |
 |---|---|---|---|---|---|---|---|---|
-| 23:30 · before (16 Oct to the test, no pill) | 4 | 14638 (4) | 55.5 % | 87.5 % | 29 s | 1.3 (4) | 13901 | 0.9 |
+| 23:30 · before (16 Oct to the test, no pill) | 3 | 17315 (3) | 55.6 % | 87.5 % | 29 s | 1.4 (3) | 21195 | 1.1 |
 | 23:30 · the test (pill) | 14 | 5701 (14) | 57.8 % | 83.7 % | 28 s | 1.3 (13) | 2763 | 1.1 |
 | 11:30 · before (16 Oct to the test, no pill) | 4 | 19670 (4) | 55.7 % | 88.1 % | 28 s | 0.5 (4) | 11381 | 0.6 |
 | 11:30 · the test (no pill) | 14 | 7101 (14) | 55.5 % | 88.6 % | 29 s | 1.2 (13) | 4567 | 1.1 |
@@ -43,7 +43,7 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 | Kind | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views | Middle views per Short | Middle subs per 1,000 |
 |---|---|---|---|---|---|---|---|---|
 | test (body, mind, screen) | 14 | 4008 (14) | 57.8 % | 83.9 % | 27 s | 1.0 (14) | 2814 | 1.0 |
-| curious (the world) | 14 | 8794 (14) | 56.0 % | 88.7 % | 30 s | 1.3 (12) | 4666 | 1.2 |
+| curious (the world) | 14 | 8795 (14) | 56.0 % | 88.7 % | 30 s | 1.3 (12) | 4666 | 1.2 |
 
 ## Every upload (newest first)
 
@@ -52,15 +52,16 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 | Released (IST) | Length | Group | Views | Likes | Counted | Stayed | Avg % viewed | Avg s | Subs | Per 1,000 | Title |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-11-22 17:30 (scheduled) | 273 s | long-form | 2 | 0 | 2 | – | – | – | – | – | [What Happens If You Stop Eating? (Day by Day)](https://youtu.be/rPzNcr3Is98) |
+| 2026-11-18 11:30 (scheduled) | 27 s | since 10 Nov · 25-30 s, the tight rules | 0 | 0 | – | – | – | – | – | – | [Can You Wag Your Fingers Like WIPERS? 🌧️](https://youtu.be/NzQYuPcNutY) |
 | 2026-11-17 23:30 (scheduled) | 30 s | since 10 Nov · 25-30 s, the tight rules | 0 | 0 | – | – | – | – | – | – | [Fold Your Arms the OTHER Way. Feels WRONG? 🙅](https://youtu.be/-vQCuYxFc-M) |
 | 2026-11-17 11:30 (scheduled) | 30 s | since 10 Nov · 25-30 s, the tight rules | 0 | 0 | – | – | – | – | – | – | [Dinosaurs Are Older Than FLOWERS 🌸](https://youtu.be/2xgDf7fG7ws) |
 | 2026-11-16 23:30 (scheduled) | 28 s | since 10 Nov · 25-30 s, the tight rules | 0 | 0 | – | – | – | – | – | – | [Your Phone's GPS Needs EINSTEIN 🛰️](https://youtu.be/ts0Bp3aDLA0) |
-| 2026-11-16 11:30 (scheduled) | 27 s | since 10 Nov · 25-30 s, the tight rules | 0 | 0 | – | – | – | – | – | – | [Why Can't You Say "M" With Your Mouth OPEN? 👄](https://youtu.be/KoPr0S0NIkc) |
-| 2026-11-15 23:30 | 26 s | since 10 Nov · 25-30 s, the tight rules | 1732 | 9 | – | – | – | – | – | – | [Can You Make a Tongue CLOVER? ☘️](https://youtu.be/b5odNX2YsG4) |
+| 2026-11-16 11:30 | 27 s | since 10 Nov · 25-30 s, the tight rules | 0 | 0 | – | – | – | – | – | – | [Why Can't You Say "M" With Your Mouth OPEN? 👄](https://youtu.be/KoPr0S0NIkc) |
+| 2026-11-15 23:30 | 26 s | since 10 Nov · 25-30 s, the tight rules | 1746 | 9 | – | – | – | – | – | – | [Can You Make a Tongue CLOVER? ☘️](https://youtu.be/b5odNX2YsG4) |
 | 2026-11-15 17:30 | 445 s | long-form | 68 | 1 | 1 | – | – | – | – | – | [Only 1 in 12 Can Do the Last One (12 More Body Tests)](https://youtu.be/5onetRrc5aE) |
 | 2026-11-15 11:30 | 27 s | since 10 Nov · 25-30 s, the tight rules | 1237 | 8 | – | – | – | – | – | – | [Your HONEY Could Outlive You 🍯](https://youtu.be/zDKpHRcwe-A) |
 | 2026-11-14 23:30 | 26 s | since 10 Nov · 25-30 s, the tight rules | 1299 | 13 | – | – | – | – | – | – | [The EIFFEL TOWER Gets Taller in Summer 🗼](https://youtu.be/qeCHoD61IoA) |
-| 2026-11-14 11:30 | 27 s | since 10 Nov · 25-30 s, the tight rules | 5981 | 23 | 1098 | 43.9 % | 97.3 % | 26 | 2 | 1.8 | [Can You Bend Just the TIP of Your Finger? 👆](https://youtu.be/o6lX2LPekDw) |
+| 2026-11-14 11:30 | 27 s | since 10 Nov · 25-30 s, the tight rules | 6157 | 25 | 1098 | 43.9 % | 97.3 % | 26 | 2 | 1.8 | [Can You Bend Just the TIP of Your Finger? 👆](https://youtu.be/o6lX2LPekDw) |
 | 2026-11-13 23:30 | 27 s | since 10 Nov · 25-30 s, the tight rules | 3977 | 18 | 2107 | 54.1 % | 84.5 % | 22 | 1 | 0.5 | [Make a Duck Hand. Can You SPREAD Your Fingers? 🦆](https://youtu.be/xL7tQTt3zCQ) |
 | 2026-11-13 11:30 | 29 s | since 10 Nov · 25-30 s, the tight rules | 1350 | 15 | 1185 | 47.1 % | 75.5 % | 21 | 0 | 0.0 | [Lightning Is 5x HOTTER Than the Sun's Surface ⚡](https://youtu.be/TJwzbIRpig4) |
 | 2026-11-12 23:30 | 26 s | since 10 Nov · 25-30 s, the tight rules | 1454 | 15 | 1331 | 56.3 % | 71.5 % | 18 | 0 | 0.0 | [All of HUMANITY Fits in a Sugar Cube ☕](https://youtu.be/4UHm_oEbdQk) |
@@ -100,7 +101,7 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 | 2026-10-27 23:30 | 35 s | PILL TEST · pill (23:30) | 18640 | 270 | 18632 | 53.0 % | 99.2 % | 34 | 29 | 1.6 | [If You Fell Into JUPITER, You'd Never Hit the Ground 🪐](https://youtu.be/lVK_uraLavc) |
 | 2026-10-27 11:30 | 34 s | PILL TEST · no pill (11:30) | 4499 | 112 | 4496 | 56.7 % | 90.0 % | 30 | 5 | 1.1 | [Why Can't You Raise Just ONE Finger? ☝️](https://youtu.be/I4272g9UqZE) |
 | 2026-10-26 23:30 | 33 s | PILL TEST · pill (23:30) | 2871 | 37 | 2839 | 61.1 % | 77.3 % | 25 | 2 | 0.7 | [Can You Make Your Eyes SHAKE on Purpose? 👀](https://youtu.be/6Y0ZurlxUio) |
-| 2026-10-26 11:30 | 32 s | PILL TEST · no pill (11:30) | 15037 | 269 | 15035 | 56.1 % | 90.5 % | 28 | 21 | 1.4 | [Why Is a Day on Venus LONGER Than Its Year? 🎂](https://youtu.be/zdmZmB1AJBQ) |
+| 2026-10-26 11:30 | 32 s | PILL TEST · no pill (11:30) | 15038 | 269 | 15035 | 56.1 % | 90.5 % | 28 | 21 | 1.4 | [Why Is a Day on Venus LONGER Than Its Year? 🎂](https://youtu.be/zdmZmB1AJBQ) |
 | 2026-10-25 23:30 | 33 s | PILL TEST · pill (23:30) | 7325 | 78 | 7322 | 52.0 % | 95.6 % | 31 | 8 | 1.1 | [Why Does Lake Natron Turn Animals Into STATUES? 🦩](https://youtu.be/HYIP2vEE1Gc) |
 | 2026-10-25 17:30 | 274 s | long-form | 264 | 2 | 264 | 29.2 % | 25.1 % | 68 | 0 | 0.0 | [What If You Went to Space WITHOUT a Suit? (Second by Second)](https://youtu.be/KpftORrT9_A) |
 | 2026-10-25 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 6206 | 52 | 6197 | 54.2 % | 77.1 % | 24 | 5 | 0.8 | [Why Can't You See Your Own EYES Move in a Mirror? 👀](https://youtu.be/VgHmLADdE7w) |
@@ -110,4 +111,3 @@ Each day has one of each, alternating slots, so the two rows face the same audie
 | 2026-10-23 11:30 | 31 s | since 16 Oct · 30-35 s, the test | 7638 | 102 | 7634 | 56.3 % | 90.4 % | 28 | 6 | 0.8 | [Why Can't Most People WIGGLE Their Ears? 👂](https://youtu.be/2cczUGi_viI) |
 | 2026-10-22 23:30 | 32 s | since 16 Oct · 30-35 s, the test | 21195 | 276 | 21139 | 55.1 % | 91.2 % | 29 | 10 | 0.5 | [Why Can't You Raise Just ONE Eyebrow? 🤨](https://youtu.be/mkp42FARp0c) |
 | 2026-10-22 11:30 | 32 s | since 16 Oct · 30-35 s, the test | 15124 | 142 | 15101 | 54.8 % | 85.1 % | 27 | 5 | 0.3 | [Why Do Some People Have NO Wrist Tendon? 🖐️](https://youtu.be/qU0s1Isj7BA) |
-| 2026-10-21 23:30 | 33 s | since 16 Oct · 30-35 s, the test | 6607 | 77 | 6595 | 54.2 % | 87.5 % | 28 | 5 | 0.8 | [Why Can't You TICKLE Yourself? (Try It Now) 🤭](https://youtu.be/VtqzIWIHoRY) |

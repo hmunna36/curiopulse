@@ -95,11 +95,36 @@
 | `dinosaurs-older-than-flowers`: "Dinosaurs Are Older Than FLOWERS 🌸" | 30 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/2xgDf7fG7ws · 17 Nov 2026 11:30 IST | Business Suite, Instagram only, 20 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 2106633086633005) |
 | `fold-arms`: "Fold Your Arms the OTHER Way. Feels WRONG? 🙅" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/-vQCuYxFc-M · 17 Nov 2026 23:30 IST | Business Suite, Instagram only, 21 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1674777447558371) |
 | `finger-flip`: "Can You Wag Your Fingers Like WIPERS? 🌧️" | 27 s (tight arm; no pill; TEST) | https://youtube.com/shorts/NzQYuPcNutY · 18 Nov 2026 11:30 IST | Business Suite, Instagram only, 21 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1009672005532294) |
+| `voyager-light-day`: "Your Text to VOYAGER 1 Would Take a Whole DAY 🛰️" | 28.5 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/31HGOQFQlj0 · 18 Nov 2026 23:30 IST | Business Suite, Instagram only, 22 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1107773438740293) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**voyager-light-day** (the 02:00 second-Short routine of 16 Nov 2026, which fired with the late 00:00 run and waited for its
+lock until 11:32 IST; built 11:32-11:54, shipped by 12:06 IST; CURIOUS, the time-sensitive Voyager 1 light-day topic, put on
+18 Nov 23:30 as topics.md asked). Hook The Impossible Claim, "Your text to Voyager 1 would take a whole day to arrive."; answer
+"It's not ignoring you... even LIGHT takes that long." at 4.53 s; ONE picture from 6.3 to 15.6 s (he surfs his own text: a trip
+clock reads 00:00:01 on "one second", 05:00:00 on "five hours", 24:00:00 on the BONK); "Beep." as its own block; the scale shot
+zooms from one light-day of ruler out x1,500 to the nearest star with a live count; button "Better hit send now!" into the hook.
+- **Wait for the lock by drafting outside the repo.** While the other run held the lock (10:09-11:32), the whole world, scenes,
+  timeline and audio were written in a scratch copy of the template and smoke-tested on a FAKE timeline (words.json made from the
+  script at ~0.45 s a word, a silent narration.wav): `make_timeline.py`, `scene-smoke.js` and gated stills all run on it; only
+  `master()` fails (the voice leveler needs a voice). The real build then took 22 minutes from the lock to the first render.
+- **A hook with a capitalised word mid-sentence ran 4.8 s** ("…a whole DAY to arrive."): v3 paused before DAY and the answer
+  started at 5.32 s. Three auditioned seeds of the same line with no capitals all ran 4.1 s; pick by pitch range (seed 23: 7.7
+  semitones against 5.9 and 6.8), install with `key_of`. The quiet last line ("Better hit send now.", -23.5 dB, two words flagged
+  by qc_inband) was replaced the same way ("…now!", every word 6-10 dB louder in the speech band).
+- **A punchline sound on the word masks it:** the BONK on "TOMORROW" put the word at 7.3 dB; moved to `tomorrow_end + 0.03`
+  (picture and hitstop with it) it cleared the list. A gap of 0.75 s before the next block gave the DELIVERED stamp time on screen
+  before the whip (at 0.50 it showed for 0.1 s).
+- **A phone held up to the camera:** the rig's own arm with `armAt` (elbow low and out, wrist at the phone's bottom) read better
+  than a foreshortened sleeve from the frame's bottom edge (a yellow pillar). Hand: palm under the bottom edge, three fingertips
+  round the far edge, the thumb from the palm to SEND (`vgGrip` in vg_world.js); the chat UI needs text at 12-16 % of the screen
+  width to read in a CU.
+- **A speech bubble's glow must be a ring, not a fill:** a filled shape in the glow layer bloomed the bubble's text away.
+- Voice: 339 + 168 + 60 characters (63,405 left on account 2 before). Renders: 314 s and 295 s for 856 frames.
 
 **finger-flip** (the 00:00 routine of 16 Nov 2026, which fired at 10:06 IST; built 10:06-11:06, shipped by 11:35 IST; a TEST
 Short taken AHEAD of the Queue's first line (SAD eyebrows) because the finger-W Reel became a hit on Instagram: 153,926 views by
