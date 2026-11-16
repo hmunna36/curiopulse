@@ -103,7 +103,7 @@ here for every new Short, with its links.
 
 ## Lessons
 
-**uranus-night** (the 00:00 routine of 17 Nov 2026, 00:03-01:20 IST; CURIOUS, the Curious queue's first line, a comparison of time;
+**uranus-night** (the 00:00 routine of 17 Nov 2026, 00:03-01:09 IST; CURIOUS, the Curious queue's first line, a comparison of time;
 tight arm, 57 words -> 28.23 s; hook The Comparison "Your night lasts eight hours. On Uranus? Forty-two years." (frame 0: him in a
 balloon over Uranus's pole in a nightcap, holding a twin-bell alarm clock whose split-flap face reads 8 HOURS; it slams to 42 YEARS on
 "Forty-two"); answer "The whole planet is lying on its SIDE." at 4.87 s (Uranus asleep on a pillow topples onto its side, hitstop);
