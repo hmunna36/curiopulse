@@ -96,11 +96,40 @@
 | `fold-arms`: "Fold Your Arms the OTHER Way. Feels WRONG? 🙅" | 29 s (tight arm; no pill; TEST) | https://youtube.com/shorts/-vQCuYxFc-M · 17 Nov 2026 23:30 IST | Business Suite, Instagram only, 21 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1674777447558371) |
 | `finger-flip`: "Can You Wag Your Fingers Like WIPERS? 🌧️" | 27 s (tight arm; no pill; TEST) | https://youtube.com/shorts/NzQYuPcNutY · 18 Nov 2026 11:30 IST | Business Suite, Instagram only, 21 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1009672005532294) |
 | `voyager-light-day`: "Your Text to VOYAGER 1 Would Take a Whole DAY 🛰️" | 28.5 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/31HGOQFQlj0 · 18 Nov 2026 23:30 IST | Business Suite, Instagram only, 22 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1107773438740293) |
+| `uranus-night`: "One Night on URANUS Lasts 42 Years 😴" | 28.2 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/JOvypBiIIBQ · 19 Nov 2026 11:30 IST | Business Suite, Instagram only, 22 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1121979270828937) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**uranus-night** (the 00:00 routine of 17 Nov 2026, 00:03-01:20 IST; CURIOUS, the Curious queue's first line, a comparison of time;
+tight arm, 57 words -> 28.23 s; hook The Comparison "Your night lasts eight hours. On Uranus? Forty-two years." (frame 0: him in a
+balloon over Uranus's pole in a nightcap, holding a twin-bell alarm clock whose split-flap face reads 8 HOURS; it slams to 42 YEARS on
+"Forty-two"); answer "The whole planet is lying on its SIDE." at 4.87 s (Uranus asleep on a pillow topples onto its side, hitstop);
+mechanism as one picture (the orbit with his pole fixed: the shadow sweeps over his balloon, the night half of the lap paints navy); 84 YEARS
+counter, 42 DAY / 42 NIGHT, lights out on "DARK"; weird fact "It's been night there since 2007... and sunrise? 2049." over a time-lapse
+(star trails, the year racing, his beard growing down the basket); full silence, the alarm RINGS, button "Morning... Grandpa."; YouTube
+JOvypBiIIBQ 19 Nov 11:30 IST (Studio showed an automatic frame: cover.jpg set there), Reel + Page 22 Nov 21:00 IST. Two QA rounds,
+qa.py 23/23; rebuild: timeline, words and mix byte-identical, the MP4 the same length and numbers.
+- **A two-sentence hook runs long on v3:** "Your night lasts eight hours. On Uranus, forty-two YEARS." took 5.1 s (the answer at 5.6 s);
+  five auditions of three wordings ran 4.85-6.4 s raw. The cure was free: the most expressive take (seed 7, "On Uranus? Forty-two
+  years.", 8.5 semitones) with `tighten=0.22` and `tempo=1.04` came in at 4.2 s. Cap the full stop's pause before re-voicing.
+- **A flash-forward can sit in the gap between the hook and the answer** when the answer's punch word comes after 7 s: the answer's
+  gap widened to 0.55 s (it still starts at 4.87 s) held 0.5 s of him waking bearded in 2049, right after "Forty-two years."
+- **DISPLAY keys are whole caption LINES:** `{"two thousand seven": [...]}` inside the chunk "since two thousand seven..." did nothing
+  (the key is the line's own words); `{"since two thousand seven": ["SINCE", "2007..."]}` worked.
+- **A beard drawn from the head's centre hides the face:** start it at the jaw (head y +26), no wider than the head (half 70), with a
+  cool blue-grey back layer and strand lines so it reads as hair on a cream basket; a moustache under the nose keeps the face.
+- **New world files (borrow them):** `un_world.js`: Uranus's pole from a balloon (`unSky`: a sunset/night/dawn sky, stars, the rings
+  low over the horizon, a moon, a small Sun on the cloud edge, star trails round the pole `unTrails`; `unDecks`: glass-rain's puff decks
+  in cyan with a `dy` for a low or high camera, night and dawn washes); the balloon (`unEnvelope`, `unRigging`, `unBasketBack`,
+  `unBasketFront` with frost and a sign, `unLantern`); `unClock` (twin bells over a split-flap display that flips between two texts,
+  frost, a cobweb, ringing) + `unRingArcs`; `unYearCard`; the golden nightcap `unCap`; `unBeard`; `unHero` (purple pyjamas, grey hair
+  when old); `unPlanet` (Uranus painted once with flat light, drawn at any tilt with its rings split back/front, a day/night shadow from
+  any direction, a face, a pillow, his mini balloon at the pole that dims on the night side); `unOrbit` (the orbit with gold day and
+  navy night halves). Its scenes.js: `unPoleScene` (the whole balloon set in one call), the SOUTH POLE signpost out of the clouds.
+- Voice: 326 characters for the takes + 285 for the hook auditions (quota.mjs read 59,636 before).
 
 **voyager-light-day** (the 02:00 second-Short routine of 16 Nov 2026, which fired with the late 00:00 run and waited for its
 lock until 11:32 IST; built 11:32-11:54, shipped by 12:06 IST; CURIOUS, the time-sensitive Voyager 1 light-day topic, put on
