@@ -621,8 +621,10 @@
       "title": "Your Phone's GPS Needs EINSTEIN 🛰️",
       "publishAt": "2026-11-16T18:00:00.000Z",
       "question": "🛰️ Bonus: every GPS clock is set to tick slightly SLOW before launch, so that up in orbit it ticks exactly right.\nDid you know your phone uses relativity? Yes or no? 🛰️",
-      "status": "queued",
-      "queued": "2026-11-11T21:27:16.022Z"
+      "status": "posted",
+      "queued": "2026-11-11T21:27:16.022Z",
+      "commentId": "UgzAaRPlWtVepd0nD_d4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "2xgDf7fG7ws",

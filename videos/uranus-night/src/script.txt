@@ -1,0 +1,39 @@
+# Narration for "One Night on URANUS Lasts 42 Years"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# A CURIOUS Short (story.md §6; the rules of 5 Nov: a mind-bending comparison of time), hook formula The Comparison
+# (your eight-hour night against Uranus's forty-two years; it confirms the title in the first sentence).
+# - hook: the comparison, to "you", while frame 1 shows him in his balloon basket over Uranus's pole at sunset,
+#   setting his twin-bell alarm clock (8 HRS) in his nightcap; on "forty-two" the clock's card flips to 42 YEARS;
+# - answer (by 5 s): the plain claim: the whole planet is lying on its side (it lies on a pillow, its rings upright);
+# - mechanism: ONE picture: it rolls round the Sun with its pole fixed, so his pole turns away for half the lap;
+# - payoff: one lap takes eighty-four years, half of it in the dark (the night half of the orbit lights up: 42);
+# - weird: it has been night at that pole since 2007 and the next sunrise is 2049 (the time-lapse: he sleeps, the
+#   calendar flips, the beard grows to his boots); full silence, the Sun peeks over the edge, the alarm RINGS;
+# - button: "Morning... Grandpa." The last frame cuts back to frame 1 (young again, setting the alarm).
+# Nobody says "subscribe"; the no-pill arm. Words: 57 (the tight arm: 55-64).
+
+## hook gap=0.10 tighten=0.22 tempo=1.04
+Your night lasts eight hours. On Uranus? Forty-two years.
+
+## answer gap=0.55 tighten=0.40 tempo=1.02
+The whole planet is lying on its SIDE.
+
+## mech gap=0.35 tighten=0.30 tempo=1.04
+So as it rolls around the Sun, your pole turns away for half the trip.
+
+## payoff gap=0.35 tighten=0.45 tempo=1.02
+One trip takes eighty-four years. Half of that... in the DARK.
+
+## weird gap=0.45 tighten=0.40 tempo=1.03
+It's been night there since two thousand seven...
+
+## rise gap=0.15 tighten=0.40 tempo=1.00
+and sunrise? Twenty forty-nine.
+
+## button gap=1.25 tighten=0.45 tempo=1.00
+Morning... Grandpa.
