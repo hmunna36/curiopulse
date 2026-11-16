@@ -107,7 +107,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Dinosaurs Are Older Than FLOWERS | 30 s | [`videos/dinosaurs-older-than-flowers`](videos/dinosaurs-older-than-flowers) | [17 Nov 2026](https://youtube.com/shorts/2xgDf7fG7ws) |
 | Fold Your Arms the OTHER Way. Feels WRONG? | 29 s | [`videos/fold-arms`](videos/fold-arms) | [17 Nov 2026](https://youtube.com/shorts/-vQCuYxFc-M) |
 | Can You Wag Your Fingers Like WIPERS? | 27 s | [`videos/finger-flip`](videos/finger-flip) | [18 Nov 2026](https://youtube.com/shorts/NzQYuPcNutY) |
-| Your Text to VOYAGER 1 Would Take a Whole DAY | 28 s | [`videos/voyager-light-day`](videos/voyager-light-day) | 18 Nov 2026 (uploading) |
+| Your Text to VOYAGER 1 Would Take a Whole DAY | 28 s | [`videos/voyager-light-day`](videos/voyager-light-day) | [18 Nov 2026](https://youtube.com/shorts/31HGOQFQlj0) |
 
 Each folder has:
 - the finished MP4;

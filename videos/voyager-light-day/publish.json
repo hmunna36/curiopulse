@@ -36,23 +36,39 @@
   "cover": "cover.jpg",
   "captions": "voyager-light-day.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-18T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "31HGOQFQlj0",
+    "url": "https://youtube.com/shorts/31HGOQFQlj0",
+    "uploaded": "2026-11-16T06:25:38.928Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg set in Studio 2026-11-16 (it showed an automatic frame; Changes saved)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-22T18:30:00+05:30",
     "caption": "Your text to Voyager 1 would take a whole DAY to arrive 🛰️\nIt's not ignoring you: even light takes 24 hours to get there. Past the Moon in a second, Pluto in five hours... Voyager tomorrow. And the reply? Another whole day. Beep.\nWould you wait for the reply? Yes or no?\nFollow @curio_pulse_tv for the next one: can you make SAD eyebrows on purpose? 🥺\n#science #space #voyager1 #nasa #funfacts #reels",
     "coverTime": 3.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-16T12:03:00+05:30",
+    "coverSet": true
   },
   "kind": {
     "kind": "curious",
     "slot": "2026-11-18T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1107773438740293",
+    "publishAt": "2026-11-22T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-16T06:26:19.257Z"
   }
 }

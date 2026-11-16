@@ -65,8 +65,9 @@ the speech band than the first, quiet take).
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | … | … |
-| Instagram Reels | … | … |
+| YouTube Shorts | https://youtube.com/shorts/31HGOQFQlj0 | 18 Nov 2026 23:30 IST (scheduled; thumbnail, captions, playlist Strange Nature) |
+| Instagram Reels | @curio_pulse_tv | 22 Nov 2026 18:30 IST (Business Suite, Instagram only, cover set) |
+| Facebook Page | CurioPulse (video 1107773438740293) | 22 Nov 2026 18:30 IST (`fb.mjs reel`, scheduled) |
 
 **Title:** Your Text to VOYAGER 1 Would Take a Whole DAY 🛰️
 
