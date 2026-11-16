@@ -108,7 +108,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Fold Your Arms the OTHER Way. Feels WRONG? | 29 s | [`videos/fold-arms`](videos/fold-arms) | [17 Nov 2026](https://youtube.com/shorts/-vQCuYxFc-M) |
 | Can You Wag Your Fingers Like WIPERS? | 27 s | [`videos/finger-flip`](videos/finger-flip) | [18 Nov 2026](https://youtube.com/shorts/NzQYuPcNutY) |
 | Your Text to VOYAGER 1 Would Take a Whole DAY | 28 s | [`videos/voyager-light-day`](videos/voyager-light-day) | [18 Nov 2026](https://youtube.com/shorts/31HGOQFQlj0) |
-| One Night on URANUS Lasts 42 Years | 28 s | [`videos/uranus-night`](videos/uranus-night) | 19 Nov 2026 (scheduled) |
+| One Night on URANUS Lasts 42 Years | 28 s | [`videos/uranus-night`](videos/uranus-night) | [19 Nov 2026](https://youtube.com/shorts/JOvypBiIIBQ) |
 
 Each folder has:
 - the finished MP4;

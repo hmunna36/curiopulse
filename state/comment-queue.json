@@ -1,17 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "pJIc92uQLiU",
-      "slug": "breathe-swallow",
-      "title": "Why Can't You Breathe and SWALLOW at the Same Time? 🫁",
-      "publishAt": "2026-10-19T18:00:00.000Z",
-      "question": "Could you? 🫁",
-      "status": "posted",
-      "queued": "2026-10-18T21:19:48.845Z",
-      "commentId": "Ugx0JZPcNV5f9nmNuv54AaABAg",
-      "note": "the channel had commented already"
-    },
-    {
       "videoId": "w5b_ru8URMQ",
       "slug": "vulcan-salute",
       "title": "Why Is the Vulcan Salute So HARD? 🖖",
@@ -661,6 +650,15 @@
       "question": "🛰️ Bonus: in about 40,000 years Voyager 1 will drift past a small star called Gliese 445, and still miss it by about 1.6 light-years.\nWould you wait for the reply? Yes or no? 📱",
       "status": "queued",
       "queued": "2026-11-16T06:25:47.444Z"
+    },
+    {
+      "videoId": "JOvypBiIIBQ",
+      "slug": "uranus-night",
+      "title": "One Night on URANUS Lasts 42 Years 😴",
+      "publishAt": "2026-11-19T06:00:00.000Z",
+      "question": "🪐 Bonus: a day on Uranus is only about 17 hours, and its clouds hold hydrogen sulfide, the rotten-egg gas.\nDay or night: which 42 years would you take? 🌙",
+      "status": "queued",
+      "queued": "2026-11-16T19:28:02.493Z"
     }
   ]
 }

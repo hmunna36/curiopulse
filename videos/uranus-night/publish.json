@@ -35,23 +35,39 @@
   "cover": "cover.jpg",
   "captions": "uranus-night.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-19T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "JOvypBiIIBQ",
+    "url": "https://youtube.com/shorts/JOvypBiIIBQ",
+    "uploaded": "2026-11-16T19:27:50.635Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg set in Studio 2026-11-17 (it showed an automatic frame; saved)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-22T21:00:00+05:30",
     "caption": "Your night lasts 8 hours. On Uranus? 42 YEARS 😴\nThe whole planet is lying on its side, so as it rolls around the Sun, your pole turns away for half the trip. One trip takes 84 years. It's been night at its south pole since 2007... sunrise is in 2049.\nDay or night: which 42 years would you take?\nFollow @curio_pulse_tv for the next one: can you make SAD eyebrows on purpose? 🥺\n#science #space #uranus #astronomy #funfacts #reels",
     "coverTime": 25.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-16T19:34:04.834816+00:00",
+    "note": "Instagram only (Post to: curio_pulse_tv), cover.jpg as the cover; the Facebook Page by fb.mjs reel"
   },
   "kind": {
     "kind": "curious",
     "slot": "2026-11-19T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1121979270828937",
+    "publishAt": "2026-11-22T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-16T19:35:00.303Z"
   }
 }

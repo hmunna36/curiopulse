@@ -26,8 +26,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 19 Nov 2026 11:30 IST |
-| Instagram Reels + Facebook Page | (after scheduling) | (the next free 18:30 / 21:00 IST slot) |
+| YouTube Shorts | https://youtube.com/shorts/JOvypBiIIBQ | 19 Nov 2026 11:30 IST (scheduled; playlist Strange Nature; cover.jpg also set in Studio) |
+| Instagram Reels | Business Suite (Instagram only, cover.jpg as the cover) | 22 Nov 2026 21:00 IST (scheduled) |
+| Facebook Page | `fb.mjs reel` (video 1121979270828937) | 22 Nov 2026 21:00 IST (scheduled) |
 
 **Title:** One Night on URANUS Lasts 42 Years 😴
 
