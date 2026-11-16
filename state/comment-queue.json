@@ -1,17 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "5sYH3lRmDDk",
-      "slug": "foot-switch",
-      "title": "Why Does Your Foot FLIP When You Draw a 6? 🦶",
-      "publishAt": "2026-10-18T18:00:00.000Z",
-      "question": "Did your foot flip? Yes or no? 🦶",
-      "status": "posted",
-      "queued": "2026-10-17T21:32:40.372Z",
-      "commentId": "Ugzo0jyaiEuarKq_ciB4AaABAg",
-      "note": "the channel had commented already"
-    },
-    {
       "videoId": "7A4VxK8d5Z8",
       "slug": "hum-nose-pinched",
       "title": "Why Can't You HUM With Your Nose Pinched? 🤐",
@@ -660,6 +649,15 @@
       "question": "🙅 Bonus: crossing your arms may dull pain a little. In a 2011 study, a laser zap on the hand felt weaker with the arms crossed.\nWhich arm's on top: left or right? 🤔",
       "status": "queued",
       "queued": "2026-11-13T04:55:39.255Z"
+    },
+    {
+      "videoId": "NzQYuPcNutY",
+      "slug": "finger-flip",
+      "title": "Can You Wag Your Fingers Like WIPERS? 🌧️",
+      "publishAt": "2026-11-18T06:00:00.000Z",
+      "question": "🧠 Bonus: scientists still argue WHY the mirror wins. One camp says it's your matching muscles; a 2001 Nature study says it's how the move LOOKS to you.\nDid yours flip? Yes or no? 🤔",
+      "status": "queued",
+      "queued": "2026-11-16T05:51:13.348Z"
     }
   ]
 }

@@ -34,23 +34,40 @@
   "cover": "cover.jpg",
   "captions": "finger-flip.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-18T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "NzQYuPcNutY",
+    "url": "https://youtube.com/shorts/NzQYuPcNutY",
+    "uploaded": "2026-11-16T05:51:04.430Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg set in Studio 2026-11-16 (it showed an automatic frame, the referee shot; Changes saved)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-21T21:00:00+05:30",
     "caption": "Wag your fingers like wipers. Same way... now FASTER! 🌧️\nFlipped into a mirror? Your hands are clingy twins: going opposite ways needs your brain to referee, and at speed the ref gives up. Even two people swinging their legs side by side flip!\nDid yours flip? Yes or no?\nFollow @curio_pulse_tv for the next one: can you make SAD eyebrows on purpose? 😟\n#science #humanbody #bodytest #funfacts #brain #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-16T11:31:00+05:30",
+    "coverSet": true,
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-18T11:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1009672005532294",
+    "publishAt": "2026-11-21T21:00:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-16T05:51:40.722Z"
   }
 }

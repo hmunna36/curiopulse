@@ -56,8 +56,9 @@ in the speech band against -30 on the first take).
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 18 Nov 2026 11:30 IST |
-| Instagram Reels | (Business Suite) | 21 Nov 2026 21:00 IST |
+| YouTube Shorts | https://youtube.com/shorts/NzQYuPcNutY | 18 Nov 2026 11:30 IST (scheduled; playlist Your Brain Is Weird; cover.jpg also set in Studio's Shorts thumbnail) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only, cover.jpg as the cover) | 21 Nov 2026 21:00 IST (scheduled) |
+| Facebook Page | CurioPulse (`fb.mjs reel`, video 1009672005532294) | 21 Nov 2026 21:00 IST (scheduled) |
 
 **Title:** Can You Wag Your Fingers Like WIPERS? 🌧️
 
