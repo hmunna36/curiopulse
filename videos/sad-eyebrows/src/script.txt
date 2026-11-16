@@ -1,0 +1,31 @@
+# Narration for "Can You Make SAD Eyebrows on Purpose? 🥺"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# The tight arm (rules of 5 Nov 2026): 25-30 s, 55-64 words. This script: 59 words.
+# hook = the viewer's test (lift only the inner ends of the eyebrows: Darwin 1872 "few persons, without some practice,
+# can voluntarily act on their grief-muscles"; Ekman: "few people are able to manipulate these muscles voluntarily");
+# answer starts by 5.0 s; the mechanism keeps the viewer's brows moving (up, then in, then both) through 13 s;
+# payoff: dogs have an extra inner-brow muscle (Kaminski et al. 2019, PNAS); weird: shelter dogs that raise the inner
+# brow more are rehomed faster (Waller et al. 2013, PLOS ONE); the button sends them back to the test and loops.
+
+## hook gap=0.08 tighten=0.26 tempo=1.00
+Make your eyebrows sad. Lift only the inner ends.
+
+## answer gap=0.45 tighten=0.30 tempo=1.00
+Look surprised? Your sad eyebrows are LOCKED.
+
+## ropes gap=0.32 tighten=0.30 tempo=1.03
+Two ropes on each brow. One pulls UP... one pulls IN.
+
+## both gap=0.26 tighten=0.28 tempo=1.03
+Sad pulls BOTH... and only real sadness can.
+
+## payoff gap=0.40 tighten=0.30 tempo=1.00
+Dogs? They have an EXTRA muscle... just for this.
+
+## weird gap=0.30 tighten=0.30 tempo=1.02
+And the best puppy eyes get adopted FASTER.
+
+## button gap=0.34 tighten=0.30 tempo=1.00
+Now try again... picture a wet PUPPY!

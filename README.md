@@ -109,6 +109,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Wag Your Fingers Like WIPERS? | 27 s | [`videos/finger-flip`](videos/finger-flip) | [18 Nov 2026](https://youtube.com/shorts/NzQYuPcNutY) |
 | Your Text to VOYAGER 1 Would Take a Whole DAY | 28 s | [`videos/voyager-light-day`](videos/voyager-light-day) | [18 Nov 2026](https://youtube.com/shorts/31HGOQFQlj0) |
 | One Night on URANUS Lasts 42 Years | 28 s | [`videos/uranus-night`](videos/uranus-night) | [19 Nov 2026](https://youtube.com/shorts/JOvypBiIIBQ) |
+| Can You Make SAD Eyebrows on Purpose? | 29 s | [`videos/sad-eyebrows`](videos/sad-eyebrows) | 19 Nov 2026 (scheduling) |
 
 Each folder has:
 - the finished MP4;
