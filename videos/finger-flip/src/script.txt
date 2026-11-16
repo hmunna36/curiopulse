@@ -1,0 +1,26 @@
+# Narration for "Can You Wag Your Fingers Like WIPERS? 🌧️"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# The tight arm (rules of 5 Nov 2026): 25-30 s, 55-64 words. This script: 55 words.
+# hook = the viewer's test (wiper-style finger wagging speeds up until it flips into a mirror: Kelso 1984);
+# answer starts by 5.0 s; the mechanism keeps the viewer's hands moving (slow wipers again) through 13 s;
+# the button sends them back to the test, and the loop runs straight into the hook.
+
+## hook gap=0.08 tighten=0.26 tempo=1.00
+Wag your fingers like wipers. Same way... now FASTER!
+
+## answer gap=0.45 tighten=0.30 tempo=1.00
+Flipped into a mirror? Your hands are clingy TWINS.
+
+## mech gap=0.32 tighten=0.30 tempo=1.03
+Slow down. One swings IN, the other OUT... your brain's refereeing.
+
+## payoff gap=0.30 tighten=0.32 tempo=1.02
+Faster? The ref gives up... and the twins COPY.
+
+## weird gap=0.36 tighten=0.30 tempo=1.03
+[curious] Two PEOPLE swinging their legs side by side? They flip too!
+
+## button gap=0.34 tighten=0.30 tempo=1.00
+Now try to flip it BACK.

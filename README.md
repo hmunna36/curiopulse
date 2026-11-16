@@ -106,6 +106,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Your Phone's GPS Needs EINSTEIN | 28 s | [`videos/gps-einstein`](videos/gps-einstein) | [16 Nov 2026](https://youtube.com/shorts/ts0Bp3aDLA0) |
 | Dinosaurs Are Older Than FLOWERS | 30 s | [`videos/dinosaurs-older-than-flowers`](videos/dinosaurs-older-than-flowers) | [17 Nov 2026](https://youtube.com/shorts/2xgDf7fG7ws) |
 | Fold Your Arms the OTHER Way. Feels WRONG? | 29 s | [`videos/fold-arms`](videos/fold-arms) | [17 Nov 2026](https://youtube.com/shorts/-vQCuYxFc-M) |
+| Can You Wag Your Fingers Like WIPERS? | 27 s | [`videos/finger-flip`](videos/finger-flip) | 18 Nov 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;
