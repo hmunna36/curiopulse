@@ -97,11 +97,48 @@
 | `finger-flip`: "Can You Wag Your Fingers Like WIPERS? 🌧️" | 27 s (tight arm; no pill; TEST) | https://youtube.com/shorts/NzQYuPcNutY · 18 Nov 2026 11:30 IST | Business Suite, Instagram only, 21 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1009672005532294) |
 | `voyager-light-day`: "Your Text to VOYAGER 1 Would Take a Whole DAY 🛰️" | 28.5 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/31HGOQFQlj0 · 18 Nov 2026 23:30 IST | Business Suite, Instagram only, 22 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1107773438740293) |
 | `uranus-night`: "One Night on URANUS Lasts 42 Years 😴" | 28.2 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/JOvypBiIIBQ · 19 Nov 2026 11:30 IST | Business Suite, Instagram only, 22 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1121979270828937) |
+| `sad-eyebrows`: "Can You Make SAD Eyebrows on Purpose? 🥺" | 28.8 s (tight arm; no pill; TEST) | https://youtube.com/shorts/wkaMfK-mv10 · 19 Nov 2026 23:30 IST | Business Suite, Instagram only, 23 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1762084994871718) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**sad-eyebrows** (the 02:00 second-Short routine of 17 Nov 2026, 02:05-03:05 IST; TEST, the Queue's first line (promised by
+fold-arms's and finger-flip's Next-ups), kin of one-eyebrow; tight arm, 59 words -> 28.83 s; hook The Direct Address, the instruction
+itself: "Make your eyebrows sad. Lift only the inner ends." (Darwin 1872: "few persons, without some practice, can voluntarily act on
+their grief-muscles"; Ekman: few people can move them at will); answer "Look surprised? Your sad eyebrows are LOCKED." at 4.02 s (a
+padlock slams between his brows, hitstop); mechanism as one picture on his forehead: a wooden rig drops above his head, two ropes on
+each brow, UP gives SURPRISED (9.8 s), IN gives ANGRY (11.2 s), BOTH jams on the padlock (12.6 s), and a little rain cloud's tear in
+the teardrop keyhole unlocks it ("only real sadness can"); payoff: the dog's x-ray, an EXTRA MUSCLE over each eye (Kaminski et al.,
+PNAS 2019), puppy eyes on "just for THIS" (the biggest hit after full silence); weird fact: puppy eyes get adopted faster (Waller et
+al., PLOS ONE 2013), three kennels and an ADOPTED! stamp; button "Now try again... picture a wet PUPPY!": a thought bubble with a
+soaked puppy, his brows finally go sad, the sausage lands on HIS plate and the dog frowns (the running device reversed); YouTube
+wkaMfK-mv10 19 Nov 23:30 IST (Your Brain Is Weird; Studio showed a processing placeholder: cover.jpg set there); Reel + Page 23 Nov
+18:30 IST. Two QA rounds, qa.py 23/23; rebuild: timeline.json and mix.wav byte-identical (the MP4 re-render skipped).
+- **New world files (borrow them):** `se_world.js`: Gran on a stump with a long roasting stick (`seGran` for her, `seGranStick` for
+  the stick, drawn AFTER the hero so it passes in front; `seGranHand`), a fat browned sausage on a two-prong fork (`seSausage`), the
+  dog (why-we-cry's pupDraw as `seDog` with `sad` (inner brows up, big glossy puppy eyes), `angry`, `smug`, `sausage` + `chew`, `jaw`
+  (dropped), `xray` + `muscle` (a see-through head, the skull and a striated spindle over each eye that bunches when it pulls), `wet`,
+  `pal`: SE_PUP, SE_PUG, SE_GRUMP), `seTear`, a rain cloud with a sad face that drips (`seCloud`), a padlock with a teardrop keyhole
+  that fills blue (`sePadlock`, `seKeyhole`, in head units), a twisted rope that marches when it pulls (`seRope`), `sePulley`,
+  Darwin's horseshoe furrows (`seSadLines`), the rope rig on a bar above his head (`seHeadExtras`), him with a tin plate in both
+  hands (`seHero`, campChar + brows.js's head), the whole campfire set by state (`seCampScene`, `SE_STICK` targets mid/dog/him/rest),
+  and a shelter of three kennels with a door that swings open (`seKennels`). Copies of camp.js (mosquito-bites) and brows.js
+  (one-eyebrow, now with `knit`: the inner end drawn in and down) sit beside it.
+- **Faces as presets on a clock:** `SE_F` (strain, surp, rest, cross, angry, jam, sad) mixed by `seFaceAt(t, keys)` with snapRamp
+  easing, valid at negative time, so the loop shot just plays frame 1's state at t - duration (last frame vs frame 0: 1.9/255).
+- **A glass forehead read as a blue cap again** (one-eyebrow had the same): a rope rig hanging from a wooden bar ABOVE his head read
+  at once, with the ropes over the knit band. A red rounded rect read as a rod, not a sausage: it needs a browned body, a lighter top
+  band, grill marks and twisted ends.
+- **A face held for 1.4 s before 12 s** (round 1: surprised from the fail to the padlock): give the line an attempt ("Your sad
+  eyebrows are..." he tries again, brows wobbling, tongue out) and let the padlock slam onto it.
+- **A music-box arpeggio rings into the next line:** trim every note to the next word (`fit()` in audio.py); a reverb tail of the
+  biggest hit still sits on a soft "And" (a 0.08 s function word; qa.py checks content words and passed).
+- **Business Suite's "Next" is not in `find`:** click it once by its exact text from JavaScript; the Schedule option and the date
+  were found by ref; the date input reads "23 November 2026", not dd/mm/yyyy, so check that form before the final Schedule.
+- Voice: 324 characters for the takes + 497 for the button and hook auditions (quota.mjs read 57,031 before, 56,702 after). Render:
+  about 255 s for 865 frames.
 
 **uranus-night** (the 00:00 routine of 17 Nov 2026, 00:03-01:09 IST; CURIOUS, the Curious queue's first line, a comparison of time;
 tight arm, 57 words -> 28.23 s; hook The Comparison "Your night lasts eight hours. On Uranus? Forty-two years." (frame 0: him in a
