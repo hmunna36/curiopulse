@@ -48,8 +48,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | https://www.instagram.com/reel/… | … 06:30 or 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/wkaMfK-mv10 | 19 Nov 2026 23:30 IST (scheduled; thumbnail cover.jpg, also set in Studio; captions; playlist Your Brain Is Weird) |
+| Instagram Reels | @curio_pulse_tv (link once live) | 23 Nov 2026 18:30 IST (Business Suite, Instagram only, cover.jpg as the cover; Content → Scheduled checked) |
+| Facebook Page | CurioPulse (video 1762084994871718) | 23 Nov 2026 18:30 IST (`fb.mjs reel`: scheduled, ready) |
 
 **Title:** Can You Make SAD Eyebrows on Purpose? 🥺
 

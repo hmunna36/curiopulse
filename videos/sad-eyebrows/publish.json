@@ -33,23 +33,40 @@
   "cover": "cover.jpg",
   "captions": "sad-eyebrows.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-19T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "wkaMfK-mv10",
+    "url": "https://youtube.com/shorts/wkaMfK-mv10",
+    "uploaded": "2026-11-16T21:20:41.406Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg set in Studio 2026-11-17 (the slot showed a processing placeholder and an automatic frame; Changes saved)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-23T18:30:00+05:30",
     "caption": "Make your eyebrows sad. Lift only the inner ends. 🥺\nLook surprised? Your sad brows are locked: two ropes each, UP and IN, and only real sadness pulls both. Dogs have an extra muscle just for it (and the best puppy eyes get adopted faster)!\nSad or surprised?\nFollow @curio_pulse_tv for the next one: why does the WRONG finger move? 🤞\n#science #humanbody #facetest #funfacts #dogs #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-17T03:00:00+05:30",
+    "coverSet": true,
+    "postTo": "curio_pulse_tv only (the Page by fb.mjs)"
   },
   "kind": {
     "kind": "test",
     "slot": "2026-11-19T23:30:00+05:30"
+  },
+  "facebook": {
+    "videoId": "1762084994871718",
+    "publishAt": "2026-11-23T18:30:00+05:30",
+    "via": "api",
+    "scheduledAt": "2026-11-16T21:27:07.968Z"
   }
 }

@@ -1,17 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "w5b_ru8URMQ",
-      "slug": "vulcan-salute",
-      "title": "Why Is the Vulcan Salute So HARD? 🖖",
-      "publishAt": "2026-10-20T06:00:00.000Z",
-      "question": "Can you split your fingers? 🖖",
-      "status": "posted",
-      "queued": "2026-10-19T19:32:36.542Z",
-      "commentId": "UgxB3IsWKW1DaiIiUVh4AaABAg",
-      "note": "the channel had commented already"
-    },
-    {
       "videoId": "L08J-VnxDlg",
       "slug": "finger-sausage",
       "title": "Why Is There a SAUSAGE Between Your Fingers? 🌭",
@@ -659,6 +648,15 @@
       "question": "🪐 Bonus: a day on Uranus is only about 17 hours, and its clouds hold hydrogen sulfide, the rotten-egg gas.\nDay or night: which 42 years would you take? 🌙",
       "status": "queued",
       "queued": "2026-11-16T19:28:02.493Z"
+    },
+    {
+      "videoId": "wkaMfK-mv10",
+      "slug": "sad-eyebrows",
+      "title": "Can You Make SAD Eyebrows on Purpose? 🥺",
+      "publishAt": "2026-11-19T18:00:00.000Z",
+      "question": "🐶 Bonus: Darwin was told of a family of famous actors who could ALL do the sad brows on demand. He thought the knack ran in families.\nSad or surprised? 🤔",
+      "status": "queued",
+      "queued": "2026-11-16T21:20:50.970Z"
     }
   ]
 }
