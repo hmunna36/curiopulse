@@ -61,6 +61,11 @@ with `.work`'s, then run qa.py on it with that folder.
   needed for the nightly routine. `bin/backup-skill.sh` mirrors it to `skill/cp/` on GitHub.
 - A Short started before 5 Oct 2026 and resumed later keeps its own (older) engine and qa.py copies in its `src/`:
   finish it by the rules it was started under.
+- A Short scaffolded before 16 Nov 2026 and resumed later has no `NOTES.md` and no `web/worldkit.js`: copy the
+  template's `NOTES.md` into it and answer it (`reference/direction.md`). For the flash-forward, water on the lens or
+  the world kit, copy `web/worldkit.js`, `web/main.js`, `timeline_lib.py`, `qa.py` and `sfxkit.py` from the template
+  as well and add the `worldkit.js` line to its `scene.html` (after `acting.js`); otherwise say in NOTES.md's rule 4
+  that this Short's engine has no flash.
 
 ## This Mac
 

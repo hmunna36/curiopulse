@@ -28,6 +28,9 @@ Checks (FAIL blocks the upload; WARN is for the review):
 - Camera (7 Nov 2026, the cinema kit): the timeline's CAMERA plan has at least two whip pans, a punch-in, a mood change
   and depth (a foreground layer or particles) in half the shots (a warning only; timeline_lib already refuses a plan
   that breaks the loop).
+- Direction (16 Nov 2026, reference/direction.md; warnings): the rhythm (average shot 2.2 s or less, none over 3.2 s;
+  timeline_lib.rhythm counts shots, cut_* cues and a full-frame flash), a flash-forward planned between 4 and 7 s, and
+  the record: NOTES.md next to the MP4 answers each of the sheet's 21 rules.
 - Look (8 Oct 2026): the MP4 was rendered in the look the timeline asks for. render.js writes <work>/look.txt; a
   warning when the cinematic look was asked for and the render fell back to the classic one (no graphics chip).
 - Voice: speech-band SNR >= 10 dB on all but 3 words (from the stems).
@@ -221,6 +224,35 @@ if _tlc.get("cinema"):
     check(not _miss, "camera and light plan (whips, punch-in, mood, depth)",
           "; ".join(_miss) if _miss else f'{len(_w)} whips, {len(_p)} punch-ins, mood {" -> ".join(_m)}, depth in {len(_deep)} of {len(_ids)} shots',
           warn=True)
+
+# ---------------------------------------------------------------- the direction sheet (reference/direction.md, 16 Nov 2026)
+# Warnings for the review: the rhythm (rule 11), the flash-forward (rule 4), and the record: NOTES.md next to the MP4
+# has one line for each of the sheet's 21 rules, "N. <rule>: <how this Short meets it>" (ship bar item 12).
+try:
+    from timeline_lib import RHYTHM_AVG, RHYTHM_MAX, rhythm as _rhythm
+    _n, _avg, _max, _at = _rhythm(_tlc["shots"], _tlc.get("cues"), _tlc.get("camera"), _tlc["duration"])
+    check(_avg <= RHYTHM_AVG + 1e-6 and _max <= RHYTHM_MAX + 1e-6, f"direction: rhythm (average shot <= {RHYTHM_AVG} s, none over {RHYTHM_MAX} s)",
+          f"{_n} shots, average {_avg:.2f} s, longest {_max:.2f} s (from {_at:.2f} s)", warn=True)
+    _fl = (_tlc.get("camera") or {}).get("flash") or []
+    check(bool(_fl), "direction: a flash-forward between 4 and 7 s",
+          ", ".join(f"at {x[0]:.2f} s for {x[1]:.2f} s to {x[2]:.2f} s" + (" in a window" if x[3].get("win") else "") for x in _fl)
+          if _fl else 'none planned: CAMERA["flash"] in make_timeline.py (direction.md rule 4)', warn=True)
+except Exception as _e:  # an older timeline_lib beside this qa.py
+    check(False, "direction: rhythm and flash-forward", f"not checked ({_e})", warn=True)
+_notes = os.path.join(os.path.dirname(os.path.abspath(MP4)), "NOTES.md")
+if os.path.exists(_notes):
+    _ans = {}
+    for _ln in open(_notes, encoding="utf-8").read().splitlines():
+        _m = re.match(r"^\s*(\d{1,2})\.\s+(.*)$", _ln)
+        if _m:
+            _txt = _m.group(2).split(":", 1)[1].strip() if ":" in _m.group(2) else ""
+            _ans[int(_m.group(1))] = len(_txt.strip(" .…")) >= 8 and not _m.group(2).rstrip().endswith("…")
+    _open = [n_ for n_ in range(1, 22) if not _ans.get(n_)]
+    check(not _open, "direction: the record (NOTES.md, one line for each of the 21 rules)",
+          "all 21 rules answered" if not _open else "no answer yet for rule " + ", ".join(str(n_) for n_ in _open), warn=True)
+else:
+    check(False, "direction: the record (NOTES.md, one line for each of the 21 rules)",
+          "no NOTES.md next to the MP4: write it from the template's (reference/direction.md)", warn=True)
 
 # ---------------------------------------------------------------- voice: per-word speech-band SNR (content words)
 STOP = set("a an the and or but so of to in on at by for with from as is are was were be been it its it's this that "

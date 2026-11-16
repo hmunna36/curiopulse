@@ -290,6 +290,35 @@ moves use `snapRamp(t, a, b)` (a wind-up, then an overshoot that settles), the p
 pure function of time, so `render_par.js` pieces join without a seam. In a film, a hitstop on each act's biggest laugh,
 not on every joke.
 
+## The world kit (16 Nov 2026)
+
+The owner, 13 Nov 2026, on the Shorts' 15-second lagoon showcase: "I loved this"; on 16 Nov its new visuals became the
+channel's standard kit, in the Shorts' engine and in this one (`web/worldkit.js`, the same file; sizes scale to the
+wide frame). The table of what to use when, with one-line usage, is the cp skill's `reference/visual.md`, "The world
+kit"; how it works is its `reference/engine.md`, "The world kit in code". For the film:
+- **Depth layers** (`wkLayers(cam, {hz, dy}, [[0.08, sun], [0.14, clouds], [0.3, hills]])`): every outdoor world; `hz` is
+  the horizon's world y (about 620 for a ground line at 860), `dy` plus for a low camera, minus for a high one. The
+  film bar's "depth (foreground, hero, background)" starts here.
+- **Mirror images** (`wkReflect`, `wkReflectHero`, `wkReflectScreen`), **glitter** (`wkGlitter`), **ripples and rings**,
+  **a splash** (`wkSplash`): whenever a world has water, a wet street, ice or a polished floor.
+- **Water on the lens** (`CAMERA["lens"] = [[cue, {}]]`): beads that stay across the next cut; they keep clear of the
+  caption band by themselves; keep the splash away from the clock's corner.
+- **A flock** (`wkFlock`) or **a crowd** (`wkCrowd`: `wkPerson`, `wkWader`, or your own figure) where a sky or a
+  distance is empty. The film does not loop: leave `loop` out and give the flock its own crossing times.
+- **A second character with one acting beat of its own** (it does without effort what he cannot, or watches him
+  fail). Draw it plainly: this engine has no light stage, so `actor` and `paint` do not exist in it (the kit copes by
+  itself).
+- **The flash-forward** (`CAMERA["flash"]`): the cold open's flashes to each act's strongest picture (direction.md
+  rule 4); timeline_lib keeps them inside the first 30 s.
+- **The bar-fitted score:** `fit_loop(seconds)` and `bar_at(t, BEAT)` in sfxkit put a scene's end and every section
+  change on a bar line; `riff`, `steel_pan`, `shaker`, `claps` add a hook and percussion on the grid. The film does
+  not loop, so only the end frame that "could loop into the hook" needs the bar line.
+- **Colour:** the kit adds things and never grades; measure a world with it and without (HSV saturation and
+  brightness) and keep the frame as rich as it was drawn (owner, 7 Nov 2026).
+- **In the cloud:** it is plain canvas work, a pure function of time, so `render_par.js` pieces join without a seam. A
+  mirror image costs a few milliseconds a frame; if the render test says the film will not fit the run, drop
+  `wkRipples` first, then the mirror images of props, never the hero's.
+
 ## Landscape staging (1920×1080)
 
 - **Use the width.** Hero on one third (x ≈ 640 or 1280), what he looks at on the other; or a split: the hiker on the
@@ -298,7 +327,8 @@ not on every joke.
   the face is the channel's best asset.
 - **The lower 220 px belong to the captions** (they sit at y ≈ 915). Keep faces, labels and key action above y 820.
   Keep the outer 90 px on every side free of words and faces.
-- 45–70 shots, 5–7 worlds (a shot is 3–8 seconds; scenes are made of one to three shots). The camera always travels:
+- About 90 cuts, 5–7 worlds (since 16 Nov 2026, direction.md rule 11: an average shot of 3 s or less, none over 6 s
+  unless something on screen changes every second; it was 45–70 shots of 3–8 s; scenes are made of two to five shots). The camera always travels:
   push, pan to what is named, rack between hero and cutaway. Never static for more than 3 s.
 - The clock (HOUR 18 · DAY 3) lives top left at about x 110, y 120, Anton, 54 px or more, with the dark outline; it
   ticks or flips on every jump, with a sound. It never hides a face.
@@ -387,6 +417,10 @@ only the ones that qualify. `topics.md` holds the queue; one line per video, the
 | 13 | **Every scene holds** | the scene table is complete (waiting for, turn, leaves open, stakes) and matches the film; the clock is on screen and every jump is a hook; a promise at least every 30 s, each paid within 30 s; the first payoff by 0:30; the last minute is the strongest; the skim test finds no eight alike frames; the 15-second audit has an honest line for every 15 seconds; no scene fails the leave test |
 | 14 | **The viewer takes part** | three or more tests the viewer does while watching (one in the hook, one in each later act), each safe, seated and seconds long, each paid off by what it shows; the explanation points back to them in everyday words, with no science word spoken in the first 30 s; the description and the pinned-comment suggestion end with the question about the viewer's result |
 | 15 | **Every second** | the scene table has a payoffs column: a small payoff every 3–5 s, a bigger one every 15–20 s, the biggest in the last minute, sizes varied; every event juiced (anticipation, impact, follow-through); every explanation step a transformation; every line a question, answer, surprise, number, joke or test; the score builds into the payoffs (`pay_*` / `big_*` cues), holds its breath before the biggest, changes at least every 30 s and the cuts sit on its beat; qa.py's every-second rows clean, or each flag named as a planned beat; the 5-second audit has an honest line for every 5 seconds |
+| 16 | **The direction record** (16 Nov 2026; `direction.md`) | `NOTES.md` has one line for each of the sheet's 21 rules saying how this film meets it, with a time or a frame (the spine, the button line and the final image written first; the cold open's flash-forwards; the device's return at the end of each act; the held shot before each turn; two sources per claim; each punchline's beat and picture; a reaction in every shot; the rhythm numbers; the reason for each camera move; the colour numbers; the silent test, act by act; the dead stops; the two swipe checks); no line is empty or "as planned"; a rule an owner rule overrides is answered with what was kept; the last line says what nobody could verify. Score it by the weakest rule, not the average |
+
+Never round a score up (direction.md rule 21): an item under 8 is fixed, not shipped with a note, and what nobody
+could verify goes in the first lines of the report.
 
 Read every contact sheet (`.work/qa/sheet_*.png`, one frame per second) and crop the risky moments at full size.
 Score items 0, 13, 14 and 15 hardest. Item 0: watch the sheets with the captions ignored and ask whether the story still

@@ -265,7 +265,7 @@ no punch-in. Proof of the kit, before against after on the same seconds of lick-
    caption band (y 1180-1480 in the middle). Two shots in a row with the same corner read as one: alternate. It fits
    the place (grass and leaves outdoors; a post, bars or lamp bokeh indoors). A punch-in crops what sits at the edges,
    the foreground too: a punched shot gets its depth from particles.
-8. **Dressed sets, never an empty sky.** The hero's place has at least three things that belong there, with practical
+8. **Dressed sets, never an empty sky** (the world kit below adds depth layers, a flock, a crowd, mirror images). The hero's place has at least three things that belong there, with practical
    lights where the place has them: prayer flags across a mountain pass, lanterns and a kettle at a campsite, string
    lights and balloons at a party, a mug, a lamp and sticky notes on a desk, tiles, a towel and a steamy mirror in a
    bathroom. Lamps, windows, screens and candles go in the glow layer so they bloom; metal gets a highlight. Build them
@@ -314,6 +314,50 @@ approved. Most of it is automatic; the rest is one line in the plan.
 
 **Check on the stills** (qa.md): a frame inside one automatic blink, the 4 frames of each hitstop and the 2 after it, the
 punch-in's middle frame (his face readable), and a still of each brow beat.
+
+## The world kit (since 16 Nov 2026)
+
+**Why.** The owner, 13 Nov 2026, on a 15-second showcase set on a lagoon (he stands on one leg on a mooring post, shuts
+his eyes, falls in; a flamingo sleeps through it): "I loved this"; on 16 Nov its new visuals became the channel's
+standard kit. What that Short had beyond the usual one is now `web/worldkit.js` (how it works: engine.md, "The world kit
+in code"). Use what suits the place; a Short does not need all of it. The approved format does not move: frame 0 is
+still the tight test, and nothing of the kit covers his face or the test.
+
+| What | When to use it | One line |
+|---|---|---|
+| **Depth layers** | every outdoor place, and any room with a view: sky, sun, clouds, far hills, a shore, his plane; three layers or more read as depth (the curious kind asks for it, story.md §6) | `wkLayers(cam, {hz: 1060, dy: 0}, [[0.08, sun], [0.14, clouds], [0.3, hills]])` then his plane under `cam`; `dy: 230` is a low camera, `dy: -120` a high one (cinema-kit rule 1); `wkHorizon(cam, 0.3, o)` is where the sky ends |
+| **Mirror images** | he or a prop stands in or by water, on a wet road, on ice, on a polished floor | a prop: `wkReflect(cam, waterY, t, (c) => drawBoat(c))`; him, as `charLayer` just drew him: `wkReflectHero(cam, waterY, t)`; a far shore or a skyline already on the picture: `wkReflectScreen(layerCam, waterY, t, {h: 150})` |
+| **Glitter** | under the sun, the moon or a lamp on water or a wet road | `wkGlitter(t, {x: sunScreenX, y0: horizonScreenY, y1: H})`; a lamp: `{col: '#FFE9B0', glow: '#FFB84A'}` |
+| **Ripples and rings** | a flat colour has to read as water; something stands in it | `wkRipples(cam, t, {hz: 1060})`; `wkRings(x, waterY, 120, t)` |
+| **A splash** | something falls in | `wkSplash(cam, x, waterY, cu().splash, t, 2)` (2 = a person) |
+| **Water on the lens** | after a splash, a wave, a sneeze, rain: the beads stay on the glass across the next cut and tie two shots together | make_timeline.py: `CAMERA["lens"] = [[cues["splash"], {}]]` (never in the first 1.5 s, dry before the loop) |
+| **A flock** | a sky is empty (cinema-kit rule 8: never an empty sky) | `screenSpace(); wkFlock(t, {t0: -1.4, t1: 4.6, x0: 1300, y0: 520, x1: -330, y1: 440, loop: true})`; other flyers through `draw`, other colours through `pal` |
+| **A crowd** | the place has people or animals in the distance: waders on a far shore, a beach, a street, a stand | `wkCrowd(ctx, t, {x0: 60, x1: 1040, y: 1352, n: 9, s: 1.5})`; `draw: wkWader` for birds; `mirror: 0.45` on water or a wet floor |
+| **The loop score** | every Short | sound.md, "The loop score" |
+
+- **Write props as functions of a canvas** (`function drawBoat(c, t) { ... c.fill() }`, called with `ctx` in the scene):
+  the kit can then draw them again as their mirror image. A prop drawn straight onto `ctx` can only be mirrored with
+  `wkReflectScreen`, which takes the whole picture above the line.
+- **Order:** the set in layers, the props, him, the water in front of whatever stands in it, then the mirror images and
+  the rings, then the splash. Mirror images are paint (see-through, unlit), so they never get a rim or a shadow.
+- **A second character with one acting beat of its own** (the flamingo opened one eye at "does this", then slept on).
+  It belongs to the place, it has one job in the story (it does without effort what he cannot, or it watches him fail),
+  and its beat sits on a cue in a gap of the narration, 6-10 frames, never before 12 s if it is a held look (story.md
+  §2). Draw it as an `actor`, its eyes as `paint`. It is often the running device of the direction sheet (rule 5).
+- **Loop-safe:** everything in the kit runs on clocks that divide the Short's length; `loop: true` brings a flock round
+  once a lap. Check the last frame next to frame 0 as always.
+- **The colour check** (owner, 7 Nov 2026: the channel's colours stay vibrant). The kit has no grade, no multiply and no
+  filter: it only adds things, and what it does not draw on stays as the scene drew it. What it adds (mirror images, a
+  far flock, foam, beads) is paler than the open water or sky it covers, so a frame measures a little under the same
+  frame without the kit. On the proof stills of 16 Nov (HSV saturation / brightness, 0-100): the day shore 66-67 / 79.5
+  with the kit against 69 / 79.5 without; the night street 70 / 66 against 71.5 / 67; a sunset beach with a crowd
+  57 / 88 against 57 / 89; and 63 / 81.5 against 68 / 80 for the half second a splash's foam fills a third of the
+  frame. The approved showcase frames measure 67-72 / 77-79. Measure a new place the same way (a still with the kit
+  and one without) and say the numbers in `NOTES.md` (direction.md rule 13). More than 3 points of saturation on a
+  held shot, or more than 1 of brightness: lower the mirror images' `a`, thin the crowd, or give them the place's own
+  colours (`tint`, `col`, `coats`). Never accept a paler frame.
+- **Cost:** about 30 ms a frame with nearly all of it on at once (three mirror images, a far shore's mirror, a crowd
+  with its own mirror, ripples, glitter: 13 stills in 3.4 s against 3.0 s without).
 
 ## Graphics on screen (fx.js)
 

@@ -21,6 +21,11 @@ nostril is the only Short that never fell below YouTube's typical retention. Eve
    25–30 s with a shorter middle (§3), an end that is the loop with nothing after it (§3), and only the two topic kinds
    that won (§4, §6).
 
+10. **The direction sheet (16 Nov 2026; `direction.md`; owner: add it to every daily and weekly run).** Before the
+    script: the spine in one sentence and the button line written first, a flash-forward to the payoff's own picture
+    between 4 and 7 s (in a window in a test Short), one running device with three beats, the longest shot just before
+    the payoff, two independent sources for every claim. Its 21 rules are answered one by one in the video's `NOTES.md`.
+
 ## 1. Research first (15–20 minutes; it prevents re-voicing)
 
 - Tools (24 Oct 2026, free): WebSearch and WebFetch; when a site refuses WebFetch or a PDF is needed whole,
@@ -33,7 +38,7 @@ nostril is the only Short that never fell below YouTube's typical retention. Eve
 - Write the claims table for the README's science notes before writing a word of script:
   - the claim;
   - its status: established, leading idea, debated, or myth;
-  - its source.
+  - its sources: two that do not copy each other (direction.md rule 7); a claim with one source is hedged or dropped.
   Anything below "established" is said as a hedge ("Scientists think…", "One idea…", "Some studies say… another says
   meh").
 - For every number that will be on screen, write down what was compared with what (time-flies, 9 Oct 2026: the fall
@@ -230,6 +235,10 @@ queue. Prefer topics where the hiker can be the one it happens to.
 
 ## 5. The one-page plan (write it in the video README before any code)
 
+0. From the direction sheet (`direction.md` part A; they go into `NOTES.md` too): the spine in one sentence ("you
+   think X, but Y, because Z"), the button line (written before the rest), the running device and its three beats
+   (set up, escalate, reverse), and the flash-forward: which moment of the payoff shot, where between 4 and 7 s, in a
+   window (a test Short) or full frame (a curious one).
 1. The length (25–30 s, 55–64 words on the tight arm; `yt.mjs next-slot` confirms the arm).
 2. The test the viewer does, the hook sentence (the instruction), the answer line, and the button line (it runs into
    the hook when the Short loops).
@@ -240,7 +249,9 @@ queue. Prefer topics where the hiker can be the one it happens to.
 5. For every beat:
    - the picture (world, camera move, what changes);
    - the framing (size, side, low / eye / high) and how it cuts in (a cut, a whip, a dive), never the same as the beat
-     before (`visual.md`, "Camera and light craft");
+     before (`visual.md`, "Camera and light craft"); the cuts inside the beat, so that the average shot is 2.2 s or
+     less and none runs over 3.2 s, and the reason for each camera move (`direction.md` rules 11 and 12);
+   - who or what reacts in it (`direction.md` rule 9);
    - the mood of the light (`day`, then `shade` / `storm` / `night` when it goes wrong, `warm` for the reveal, back for
      the loop), the punch-in beat, and what fills the foreground and the air;
    - the sound (hit, bed, music state);

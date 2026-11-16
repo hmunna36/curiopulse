@@ -6,6 +6,9 @@ Captions for YouTube: [`__SLUG__.srt`](__SLUG__.srt). Thumbnail: [`cover.jpg`](c
 
 <!-- One line: the worlds and the hero (the hiker rig, what he's doing), same narrator/caption/bloom look as the Shorts. -->
 
+**Direction record:** [`NOTES.md`](NOTES.md): the spine, the last line, and how this film meets each of the 21 rules
+of the direction sheet (`.claude/skills/cp-long/reference/direction.md`), written as it is built.
+
 ## The question (demand check)
 
 `node .claude/skills/cp-long/bin/yt.mjs demand "<question>"` on <date>: median … views, … of 8 at a million or more.
@@ -64,9 +67,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 Every claim in the script, how sure science is, and where it comes from. Hedged lines are said as hedges.
 
-| Claim | Status | Source |
+| Claim | Status | Sources (two, independent: direction sheet, rule 7) |
 |---|---|---|
-| … | established / leading idea / debated | … |
+| … | established / leading idea / debated / myth | … · … |
 
 ## Ship review
 

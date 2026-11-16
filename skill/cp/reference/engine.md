@@ -19,6 +19,7 @@
 | `web/scenes.js` (+ more) | this video's worlds, props and `SC.<shot>` functions, and `initScenes2()` | yes |
 | `web/subscribe.js` | the subscribe cue (pill, bell, cursor click, pop-out), silent, over the last 2.4 s in the pill test (3.4 s in 9–15 Oct), driven by `cues.sub_in` / `cues.sub_tap` / `cues.sub_out` (timeline_lib.py sets them from the duration for publish.json's pill arm, `PILL_IN` / `PILL_TAP` / `PILL_OUT`); `SUB_LINE` = an optional line of text under the pill (empty); `subLift` tells main.js which caption chunks sit at y 1150 | engine |
 | `web/acting.js` | automatic acting (8 Nov 2026): blinks, eye darts and planned brow beats on top of each shot's face (a `drawCharacter` wrapper, deterministic), and `snapRamp()` (a move with a wind-up and an overshoot) | engine |
+| `web/worldkit.js` | the world kit (16 Nov 2026): depth layers (`wkLayerCam`, `wkLayers`), mirror images (`wkReflect`, `wkReflectHero`, `wkReflectScreen`), `wkGlitter`, `wkRipples`, `wkRings`, `wkSplash`, water beads on the lens (`wkLensDrops`; `CAMERA["lens"]`), `wkFlock`, `wkCrowd`, and the flash-forward (`CAMERA["flash"]`) | engine |
 | `web/main.js` | the compositor: runs the active shot, the light (`lookFrameStart`, `lookScene`, `lookFinal`), bloom, the cinema kit (`cinemaScene`, `cinemaLens`), push, blur, grade, VHS, grain, flash, captions | engine |
 | `render.js` | headless Chrome → PNG frames piped into ffmpeg (or to a folder for stills); prints `look: …`, takes `CP_LOOK`, falls back to the classic look without a graphics chip | engine |
 | `make_srt.py`, `qa.py`, `qc_*.py`, `contact_sheet.py` | captions file, the QA gate, review tools | engine |
@@ -116,7 +117,8 @@ What to write is in visual.md ("The light"). How it works, for when something lo
   camera=CAMERA)`. `timeline_lib.camera_plan` checks it and prints one line (`camera: 3 whip pan(s), 3 punch-in(s), ...`):
   whips snap to the nearest cut (within 0.2 s; never before 1.5 s), punch-ins 1.05-1.4, tilts up to 6 degrees, and it
   refuses a punch or tilt still on in the last 0.5 s, or a mood at the end that is not frame 1's (the loop), and unknown
-  shots, moods, foreground or particle kinds. Every time is a cue.
+  shots, moods, foreground or particle kinds. Every time is a cue. Since 16 Nov 2026 it also takes `"lens"` (water
+  beads on the lens: "The world kit in code") and `"flash"` (the flash-forward, below).
 
   ```python
   _st = {s_["id"]: s_["start"] for s_ in shots}
@@ -178,6 +180,85 @@ What to write is in visual.md ("The light"). How it works, for when something lo
 - The raster canvases: lib.js creates every drawing canvas (and cinema.js its own) with `CP_CTX2D`
   (`{willReadFrequently: true}`); `timeline.raster = 'gpu'` (render.js reads `CP_RASTER`) restores the GPU canvases. The
   shape map's canvases are unchanged.
+
+## The world kit in code (16 Nov 2026; what to use when is in visual.md, "The world kit")
+
+`web/worldkit.js` loads after acting.js and before the video's own files. Nothing in it runs unless a scene calls it or
+the timeline plans `CAMERA["lens"]` or `CAMERA["flash"]`; a Short made before it has its own copy of the engine and
+renders as it did (checked on voyager-light-day, 16 Nov 2026: 27 frames with the engine it shipped with against the
+new files give the same picture, and the same timeline.json and mix.wav byte for byte).
+Reserved prefix: `wk` / `WK`.
+
+- **`wkLayerCam(cam, p, {hz, ax, dy})`** gives the camera of a layer at depth `p`: 0 is glued to the screen (the sky), 1
+  is the scene's own camera (his plane). The far layers turn about the horizon `hz` (a world y; at `p = 0` it sits at
+  mid-frame). `dy` is the camera's height in px: plus is a low camera (the far layers sink and he stands against the
+  sky), minus a high one. `wkLayers(cam, o, [[p, fn], ...])` applies each layer's camera and calls `fn(layerCam, p)`
+  far to near, then puts `cam` back. `wkHorizon(cam, p, o)` is the horizon's y on screen for that layer: end the sky's
+  gradient there and start the water's.
+- **Mirror images.** All three build the thing to mirror on a scratch canvas in screen space, flip it about the water
+  line (`wkWaterY(cam, waterY)`; the scene's camera must not be rotated), tint and fade it, and lay it on the picture
+  in bands that slide sideways on a loop-safe clock: the cartoon's broken reflection. Options (all optional): `a`
+  (opacity at the line, 0.3), `fade` (1 = gone at the far end), `depth` (px of water it reaches), `h` (px above the
+  line that are mirrored), `sq` (its height, 0.82), `amp` (ripple px, 9), `rows` / `band` (a band of `band` px every
+  `rows` px: 14 / 11; `band = rows` is an unbroken mirror), `tint` / `tintA`, `x0` / `x1` (a stretch of the picture).
+  - `wkReflect(cam, waterY, t, (c) => draw(c), o)`: `draw` gets a canvas with the scene's camera on it; draw in world
+    coordinates with `c` only (no `applyCam`, no `screenSpace`, no `charLayer` inside). `drawCharacter(c, st, t)` works.
+  - `wkReflectHero(cam, waterY, t, o)`: what `charLayer` last drew (his layer), so call it after `charLayer`.
+  - `wkReflectScreen(cam, waterY, t, o)`: the picture so far, above the line. Pass the layer's own camera for a far
+    shore (`wkLayerCam(cam, 0.3, o)`) and keep `h` small, or the sky comes down with it.
+  - They are drawn inside `paint` and see-through, so the shape map leaves them out; each leaves `ctx` under `cam`.
+- **`wkGlitter(t, {x, y0, y1, n, spread, col, glow, a, seed})`**: screen space; dashes on `ctx` and wider ones in the glow
+  layer, so they bloom. `x` is the light's screen x: `toScreen(layerCam, sunX, sunY)[0]`.
+- **`wkRipples(cam, t, {hz, dy, p0, y1, x0, x1, n, seed, col, a})`**: each highlight has its own depth between the horizon's
+  layer (`p0`, 0.3) and his plane, so they slide against each other when the camera moves. **`wkRings(x, y, rx, t, ph)`**
+  draws under the current transform (apply the camera first).
+- **`wkSplash(cam, x, y, t0, t, big, o)`**: a foam crown (0.5 s), three rings, and fx.js's `splashDrops`. `t0` is a cue.
+- **Water on the lens.** `wkLensDrops(t, t0, {n, life, seed, size, box, keep})` draws beads in screen space: they pop on
+  within a third of a second of `t0`, slide down and dry within `life` (1.7 s). Plan them in make_timeline.py,
+  `CAMERA["lens"] = [[cues["splash"], {}]]`: main.js then draws them after the lens pass on every frame, whatever the
+  shot, which is what carries them across a cut (`post.noLens` keeps one shot dry). timeline_lib refuses beads in the
+  first 1.5 s or still wet in the loop's last half second. Beads never start in the caption band (`keep`); in the pill
+  arm give `keep: [[210, 1090, 870, 1500]]`.
+- **`wkFlock(t, {t0, t1, x0, y0, x1, y1, n, s, seed, loop, pal, draw})`**: a loose V under the current transform
+  (`screenSpace()` for a far sky, or a layer's camera). `loop: true` wraps its clock at the Short's length, so a flock
+  that is in frame at 0 s is in the same place on the last frame; start it before 0 (`t0: -1.4`) to have it already
+  crossing on frame 0. `wkBird(c, x, y, s, t, ph, pal)` is the default flyer (facing right; the flock flips it).
+- **`wkCrowd(c, t, {x0, x1, y, n, s, seed, jx, jy, sv, mirror, draw, cheer, coats, pal})`**: a row of small figures, far
+  ones first, each with four numbers of its own. `wkPerson` (about 100 units tall at `s = 1`, bobs, throws his arms up
+  now and then) and `wkWader` (a small wading bird, about 50 units) are built in; your own figure is
+  `(c, x, y, s, i, r, t, o) => ...` with its feet at `(x, y)`.
+- All of it is seeded (`mulberry32`), a pure function of `t`, and on clocks that divide the Short's length (`wkLoopW`).
+- **The weekly film** (cp-long) has the same file in its template; sizes there scale with the frame (`WK_U`).
+
+## The flash-forward (16 Nov 2026; direction.md rule 4)
+
+```python
+CAMERA["flash"] = [[cues["ff"], 0.6, cues["click"] + 0.3, {"win": [770, 690, 190]}]]
+#                   starts (4-7 s)  s    the later moment      a window: centre x, y and radius in screen px
+```
+
+- For 0.5-0.8 s from its start the picture shows the later shot at that later moment and runs on from there (the real
+  shot: main.js calls its `SC.<id>` with the later time), then goes back. Captions, the handheld drift, the watermark
+  and the sound stay on the real clock; the later shot wears its own place's light, foreground, particles and the mood
+  of its own moment.
+- **With `win`** (a TEST Short must have it: the test stays on screen through 13 s) the later shot is drawn first, lit,
+  kept on a scratch canvas, and the frame starts again; the running shot then plays as always and the later picture
+  pops into a round window over it (3 frames in, 3 out, a white ring). `zoom` (1.6) is how tight the window looks at
+  the later picture, `at: [x, y]` the point of it the window centres on (default: his face there). Put the window
+  beside his face and hands, inside x 100-980 and y 470-1150 (timeline_lib checks the box, not what is under it).
+- **Without `win`** (a CURIOUS Short may) it fills the frame: a hard cut in and a hard cut out.
+- timeline_lib checks it: 0.5-0.8 s long, starting between 4 and 7 s, showing one LATER shot from 0.2 s or more after
+  its start, not the loop's last half second, not across a hitstop; it adds it to the `camera:` line, and prints
+  "flash-forward: none planned" when there is none. qa.py warns when the MP4's timeline has none.
+- Give it a sound in audio.py: a short whoosh in on `cues["ff"]`, the score dipped under it, a soft thud out.
+- Pick the cue in a gap of the narration (after the answer line's punch word and its hitstop); render its first, middle
+  and last frame and the frames either side, and Read them: the later picture must read in half a second.
+- Never hold a Short for it: if the flash still reads badly after two tries (another moment of the later shot, another
+  place or size for the window), take it out, say why in `NOTES.md` (rule 4) and in the report, and ship.
+- **The rhythm** (direction.md rule 11): timeline_lib prints `rhythm: N shots, average X s, longest Y s` from the shots,
+  every cue named `cut_*` (a hard change of framing inside one shot) and a full-frame flash, and says so when the
+  average is over 2.2 s or a shot over 3.2 s. A new framing of the same world is one line:
+  `SC.test_b = (lt, t, shot) => myTestScene(t, CAM_B);`.
 
 ## Borrowing from past videos
 

@@ -3,6 +3,12 @@
 //   {glow, push: {k, cx, cy}, blur: [dx, dy], zblur, zcx, zcy, desat, tint, tintA, vhs, glitch, flash,
 //    flashTop, grain: 0, overlay: fn, noCaptions, capY}
 // Every beat comes from a cue: cu().name (timeline.json), never a typed-in time.
+// The world kit (web/worldkit.js, 16 Nov 2026; reference/visual.md "The world kit"), for a place with depth and life:
+//   wkLayers(cam, {hz, dy}, [[0.08, sun], [0.14, clouds], [0.3, hills], [1, ground]])   a place in depth layers (dy: a low or high camera)
+//   wkReflect(cam, waterY, t, (c) => drawBoat(c)) · wkReflectHero(cam, waterY, t) · wkReflectScreen(cam, waterY, t, {h})   mirror images on water
+//   wkGlitter(t, {x, y0, y1}) · wkRipples(cam, t, {hz}) · wkRings(x, y, rx, t) · wkSplash(cam, x, y, cu().splash, t, 2)
+//   wkFlock(t, {t0, t1, x0, y0, x1, y1, loop: true}) · wkCrowd(ctx, t, {x0, x1, y, draw: wkPerson | wkWader, mirror})
+//   water on the lens and the flash-forward are planned in make_timeline.py: CAMERA["lens"], CAMERA["flash"]
 'use strict';
 
 const cu = () => TLd.cues;

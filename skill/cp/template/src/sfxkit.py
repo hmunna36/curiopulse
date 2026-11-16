@@ -1820,3 +1820,96 @@ def piano_slam(seed=0):
     y[:len(st)] += 0.55 * st[:n] / (np.abs(st).max() + 1e-9)
     y = y / (np.abs(y).max() + 1e-9)
     return fade(np.tanh(2.4 * y) / np.tanh(2.4), 0.0008, 0.06)
+
+
+# ================================================================= the loop score (16 Nov 2026; reference/sound.md "The loop score")
+# The owner, 13 Nov 2026, on the lagoon showcase ("I loved this"): its score was fitted to an exact number of bars, so the
+# music is on bar 1 again when the picture loops. fit_loop gives the tempo, loop_groove lays the groove on it, bar_at
+# puts a section change or a hit on the grid; steel_pan, riff, shaker and claps are what that score added to the groove.
+def fit_loop(dur, lo=100.0, hi=128.0, bars=None, want=112.0):
+    """the tempo at which a whole number of 4/4 bars fills `dur` seconds exactly: returns (bpm, beat, bars).
+    bars=None takes the bar count whose tempo lies in lo..hi and nearest `want`, a multiple of 4 before an even count
+    before an odd one (chord loops are 2 or 4 bars long); if no count fits lo..hi, the nearest to `want`."""
+    if bars is None:
+        cand = [n for n in range(1, 400) if lo <= n * 240.0 / dur <= hi]
+        if not cand:
+            cand = [max(1, int(round(want * dur / 240.0)))]
+        bars = min(cand, key=lambda n: ((0 if n % 4 == 0 else 1 if n % 2 == 0 else 2), abs(n * 240.0 / dur - want)))
+    bpm = bars * 240.0 / dur
+    return bpm, 60.0 / bpm, int(bars)
+
+
+def bar_at(t, beat, per=4):
+    """the bar line nearest to t on a grid that starts at 0 (per=1: the nearest beat): where a section changes"""
+    return round(t / (per * beat)) * per * beat
+
+
+def loop_groove(mus, dur, chords, gain=0.0, seed=0, lo=100.0, hi=128.0, bars=None, want=112.0, **kw):
+    """groove() from 0 to `dur` at fit_loop's tempo, one chord a bar, so bar 1 comes round exactly when the Short loops.
+    When the bar count is not a multiple of the chord loop, the last bar takes the loop's last chord (it leads back
+    into bar 1). kw goes to groove() (kick_on, snaps, arp, bass, padv, half, cutoff, sixteen). Returns (bpm, beat, bars)."""
+    bpm, beat, n = fit_loop(dur, lo, hi, bars, want)
+    seq = [chords[b % len(chords)] for b in range(n)]
+    if n % len(chords):
+        seq[-1] = chords[-1]
+    groove(mus, 0.0, dur - 1e-4, bpm, seq, gain=gain, seed=seed, **kw)
+    return bpm, beat, n
+
+
+def steel_pan(m, dur=0.42, seed=0):
+    """a steel pan note (MIDI m): a bright bar with a wobbling second partial and a soft mallet (mono); a sunny hook"""
+    f = mtof(m)
+    n = int(dur * SR)
+    t = ar(n)
+    y = np.sin(2 * np.pi * f * t) + 0.55 * np.sin(2 * np.pi * 2.0 * f * t + 0.6 * np.sin(2 * np.pi * 5 * t)) + 0.22 * np.sin(2 * np.pi * 3.01 * f * t)
+    y = y * expdecay(n, dur * 0.28) + 0.15 * filt(filt(white(n, seed), "highpass", 1800), "lowpass", 5200) * expdecay(n, 0.012)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.002, 0.04)
+
+
+def riff(mus, notes, beat, t0=0.0, t1=None, every=8.0, inst=None, gain=-19.0, octave=-27.0, width=0.35):
+    """a melodic hook that comes round every `every` beats from t0 to t1: notes = [(beat offset, MIDI note), ...]
+    (two bars of F major: [(0, 77), (0.75, 81), (1.5, 84), (2.5, 82), (3, 81), (3.5, 77), (4, 79), (4.75, 82), (5.5, 86),
+    (6.5, 84), (7, 82), (7.5, 79)]). inst(m, dur, seed) makes a note (steel_pan by default; marimba and music_box take a
+    frequency: inst=lambda m, d, s: marimba(mtof(m), d, s)); `octave` is the gain in dB of a quiet copy an octave down
+    (None = none). Notes on the off-beats lean right, the others left."""
+    inst = inst or steel_pan
+    t1 = L.N / SR if t1 is None else t1
+    k = 0
+    while t0 + k * every * beat < t1 - 0.05:
+        for bt, m in notes:
+            tn = t0 + (k * every + bt) * beat
+            if tn >= t1 - 0.1:
+                continue
+            mus.add(inst(m, 0.42, int(tn * 50)), tn, db(gain), pan=width * (-1) ** int(bt * 2))
+            if octave is not None:
+                mus.add(inst(m - 12, 0.3, int(tn * 50) + 1), tn + 0.004, db(octave), pan=-0.3)
+        k += 1
+
+
+def shaker(mus, t0, t1, beat, gain=-31.0, seed=200):
+    """a shaker in sixteenths from t0 to t1, the off-beats 4 dB louder (all of it above 6.5 kHz: it can run under words)"""
+    k = 0
+    while t0 + k * beat / 4 < t1 - 0.02:
+        n = int(0.035 * SR)
+        mus.add(filt(white(n, seed + k), "highpass", 6500) * expdecay(n, 0.012), t0 + k * beat / 4, db(gain + (4 if k % 2 else 0)), pan=0.5)
+        k += 1
+
+
+def claps(mus, t0, t1, beat, gain=-25.0, seed=300):
+    """claps on beats 2 and 4 from t0 to t1 (a snare with its low end taken out)"""
+    k = 1
+    while t0 + k * beat < t1 - 0.02:
+        mus.add(filt(snare(seed + k, 0.12), "highpass", 900), t0 + k * beat, db(gain), pan=-0.2)
+        k += 2
+
+
+def twang(f0=196.0, dur=0.6, seed=0, bend=-0.06):
+    """a plucked string that bends (bend < 0 sags, > 0 tightens): a line going taut, a rope let go (mono; it lives in
+    the speech band, so in a pause)"""
+    n = int(dur * SR)
+    t = ar(n)
+    f = f0 * (1 + bend * np.minimum(1, t / 0.35)) * (1 + 0.012 * np.sin(2 * np.pi * 6 * t))
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = sum(np.sin(k * ph) * (0.8 ** k) for k in range(1, 9))
+    y = filt(y, "lowpass", 2600) * expdecay(n, dur * 0.45)
+    return fade(y / (np.abs(y).max() + 1e-9), 0.002, 0.06)

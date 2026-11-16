@@ -6,7 +6,10 @@
   prints: the duration (25–30 s on the tight arm), where the `answer` line starts (5.0 s or earlier), the first words (the test, with
   "you"/"your" in them) and the subscribe line ("nothing said", with the arm publish.json gives: the pill arm or no
   pill), and timeline_lib.py's "subscribe arm" line (the pill's three times in the pill arm). Fix the words, the delivery and
-  those before any picture exists; it is free now and a re-render later.
+  those before any picture exists; it is free now and a re-render later. Read its two direction lines as well
+  (`direction.md`): `rhythm:` (an average shot of 2.2 s or less, none over 3.2 s; add cuts until it stops warning) and
+  the flash-forward in the `camera:` line (or "none planned": plan it). Then the first swipe check: read the timed
+  script as a stranger, mark the second where you would leave, rework that second.
 - **The first picture, before any other shot is built:** render frames 0, 15 and 30 of the hook and Read them next to
   `reference/openings.jpg`. Frame 0 must belong in its top row: a tight shot of him already doing the test the first
   line tells the viewer to do (pinching, folding, pointing, touching). If it looks like the bottom row (wide, still, a
@@ -44,6 +47,24 @@
   - a hook that doesn't move on frame 1;
   - a caption crossing a cut.
 
+## The silent test (every Short, before the full render; direction.md rule 15)
+
+One still every 1.5 s with the captions off, on one sheet. The sheet alone must tell the story to someone who has not
+read the script.
+
+```sh
+cd videos/<slug>/src
+FR=$($PYTHON -c "import json; t = json.load(open('../.work/timeline.json')); t['captions'] = []; json.dump(t, open('../.work/timeline_silent.json', 'w')); print(','.join(str(f) for f in range(0, int(t['duration'] * 30), 45)))")
+node render.js ../.work/timeline_silent.json ../.work/qa/silent "$FR"
+$PYTHON contact_sheet.py ../.work/qa/silent ../.work/qa/silent-sheet.png 7 270        # then Read it
+```
+
+- Put the script away, Read the sheet, and write in `NOTES.md` (rule 15) the story it tells, in three lines. Where
+  that is not the spine (the test, what goes wrong, why, the twist), fix the picture, never the caption.
+- If the run hands this to a sub-agent, its brief names only the sheet and asks what happens in it: a reader who has
+  seen the script cannot do this test.
+- The same sitting is the second swipe check (rule 20): on the sheet, mark the still where you would swipe.
+
 ## The safe-area mask (every Short, before the full render and on the final frames)
 
 `~/.claude/skills/cp/bin/safe-area.py` (plain Python 3, no packages; it decodes through `~/.cache/cp/bin/ffmpeg`)
@@ -79,6 +100,7 @@ cd videos/<slug>/src && $PYTHON qa.py ../.work ../<slug>-short.mp4     # ≈2 mi
 | Loudness | −14 ± 0.5 LUFS integrated, true peak ≤ −1.0 dBTP (decoded from the AAC) |
 | Picture | the first frame isn't black · it moves in the first 0.5 s · no frozen stretch over 1.5 s |
 | Camera | the timeline's `CAMERA` plan (7 Nov 2026): at least two whip pans, a punch-in, a mood change and depth (a foreground layer or particles) in half the shots; a warning names what is missing (timeline_lib already refuses a plan that breaks the loop) |
+| Direction | warnings (16 Nov 2026, `direction.md`): the rhythm (average shot 2.2 s or less, none over 3.2 s, counted from the shots, the `cut_*` cues and a full-frame flash) · a flash-forward planned between 4 and 7 s · `NOTES.md` next to the MP4 answers each of the 21 rules (it lists the open ones) |
 | Look | the MP4 was rendered in the look the timeline asks for (render.js writes `.work/look.txt`); a warning when cine was asked for and it fell back to classic: ship it and say so |
 | Voice | content words: mean speech-band SNR ≥ 12 dB, ≤ 10 % under 6 dB, none under 3 dB (it lists the weak words) |
 | Intelligibility | whisper (base.en) transcript of the final mix vs the script: WER ≤ 8 % (it lists the differing words) |
@@ -119,9 +141,12 @@ Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at 
 | 9 | **Science** | every claim sourced in the README; uncertain ones hedged in the words (and on screen when useful) |
 | 10 | **Packaging** | title ≤ 60 characters with a curiosity gap; the cover reads at thumbnail size; description, hashtags and IG caption written, and the caption and the description end their story part with a one-word question about the test ("Left or right?") |
 | 11 | **The loop** | nobody says "subscribe", and nothing spoken asks, teases or winds up; the pill only in the pill arm, short, gone 0.6 s before the end, never over the face or the key action (qa.py checks the cues); the last frame matches frame 0 closely enough that the restart reads as one move; the button line and then the hook, read aloud, run on as one thought; nothing after the last line (≤ 1.0 s to the loop, qa.py) |
+| 12 | **The direction record** (16 Nov 2026; `direction.md`) | `NOTES.md` has one line for each of the sheet's 21 rules saying how this Short meets it, with a time or a frame (the spine and the button line written first; the flash-forward; the running device's three beats; the held shot before the payoff; two sources per claim; each punchline's beat and picture; a reaction in every shot; the rhythm numbers and the sizes in order; the reason for each camera move; the colour numbers; the silent test's three lines; the dead stops; the two swipe checks); no line is empty or "as planned"; a rule an owner rule overrides is answered with what was kept; the last line says what nobody could verify. Score it by the weakest rule, not the average |
 
 - **Satisfied** means: qa.py has no FAIL, every ship-bar item scores 8 or more, and nothing in the review would make
   the user wince.
+- **Never round a score up** (direction.md rule 21). An item under 8 is fixed, not shipped with a note; what nobody
+  could verify (nobody heard the mix, nobody watched it at speed on a phone) goes in the first lines of the report.
 - Anything below 8 gets a named cause and a targeted fix. Then re-render (only the affected work: re-voice changed
   blocks only; audio.py if timing or sound changed) and run qa.py and the review again.
 - If the same item fails twice after targeted fixes, rethink that beat or shot instead of polishing it.

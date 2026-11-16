@@ -22,6 +22,14 @@ allowed: no topic was given in a live session. `/cp next` takes one from `topics
 Every video's opening follows `reference/hooks.md`: the five hook rules and one of its 21 formulas, named in the
 README's plan and scored in the ship bar's hook item. Read it in the story step, before the script.
 
+## Direction (binding since 16 Nov 2026)
+
+Every Short follows `reference/direction.md`: 21 numbered rules for the story, the comedy, the picture, the sound, the
+loop and the package (the owner, 16 Nov 2026, after a blind test of the sheet on another channel: add it to every
+channel's daily and weekly runs). Read it in the story step, before the script, again before the picture, and before
+every QA round. The owner's standing rules below win where they differ; the sheet's "Rule N here" lines say what is
+kept. The record is the video's `NOTES.md`: one line for each rule (the template has them; ship bar item 12).
+
 ## The rules of 15 Oct 2026 (binding; user: "yes. let's do this.")
 
 From the retention reading of 15 Oct (`reference/analytics.md`): the two breakouts (blocked nostril, knuckle cracking)
@@ -154,6 +162,11 @@ Short's YouTube release (Business Suite).
   layered hit (`CAMERA["hit"]`), and the camera blurs on punch-ins and tilts (`reference/visual.md`, "Acting and
   timing"; ship bar item 7d). The approved format does not move: frame 0 and the first 1.5 s stay the tight test, the test stays on
   screen through 13 s, the last frame is frame 1. Ship bar item 7c.
+- **The world kit (16 Nov 2026; owner, on the lagoon showcase of 13 Nov: "I loved this"):** a place has depth layers,
+  and where it suits it water that mirrors him and the props, a light's glitter, a flock or a crowd behind him, a
+  splash that wets the lens, a second character with one acting beat of its own, and a score fitted to whole bars so
+  the music loops with the picture (`reference/visual.md`, "The world kit"; `reference/sound.md`, "The loop score").
+  It never greys or darkens a frame.
 - **Watermarked:** the engine puts the channel name on every frame of every Short (user, 6 Oct 2026; `reference/visual.md`). Never remove it; check it is there on the QA sheets.
 - **The hiker** is the hero: the same rig, only the outfit changes.
 - **Scientifically responsible:** claims are sourced; uncertain ones are hedged ("Scientists think…", "One idea…").
@@ -204,7 +217,10 @@ Read each reference file when you reach its phase. They are short; don't skip th
      `api`: ignore it, the token is only used for checks like `ig.mjs whoami`). It needs Chrome connected at ship time.
    - Skim `reference/videos.md` for what's been done and learned.
 2. **Research + story** (`reference/story.md`):
-   - sources and a claims table;
+   - the direction sheet (`reference/direction.md`, part A) first: the spine in one sentence, the button line written
+     before the rest, the running device and its three beats, the moment the flash-forward will show, each
+     punchline's setup, beat and picture;
+   - sources and a claims table (two independent sources for every claim);
    - the test the viewer does, and the hook sentence that tells them (`reference/story.md` §2: "you"/"your", the
      strange thing by 3 s), the answer line (started by 5 s), the beats (hook, answer, mechanism pointing back to the
      test in everyday words, payoff, the weirdest fact, a button that runs into the hook), the jokes, and the one-word
@@ -215,7 +231,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - the cover moment.
 3. **Scaffold:** `~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"` creates
    `~/Desktop/curiopulse/videos/<slug>` from `template/`. Put the plan and the claims table into its README
-   first. The script writes the length arm and the subscribe arm into its `publish.json` (`"length"` and
+   first, and the spine, the button line and the running device into its `NOTES.md` (the direction record: fill a
+   rule's line when that rule is met, not at the end). The script writes the length arm and the subscribe arm into its `publish.json` (`"length"` and
    `"subscribe"`, from `yt.mjs next-slot`) and prints them: check they are the arms the preflight gave. If it says it
    could not, put the objects there by hand.
 4. **Narration** (`reference/narration.md`):
@@ -224,9 +241,14 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - do the listening pass plus whisper;
    - retake or rewrite blocks until the performance is right. Timing edits (gap, tempo, tighten) are free.
 5. **Timeline:** in `src/make_timeline.py`, write SHOTS (anchored to phrases), CHUNKS, COLOR, DISPLAY and a cue for
-   every beat. Worked example: `reference/examples/make_timeline.finger-wrinkles.py`.
+   every beat. Worked example: `reference/examples/make_timeline.finger-wrinkles.py`. Read what it prints and fix it
+   now: `rhythm:` (an average shot of 2.2 s or less, none over 3.2 s: direction.md rule 11) and the flash-forward
+   (`CAMERA["flash"]`, rule 4). Then the first swipe check (rule 20).
 6. **Picture** (`reference/visual.md`, `reference/engine.md`), shot by shot:
    - write the world files and `SC.<shot>` in `src/web/`, and list them in `scene.html`;
+   - the direction sheet's picture rules (direction.md, parts B and C): the sizes alternate, two extreme close-ups, a
+     reason for every camera move, a reaction in every shot; and the world kit for a place with depth and life
+     (visual.md, "The world kit": layers, mirror images, glitter, a flock or a crowd, a second character's own beat);
    - the camera and the light of the story (visual.md, "Camera and light craft"; the cinema kit since 7 Nov 2026): plan
      each shot's framing (size, side, height) so no two cuts in a row match, dress the place (three or more things that
      belong there, practical lights in the glow layer), and write `CAMERA` in make_timeline.py: whips at the story turns,
@@ -238,11 +260,13 @@ Read each reference file when you reach its phase. They are short; don't skip th
    - render stills, tile a contact sheet, Read it, fix;
    - the hook first, then in order;
    - then the cover frame (`cover.jpg`).
-7. **Sound** (`reference/sound.md`): `src/audio.py` gets beds, hits on every beat, the score by section, the comedy
-   stops, then `master()`. Run `qc_audio.py` and fix the masked words now.
+7. **Sound** (`reference/sound.md`): `src/audio.py` gets beds, hits on every beat, the loop score (`loop_groove`: the
+   bar line falls on the loop) by section, the comedy stops (direction.md rule 16: four dead stops or more, full
+   silence before the payoff, then the biggest hit), then `master()`. Run `qc_audio.py` and fix the masked words now.
 8. **Pre-render sweep** (`reference/qa.md`): stills every 1 s across the whole timeline. Fix everything visible now.
    Put the safe-area mask on the hook, title/label and caption stills and the last 3 s (`bin/safe-area.py overlay`,
-   qa.md): nothing important under a covered zone. Check the loop: the last frame next to frame 0.
+   qa.md): nothing important under a covered zone. Check the loop: the last frame next to frame 0. Do the silent test (qa.md:
+   the caption-free sheet, one still every 1.5 s; direction.md rule 15) and the second swipe check (rule 20).
 9. **Render** in the background with a log and an EXIT marker (≈8 min), then `make_srt.py`. Wait for the marker
    inside the turn; never end the turn to wait for it (see "If interrupted": max effort ends with the turn).
 
@@ -251,7 +275,8 @@ Read each reference file when you reach its phase. They are short; don't skip th
 10. **QA the MP4:**
     - `$PYTHON qa.py ../.work ../<slug>-short.mp4` must have no FAIL;
     - read every contact sheet and crop the risky moments;
-    - score the ship bar (14 items, incl. the test (1), the safe area (7b), camera and light craft (7c), acting and timing (7d) and the loop (11)), with evidence;
+    - score the ship bar (15 items, incl. the test (1), the safe area (7b), camera and light craft (7c), acting and timing (7d), the loop (11) and the direction record (12)), with evidence;
+    - read `reference/direction.md` again and bring `NOTES.md` up to date: one line for each of the 21 rules;
     - log the round in `.work/qa/ship-review.md`.
 11. **Not satisfied? Fix the weak parts:**
     - name the cause of each item under 8;
@@ -262,6 +287,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
     - A hard blocker (quota, disk) means no weaker upload: report it.
 12. **Satisfied:**
     - `qa.py` clean and every item 8+;
+    - `NOTES.md` answers every numbered rule of the direction sheet, and says what nobody could verify;
     - copy the final scores and the list of changes into the README's "Ship review";
     - prove the folder rebuilds: `src/build.sh` from the cached takes must reproduce the MP4 (compare with
       ffprobe duration and qa.py numbers). Skip this only if time is short; say so.
@@ -322,9 +348,10 @@ Read each reference file when you reach its phase. They are short; don't skip th
     - commit and push again with publish-short.sh. Nothing may stay uncommitted, or the cleanup refuses.
 18. **Deliver** (keep it short):
     - `SendUserFile` the MP4 and `cover.jpg` (`display: "render"`);
-    - a message with the title, length and length arm, loudness, the YouTube link and release time, the Instagram
+    - a message that starts with what nobody could verify (direction.md rule 21: nobody heard the mix, nobody
+      watched it at speed on a phone), then the title, length and length arm, loudness, the YouTube link and release time, the Instagram
       release time, the story in one line, the test the viewer does, when the answer starts (seconds), the QA rounds
-      and what changed, the playlist it went into, any "Next up" comment this run posted, the ElevenLabs characters
+      and what changed, the direction record (the weakest rule and any "Rule N here" that bit), the playlist it went into, any "Next up" comment this run posted, the ElevenLabs characters
       left, and anything pending.
 19. **Remember:** add the Short to `reference/videos.md` (and a lesson if there was one), a memory note, and a line
     in `MEMORY.md`. In `/cp next`, mark the topic `[x]` too. Then back up the skill, which carries videos.md,
@@ -367,7 +394,8 @@ user's request).
      them), then
      `yt.mjs comments-due` (the "Next up" comment on Shorts that have gone public);
    - Instagram: Claude in Chrome is connected (Business Suite schedules every Reel since 22 Oct 2026). If not, build and schedule YouTube anyway, and report Instagram as pending.
-3. Run A → B → C exactly as for `/cp <topic>`, including the cleanup (step 20).
+3. Run A → B → C exactly as for `/cp <topic>`, including the direction sheet (`reference/direction.md`: read in the
+   story step, recorded rule by rule in the video's `NOTES.md`, ship bar item 12) and the cleanup (step 20).
 4. Close out: in step 19, mark the line `[x]` with its links and release day and move it under Done (the skill backup
    carries it). The lock is released after the cleanup.
 5. Nobody is watching a scheduled run: never ask. When blocked, leave the line `[~]`, release the lock, and report
@@ -421,21 +449,22 @@ own level, which in a routine run is medium. So:
 
 - `reference/master-context-prompt.md`: the user's channel brief, verbatim (also at the repo root)
 - `reference/brief.md`: the brief distilled, plus the user's later decisions (they win)
+- `reference/direction.md`: the direction sheet (16 Nov 2026): 21 rules for story, comedy, picture, sound, the loop and the package, with the lines where an owner rule wins; the record goes in the video's `NOTES.md`
 - `reference/story.md`: the rules of 15 Oct, research, angle, the test and the hook, the first picture, the answer by 5 s, the lesson, the beat shape (25–30 s), topic picking, the one-page plan
 - `reference/openings.jpg`: the openings that kept the most viewers (top row) and the fewest (bottom row); compare every new frame 0 with it
 - `reference/analytics.md`: the numbers log, what the numbers said on 5 Oct 2026, the length test and how to read it
 - `numbers.md`, `numbers.jsonl`: written by `yt.mjs numbers` on every run (the report and its history); never edit by hand
 - `reference/narration.md`: Jessica, script.txt, voice.py, quota, the listening pass
-- `reference/visual.md`: the look, the light (cinematic lighting: `setLights`, `actor`, `paint`), the ending (no subscribe cue since 16 Oct), the hero rig, camera grammar, graphics, captions, safe area, the cover
-- `reference/engine.md`: files, data flow, writing shots, borrowing world files from past videos, rendering
-- `reference/sound.md`: buses, the sfxkit vocabulary, mix rules, commands
-- `reference/qa.md`: checks while building, the qa.py gate, the ship bar, the loop
+- `reference/visual.md`: the look, the light (cinematic lighting: `setLights`, `actor`, `paint`), the ending (no subscribe cue since 16 Oct), the hero rig, camera grammar, the world kit (depth layers, mirror images, glitter, a flock, a crowd, water on the lens), graphics, captions, safe area, the cover
+- `reference/engine.md`: files, data flow, writing shots, the world kit and the flash-forward in code, borrowing world files from past videos, rendering
+- `reference/sound.md`: buses, the sfxkit vocabulary, the loop score, mix rules, commands
+- `reference/qa.md`: checks while building, the silent test, the qa.py gate, the ship bar (with the direction record), the loop
 - `reference/publish.md`: packaging, GitHub → YouTube → Instagram, the calendar, one-time setup, troubleshooting
 - `reference/pipeline.md`: where everything lives, the order of commands, this Mac's limits and gotchas
 - `reference/videos.md`: every Short so far, its links, and what it taught
 - `reference/instagram-api-notes.md`: the Instagram API research (endpoints, limits, unverified points, sources)
 - `reference/examples/`: finger-wrinkles' script, timeline, audio, scenes and README, as working references
-- `template/`: the video folder every Short starts from (engine + skeletons + README + publish.json)
+- `template/`: the video folder every Short starts from (engine + skeletons + README + NOTES.md, the direction record + publish.json)
 - `topics.md`: the topic queue for `/cp next`
 - `bin/new-short.sh`, `bin/publish-short.sh`, `bin/backup-skill.sh`, `bin/run-lock.sh`, `bin/cp-env.sh`
 - `bin/render-gate.sh`: the render gate for /cp (wait until no other pipeline is rendering; an idle open Blender does not count)

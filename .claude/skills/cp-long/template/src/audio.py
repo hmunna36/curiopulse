@@ -56,6 +56,9 @@ if "sub_in" in c:
 #   held breath (the score drops out) and then a crash and a low boom. Tune the gains by ear; keep the voice clear.
 # - on_beat(t): the nearest beat of the score's grid. Time the cuts and the big visual events to it in
 #   make_timeline.py (the shot phrases and `special`), so the edit lands on the music.
+# fit_loop(seconds) (sfxkit, 16 Nov 2026) gives the tempo at which a whole number of bars fills a stretch: use it for a
+# scene whose end must land on a bar line (BPM, BEAT, _ = fit_loop(C["turn"] - T0)), and bar_at(t, BEAT) for a section
+# change. riff / steel_pan / shaker / claps add a hook and percussion on the same grid (the cp skill's sound.md).
 BPM = 112
 BEAT = 60.0 / BPM
 T0 = 0.5                                             # the score's first beat

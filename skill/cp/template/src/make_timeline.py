@@ -12,6 +12,10 @@ T = Timeline(sys.argv[1], tail=0.7)  # seconds after the last word: only the cut
 #                                      rules (5 Nov 2026): 25-30 s, the last line runs straight into the first and nothing
 #                                      comes after it (qa.py: at most 1.0 s), so the loop comes before the thumb does.
 
+# The direction sheet (reference/direction.md, 16 Nov 2026): an average shot of 2.2 s or less and none over 3.2 s, so
+# about 12 or more cuts in a Short; up to 13 s every cut is another framing of the same test. A cut is a SHOTS entry
+# (the same world from a new camera is one line in scenes.js) or, where the camera jumps inside a shot, a cue named
+# cut_<name>. T.write prints "rhythm: ..." and warns when it is too slow.
 # (shot id, phrase whose first word opens the shot). The first shot starts at 0. None = timed in `special`
 # (reaction beats: on a gasp, after a punchline word, in a silent gap). Every id needs an SC.<id> in web/.
 SHOTS = [
@@ -59,6 +63,11 @@ CAMERA = {
     "mood": [],        # [[0, "day"], [cue, "shade"], [cue, "warm"], [cue, "day"]]: the light follows the stakes and comes back
     "fg": {},          # {shot: "grass-b" | "leaves-tr" | "post-l" | "bokeh-r" ...}: depth in front of the lens, in the corners
     "air": {},         # {shot: "dust" | "pollen" | "embers" | "drizzle" ...}: particles that suit the place and its light
+    "lens": [],        # [cue time, {}]: water beads on the lens after a splash, a wave, a sneeze (the world kit, visual.md); they
+                       # stay across a cut and are dry before the loop
+    "flash": [],       # [cue between 4 and 7 s, 0.6, a moment part-way into the payoff shot, {"win": [770, 690, 190]}]: the
+                       # flash-forward (reference/direction.md rule 4). A TEST Short needs the window (the test stays on screen
+                       # through 13 s); a CURIOUS one may leave it out and fill the frame. In a gap of the narration.
 }
 # ---- the Subscribe pill: the pill test (user, 24 Oct 2026: "yes let's test it for 2 weeks"; reference/analytics.md).
 # publish.json "subscribe" says the arm (`yt.mjs next-slot`): "pill" (a 23:30 slot, 25 Oct-8 Nov) or "none". T.write

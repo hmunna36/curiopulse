@@ -46,6 +46,10 @@ for _i in range(len(T.words) - 1):
     if T.we[_i] - T.ws[_i] < 0.1:
         T.we[_i] = T.words[_i]["end"] = round(max(T.we[_i], min(T.ws[_i + 1] - 0.01, T.ws[_i] + 0.3)), 3)
 
+# The direction sheet (reference/direction.md, 16 Nov 2026): an average shot of 3 s or less and none over 6 s unless
+# something on screen changes every second, so about 90 cuts in a 4:30 film. A cut is a SHOTS entry (the same world from
+# a new camera is one line in scenes.js) or, where the camera jumps inside a shot, a cue named cut_<name>. T.write
+# prints "rhythm: ..." and warns when it is too slow.
 # (shot id, phrase whose first word opens the shot). The first shot starts at 0. None = timed in `special`
 # (reaction beats: on a gasp, after a punchline word, in a silent gap). Every id needs an SC.<id> in web/.
 SHOTS = [
@@ -109,5 +113,9 @@ CAMERA = {
     "mood": [],        # [[0, "day"], [cue, "night"], ...]: the colour script (cold when he is stuck, warm when it turns)
     "fg": {},          # {shot: "grass-b" | "leaves-tr" | "post-l" | "bokeh-r" ...}: depth in front of the lens, in the corners
     "air": {},         # {shot: "dust" | "embers" | "drizzle" ...}: particles that suit the place and its light
+    "lens": [],        # [cue time, {}]: water beads on the lens after a splash, a wave, rain (the world kit); they stay across a cut
+    "flash": [],       # [cue in the cold open (the first 30 s), 1.0-1.5, a moment part-way into an act's strongest shot]: the
+                       # flash-forwards (reference/direction.md rule 4), one for each act, real shots replayed; add
+                       # {"win": [cx, cy, r]} to play one in a window while the viewer's first test stays on screen
 }
 T.write(shots, caps, cues, width=1920, height=1080, camera=CAMERA)

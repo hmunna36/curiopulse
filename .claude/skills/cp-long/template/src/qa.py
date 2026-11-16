@@ -10,6 +10,10 @@ Checks (FAIL blocks the upload; WARN is for the review):
   5:00-5:15 warn; under 3:30 warns too (the clock is missing steps), under 2:00 fails.
 - Pace (the every-scene rule): every shot over 8 s is listed (a warning: it needs a cut, a camera arrival or a new
   element inside it); a mean shot length over 6 s warns.
+- Direction (16 Nov 2026, reference/direction.md; warnings): the rhythm (average shot 3 s or less, none over 6 s
+  unless something on screen changes every second; timeline_lib.rhythm counts shots, cut_* cues and full-frame
+  flashes), three flash-forwards or more in the cold open, and the record: NOTES.md next to the MP4 answers each of
+  the sheet's 21 rules.
 - Delivered audio: integrated -14 +/- 0.5 LUFS; true peak <= -1.0 dBTP after AAC.
 - Picture:
   - the first frame is not black;
@@ -263,6 +267,36 @@ if shots_:
           f"{len(lens)} shots, mean {mean_len:.1f} s"
           + (f"; over 8 s: {', '.join(f'{i}@{int(t // 60)}:{t % 60:04.1f} ({d:.1f} s)' for d, i, t in long_shots[:12])}" if long_shots else ""),
           warn=True)
+
+# ---------------------------------------------------------------- the direction sheet (reference/direction.md, 16 Nov 2026)
+# Warnings for the review: the rhythm (rule 11), the cold open's flash-forwards (rule 4), and the record: NOTES.md next
+# to the MP4 has one line for each of the sheet's 21 rules, "N. <rule>: <how this film meets it>" (ship bar item 16).
+try:
+    from timeline_lib import RHYTHM_AVG, RHYTHM_MAX, rhythm as _rhythm
+    _n, _avg, _max, _at, _over = _rhythm(tl["shots"], tl.get("cues"), tl.get("camera"), tl["duration"])
+    check(_avg <= RHYTHM_AVG + 1e-6 and not _over, f"direction: rhythm (average shot <= {RHYTHM_AVG:g} s, none over {RHYTHM_MAX:g} s unless it changes every second)",
+          f"{_n} shots, average {_avg:.2f} s, longest {_max:.2f} s (from {_at:.1f} s)"
+          + (f"; over {RHYTHM_MAX:g} s from: " + ", ".join(f"{int(a // 60)}:{a % 60:04.1f}" for a in _over[:12]) if _over else ""), warn=True)
+    _fl = (tl.get("camera") or {}).get("flash") or []
+    check(len(_fl) >= 3, "direction: the cold open flashes forward to each act's strongest picture",
+          ", ".join(f"at {x[0]:.1f} s for {x[1]:.1f} s to {int(x[2] // 60)}:{x[2] % 60:04.1f}" for x in _fl)
+          if _fl else 'none planned: CAMERA["flash"] in make_timeline.py (direction.md rule 4)', warn=True)
+except Exception as _e:  # an older timeline_lib beside this qa.py
+    check(False, "direction: rhythm and flash-forwards", f"not checked ({_e})", warn=True)
+_notes = os.path.join(os.path.dirname(os.path.abspath(MP4)), "NOTES.md")
+if os.path.exists(_notes):
+    _ans = {}
+    for _ln in open(_notes, encoding="utf-8").read().splitlines():
+        _m = re.match(r"^\s*(\d{1,2})\.\s+(.*)$", _ln)
+        if _m:
+            _txt = _m.group(2).split(":", 1)[1].strip() if ":" in _m.group(2) else ""
+            _ans[int(_m.group(1))] = len(_txt.strip(" .…")) >= 8 and not _m.group(2).rstrip().endswith("…")
+    _open = [n_ for n_ in range(1, 22) if not _ans.get(n_)]
+    check(not _open, "direction: the record (NOTES.md, one line for each of the 21 rules)",
+          "all 21 rules answered" if not _open else "no answer yet for rule " + ", ".join(str(n_) for n_ in _open), warn=True)
+else:
+    check(False, "direction: the record (NOTES.md, one line for each of the 21 rules)",
+          "no NOTES.md next to the MP4: write it from the template's (reference/direction.md)", warn=True)
 
 # ---------------------------------------------------------------- captions
 caps = tl["captions"]

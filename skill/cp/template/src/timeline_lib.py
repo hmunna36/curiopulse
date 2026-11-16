@@ -69,6 +69,31 @@ def video_subscribe(work):
     return "pill" if arm == "pill" else "none"
 
 
+def video_kind(work):
+    """The Short's kind from its publish.json "kind" (`yt.mjs next-slot`, written by new-short.sh): 'test' (the viewer does
+    a test on themselves) or 'curious' (an impossible-sounding true thing). 'test' when it is not said."""
+    k = (_publish(work).get("kind") or {}).get("kind")
+    return "curious" if k == "curious" else "test"
+
+
+# the direction sheet's rhythm (reference/direction.md rule 11): the average shot and the longest one, in seconds
+RHYTHM_AVG, RHYTHM_MAX = 2.2, 3.2
+
+
+def rhythm(shots, cues, camera, dur):
+    """The cuts of the Short: every shot's start, every cue named cut_* (a hard change of framing inside one shot) and a
+    full-frame flash-forward's two cuts. Returns (number of shots, average length, longest length, where the longest starts)."""
+    cuts = {round(s_["start"], 3) for s_ in shots}
+    cuts |= {round(float(v), 3) for k, v in (cues or {}).items() if k.startswith("cut_") and isinstance(v, (int, float))}
+    for x in (camera or {}).get("flash") or []:
+        if not (len(x) > 3 and isinstance(x[3], dict) and x[3].get("win")):
+            cuts |= {round(x[0], 3), round(x[0] + x[1], 3)}
+    edges = sorted(c for c in cuts if 0 <= c < dur) + [dur]
+    spans = [(b - a, a) for a, b in zip(edges, edges[1:]) if b - a > 1e-6]
+    longest = max(spans)
+    return len(spans), sum(x[0] for x in spans) / len(spans), longest[0], longest[1]
+
+
 # the pill of the pill test, timed from the end (seconds before the end of the Short): it pops in 2.4 s before the
 # end, the cursor clicks 0.7 s later, it pops out 0.85 s before the end and has gone 0.6 s before it, so the cut back
 # to frame 1 is clean. About 1.8 s on screen (the pill of 9-15 Oct: 2.8 s from 3.4 s before the end).
@@ -87,7 +112,7 @@ AIR_KINDS = ("dust", "pollen", "haze", "embers", "sparkle", "snow", "rain", "dri
 LOOP_CLEAR = 0.5          # the last half second shows the picture of frame 1: no punch-in or tilt may still be on
 
 
-def camera_plan(camera, shots, dur):
+def camera_plan(camera, shots, dur, kind="test"):
     """Check a Short's CAMERA plan (make_timeline.py) and return it ready for timeline.json, with one summary line.
     Whips snap to the nearest cut (within 0.2 s); a punch or tilt that is still on in the loop's last half second, a
     mood at the end that differs from frame 1's, an unknown shot, mood, foreground or particle kind: all raise."""
@@ -159,6 +184,47 @@ def camera_plan(camera, shots, dur):
             f"CAMERA mood: the Short ends in {moods[-1][1]!r} but frame 1 is {moods[0][1]!r} (the loop): come back to "
             f"{moods[0][1]!r} by {dur - LOOP_CLEAR - 0.45:.2f} s")
     cam["mood"] = [[round(m[0], 3)] + m[1:] for m in moods]
+    # water beads on the lens (the world kit, 16 Nov 2026; web/worldkit.js wkLensDrops): [[cue, {n, life, seed, size}]].
+    # They sit on the glass, so they stay across a cut; never in the tight opening, and dry before the loop.
+    lens = []
+    for e in cam.get("lens") or []:
+        t0 = float(e[0])
+        o = dict(e[1]) if len(e) > 1 and isinstance(e[1], dict) else {}
+        life = float(o.get("life", 1.7))
+        assert 0.4 <= life <= 4.0, f"CAMERA lens at {t0:.2f} s: life {life} s (0.4-4; 1.7 reads as a splash drying)"
+        assert t0 >= 1.5, f"CAMERA lens at {t0:.2f} s: the first 1.5 s hold the tight opening (nothing over his face or the test)"
+        assert t0 + life <= dur - LOOP_CLEAR + 1e-6, f"CAMERA lens at {t0:.2f} s is still wet in the last {LOOP_CLEAR} s (the loop needs frame 1's picture): start it earlier or shorten its life"
+        lens.append([round(t0, 3), o])
+    if lens:
+        cam["lens"] = lens
+    # the flash-forward (reference/direction.md rule 4; web/worldkit.js wkFlashAt): [[t0, seconds, t_from, {win: [cx, cy, r]}]].
+    # For 0.5-0.8 s, starting between 4 and 7 s, the picture shows the moment t_from of a later shot, then goes back. In a
+    # TEST Short it plays in a window (the test stays on screen through 13 s: SKILL.md, the rules of 15 Oct, rule 8).
+    flash = []
+    for e in cam.get("flash") or []:
+        t0, d, t2 = fr(float(e[0])), round(round(float(e[1]) * FPS) / FPS, 4), float(e[2])
+        o = dict(e[3]) if len(e) > 3 and isinstance(e[3], dict) else {}
+        assert 0.5 - 1e-6 <= d <= 0.8 + 1e-6, f"CAMERA flash at {t0:.2f} s: {d:.2f} s long (0.5-0.8 s: long enough to read, too short to explain)"
+        assert 4.0 - 1e-6 <= t0 <= 7.0 + 1e-6, f"CAMERA flash at {t0:.2f} s: it starts between 4 and 7 s (after the strange result has landed, before the mechanism)"
+        later = next((s_ for s_ in shots if s_["start"] - 1e-6 <= t2 and t2 + d <= s_["end"] + 1e-6), None)
+        assert later is not None, f"CAMERA flash at {t0:.2f} s: the moment it shows ({t2:.2f}-{t2 + d:.2f} s) must lie inside ONE later shot"
+        assert later["start"] >= t0 + d, f"CAMERA flash at {t0:.2f} s shows {t2:.2f} s, which is not a LATER shot: flash forward to the payoff's own picture"
+        assert t2 >= later["start"] + 0.2, f"CAMERA flash at {t0:.2f} s: replay the later shot from part-way in (0.2 s or more after {later['start']:.2f} s), not from its first frame"
+        assert t2 + d <= dur - LOOP_CLEAR + 1e-6, f"CAMERA flash at {t0:.2f} s shows the loop's last half second: pick an earlier moment"
+        assert not any(h[0] - 0.02 < t0 + d and t0 < h[0] + h[1] / FPS + 0.02 for h in hits), f"CAMERA flash at {t0:.2f} s runs into a hitstop: keep them apart"
+        win = o.get("win")
+        if kind == "test":
+            assert win, (f"CAMERA flash at {t0:.2f} s: a TEST Short keeps the test on screen through 13 s, so the flash plays in a window "
+                         f'over it: add {{"win": [cx, cy, r]}} (e.g. [770, 690, 190]), clear of his face and hands')
+        if win:
+            cx, cy, r = (float(x) for x in win)
+            assert 120 <= r <= 260, f"CAMERA flash window: radius {r:g} px (120-260 reads on a phone)"
+            assert cx - r >= 100 and cx + r <= 980 and cy - r >= 470 and cy + r <= 1150, (
+                f"CAMERA flash window [{cx:g}, {cy:g}, {r:g}] leaves the key zone or sits on the watermark or the captions: keep it inside x 100-980, y 470-1150")
+            o["win"] = [cx, cy, r]
+        flash.append([round(t0, 3), d, round(t2, 3), o])
+    if flash:
+        cam["flash"] = flash
     hand = cam.get("hand")
     hand_s = (f"{hand:g} on every shot" if isinstance(hand, (int, float)) else
               ("0.3 on every shot" if not hand else ", ".join(f"{k} {v:g}" for k, v in hand.items()) + ", 0.3 elsewhere"))
@@ -167,6 +233,10 @@ def camera_plan(camera, shots, dur):
     summary = (f"camera: {len(whips)} whip pan(s), {len(punches)} punch-in(s), {len(tilts)} tilt(s), {len(hits)} hitstop(s), "
                f"{len(act.get('brow', []))} brow beat(s); mood {mood_s}; "
                f"handheld {hand_s}; foreground layer in {fg_n} of {len(ids)} shots, particles in {air_n}")
+    if lens:
+        summary += f"; water on the lens {len(lens)} time(s)"
+    if flash:
+        summary += "; flash-forward " + ", ".join(f"at {x[0]:.2f} s for {x[1]:.2f} s to {x[2]:.2f} s" + (" in a window" if x[3].get("win") else "") for x in flash)
     return cam, summary
 
 
@@ -341,7 +411,7 @@ class Timeline:
         # rest of the plan (whips, punch-ins, tilts, moods, foreground, particles) from make_timeline.py's CAMERA
         cam_summary = None
         if "camera" in extra:
-            extra["camera"], cam_summary = camera_plan(extra["camera"], shots, dur)
+            extra["camera"], cam_summary = camera_plan(extra["camera"], shots, dur, video_kind(self.work))
         tl = {"fps": FPS, "duration": dur, "shots": shots, "captions": caps, "cues": cues, "words": self.words,
               "events": self.events, "look": video_look(self.work), "subscribe": sub, "cinema": True, **extra}
         json.dump(tl, open(f"{self.work}/timeline.json", "w"), indent=1)
@@ -349,5 +419,15 @@ class Timeline:
             print(f'{s["id"]:10s} {s["start"]:6.2f} -> {s["end"]:6.2f}  ({s["end"] - s["start"]:.2f}s)')
         print(f"duration {dur:.2f}s, {len(caps)} caption chunks, {len(self.words)} words")
         print(cam_summary or "camera: no CAMERA plan (handheld 0.3 on every shot, nothing else): plan the whips, punch-ins and moods in make_timeline.py")
+        # the direction sheet (reference/direction.md, 16 Nov 2026): the rhythm and the flash-forward, said here so they are
+        # fixed while it is free (qa.py repeats both as warnings on the MP4)
+        n_, avg_, max_, at_ = rhythm(shots, cues, extra.get("camera"), dur)
+        print(f"rhythm: {n_} shots, average {avg_:.2f} s, longest {max_:.2f} s (from {at_:.2f} s)"
+              + ("" if avg_ <= RHYTHM_AVG + 1e-6 and max_ <= RHYTHM_MAX + 1e-6 else
+                 f"  <- direction.md rule 11 wants an average of {RHYTHM_AVG} s or less and no shot over {RHYTHM_MAX} s: "
+                 "add cuts (a new SHOTS entry, or a cue named cut_* where the camera jumps inside a shot)"))
+        if not (extra.get("camera") or {}).get("flash"):
+            print('flash-forward: none planned  <- direction.md rule 4: CAMERA["flash"] = [[cue between 4 and 7 s, 0.6, a moment of the payoff shot'
+                  + (', {"win": [cx, cy, r]}' if video_kind(self.work) == "test" else "") + "]]")
         print(f"subscribe arm: {sub}" + (f' (the pill: in {cues["sub_in"]:.2f} s, click {cues["sub_tap"]:.2f} s, out {cues["sub_out"]:.2f} s)' if sub == "pill" else " (no pill; the Short loops)"))
         return tl

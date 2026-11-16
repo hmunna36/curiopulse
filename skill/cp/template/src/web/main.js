@@ -169,9 +169,14 @@ function renderFrame(f) {
   const CINK = typeof cinemaScene === 'function';   // the cinema kit (cinema.js, 7 Nov 2026)
   if (CINK) cinemaFrameStart(f);
   const tS = CINK && typeof cinHitT === 'function' ? cinHitT(t) : t;   // a hitstop freezes the scene's clock (cinema.js)
-  const post = SC[shot.id](tS - shot.start, tS, shot) || {};
+  // a planned flash-forward (CAMERA["flash"]; worldkit.js, reference/direction.md rule 4): a later shot fills the frame
+  // for half a second, or plays in a window over this one. Nothing is planned in a Short without that entry.
+  const ff = typeof wkFlashAt === 'function' ? wkFlashAt(tS) : null;
+  if (ff && ff.win) wkFlashGrab(ff, f);
+  const post = (ff && !ff.win ? wkFlashRun(ff) : SC[shot.id](tS - shot.start, tS, shot)) || {};
   lookScene(f);                      // the scene is drawn: light it, then add the glow layer on top
   composeGlow(post.glow === undefined ? 0.85 : post.glow);
+  if (ff && ff.win) wkFlashWindow(ff, t);
   if (CINK) cinemaScene(t, shot, post);   // the mood of the moment, particles in the air, the foreground layer
   // digital camera push (graphic shots): post.push = {k, cx, cy}, k = scale factor
   if (post.push && Math.abs(post.push.k - 1) > 1e-4) {
@@ -191,6 +196,8 @@ function renderFrame(f) {
   ctx.drawImage(VIGNETTE, 0, 0);
   lookFinal(f);                      // the lens: bloom, halation, grade, fringing (before grain, captions and the subscribe cue)
   if (post.overlay) post.overlay();
+  // water beads on the lens, planned in make_timeline.py (CAMERA["lens"]; worldkit.js): on the glass, so they stay across a cut
+  if (!post.noLens && typeof wkLensPlan === 'function') wkLensPlan(t);
   // film grain (the encoder has no noise filter here): one of four noise plates, jittered per frame
   if (post.grain !== 0) {
     const g = GRAIN[f % GRAIN.length];

@@ -7,6 +7,9 @@ Captions for YouTube: [`__SLUG__.srt`](__SLUG__.srt). Cover: [`cover.jpg`](cover
 <!-- One line: the world and the hero (the hiker rig, what he's doing), same narrator/caption/bloom look. -->
 <!-- One line: the look (cinematic lighting, `publish.json` "look": "cine") and the light of each place (`setLights` in src/web/). -->
 
+**Direction record:** [`NOTES.md`](NOTES.md): the spine, the last line, and how this Short meets each of the 21 rules
+of the direction sheet (the skill's `reference/direction.md`), written as it is built.
+
 ## Narration (N words, performed)
 
 Directed in [`src/script.txt`](src/script.txt), one take per block. The joke timing sits in the gaps between blocks.
@@ -52,11 +55,12 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 ## Science notes
 
-Every claim in the script, how sure science is, and where it comes from. Hedged lines are said as hedges.
+Every claim in the script or on screen, how sure science is, and where it comes from: two independent sources each
+(direction sheet, rule 7). Hedged lines are said as hedges; a myth is said as a myth.
 
-| Claim | Status | Source |
+| Claim | Status | Sources (two, independent) |
 |---|---|---|
-| … | established / leading idea / debated | … |
+| … | established / leading idea / debated / myth | … · … |
 
 ## Ship review
 

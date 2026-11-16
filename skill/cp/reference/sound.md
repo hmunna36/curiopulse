@@ -50,8 +50,39 @@ sfx.add(signal, t, gain, pan)      # mono is panned; (2, n) stereo is added as-i
 | A tickle, a copier, a robot (tickle-yourself) | `nail_scratch(dur, seed, rate, edges)` (fingernails scribbling on skin: short dry strokes of noise, `rate` a second; `edges=True` keeps what is above 5.2 kHz and runs under a line, whole in the pauses), `copier(dur, seed)` (a copier printing: the motor under 280 Hz, the paper above 5.6 kHz: it can run under a line), `servo(dur, f0, f1, seed, edges)` (a robot arm's buzzy whine gliding f0 -> f1; speech band, so `edges=True` under a line). In that video's audio.py: `tiptoe(bus, t0, t1, bpm, gain)` (a sneaky pizzicato line low-passed under 320 Hz with a tick above 5 kHz on each step: an open pizzicato in the speech band put a soft word 2.7 dB over it) |
 | Wings, a chain, a piano lid (one-finger) | `flutter(dur, seed, edges)` (little wings beating: a bird flying in; `edges=True` keeps only what is above 5.2 kHz and runs under a line), `chain_jingle(dur, seed, edges)` (a short chain settling: handcuffs after `lock_snap`), `piano_slam(seed)` (a grand piano's lid slamming: thump, crack, the strings going BONG, soft-clipped, 0.38 s; for a pause). In that video's audio.py: `low_whoosh` (a big move, all under 380 Hz), `piano_cluster` (several strings at once, cut short), `gibber_shout` (an indignant 'DID!' with no words); `pea_whistle` was the coach's whistle, `rag` the 1830s |
 | Score | `groove(mus, t0, t1, bpm, chords, gain, seed, kick_on, snaps, arp, bass, padv, half, cutoff, sixteen)`, `drone(mus, t0, t1, midi_notes, cutoff, gain)`, `crash(mus, t)`, `bwomp(mus, t)` (comedic low blat) |
+| The loop score (16 Nov 2026; below) | `fit_loop(dur)` → `(bpm, beat, bars)`, `loop_groove(mus, dur, chords, ...)`, `bar_at(t, beat)`, `riff(mus, notes, beat, ...)` (a hook that comes round every two bars), `steel_pan(m, dur, seed)` (a bright sunny bar), `shaker(mus, t0, t1, beat)` (sixteenths above 6.5 kHz: it can run under words), `claps(mus, t0, t1, beat)` (on 2 and 4), `twang(f0, dur, seed, bend)` (a plucked string that bends: a line going taut, a rope let go; for a pause) |
 
 New reusable atoms go into the skill's `template/src/sfxkit.py` (and the video's copy), not only into one audio.py.
+
+## The loop score (since 16 Nov 2026)
+
+**What.** The showcase the owner loved (13 Nov 2026) had a score fitted to an exact number of bars: 8 bars across its
+15 s, so when the picture cut back to frame 1 the music was on bar 1 again and the loop had no seam. Every Short's
+score is now built on that grid.
+
+```python
+BPM, BEAT, BARS = loop_groove(mus, DUR, ["F", "Bb", "C", "F"], gain=-4, seed=10)   # groove() from 0 to DUR at the fitted tempo
+riff(mus, [(0, 77), (0.75, 81), (1.5, 84), (2.5, 82), (3, 81), (3.5, 77)], BEAT, every=4)   # a hook on the same grid
+shaker(mus, 0.0, DUR, BEAT); claps(mus, 0.0, DUR, BEAT)                              # when the place is sunny
+silence(mus, [(c["punch"] - 0.02, c["punch_end"] + 0.3), ...])                      # the dead stops cut holes; the grid runs on
+```
+
+- `fit_loop(dur, lo=100, hi=128, want=112)` picks the bar count whose tempo lies in the range and nearest `want`, a
+  multiple of 4 first (27.3 s: 12 bars at 105.5 BPM; 29.9 s: 14 bars at 112.4). Give `lo` / `hi` / `want` for a slow or
+  a fast piece (a lullaby: `lo=60, hi=80, want=70`), or `bars=` to fix the count.
+- **A section changes on a bar line:** `groove(mus, bar_at(c["mech"], BEAT), bar_at(c["payoff"], BEAT), BPM, [...])`
+  (one tempo for the whole Short; what changes is the chords, the instruments, half time, the cutoff). For sections
+  build each with `groove` on the grid instead of one `loop_groove`, starting the first at 0 and ending the last at
+  `DUR`.
+- **The last bar leads into the first:** two pickup notes in the last beat (`mus.add(steel_pan(84, 0.3), DUR - BEAT, ...)`,
+  `DUR - BEAT / 2`), or the button's ding. Nothing rings past `DUR`: a tail that is cut at the loop clicks.
+- The direction sheet's sound rule (direction.md rule 16) sits on top: four dead stops or more, each 0.25 s or longer
+  (`silence`), full silence before the payoff and then the biggest hit, one instrument or motif for him and one for the
+  second character or the idea, a sound for every picture event.
+- A groove that starts on frame 0 plays under the hook's first words: keep it low there (`gain`), or cut the first
+  half bar with `silence` and let it enter after the first word, as before.
+- Check: `fit_loop` printed bars × 4 × BEAT = DUR; listen to (or measure) the join: the last 0.5 s followed by the first
+  0.5 s of `stems/music.wav` has a beat where the bar line is and no gap.
 
 ## Rules that made the last Shorts work
 

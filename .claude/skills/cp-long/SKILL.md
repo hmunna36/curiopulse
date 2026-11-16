@@ -36,6 +36,7 @@ something is weak, fix it yourself. Never ask: nobody is there to answer.
 - The craft rules are the Shorts skill's, kept current in this repo at `skill/cp/reference/` (a backup of the Mac's
   `/cp` skill, refreshed every night). Read them when you reach their phase: `brief.md`, `story.md`, `narration.md`,
   `visual.md`, `engine.md`, `sound.md`, `qa.md`, and the worked examples in `skill/cp/reference/examples/`.
+  (`skill/cp/reference/direction.md` is the Shorts' direction sheet: the film's is `reference/direction.md` here.)
   **`reference/long-form.md` in this skill overrides them wherever a long-form video differs** (length, structure,
   landscape staging, captions, thumbnail, packaging, ship bar). Translate as you read:
 
@@ -55,6 +56,14 @@ something is weak, fix it yourself. Never ask: nobody is there to answer.
 The film's first 15 seconds follow `reference/hooks.md`: the five hook rules and one of its 21 formulas, named in the
 README's plan and scored in the ship bar's Hook item. Read it in the story step, before the script. Three candidate
 hooks in three formulas, keep the strongest; the first sentence confirms the title.
+
+## Direction (binding since 16 Nov 2026)
+
+Every film follows `reference/direction.md`: 21 numbered rules for the story, the comedy, the picture, the sound, the
+ending and the package (the owner, 16 Nov 2026, after a blind test of the sheet on another channel: add it to every
+channel's daily and weekly runs). Read it in the story step, before the scene table, again before the picture, and
+before every QA round. The owner's standing rules win where they differ; the sheet's "Rule N here" lines say what is
+kept. The record is the film's `NOTES.md`: one line for each rule (the template has them; ship-bar item 16).
 
 ## Deliverables
 
@@ -92,6 +101,10 @@ Plus: the video scheduled on YouTube with its thumbnail and captions, a row in `
   these learnings to improve all other engines too"): make_timeline.py's `CAMERA` plans a new framing at almost every
   cut, a whip at each act turn and clock jump, punch-ins on the punchlines, handheld on every shot, the colour script
   (`mood`), depth and particles; every world is dressed, never an empty sky. Ship-bar item 7.
+- **The world kit** (`reference/long-form.md`, "The world kit"; 16 Nov 2026; the owner, on the Shorts' lagoon showcase:
+  "I loved this"): worlds in depth layers, and where they suit, water that mirrors him and the props, a light's
+  glitter, a flock or a crowd behind him, a splash that wets the lens, a second character with a beat of its own. It
+  never greys or darkens a frame.
 - **4:00–5:00, never over 5:15.** qa.py fails anything over 315 s. If the cut runs long, cut the scene with the
   lowest stakes; never speed the narrator up to fit.
 - **Code-built only.** Procedural canvas animation plus synthesized sound. Never AI video, stock footage or generated
@@ -140,7 +153,8 @@ $K/bin/preflight.sh          # installs the toolchain (2–5 min on a fresh mach
 - `/cp-long <topic>`: that topic.
 - `/cp-long next`: in `$K/topics.md`, resume the first `[~]` line (its folder `long/<slug>/` is in the repo if an
   earlier run pushed a checkpoint), else take the first `[ ]` line and mark it
-  `- [~] <Question> — <slug> — started <date>`.
+  `- [~] <Question> — <slug> — started <date>`. A queue run follows the whole workflow below, the direction sheet
+  (`reference/direction.md`, recorded rule by rule in the film's `NOTES.md`) included.
 - **The demand check** (`reference/long-form.md`, "Which questions get made"): if the line carries no demand figure,
   run `node $K/bin/yt.mjs demand "<question>"` first. Under the bar: rephrase once, else move the line under "Not
   made" with the numbers and take the next one. Keep the output: the titles shape yours, and the thumbnail addresses
@@ -152,14 +166,17 @@ $K/bin/preflight.sh          # installs the toolchain (2–5 min on a fresh mach
 
 ### 2. Create (A)
 
-1. **Research + story** (`skill/cp/reference/story.md`, then `reference/long-form.md`): the film first (the want, the
+1. **Research + story** (`skill/cp/reference/story.md`, then `reference/long-form.md`, then `reference/direction.md`
+   part A: the spine in one sentence, the button line and the final image written first, the running device's three
+   beats, the cold open's three flash-forwards, two independent sources for every claim): the film first (the want, the
    obstacle, the turn, the feeling at the end, the final image, the motif); sources and the claims table; the clock
    (its unit, its jumps, the last number) and the three acts on it; **the scene table** (one row per scene: waiting
    for, turn, leaves open, stakes; every row complete before a word of script); the jokes; the worlds; next week's
    teaser (the next qualified `[ ]` line of `topics.md`); the title and three thumbnail ideas, decided NOW, before
    the script (the first 5 seconds must show what the thumbnail promised).
 2. **Scaffold:** `$K/bin/new-long.sh <slug> "<Title>"`. Put the demand check, the one-page plan, the scene table and
-   the claims table in its README.
+   the claims table in its README, and the spine, the button line, the final image and the running device in its
+   `NOTES.md` (the direction record: fill a rule's line when that rule is met, not at the end).
 3. **Narration** (`skill/cp/reference/narration.md`): write `src/script.txt` (480–600 words, 26–36 blocks, written
    scene by scene from the table);
    `cd long/<slug>/src && $PYTHON voice.py ../.work --synth`; listen through the transcript check and the word
@@ -169,17 +186,25 @@ $K/bin/preflight.sh          # installs the toolchain (2–5 min on a fresh mach
    **Checkpoint:** once the takes are final, `$K/bin/push.sh <slug> <msg-file>` ("WIP: <topic> narration"). The takes
    cost characters; a crashed run must not lose them.
 4. **Timeline:** `src/make_timeline.py`: SHOTS (anchored to phrases), CHUNKS, COLOR, DISPLAY, a cue for every beat.
+   Read what it prints and fix it now: `rhythm:` (an average shot of 3 s or less, none over 6 s unless something on
+   screen changes every second: direction.md rule 11) and the cold open's flash-forwards (`CAMERA["flash"]`, rule 4).
+   Then the first swipe check, act by act (rule 20).
 5. **Picture** (`skill/cp/reference/visual.md`, `engine.md`, and the landscape rules in `reference/long-form.md`),
+   and `reference/direction.md` parts B and C (the sizes alternate, an extreme close-up in every act, a reason for
+   every camera move, a reaction in every shot), with the world kit for places with depth and life (`long-form.md`,
+   "The world kit"),
    shot by shot: world files and `SC.<shot>` in `src/web/`, listed in `scene.html`; stills → contact sheet → Read it →
    fix. The hook first, then in order. Borrow world files from the Shorts (`videos/<slug>/src/web/*.js`) and re-stage
    them for the wide frame.
 6. **Sound** (`skill/cp/reference/sound.md`): beds, a hit on every beat, ONE theme that is stated, developed through
-   the acts and resolved on the final image, silence on the biggest moment, the comedy stops, then `master()`. `qc_audio.py`; fix masked words now.
+   the acts and resolved on the final image, silence on the biggest moment, the comedy stops (direction.md rule 16: two
+   dead stops or more in every act, full silence before the last turn, then the biggest hit), then `master()`. `qc_audio.py`; fix masked words now.
 7. **Thumbnail:** three candidates (`SC.cover` with a variant switch), each rendered with
    `node make_cover.js ../.work/timeline.json ../cover.jpg`; the shelf test against six real thumbnails at 320×180
    picks one (`reference/long-form.md`, "Thumbnail"). Read the winner at full size too.
 8. **Pre-render sweep:** stills every 2 s across the whole timeline, on sheets; fix everything visible. Do the skim
-   test here for the first time: eight alike frames in a row are a dead stretch.
+   test here for the first time: eight alike frames in a row are a dead stretch. Do the silent test (direction.md
+   rule 15: the caption-free sheet, one still every 4 s) and the second swipe check (rule 20).
 9. **Render** in the background (`reference/cloud.md`, "Long commands"):
    `nohup sh -c 'node render_par.js ../.work/timeline.json ../<slug>.mp4 --audio ../.work/mix.wav > ../.work/render.log 2>&1; echo "EXIT $?" >> ../.work/render.log' &`
    then `make_srt.py`. Write the README and publish.json while it runs.
@@ -188,12 +213,14 @@ $K/bin/preflight.sh          # installs the toolchain (2–5 min on a fresh mach
 
 10. `$PYTHON qa.py ../.work ../<slug>.mp4` must have no FAIL (it also lists every shot over 8 s). Read every contact
     sheet; crop the risky moments at full size; do the skim test, the 15-second audit and the leave test
-    (`reference/long-form.md`, "The every-scene rule"); score the ship bar with evidence; log the round in
-    `.work/qa/ship-review.md`.
+    (`reference/long-form.md`, "The every-scene rule"); read `reference/direction.md` again and bring `NOTES.md` up to
+    date (one line for each of the 21 rules); score the ship bar with evidence (item 16 is the direction record); log
+    the round in `.work/qa/ship-review.md`.
 11. Anything under 8: name the cause, make a targeted fix (re-voice only changed blocks, re-time with gaps, restage a
     shot, remix), re-render, QA again. A failed render piece can be re-rendered alone (`reference/cloud.md`). If the
     same item fails twice, rethink the beat.
-12. Satisfied: qa.py clean, every item 8+. Copy the final scores and the changes into the README's "Ship review".
+12. Satisfied: qa.py clean, every item 8+, `NOTES.md` answers every numbered rule of the direction sheet and says what
+    nobody could verify. Copy the final scores and the changes into the README's "Ship review".
 
 ### 4. Ship (C)
 
@@ -209,9 +236,11 @@ $K/bin/preflight.sh          # installs the toolchain (2–5 min on a fresh mach
 16. **Push:** write the commit message to a file ("Add the <topic> long-form video (N:NN)" + one line + your
     attribution trailer) and run `$K/bin/push.sh <slug> <msg-file>`. It pushes to `main`; if `main` is refused it
     pushes `claude/cp-long-<slug>` and says so.
-17. **Report** (the last message of the run; keep it short): title, length, loudness, the YouTube link and release
+17. **Report** (the last message of the run; keep it short): first what nobody could verify (direction.md rule 21:
+    nobody heard the mix, nobody watched the film at speed), then the title, length, loudness, the YouTube link and release
     time, the story in one line, QA rounds and what changed, ElevenLabs characters left (`node $K/bin/quota.mjs`),
-    the demand figures of the question, where the source was pushed, and what is left for the user: the end screen
+    the demand figures of the question, the direction record (the weakest rule and any "Rule N here" that bit), where
+    the source was pushed, and what is left for the user: the end screen
     and a card in YouTube Studio, the pinned comment (text in publish.json), linking the film from the Short on the
     same subject ("Related video" in Studio) and a post announcing it, and anything that failed.
 
@@ -223,12 +252,15 @@ the script, timeline, scenes, `publish.json` (`youtube.id` once uploaded, so not
 
 ## Files
 
+- `reference/direction.md`: the direction sheet (16 Nov 2026): 21 rules for story, comedy, picture, sound, the ending
+  and the package, with the lines where an owner rule wins; the record goes in the film's `NOTES.md`
 - `reference/long-form.md`: the format: which questions get made, the every-scene rule, the film bar, length, three
-  acts on a clock, landscape staging, captions, thumbnail, packaging, topics, the ship bar
+  acts on a clock, landscape staging, the world kit, captions, thumbnail, packaging, topics, the ship bar
 - `reference/cloud.md`: the cloud machine: toolchain, keys, network, long commands, git, what only the user can do
 - `reference/videos.md`: every long-form video so far, its link, and what it taught
 - `topics.md`: the queue
-- `template/`: the folder every video starts from (the landscape engine + skeletons + README + publish.json)
+- `template/`: the folder every video starts from (the landscape engine + skeletons + README + NOTES.md, the direction
+  record + publish.json)
 - `fonts/`: Montserrat 700/800/900 and Anton (SIL OFL 1.1)
 - `bin/preflight.sh`, `bin/cloud-setup.sh`, `bin/env.sh`, `bin/new-long.sh`, `bin/push.sh`
 - `bin/yt.mjs`: YouTube Data API (whoami · upcoming · next-free · upload · reschedule · status · demand "<question>")

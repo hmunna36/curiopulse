@@ -44,9 +44,13 @@ for i, s in enumerate(TL["shots"][1:]):
 # click, no bell, and nobody says "subscribe" (user, 24 Oct 2026: "silent subscribe button"). Both arms sound the same.
 
 # ================================================================= score (drops out for every punchline)
-BPM = 112
-groove(mus, 0.5, DUR - 0.2, BPM, ["F", "Bb", "C", "F"], gain=-4, seed=10)
-silence(mus, [])  # [(C["punch"], C["punch_end"] + 0.5), ...]
+# The loop score (16 Nov 2026; reference/sound.md): the tempo is fitted so that a whole number of bars fills the Short,
+# and the music is on bar 1 again when the picture loops. BEAT is the grid: change sections on a bar line
+# (bar_at(C["cue"], BEAT)), and add what the place wants on the same grid: riff(mus, notes, BEAT), shaker(mus, 0, DUR,
+# BEAT), claps(mus, 0, DUR, BEAT). The direction sheet (reference/direction.md rule 16): four dead stops or more, full
+# silence before the payoff and then the biggest hit, one instrument or motif per character or idea.
+BPM, BEAT, BARS = loop_groove(mus, DUR, ["F", "Bb", "C", "F"], gain=-4, seed=10)
+silence(mus, [])  # [(C["punch"], C["punch_end"] + 0.5), ...]: the dead stops, each 0.25 s or more
 
 # ================================================================= voice + mix
 master(WORK, sfx, bed, mus, amb)

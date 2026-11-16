@@ -40,6 +40,25 @@ def fr(t):
     return round(t * FPS) / FPS
 
 
+# the direction sheet's rhythm (reference/direction.md rule 11): the average shot and the longest one, in seconds
+RHYTHM_AVG, RHYTHM_MAX = 3.0, 6.0
+
+
+def rhythm(shots, cues, camera, dur):
+    """The cuts of the film: every shot's start, every cue named cut_* (a hard change of framing inside one shot) and a
+    full-frame flash-forward's two cuts. Returns (number of shots, average length, longest length, where the longest
+    starts, the starts of every shot over RHYTHM_MAX)."""
+    cuts = {round(s_["start"], 3) for s_ in shots}
+    cuts |= {round(float(v), 3) for k, v in (cues or {}).items() if k.startswith("cut_") and isinstance(v, (int, float))}
+    for x in (camera or {}).get("flash") or []:
+        if not (len(x) > 3 and isinstance(x[3], dict) and x[3].get("win")):
+            cuts |= {round(x[0], 3), round(x[0] + x[1], 3)}
+    edges = sorted(c for c in cuts if 0 <= c < dur) + [dur]
+    spans = [(b - a, a) for a, b in zip(edges, edges[1:]) if b - a > 1e-6]
+    longest = max(spans)
+    return len(spans), sum(x[0] for x in spans) / len(spans), longest[0], longest[1], [a for d, a in spans if d > RHYTHM_MAX + 1e-6]
+
+
 # ---- the cinema kit (7 Nov 2026; web/cinema.js, reference/visual.md "Camera and light craft"): the camera and light plan
 MOODS = ("day", "shade", "dusk", "night", "storm", "warm", "cold", "spot")
 FG_KINDS = ("grass-b", "grass-bl", "grass-br", "leaves-tl", "leaves-tr", "branch-tl", "branch-tr", "rock-bl", "rock-br",
@@ -120,6 +139,43 @@ def camera_plan(camera, shots, dur, loop=True):
             f"CAMERA mood: the Short ends in {moods[-1][1]!r} but frame 1 is {moods[0][1]!r} (the loop): come back to "
             f"{moods[0][1]!r} by {dur - LOOP_CLEAR - 0.45:.2f} s")
     cam["mood"] = [[round(m[0], 3)] + m[1:] for m in moods]
+    # water beads on the lens (the world kit, 16 Nov 2026; web/worldkit.js wkLensDrops): [[cue, {n, life, seed, size}]].
+    # They sit on the glass, so they stay across a cut.
+    lens = []
+    for e in cam.get("lens") or []:
+        t0 = float(e[0])
+        o = dict(e[1]) if len(e) > 1 and isinstance(e[1], dict) else {}
+        life = float(o.get("life", 1.7))
+        assert 0.4 <= life <= 4.0, f"CAMERA lens at {t0:.2f} s: life {life} s (0.4-4; 1.7 reads as a splash drying)"
+        assert t0 >= 1.5 and t0 + life <= dur, f"CAMERA lens at {t0:.2f} s: not in the first 1.5 s, and inside the film"
+        lens.append([round(t0, 3), o])
+    if lens:
+        cam["lens"] = lens
+    # the flash-forwards of the cold open (reference/direction.md rule 4; web/worldkit.js wkFlashAt):
+    # [[t0, seconds, t_from, {win: [cx, cy, r]}]]. For 0.5-1.5 s, inside the first 30 s, the picture shows the moment
+    # t_from of a later shot (each act's strongest picture, the real shot replayed from part-way in), then goes back.
+    flash = []
+    for e in cam.get("flash") or []:
+        t0, d, t2 = fr(float(e[0])), round(round(float(e[1]) * FPS) / FPS, 4), float(e[2])
+        o = dict(e[3]) if len(e) > 3 and isinstance(e[3], dict) else {}
+        assert 0.5 - 1e-6 <= d <= 1.5 + 1e-6, f"CAMERA flash at {t0:.2f} s: {d:.2f} s long (1-1.5 s in a film; 0.5 at the least)"
+        assert 1.5 <= t0 and t0 + d <= 30.5, f"CAMERA flash at {t0:.2f} s: the flash-forwards belong to the cold open (the first 30 s, after the opening shot's 1.5 s)"
+        later = next((s_ for s_ in shots if s_["start"] - 1e-6 <= t2 and t2 + d <= s_["end"] + 1e-6), None)
+        assert later is not None, f"CAMERA flash at {t0:.2f} s: the moment it shows ({t2:.2f}-{t2 + d:.2f} s) must lie inside ONE later shot"
+        assert later["start"] >= 30.0, f"CAMERA flash at {t0:.2f} s shows {t2:.2f} s, which is still the cold open: flash forward to an act's strongest picture"
+        assert t2 >= later["start"] + 0.2, f"CAMERA flash at {t0:.2f} s: replay the later shot from part-way in (0.2 s or more after {later['start']:.2f} s)"
+        assert not any(h[0] - 0.02 < t0 + d and t0 < h[0] + h[1] / FPS + 0.02 for h in hits), f"CAMERA flash at {t0:.2f} s runs into a hitstop: keep them apart"
+        win = o.get("win")
+        if win:
+            cx, cy, r = (float(x) for x in win)
+            assert 110 <= r <= 300, f"CAMERA flash window: radius {r:g} px (110-300)"
+            assert cx - r >= 90 and cx + r <= 1830 and cy - r >= 90 and cy + r <= 820 and not (cx - r < 560 and cy - r < 210), (
+                f"CAMERA flash window [{cx:g}, {cy:g}, {r:g}] leaves the frame's safe part, or sits on the clock (top left) or the captions: "
+                "keep it inside x 90-1830, y 90-820")
+            o["win"] = [cx, cy, r]
+        flash.append([round(t0, 3), d, round(t2, 3), o])
+    if flash:
+        cam["flash"] = flash
     hand = cam.get("hand")
     hand_s = (f"{hand:g} on every shot" if isinstance(hand, (int, float)) else
               ("0.3 on every shot" if not hand else ", ".join(f"{k} {v:g}" for k, v in hand.items()) + ", 0.3 elsewhere"))
@@ -128,6 +184,10 @@ def camera_plan(camera, shots, dur, loop=True):
     summary = (f"camera: {len(whips)} whip pan(s), {len(punches)} punch-in(s), {len(tilts)} tilt(s), {len(hits)} hitstop(s), "
                f"{len(act.get('brow', []))} brow beat(s); mood {mood_s}; "
                f"handheld {hand_s}; foreground layer in {fg_n} of {len(ids)} shots, particles in {air_n}")
+    if lens:
+        summary += f"; water on the lens {len(lens)} time(s)"
+    if flash:
+        summary += "; flash-forward " + ", ".join(f"at {x[0]:.2f} s for {x[1]:.2f} s to {x[2]:.2f} s" + (" in a window" if x[3].get("win") else "") for x in flash)
     return cam, summary
 
 
@@ -266,4 +326,15 @@ class Timeline:
             print(f'{s["id"]:10s} {s["start"]:6.2f} -> {s["end"]:6.2f}  ({s["end"] - s["start"]:.2f}s)')
         print(f"duration {dur:.2f}s, {len(caps)} caption chunks, {len(self.words)} words")
         print(cam_summary or "camera: no CAMERA plan (handheld 0.3 on every shot, nothing else): plan the framings, whips, punch-ins and the colour script")
+        # the direction sheet (reference/direction.md, 16 Nov 2026): the rhythm and the cold open's flash-forwards, said
+        # here so they are fixed while it is free (qa.py repeats both as warnings on the MP4)
+        n_, avg_, max_, at_, over_ = rhythm(shots, cues, extra.get("camera"), dur)
+        print(f"rhythm: {n_} shots, average {avg_:.2f} s, longest {max_:.2f} s (from {at_:.2f} s), {len(over_)} over {RHYTHM_MAX:g} s"
+              + ("" if avg_ <= RHYTHM_AVG + 1e-6 and not over_ else
+                 f"  <- direction.md rule 11 wants an average of {RHYTHM_AVG:g} s or less and no shot over {RHYTHM_MAX:g} s unless something on "
+                 "screen changes every second (name those in NOTES.md): add cuts (a new SHOTS entry, or a cue named cut_* where the "
+                 "camera jumps inside a shot); over " + ", ".join(f"{a:.1f}" for a in over_[:12]) + (" ..." if len(over_) > 12 else "")))
+        if not (extra.get("camera") or {}).get("flash"):
+            print('flash-forward: none planned  <- direction.md rule 4: CAMERA["flash"] = [[a cue in the cold open, 1.2, a moment of an '
+                  "act's strongest shot], ...], one for each act")
         return tl
