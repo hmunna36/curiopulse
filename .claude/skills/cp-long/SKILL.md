@@ -5,6 +5,12 @@ argument-hint: <topic question> | next
 effort: max
 ---
 
+
+> **PAUSED since 17 Nov 2026 (the owner: "yes" to "pause long videos after Stop Eating").** The long videos drew 29-355
+> views each (the quiz premiere 29 in 9 days), while the Shorts carry the channel. "What Happens If You Stop Eating?"
+> (rPzNcr3Is98, 22 Nov 17:30 IST) is the last one. Build no new CurioPulse long video, and do not re-enable the cloud
+> routine "CurioPulse — weekly long-form film (cloud)" (off since 30 Oct), until the owner says so.
+
 # /cp-long: a CurioPulse long-form video, from question to scheduled release
 
 The user (4 Oct 2026): "let's start 1 routine in cloud to create a long form video for curio pulse channel, 1 video
