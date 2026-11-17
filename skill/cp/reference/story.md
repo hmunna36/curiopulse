@@ -156,26 +156,26 @@ Old openings redone to the rule (they show the shape; don't reuse them as script
 | goosebumps | "Scary movie… creepy music… and your arm does… this." / "Congrats. You're a plucked goose." | "You press play on a horror movie… and your arm hair stands UP." / "That's your body trying to look bigger. It's not working." |
 
 
-**The opening test of 17 Nov 2026: the DEMO arm** (the owner: "yes" to "run the opening test"; `SKILL.md`, the rules of
-17 Nov). It covers TEST Shorts for the slots of 20 Nov to 3 Dec. `yt.mjs next-slot` prints the arm and the `"opening"`
-block that goes into publish.json, because the readout groups by it. CONTROL and NONE keep the opening above, unchanged.
-DEMO shows the challenge before anything else:
+**The opening test of 17 Nov 2026: the DEMO arm** (the owner: "yes" to "run the opening test", then the Fable review's
+version; `SKILL.md`, the rules of 17 Nov). It covers FACE OR ILLUSION tests from the 20 Nov slots, alternating, 8 Shorts
+an arm. `yt.mjs next-slot` prints the arm and the `"opening"` block that goes into publish.json. CONTROL and NONE keep
+the opening above, unchanged; hand tests are not in the test. DEMO shows the challenge before anything else:
 - **Frame 0 is the challenge itself, from the viewer's side.**
-  - His hand (or his face, for a face test) is already in the start pose, close and big: the hand fills at least 60 %
-    of the frame width, rising from the bottom edge as the viewer's own would.
-  - It is sharp and still for the first half second, so a stranger sees what to try before reading or hearing
-    anything.
-- **The one part that must move is ringed or glowing from frame 0:** the finger, the nostril, the corner of the mouth.
-  Nothing else moves.
-- **The command is on screen from frame 0 in 2-4 big words** ("ONLY THIS ONE"), and it is spoken from 0.2 s as the
-  first line.
-  - It is an order of 8 words or fewer, with "your" or a plain imperative: "Keep three fingers still. Move only this
-    one."
-  - No question, no "why", and no "most people can't" before the command.
-- **The attempt follows, to about 1.5 s:** the pose tries the move and fails the way the viewer's will. Then the scene
-  opens up and he is in it mid-attempt, and the Short goes on as usual: the answer by 5 s, 25-30 s, the loop end.
-- **QA, DEMO only:** watch the first 1.0 s with the sound off. If the challenge is not clear without the voice, the
-  opening fails and is rebuilt.
+  - A face test: his face alone, close and big, already in the start pose.
+  - An illusion: the illusion itself, already running (the dot to stare at, the blue field).
+  - It is sharp and still for the first half second, so a stranger sees what to try before reading or hearing anything.
+- **The one part that must move or be watched is ringed or glowing from frame 0:** the nostril, the corner of the
+  mouth, the eye, the dot.
+- **The dare is on screen from frame 0 in 2-4 big words** ("ONLY THIS EYE", "STARE AT THE DOT"), and spoken from 0.2 s
+  as the first line.
+  - It is an order of 8 words or fewer, with "your" or a plain imperative.
+  - No question, no "why", and no "most people can't" before it.
+- **The attempt follows, to about 1.5 s;** then the scene opens up with him in it mid-attempt, and the Short goes on as
+  usual: the answer by 5 s, 25-30 s, the loop end.
+- **QA, DEMO only:** watch the first 1.0 s with the sound off. If the dare is not clear without the voice, the opening
+  fails and is rebuilt.
+- **The verdict is the Instagram skip rate at 48 h:** adopt DEMO if its median is 3 points or more below CONTROL's and 5
+  of its 8 Reels skip at 22 % or less.
 
 ## 3. The shape (25–30 s, every Short for a slot from 10 Nov 2026)
 
@@ -228,9 +228,10 @@ that shape: use those files for craft (timeline, scenes, audio, how a script is 
 
 ## 4. Picking topics
 
-**Since 17 Nov 2026 (`SKILL.md` "The rules of 17 Nov 2026"): hands and fingers first.** About 9 of the 12 tests a week
-are hand or finger tests most people can't do on the first try, about 2 are face tests and at most 1 is a quick, safe
-whole-body test; no speech, mind, imagine-it, breath or swallow tests until the review of about 8 Dec 2026.
+**Since 17 Nov 2026 (`SKILL.md` "The rules of 17 Nov 2026", the Fable review's version):** of every 14 slots, 7 are hand
+tests (one a day, one-hand finger tests first, from `topics.md` "## Queue"), 5 are face or illusion tests (from "## Face
+and illusion queue") and 2 are curious. No speech, sound, mind, imagine-it, breath or swallow tests until the review of
+about 8 Dec 2026.
 
 **Since 15 Oct 2026 (user: "yes"), every topic is a test the viewer can do on themselves while watching:** in a few
 seconds, phone in hand, safely (pinch a nostril, crack a knuckle, lift a ring finger, close one eye, hum with the nose
@@ -296,7 +297,8 @@ queue. Prefer topics where the hiker can be the one it happens to.
 ## 6. The CURIOUS kind (the topic test, 25 Oct–8 Nov 2026; `SKILL.md` rule 9)
 
 **Since 17 Nov 2026 (`SKILL.md` "The rules of 17 Nov 2026"): two curious Shorts a week (the Wednesday and Sunday 23:30
-slots), and only comparisons of time or age the viewer can picture ("X is older than Y").**
+slots), picture-led, 30-35 s allowed.** One spectacular picture of nature on a giant scale, like the tree hits; never a
+fact about one object or one number. If none of the next six passes 5K views, the curious slots go back to tests.
 
 **User, 24 Oct 2026: "some other extremely curious topic not only about human body", "the animation should be of top
 most quality with extremely timed comedy".** Half the Shorts in the test. Everything in §2–§5 holds except what

@@ -91,33 +91,46 @@ the pill: both arms fell alike (82.3 % viewed with it, 82.6 % without). So, for 
 One test and one curious Short a day go on after the topic test ends on 8 Nov: `yt.mjs next-slot` keeps alternating the
 kind by day (until the 19 Nov slots; from the 20 Nov slots the rules of 17 Nov below set the mix).
 
-## The rules of 17 Nov 2026 (binding; user: "yes do both" to "switch the topic mix to mostly hand tests")
+## The rules of 17 Nov 2026 (binding; the owner: "yes do both", "yes for all 3", then "go ahead" to the Fable review's version)
 
-The reading of 17 Nov 2026 (YouTube to 14 Nov, Instagram to 17 Nov), reviewed with ChatGPT:
-- **YouTube:** since 1 Nov, test Shorts had a median of about 2.5K views (none under 1.5K), curious Shorts about 1.4K (three under 200). The two curious hits were time comparisons about trees (sharks older than trees, more trees than stars, about 20K each).
-- **Instagram:** every big Reel since 1 Nov was a hand test (W fingers 155K, bent wrist 74K, thumb across the palm 34K, clasped thumbs 11.6K), and no curious Reel passed 3K.
-- **Weak tests:** speech and mind tests (tongue twister, ink colour, white bear, word repeat) drew 1.5-3K on both platforms.
-- **The tight rules of 5 Nov** have not lifted the typical Short yet (median 1.9K against 2.0K). Fewer viewers stop on the Short: stayed-to-watch fell from about 55 % to 46-48 %.
+The reading of 17 Nov 2026 (YouTube to 14 Nov, Instagram to 17 Nov), reviewed by ChatGPT and by an independent Fable review that re-checked the numbers:
+- **The tight rules of 5 Nov worked for tests and hurt curious Shorts.**
+  - Tight tests were 96.9 % viewed against 85.3 %, with a median of 4.0K views against 2.1K.
+  - Tight curious Shorts fell to 75.9 % viewed (from 84.0 %), and none passed 2.2K.
+  - Stayed-to-watch fell only for curious (55.6 to 50.2 %); tests held at 54 %.
+- **Instagram:**
+  - One-hand finger tests made 5 of 6 Reels at 34K-1.27M; illusions put 3 of 6 above 12K.
+  - No curious Reel has ever passed 4.2K.
+  - The median skip rate is flat at 26-28 % since October.
+- **YouTube:**
+  - Face tests put 4 of 9 above 10K.
+  - The curious hits were all about trees (23.3K, 23.1K, 19.9K); facts about one object or one number stayed under 1.5K.
+  - Speech and mind tests peaked at 2.8K.
+  - The slump since late October is channel-wide: the median Short was 8.5K on 16-28 Oct and about 1.5-2K since.
 
 So, for every Short for a slot from 20 Nov:
-1. **12 tests and 2 curious a week.** `yt.mjs next-slot` says CURIOUS only for the Wednesday and Sunday 23:30 slots (`MIX` in yt.mjs) and TEST for the other 12.
-2. **A TEST is the top of the Queue, and the Queue is sorted hands and fingers first.**
-   - About 9 a week are hand or finger tests most people can't do on the first try.
-   - About 2 a week are face tests.
-   - At most 1 a week is a whole-body test, and only if it is safe and takes seconds.
-   - No speech, mind, imagine-it, breath or swallow tests until the review of about 8 Dec 2026; they wait under Held.
-   - A refill takes its leads from `topics.md` "Sources for the 17 Nov 2026 refill" first, and kin of a hand hit come first.
-3. **A CURIOUS Short is only a comparison of time or age the viewer can picture ("X is older than Y").** No single-animal or single-object trivia.
+1. **Of every 14 slots: 7 hand tests (one a day), 5 face or illusion tests, 2 curious.**
+   - `yt.mjs next-slot` says which (`MIX` and `subOfSlot` in yt.mjs): "TEST · HAND", "TEST · FACE OR ILLUSION", or "CURIOUS" (the Wednesday and Sunday 23:30 slots).
+   - On a curious day its 11:30 slot is the hand test; on other days the hand test alternates slots by day.
+2. **A HAND test is the first `[ ]` line under `topics.md` "## Queue".**
+   - One-hand finger tests come first, then two-hand coordination.
+   - A FACE OR ILLUSION test is the first `[ ]` line under "## Face and illusion queue".
+   - No speech, sound, mind, imagine-it, breath or swallow tests until the review of about 8 Dec 2026; they wait under Held.
+   - Refill the Queue when fewer than 5 are left, and the face and illusion queue when fewer than 4 are left. Take leads from "Sources for the 17 Nov 2026 refill" first; illusions can come back from Held.
+3. **A CURIOUS Short is picture-led:** one spectacular picture of nature on a giant scale, like the tree hits. It may run 30-35 s (next-slot prints the SHORT length arm for it), and it is never a fact about one object or one number.
+   - **Stop rule:** if none of the next six curious Shorts passes 5K views, the curious slots go back to tests. Tell the owner.
 
-4. **The opening test** (the owner: "yes" to "run the opening test"; TEST Shorts for the slots of 20 Nov to 3 Dec):
-   - `yt.mjs next-slot` prints the opening arm, and its `"opening"` block goes into publish.json.
-   - DEMO (the challenge first) follows `reference/story.md` §2, "The opening test of 17 Nov 2026"; CONTROL and NONE keep the usual opening.
-   - The arm alternates slots by day, 12 Shorts each.
-   - The verdict, about 7 Dec (`yt.mjs numbers` has the table; the Instagram skip rates come from the weekly report): DEMO wins if its stayed to watch is 3 points or more above CONTROL's, and its Instagram skip rate 3 points or more lower, without a lower average % viewed. Anything less is a draw, and the usual opening stays.
+4. **The opening test** (the owner: "yes" to "run the opening test"; the Fable review's version):
+   - **Which Shorts:** FACE OR ILLUSION tests only, from the 20 Nov slots, alternating DEMO and CONTROL, 8 Shorts an arm (to about 11 Dec). Hand tests already skip least on Instagram (17-21 %).
+   - `yt.mjs next-slot` prints the arm, and its `"opening"` block goes into publish.json.
+   - DEMO follows `reference/story.md` §2, "The opening test of 17 Nov 2026"; CONTROL and NONE keep the usual opening.
+   - **The verdict is the Instagram skip rate at 48 h** (the weekly report's ig_reels; `yt.mjs numbers` has the YouTube table). DEMO is adopted if its median skip rate is 3 points or more below CONTROL's and 5 of its 8 Reels skip at 22 % or less (at that level 11 of 15 Reels have passed 10K, above it 5 of 60).
+   - YouTube's stayed to watch is only a cross-check: its rank correlation with views is 0.23, against 0.63 for % viewed.
 5. **Facebook Page: PAUSED** (the owner: "yes" to "stop the Facebook uploads"; step 16.2). Instagram only.
-6. **Long-form: PAUSED after "What Happens If You Stop Eating?"** (22 Nov 17:30; the owner: "yes" to "pause long videos"; the long videos drew 29-355 views each). Build no new CurioPulse long video (cp-long) until the owner says so.
+6. **Long-form: PAUSED after "What Happens If You Stop Eating?"** (22 Nov 17:30; the owner: "yes" to "pause long videos"; seven long videos drew 2.8K views in all). Build no new CurioPulse long video (cp-long) until the owner says so.
+7. **Two Shorts a day stays the maximum** (both reviews). Only 10 of 14 runs made a Short on 10-16 Nov, and the YouTube lead fell from 4.4-4.9 days to 2.0-2.9. Swapping a weak Short for a hand test is worth more than adding a third.
 
-The rules of 5 Nov (25-30 s, the loop end) stay. Read the mix about 1 Dec (the first two weeks): the medians per kind on both platforms, the stayed-to-watch % and the Instagram skip rate. Read the opening test about 7 Dec.
+The rules of 5 Nov (25-30 s for tests, the loop end) stay. Read the mix about 1 Dec (medians per kind on both platforms) and the opening test when its 16th Reel is 48 h old (about mid-December).
 
 ## Deliverables
 
@@ -407,7 +420,7 @@ user's request).
 - To change what gets made, edit `topics.md`, not the routine.
 
 1. Take the first `[~]` line of `~/.claude/skills/cp/topics.md` and resume it, or else run `yt.mjs next-slot` and take
-   the first `[ ]` line under `## Queue` when it prints "topic kind: TEST", or under `## Curious queue` when it prints
+   the first `[ ]` line under `## Queue` when it prints "topic kind: TEST · HAND" (or plain "TEST"), under `## Face and illusion queue` when it prints "TEST · FACE OR ILLUSION", or under `## Curious queue` when it prints
    "CURIOUS" (rule 9; never one under `## Held`: those have no test the viewer can do yet). Mark it
    in progress: `- [~] Why do onions make you cry? — onion-tears — started 2026-10-01`. If the queue is empty, report
    that and stop.
