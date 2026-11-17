@@ -155,6 +155,28 @@ Old openings redone to the rule (they show the shape; don't reuse them as script
 | brain freeze | "You take ONE giant slurp of milkshake… and then your forehead… FREEZES!" / "Your forehead. The milkshake went in your MOUTH." / "Doctors call it…" | the same hook / "Your mouth just pulled the fire alarm… and your forehead got the bill." (the name, if at all, is a label) |
 | goosebumps | "Scary movie… creepy music… and your arm does… this." / "Congrats. You're a plucked goose." | "You press play on a horror movie… and your arm hair stands UP." / "That's your body trying to look bigger. It's not working." |
 
+
+**The opening test of 17 Nov 2026: the DEMO arm** (the owner: "yes" to "run the opening test"; `SKILL.md`, the rules of
+17 Nov). It covers TEST Shorts for the slots of 20 Nov to 3 Dec. `yt.mjs next-slot` prints the arm and the `"opening"`
+block that goes into publish.json, because the readout groups by it. CONTROL and NONE keep the opening above, unchanged.
+DEMO shows the challenge before anything else:
+- **Frame 0 is the challenge itself, from the viewer's side.**
+  - His hand (or his face, for a face test) is already in the start pose, close and big: the hand fills at least 60 %
+    of the frame width, rising from the bottom edge as the viewer's own would.
+  - It is sharp and still for the first half second, so a stranger sees what to try before reading or hearing
+    anything.
+- **The one part that must move is ringed or glowing from frame 0:** the finger, the nostril, the corner of the mouth.
+  Nothing else moves.
+- **The command is on screen from frame 0 in 2-4 big words** ("ONLY THIS ONE"), and it is spoken from 0.2 s as the
+  first line.
+  - It is an order of 8 words or fewer, with "your" or a plain imperative: "Keep three fingers still. Move only this
+    one."
+  - No question, no "why", and no "most people can't" before the command.
+- **The attempt follows, to about 1.5 s:** the pose tries the move and fails the way the viewer's will. Then the scene
+  opens up and he is in it mid-attempt, and the Short goes on as usual: the answer by 5 s, 25-30 s, the loop end.
+- **QA, DEMO only:** watch the first 1.0 s with the sound off. If the challenge is not clear without the voice, the
+  opening fails and is rebuilt.
+
 ## 3. The shape (25–30 s, every Short for a slot from 10 Nov 2026)
 
 **The tight arm (the rules of 5 Nov 2026).** The hits of 16–28 Oct were watched to the end and replayed (95–102 %
@@ -205,6 +227,10 @@ twist/proof → debate → bonus → button → subscribe line. `reference/examp
 that shape: use those files for craft (timeline, scenes, audio, how a script is directed), not for structure.
 
 ## 4. Picking topics
+
+**Since 17 Nov 2026 (`SKILL.md` "The rules of 17 Nov 2026"): hands and fingers first.** About 9 of the 12 tests a week
+are hand or finger tests most people can't do on the first try, about 2 are face tests and at most 1 is a quick, safe
+whole-body test; no speech, mind, imagine-it, breath or swallow tests until the review of about 8 Dec 2026.
 
 **Since 15 Oct 2026 (user: "yes"), every topic is a test the viewer can do on themselves while watching:** in a few
 seconds, phone in hand, safely (pinch a nostril, crack a knuckle, lift a ring finger, close one eye, hum with the nose
@@ -268,6 +294,9 @@ queue. Prefer topics where the hiker can be the one it happens to.
 10. The caption's closing question: one word to answer, about the test ("Left or right?", "Could you lift it?").
 
 ## 6. The CURIOUS kind (the topic test, 25 Oct–8 Nov 2026; `SKILL.md` rule 9)
+
+**Since 17 Nov 2026 (`SKILL.md` "The rules of 17 Nov 2026"): two curious Shorts a week (the Wednesday and Sunday 23:30
+slots), and only comparisons of time or age the viewer can picture ("X is older than Y").**
 
 **User, 24 Oct 2026: "some other extremely curious topic not only about human body", "the animation should be of top
 most quality with extremely timed comedy".** Half the Shorts in the test. Everything in §2–§5 holds except what

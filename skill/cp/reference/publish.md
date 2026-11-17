@@ -1,5 +1,9 @@
 # Publishing: GitHub, YouTube 11:30 AM + 11:30 PM IST, Meta: Facebook-only, one Reel a day at 21:00 IST while Instagram is suspended (normally Instagram 18:30 + 21:00)
 
+> **17 Nov 2026 (the owner: "yes" to "stop the Facebook uploads"): the Facebook Page is PAUSED.** Every Page Reel since
+> 17 Oct had 0 views, the Facebook-only test of 7 Nov too. Instagram only: `fb.mjs reel` prints PAUSED and uploads
+> nothing, the Page stays unticked in Business Suite, and no `facebook` block goes into publish.json. SKILL.md step 16.2.
+
 > **22 Oct 2026, the current rule (user: "github is not working properly"): Instagram Reels are scheduled in Meta
 > Business Suite (Route A below, Instagram ONLY, the Share-trap rules in SKILL.md step 16.1); the Facebook Page stays on
 > `fb.mjs`. Route C (GitHub Actions) no longer publishes: `ig-publish.yml` runs once a week (Mon 10:00 IST) only to

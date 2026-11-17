@@ -89,7 +89,35 @@ the pill: both arms fell alike (82.3 % viewed with it, 82.6 % without). So, for 
    Not drooling? …"), no bridge ("Anyway…", "So yes…"), no held look. The template's tail is 0.7 s; qa.py wants at most
    1.0 s from the last word to the loop (warns to 1.5 s).
 One test and one curious Short a day go on after the topic test ends on 8 Nov: `yt.mjs next-slot` keeps alternating the
-kind by day.
+kind by day (until the 19 Nov slots; from the 20 Nov slots the rules of 17 Nov below set the mix).
+
+## The rules of 17 Nov 2026 (binding; user: "yes do both" to "switch the topic mix to mostly hand tests")
+
+The reading of 17 Nov 2026 (YouTube to 14 Nov, Instagram to 17 Nov), reviewed with ChatGPT:
+- **YouTube:** since 1 Nov, test Shorts had a median of about 2.5K views (none under 1.5K), curious Shorts about 1.4K (three under 200). The two curious hits were time comparisons about trees (sharks older than trees, more trees than stars, about 20K each).
+- **Instagram:** every big Reel since 1 Nov was a hand test (W fingers 155K, bent wrist 74K, thumb across the palm 34K, clasped thumbs 11.6K), and no curious Reel passed 3K.
+- **Weak tests:** speech and mind tests (tongue twister, ink colour, white bear, word repeat) drew 1.5-3K on both platforms.
+- **The tight rules of 5 Nov** have not lifted the typical Short yet (median 1.9K against 2.0K). Fewer viewers stop on the Short: stayed-to-watch fell from about 55 % to 46-48 %.
+
+So, for every Short for a slot from 20 Nov:
+1. **12 tests and 2 curious a week.** `yt.mjs next-slot` says CURIOUS only for the Wednesday and Sunday 23:30 slots (`MIX` in yt.mjs) and TEST for the other 12.
+2. **A TEST is the top of the Queue, and the Queue is sorted hands and fingers first.**
+   - About 9 a week are hand or finger tests most people can't do on the first try.
+   - About 2 a week are face tests.
+   - At most 1 a week is a whole-body test, and only if it is safe and takes seconds.
+   - No speech, mind, imagine-it, breath or swallow tests until the review of about 8 Dec 2026; they wait under Held.
+   - A refill takes its leads from `topics.md` "Sources for the 17 Nov 2026 refill" first, and kin of a hand hit come first.
+3. **A CURIOUS Short is only a comparison of time or age the viewer can picture ("X is older than Y").** No single-animal or single-object trivia.
+
+4. **The opening test** (the owner: "yes" to "run the opening test"; TEST Shorts for the slots of 20 Nov to 3 Dec):
+   - `yt.mjs next-slot` prints the opening arm, and its `"opening"` block goes into publish.json.
+   - DEMO (the challenge first) follows `reference/story.md` §2, "The opening test of 17 Nov 2026"; CONTROL and NONE keep the usual opening.
+   - The arm alternates slots by day, 12 Shorts each.
+   - The verdict, about 7 Dec (`yt.mjs numbers` has the table; the Instagram skip rates come from the weekly report): DEMO wins if its stayed to watch is 3 points or more above CONTROL's, and its Instagram skip rate 3 points or more lower, without a lower average % viewed. Anything less is a draw, and the usual opening stays.
+5. **Facebook Page: PAUSED** (the owner: "yes" to "stop the Facebook uploads"; step 16.2). Instagram only.
+6. **Long-form: PAUSED after "What Happens If You Stop Eating?"** (22 Nov 17:30; the owner: "yes" to "pause long videos"; the long videos drew 29-355 views each). Build no new CurioPulse long video (cp-long) until the owner says so.
+
+The rules of 5 Nov (25-30 s, the loop end) stay. Read the mix about 1 Dec (the first two weeks): the medians per kind on both platforms, the stayed-to-watch % and the Instagram skip rate. Read the opening test about 7 Dec.
 
 ## Deliverables
 
@@ -336,11 +364,12 @@ Read each reference file when you reach its phase. They are short; don't skip th
        9. Content → Scheduled must list the row with the Instagram badge and the caption as its title.
        - If Chrome isn't connected, the window is hidden (`requestAnimationFrame` never fires) or Business Suite wants a
          password: don't guess. Report "Instagram still to schedule" with the prepared sheet; YouTube goes ahead.
-    2. **Facebook Page:** `node ~/.claude/skills/cp/bin/fb.mjs reel videos/<slug>/publish.json`. It uploads and SCHEDULES the
-       Reel natively on Facebook for the same time (the caption's Follow line becomes "Follow CurioPulse…"), and writes
-       `facebook.videoId` into publish.json. Then `fb.mjs status <videoId>`: `publish_status` must read `scheduled` (processing
-       may take a few minutes; wait for `ready`). If it fails twice (a minute apart), tick the Page in step 1.3 instead and say
-       so; a token or permission error (code 190, 10, 200) needs the user: report it, do not try to fix it.
+    2. **Facebook Page: PAUSED since 17 Nov 2026** (the owner: "yes" to "stop the Facebook uploads"; every Page Reel since
+       17 Oct had 0 views and 0 impressions, the Facebook-only test Reel of 7 Nov too: memory `facebook-zero-views`). Skip
+       this step: don't run `fb.mjs reel` (it prints "PAUSED" and uploads nothing), never tick the Page in step 1.3 as a
+       fallback, and write no `facebook` block into publish.json. The Reel goes to Instagram only. It comes back only on the
+       owner's word. (Before 17 Nov: `fb.mjs reel videos/<slug>/publish.json` uploaded and scheduled the Reel natively,
+       then `fb.mjs status <videoId>` had to read `scheduled`.)
     5. **Be gentle with both accounts** (they were suspended once, 16 Oct 2026): one upload per run, never bulk edits,
        never edit the Instagram profile (link, bio, name), never create or change Meta apps, users or tokens.
 17. **Record:**

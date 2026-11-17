@@ -126,12 +126,34 @@ const PILL_GROUPS = {pill: 'PILL TEST · pill (23:30)', none: 'PILL TEST · no p
 // 7 of each kind in each slot. `next-slot` prints the kind; the run picks its topic from the matching queue.
 export const KIND_TEST = {name: 'kind-2026-10', start: '2026-10-25T23:30:00+05:30', end: '2026-11-08T23:30:00+05:30', day0: '2026-10-25'};
 const inKindTest = (ms) => Boolean(KIND_TEST) && ms >= Date.parse(KIND_TEST.start) && ms < Date.parse(KIND_TEST.end);
+// The topic mix of 17 Nov 2026 (user: "yes do both" to "switch the topic mix to mostly hand tests", after the reading
+// of 17 Nov: since 1 Nov tests had a YouTube median of ~2.5K against ~1.4K for curious, and on Instagram every big Reel
+// was a hand test (W fingers 155K, bent wrist 74K, thumb 34K) while no curious Reel passed 3K; ChatGPT's review
+// proposed 12 tests and 2 facts a week). From MIX.from, 12 of the 14 weekly slots are TEST and only the two CURIOUS
+// slots below are curious (weekday 0 = Sunday, 3 = Wednesday, IST). Slots before MIX.from keep the old alternation.
+export const MIX = {name: 'mix-2026-11', from: '2026-11-20T00:00:00+05:30', curious: [{dow: 3, hm: '23:30'}, {dow: 0, hm: '23:30'}]};
 const kindOfSlot = (ms) => {
+  if (MIX && ms >= Date.parse(MIX.from)) {
+    const dow = new Date(`${istDate(ms)}T00:00:00Z`).getUTCDay();
+    return MIX.curious.some((c) => c.dow === dow && c.hm === istHM(ms)) ? 'curious' : 'test';
+  }
   // from KIND_TEST.end on the alternation simply goes on: one test and one curious Short a day (user, 5 Nov 2026: "yes"
   // to the topics that won, hand and face tests most people can't do and mind-bending time and size facts)
   if (!KIND_TEST || ms < Date.parse(KIND_TEST.start)) return 'test';
   const d = Math.round((Date.parse(istDate(ms)) - Date.parse(KIND_TEST.day0)) / 86400000);
   return istHM(ms) === (d % 2 === 0 ? '23:30' : '11:30') ? 'curious' : 'test';
+};
+// The opening test of 17 Nov 2026 (the owner: "yes" to "run the opening test"; the reading of 17 Nov and ChatGPT's review:
+// stayed-to-watch fell from about 55 % to 46-48 %, so the first second comes first). TEST Shorts only, for the slots of
+// 20 Nov to 3 Dec: on even days from day0 the 11:30 slot is DEMO (the challenge first, story.md §2) and 23:30 CONTROL (the
+// usual opening); on odd days the other way round, so each arm gets both slots. CURIOUS slots are outside it ('none').
+// With the two curious slots a week out, each arm gets 12 Shorts.
+export const OPEN_TEST = {name: 'open-2026-11', start: '2026-11-20T00:00:00+05:30', end: '2026-12-04T00:00:00+05:30', day0: '2026-11-20'};
+const inOpenTest = (ms) => Boolean(OPEN_TEST) && ms >= Date.parse(OPEN_TEST.start) && ms < Date.parse(OPEN_TEST.end);
+const openingOfSlot = (ms) => {
+  if (!inOpenTest(ms) || kindOfSlot(ms) !== 'test') return 'none';
+  const d = Math.round((Date.parse(istDate(ms)) - Date.parse(OPEN_TEST.day0)) / 86400000);
+  return istHM(ms) === (d % 2 === 0 ? '11:30' : '23:30') ? 'demo' : 'control';
 };
 const SKILL_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const istTime = (ms) => new Date(ms + IST_MS).toISOString().slice(0, 16).replace('T', ' ') + ' IST';
@@ -350,12 +372,15 @@ async function nextSlot(asJson) {
   const subscribe = {arm: pillOfSlot(Date.parse(iso)), ...(pt ? {test: PILL_TEST.name} : {}), slot: iso};
   const kt = inKindTest(Date.parse(iso));
   const kind = {kind: kindOfSlot(Date.parse(iso)), ...(kt ? {test: KIND_TEST.name} : {}), slot: iso};
-  if (asJson) return console.log(JSON.stringify({slot: iso, length, subscribe, kind}));
+  const ot = inOpenTest(Date.parse(iso));
+  const opening = {arm: openingOfSlot(Date.parse(iso)), ...(ot ? {test: OPEN_TEST.name} : {}), slot: iso};
+  if (asJson) return console.log(JSON.stringify({slot: iso, length, subscribe, kind, opening}));
   console.log(`next free YouTube slot: ${istTime(Date.parse(iso))}`);
   console.log(`length arm: ${arm.toUpperCase()} = ${a.min}-${a.max} s, ${a.words} words in all (about ${a.chars} characters)${test ? ` · length test "${LENGTH_TEST.name}": 23:30 slots are short, 11:30 slots are standard` : arm === 'tight' ? ' · every Short for a slot from 10 Nov 2026 is 25-30 s: a shorter middle, and the last line runs straight into the first (the tight rules of 5 Nov, story.md §3)' : ' · every Short is 30-35 s since 16 Oct 2026 (the length test is over)'}`);
   console.log(`subscribe arm: ${subscribe.arm === 'pill' ? 'PILL = the short silent Subscribe pill over the last 2.2 s (timeline_lib.py sets it; nobody says "subscribe")' : 'NONE = no pill, the Short ends on the button and loops'}${pt ? ` · pill test "${PILL_TEST.name}" until ${istTime(Date.parse(PILL_TEST.end))}: 23:30 slots get the pill, 11:30 slots none` : ''}`);
-  console.log(`topic kind: ${kind.kind === 'curious' ? 'CURIOUS = take the topic from topics.md "Curious queue" (story.md §6)' : 'TEST = take the topic from topics.md "Queue" (a test the viewer does on themselves)'}${kt ? ` · topic test "${KIND_TEST.name}" until ${istTime(Date.parse(KIND_TEST.end))}: the kind alternates by day` : ' · one test and one curious Short a day, the kind alternating slots by day (5 Nov 2026)'}`);
-  console.log(`put into publish.json → "length": ${JSON.stringify(length)}, "subscribe": ${JSON.stringify(subscribe)}, "kind": ${JSON.stringify(kind)}`);
+  console.log(`topic kind: ${kind.kind === 'curious' ? 'CURIOUS = take the topic from topics.md "Curious queue" (story.md §6)' : 'TEST = take the topic from topics.md "Queue" (a test the viewer does on themselves)'}${kt ? ` · topic test "${KIND_TEST.name}" until ${istTime(Date.parse(KIND_TEST.end))}: the kind alternates by day` : MIX && Date.parse(iso) >= Date.parse(MIX.from) ? ' · the topic mix of 17 Nov 2026: 12 tests and 2 curious a week (curious only Wed and Sun 23:30 IST); a TEST is the top of the Queue, hands and fingers first, never a speech, mind, imagine-it, breath or swallow test (SKILL.md "The rules of 17 Nov 2026")' : ' · one test and one curious Short a day, the kind alternating slots by day (5 Nov 2026)'}`);
+  console.log(`opening arm: ${opening.arm === 'demo' ? 'DEMO = the challenge first: story.md §2 "The opening test of 17 Nov 2026" (frame 0 is the start pose, big, the one part that must move ringed, the command on screen and spoken from 0.2 s; the hiker comes in after it)' : opening.arm === 'control' ? 'CONTROL = the usual opening of story.md §2 (him doing the test, close, with the command line); nothing new' : 'NONE = not in the opening test (a curious slot, or outside it): the usual opening of story.md §2'}${ot ? ` · opening test "${OPEN_TEST.name}" until ${istTime(Date.parse(OPEN_TEST.end))}: test Shorts only, the arm alternating slots by day` : ''}`);
+  console.log(`put into publish.json → "length": ${JSON.stringify(length)}, "subscribe": ${JSON.stringify(subscribe)}, "kind": ${JSON.stringify(kind)}, "opening": ${JSON.stringify(opening)}`);
 }
 async function reschedule(id, when) {
   const t = Date.parse(when);
@@ -1091,6 +1116,17 @@ async function numbers(outDir = SKILL_DIR) {
     md.push('| Kind | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views | Middle views per Short | Middle subs per 1,000 |', '|---|---|---|---|---|---|---|---|---|');
     md.push(rowOf('test (body, mind, screen)', shorts.filter((v) => kindOfSlot(v.when) === 'test'), true));
     md.push(rowOf('curious (the world)', shorts.filter((v) => kindOfSlot(v.when) === 'curious'), true));
+    md.push('');
+  }
+  if (OPEN_TEST && Date.now() >= Date.parse(OPEN_TEST.start)) {
+    // the opening test (17 Nov 2026): TEST Shorts only; the arm alternates slots by day, so both arms face both slots
+    const os = Date.parse(OPEN_TEST.start), oe = Date.parse(OPEN_TEST.end);
+    const shorts = vids.filter((v) => v.live && v.seconds && v.seconds <= 90 && v.when >= os && v.when < oe);
+    md.push(`### The opening test (${OPEN_TEST.name}): the challenge-first opening against the usual one`, '');
+    md.push('TEST Shorts only, the arm alternating slots by day. The verdict is **stayed to watch** here, with the Instagram skip rate of the same Shorts (the weekly report): DEMO wins if it is 3 points or more ahead on both without a lower average % viewed; anything less is a draw and the usual opening stays (`SKILL.md`, the rules of 17 Nov).', '');
+    md.push('| Opening | Shorts | Views per Short (live 48 h+) | Stayed to watch | Avg % viewed | Avg seconds watched | Subs per 1,000 views | Middle views per Short | Middle subs per 1,000 |', '|---|---|---|---|---|---|---|---|---|');
+    md.push(rowOf('DEMO (the challenge first)', shorts.filter((v) => openingOfSlot(v.when) === 'demo'), true));
+    md.push(rowOf('CONTROL (the usual opening)', shorts.filter((v) => openingOfSlot(v.when) === 'control'), true));
     md.push('');
   }
   md.push('## Every upload (newest first)', '');

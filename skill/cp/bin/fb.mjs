@@ -98,7 +98,15 @@ async function whoami() {
   const d = tk?.data;
   if (d) log(`token: ${d.expires_at ? `expires ${new Date(d.expires_at * 1000).toISOString().slice(0, 10)}` : 'does not expire'}; scopes: ${(d.scopes ?? []).join(', ')}`);
 }
+// PAUSED (the owner, 17 Nov 2026: "yes" to "stop the Facebook uploads"): every Page Reel since 17 Oct 2026 had 0 views and 0
+// impressions, a Facebook-only one too (the test of 7-8 Nov), so `reel` uploads nothing and exits 0 (the routines go on).
+// --force overrides it, only on the owner's word for that one Reel.
+const PAUSED = {since: '2026-11-17', why: 'every Page Reel since 17 Oct 2026 got 0 views'};
 async function reel(file, args) {
+  if (PAUSED && !args.includes('--force')) {
+    log(`Facebook Page uploads are PAUSED since ${PAUSED.since} (the owner: ${PAUSED.why}): nothing uploaded, nothing to check. --force only on the owner's word.`);
+    return;
+  }
   const c = cfg();
   const spec = JSON.parse(fs.readFileSync(file, 'utf8'));
   const base = path.dirname(path.resolve(file));
