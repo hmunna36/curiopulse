@@ -98,11 +98,48 @@
 | `voyager-light-day`: "Your Text to VOYAGER 1 Would Take a Whole DAY 🛰️" | 28.5 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/31HGOQFQlj0 · 18 Nov 2026 23:30 IST | Business Suite, Instagram only, 22 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1107773438740293) |
 | `uranus-night`: "One Night on URANUS Lasts 42 Years 😴" | 28.2 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/JOvypBiIIBQ · 19 Nov 2026 11:30 IST | Business Suite, Instagram only, 22 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1121979270828937) |
 | `sad-eyebrows`: "Can You Make SAD Eyebrows on Purpose? 🥺" | 28.8 s (tight arm; no pill; TEST) | https://youtube.com/shorts/wkaMfK-mv10 · 19 Nov 2026 23:30 IST | Business Suite, Instagram only, 23 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1762084994871718) |
+| `hitchhiker-thumb`: "Can Your THUMB Bend Back Like a Hitchhiker's? 👍" | 29.6 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/-I3J2ZAcAYI · 20 Nov 2026 11:30 IST | Business Suite, Instagram only, 23 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**hitchhiker-thumb** (the 00:00 routine of 20 Nov 2026, which fired at 08:18 IST; built 08:18-09:13, shipped by 09:31 IST for the
+same day's 11:30 slot; TEST · HAND, the Queue's first line; tight arm, 59 words -> 29.60 s; hook The Direct Address, the instruction
+itself: "Thumbs up! Now bend just your thumb's tip BACK."; answer "Barely moved? Your thumb's wearing a SEATBELT." at 4.75 s (a strap
+flies onto the joint and clicks in the pause after the word, hitstop); mechanism: the thumb turns to glass, the strap on the palm side
+goes taut on "Feel it catch?" and LOCKS; the rival hitchhiker's thumb hooks back on "Hers?" and her strap is a BUNGEE cord; payoff:
+the billboard's school chart "2 KINDS OF THUMBS" gets MYTH after full silence; X-rays: seven thumbs from straight to hooked (Harris
+and Joseph 1949); weird fact: the 50° line, "picked in nineteen fifty-three" (Glass and Kistler); button "Now try your OTHER thumb!"
+into the hook; running device: three cars (passes him, stops for her, brakes for him); caption question "Straight or bendy?"; YouTube
+-I3J2ZAcAYI 20 Nov 11:30 IST (Why Does Your Body Do That?; Studio showed a processing placeholder: cover.jpg set there); Reel
+(Business Suite, Instagram only, cover set) 23 Nov 21:00 IST. Three QA rounds (qa.py 22/23, then 23/23 twice); build.sh into a
+fresh .work-build: timeline.json and mix.wav byte-identical, its MP4 23/23.
+- **New world files (borrow them):** `ht_world.js`: a desert highway at golden hour (`htSky`: a low sun and cream clouds; `htLand`:
+  two layers of flat-topped mesas, the desert floor, telephone poles with sagging wires, sagebrush, a two-lane road with a dashed
+  line, a gravel shoulder; horizon y 1080, road y 1290-1400); `htBoard`: a roadside billboard with modes (the chart with two
+  cartoon thumbs that have faces `htMiniThumb`, a world-space stamp `htStampW`, an x-ray light box of seven thumbs `htXrays` with a
+  sweep, `htProtractor` with a needle, a red 50 line, `htCard1953` a sepia card); `htCar` (a side-view car, nose left: driver,
+  spinning wheels, speed lines, a skid with smoke and marks, honk arcs); `htHand` (a 2D thumbs-up in hand units: the fist edge-on
+  with four curled fingers, the thumb in profile whose top joint bends back by `ip`, a nail on the back; `belt` a seatbelt strap
+  with a buckle on the palm side of the joint, slack until it locks, `bungee` a striped cord instead, `glass` an x-ray with two
+  bones and an outline; returns world points `ip`, `tip`, `beltMid`); `RIVPAL` + `htRivalPre/Post` (a ponytail, a teal cap). Its
+  scenes.js: one state `htS(tt)` valid at negative time, `htCam` per shot with `cut_*` cues, a loop cut cue that draws frame 1's
+  state for the last frames.
+- **A thumb drawn too long and thin reads as a pointing finger:** shorter (proximal 42, distal 36 units) and fatter (radius 24 to
+  19.5) with a big nail on the back made it a thumb at once.
+- **A see-through hand vanishes:** skin at 28 % opacity on a bright desert was gone; at 50 % with a cyan outline it reads as glass.
+- **A second character must leave when her story does:** the rival kept standing at the roadside after her ride stopped, and her
+  raised hand poked into two later shots; she is now not drawn from the shot after her car stops.
+- **qa.py's transcript check fixed (template too):** whisper wrote "seat belt", "thumbs" for "thumb's", "hitchhikers" and "1953";
+  WER 21.3 %. Now a year is compared the way the script says it, compounds are joined when the script writes one word, and a
+  plural or possessive s is ignored: WER 1.6 % (one real slip, "Feel a catch").
+- **A label at y ~1100 on the right side is under the button column during a punch-in:** reframe so labels sit above y 1000.
+- **Business Suite opened on Mishapland** again (asset picker -> curio_pulse_tv -> "CurioPulse, curio_pulse_tv"); the hours
+  spinbutton ignored a click by ref (it is hidden); a coordinate click on the digits and typing worked; Next clicked once from
+  JavaScript by its exact text.
+- Voice: 396 characters for the takes + 165 for three button auditions (quota.mjs read 34,543 before, 33,982 after).
 
 **sad-eyebrows** (the 02:00 second-Short routine of 17 Nov 2026, 02:05-03:05 IST; TEST, the Queue's first line (promised by
 fold-arms's and finger-flip's Next-ups), kin of one-eyebrow; tight arm, 59 words -> 28.83 s; hook The Direct Address, the instruction

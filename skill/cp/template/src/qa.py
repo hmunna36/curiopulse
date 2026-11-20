@@ -311,17 +311,53 @@ def _num_words(n):
 
 # whisper writes a spoken number as digits ("two hundred and twenty-five" -> "225"; venus-day, 25 Oct 2026: two numbers
 # cost 14 % WER for words it heard right): a number SPELL does not know is compared as the words it stands for
-def _spell(ws):
+def _year_words(n):
+    """a year as a narrator says it ("1953" -> "nineteen fifty three"; "1907" -> "nineteen oh seven")"""
+    hi, lo = divmod(n, 100)
+    return _num_words(hi) + " " + (_num_words(lo) if lo >= 10 else "oh " + _num_words(lo))
+
+
+def _spell(ws, ref_text=""):
     out = []
     for w in ws:
         if w in SPELL:
             out.append(SPELL[w])
         elif w.isdigit() and len(w) <= 4:
-            out.extend(_num_words(int(w)).split())
+            n = int(w)
+            # a year said the way years are said (hitchhiker-thumb, 20 Nov 2026: "nineteen fifty-three" came back as
+            # "1953" and was compared as "one thousand nine hundred and fifty three": four words wrong)
+            if len(w) == 4 and 1100 <= n <= 2099 and n % 100 and _year_words(n) in ref_text:
+                out.extend(_year_words(n).split())
+            else:
+                out.extend(_num_words(n).split())
         else:
             out.append(w)
     return out
-ref = _spell(norm(" ".join(w["word"] for w in words)).split())
+
+
+def _same(a, b):
+    """two words that differ only by a plural or possessive s (whisper drops apostrophes: "thumb's" -> "thumbs",
+    "hitchhiker's" -> "hitchhikers"; hitchhiker-thumb, 20 Nov 2026) count as the same word"""
+    if a == b:
+        return True
+    st = lambda x: re.sub(r"'?s$", "", x.replace("’", "'"))  # noqa: E731
+    return len(a) > 3 and len(b) > 3 and st(a) == st(b)
+
+
+def _join_compounds(hyp, ref):
+    """whisper splits a compound the script writes as one word ("seatbelt" -> "seat belt", "sidekick" -> "side kick"):
+    join two heard words when together they are a word of the script and apart they are not"""
+    rs, out, j = set(ref), [], 0
+    while j < len(hyp):
+        if j + 1 < len(hyp) and hyp[j] + hyp[j + 1] in rs and hyp[j] not in rs:
+            out.append(hyp[j] + hyp[j + 1]); j += 2
+        else:
+            out.append(hyp[j]); j += 1
+    return out
+
+
+_ref_norm = norm(" ".join(w["word"] for w in words))
+ref = _spell(_ref_norm.split(), _ref_norm.replace("-", " "))
 whisper = shutil.which("whisper-cli")
 if TRANSCRIBE and whisper and os.path.exists(MODEL):
     w16 = os.path.join(QA, "_16k.wav")
@@ -343,18 +379,18 @@ if TRANSCRIBE and whisper and os.path.exists(MODEL):
         text.append(open(os.path.join(QA, "_piece.txt")).read().strip())
     os.remove(w16); os.remove(os.path.join(QA, "_piece.txt"))
     open(os.path.join(QA, "transcript.txt"), "w").write("\n".join(text) + "\n")
-    hyp = _spell(norm(" ".join(text)).split())
+    hyp = _join_compounds(_spell(norm(" ".join(text)).split(), " ".join(ref)), ref)
     # word error rate (Levenshtein over words)
     D = np.zeros((len(ref) + 1, len(hyp) + 1), int)
     D[:, 0], D[0, :] = range(len(ref) + 1), range(len(hyp) + 1)
     for i in range(1, len(ref) + 1):
         for j in range(1, len(hyp) + 1):
-            D[i, j] = min(D[i - 1, j] + 1, D[i, j - 1] + 1, D[i - 1, j - 1] + (ref[i - 1] != hyp[j - 1]))
+            D[i, j] = min(D[i - 1, j] + 1, D[i, j - 1] + 1, D[i - 1, j - 1] + (not _same(ref[i - 1], hyp[j - 1])))
     wer = D[-1, -1] / max(1, len(ref))
     # list the differing words (backtrace)
     i, j, diffs = len(ref), len(hyp), []
     while i > 0 and j > 0:
-        if ref[i - 1] == hyp[j - 1] and D[i, j] == D[i - 1, j - 1]:
+        if _same(ref[i - 1], hyp[j - 1]) and D[i, j] == D[i - 1, j - 1]:
             i, j = i - 1, j - 1
         elif D[i, j] == D[i - 1, j - 1] + 1:
             diffs.append(f"{ref[i - 1]}→{hyp[j - 1]}"); i, j = i - 1, j - 1
