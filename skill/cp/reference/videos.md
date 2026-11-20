@@ -100,11 +100,45 @@
 | `sad-eyebrows`: "Can You Make SAD Eyebrows on Purpose? 🥺" | 28.8 s (tight arm; no pill; TEST) | https://youtube.com/shorts/wkaMfK-mv10 · 19 Nov 2026 23:30 IST | Business Suite, Instagram only, 23 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1762084994871718) |
 | `hitchhiker-thumb`: "Can Your THUMB Bend Back Like a Hitchhiker's? 👍" | 29.6 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/-I3J2ZAcAYI · 20 Nov 2026 11:30 IST | Business Suite, Instagram only, 23 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `wink-other-eye`: "Can You WINK Without the Other Eye Moving? 😉" | 26.8 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening DEMO) | https://youtube.com/shorts/CJ-TN_pqYCo · 20 Nov 2026 23:30 IST | Business Suite, Instagram only, 24 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `smooth-eyes`: "Can You Move Your Eyes SMOOTHLY? 👀" | 26.6 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening CONTROL) | https://youtube.com/shorts/ubI18hq0Vro · 21 Nov 2026 11:30 IST | Business Suite, Instagram only, 24 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**smooth-eyes** (the 00:00 routine of 21 Nov 2026, 00:03-01:20 IST, for the same day's 11:30 slot; TEST · FACE OR ILLUSION, the
+face queue's THIRD line: the first (blue-sky sparks, promised by wink-other-eye's Next-up) needs the owner's iPhone check and the
+second (colour in the corner of the eye) has the viewer look away from the screen for the whole test, both left at the top with
+notes; opening CONTROL; tight arm, 60 words -> 26.60 s; hook The Question as the test (after three Direct Addresses): "Can you move
+your eyes smoothly? Slide them across the room."; answer "Jumpy, right? Your eyes can't glide... without something to CHASE." at
+4.11 s; mechanism: hold up a finger and chase it (the viewer re-does the test to 13 s), two dotted tow lines pull his eyes along
+the fingertip; payoff and weird fact as one beat: CLICK, pitch dark, only his eyes gliding after a glowing ghost finger (SORT OF
+stamp: pursuit in the dark is weaker), "because your brain FEELS it move" (beads to a brain that lights up after full silence);
+running device: an orange butterfly (zips past on CHASE, rides the fingertip, flies into his nose in the dark: BOOP); button "Now
+lose the finger. Try again." into the hook; caption question "Smooth or jumpy?"; Purves 2001, Krauzlis 2005, Berryhill et al.
+2006, Gauthier & Hofferer 1976; YouTube ubI18hq0Vro (Your Brain Is Weird; Studio showed an automatic frame: cover.jpg set there);
+Reel (Business Suite, Instagram only, cover set) 24 Nov 21:00 IST. Two render rounds (qa.py 23/23 both); build.sh into a fresh
+.work-build: timeline.json and mix.wav byte-identical, its MP4 23/23 (not byte-identical: the GPU render). Lessons:
+- **A saccade can't be drawn inside one-eye's head-unit eyes as they are:** the iris moves only 6.2 units in a 15.4-unit eye, so a
+  ghost at the old stop sat on the new iris and the hop arcs stood almost vertical. `oeIrisAt` takes `F.wide` (1.6) so the iris
+  slides into the corner; a jump is a flat dotted hop over the iris with an arrowhead, a dashed ghost at the old stop and three
+  speed lines (`se_world.js`: `seHop`, `seHopMarks`); a glide is a smooth green trace under each iris (`seGlideTrail`).
+- **acting.js's automatic blinks never show under big head-unit eyes** (they shut the rig's own eyes underneath): blink them on a
+  cue list (`cues.blinks`; se_world.js wraps `oeEyes`), with lids the colour of the dark in a pitch-dark scene.
+- **A punch-in in a scene with no `drawCharacter` centres on the upper middle of the frame:** it pushed the lit brain above his
+  eyes under the top band. Return `focus` from the shot (between the brain and the eyes) and frame the scene lower.
+- **A hand held toward the lens:** a forearm in his sleeve drawn as a rotated rounded rectangle out of the bottom-left corner reads
+  as his arm; a straight box sleeve read as a foam finger. The same outline dashed in cyan is the "ghost" hand in the dark.
+- **A music box under narration masks it** (speech band): "your finger... because" fell to 5-6 dB. In the dark: a low drone under
+  300 Hz and one three-note twinkle in the pause after "dark,".
+- **The score is loudest where nobody speaks** (the tail after the last word and frame 0's first 0.1 s: no ducking): an envelope on
+  `mus.x` holds it at its ducked level over the seam, so the loop does not swell.
+- **A light switch at -27 dB in its gap was inaudible;** soft-clipped (tanh after normalising) it read -21.9 at the same gain.
+- Business Suite opened on CurioPulse directly; "Post to" listed both: the Facebook option unticked by ref, read back as
+  curio_pulse_tv alone; Next clicked once from JavaScript by its exact text; the hours and minutes typed after coordinate clicks
+  on the digits, read back by their aria values (21, 0) before Schedule.
+- Voice: one take per block, 329 characters (27,742 left before on account 2). About 4.4-5.6 minutes a render.
 
 **wink-other-eye** (the 02:00 second-Short routine of 20 Nov 2026, which fired at 08:35 IST and waited for the 00:00 run's lock
 until 09:25; built 09:26-10:15, shipped by 10:25 IST for the same day's 23:30 slot; TEST · FACE OR ILLUSION, the face queue's first
