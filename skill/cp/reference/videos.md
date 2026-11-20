@@ -99,11 +99,38 @@
 | `uranus-night`: "One Night on URANUS Lasts 42 Years 😴" | 28.2 s (tight arm; no pill; CURIOUS) | https://youtube.com/shorts/JOvypBiIIBQ · 19 Nov 2026 11:30 IST | Business Suite, Instagram only, 22 Nov 2026 21:00 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1121979270828937) |
 | `sad-eyebrows`: "Can You Make SAD Eyebrows on Purpose? 🥺" | 28.8 s (tight arm; no pill; TEST) | https://youtube.com/shorts/wkaMfK-mv10 · 19 Nov 2026 23:30 IST | Business Suite, Instagram only, 23 Nov 2026 18:30 IST (cover.jpg as the cover); the Facebook Page by `fb.mjs reel` for the same slot (video 1762084994871718) |
 | `hitchhiker-thumb`: "Can Your THUMB Bend Back Like a Hitchhiker's? 👍" | 29.6 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/-I3J2ZAcAYI · 20 Nov 2026 11:30 IST | Business Suite, Instagram only, 23 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `wink-other-eye`: "Can You WINK Without the Other Eye Moving? 😉" | 26.8 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening DEMO) | https://youtube.com/shorts/CJ-TN_pqYCo · 20 Nov 2026 23:30 IST | Business Suite, Instagram only, 24 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**wink-other-eye** (the 02:00 second-Short routine of 20 Nov 2026, which fired at 08:35 IST and waited for the 00:00 run's lock
+until 09:25; built 09:26-10:15, shipped by 10:25 IST for the same day's 23:30 slot; TEST · FACE OR ILLUSION, the face queue's first
+line; the FIRST Short of the opening test's DEMO arm (`open-2026-11`); tight arm, 55 words -> 26.83 s): frame 0 is his face alone (head
+about 850 px wide), his left eye ringed in cyan, "KEEP THIS / EYE STILL" on screen; the dare "Wink. Keep your other eye STILL." from
+0.23 s; at 0.69 s his right eye snaps shut and the ringed eye squints with it (the ring goes red); the café opens at 1.5 s. Answer
+"Relax. Your two eyelids share ONE string." at 4.62 s (the string drops in on "share" and snaps taut just after "string."); blink,
+a puppet bar in his own raised hand, a fingertip propping one lid UP, the finger slips; the café's chalkboard counts 96 of 100
+(Citron et al. 2022, 89 healthy adults); the cat spy in a fedora (cats-purr's purrcat.js in grey, with a hat, a collar and a watch)
+is the running device: head tilt, watch check, then it winks back and ITS other eye squints too (the biggest hit after 1.55 s of
+silence). Button "Now try the OTHER eye." into the dare. YouTube CJ-TN_pqYCo (Your Brain Is Weird; Studio showed an automatic frame:
+cover.jpg set there); Reel 24 Nov 18:30 IST. Two render rounds (qa.py 23/23 both), audio re-muxed twice. Lessons:
+- **A face that winks and squints one eye at a time:** `woface.js` redefines `drawFace` (a later function declaration wins) with
+  `sqL`/`sqR` (upper lid to 0.5, a lower lid pushed up, crow's feet, the cheek up), `holdBlink` (the automatic blinks of acting.js
+  are ignored while a wink is held: an auto-blink would shut the eye that must stay open), a string tied to the lids (`str`) and a
+  fingertip on a lid (`finger`), all in head units, so every framing from the macro to the wide gets them.
+- **`W("OTHER")` finds the FIRST "other" in the Short** (the hook's "your other eye"): the button's push-in to frame 0 never started
+  in round 0 (the loop frame was a medium shot). Repeated words need a unique phrase: `W("the OTHER eye", 1)`.
+- **DISPLAY works per caption line, not per word:** {"ninety-six": ["96"]} did nothing for the line "ninety-six people"; the key
+  is the whole line: {"ninety-six people": ["96", "PEOPLE"]}.
+- **A whip right after a punchline smears the punchline away:** the slip landed 0.1 s before the whip into the next shot. The board
+  got a hard cut, and `CAMERA["whip"]` takes a third number (frames out, default 5): 3 kept the string's sting readable.
+- **A high click on a word's onset changes the word for the transcriber:** a shutter above 5.2 kHz on "Blink." made whisper hear
+  "flink"/"wink"; the click came out and the score was kept out under the word. The 3 s segment transcribes "blink"; the whole-file
+  pass still writes "flink" (context), WER 3.6 %.
+- **`new-short.sh` did not write the opening arm** into publish.json; fixed in the skill (it now copies next-slot's "opening").
 
 **hitchhiker-thumb** (the 00:00 routine of 20 Nov 2026, which fired at 08:18 IST; built 08:18-09:13, shipped by 09:31 IST for the
 same day's 11:30 slot; TEST · HAND, the Queue's first line; tight arm, 59 words -> 29.60 s; hook The Direct Address, the instruction
