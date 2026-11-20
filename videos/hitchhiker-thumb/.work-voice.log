@@ -1,0 +1,20 @@
+voice.py: account 1: free plan (no commercial licence), skipped
+voice.py: account 3: free plan (no commercial licence), skipped
+  synthesized hook (47 chars)
+  synthesized answer (58 chars)
+  synthesized belt (51 chars)
+  synthesized rival (56 chars)
+  synthesized payoff (72 chars)
+  synthesized weird (71 chars)
+  synthesized button (41 chars)
+ElevenLabs characters spent this run: 396
+block      start    end  wpm  rms   f0  cut
+hook        0.10   4.09  135 -19.0  221 0.26
+answer      4.59   8.83   99 -19.4  169 0.00
+belt        9.23  12.45  205 -19.9  176 0.18
+rival      12.85  16.98   87 -21.0  172 0.11
+payoff     17.38  23.27  112 -20.1  178 0.33
+weird      23.62  27.75  145 -20.3  181 0.47
+button     28.20  30.51  130 -21.0  162 0.00
+narration 30.51s, 59 words, events: sarcastic@4.59, mischievously@12.85, mischievously@28.20
+EXIT 0
