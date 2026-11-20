@@ -29,8 +29,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in at upload) | (filled in at upload) |
-| Instagram Reels | Business Suite, Instagram only | (filled in at scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/-I3J2ZAcAYI | 20 Nov 2026 11:30 IST (playlist Why Does Your Body Do That?; cover.jpg also in Studio's Shorts slot) |
+| Instagram Reels | Business Suite, Instagram only (the Page is paused), cover.jpg as the cover | 23 Nov 2026 21:00 IST |
 
 **Title:** Can Your THUMB Bend Back Like a Hitchhiker's? 👍
 

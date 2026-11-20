@@ -34,20 +34,29 @@
   "cover": "cover.jpg",
   "captions": "hitchhiker-thumb.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-20T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "-I3J2ZAcAYI",
+    "url": "https://youtube.com/shorts/-I3J2ZAcAYI",
+    "uploaded": "2026-11-20T03:44:45.773Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "thumbnailStudio": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-23T21:00:00+05:30",
     "caption": "Thumbs up! Now bend just the tip of your thumb back. 👍\nBarely moved? A strap on the palm side of the joint catches it, like a seatbelt. Looser straps let the tip curl back into a hitchhiker's hook. And \"two kinds of thumbs\"? A myth: X-rays found every angle in between.\nStraight or bendy?\nFollow @curio_pulse_tv for the next one: why does the WRONG finger move? 🔔\n#science #humanbody #hands #bodytest #funfacts #reels",
     "coverTime": 0.6,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (Post to: curio_pulse_tv; the Facebook Page is paused), cover.jpg as the cover, caption typed line by line, 23 Nov 2026 21:00 IST; scheduled 20 Nov 2026 09:31 IST"
   },
   "kind": {
     "kind": "test",
