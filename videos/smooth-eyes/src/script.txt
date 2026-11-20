@@ -1,0 +1,30 @@
+# Narration for "Can You Move Your Eyes SMOOTHLY? 👀"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses; tempo speeds a take up without changing pitch.
+# The tight arm (the rules of 5 Nov 2026): 25-30 s, 55-64 words. This script: 60 words.
+# Hook formula: The Question, the title's question as the test ("Can you move your eyes smoothly? Slide them across the room.")
+# (after three Direct Addresses in a row: sad-eyebrows, hitchhiker-thumb, wink-other-eye).
+# Nobody says "subscribe"; the last block is the button, and the Short loops straight into the hook.
+
+## hook gap=0.10 tempo=1.00
+Can you move your eyes smoothly? Slide them across the room.
+
+## answer gap=0.50 tighten=0.38 tempo=1.00
+Jumpy, right? Your eyes can't glide... without something to CHASE.
+
+## finger gap=0.35 tempo=1.03
+Hold up a finger. Move it slowly... and chase it.
+
+## ride gap=0.30 tighten=0.35 tempo=1.02
+Smooth! Your eyes hitch a ride on it.
+
+## dark gap=0.45 tempo=1.02
+Even in pitch dark, they'll still ride your finger...
+
+## feel gap=0.20 tighten=0 tempo=1.00
+because your brain FEELS it move.
+
+## button gap=0.55 tighten=0 tempo=1.00
+Now lose the finger. Try again.

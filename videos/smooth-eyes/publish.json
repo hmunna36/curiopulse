@@ -1,0 +1,63 @@
+{
+  "slug": "smooth-eyes",
+  "file": "smooth-eyes-short.mp4",
+  "title": "Can You Move Your Eyes SMOOTHLY? 👀",
+  "description": "Can you move your eyes smoothly? Slide them slowly across the room. Jumpy, right? With nothing moving to follow, your brain can only send your eyes in quick jumps. Hold up a finger, move it slowly and follow it: now they glide, because a moving thing gives them something to chase. Even in total darkness they can still glide after your own moving finger (a bit wobbly), because your brain feels where your hand is going.\n\nSmooth or jumpy?\n\nThe science: the quick jumps are called saccades and the smooth glide is called smooth pursuit. Most people cannot start a smooth pursuit without a moving target; trying produces a series of saccades, and only highly trained observers manage it (Purves and colleagues, Neuroscience, 2nd edition, 2001; Krauzlis, The Neuroscientist, 2005). In total darkness people can still make a smooth pursuit of their own moving finger, more weakly than with a target they can see, from the sense of where their hand is (Gauthier and Hofferer, Experimental Brain Research, 1976; Berryhill, Chiu and Hughes, Journal of Neurophysiology, 2006). The tow lines and the glowing finger are pictures of the idea, not real parts of your eye.\n\nNext up: why the WRONG finger moves when you twist your hands\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Eyes #BrainTest #FunFacts #HumanBody",
+  "look": "cine",
+  "length": {
+    "arm": "tight",
+    "min": 25,
+    "max": 30,
+    "slot": "2026-11-21T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-21T11:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why the WRONG finger moves when you twist your hands 🤞 Subscribe so you don't miss it!\nSmooth or jumpy? 👀",
+  "tags": [
+    "move your eyes smoothly",
+    "can you move your eyes smoothly",
+    "eye test",
+    "eye movement",
+    "eyes jump",
+    "saccades",
+    "smooth pursuit",
+    "follow your finger",
+    "brain test",
+    "vision facts",
+    "human body facts",
+    "science facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "smooth-eyes.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Your Brain Is Weird"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Can you move your eyes smoothly? Slide them across the room. 👀\nJumpy, right? Your eyes only glide when something moves: hold up a finger, move it slowly and follow it. Smooth! Even in pitch dark they still follow your own finger.\nSmooth or jumpy?\nFollow @curio_pulse_tv for the next one: why the WRONG finger moves when you twist your hands 🔔\n#science #humanbody #eyes #brain #funfacts #reels",
+    "coverTime": 0,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "sub": "face",
+    "mix": "mix-2026-11",
+    "slot": "2026-11-21T11:30:00+05:30"
+  },
+  "opening": {
+    "arm": "control",
+    "test": "open-2026-11",
+    "slot": "2026-11-21T11:30:00+05:30"
+  }
+}
