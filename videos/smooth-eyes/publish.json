@@ -34,20 +34,28 @@
   "cover": "cover.jpg",
   "captions": "smooth-eyes.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-21T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "ubI18hq0Vro",
+    "url": "https://youtube.com/shorts/ubI18hq0Vro",
+    "uploaded": "2026-11-20T19:34:18.338Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-24T21:00:00+05:30",
     "caption": "Can you move your eyes smoothly? Slide them across the room. 👀\nJumpy, right? Your eyes only glide when something moves: hold up a finger, move it slowly and follow it. Smooth! Even in pitch dark they still follow your own finger.\nSmooth or jumpy?\nFollow @curio_pulse_tv for the next one: why the WRONG finger moves when you twist your hands 🔔\n#science #humanbody #eyes #brain #funfacts #reels",
     "coverTime": 0,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-21T01:12:00+05:30"
   },
   "kind": {
     "kind": "test",

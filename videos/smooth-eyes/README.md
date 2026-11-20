@@ -30,8 +30,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | Business Suite, Instagram only | … |
+| YouTube Shorts | https://youtube.com/shorts/ubI18hq0Vro | 21 Nov 2026 11:30 IST (playlist Your Brain Is Weird; cover.jpg also set in Studio's thumbnail slot, which showed an automatic frame) |
+| Instagram Reels | Business Suite, Instagram only (the Facebook Page is paused since 17 Nov 2026) | 24 Nov 2026 21:00 IST (cover.jpg as the cover; checked in Content → Scheduled) |
 
 **Title:** Can You Move Your Eyes SMOOTHLY? 👀
 
