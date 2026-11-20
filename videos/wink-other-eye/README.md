@@ -47,8 +47,9 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (link after the upload) | 20 Nov 2026 23:30 IST |
-| Instagram Reels | @curio_pulse_tv (link once live) | (slot after the upload) |
+| YouTube Shorts | https://youtube.com/shorts/CJ-TN_pqYCo | 20 Nov 2026 23:30 IST (scheduled; thumbnail cover.jpg, also set in Studio; captions; playlist Your Brain Is Weird) |
+| Instagram Reels | @curio_pulse_tv (link once live) | 24 Nov 2026 18:30 IST (Business Suite, Instagram only, cover.jpg as the cover; Content → Scheduled checked) |
+| Facebook Page | — | paused since 17 Nov 2026 (the owner) |
 
 **Title:** Can You WINK Without the Other Eye Moving? 😉
 

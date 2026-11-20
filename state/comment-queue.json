@@ -1,17 +1,6 @@
 {
   "posts": [
     {
-      "videoId": "VtqzIWIHoRY",
-      "slug": "tickle-yourself",
-      "title": "Why Can't You TICKLE Yourself? (Try It Now) 🤭",
-      "publishAt": "2026-10-21T18:00:00.000Z",
-      "question": "Did it tickle? 🤭",
-      "status": "posted",
-      "queued": "2026-10-21T07:16:36.912Z",
-      "commentId": "UgyUSpgMqiCytAVZexV4AaABAg",
-      "note": "the channel had commented already"
-    },
-    {
       "videoId": "qU0s1Isj7BA",
       "slug": "wrist-tendon",
       "title": "Why Do Some People Have NO Wrist Tendon? 🖐️",
@@ -667,6 +656,15 @@
       "question": "👍 Bonus: your two thumbs don't always match. Plenty of people have one straight thumb and one bendy one.\nStraight or bendy? 👍",
       "status": "queued",
       "queued": "2026-11-20T03:44:54.644Z"
+    },
+    {
+      "videoId": "CJ-TN_pqYCo",
+      "slug": "wink-other-eye",
+      "title": "Can You WINK Without the Other Eye Moving? 😉",
+      "publishAt": "2026-11-20T18:00:00.000Z",
+      "question": "Did your other eye move? 😉",
+      "status": "queued",
+      "queued": "2026-11-20T04:45:41.928Z"
     }
   ]
 }

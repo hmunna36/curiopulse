@@ -35,20 +35,28 @@
   "cover": "cover.jpg",
   "captions": "wink-other-eye.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-20T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "CJ-TN_pqYCo",
+    "url": "https://youtube.com/shorts/CJ-TN_pqYCo",
+    "uploaded": "2026-11-20T04:45:33.783Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-24T18:30:00+05:30",
     "caption": "Wink. Keep your other eye still. 😉\nIt moved, right? Your eyelids share one string: a blink pulls both, and a wink means holding one back. In one study, 96 out of 100 people's other eye squinted too.\nDid your other eye move?\nFollow @curio_pulse_tv for the next one: why you see tiny sparks in a blue sky 🔔\n#science #humanbody #wink #eyes #funfacts #reels",
-    "coverTime": 0.0,
-    "shareToFeed": true
+    "coverTime": 0,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-20 IST"
   },
   "kind": {
     "kind": "test",

@@ -111,7 +111,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | One Night on URANUS Lasts 42 Years | 28 s | [`videos/uranus-night`](videos/uranus-night) | [19 Nov 2026](https://youtube.com/shorts/JOvypBiIIBQ) |
 | Can You Make SAD Eyebrows on Purpose? | 29 s | [`videos/sad-eyebrows`](videos/sad-eyebrows) | [19 Nov 2026](https://youtube.com/shorts/wkaMfK-mv10) |
 | Can Your THUMB Bend Back Like a Hitchhiker's? | 30 s | [`videos/hitchhiker-thumb`](videos/hitchhiker-thumb) | [20 Nov 2026](https://youtube.com/shorts/-I3J2ZAcAYI) |
-| Can You WINK Without the Other Eye Moving? | 27 s | [`videos/wink-other-eye`](videos/wink-other-eye) | 20 Nov 2026 |
+| Can You WINK Without the Other Eye Moving? | 27 s | [`videos/wink-other-eye`](videos/wink-other-eye) | [20 Nov 2026](https://youtube.com/shorts/CJ-TN_pqYCo) |
 
 Each folder has:
 - the finished MP4;
