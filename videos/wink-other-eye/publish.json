@@ -1,0 +1,64 @@
+{
+  "slug": "wink-other-eye",
+  "file": "wink-other-eye-short.mp4",
+  "title": "Can You WINK Without the Other Eye Moving? 😉",
+  "description": "Wink. Keep your other eye still. It moved, right? A blink pulls both eyelids together, like one string tied to both lids. A wink means pulling that string while holding one lid back, and the hold slips: in one study of 89 healthy adults, 96 % had the other eye move too when they shut one eye.\n\nDid your other eye move?\n\nThe science: Citron and colleagues (Facial Plastic Surgery & Aesthetic Medicine, 2022) filmed 89 healthy people making one-sided faces; 96 % showed a mirror movement of the other eye during a one-sided eye closure. Winking is a learned skill: many people can wink only one eye, and children under 10 more often can't wink at all (Sutton, 1958); people who could wink only one side learned the other with practice in a 2019 brain-scan study (Lin and colleagues, Brain and Behavior). The string is a picture of the idea, not a real part of your face.\n\nNext up: why you see tiny sparks in a blue sky\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #HumanBody #FaceTest #Wink #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "tight",
+    "min": 25,
+    "max": 30,
+    "slot": "2026-11-20T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-20T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: why you see tiny sparks in a blue sky ✨ Subscribe so you don't miss it!\nDid your other eye move? 😉",
+  "tags": [
+    "wink",
+    "wink test",
+    "can you wink",
+    "wink one eye",
+    "face test",
+    "eye test",
+    "other eye moves",
+    "mirror movements",
+    "blink",
+    "eyelids",
+    "body test",
+    "human body facts",
+    "science facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "wink-other-eye.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Your Brain Is Weird"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Wink. Keep your other eye still. 😉\nIt moved, right? Your eyelids share one string: a blink pulls both, and a wink means holding one back. In one study, 96 out of 100 people's other eye squinted too.\nDid your other eye move?\nFollow @curio_pulse_tv for the next one: why you see tiny sparks in a blue sky 🔔\n#science #humanbody #wink #eyes #funfacts #reels",
+    "coverTime": 0.0,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "sub": "face",
+    "mix": "mix-2026-11",
+    "slot": "2026-11-20T23:30:00+05:30"
+  },
+  "opening": {
+    "arm": "demo",
+    "test": "open-2026-11",
+    "slot": "2026-11-20T23:30:00+05:30"
+  }
+}

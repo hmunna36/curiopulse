@@ -1,0 +1,30 @@
+# Narration for "Can You WINK Without the Other Eye Moving? 😉"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there.
+# The tight arm (25-30 s, 55-64 words) and the DEMO opening (the opening test of 17 Nov 2026, story.md §2): the dare is an
+# order of 8 words or fewer, spoken from 0.2 s, on screen from frame 0. Nobody says "subscribe"; the last block is the button
+# and the Short loops into the dare.
+
+## hook gap=0.20 tempo=1.03
+Wink. Keep your other eye STILL.
+
+## moved gap=0.28 tighten=0.20 tempo=1.02
+[mischievously] It moved, right?
+
+## answer gap=0.25 tighten=0.30 tempo=1.00
+Relax. Your two eyelids share ONE string.
+
+## blink gap=0.35 tempo=1.03
+Blink. That pulls it... and BOTH lids drop.
+
+## wink gap=0.30 tempo=1.03
+A wink? That's pulling it... while holding one lid UP.
+
+## slip gap=0.35 tighten=0 tempo=1.00
+[deadpan] But then your grip slips.
+
+## payoff gap=0.30 tempo=1.02
+In one study, ninety-six people out of a hundred... squinted too.
+
+## button gap=0.55 tighten=0 tempo=1.00
+Now try the OTHER eye.
