@@ -665,8 +665,10 @@
       "title": "Can You Move Your Eyes SMOOTHLY? 👀",
       "publishAt": "2026-11-21T06:00:00.000Z",
       "question": "Smooth or jumpy? 👀",
-      "status": "queued",
-      "queued": "2026-11-20T19:34:29.217Z"
+      "status": "posted",
+      "queued": "2026-11-20T19:34:29.217Z",
+      "commentId": "UgyefqlEFUClwA8BU_t4AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }
