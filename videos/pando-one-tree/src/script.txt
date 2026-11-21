@@ -1,0 +1,26 @@
+# Narration for "This Whole Forest Is ONE Tree 🌳" (CURIOUS, short arm 30-35 s, 66-76 words; no pill; the loop)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there.
+# Hook formula: The Impossible Claim (the last three were The Direct Address). The button runs into the hook:
+# "...You'll need longer arms. / This whole forest you're standing in... is ONE tree."
+
+## hook gap=0.10 tighten=0.28 tempo=1.00
+This whole forest you're standing in... is ONE tree.
+
+## answer gap=0.60 tighten=0.3 tempo=1.00
+The real tree is UNDERGROUND.
+
+## sprouts gap=0.40 tighten=0.3 tempo=1.06
+Every trunk is just a sprout... about forty-seven THOUSAND of them.
+
+## hug gap=0.30 tighten=0.28 tempo=1.05
+Same roots, same DNA. Hug one... you've hugged them ALL.
+
+## payoff gap=0.40 tighten=0.3 tempo=1.05
+That's why each autumn... the whole forest turns gold at the SAME time.
+
+## weird gap=0.35 tighten=0.28 tempo=1.06
+It weighs about six thousand TONNES... forty blue whales... of tree.
+
+## button gap=0.40 tighten=0.45 tempo=1.00
+So, tree huggers? You'll need longer arms.
