@@ -101,11 +101,50 @@
 | `hitchhiker-thumb`: "Can Your THUMB Bend Back Like a Hitchhiker's? 👍" | 29.6 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/-I3J2ZAcAYI · 20 Nov 2026 11:30 IST | Business Suite, Instagram only, 23 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `wink-other-eye`: "Can You WINK Without the Other Eye Moving? 😉" | 26.8 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening DEMO) | https://youtube.com/shorts/CJ-TN_pqYCo · 20 Nov 2026 23:30 IST | Business Suite, Instagram only, 24 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `smooth-eyes`: "Can You Move Your Eyes SMOOTHLY? 👀" | 26.6 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening CONTROL) | https://youtube.com/shorts/ubI18hq0Vro · 21 Nov 2026 11:30 IST | Business Suite, Instagram only, 24 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `wrong-finger`: "Why Does the WRONG Finger Move? 🤞" | 29.0 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/8wEjcDmabLc · 22 Nov 2026 11:30 IST | Business Suite, Instagram only, 25 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused; post 1506157198037516) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**wrong-finger** (the 00:00 routine of 22 Nov 2026, 00:03-01:05 IST, for the same day's 11:30 slot; TEST · HAND, the Queue's
+first line, promised by smooth-eyes' Next-up; tight arm, 63 words -> 28.97 s; hook The Direct Address as the test: "Cross your wrists,
+clasp, roll them in. Now wiggle THIS finger!" (the hand-reversal or "Japanese" illusion: Hong et al. 2012, BrainFacts/SfN 2021); the
+twin pops at 4.47 s (a three-step pose: the narration walks them through it); answer "Wrong one? You moved its twin... on the OTHER
+hand." at 4.93 s (OTHER HAND slams in after "hand.", hitstop); again twice (the raccoon laughs); mechanism on the viewer's own hands:
+his right hand glows orange on the LEFT, a call runs up his left arm (blue, from the bottom left) and crosses to the right, a red X on
+the wrists; payoff: full silence, the raccoon's paw creeps in and TOUCHES the finger, the RIGHT one pops (the biggest hit), its jaw
+drops; sting "Your skin knows. Your eyes just guess."; button "Now try it on a friend." (the raccoon fails its own test); caption
+question "Did the right finger move?"; YouTube 8wEjcDmabLc (Your Brain Is Weird; Studio showed a processing placeholder: cover.jpg set
+there); Reel 25 Nov 18:30 IST. Two render rounds (qa.py 23/23 both); rebuild into a fresh .work-build: timeline.json and mix.wav
+byte-identical, its MP4 22/22. Lessons:
+- **A POV test shot for two-hand tests (new, borrow it):** `wf_world.js` draws the viewer's own view down at his hands across a picnic
+  table (the planks in perspective, a lantern, a marshmallow bag, a mug, mosquito-bites' `camp.js` out of focus behind), so the viewer
+  copies the pose with no mirror to undo; the front view of him with the knot under his chin is the reverse shot (`wfHero`, after
+  clasped-thumbs' `ctHeroAt`, arms crossed, the knot mirrored). `wfKnot` is the clasp in knot units with an open->clasped blend, thumbs
+  down->up for the roll, per-finger lift/wiggle with motion arcs, faces, a target ring and x-ray tints; `wfArmsPov` the crossed
+  sleeves; `wfRaccoon` a front-view raccoon (moods calm/smirk/laugh/shock/deadpan/focus/curious, a pointing or touching paw drawn
+  in a separate 'arm' pass over the table, its own clasped paws with a ringed stub and a neighbour that pops out sideways).
+- **Every branch of a state function needs an end:** `if (tt >= c.now1 - 0.25) R.point = ...` with no upper bound kept the raccoon's
+  pointing arm across the frame into the sting; give each beat its window.
+- **`W("them.")` found "roll them in", `W("THIS one!")` found "Try this one."** (case and punctuation are ignored): pass `s =
+  find("You crossed them")` / `find("And THIS one")` and assert the order. The cues looked right until the call never showed up.
+- **A glow drawn under a far camera lands somewhere in screen space:** the campfire's glow-layer blob sat right behind the knot and
+  bloomed over the hands; background glows go in screen space where you want them (the treeline), on ctx only.
+- **The cinema kit's foreground layer covers the scene's own tags:** leaves-tl hid the LEFT tag; drop the foreground on a shot whose
+  labels sit in that corner.
+- **See-through blue over a yellow sleeve turns grey-teal** (HSV saturation 46 against 59 for the drawn frame): x-ray tints near-solid
+  (0.68-0.85) in pure hues measured as vivid as the rest.
+- **Soft-clipped pops gain about 3.5 dB in their gaps** (-26 -> -22.6 dB); clip BEFORE a low-pass, or the clip's harmonics reach the
+  speech band (a low pop clipped after the filter put "one." at 4.4 dB SNR).
+- **A popped finger growing straight up from the raccoon's chest hid behind its head** (drawn later): pop it sideways, below the chin.
+- **Business Suite opened on Mishapland** again: asset picker -> curio_pulse_tv -> "CurioPulse, curio_pulse_tv"; Post to: the Page
+  option unticked by ref, read back as curio_pulse_tv alone; Next clicked once from JavaScript by its exact text; the Schedule option
+  by ref (the bottom button then read Schedule); the day clicked in the calendar, hours and minutes typed after coordinate clicks on
+  the digits and read back by their spinbutton values (18, 30) before Schedule; the Planner's post (1506157198037516) shows the caption.
+- Voice: 336 characters for the takes + about 400 for dare and payoff auditions (the dare kept from seed 9); quota.mjs read 25,621
+  before and 24,874 after.
 
 **smooth-eyes** (the 00:00 routine of 21 Nov 2026, 00:03-01:20 IST, for the same day's 11:30 slot; TEST · FACE OR ILLUSION, the
 face queue's THIRD line: the first (blue-sky sparks, promised by wink-other-eye's Next-up) needs the owner's iPhone check and the
