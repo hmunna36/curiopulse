@@ -113,7 +113,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can Your THUMB Bend Back Like a Hitchhiker's? | 30 s | [`videos/hitchhiker-thumb`](videos/hitchhiker-thumb) | [20 Nov 2026](https://youtube.com/shorts/-I3J2ZAcAYI) |
 | Can You WINK Without the Other Eye Moving? | 27 s | [`videos/wink-other-eye`](videos/wink-other-eye) | [20 Nov 2026](https://youtube.com/shorts/CJ-TN_pqYCo) |
 | Can You Move Your Eyes SMOOTHLY? | 27 s | [`videos/smooth-eyes`](videos/smooth-eyes) | [21 Nov 2026](https://youtube.com/shorts/ubI18hq0Vro) |
-| Why Does the WRONG Finger Move? | 29 s | [`videos/wrong-finger`](videos/wrong-finger) | 22 Nov 2026 |
+| Why Does the WRONG Finger Move? | 29 s | [`videos/wrong-finger`](videos/wrong-finger) | [22 Nov 2026](https://youtube.com/shorts/8wEjcDmabLc) |
 
 Each folder has:
 - the finished MP4;

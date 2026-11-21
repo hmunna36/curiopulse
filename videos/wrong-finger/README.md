@@ -52,8 +52,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block (Jessica, ele
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after upload) | 22 Nov 2026 11:30 IST |
-| Instagram Reels | (after scheduling) | (after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/8wEjcDmabLc | 22 Nov 2026 11:30 IST (scheduled by the Data API; thumbnail also set in Studio's Shorts slot) |
+| Instagram Reels | Business Suite post 1506157198037516 (Instagram only; the Facebook Page is paused) | 25 Nov 2026 18:30 IST (cover.jpg as the cover) |
 
 **Title:** Why Does the WRONG Finger Move? 🤞
 

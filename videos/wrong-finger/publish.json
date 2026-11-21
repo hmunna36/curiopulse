@@ -34,20 +34,31 @@
   "cover": "cover.jpg",
   "captions": "wrong-finger.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-22T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "8wEjcDmabLc",
+    "url": "https://youtube.com/shorts/8wEjcDmabLc",
+    "uploaded": "2026-11-21T19:23:51.207Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "thumbnailStudio": "cover.jpg set in Studio on 22 Nov 2026 00:58 IST (the Shorts slot showed a processing placeholder)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-25T18:30:00+05:30",
     "caption": "Cross your wrists, clasp, roll your hands in. Now wiggle the finger you're looking at. 🤞\nWrong one? You probably moved its twin, on the OTHER hand. Your brain picks a hand by which side it's on, and you just swapped the sides. If someone TOUCHES the finger instead, you almost never miss.\nDid the right finger move?\nFollow @curio_pulse_tv for the next one: can you make a 7 in sign language? 🔔\n#science #humanbody #brain #illusion #funfacts #reels",
     "coverTime": 0,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-22T01:03:00+05:30",
+    "coverSet": true,
+    "businessSuitePostId": "1506157198037516"
   },
   "kind": {
     "kind": "test",
