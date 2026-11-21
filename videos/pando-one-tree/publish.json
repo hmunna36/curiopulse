@@ -36,20 +36,29 @@
   "cover": "cover.jpg",
   "captions": "pando-one-tree.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-22T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Strange Nature"
+    "playlist": "Strange Nature",
+    "id": "Hi3wCW9yvKE",
+    "url": "https://youtube.com/shorts/Hi3wCW9yvKE",
+    "uploaded": "2026-11-21T21:35:16.962Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "cover.jpg set in Studio 2026-11-22 (it showed an automatic frame; saved)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-25T21:00:00+05:30",
     "caption": "This whole forest is ONE tree 🌳\nPando, in Utah: about 47,000 trunks, all sprouts off the same roots, with the same DNA. That's why the whole forest turns gold at the same time each autumn. It weighs about 6,000 tonnes... forty big blue whales of tree.\nOne tree or a forest: what did you guess?\nFollow @curio_pulse_tv for the next one: there's a GALAXY in your sky wider than the Moon 🌌\n#science #nature #trees #pando #funfacts #reels",
     "coverTime": 17.9,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (the Facebook Page is paused), cover.jpg as the cover, 25 Nov 2026 21:00 IST; scheduled 22 Nov 2026 ~03:45 IST"
   },
   "kind": {
     "kind": "curious",

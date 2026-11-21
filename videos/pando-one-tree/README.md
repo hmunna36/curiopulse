@@ -50,8 +50,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 22 Nov 2026 23:30 IST |
-| Instagram Reels | Business Suite (Instagram only) | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/Hi3wCW9yvKE | 22 Nov 2026 23:30 IST (scheduled by the Data API; thumbnail, captions, playlist Strange Nature; cover.jpg also set in Studio's Shorts slot, which showed an automatic frame) |
+| Instagram Reels | Business Suite (Instagram only: the Facebook Page is paused; cover.jpg as the cover) | 25 Nov 2026 21:00 IST (checked in Content → Scheduled: the caption is the row's title) |
 
 **Title:** This Whole Forest Is ONE Tree 🌳
 
