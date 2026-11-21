@@ -102,11 +102,60 @@
 | `wink-other-eye`: "Can You WINK Without the Other Eye Moving? 😉" | 26.8 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening DEMO) | https://youtube.com/shorts/CJ-TN_pqYCo · 20 Nov 2026 23:30 IST | Business Suite, Instagram only, 24 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `smooth-eyes`: "Can You Move Your Eyes SMOOTHLY? 👀" | 26.6 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening CONTROL) | https://youtube.com/shorts/ubI18hq0Vro · 21 Nov 2026 11:30 IST | Business Suite, Instagram only, 24 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `wrong-finger`: "Why Does the WRONG Finger Move? 🤞" | 29.0 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/8wEjcDmabLc · 22 Nov 2026 11:30 IST | Business Suite, Instagram only, 25 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused; post 1506157198037516) |
+| `pando-one-tree`: "This Whole Forest Is ONE Tree 🌳" | 34 s (short arm; no pill; CURIOUS, the first under the 17 Nov mix) | https://youtube.com/shorts/Hi3wCW9yvKE · 22 Nov 2026 23:30 IST | Business Suite, Instagram only, 25 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**pando-one-tree** (the 02:00 second-Short routine of 22 Nov 2026, 02:05-03:50 IST, for the same day's 23:30 slot; CURIOUS, the
+first curious Short under the 17 Nov mix (picture-led nature on a giant scale; the stop rule counts six of them), the Curious
+queue's first line; short arm, 66 words -> 34.0 s (the first take ran 37.8 s: "hiding" and "Altogether?" cut, pauses capped, tempo
+1.05-1.06 on the explanation blocks); hook The Impossible Claim "This whole forest you're standing in... is ONE tree." (frame 0 the
+hug); answer "The real tree is UNDERGROUND." at 4.52 s (the ground opens on one root network lit from under his feet, hitstop after
+the word); a sapling pops up and shoots into a trunk (SPROUT); ~47,000 TRUNKS counted on the crowns; MATCH on two trunks; every
+trunk opens its eyes and blushes on "ALL" (the running device: aspen bark's real eye-shaped scars); the whole clone flips gold on
+"SAME" while its neighbours turn crown by crown; ~6,000 TONNES against 40 blue whales on a balance, the top whale turns to bark;
+button "So, tree huggers? You'll need longer arms." (noodle arms, twang); caption question "One tree or a forest: what did you
+guess?"; YouTube Hi3wCW9yvKE (Strange Nature; Studio showed an automatic frame: cover.jpg set there); Reel 25 Nov 21:00 IST. Two
+render rounds (round 1 22/22 with the NOTES warning; round 2 22/22 clean); rebuild proof: timeline and mix byte-identical, qa the same.
+Facts checked by a research agent (two sources each; Pando's age left out of the script: unknown, "80,000 years" unsupported).
+- **New world files (borrow them):** `pd_world.js`: `pdTrunk` (a white aspen trunk with lenticels, a dark rough base and one or two
+  eye-shaped scars that open: `o.eyes` 0..1, `o.look`, `o.blush`, `o.mood` 'love' | 'flat' | 'peek'; `o.bark` for young green bark),
+  `pdEye`, `pdCrown` (a round crown of quivering leaves, `season` 0 green .. 1 gold), `pdGrove` (a depth layer of trunks and crowns
+  with its own ground strip), `pdFloor` (flowers and tufts in perspective down to gy+800), `pdDress` (trail sign, backpack, log with
+  mushrooms), `pdCut` (the soil as a cross-section opening out from a point, pebbles, a root network whose light runs out from his
+  feet, a sucker rising), `pdForest` (the whole place in wkLayers). `pd_land.js`: `pdLand` (a mountainside of clone patches, each
+  crown turning to autumn on its own clock; Pando's all at once; dark firs; Fish Lake with the slope mirrored, ripples, reeds, glitter
+  and a rowboat; a flock), `pdLasso` (a glowing dashed outline drawn up to k), `pdTag` / `pdCounter` (Anton in a pill), the balance
+  (`pdBalanceWorld`: post, beam angle `th`, two chains a pan, a dome of forest with dangling roots, `pdWhalePile` of 40 with `pdWhalePos`),
+  `pdWhale` (a blue whale side view that can turn to aspen bark with an eye scar and a tuft of leaves).
+- **A hug that reads in front view:** stand him BEHIND the trunk (hero x = trunk x + 8, head out to the side with headDX -84 and
+  headRot 0.2, cheek on the bark), elbows outside both edges, wrists on the trunk's front, the trunk drawn in his layer's `post`, then
+  his forearms, hands and head drawn again over it (sharks-older-than-trees' trick). Beside the trunk (x - 40) it read as standing next
+  to a tree with his hands up.
+- **The cinema kit's "leaves" are long and pointed (palm fronds):** wrong for an aspen forest. Without touching the engine, a video
+  file can wrap the kit's shape function: `const old = window.cinFgShapes; window.cinFgShapes = function (x, kind, ...) { if (kind
+  !== 'leaves') return old(...); ... }` (pd_world.js draws round, quaking aspen leaves; timeline_lib only accepts its own kind names,
+  so keep the name 'leaves-tr').
+- **Floor plants spread in depth float in a cutaway:** when the ground is shown as a cross-section, draw only the plants on the
+  surface line (`o.cut > 0` -> y <= gy + 14).
+- **A whip hides the gag before it:** the smear starts about 5 frames before the cut, so a tag that pops 0.2 s before a whip is never
+  seen. The whip into the count became a hard cut (two whips left: still the minimum).
+- **"All at once" needs a contrast:** neighbours that turned in 0.35 s looked as fast as Pando's flip; spread over 3.4-5.6 s, crown by
+  crown, they are still half green when the whole clone flips in 0.1 s.
+- **A sound on the punch word, done right:** the flip happens on "SAME" (the picture within 6 frames of the word), but only a sparkle
+  storm above 5 kHz and a sub drop sit on the word; the biggest hit (a soft-clipped whoosh, a steel-pan chord, a cymbal) goes in the
+  0.4 s pause before "time.". The sfx bus is peak-normalised: to make that hit the loudest gag, soft-clip it and turn the next-loudest
+  (the hearts' music-box run) down 4 dB.
+- **The watermark band:** `drawWatermark` sits at y 430 and swaps sides every 8 s (x 118-300 left, 782-962 right); in the sprout shot
+  (8-16 s, right side) his face sat under it until the camera moved 100 units right.
+- **The bark eye above his head was under the top bar:** a running-device gag at the top of a CU (y ~185) is covered by YouTube's
+  top UI; move it down to the head's level (y ~570) and check it on the safe sheet.
+- **The rebuild proof overwrites the shipped MP4** (`build.sh`'s OUT is fixed; WORK only moves the work folder): run it after QA,
+  then qa.py with `../.work-build`; the dry run reads 0.0 MB while it renders.
+- Voice: 413 + 139 + 97 characters requested (quota.mjs: 24,874 left on account 2 before, 24,588 after).
 
 **wrong-finger** (the 00:00 routine of 22 Nov 2026, 00:03-01:05 IST, for the same day's 11:30 slot; TEST · HAND, the Queue's
 first line, promised by smooth-eyes' Next-up; tight arm, 63 words -> 28.97 s; hook The Direct Address as the test: "Cross your wrists,
