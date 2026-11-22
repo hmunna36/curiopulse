@@ -693,6 +693,12 @@ const KINDS = {
   'reply-in-our-thread': "a viewer answering the channel's own \"Next up\" comment (quoted in context)",
   'reply-in-thread': "a viewer's reply inside a viewer's thread: context is the comment the thread hangs under (by contextAuthor), afterOurReply the channel's earlier answer they are following up on, or null. With afterOurReply set the viewer is answering the channel: rank it like a reply in the channel's own thread. With afterOurReply null it is viewers talking to each other: reply only when it is a question or adds something about the video. Answer with comment-reply <id>, as for any item.",
 };
+// the owner's standing notes on how to answer, printed in the JSON so the routine reads them with the inbox
+const NOTES = [
+  // the user, 22 Nov 2026, on a quip posted under "it just makes some random rectangle thing": "he genuinely asked question.
+  // you have to answer like a human, but you are putting generic reply"
+  "When a viewer says the test did not work for them, or describes something odd happening (\"it just makes some random rectangle thing\"), treat it as a question even without a question mark: explain plainly what to do or why it happened, as a person would, before any joke. Up to 35 words is fine for these. Never answer such a comment with a quip alone.",
+];
 async function commentsInbox(hours, asJson) {
   const ch = await myChannel();
   if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
@@ -750,7 +756,7 @@ async function commentsInbox(hours, asJson) {
   }
   for (const c of inbox) c.videoTitle = titles[c.videoId] ?? '?';
   inbox.sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt));
-  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, viewerRepliesInViewerThreads, kinds: KINDS, videos, inbox};
+  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, viewerRepliesInViewerThreads, kinds: KINDS, notes: NOTES, videos, inbox};
   if (asJson) return console.log(JSON.stringify(out, null, 1));
   console.log(`${CHANNEL}: ${inbox.length} viewer comments unanswered in the last ${hours} h (${answered} answered already); the channel replied ${repliesLast24h} times in the last 24 h`);
   for (const c of inbox) console.log(`  ${c.id}  ${istTime(Date.parse(c.publishedAt))}  ${c.kind === 'comment' ? '' : `[${c.kind}] `}${c.author} on "${c.videoTitle}": ${c.text.replace(/\s+/g, ' ').slice(0, 140)}`);
