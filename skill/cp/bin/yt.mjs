@@ -686,6 +686,13 @@ async function threadReplies(t) {
   } while (page && out.length < 500);
   return out;
 }
+// what each inbox kind is and where it ranks: printed in the JSON, so the routine reads it with the inbox (its own prompt
+// only names the first two kinds)
+const KINDS = {
+  'comment': "a viewer's top-level comment on a video",
+  'reply-in-our-thread': "a viewer answering the channel's own \"Next up\" comment (quoted in context)",
+  'reply-in-thread': "a viewer's reply inside a viewer's thread: context is the comment the thread hangs under (by contextAuthor), afterOurReply the channel's earlier answer they are following up on, or null. With afterOurReply set the viewer is answering the channel: rank it like a reply in the channel's own thread. With afterOurReply null it is viewers talking to each other: reply only when it is a question or adds something about the video. Answer with comment-reply <id>, as for any item.",
+};
 async function commentsInbox(hours, asJson) {
   const ch = await myChannel();
   if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
@@ -743,7 +750,7 @@ async function commentsInbox(hours, asJson) {
   }
   for (const c of inbox) c.videoTitle = titles[c.videoId] ?? '?';
   inbox.sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt));
-  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, viewerRepliesInViewerThreads, videos, inbox};
+  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, viewerRepliesInViewerThreads, kinds: KINDS, videos, inbox};
   if (asJson) return console.log(JSON.stringify(out, null, 1));
   console.log(`${CHANNEL}: ${inbox.length} viewer comments unanswered in the last ${hours} h (${answered} answered already); the channel replied ${repliesLast24h} times in the last 24 h`);
   for (const c of inbox) console.log(`  ${c.id}  ${istTime(Date.parse(c.publishedAt))}  ${c.kind === 'comment' ? '' : `[${c.kind}] `}${c.author} on "${c.videoTitle}": ${c.text.replace(/\s+/g, ' ').slice(0, 140)}`);
