@@ -665,12 +665,13 @@ async function commentsDue(dryRun) {
 }
 
 // ---- replies to viewers' comments (the user, 24 Oct 2026: "update the comment scheduler to also reply comments on youtube") --
-// comments-inbox: the viewers' top-level comments on the channel's videos that the channel has not answered yet, from the
+// comments-inbox: the viewers' top-level comments on the channel's videos that the channel has not answered yet, AND the
+// viewers' replies inside threads (kind "reply-in-our-thread" / "reply-in-thread") with no channel reply after them, from the
 // last --hours (default 72), oldest first, as JSON for the routine that writes the replies; plus how many replies the channel
 // posted in the last 24 h (the routine's daily cap). Read only (1 quota unit a page).
 // comment-reply <commentId> (--file <text file> | <text...>) [--dry-run]: ONE reply, from the channel, under one viewer's
-// top-level comment. It re-reads the thread first and refuses when the channel has replied there already (a second run never
-// answers twice), when the comment is the channel's own or not on a CurioPulse video, and when the text has a link or runs
+// top-level comment or to one viewer's reply inside a thread. It re-reads the thread first and refuses when the channel has
+// replied there already (for a reply: has answered after it; a second run never answers twice), when the comment is the channel's own or not on a CurioPulse video, and when the text has a link or runs
 // over 300 characters (50 quota units a reply).
 const URL_RE = /(https?:\/\/|www\.|\b[a-z0-9-]+\.(com|net|org|io|ly|me|gg|xyz|link|shop|app)\b)/i;
 async function threadReplies(t) {
@@ -699,26 +700,37 @@ async function commentsInbox(hours, asJson) {
     if (!page || !items.length || items.every((t) => Date.parse(t.snippet.topLevelComment.snippet.publishedAt) < since)) break;
   }
   const inbox = [];
-  let answered = 0, ours = 0, repliesLast24h = 0, viewerRepliesToUs = 0;
+  let answered = 0, ours = 0, repliesLast24h = 0, viewerRepliesToUs = 0, viewerRepliesInViewerThreads = 0;
+  const one = (x, n = 200) => (x ?? '').replace(/\s+/g, ' ').slice(0, n);
   for (const t of threads) {
     const top = t.snippet.topLevelComment.snippet, when = Date.parse(top.publishedAt);
     const replies = (t.snippet.totalReplyCount ?? 0) > 0 ? await threadReplies(t) : [];
-    repliesLast24h += replies.filter((c) => c.snippet.authorChannelId?.value === ch.id && Date.parse(c.snippet.publishedAt) > day).length;
-    if (when < since) continue;
-    if (top.authorChannelId?.value === ch.id) {                // the channel's own comment (the "Next up"): viewers answer it there
-      ours++;
-      const lastOurs = Math.max(0, ...replies.filter((c) => c.snippet.authorChannelId?.value === ch.id).map((c) => Date.parse(c.snippet.publishedAt)));
-      for (const r of replies) {                                // a viewer's reply with no reply from the channel after it
-        const w = Date.parse(r.snippet.publishedAt);
-        if (r.snippet.authorChannelId?.value === ch.id || w < since) continue;
-        viewerRepliesToUs++;
-        if (w < lastOurs) { answered++; continue; }
-        inbox.push({id: r.id, kind: 'reply-in-our-thread', threadId: t.id, context: (top.textOriginal ?? '').replace(/\s+/g, ' ').slice(0, 200), videoId: t.snippet.videoId, author: r.snippet.authorDisplayName, text: r.snippet.textOriginal ?? r.snippet.textDisplay, publishedAt: r.snippet.publishedAt, likeCount: r.snippet.likeCount ?? 0});
-      }
-      continue;
+    const mine = replies.filter((c) => c.snippet.authorChannelId?.value === ch.id);
+    repliesLast24h += mine.filter((c) => Date.parse(c.snippet.publishedAt) > day).length;
+    const lastOurs = Math.max(0, ...mine.map((c) => Date.parse(c.snippet.publishedAt)));
+    const ourThread = top.authorChannelId?.value === ch.id;      // the channel's own comment (the "Next up"): viewers answer it there
+    if (ourThread) { if (when >= since) ours++; }
+    else if (when >= since) {
+      if (mine.length) answered++;
+      else inbox.push({id: t.id, kind: 'comment', videoId: t.snippet.videoId, author: top.authorDisplayName, text: top.textOriginal ?? top.textDisplay, publishedAt: top.publishedAt, likeCount: top.likeCount ?? 0, replies: t.snippet.totalReplyCount ?? 0});
     }
-    if (replies.some((c) => c.snippet.authorChannelId?.value === ch.id)) { answered++; continue; }
-    inbox.push({id: t.id, kind: 'comment', videoId: t.snippet.videoId, author: top.authorDisplayName, text: top.textOriginal ?? top.textDisplay, publishedAt: top.publishedAt, likeCount: top.likeCount ?? 0, replies: t.snippet.totalReplyCount ?? 0});
+    // the replies inside the thread (the user, 22 Nov 2026: "replies in thread also should be considered"): a viewer's reply
+    // in the window with no reply from the channel after it, in the channel's own thread AND in a viewer's thread (a follow-up
+    // to the channel's answer, or viewers talking under a comment). The reply's own date counts, so an old thread is read too.
+    for (const r of replies) {
+      const w = Date.parse(r.snippet.publishedAt);
+      if (r.snippet.authorChannelId?.value === ch.id || w < since) continue;
+      if (ourThread) viewerRepliesToUs++; else viewerRepliesInViewerThreads++;
+      if (w < lastOurs) { answered++; continue; }
+      const item = {id: r.id, kind: ourThread ? 'reply-in-our-thread' : 'reply-in-thread', threadId: t.id, context: one(top.textOriginal), videoId: t.snippet.videoId, author: r.snippet.authorDisplayName, text: r.snippet.textOriginal ?? r.snippet.textDisplay, publishedAt: r.snippet.publishedAt, likeCount: r.snippet.likeCount ?? 0};
+      if (!ourThread) {
+        item.contextAuthor = top.authorDisplayName;               // who wrote the comment the thread hangs under
+        item.sameAuthor = r.snippet.authorChannelId?.value === top.authorChannelId?.value;
+        const before = mine.filter((c) => Date.parse(c.snippet.publishedAt) < w).sort((x, y) => Date.parse(x.snippet.publishedAt) - Date.parse(y.snippet.publishedAt)).pop();
+        item.afterOurReply = before ? one(before.snippet.textOriginal) : null;   // the channel's answer they are following up on, if any
+      }
+      inbox.push(item);
+    }
   }
   const ids = [...new Set(inbox.map((c) => c.videoId))], titles = {}, videos = {};
   for (let i = 0; i < ids.length; i += 50) {
@@ -731,10 +743,10 @@ async function commentsInbox(hours, asJson) {
   }
   for (const c of inbox) c.videoTitle = titles[c.videoId] ?? '?';
   inbox.sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt));
-  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, videos, inbox};
+  const out = {channel: ch.snippet.title, windowHours: hours, repliesLast24h, unanswered: inbox.length, alreadyAnswered: answered, ourOwnComments: ours, viewerRepliesInOurThreads: viewerRepliesToUs, viewerRepliesInViewerThreads, videos, inbox};
   if (asJson) return console.log(JSON.stringify(out, null, 1));
   console.log(`${CHANNEL}: ${inbox.length} viewer comments unanswered in the last ${hours} h (${answered} answered already); the channel replied ${repliesLast24h} times in the last 24 h`);
-  for (const c of inbox) console.log(`  ${c.id}  ${istTime(Date.parse(c.publishedAt))}  ${c.author} on "${c.videoTitle}": ${c.text.replace(/\s+/g, ' ').slice(0, 140)}`);
+  for (const c of inbox) console.log(`  ${c.id}  ${istTime(Date.parse(c.publishedAt))}  ${c.kind === 'comment' ? '' : `[${c.kind}] `}${c.author} on "${c.videoTitle}": ${c.text.replace(/\s+/g, ' ').slice(0, 140)}`);
 }
 // comments-mine [--hours N]: the channel's own replies in the last N hours (default 24), newest first: read only. The routine
 // reads it so its replies do not all sound the same.
@@ -764,7 +776,8 @@ async function commentReply(id, text, dryRun) {
   if (URL_RE.test(text)) die('the reply has a link in it: replies never carry links');
   const ch = await myChannel();
   if (!ch || ch.snippet.title !== CHANNEL) die(`this token is not for ${CHANNEL}`);
-  // a top-level comment's id, or a reply's id ("<thread id>.<reply id>": a viewer answering the channel in its own thread)
+  // a top-level comment's id, or a reply's id ("<thread id>.<reply id>": a viewer's reply inside a thread, the channel's own
+  // "Next up" thread or a viewer's thread; the answer goes into that same thread, addressed to them)
   const threadId = id.split('.')[0], inThread = id.includes('.');
   const t = (await (await api('GET', `${API}/commentThreads?part=snippet,replies&id=${encodeURIComponent(threadId)}&textFormat=plainText`)).json()).items?.[0];
   if (!t) die(`no comment thread ${threadId} (deleted, held for review, or not a top-level comment)`);
@@ -773,7 +786,6 @@ async function commentReply(id, text, dryRun) {
   const replies = (t.snippet.totalReplyCount ?? 0) > 0 ? await threadReplies(t) : [];
   let who = top.authorDisplayName, said = top.textOriginal ?? '';
   if (inThread) {
-    if (top.authorChannelId?.value !== ch.id) die(`${id} is a reply in a viewer's thread: answer the thread (${threadId}) instead`);
     const target = replies.find((c) => c.id === id);
     if (!target) die(`no reply ${id} in that thread (deleted or held for review)`);
     if (target.snippet.authorChannelId?.value === ch.id) die(`${id} is the channel's own reply: not answered`);
