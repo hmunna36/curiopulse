@@ -103,11 +103,59 @@
 | `smooth-eyes`: "Can You Move Your Eyes SMOOTHLY? 👀" | 26.6 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening CONTROL) | https://youtube.com/shorts/ubI18hq0Vro · 21 Nov 2026 11:30 IST | Business Suite, Instagram only, 24 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `wrong-finger`: "Why Does the WRONG Finger Move? 🤞" | 29.0 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/8wEjcDmabLc · 22 Nov 2026 11:30 IST | Business Suite, Instagram only, 25 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused; post 1506157198037516) |
 | `pando-one-tree`: "This Whole Forest Is ONE Tree 🌳" | 34 s (short arm; no pill; CURIOUS, the first under the 17 Nov mix) | https://youtube.com/shorts/Hi3wCW9yvKE · 22 Nov 2026 23:30 IST | Business Suite, Instagram only, 25 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `sign-seven`: "Can You Make a 7 in SIGN Language? 🤟" | 28.5 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/lsPMnB9cMuA · 23 Nov 2026 23:30 IST | Business Suite, Instagram only, 26 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused; scheduled by the next run, 24 Nov 00:20) |
+| `fist-edge-palm`: "Can You Do Fist, EDGE, Palm? ✊" | 29.1 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/dR4t7RSBuoo · 24 Nov 2026 11:30 IST | Business Suite, Instagram only, 26 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**fist-edge-palm** (the 00:00 routine of 24 Nov 2026, 00:20-02:15 IST, for the same day's 11:30 slot; TEST · HAND, the Queue's
+first line, promised by sign-seven's Next-up; tight arm, 62 words -> 29.13 s; hook The Direct Address as the test: "Tap your table:
+fist, edge, palm... now FAST!" (Luria's three-step test); the jam at 4.12 s (a fist where the edge should be, SKRRT, FIST?!);
+answer "Mixed them up? Your hand's fine. Your BRAKES aren't." at 4.37 s (a STOP sign slams up on his wrist, hitstop); slow again
+with the sign flashing at each landing and the old shape's ghost fading; "Miss one stop..." the sign sputters dark and a ghost fist
+in a ninja mask tiptoes up the forearm, BONK... BONK!; payoff "Doctors use this exact test to check your brain." (the goat across
+the table in a head mirror with BRAIN TEST, its hoof doing it perfectly); sting "Relax. In one study, being smart didn't help."
+(Varkovetski 2020: IQ did not predict the mix-ups; the goat in glasses fails, CLONK); button "Now do it... BACKWARDS." (palm,
+edge, and the fist lands on the loop); caption question "Did you mix it up?"; YouTube dR4t7RSBuoo (Your Brain Is Weird); Reel 26 Nov 21:00 IST. Three QA rounds (qa.py 23/23 each; rounds 2 and 3 for the safe area); the rebuild proof gave a byte-identical timeline and mix (the picture not re-rendered: the gate). Lessons:
+- **A real 3D camera for a table world (new, borrow it):** `fp_world.js` has `fpCam(C, L, f)` / `fpP` (centimetres, look-at,
+  focal length in px, roll) and `fpKeys` per shot; the planks are projected quads with grain as 3D lines; 2D characters (the
+  goat, the hiker rig) stand at projected anchors scaled by the projection (`fp2D`). The hand (fist3d + s7Geo joints + bwhand's
+  forearm) turns about the forearm's own axis (`rot`: palm down .. upright for the fist and the edge) and is dropped onto the
+  planks by its lowest point each frame (`fpXf`), so a tap list (`fpTaps`: arcs between landings, the shape changing in the
+  air) is all the animation needs. One state over time (`fpS`) drawn through a camera per shot: the hand never jumps a cut.
+- **A 360-degree backdrop plate needs to be seamless and padded:** clouds, pines and flowers drawn at x and x ± width, sky colour
+  above the plate and grass below (a green band showed at the top of the first stills, a seam behind him in the front view).
+  Snow caps must follow the summed ridge (overlapping peaks rise higher than one peak's height: the caps came out as boxes).
+- **Captions end at a cut** (timeline_lib clips a chunk at the next shot start): "being smart / didn't help." vanished for 1.4 s
+  and "has to STOP" lost its STOP. Cut on a chunk's first word, or split the chunk at the cut.
+- **POV shots put the far character's face under the app's top bar:** the goat's eyes sat at y 300-430 until it sat 6 cm lower
+  and the POV cameras tilted up 1-4 cm; tilt shots where a prop rises above the wrist (the STOP sign) too.
+- **The render gate in a chunked long render:** Visual Algo's 9-minute film rendered in six chunks with seconds between them; a
+  gate wait of 60 min was too short, and the gate passed once as "idle (hung?)" between chunks. Queue one chain (silent stills,
+  check stills, cover, full render) behind one gate wait.
+- **Refill research takes ~30 min in an agent:** give it the whole done list; it still proposed "two noses", a repeat.
+- **Studio opened another of the user's channels again** ("Oops, something went wrong" twice for the direct edit URL): the vertical
+  thumbnail slot is left for the user; the API's thumbnail is set.
+
+**sign-seven** (the 02:00 second-Short routine of 23 Nov 2026, fired 08:46 IST, for the 23 Nov 23:30 slot; TEST · HAND, the Queue's
+first line; tight arm, 62 words -> 28.53 s; hook The Question as the test: "Can you sign a seven? Thumb on your ring finger... three
+fingers UP."; answer "Pinky sinking? Congrats. You just signed... TWO." at 4.43 s (the marmot cook slaps two pancakes down); the
+glass hand with four reins to a charioteer in the forearm, three knotted at the wrist (the quadriga: Verdan 1960, Schreuders 2012);
+payoff and weirdest fact as one beat: the violinist Joris Leijnse had every tie cut in both hands (1979-1988), sting "Free fingers!
+He could type... SUPER fast."; button "Now sign your seven... FAST." (faster is less independent: Häger-Ross & Schieber 2000); caption
+question "Could you make a 7?"; YouTube lsPMnB9cMuA (Why Does Your Body Do That?); Reel 26 Nov 18:30 IST. Three QA rounds (qa.py
+23/23 each). The run stopped after the YouTube upload (nothing committed after it, the lock left behind); the 00:00 run of 24 Nov
+scheduled the Reel, recorded it and cleaned up before its own Short. Lessons:
+- **Whisper heard "Free fingers!" as "three fingers"**, which in a Short about holding three fingers up is a real mishearing: three
+  sting takes auditioned, seed 11 kept (heard right by whisper every time). A spoken word that sounds like the test's own words
+  needs the whisper check on each take, not only on the mix.
+- **A 2-hand's spread fingers touched the right crop at 8.7 s:** frame the hand shot wider than the face shot; the safe sheet's
+  right column is where fingers go first.
+- **A run that stops after the upload leaves only publish.json changed and the lock held:** the next run finds the `[~]` line, reads
+  publish.json (youtube.id set, no `instagram.scheduledVia`), schedules the Reel, commits and cleans up before its own topic.
 
 **pando-one-tree** (the 02:00 second-Short routine of 22 Nov 2026, 02:05-03:50 IST, for the same day's 23:30 slot; CURIOUS, the
 first curious Short under the 17 Nov mix (picture-led nature on a giant scale; the stop rule counts six of them), the Curious
