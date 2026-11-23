@@ -105,11 +105,46 @@
 | `pando-one-tree`: "This Whole Forest Is ONE Tree 🌳" | 34 s (short arm; no pill; CURIOUS, the first under the 17 Nov mix) | https://youtube.com/shorts/Hi3wCW9yvKE · 22 Nov 2026 23:30 IST | Business Suite, Instagram only, 25 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `sign-seven`: "Can You Make a 7 in SIGN Language? 🤟" | 28.5 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/lsPMnB9cMuA · 23 Nov 2026 23:30 IST | Business Suite, Instagram only, 26 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused; scheduled by the next run, 24 Nov 00:20) |
 | `fist-edge-palm`: "Can You Do Fist, EDGE, Palm? ✊" | 29.1 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/dR4t7RSBuoo · 24 Nov 2026 11:30 IST | Business Suite, Instagram only, 26 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `elvis-lip`: "Can You Do the ELVIS Lip Without Squinting? 😏" | 25.7 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening CONTROL) | https://youtube.com/shorts/iMAAA7qy4Go · 24 Nov 2026 23:30 IST | Business Suite, Instagram only, 27 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**elvis-lip** (the 02:00 second-Short routine of 24 Nov 2026, 02:10-03:30 IST after waiting for the 00:00 run's lock, for the
+24 Nov 23:30 slot; TEST · FACE OR ILLUSION, opening CONTROL; the face queue's third line, as on 21 Nov: the sparks need the owner's
+iPhone check, the colour test looks away from the screen; tight arm, 61 words -> 25.73 s; hook The Direct Address as the test:
+"Curl up one side of your lip like Elvis. Keep that eye OPEN." (frame 0: the booth camera on his face, the lip already curled off the
+fang; that eye clamps at 0.6 s); answer "Squinting? Your lip's got that eye on a LEASH." at 4.88 s (a red leash clips from the lip to the
+eye and yanks; the booth flashes: PHOTO 1); "Again. That lip muscle starts right... by your eye." (his cheek turns to glass: the lifting
+muscle from the lip to the eye's inner corner, the eye's ring muscle round the eye); "Doctors think the order to lift spills over into
+it." (a LIFT! spark climbs and spills into the ring, which cinches); payoff "In one study, ninety in a hundred... squinted." (the
+diner's wall of 100 booth photos turns red to 90/100; his own photo slapped on: the biggest hit); sting "Blame the muscle with the
+LONGEST name." (a HELLO tag unrolls LEVATOR / LABII / SUPERIORIS / ALAEQUE / NASI to the floor); the bulldog pops into the frame with the
+PERFECT one-sided snarl, eyes wide (PHOTO 3); button "Now try the other side."; Citron 2022 (89 adults, 90.1 %) and Raman 2025 (50
+adults: same-side MRD1/MRD2 down, brow down, nose tip pulled over); YouTube iMAAA7qy4Go (Why Does Your Body Do That?); Reel 27 Nov 18:30.
+Two QA rounds (qa.py 23/23 both); the rebuild proof gave a byte-identical MP4.
+- **Face code borrowed from another Short brings its switches:** wink-other-eye's face held the automatic blinks off (`holdBlink`, right
+  for a held wink); copied into this face it froze his eyes for 25 s (ship bar 7d). Read the borrowed face's fields before using it.
+- **A scene's frame border is cropped by a punch-in:** the PHOTO 1 / PHOTO 3 print border drawn in the scene vanished under the 1.2
+  punch-in on the same beat. Return it as the shot's `overlay` (main.js draws it after the lens).
+- **A whip starts smearing about five frames before its cut:** the payoff's picture (his photo slapped onto the wall) landed 0.12 s before
+  the whip into the next shot and was never seen. Give the payoff's picture 0.4 s or more before a whip (a free gap in script.txt).
+- **The night mood on a pink set reads purple and dark** (the wall at 60.9 / 53.6 saturation / brightness against 74 / 69 inside the booth):
+  for the payoff, warm (the reveal) and cold for the lead-in.
+- **Changing the silences moves the score's level:** the music bus is peak-normalised, so new dead stops raised the groove 3 dB in the
+  speech band (voice 20.7 -> 17.6 dB); `levels={"music": -14}` and cut whooshes that end 0.03 s before the next word brought it to 18.5.
+  An audio-only change does not need a re-render: re-mux with render.js's own settings (`-c:v copy -c:a aac -b:a 256k -ar 48000 -ac 2
+  -shortest -movflags +faststart`); build.sh then reproduced the MP4 byte for byte.
+- **Business Suite's composer kept "Publishing your post" spinning for 3+ minutes after Schedule** while Content -> Scheduled (opened in a
+  second tab) already listed the Reel at the right day and time with the caption as its title: check the list instead of waiting, and
+  leave the spinning composer tab alone.
+- **The render gate:** a Visual Algo draft render (concurrency 1) held it 02:28-02:47; the README, NOTES, publish.json, the sources and
+  the mix were written meanwhile, and the stills went through when it paused between chunks.
+- **Studio opened another channel again** ("Oops, something went wrong" on the direct edit URL): the vertical thumbnail slot is left for
+  the owner; the API's thumbnail is set.
+- Voice: seven takes, 317 characters (18,081 left on account 2 before; 17,943 measured after).
 
 **fist-edge-palm** (the 00:00 routine of 24 Nov 2026, 00:20-02:15 IST, for the same day's 11:30 slot; TEST · HAND, the Queue's
 first line, promised by sign-seven's Next-up; tight arm, 62 words -> 29.13 s; hook The Direct Address as the test: "Tap your table:
