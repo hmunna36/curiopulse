@@ -61,8 +61,8 @@ sting auditions).
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … |
-| Instagram Reels | Business Suite | … |
+| YouTube Shorts | https://youtube.com/shorts/lsPMnB9cMuA | public 23 Nov 2026 23:30 IST (playlist Why Does Your Body Do That?; thumbnail and captions set) |
+| Instagram Reels | Business Suite (Instagram only, cover set; the Page paused) | scheduled 26 Nov 2026 18:30 IST (scheduled 24 Nov by the next run) |
 
 **Title:** Can You Make a 7 in SIGN Language? 🤟
 
