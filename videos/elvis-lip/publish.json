@@ -35,20 +35,29 @@
   "cover": "cover.jpg",
   "captions": "elvis-lip.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-24T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "iMAAA7qy4Go",
+    "url": "https://youtube.com/shorts/iMAAA7qy4Go",
+    "uploaded": "2026-11-23T21:38:10.211Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-27T18:30:00+05:30",
     "caption": "Curl up ONE side of your lip like Elvis... and keep that eye open 😏\nSquinting? Your lip's got that eye on a leash: the muscle that lifts it starts right beside your eye, and the order to lift spills over. 90 in 100 people squint.\nDid your eye squint?\nFollow @curio_pulse_tv for the next one: thumb and pinky, SWAP 👍\n#science #face #braintest #funfacts #reels",
-    "coverTime": 2.0,
-    "shareToFeed": true
+    "coverTime": 2,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-24T03:25+05:30",
+    "note": "Instagram only (the Facebook Page is paused since 17 Nov 2026); cover.jpg uploaded as the thumbnail; Content > Scheduled lists it at 27 November 18:30 with the caption as its title"
   },
   "kind": {
     "kind": "test",

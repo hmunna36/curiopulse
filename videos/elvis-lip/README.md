@@ -50,8 +50,8 @@ the study, 0.65 before "Blame" (his photo slaps onto the wall in it), 1.00 befor
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | https://www.instagram.com/reel/… | … 06:30 or 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/iMAAA7qy4Go | 24 Nov 2026 23:30 IST (scheduled by the Data API; thumbnail, captions and the playlist set; the Studio vertical-thumbnail check left to the owner: Studio opened another channel) |
+| Instagram Reels | @curio_pulse_tv (link once it is live) | 27 Nov 2026 18:30 IST (Business Suite, Instagram only, cover.jpg as the cover; the Facebook Page is paused) |
 
 **Title:** Can You Do the ELVIS Lip Without Squinting? 😏
 
