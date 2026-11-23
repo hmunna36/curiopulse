@@ -1,0 +1,31 @@
+# Narration for "Can You Do Fist, EDGE, Palm?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses (jokes and reveals). tempo: explanations 1.03-1.06, jokes 1.00.
+# The tight arm (the rules of 5 Nov 2026): 25-30 s, 55-64 words; the last line runs straight into the first.
+# The test: Luria's fist-edge-palm. The viewer taps the table with a fist, the side of the hand, then the flat palm,
+# and goes fast: the old shape sneaks back in (a fist twice). Hook formula: The Direct Address, as the test (an order
+# to "your" hand that names the title's three shapes in its first sentence).
+# Nobody says "subscribe"; nothing asks, teases or winds up. The button is the last block: the Short loops.
+
+## hook gap=0.10 tighten=0.25 tempo=1.04
+Tap your table: fist, edge, palm... now FAST!
+
+## answer gap=0.32 tighten=0.32 tempo=1.00
+Mixed them up? Your hand's fine. Your BRAKES aren't.
+
+## again gap=0.28 tempo=1.06
+Go again. Each shape has to STOP before the next one starts.
+
+## sneak gap=0.25 tighten=0.3 tempo=1.04
+Miss one stop, and the old one sneaks back in. Fist... FIST!
+
+## doctors gap=0.38 tempo=1.05
+Doctors use this exact test to check your brain.
+
+## sting gap=0.35 tighten=0.25 tempo=1.03
+Relax. In one study, being smart didn't help.
+
+## button gap=0.35 tighten=0.3 tempo=1.00
+Now do it... BACKWARDS.
