@@ -1,0 +1,64 @@
+{
+  "slug": "elvis-lip",
+  "file": "elvis-lip-short.mp4",
+  "title": "Can You Do the ELVIS Lip Without Squinting? 😏",
+  "description": "Curl up one side of your lip like Elvis and keep that eye open. It squints anyway, right? The muscle that lifts your upper lip starts right beside your eye, and doctors think the order to lift spills over into the eye's own squeeze muscle. In one study of 89 healthy adults, 90 in 100 squinted on the snarling side. Did your eye squint?\n\nSubscribe for a new strange question every day.\n\nNext up: can you swap thumb and pinky? 👍\n\nSources: Citron et al., Facial Plastic Surgery & Aesthetic Medicine, 2022 (89 adults); Raman et al., Journal of Craniofacial Surgery, 2025 (50 adults); Radiopaedia, levator labii superioris alaeque nasi.\n\n#Shorts #Science #Face #BrainTest #FunFacts",
+  "look": "cine",
+  "length": {
+    "arm": "tight",
+    "min": 25,
+    "max": 30,
+    "slot": "2026-11-24T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-24T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: can you swap thumb and pinky? 👍 Subscribe so you don't miss it!\nDid your eye squint? 😏",
+  "tags": [
+    "elvis lip",
+    "lip curl",
+    "one sided snarl",
+    "snarl",
+    "squint",
+    "face test",
+    "facial muscles",
+    "can you do this",
+    "try this",
+    "brain test",
+    "human body",
+    "science",
+    "shorts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "elvis-lip.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Why Does Your Body Do That?"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Curl up ONE side of your lip like Elvis... and keep that eye open 😏\nSquinting? Your lip's got that eye on a leash: the muscle that lifts it starts right beside your eye, and the order to lift spills over. 90 in 100 people squint.\nDid your eye squint?\nFollow @curio_pulse_tv for the next one: thumb and pinky, SWAP 👍\n#science #face #braintest #funfacts #reels",
+    "coverTime": 2.0,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "sub": "face",
+    "mix": "mix-2026-11",
+    "slot": "2026-11-24T23:30:00+05:30"
+  },
+  "opening": {
+    "arm": "control",
+    "test": "open-2026-11",
+    "slot": "2026-11-24T23:30:00+05:30"
+  }
+}

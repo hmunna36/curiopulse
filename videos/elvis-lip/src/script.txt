@@ -1,0 +1,41 @@
+# Narration for "Can You Do the ELVIS Lip Without Squinting?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md; changed 5 and 9 Oct 2026 from the channel's numbers):
+# - talk to ONE friend, short sentences, a pause before every reveal, one idea per block; hedge what science hasn't
+#   settled ("One idea...", "Scientists think...").
+# - `hook`: the first words are "You..." / "Your..." plus something physical you are doing; the strange thing lands by 3 s.
+# - `answer` (this id is required): the answer as a plain, surprising claim or metaphor ("Your ear just burped."). It
+#   STARTS by 5.0 s. No name for the thing, no "Here's the thing", no "So what's going on?" before it. The picture
+#   does not cut for it: the opening shot runs on through this line (no cut before 7 s).
+# - never spend a spoken beat on the scientific name; if it is worth having, it is an on-screen label.
+# - nobody says "subscribe" (since 9 Oct 2026; qa.py fails it), and nothing asks, teases or winds up: no "Next up",
+#   no "like and...", no outro. There is no `sub` block. The Subscribe pill plays silently over the last 3.4 s.
+# - the last block is the button; the Short ends on it and loops.
+# - words in all: 55-64 on the tight arm (every Short for a slot from 10 Nov 2026; yt.mjs next-slot says "tight").
+# This Short: a FACE test, opening arm CONTROL (the usual opening: him doing the test, close, with the command line).
+
+## hook gap=0.15 tempo=1.02
+Curl up one side of your lip like Elvis. Keep that eye OPEN.
+
+## answer gap=0.40 tighten=0.35 tempo=1.00
+Squinting? Your lip's got that eye on a LEASH.
+
+## mech gap=0.45 tempo=1.03
+Again. That lip muscle starts right... by your eye.
+
+## spill gap=0.20 tempo=1.03
+Doctors think the order to lift spills over into it.
+
+## payoff gap=0.42 tempo=1.02
+In one study, ninety in a hundred... squinted.
+
+## name gap=0.65 tighten=0.40 tempo=1.00
+Blame the muscle with the LONGEST name.
+
+## button gap=1.00 tighten=0 tempo=1.00
+Now try the other side.
