@@ -115,6 +115,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Move Your Eyes SMOOTHLY? | 27 s | [`videos/smooth-eyes`](videos/smooth-eyes) | [21 Nov 2026](https://youtube.com/shorts/ubI18hq0Vro) |
 | Why Does the WRONG Finger Move? | 29 s | [`videos/wrong-finger`](videos/wrong-finger) | [22 Nov 2026](https://youtube.com/shorts/8wEjcDmabLc) |
 | This Whole Forest Is ONE Tree | 34 s | [`videos/pando-one-tree`](videos/pando-one-tree) | [22 Nov 2026](https://youtube.com/shorts/Hi3wCW9yvKE) |
+| Can You Make a 7 in SIGN Language? | 28 s | [`videos/sign-seven`](videos/sign-seven) | 23 Nov 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;

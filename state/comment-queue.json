@@ -654,8 +654,10 @@
       "title": "Why Does the WRONG Finger Move? 🤞",
       "publishAt": "2026-11-22T06:00:00.000Z",
       "question": "Did the right finger move? 🤞",
-      "status": "queued",
-      "queued": "2026-11-21T19:23:59.644Z"
+      "status": "posted",
+      "queued": "2026-11-21T19:23:59.644Z",
+      "commentId": "UgyqVmxHfMv7QDKzAQR4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "Hi3wCW9yvKE",
@@ -663,8 +665,10 @@
       "title": "This Whole Forest Is ONE Tree 🌳",
       "publishAt": "2026-11-22T18:00:00.000Z",
       "question": "🌳 Bonus: \"Pando\" is Latin for \"I spread\", and those dark \"eyes\" on aspen bark are scars where old branches fell off.\nOne tree or a forest: what did you guess? 🌲",
-      "status": "queued",
-      "queued": "2026-11-21T21:35:25.202Z"
+      "status": "posted",
+      "queued": "2026-11-21T21:35:25.202Z",
+      "commentId": "Ugy4u36w3Yu-yZhyx7x4AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }

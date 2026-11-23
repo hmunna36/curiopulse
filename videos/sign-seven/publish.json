@@ -1,0 +1,62 @@
+{
+  "slug": "sign-seven",
+  "file": "sign-seven-short.mp4",
+  "title": "Can You Make a 7 in SIGN Language? 🤟",
+  "description": "Can you sign a seven? Touch your thumb to your ring finger and keep the other three fingers straight up. Did your pinky sink? With the pinky folded down, your seven looks like the sign for TWO. When your ring finger bends, your pinky (and a bit of your middle finger) comes along, because the cords that bend those fingers are tied together inside your hand, like the reins of a chariot. One violinist had a surgeon cut every one of those ties, in both hands, and ended up with fingers that move on their own. Now try your seven fast.\n\nCould you make a 7?\n\nThe science: in a lab study of single-finger movements, the ring finger was the least independent finger in 9 of 10 people's right hands: when they moved it, the middle and little fingers moved too (Häger-Ross & Schieber, Journal of Neuroscience, 2000; Lang & Schieber, Journal of Neurophysiology, 2004). The deep tendons that bend the middle, ring and little fingers share muscle fibres and are cross-linked at the wrist; the hand surgeon Claude Verdan named this the \"quadriga\" effect in 1960, after the four reins of a Roman chariot (Schreuders, Journal of Hand Surgery European Volume, 2012). The violinist is Joris Leijnse, who had the connections between his finger tendons removed in both hands between 1979 and 1988 and described it in his 1995 PhD thesis (Erasmus University Rotterdam): much better dexterity, and he could type at great speed. Fast finger movements are even less independent (Häger-Ross & Schieber 2000). The reins, the knot and the little charioteer are pictures of the idea, not real parts of your hand.\n\nNext up: fist, edge, palm... can your hand keep the order when you go fast?\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Hands #SignLanguage #FunFacts #HumanBody",
+  "look": "cine",
+  "length": {
+    "arm": "tight",
+    "min": 25,
+    "max": 30,
+    "slot": "2026-11-23T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-23T23:30:00+05:30"
+  },
+  "pinnedComment": "Next up: fist, edge, palm... can you go fast without mixing them up? ✊ Subscribe so you don't miss it!\nCould you make a 7? 🤟",
+  "tags": [
+    "sign language 7",
+    "asl number 7",
+    "can you make a 7",
+    "ring finger and pinky",
+    "pinky moves with ring finger",
+    "finger independence",
+    "quadriga effect",
+    "hand test",
+    "finger test",
+    "finger trick",
+    "human body facts",
+    "science facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "sign-seven.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Why Does Your Body Do That?"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Can you sign a 7? Thumb on your ring finger, three fingers UP. 🤟\nPinky sinking? Congrats, that's a 2. The cords that bend your ring finger and pinky are tied together inside your hand, like chariot reins. One violinist had a surgeon cut every tie, in both hands... and could type super fast.\nCould you make a 7?\nFollow @curio_pulse_tv for the next one: fist, edge, palm, FAST 🔔\n#science #humanbody #hands #signlanguage #funfacts #reels",
+    "coverTime": null,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "sub": "hand",
+    "mix": "mix-2026-11",
+    "slot": "2026-11-23T23:30:00+05:30"
+  },
+  "opening": {
+    "arm": "none",
+    "slot": "2026-11-23T23:30:00+05:30"
+  }
+}

@@ -1,0 +1,30 @@
+# Narration for "Can You Make a 7 in SIGN Language?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses (jokes and reveals). tempo: explanations 1.03-1.06, jokes 1.00.
+# The tight arm (the rules of 5 Nov 2026): 25-30 s, 55-64 words; the last line runs straight into the first.
+# The test: the viewer signs a seven (thumb on the ring finger, the other three up) and the pinky sinks with the ring
+# finger. Hook formula: The Question as the test ("Can you sign a seven?" confirms the title).
+# Nobody says "subscribe"; nothing asks, teases or winds up. The button is the last block: the Short loops.
+
+## hook gap=0.10 tighten=0.15 tempo=1.05
+Can you sign a seven? Thumb on your ring finger... three fingers UP.
+
+## answer gap=0.30 tighten=0.32 tempo=1.00
+Pinky sinking? Congrats. You just signed... TWO.
+
+## slow gap=0.35 tempo=1.04
+Now bend the ring finger slowly. Feel the pinky follow?
+
+## reins gap=0.32 tempo=1.04
+Inside, their cords are tied together... like chariot REINS!
+
+## violin gap=0.40 tempo=1.03
+One violinist had a surgeon snip every tie... in BOTH hands.
+
+## sting gap=0.40 tighten=0.22 tempo=1.00
+[excited] Free fingers! He could type... SUPER fast.
+
+## button gap=0.40 tighten=0.35 tempo=1.00
+Now sign your seven... FAST.
