@@ -34,20 +34,31 @@
   "cover": "cover.jpg",
   "captions": "fist-edge-palm.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-24T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "dR4t7RSBuoo",
+    "url": "https://youtube.com/shorts/dR4t7RSBuoo",
+    "uploaded": "2026-11-23T20:32:37.536Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "pending: Studio opened another channel (\"Oops, something went wrong\" twice); the API thumbnail is set"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-26T21:00:00+05:30",
     "caption": "Tap your table: fist, edge, palm... now FAST ✊\nMixed them up? Your hand's fine. Your BRAKES aren't: your brain has to stop each shape before the next one starts, and a missed stop lets the old one sneak back in. Doctors use this exact test to check your brain.\nDid you mix it up?\nFollow @curio_pulse_tv for the next one: thumb and pinky, SWAP 👍\n#science #brain #hands #braintest #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledAt": "2026-11-24T02:07+05:30",
+    "postTo": "curio_pulse_tv only (the Page paused since 17 Nov 2026)",
+    "coverSet": true
   },
   "kind": {
     "kind": "test",

@@ -73,8 +73,8 @@ Voice: 333 characters, one take per block.
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | https://youtube.com/shorts/… | … 11:30 IST |
-| Instagram Reels | https://www.instagram.com/reel/… | … 06:30 or 18:30 IST |
+| YouTube Shorts | https://youtube.com/shorts/dR4t7RSBuoo | public 24 Nov 2026 11:30 IST (playlist Your Brain Is Weird; thumbnail and captions set by the API; Studio's vertical slot not checked: Studio opened another channel) |
+| Instagram Reels | Business Suite (Instagram only, cover set; the Page paused) | scheduled 26 Nov 2026 21:00 IST |
 
 **Title:** Can You Do Fist, EDGE, Palm? ✊
 
@@ -167,6 +167,9 @@ Three rounds (`.work/qa/ship-review.md`; qa.py 23/23 each):
    safe area 8, sound 8, science 9, packaging 8, loop 9, direction record 8 (weakest rule: the mix-up lands at 4.1 s, not by
    3 s, because the order takes 3.9 s to say).
 Not verified by anyone: nobody heard the mix; nobody watched it at speed on a phone; nobody tried the test on real people.
+Rebuild proof: voice.py, make_timeline.py and audio.py from the cached takes into a fresh folder gave a byte-identical
+timeline.json, words.json and mix.wav (the narration and voice WAVs sample-identical; only header bytes differ); the picture
+render was not repeated a fourth time because another pipeline's renders held the render gate.
 
 ## Rebuild
 
