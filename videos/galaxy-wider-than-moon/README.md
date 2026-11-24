@@ -33,8 +33,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_RELEASE |
-| Instagram Reels | (Business Suite) | IG_RELEASE |
+| YouTube Shorts | https://youtube.com/shorts/euN3iCWlYtg | 25 Nov 2026 23:30 IST (playlist Strange Nature; thumbnail and captions by the API, cover.jpg also set in Studio) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only: the Facebook Page is paused) | 28 Nov 2026 18:30 IST, cover.jpg as its cover |
 
 **Title:** There's a GALAXY in Your Sky Wider Than the Moon 🌌
 
