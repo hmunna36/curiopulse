@@ -1,0 +1,31 @@
+# Narration for "Can You SWAP Your Thumb and Pinky?"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# tighten=0 keeps the take's own pauses (jokes and reveals). tempo: explanations 1.03-1.06, jokes 1.00.
+# The tight arm (the rules of 5 Nov 2026): 25-30 s, 55-64 words; the last line runs straight into the first.
+# The test: two fists, right thumb out, left pinky out, then swap both at once, faster: the hands slide into matching
+# fingers (two thumbs, or two pinkies). Hook formula: The Question, as the test (the order first, then the title's
+# question "can you SWAP them?"). Nobody says "subscribe"; nothing asks, teases or winds up. The button is the last
+# block: the Short loops.
+
+## hook gap=0.08 tighten=0.22 tempo=1.07
+Your right thumb out, left pinky out... can you SWAP them? Faster!
+
+## answer gap=0.30 tighten=0.3 tempo=1.00
+Two thumbs? Your hands are... COPYCATS.
+
+## twin gap=0.30 tempo=1.05
+Keep swapping. Every finger's got a TWIN on the other hand.
+
+## want gap=0.22 tighten=0.3 tempo=1.04
+Move one... and its twin wants to move too.
+
+## kids gap=0.32 tighten=0.3 tempo=1.04
+Kids' hands copy WAY more... it fades as you grow.
+
+## gene gap=0.32 tighten=0.35 tempo=1.03
+In some families, one faulty gene keeps it... for LIFE.
+
+## button gap=0.32 tighten=0.3 tempo=1.00
+Now swap them... SLOWLY.

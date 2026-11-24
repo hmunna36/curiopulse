@@ -654,8 +654,10 @@
       "title": "Can You Do Fist, EDGE, Palm? ✊",
       "publishAt": "2026-11-24T06:00:00.000Z",
       "question": "Did you mix it up? ✊",
-      "status": "queued",
-      "queued": "2026-11-23T20:32:47.683Z"
+      "status": "posted",
+      "queued": "2026-11-23T20:32:47.683Z",
+      "commentId": "Ugwq6jTm4fOZEGWGQ554AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "iMAAA7qy4Go",
@@ -663,8 +665,10 @@
       "title": "Can You Do the ELVIS Lip Without Squinting? 😏",
       "publishAt": "2026-11-24T18:00:00.000Z",
       "question": "Did your eye squint? 😏",
-      "status": "queued",
-      "queued": "2026-11-23T21:38:21.086Z"
+      "status": "posted",
+      "queued": "2026-11-23T21:38:21.086Z",
+      "commentId": "UgyQqISjybaGoPUpkz14AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }

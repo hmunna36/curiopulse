@@ -118,6 +118,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Make a 7 in SIGN Language? | 28 s | [`videos/sign-seven`](videos/sign-seven) | [23 Nov 2026](https://youtube.com/shorts/lsPMnB9cMuA) |
 | Can You Do Fist, EDGE, Palm? | 29 s | [`videos/fist-edge-palm`](videos/fist-edge-palm) | [24 Nov 2026](https://youtube.com/shorts/dR4t7RSBuoo) |
 | Can You Do the ELVIS Lip Without Squinting? | 26 s | [`videos/elvis-lip`](videos/elvis-lip) | [24 Nov 2026](https://youtube.com/shorts/iMAAA7qy4Go) |
+| Can You SWAP Your Thumb and Pinky? | 27 s | [`videos/thumb-pinky-swap`](videos/thumb-pinky-swap) | 25 Nov 2026 |
 
 Each folder has:
 - the finished MP4;
