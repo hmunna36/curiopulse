@@ -106,11 +106,48 @@
 | `sign-seven`: "Can You Make a 7 in SIGN Language? 🤟" | 28.5 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/lsPMnB9cMuA · 23 Nov 2026 23:30 IST | Business Suite, Instagram only, 26 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused; scheduled by the next run, 24 Nov 00:20) |
 | `fist-edge-palm`: "Can You Do Fist, EDGE, Palm? ✊" | 29.1 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/dR4t7RSBuoo · 24 Nov 2026 11:30 IST | Business Suite, Instagram only, 26 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `elvis-lip`: "Can You Do the ELVIS Lip Without Squinting? 😏" | 25.7 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening CONTROL) | https://youtube.com/shorts/iMAAA7qy4Go · 24 Nov 2026 23:30 IST | Business Suite, Instagram only, 27 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `thumb-pinky-swap`: "Can You SWAP Your Thumb and Pinky? 👍" | 27.0 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/AWNdCVXeUpE · 25 Nov 2026 11:30 IST | Business Suite, Instagram only, 27 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**thumb-pinky-swap** (the 00:00 routine of 25 Nov 2026, 00:03-01:20 IST, for the same day's 11:30 slot; TEST · HAND, the Queue's
+first line, promised by fist-edge-palm's and elvis-lip's Next-up; tight arm, 62 words -> 27.0 s; hook The Question as the test: "Your
+right thumb out, left pinky out... can you SWAP them? Faster!" (frame 0: his two fists from his own eyes over a lake dock, the
+cat watching); the first swap works on "SWAP", the fast one fails into two thumbs at 4.36 s (a wrong-answer honk); answer "Two thumbs?
+Your hands are... COPYCATS." at 4.61 s (whip to the ginger cat: both paws up like his thumbs, hitstop); glowing strings tie the twins
+(thumb yellow, pinky pink) on "TWIN"; "Move one... and its twin wants to move too." (a bead runs the string, BOING, then the
+pinkies); "Kids' hands copy WAY more... it fades as you grow." (his hands shrink to a kid's in a red jumper, AGE 4 ropes, AGE 30
+threads); "In some families, one faulty gene keeps it... for LIFE." (his other hand copies his wave; the strings turn to chain and a
+padlock snaps shut, the biggest hit); button "Now swap them... SLOWLY." (the cat swaps her paws perfectly); caption question "Did
+they swap?"; YouTube AWNdCVXeUpE (Your Brain Is Weird; the cover also set in Studio's vertical slot); Reel 27 Nov 21:00 IST. Two QA
+rounds (qa.py 23/23 both); the rebuild proof gave a byte-identical MP4, timeline, mix and SRT. Lessons:
+- **Two hands from one 3D rig (new, borrow it: `tp_world.js`):** `tpXf(side, o)` places fist3d's hand palm down in the air (wrist,
+  heading, pitch, roll) and mirrors the left hand by negating the hand-local x; `sc` scales the whole hand and forearm about the
+  wrist (a kid's hands: 0.7); `tpHandGeo` (thumb tucked .. out sideways, little finger curled .. out and splayed, `open` for a
+  wave); `tpTie` (a glowing elastic between two fingertips: slack, taut quiver, beads, `w` for a rope with a twist, `chain` for
+  steel links); `tpPadlock`. The lake plate (`initTp`: the shore mirrored in broken bands, ripples that grow toward us, a glitter
+  path) and the dock (`tpDock`, `tpPost`, props) sit on fist-edge-palm's `fpCam`.
+- **A camera over planks that run behind it needs near-plane clipping** (`tpQuad`): fp_world's `fpQuad` clamps depth to 1 cm,
+  so a plank behind the camera projected as a giant brown sheet across a low shot.
+- **A 360-degree plate's blurred copy must be blurred from a wrapped, padded copy:** blurring the plate alone left a seam
+  where its edges meet (behind him, at heading PI).
+- **The cinema kit's `leaves-tr` foreground reads as a palm frond against a lake sky:** by water use bokeh and grass (reeds).
+- **Whisper heard "Right thumb out" as "Write them out":** start a hand-test hook with "Your" (it also puts "your" first).
+- **The "flip one palm up, the twins still copy" proof (Riek & Woolley 2005) is contested** (Mechsner 2001 and 2004 found the pull
+  toward what looks symmetrical): the research agent caught it before the voice; the Short says only what both camps agree on.
+- **cats-purr's `purCat` takes `paws: [left, right]` now:** both front paws up at once; their default target is beside her
+  head (at the first target the paws hid behind it).
+- **A view that changes inside a shot:** `tpShot2(cut, viewA, viewB)` switches from a front view (him drawn) to his own eyes at
+  the cut cue, so one SHOTS entry holds two framings (rhythm) without a second shot id.
+- **His 2D head sits about 87 cm above the dock in the 3D world:** a front camera has to look at y 50-60 cm, or his face lands
+  under the app's top bar (two framings had to come down).
+- **A kid's sleeve has two parts in a POV:** the forearm's sleeve (fpSleeveItems, recoloured through PAL) and the upper arm's line
+  (tpPovUpper); the first render had red cuffs on yellow arms.
+- **Research in a background agent outlived the script by 20 minutes:** read its partial transcript's notes (a small parse of the
+  JSONL, never the whole file) to steer the script, and synthesize only once the claims that the voice says are settled.
 
 **elvis-lip** (the 02:00 second-Short routine of 24 Nov 2026, 02:10-03:30 IST after waiting for the 00:00 run's lock, for the
 24 Nov 23:30 slot; TEST · FACE OR ILLUSION, opening CONTROL; the face queue's third line, as on 21 Nov: the sparks need the owner's
