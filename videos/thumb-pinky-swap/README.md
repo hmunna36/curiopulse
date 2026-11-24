@@ -66,7 +66,7 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 No v3 tags: every block was performed bare. Whisper heard the first hook take as "Write them out", so the hook became
 "Your right thumb out..." (it also puts "your" first); of its two takes the first kept "SWAP them? Faster!" as two
-beats (the second ran them together), sped to 1.07 for the answer at 4.61 s. Voice: 397 characters (the hook taken twice).
+beats (the second ran them together), sped to 1.07 for the answer at 4.61 s. Voice: 463 characters (the hook taken three times).
 
 ## Publishing
 
