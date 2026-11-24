@@ -34,20 +34,29 @@
   "cover": "cover.jpg",
   "captions": "thumb-pinky-swap.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-25T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "AWNdCVXeUpE",
+    "url": "https://youtube.com/shorts/AWNdCVXeUpE",
+    "uploaded": "2026-11-24T19:29:21.687Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": "set in Studio 25 Nov 2026 (Changes saved)"
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-27T21:00:00+05:30",
     "caption": "Your right thumb out, left pinky out... now SWAP them 👍\nTwo thumbs? Your hands are copycats: every finger has a twin on your other hand, and when one moves, its twin wants to move too. Kids' hands copy even more; it fades as you grow.\nDid they swap?\nFollow @curio_pulse_tv for the next one: why a hooked fingertip goes LIMP 👆\n#science #brain #hands #braintest #funfacts #reels",
     "coverTime": null,
-    "shareToFeed": true
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduledNote": "Business Suite, Instagram only (the Facebook Page paused since 17 Nov 2026), cover set; listed in Content -> Scheduled at 27 Nov 21:00 with the caption as its title"
   },
   "kind": {
     "kind": "test",

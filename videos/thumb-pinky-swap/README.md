@@ -72,8 +72,8 @@ beats (the second ran them together), sped to 1.07 for the answer at 4.61 s. Voi
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | YT_LINK | YT_RELEASE |
-| Instagram Reels | Business Suite (Instagram only; the Page paused) | IG_RELEASE |
+| YouTube Shorts | https://youtube.com/shorts/AWNdCVXeUpE | public 25 Nov 2026 11:30 IST (playlist Your Brain Is Weird; thumbnail and captions set by the API; the cover also set in Studio's vertical slot) |
+| Instagram Reels | Business Suite (Instagram only, cover set; the Page paused) | scheduled 27 Nov 2026 21:00 IST |
 
 **Title:** Can You SWAP Your Thumb and Pinky? 👍
 
