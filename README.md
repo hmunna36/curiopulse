@@ -119,6 +119,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Do Fist, EDGE, Palm? | 29 s | [`videos/fist-edge-palm`](videos/fist-edge-palm) | [24 Nov 2026](https://youtube.com/shorts/dR4t7RSBuoo) |
 | Can You Do the ELVIS Lip Without Squinting? | 26 s | [`videos/elvis-lip`](videos/elvis-lip) | [24 Nov 2026](https://youtube.com/shorts/iMAAA7qy4Go) |
 | Can You SWAP Your Thumb and Pinky? | 27 s | [`videos/thumb-pinky-swap`](videos/thumb-pinky-swap) | [25 Nov 2026](https://youtube.com/shorts/AWNdCVXeUpE) |
+| There's a GALAXY in Your Sky Wider Than the Moon | 31 s | [`videos/galaxy-wider-than-moon`](videos/galaxy-wider-than-moon) | YT_PENDING |
 
 Each folder has:
 - the finished MP4;

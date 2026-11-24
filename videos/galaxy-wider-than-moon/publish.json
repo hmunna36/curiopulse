@@ -1,0 +1,61 @@
+{
+  "slug": "galaxy-wider-than-moon",
+  "file": "galaxy-wider-than-moon-short.mp4",
+  "title": "There's a GALAXY in Your Sky Wider Than the Moon 🌌",
+  "description": "There's a galaxy in your sky six times wider than the Moon. Never seen it? Your eyes are just really bad at dim: they grab light for a blink, while a camera grabs it for minutes... and then the rest of the Andromeda galaxy shows up, nearly six full Moons long. And that glow left it about two and a half million years ago, before people like us existed. Sorry, Moon.\nHave you ever seen it? Yes or no?\n\nThe science: in long-exposure photos the Andromeda galaxy (M31) spans about 3 degrees of sky, nearly six full Moons end to end (the full Moon is about half a degree wide): NASA's Astronomy Picture of the Day (21 Oct 2022, 21 Feb 2025) and the M31 entry in Wikipedia (3.17 by 1 degrees). With your eyes alone, even on a dark night, you mostly see its bright middle as a faint smudge: your eye builds each picture over roughly a tenth of a second, while a camera can keep collecting light for seconds or minutes (the Moon in this Short is drawn at the same scale, the way a long-exposure photo sees it). Andromeda is about 2.5 million light-years away, so the light you see left it about 2.5 million years ago; our own species is about 300,000 years old (Hublin et al., Nature 2017).\n\nNext up: why a hooked fingertip goes LIMP 👆\nSubscribe to CurioPulse for a new Short every day.\n#Shorts #Space #Andromeda #Astronomy #Science",
+  "look": "cine",
+  "length": {
+    "arm": "short",
+    "min": 30,
+    "max": 35,
+    "slot": "2026-11-25T23:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-25T23:30:00+05:30"
+  },
+  "pinnedComment": "🌌 Bonus: you can spot its bright middle with no camera at all: on a dark, moonless night far from city lights it looks like a faint fuzzy smudge.\nNext up: why a hooked fingertip goes LIMP 👆 Subscribe so you don't miss it!\nHave you ever seen it? Yes or no? 🔭",
+  "tags": [
+    "andromeda galaxy",
+    "andromeda",
+    "galaxy",
+    "moon",
+    "night sky",
+    "astronomy",
+    "space facts",
+    "long exposure",
+    "astrophotography",
+    "stargazing",
+    "light years",
+    "science facts",
+    "mind blowing facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "galaxy-wider-than-moon.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Strange Nature"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "There's a GALAXY in your sky six times wider than the Moon 🌌\nAndromeda is nearly six full Moons long, but your eyes only catch its bright middle: they grab light for a blink, a camera grabs it for minutes. And its glow left it 2.5 million years ago, before people like us existed.\nHave you ever seen it? Yes or no?\nFollow @curio_pulse_tv for the next one: why a hooked fingertip goes LIMP 👆\n#science #space #andromeda #astronomy #nightsky #funfacts #reels",
+    "coverTime": 0.6,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "curious",
+    "slot": "2026-11-25T23:30:00+05:30"
+  },
+  "opening": {
+    "arm": "none",
+    "slot": "2026-11-25T23:30:00+05:30"
+  }
+}

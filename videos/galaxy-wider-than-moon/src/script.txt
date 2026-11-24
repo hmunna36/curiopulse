@@ -1,0 +1,29 @@
+# Narration for "There's a GALAXY in Your Sky Wider Than the Moon 🌌" (CURIOUS, short arm 30-35 s, 66-76 words; no pill; the loop)
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives there.
+# Hook formula: The Impossible Claim (the last three were The Question, The Direct Address, The Direct Address).
+# Spine: you think the Moon is the biggest thing in your night sky, but a galaxy nearly six Moons wide hangs right
+# beside it, because your eyes grab light for a blink and only its bright middle gets through.
+# The button runs into the hook: "Sorry, Moon. / There's a galaxy in your sky... six times wider than the Moon."
+# Nobody says "subscribe"; the no-pill arm. Words: 68 (the short arm: 66-76).
+
+## hook gap=0.10 tighten=0.25 tempo=1.00
+There's a galaxy in your sky... six times wider than the Moon.
+
+## answer gap=0.55 tighten=0.35 tempo=1.00
+Never seen it? Your eyes are just... really bad at dim.
+
+## blink gap=0.40 tighten=0.30 tempo=1.02
+They grab light for a blink.
+
+## camera gap=0.15 tighten=0.30 tempo=1.02
+A camera grabs it for MINUTES... and the rest shows up.
+
+## payoff gap=0.65 tighten=0.42 tempo=1.00
+Line up full Moons across it... one, two, three... SIX.
+
+## weird gap=0.50 tighten=0.30 tempo=1.04
+And that glow left two and a half million years ago... before people like us existed.
+
+## button gap=1.00 tighten=0.45 tempo=1.00
+Sorry, Moon.
