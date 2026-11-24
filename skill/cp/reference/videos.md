@@ -107,11 +107,56 @@
 | `fist-edge-palm`: "Can You Do Fist, EDGE, Palm? ✊" | 29.1 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/dR4t7RSBuoo · 24 Nov 2026 11:30 IST | Business Suite, Instagram only, 26 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `elvis-lip`: "Can You Do the ELVIS Lip Without Squinting? 😏" | 25.7 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening CONTROL) | https://youtube.com/shorts/iMAAA7qy4Go · 24 Nov 2026 23:30 IST | Business Suite, Instagram only, 27 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `thumb-pinky-swap`: "Can You SWAP Your Thumb and Pinky? 👍" | 27.0 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/AWNdCVXeUpE · 25 Nov 2026 11:30 IST | Business Suite, Instagram only, 27 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `galaxy-wider-than-moon`: "There's a GALAXY in Your Sky Wider Than the Moon 🌌" | 30.7 s (short arm; no pill; CURIOUS, the second under the 17 Nov mix) | https://youtube.com/shorts/euN3iCWlYtg · 25 Nov 2026 23:30 IST | Business Suite, Instagram only, 28 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
 
 ## Lessons
+
+**galaxy-wider-than-moon** (the 02:00 second-Short routine of 25 Nov 2026, 02:05-03:05 IST, for the same day's 23:30 slot; CURIOUS,
+the second under the 17 Nov mix (picture-led: the stop rule counts six curious Shorts to pass 5K), the Curious queue's first line;
+short arm, 68 words -> 30.70 s (the first layout ran 29.3 s: the comic gaps were widened, free); hook The Impossible Claim "There's a
+galaxy in your sky... six times wider than the Moon." (frame 0: him close in camera goggles, hand on the focus ring, mouth open, the
+galaxy glinting in both lenses, a smug Moon above); answer "Never seen it? Your eyes are just... really bad at dim." at 4.76 s (goggles
+flip up and the galaxy shrinks to a faint fuzz; ALL YOU SEE; he rubs his eyes, squints to slits, hitstop on "dim"); "They grab light for a
+blink" (his eye up close with a brown iris, falling specks, a 0.1 s stopwatch, SNAP shut); "A camera grabs it for MINUTES... and the
+rest shows up" (the goggles' REC, a stopwatch racing to 10:00, the galaxy blooming over the lake); "Line up full Moons across it... one,
+two, three... SIX." (the Moon slides into a row beside the galaxy, clones pop, full silence, three more as SIX ends: the biggest hit);
+"And that glow left two and a half million years ago... before people like us existed." (Andromeda from outside, the light racing to
+US with a counter to 2,500,000, a time ribbon: NO PEOPLE YET, PEOPLE! at 88 %, it lands in his lens: TONIGHT); button "Sorry, Moon."
+(the Moon sulks under a cloud); caption question "Have you ever seen it? Yes or no?"; YouTube euN3iCWlYtg (Strange Nature; Studio's
+vertical slot showed an automatic frame: cover.jpg set there, the right channel opened this time); Reel 28 Nov 18:30 IST. Two render
+rounds (qa.py 22/22 both) after four rounds of stills; the rebuild proof gave a byte-identical MP4, timeline and mix. Lessons:
+- **New world files (borrow them): `gx_world.js`:** `gxSkyGrad` (a night sky brightest at the horizon), `gxStars` (a painted field and
+  twinkling stars on a sky camera), `gxGalaxy(x, y, s, ang, e)` (Andromeda painted once at its true size: GX_K makes it 6.1 Moon
+  diameters; `e` is the EXPOSURE: 0 = a blurred, faint fuzz about a Moon long, 1 = the whole disk with dust lanes, star clouds, pink knots,
+  M32 and M110), `gxAxis` / `gxRow` (points along the galaxy and along a parallel row beside it), `gxMoon` (the Moon as a character:
+  faces proud, side, smirk, shock, nervous, squish, sulk; jaw, blush, sweat, squash, a cloud blanket, a number tag, `edge`),
+  `gxValley` (mountains with moonlit snow, a lake mirroring them, the galaxy's reflection, a glitter path), `gxHill`, `gxTent` (lit inside,
+  a string of bulbs), `gxLantern`, `gxCampProps`, `gxPine`, `gxBat` (for wkFlock), `gxGoggles` (camera goggles on his head: lens barrels
+  with knurled rings, glass that mirrors the galaxy and fills with light, REC, flipped up onto his hair or down), `gxTag`, `gxWatch` (a
+  stopwatch with a sweep and a readout). `gx_more.js`: `gxEyeECU` (his eye filling the frame: iris, pupil, a tiny reflection, the lid
+  closing, a squint), `gxSpecks` (light falling into a point), `gxSpace` (space with streaking stars, Andromeda face-on, a small spiral US),
+  `gxPhoton`, `gxCounter`, `gxRibbon` (a time ribbon with flags).
+- **A glowing character loses its face to its own bloom:** the Moon's halo in the glow layer bloomed over its eyes and mouth (a white
+  disc in the stills). Draw the halo as a RING (a radial gradient that starts at the disc's edge), cut the disc out of the glow layer
+  (`destination-out`), and give a big Moon less glow (x min(1, 72 / R)).
+- **A row of things measured against a bright object goes beside it, not on it:** six Moons stacked on the galaxy washed out into it;
+  a parallel row 300 sky px off its axis, with dotted drops from the galaxy's tips to the row's ends, reads at once as "the same length".
+- **Draw what an eye really sees:** sources describe Andromeda to the naked eye as a faint fuzzy patch about a Moon wide (Space.com, Sky &
+  Telescope); a sharp half-Moon smudge with dust lanes was wrong. `ctx.filter = blur()` on the low-exposure galaxy, and dimmer.
+- **A punchline word heard in silence, its picture right after it:** the three Moons pop as "SIX" ends (m456 = six_end - 0.12) and the
+  hitstop's layered hit sits 0.05 s after the word, so nothing masks it; the flash-forward shows that moment (six_end - 0.08).
+- **A squint shot is a held face unless he does something:** "Your eyes are just..." got both fists rubbing his eyes (armAt to the eye
+  positions, `redrawL/R` so the fists are drawn over his head), then the squint to slits on the cut closer.
+- **The music bus is peak-normalised (again):** eight dead stops raised the rest of the score until five words sat under 10 dB;
+  `levels={"music": -14.5}, duck={"music": 0.74}` and one more stop on the eye's SNAP (10.37-11.19 s) cleared them all.
+- **The composer's Next button is not found by `find` on the Create step:** a JS click on the one element whose text is exactly "Next"
+  (checked to be unique) worked; the Schedule option was then `find`'s "Schedule" button inside Scheduling options, and the bottom button's
+  text was checked to read "Schedule" in the same script that clicked it.
+- Voice: seven takes, 352 characters, plus 48 for four auditions of "Sorry, Moon." ("Moon" sits ~10 dB under "Sorry" in the speech band on
+  every take: a first formant under 300 Hz; kept the first take, the score is out under it). quota.mjs read 13,543 before, 13,370 after.
 
 **thumb-pinky-swap** (the 00:00 routine of 25 Nov 2026, 00:03-01:20 IST, for the same day's 11:30 slot; TEST · HAND, the Queue's
 first line, promised by fist-edge-palm's and elvis-lip's Next-up; tight arm, 62 words -> 27.0 s; hook The Question as the test: "Your
