@@ -1,7 +1,7 @@
 #!/bin/sh
 # Create a CurioPulse Short from the cp skill's template.
 # usage: new-short.sh <slug> "<Title>"      e.g. new-short.sh brain-freeze "Why Does Ice Cream Give You Brain Freeze?"
-# Result: ~/Desktop/curiopulse/videos/<slug>/ inside the light local checkout of github.com/hmunna36/curiopulse
+# Result: ~/Desktop/nightly routines/curiopulse/videos/<slug>/ inside the light local checkout of github.com/hmunna36/curiopulse
 # (blobless + sparse: old videos cost no disk), with src/ (engine + skeletons), README.md, publish.json, fonts.
 set -e
 SLUG="$1"
@@ -9,7 +9,7 @@ TITLE="$2"
 if [ -z "$SLUG" ] || [ -z "$TITLE" ]; then echo 'usage: new-short.sh <slug> "<Title>"'; exit 2; fi
 case "$SLUG" in *[!a-z0-9-]*) echo "slug must be lowercase letters, digits and dashes"; exit 2;; esac
 SKILL="$(cd "$(dirname "$0")/.." && pwd)"
-REPO="${CP_REPO:-$HOME/Desktop/curiopulse}"
+REPO="${CP_REPO:-$HOME/Desktop/nightly routines/curiopulse}"
 CACHE="$HOME/.cache/cp"
 
 # 1. the repo checkout
@@ -17,7 +17,7 @@ if [ ! -d "$REPO/.git" ]; then
   git clone --filter=blob:none --sparse git@github.com:hmunna36/curiopulse.git "$REPO"
   # commit identity: the same one the user's other video repo uses (kept out of this public script)
   for k in user.name user.email; do
-    v=$(git -C "$HOME/Desktop/visualalgo" config --local "$k" 2>/dev/null || true)
+    v=$(git -C "$HOME/Desktop/nightly routines/visualalgo" config --local "$k" 2>/dev/null || true)
     [ -n "$v" ] && git -C "$REPO" config "$k" "$v"
   done
 fi

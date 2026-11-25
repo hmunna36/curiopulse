@@ -6,7 +6,7 @@
 set -e
 BIN="$(cd "$(dirname "$0")" && pwd)"
 SLUG="$1"
-REPO="${CP_REPO:-$HOME/Desktop/curiopulse}"
+REPO="${CP_REPO:-$HOME/Desktop/nightly routines/curiopulse}"
 DEST="$REPO/videos/$SLUG"
 cd "$REPO"
 if [ "$2" = "--free" ]; then

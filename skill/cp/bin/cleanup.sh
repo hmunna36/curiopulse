@@ -5,7 +5,7 @@
 # stashes or other branches. It also refuses to delete a key file (.env).
 # usage: cleanup.sh            (the skill runs it last, after the push; safe to run any time)
 #        cleanup.sh --check    (only say whether the checkout is clean and pushed)
-REPO="${CP_REPO:-$HOME/Desktop/curiopulse}"
+REPO="${CP_REPO:-$HOME/Desktop/nightly routines/curiopulse}"
 LIGHT="skill state"                      # checked out between runs, plus the top-level files (state: the comment queue)
 GROWTH_KB=5120                           # .git this far past its fresh-clone size holds pushed media: re-clone
 

@@ -661,7 +661,7 @@ def sfx_dir():
         return _SFX_DIR or None
     here = _os.path.dirname(_os.path.abspath(__file__))
     in_repo = _os.path.normpath(_os.path.join(here, "..", "..", ".."))            # videos/<slug>/src -> the repo
-    repo_env = _os.environ.get("CP_REPO", _os.path.expanduser("~/Desktop/curiopulse"))
+    repo_env = _os.environ.get("CP_REPO", _os.path.expanduser("~/Desktop/nightly routines/curiopulse"))
     cands = [_os.environ.get("CP_SFX"), _os.path.join(in_repo, "assets", "sfx"), _os.path.join(repo_env, "assets", "sfx")]
     found = next((c for c in cands if c and _os.path.isdir(_os.path.join(c, "kenney"))), None)
     if not found:

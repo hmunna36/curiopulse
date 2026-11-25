@@ -266,7 +266,7 @@ The repo checkout is blobless and sparse. Fetch one file without checking the wh
 blob is downloaded):
 
 ```sh
-git -C ~/Desktop/curiopulse show HEAD:videos/hypnic-jerk/src/web/bedroom.js > src/web/bedroom.js
+git -C ~/Desktop/"nightly routines"/curiopulse show HEAD:videos/hypnic-jerk/src/web/bedroom.js > src/web/bedroom.js
 ```
 
 World files written before 8 Oct 2026 know nothing of the light. They work as they are (the light is added on top).

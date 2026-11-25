@@ -286,7 +286,7 @@ shot is for.
 
 ## Acting and timing (since 8 Nov 2026; the video-quality research)
 
-The research of 7 Nov 2026 (`~/Desktop/reports/CurioPulse video quality tools.md`) found that what still separated our
+The research of 7 Nov 2026 (`~/Desktop/nightly routines/reports/CurioPulse video quality tools.md`) found that what still separated our
 Shorts from top animated channels was motion: he was moved, not animated. These came in after a before/after the owner
 approved. Most of it is automatic; the rest is one line in the plan.
 - **Cleaner edges (automatic):** the drawing canvases are raster canvases (lib.js `CP_CTX2D`). On the M1 the default GPU

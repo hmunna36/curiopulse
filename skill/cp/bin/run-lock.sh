@@ -6,7 +6,7 @@
 # Otherwise it's stale and the next run takes it over (and resumes that video).
 # usage: run-lock.sh acquire <slug> | release | status        exit 3 = busy
 LOCK="$HOME/.cache/cp/run.lock"
-REPO="${CP_REPO:-$HOME/Desktop/curiopulse}"
+REPO="${CP_REPO:-$HOME/Desktop/nightly routines/curiopulse}"
 live() {
   [ -f "$LOCK" ] || return 1
   [ -n "$(find "$LOCK" -mmin -180 2>/dev/null)" ] && return 0

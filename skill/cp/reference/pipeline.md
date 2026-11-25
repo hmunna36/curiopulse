@@ -5,7 +5,7 @@
 | What | Where |
 |---|---|
 | Repo (public) | https://github.com/hmunna36/curiopulse: `videos/<slug>/`, `master-context-prompt.md`, `README.md`, `skill/cp/` (backup of this skill) |
-| Local checkout | `~/Desktop/curiopulse`: **blobless + sparse** (top-level files + the video in progress; `git sparse-checkout add videos/<slug>` brings one back) |
+| Local checkout | `~/Desktop/nightly routines/curiopulse`: **blobless + sparse** (top-level files + the video in progress; `git sparse-checkout add videos/<slug>` brings one back) |
 | Toolchain | `~/.cache/cp/`: `venv/` (Python 3.14: numpy scipy soundfile pyloudnorm pillow certifi), `node/node_modules/playwright-core`, `bin/ffmpeg` + `bin/ffprobe` (wrappers around `~/.cache/va`'s Remotion compositor ffmpeg 7.1; don't delete `~/.cache/va/node_modules`), `fonts/`, `models/ggml-base.en.bin` (whisper) |
 | Keys | `~/.config/va/elevenlabs.env` (ElevenLabs, shared with va) · `~/.config/va/youtube-client.json` (OAuth client) · `~/.config/cp/youtube-token.json` · `~/.config/cp/instagram.json` (route B only; none exists) (all chmod 600; never print or commit them) |
 | Instagram | Route A (in use): `ig.mjs prepare` → parts in the session scratchpad → Business Suite in Chrome; slots taken (18:30 and 21:00 IST since 16 Oct 2026; 06:30 and 18:30 before) in `~/.config/cp/ig-queue.json` ("busy"). Route B (API, only with a token): queue + spool `~/.cache/cp/ig-spool/` + launchd job `com.curiopulse.ig-publish` + log `~/Library/Logs/curiopulse-ig.log` |
@@ -20,7 +20,7 @@
 ~/.claude/skills/cp/bin/run-lock.sh acquire <slug>
 node ~/.claude/skills/cp/bin/yt.mjs numbers && node ~/.claude/skills/cp/bin/yt.mjs next-slot   # the log, then the length arm
 ~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"      # also writes the length arm into publish.json
-cd ~/Desktop/curiopulse/videos/<slug>/src && . ~/.claude/skills/cp/bin/cp-env.sh
+cd ~/Desktop/"nightly routines"/curiopulse/videos/<slug>/src && . ~/.claude/skills/cp/bin/cp-env.sh
 # write script.txt → voice
 $PYTHON voice.py ../.work --synth
 # write make_timeline.py → timeline

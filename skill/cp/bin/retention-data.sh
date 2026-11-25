@@ -11,7 +11,7 @@
 set -e
 OUT="${1:?usage: retention-data.sh <out-dir>}"
 BIN="$(cd "$(dirname "$0")" && pwd)"
-REPO="${CP_REPO:-$HOME/Desktop/curiopulse}"
+REPO="${CP_REPO:-$HOME/Desktop/nightly routines/curiopulse}"
 CACHE="$HOME/.cache/cp/retention-srt"
 mkdir -p "$OUT/curves" "$CACHE"
 

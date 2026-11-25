@@ -1,7 +1,7 @@
 # Source this for manual commands in a CurioPulse video folder:  . ~/.claude/skills/cp/bin/cp-env.sh
 # (build.sh picks the same toolchain up by itself.)
 export CP_CACHE="$HOME/.cache/cp"
-export CP_REPO="${CP_REPO:-$HOME/Desktop/curiopulse}"
+export CP_REPO="${CP_REPO:-$HOME/Desktop/nightly routines/curiopulse}"
 export PATH="$CP_CACHE/bin:$PATH"
 export NODE_PATH="$CP_CACHE/node/node_modules"
 export PYTHON="$CP_CACHE/venv/bin/python3"

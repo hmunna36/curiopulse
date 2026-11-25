@@ -5,7 +5,7 @@ set -e
 MSG="$1"
 [ -f "$MSG" ] || { echo "usage: backup-skill.sh <commit-message-file>"; exit 2; }
 SKILL="$(cd "$(dirname "$0")/.." && pwd)"
-REPO="${CP_REPO:-$HOME/Desktop/curiopulse}"
+REPO="${CP_REPO:-$HOME/Desktop/nightly routines/curiopulse}"
 [ -d "$REPO/.git" ] || git clone --filter=blob:none --sparse git@github.com:hmunna36/curiopulse.git "$REPO"
 cd "$REPO"
 git pull --ff-only -q || true

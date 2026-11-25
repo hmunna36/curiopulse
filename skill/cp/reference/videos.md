@@ -2498,7 +2498,7 @@ video 2056122628400137) 29 Oct 21:00 IST; two QA rounds; byte-identical rebuild)
 - `git archive` on the blobless checkout pulled 177 MB (every blob in the tree, not just the path asked for) before it
   was stopped. To look at one old video's files, make a throwaway clone in the scratchpad
   (`git clone --filter=blob:none --sparse --depth 1 …`, then `git sparse-checkout set videos/<slug>/src`; cone mode
-  also brings the files next to `src/`, the MP4 included, about 80 MB), never `git archive` in `~/Desktop/curiopulse`.
+  also brings the files next to `src/`, the MP4 included, about 80 MB), never `git archive` in `~/Desktop/nightly routines/curiopulse`.
   Delete the throwaway clone when done.
 
 **hiccups** (6 Oct 2026, nightly /cp next; the first Short of the 30–35 s arm; 70 words → 33.9 s):

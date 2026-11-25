@@ -75,7 +75,7 @@ const LEGACY_SLOT = '18:30'; // what a bare date in "busy" stands for (every Ree
 const LEAD_MIN = Number(process.env.CP_IG_LEAD_MIN ?? 25); // start preparing a Reel this many minutes before its release
 // route C (see the header): CLOUD is the GitHub Actions job; MAC_CLOUD is this Mac once publishing has moved there
 const CLOUD = process.env.CP_IG_CLOUD === '1';
-const STATE = path.resolve(process.env.CP_IG_STATE ?? (CLOUD ? 'state' : path.join(process.env.CP_REPO ?? path.join(HOME, 'Desktop/curiopulse'), 'state')));
+const STATE = path.resolve(process.env.CP_IG_STATE ?? (CLOUD ? 'state' : path.join(process.env.CP_REPO ?? path.join(HOME, 'Desktop/nightly routines/curiopulse'), 'state')));
 const RESULTS_FILE = path.join(STATE, 'ig-results.json');
 const TOKEN_ENC = path.join(STATE, 'ig-token.enc');
 const KEY_FILE = path.join(CONF, 'ig-cloud-key');

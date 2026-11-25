@@ -134,7 +134,7 @@ The rules of 5 Nov (25-30 s for tests, the loop end) stay. Read the mix about 1 
 
 ## Deliverables
 
-In `~/Desktop/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercase with dashes, e.g. `brain-freeze`):
+In `~/Desktop/nightly routines/curiopulse/videos/<slug>/` (slug = the topic's key words, lowercase with dashes, e.g. `brain-freeze`):
 
 | File | Spec |
 |---|---|
@@ -252,7 +252,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
      scheduled first, if Chrome is connected. A missed night never leaves a Reel behind. (If the slot slips past while you work, `ig.mjs prepare`
      moves the Reel to the next free slot and says so in the sheet's `note`: write that time into publish.json.) Its
      folder lives on GitHub only: bring it back with
-     `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>` before `ig.mjs prepare`. The cleanup at the end
+     `git -C ~/Desktop/nightly routines/curiopulse sparse-checkout add videos/<slug>` before `ig.mjs prepare`. The cleanup at the end
      of the run removes it again.
    - Instagram route: Business Suite in Claude in Chrome, always (user, 22 Oct 2026; `ig.mjs route` may still print
      `api`: ignore it, the token is only used for checks like `ig.mjs whoami`). It needs Chrome connected at ship time.
@@ -271,7 +271,7 @@ Read each reference file when you reach its phase. They are short; don't skip th
      one after this Short's);
    - the cover moment.
 3. **Scaffold:** `~/.claude/skills/cp/bin/new-short.sh <slug> "<Title>"` creates
-   `~/Desktop/curiopulse/videos/<slug>` from `template/`. Put the plan and the claims table into its README
+   `~/Desktop/nightly routines/curiopulse/videos/<slug>` from `template/`. Put the plan and the claims table into its README
    first, and the spine, the button line and the running device into its `NOTES.md` (the direction record: fill a
    rule's line when that rule is met, not at the end). The script writes the length arm and the subscribe arm into its `publish.json` (`"length"` and
    `"subscribe"`, from `yt.mjs next-slot`) and prints them: check they are the arms the preflight gave. If it says it
@@ -450,7 +450,7 @@ user's request).
   - Instagram: in Business Suite, Content → Scheduled → ⋯ → Reschedule.
 - **Publish a Reel right now (only when the user asks for that Reel):** `ig.mjs publish-now <slug>` if it is in the queue,
   else Business Suite → Share now.
-- **Revisit an old Short:** `git -C ~/Desktop/curiopulse sparse-checkout add videos/<slug>`, then `src/build.sh`
+- **Revisit an old Short:** `git -C ~/Desktop/nightly routines/curiopulse sparse-checkout add videos/<slug>`, then `src/build.sh`
   (the toolchain in `~/.cache/cp` is picked up automatically). When you're done, push any change, then run
   `bin/cleanup.sh`.
 - **Repo size:** publish-short.sh prints it. Past ~3.5 GB, propose moving old MP4s to GitHub Releases.
