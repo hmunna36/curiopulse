@@ -51,14 +51,15 @@
     "studioThumbnail": "pending: Studio opened another channel (\"Oops, something went wrong\" twice); the API thumbnail is set"
   },
   "instagram": {
-    "publishAt": "2026-11-26T21:00:00+05:30",
+    "publishAt": "2026-11-29T18:30:00+05:30",
     "caption": "Tap your table: fist, edge, palm... now FAST ✊\nMixed them up? Your hand's fine. Your BRAKES aren't: your brain has to stop each shape before the next one starts, and a missed stop lets the old one sneak back in. Doctors use this exact test to check your brain.\nDid you mix it up?\nFollow @curio_pulse_tv for the next one: thumb and pinky, SWAP 👍\n#science #brain #hands #braintest #funfacts #reels",
     "coverTime": null,
     "shareToFeed": true,
     "scheduledVia": "business-suite",
     "scheduledAt": "2026-11-24T02:07+05:30",
     "postTo": "curio_pulse_tv only (the Page paused since 17 Nov 2026)",
-    "coverSet": true
+    "coverSet": true,
+    "missedNote": "The Reel scheduled in Business Suite for 2026-11-26 21:00 IST showed 'Failed to publish' (Content > Scheduled) and was not on the profile; the 27 Nov 2026 00:00 run (fired 09:56 IST) rescheduled the same post in Business Suite (Manage post > Reschedule Post) for 2026-11-29 18:30 IST; the account answered normally (ig.mjs whoami)."
   },
   "kind": {
     "kind": "test",
