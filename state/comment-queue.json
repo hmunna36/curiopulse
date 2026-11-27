@@ -653,8 +653,10 @@
       "title": "Can You SWAP Your Thumb and Pinky? 👍",
       "publishAt": "2026-11-25T06:00:00.000Z",
       "question": "Did they swap? 👍",
-      "status": "queued",
-      "queued": "2026-11-24T19:29:30.371Z"
+      "status": "posted",
+      "queued": "2026-11-24T19:29:30.371Z",
+      "commentId": "UgxSj7fOTaqVUbgPIxx4AaABAg",
+      "note": "the channel had commented already"
     },
     {
       "videoId": "euN3iCWlYtg",
@@ -662,8 +664,10 @@
       "title": "There's a GALAXY in Your Sky Wider Than the Moon 🌌",
       "publishAt": "2026-11-25T18:00:00.000Z",
       "question": "🌌 Bonus: you can spot its bright middle with no camera at all: on a dark, moonless night far from city lights it looks like a faint fuzzy smudge.\nHave you ever seen it? Yes or no? 🔭",
-      "status": "queued",
-      "queued": "2026-11-24T21:29:14.595Z"
+      "status": "posted",
+      "queued": "2026-11-24T21:29:14.595Z",
+      "commentId": "UgyYg7Gck_nExrbgphh4AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }

@@ -50,14 +50,15 @@
     "playlistSet": true
   },
   "instagram": {
-    "publishAt": "2026-11-26T18:30:00+05:30",
+    "publishAt": "2026-11-28T21:00:00+05:30",
     "caption": "Can you sign a 7? Thumb on your ring finger, three fingers UP. 🤟\nPinky sinking? Congrats, that's a 2. The cords that bend your ring finger and pinky are tied together inside your hand, like chariot reins. One violinist had a surgeon cut every tie, in both hands... and could type super fast.\nCould you make a 7?\nFollow @curio_pulse_tv for the next one: fist, edge, palm, FAST 🔔\n#science #humanbody #hands #signlanguage #funfacts #reels",
     "coverTime": null,
     "shareToFeed": true,
     "scheduledVia": "business-suite",
     "scheduledAt": "2026-11-24T00:21+05:30",
     "postTo": "curio_pulse_tv only (the Page paused since 17 Nov 2026)",
-    "coverSet": true
+    "coverSet": true,
+    "missedNote": "The Reel scheduled in Business Suite for 2026-11-26 18:30 IST showed 'Failed to publish' (Content > Scheduled) and was not on the profile; the 27 Nov 2026 00:00 run (fired 09:56 IST) rescheduled the same post in Business Suite (Manage post > Reschedule Post) for 2026-11-28 21:00 IST; the account answered normally (ig.mjs whoami)."
   },
   "kind": {
     "kind": "test",
