@@ -157,6 +157,8 @@ QA rounds, the scores against the ship bar, and what changed each round (from `.
   goes"); the hammock's sag deepened; the flash-forward re-aimed at the snapping finger; both hitstops moved onto the
   impact frame; the STIFF! burst and the Wi-Fi sign pulled inside the safe zone; the taps' push started closer with a
   bigger hammer (the second swipe check); the music now enters after "...like a hook..." and stops under "Still".
+- **Rebuild:** `build.sh`'s steps into a fresh `.work-build` (the picture written outside the repo) reproduced timeline.json,
+  mix.wav and the MP4 byte for byte (882 frames in 808 s).
 - **Not verified by anyone:** nobody heard the mix on a phone or headphones, nobody watched it at speed on a phone, and
   nobody tried the test on a real person for this Short.
 
