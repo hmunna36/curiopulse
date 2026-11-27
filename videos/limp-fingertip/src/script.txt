@@ -1,0 +1,35 @@
+# Narration for "Hook Your Finger. Can You Straighten the TIP? 👆"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions ([whispers] [gasps] [sarcastic] [curious]
+# [excited] [panicked] [chuckles] [mischievously] [deadpan] [sighs] [yawns]); they are not spoken and
+# never captioned. tighten=0 keeps the take's own pauses (use it on jokes and reveals). tempo speeds a
+# take up without changing pitch (explanations 1.03–1.06, jokes and reveals 1.00).
+# Rules (reference/narration.md, reference/story.md, reference/direction.md):
+# - `hook`: the test, told to the viewer ("your" in the first eight words); the tip stays curled by 3 s.
+# - `answer` (required): the plain, surprising claim, started by 5.0 s: the tip went OFFLINE.
+# - the 8-13 s rule: the viewer keeps the hook bent and pokes the tip (poke), then looks at the strings on their own
+#   finger (strings); no science word spoken.
+# - nobody says "subscribe"; no pill (publish.json "subscribe": none); the button is the last words and runs into the hook.
+# - words in all: 55-64 (the tight arm, `yt.mjs next-slot`): 58.
+
+## hook gap=0.10 tighten=0.42 tempo=1.00
+Bend your finger like a hook... now straighten just the TIP.
+
+## answer gap=0.38 tighten=0.32 tempo=1.00
+[sarcastic] Can't? Your tip just went... OFFLINE.
+
+## poke gap=0.60 tighten=0.4 tempo=1.00
+[curious] Poke it. Floppy, right?
+
+## strings gap=0.35 tighten=0.3 tempo=1.05
+Bend the middle, and its string goes tight... the tip's two go SLACK.
+
+## doctors gap=0.38 tighten=0.3 tempo=1.05
+[excited] Doctors use this exact test... on jammed fingers.
+
+## stiff gap=0.55 tighten=0.38 tempo=1.00
+If that tip goes STIFF... the middle string might be torn.
+
+## button gap=0.50 tighten=0.35 tempo=1.00
+Still floppy? Congrats... you're FINE.
