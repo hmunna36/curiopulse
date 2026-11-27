@@ -34,20 +34,29 @@
   "cover": "cover.jpg",
   "captions": "limp-fingertip.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-27T23:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Why Does Your Body Do That?"
+    "playlist": "Why Does Your Body Do That?",
+    "id": "Ddep8G-knaQ",
+    "url": "https://youtube.com/shorts/Ddep8G-knaQ",
+    "uploaded": "2026-11-27T06:42:51.500Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-29T21:00:00+05:30",
     "caption": "Bend your finger like a hook... now straighten just the TIP 👆 Can't? It went limp. Bending the middle knuckle pulls its string tight and leaves the tip's two strings slack. Doctors use this exact test on jammed fingers. Did your tip go limp? Follow @curio_pulse_tv for the next one: tap two DIFFERENT beats with your hands 🥁 #science #humanbody #hands #fingertest #funfacts #reels",
-    "coverTime": 3.0,
-    "shareToFeed": true
+    "coverTime": 3,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-11-29 21:00 IST (Business Suite, Instagram only, cover set; the Facebook Page paused)"
   },
   "kind": {
     "kind": "test",

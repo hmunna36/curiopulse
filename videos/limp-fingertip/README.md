@@ -64,8 +64,8 @@ Jessica (ElevenLabs v3, stability 0), one take per block; the hook was taken twi
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (after the upload) | 27 Nov 2026 23:30 IST |
-| Instagram Reels | (after it goes live) | 29 Nov 2026 21:00 IST (Business Suite) |
+| YouTube Shorts | https://youtube.com/shorts/Ddep8G-knaQ | 27 Nov 2026 23:30 IST (playlist Why Does Your Body Do That?; cover also set in Studio's vertical slot) |
+| Instagram Reels | (the link once it is live) | 29 Nov 2026 21:00 IST (Business Suite, Instagram only, cover set; the Facebook Page paused) |
 
 **Title:** Hook Your Finger. Can You Straighten the TIP? 👆
 

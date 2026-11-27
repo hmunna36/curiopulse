@@ -120,7 +120,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You Do the ELVIS Lip Without Squinting? | 26 s | [`videos/elvis-lip`](videos/elvis-lip) | [24 Nov 2026](https://youtube.com/shorts/iMAAA7qy4Go) |
 | Can You SWAP Your Thumb and Pinky? | 27 s | [`videos/thumb-pinky-swap`](videos/thumb-pinky-swap) | [25 Nov 2026](https://youtube.com/shorts/AWNdCVXeUpE) |
 | There's a GALAXY in Your Sky Wider Than the Moon | 31 s | [`videos/galaxy-wider-than-moon`](videos/galaxy-wider-than-moon) | [25 Nov 2026](https://youtube.com/shorts/euN3iCWlYtg) |
-| Hook Your Finger. Can You Straighten the TIP? | 29 s | [`videos/limp-fingertip`](videos/limp-fingertip) | 27 Nov 2026 |
+| Hook Your Finger. Can You Straighten the TIP? | 29 s | [`videos/limp-fingertip`](videos/limp-fingertip) | [27 Nov 2026](https://youtube.com/shorts/Ddep8G-knaQ) |
 
 Each folder has:
 - the finished MP4;
