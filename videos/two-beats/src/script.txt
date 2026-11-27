@@ -1,0 +1,34 @@
+# Narration for "Can Your Hands Tap Two DIFFERENT Beats? 🥁"
+# Voice: ElevenLabs eleven_v3, Jessica (cgSgspJ2msm6clMCkdW9), stability 0 ("creative"): the channel narrator.
+# One "## <id> gap=<s>" block per take. gap = silence held BEFORE the block; the comedic timing lives
+# there, not in the take. [tags] are v3 performance directions; they are not spoken and never captioned.
+# The tight arm (rules of 5 Nov 2026): 25-30 s, 55-64 words. This script: 57 words.
+# hook = the viewer's test (3 against 2: two even taps with the left hand while the right taps three, starting together;
+# simple ratios such as 2:1 come easily, 3:2 does not: Klapp et al. 1985, Deutsch 1983); the answer starts by 5.0 s; the
+# mechanism keeps the viewer's hands tapping through 13 s (1 against 2, then 2 against 3 again, then faster: at speed the
+# hands slide into an easier ratio, Peper et al. 1995); payoff: skilled players fold both beats into ONE pattern (Summers
+# et al. 1993), taught as "nice cup of tea"; the button sends them back to the test with the trick, and loops.
+
+## hook gap=0.06 tighten=0.30 tempo=1.00
+Tap two with your left hand, three with your right. GO!
+
+## answer gap=0.95 tighten=0.30 tempo=1.00
+Same beat? Your hands only have ONE drummer.
+
+## easy gap=0.34 tighten=0.30 tempo=1.03
+Left once, right twice? Easy.
+
+## panic gap=0.26 tighten=0.30 tempo=1.00
+Two and three? He PANICS.
+
+## faster gap=0.30 tighten=0.30 tempo=1.03
+Speed up, and he falls back to an EASY beat.
+
+## payoff gap=0.40 tighten=0.30 tempo=1.00
+So drummers cheat. They glue both into ONE rhythm.
+
+## trick gap=0.30 tighten=0.45 tempo=1.00
+Nice... cup of tea.
+
+## button gap=0.45 tighten=0.40 tempo=1.00
+Now you. Nice... cup of tea.

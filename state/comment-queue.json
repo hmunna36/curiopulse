@@ -663,8 +663,10 @@
       "title": "Hook Your Finger. Can You Straighten the TIP? 👆",
       "publishAt": "2026-11-27T18:00:00.000Z",
       "question": "Did your tip go limp? 👆",
-      "status": "queued",
-      "queued": "2026-11-27T06:43:00.727Z"
+      "status": "posted",
+      "queued": "2026-11-27T06:43:00.727Z",
+      "commentId": "Ugz_qe-eWtbY_36-rDN4AaABAg",
+      "note": "the channel had commented already"
     }
   ]
 }

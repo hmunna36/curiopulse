@@ -121,6 +121,7 @@ YouTube [@CurioPulseExplains](https://www.youtube.com/@CurioPulseExplains) · In
 | Can You SWAP Your Thumb and Pinky? | 27 s | [`videos/thumb-pinky-swap`](videos/thumb-pinky-swap) | [25 Nov 2026](https://youtube.com/shorts/AWNdCVXeUpE) |
 | There's a GALAXY in Your Sky Wider Than the Moon | 31 s | [`videos/galaxy-wider-than-moon`](videos/galaxy-wider-than-moon) | [25 Nov 2026](https://youtube.com/shorts/euN3iCWlYtg) |
 | Hook Your Finger. Can You Straighten the TIP? | 29 s | [`videos/limp-fingertip`](videos/limp-fingertip) | [27 Nov 2026](https://youtube.com/shorts/Ddep8G-knaQ) |
+| Can Your Hands Tap Two DIFFERENT Beats? | 27 s | [`videos/two-beats`](videos/two-beats) | 28 Nov 2026 (scheduled) |
 
 Each folder has:
 - the finished MP4;

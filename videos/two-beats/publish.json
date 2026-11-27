@@ -1,0 +1,63 @@
+{
+  "slug": "two-beats",
+  "file": "two-beats-short.mp4",
+  "title": "Can Your Hands Tap Two DIFFERENT Beats? 🥁",
+  "description": "Tap two with your left hand, three with your right... at the same time. Same beat? Your hands only have one drummer. Left once, right twice is easy, because the beats line up. Two against three doesn't divide neatly, so your hands slide back into one shared beat, and the faster you go, the quicker they give up. That's why drummers cheat: they glue both beats into ONE pattern and say it out loud. Nice... cup of tea.\n\nDid your beats merge?\n\nThe science: people tapping two rhythms at once, one per hand, do well only when the rhythms divide simply, like 2:1 or 3:1; polyrhythms such as 3 against 2 are much harder, and harder still as the ratio gets more complex (Klapp et al., Journal of Experimental Psychology: Human Perception and Performance, 1985; Deutsch, Perception & Psychophysics, 1983). Speed up, and the hands tend to jump to an easier, more stable ratio (Peper, Beek & van Wieringen, Biological Cybernetics, 1995). Skilled players usually manage it by folding both hands into one combined pattern, the slow hand fitted into the fast hand's count (Summers, Rosenbaum, Burns & Ford, 1993), and music teachers teach 3 against 2 with the words 'nice cup of tea': NICE on both hands, CUP and TEA on the three-beat hand, OF on the two-beat hand. 'One drummer' is a picture, not a part of the brain: scientists still argue about whether the brain times both hands with one clock or two.\n\nNext up: can your PINKY bend on its own? 🤙\n\nSubscribe for a new strange question every day.\n\n#Shorts #Science #Brain #Rhythm #FunFacts #HandTest",
+  "look": "cine",
+  "length": {
+    "arm": "tight",
+    "min": 25,
+    "max": 30,
+    "slot": "2026-11-28T11:30:00+05:30"
+  },
+  "subscribe": {
+    "arm": "none",
+    "slot": "2026-11-28T11:30:00+05:30"
+  },
+  "pinnedComment": "Next up: can your PINKY bend on its own? 🤙 Subscribe so you don't miss it!\nDid your beats merge? 🥁",
+  "tags": [
+    "tap two different beats",
+    "polyrhythm test",
+    "3 against 2",
+    "nice cup of tea rhythm",
+    "hand coordination test",
+    "two hands different rhythms",
+    "can you tap two rhythms",
+    "drummer trick",
+    "polyrhythm",
+    "coordination challenge",
+    "brain test",
+    "brain facts",
+    "science facts",
+    "fun facts",
+    "curiopulse"
+  ],
+  "cover": "cover.jpg",
+  "captions": "two-beats.srt",
+  "youtube": {
+    "publishAt": "auto",
+    "privacy": "private",
+    "categoryId": "27",
+    "language": "en",
+    "madeForKids": false,
+    "syntheticMedia": false,
+    "notifySubscribers": true,
+    "playlist": "Your Brain Is Weird"
+  },
+  "instagram": {
+    "publishAt": "auto",
+    "caption": "Tap two with your left hand, three with your right... GO 🥁 Same beat? Your hands only have one drummer. Drummers cheat: they glue both beats into ONE rhythm. Nice... cup of tea. Did your beats merge? Follow @curio_pulse_tv for the next one: can your pinky bend on its own? 🔔 #science #brain #rhythm #drums #funfacts #reels",
+    "coverTime": 1.0,
+    "shareToFeed": true
+  },
+  "kind": {
+    "kind": "test",
+    "sub": "hand",
+    "mix": "mix-2026-11",
+    "slot": "2026-11-28T11:30:00+05:30"
+  },
+  "opening": {
+    "arm": "none",
+    "slot": "2026-11-28T11:30:00+05:30"
+  }
+}
