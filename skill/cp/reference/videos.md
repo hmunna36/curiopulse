@@ -109,6 +109,7 @@
 | `thumb-pinky-swap`: "Can You SWAP Your Thumb and Pinky? 👍" | 27.0 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/AWNdCVXeUpE · 25 Nov 2026 11:30 IST | Business Suite, Instagram only, 27 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `galaxy-wider-than-moon`: "There's a GALAXY in Your Sky Wider Than the Moon 🌌" | 30.7 s (short arm; no pill; CURIOUS, the second under the 17 Nov mix) | https://youtube.com/shorts/euN3iCWlYtg · 25 Nov 2026 23:30 IST | Business Suite, Instagram only, 28 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `limp-fingertip`: "Hook Your Finger. Can You Straighten the TIP? 👆" | 29.4 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/Ddep8G-knaQ · 27 Nov 2026 23:30 IST | Business Suite, Instagram only, 29 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `two-beats`: "Can Your Hands Tap Two DIFFERENT Beats? 🥁" | 27.0 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/4JyrcCPR0BI · 28 Nov 2026 11:30 IST | Business Suite, Instagram only, 30 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -4346,3 +4347,38 @@ rounds (qa.py 23/23 both); the rebuild into a fresh work folder reproduced timel
 - Renders under a parallel /ew film's QA ran at 0.9-1.5 s a frame (1313 s, then 820 s for 882 frames). This ffmpeg has no `select`
   filter: take one frame with `-ss <t> -frames:v 1`. In zsh, `rm -f dir/*.png` on an empty folder aborts the whole command line.
 - Voice: 486 characters (the hook taken twice: the first take's "hook" fell 10 dB in the speech band); 9,586 left on account 2.
+
+**two-beats** (the 00:00 routine of 28 Nov 2026, 00:00-01:10 IST; a TEST · HAND Short, the Queue's first line, two-hand
+coordination, promised by limp-fingertip's Next-up; 3 against 2: "Tap two with your left hand, three with your right. GO!", answer
+"Same beat? Your hands only have ONE drummer." at 4.48 s, "Left once, right twice? Easy." / "Two and three? He PANICS." / "Speed
+up, and he falls back to an EASY beat." / "So drummers cheat. They glue both into ONE rhythm." / "Nice... cup of tea." / button "Now
+you. Nice... cup of tea."; 58 words, 27.0 s; caption question "Did your beats merge?"; YouTube 4JyrcCPR0BI, 28 Nov 11:30 IST, playlist
+Your Brain Is Weird, cover.jpg also in Studio's vertical slot; Reel (Business Suite, Instagram only, cover set) 30 Nov 18:30 IST. Two
+QA rounds (qa.py 23/23 both); the rebuild into a fresh work folder reproduced the MP4 byte for byte):
+- **World (borrow it):** `tb_world.js`: a picnic table at a campsite at dusk, built on thumb-pinky-swap's 3D table world (`initTb`
+  paints a 360-degree dusk plate: indigo-to-coral sky with stars, a crescent moon and a sunset glow, lilac ranges with pink snow, teal
+  pine hills, a meadow with a woodpile, a stump and axe, a backpack on a log and rocks; behind him an orange dome tent lit from
+  inside and a string of bulbs whose glow is drawn live by `tbBack`); `tbTable` (planks + a red gingham cloth), `tbPot` (an upturned
+  enamel pot in true perspective: hull of two rings, the lip, handles, speckles, a number sticker on the side facing the camera, a
+  hit ring and glow), `tbLantern`, `tbMug` (fills with tea, steams), `tbStove`, `tbFire`, `tbKettle` (a mint kettle with a face as a
+  front-view sprite at a world point: moods calm / watch / boil / happy / wow, a lid that hops, shake, steam, a whistle jet, a pour
+  that tilts it toward its mug), `tbDrummer` (a tiny marching drummer: shako and plume, a bass drum marked 1, two mallets by raise
+  angle, panic / slump / sly / proud faces, a tangle, a CHEAT card; it returns the mallet heads for strings), `tbHeadWin` (the round
+  window on his head: the opaque disc first, a little stage inside, a brass rim) and `tbLanes` (beat rows with targets, a playhead,
+  red misses, a glue blob, the glue into ONE row with the syllables NICE / CUP / OF / TEA above and below). Its scenes.js: one state
+  `tbS(tt)` (valid at negative time) with each hand's keys `[t, height, h|r|u]` from make_timeline.py (`tbLift`: arcs between hits,
+  a squash on landing), the hands placed by `tpXf` over the pots, the front view's hero (`tbHero` + `tbUpperArms` drawn after the
+  table), the 3D hands cut out of the glow layer after drawing (destination-out) so a lamp or the tent never blooms through them.
+- **A hit list per hand in make_timeline.py drives the picture and the sound** (`cues.keysL/keysR`, `hitsL/hitsR`): the pots ring
+  on the exact frame the palm lands, and the loop is a lap of the same list (the button's last hits at negative time).
+- **Pot hits on words were buried** (vcheck: 13 of 29 effects, the hook's demo taps among them): an on-word hit keeps only its own
+  note under ~300 Hz (the big pot D3 147 Hz, the small one A3 220 Hz on a word, D4 294 Hz in a pause) plus the slap's top over
+  5.2 kHz, on the effects bus at -14 dB: 4 buried, no word under 6 dB, the two pots still an octave apart.
+- **The storm mood ran on past its scene** (11.8-16.8 s) and measured 55-61 % saturation on the next three shots (65-73 % elsewhere):
+  end a dark mood at the next cut, not at the next story beat.
+- **The flash-forward's moment must lie inside ONE later shot** (timeline_lib refuses it otherwise): with the payoff 0.4 s before a
+  cut, the window shows the moment from 0.24 s into the shot for 0.5 s.
+- A front view of the 2D hiker with 3D hands needs the table drawn AFTER him and his upper arms and hands drawn after the table
+  (the table top otherwise paints over his forearms); a 3D prop nearer the camera (the kettle) is sorted by depth with the pots.
+- Voice: 338 characters (one retake of "faster" with EASY in caps: the line's end had dropped 13 dB in the speech band); 6,457 left
+  on account 2 (the parallel routines share it).

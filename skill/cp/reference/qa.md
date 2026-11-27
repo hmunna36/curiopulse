@@ -120,6 +120,29 @@ A FAIL blocks the upload.
 - A length WARN is not a pass: bring the Short into its band with `gap`, `tighten` and `tempo` (free), or cut a
   sentence, before shipping. Ship on a length warning only when the fix would hurt the comedy, and say so.
 
+## The shared checks (vcheck.py, on the delivered MP4; since 27 Nov 2026; `checks.md`)
+
+```sh
+cd videos/<slug>/src
+python3 ~/.claude/skills/cp/bin/vcheck.py ../<slug>-short.mp4 --kind short \
+  --words ../.work/words.json --keys "<8-16 key words>" --exempt "<each hitstop or dead stop, a-b>" \
+  --stems "sfx=../.work/stems/sfx.wav,rest=../.work/stems/voice.wav+../.work/stems/music.wav+../.work/stems/amb.wav" \
+  --cutsheet ../.work/qa/cuts.png --json ../.work/qa/vcheck.json          # about a minute
+```
+
+- The key words: the test's verb, the answer line's punch word, each number, each body part named for the first
+  time, the weirdest fact's word, the button's last word. `word#2` is a word's second time.
+- Read every `cuts_NN.png` row by row: a caption word carried across a cut, a label from the last shot, text over his
+  face on a shot's first frames.
+- **Advice, not a gate** (`checks.md`): a LOOK is a moment to open and judge. A real fault with a cheap fix (timing, a
+  gap, a drift, a level) is fixed in this round; nothing is re-voiced for a LOOK and no upload waits on one.
+- Paste the five summary lines into `.work/qa/ship-review.md` under "Shared checks", with what was fixed and what was
+  left and why; the report says when the script could not run.
+- When a fix round changed the picture and the run reviews with sub-agents, the re-check is the second look of
+  `checks.md` part 5 (FIXED / PARTLY / STILL THERE, then SHIP or ONE MORE PASS).
+- `checks.md` parts 2 to 4 (the picture lands on the word, movement, sound) are read before the shots are built;
+  where they disagree with `direction.md`, `visual.md` or an owner's rule, those win.
+
 ## The ship bar (the review; qa.py can't judge these)
 
 Read every contact sheet (`.work/qa/sheet_*.png`) and crop the risky moments at full size. Then score each item
