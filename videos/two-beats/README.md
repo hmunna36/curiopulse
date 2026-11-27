@@ -56,8 +56,8 @@ Directed in [`src/script.txt`](src/script.txt), one take per block. The joke tim
 
 | Platform | Link | Release |
 |---|---|---|
-| YouTube Shorts | (filled in after the upload) | 28 Nov 2026 11:30 IST |
-| Instagram Reels | (Business Suite) | (filled in after scheduling) |
+| YouTube Shorts | https://youtube.com/shorts/4JyrcCPR0BI | 28 Nov 2026 11:30 IST (playlist: Your Brain Is Weird; cover also set in Studio's vertical slot) |
+| Instagram Reels | @curio_pulse_tv (Business Suite, Instagram only: the Facebook Page is paused) | 30 Nov 2026 18:30 IST (cover set) |
 
 **Title:** Can Your Hands Tap Two DIFFERENT Beats? 🥁
 

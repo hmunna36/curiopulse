@@ -35,20 +35,29 @@
   "cover": "cover.jpg",
   "captions": "two-beats.srt",
   "youtube": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-28T11:30:00+05:30",
     "privacy": "private",
     "categoryId": "27",
     "language": "en",
     "madeForKids": false,
     "syntheticMedia": false,
     "notifySubscribers": true,
-    "playlist": "Your Brain Is Weird"
+    "playlist": "Your Brain Is Weird",
+    "id": "4JyrcCPR0BI",
+    "url": "https://youtube.com/shorts/4JyrcCPR0BI",
+    "uploaded": "2026-11-27T19:29:07.312Z",
+    "thumbnailSet": true,
+    "captionsSet": true,
+    "playlistSet": true,
+    "studioThumbnail": true
   },
   "instagram": {
-    "publishAt": "auto",
+    "publishAt": "2026-11-30T18:30:00+05:30",
     "caption": "Tap two with your left hand, three with your right... GO 🥁 Same beat? Your hands only have one drummer. Drummers cheat: they glue both beats into ONE rhythm. Nice... cup of tea. Did your beats merge? Follow @curio_pulse_tv for the next one: can your pinky bend on its own? 🔔 #science #brain #rhythm #drums #funfacts #reels",
-    "coverTime": 1.0,
-    "shareToFeed": true
+    "coverTime": 1,
+    "shareToFeed": true,
+    "scheduledVia": "business-suite",
+    "scheduled": "2026-11-30 18:30 IST (Business Suite, Instagram only, cover set; the Facebook Page paused)"
   },
   "kind": {
     "kind": "test",
