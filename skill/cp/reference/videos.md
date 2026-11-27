@@ -108,6 +108,7 @@
 | `elvis-lip`: "Can You Do the ELVIS Lip Without Squinting? 😏" | 25.7 s (tight arm; no pill; TEST · FACE OR ILLUSION; opening CONTROL) | https://youtube.com/shorts/iMAAA7qy4Go · 24 Nov 2026 23:30 IST | Business Suite, Instagram only, 27 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `thumb-pinky-swap`: "Can You SWAP Your Thumb and Pinky? 👍" | 27.0 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/AWNdCVXeUpE · 25 Nov 2026 11:30 IST | Business Suite, Instagram only, 27 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 | `galaxy-wider-than-moon`: "There's a GALAXY in Your Sky Wider Than the Moon 🌌" | 30.7 s (short arm; no pill; CURIOUS, the second under the 17 Nov mix) | https://youtube.com/shorts/euN3iCWlYtg · 25 Nov 2026 23:30 IST | Business Suite, Instagram only, 28 Nov 2026 18:30 IST (cover.jpg as the cover; the Facebook Page paused) |
+| `limp-fingertip`: "Hook Your Finger. Can You Straighten the TIP? 👆" | 29.4 s (tight arm; no pill; TEST · HAND) | https://youtube.com/shorts/Ddep8G-knaQ · 27 Nov 2026 23:30 IST | Business Suite, Instagram only, 29 Nov 2026 21:00 IST (cover.jpg as the cover; the Facebook Page paused) |
 
 From the first /cp Short on, releases are 23:30 IST (11:30 PM) on YouTube (user correction 2 Oct 2026: brain freeze went out at 11:30 AM by mistake) (Data API) and 18:30 IST on Instagram (scheduled in Business Suite through Chrome, because the user's Facebook account is blocked and no Meta API app can exist). Add a row
 here for every new Short, with its links.
@@ -4311,3 +4312,37 @@ playlist Strange Nature; Instagram (Business Suite, Instagram only, cover upload
   Studio is probably on another of the user's channels. The rule holds (never the channel switcher): the vertical thumbnail slot is
   reported as pending; the API's thumbnail is set.
 - Voice: one take per block, 370 characters (40,962 left on account 2 before). About 6.5-7 minutes a render.
+
+**limp-fingertip** (the 00:00 routine of 27 Nov 2026, fired 09:56 IST, done ~12:40 IST; a TEST · HAND Short, the Queue's first line:
+Elson's test, promised by thumb-pinky-swap's and galaxy's Next-up; tight arm, 58 words -> 29.40 s; hook formula The Direct Address as the
+test: "Bend your finger like a hook... now straighten just the TIP."; answer "Can't? Your tip just went... OFFLINE." at 4.70 s (a Wi-Fi
+sign crossed out over the tip); "Poke it. Floppy, right?"; the glass finger's three strings; "Doctors use this exact test... on jammed
+fingers."; the payoff "If that tip goes STIFF... the middle string might be torn." (the snap); button "Still floppy? Congrats... you're
+FINE."; caption question "Did your tip go limp?"; YouTube Ddep8G-knaQ, 27 Nov 23:30 IST, playlist Why Does Your Body Do That?, cover.jpg
+also in Studio's vertical slot (it showed an automatic frame); Reel (Business Suite, Instagram only, cover set) 29 Nov 21:00 IST. Two QA
+rounds (qa.py 23/23 both); the rebuild into a fresh work folder reproduced timeline.json and mix.wav byte for byte):
+- **World (borrow it):** `lf_world.js`: the porch of a lakeside cabin at sunset (`initLake` paints the far view once, sharp and soft:
+  violet-to-gold sky, low sun on the far shore, ridges with lit rims, pines, a cabin with lit windows, a dock and canoe, the sun's road
+  on the lake; `lfFar` lays it at depth with `wkGlitter` on the road and a loop-safe `wkFlock`; `lfPorch`: railing, posts, roof beam,
+  string lights that twinkle, a hanging lantern, flower pots, a fishing rod; `lfTable`: plank table, a mug of cocoa that steams, a
+  sandwich on a plate), the ladybug (`lfBug`: dome with spots, big eyes with moods, legs that walk, wings out to fly or float, lying on
+  her back, a doctor's head mirror, a reflex hammer), his other hand's poking finger (`lfPoker`), the three strings on the BACK of the
+  finger (`lfStrings`: the shared stretch up the forearm and hand, the middle one to the middle bone in cyan, the tip's two in yellow
+  past the middle knuckle's sides; `sag` hangs the tip's two in a U (a hammock), `torn` breaks the middle one into recoiling frayed
+  ends; it returns the hammock's low point), `lfWifi`, `lfSpinner`, `lfWhoosh`. Its scenes.js: one state `lfS(tt)` (valid at negative
+  time), `lfCam`/`lfAng`/`lfView` (finger-tip-bend's ft_world hand tied to the 2D camera), `lfBugPose` (tip / hammock / fling /
+  chute modes), `SC.cover`.
+- **finger-tip-bend's pointing hand hooks TOWARD his face with its yaw at +PI/2** (the tip hung over his chin and the ladybug sat on his
+  mouth): with `side = -PI/2` the hook bends away, toward the lake, and reads clean beside his face; -0.18 is the side view, -0.45
+  shows the back of the finger (the strings) and still reads as a hook.
+- **A hitstop on the snap's cue froze the frame before the snap** (the tip still curled): put the hit at the end of the `snapRamp`
+  (cue + 0.13 s) so the freeze shows the impact; the same for a pop-in sign (its slash done by +0.14, the hit at +0.16).
+- **An extreme close-up of his flat stare on the answer is a held face before 12 s** (round 1, item 2 at 7): a high two-shot of him
+  glancing at the test hand keeps the test in frame and the reaction under half a second.
+- **The 26 Nov Reels (sign-seven 18:30, fist-edge-palm 21:00) showed "Failed to publish" in Content > Scheduled** and were not on the
+  grid, with the account fine (`ig.mjs whoami`, 0 of 50 used): the row's ⋯ > Manage post > Reschedule Post moved the SAME post to the
+  next free slots (no new upload; the date picker and the hours/minutes spinbuttons work like the Share step), and the rows came back
+  clean. The grid's Reel shortcodes decode to their publish times (`id >> 23` + 1314220021721 ms), which is how the miss was dated.
+- Renders under a parallel /ew film's QA ran at 0.9-1.5 s a frame (1313 s, then 820 s for 882 frames). This ffmpeg has no `select`
+  filter: take one frame with `-ss <t> -frames:v 1`. In zsh, `rm -f dir/*.png` on an empty folder aborts the whole command line.
+- Voice: 486 characters (the hook taken twice: the first take's "hook" fell 10 dB in the speech band); 9,586 left on account 2.

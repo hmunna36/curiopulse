@@ -106,6 +106,12 @@ free of its own two daily slots, 18:30 and 21:00 IST (user, 15 Oct 2026, after t
   shows at once; then the public grid instagram.com/curio_pulse_tv/reels/ (read only). Reschedule a missing Reel in the next free slot
   (Instagram only when its Page copy went out) and lead the report with it. A Reel that went out and is now gone was probably deleted
   by the user: never repost it without their word.
+- **A Business Suite schedule can FAIL with the account fine (26 Nov 2026):** sign-seven (18:30) and fist-edge-palm (21:00) stayed in
+  Content -> Scheduled with a red "Failed to publish" badge (the post's details: "Please reschedule, publish now or delete") and never
+  reached the grid, while `ig.mjs whoami` answered normally. The 48-hour check reads the Scheduled tab for that badge as well as the
+  grid. Fix: the row's ⋯ > Manage post > Reschedule Post (click the menu items by ref; a coordinate click went through to the row
+  behind) to the next free slots, the same post (no new upload), then `ig.mjs busy` for each new slot and a `missedNote` in the
+  Short's publish.json (pushed with publish-short.sh <slug>). Never "Publish now" without the owner's word.
 - **The Reel composer's Thumbnail section works again (23 Oct 2026):** Choose suggested / Choose frame / Upload image. cover.jpg in a
   collector input, the click hook armed with it (`window.__pendingFile`), the "Upload image" tab, then the "Upload Image" link: the cover
   shows with a tick and becomes the Scheduled row's thumbnail.
